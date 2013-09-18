@@ -1,0 +1,1055 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"bu",
+				"bulletion"
+			],
+			[
+				"list",
+				"listeners"
+			],
+			[
+				"ob",
+				"object"
+			],
+			[
+				"lis",
+				"listeners"
+			],
+			[
+				"pto",
+				"prototype"
+			],
+			[
+				"prot",
+				"prototype"
+			],
+			[
+				"synchro",
+				"synchronisation"
+			],
+			[
+				"sy",
+				"syncUp  (function)"
+			],
+			[
+				"syn",
+				"syncUp  (function)"
+			],
+			[
+				"buo",
+				"button"
+			],
+			[
+				"user",
+				"user_profile  (variable)"
+			],
+			[
+				"time",
+				"timestamp"
+			],
+			[
+				"json",
+				"json_last_error"
+			],
+			[
+				"arr",
+				"array"
+			],
+			[
+				"facebook",
+				"facebook"
+			],
+			[
+				"em",
+				"empty"
+			],
+			[
+				"json_",
+				"json_encode"
+			],
+			[
+				"parse",
+				"parseInt"
+			],
+			[
+				"type",
+				"typeof"
+			],
+			[
+				"jour",
+				"jour"
+			],
+			[
+				"respons",
+				"responseText"
+			],
+			[
+				"seria",
+				"serialize"
+			],
+			[
+				"un",
+				"unserializeCallback  (function)"
+			],
+			[
+				"se",
+				"serializeCallback  (function)"
+			],
+			[
+				"serial",
+				"serializeCallback"
+			],
+			[
+				"face",
+				"FacebookManager"
+			],
+			[
+				"Face",
+				"FacebookManager"
+			],
+			[
+				"horaires",
+				"horairesManager"
+			],
+			[
+				"che",
+				"checkLoginStatus"
+			],
+			[
+				"logout",
+				"logout"
+			],
+			[
+				"lo",
+				"login"
+			],
+			[
+				"app",
+				"appendChild"
+			],
+			[
+				"login",
+				"loginButton"
+			],
+			[
+				"pa",
+				"padding"
+			],
+			[
+				"box-s",
+				"box-sizing:   (property)"
+			],
+			[
+				"brad",
+				"border-radius:   (property)"
+			],
+			[
+				"border-r",
+				"border-right"
+			],
+			[
+				"bord",
+				"border-left"
+			],
+			[
+				"colla",
+				"collapsed"
+			],
+			[
+				"min",
+				"min-width"
+			],
+			[
+				"medi",
+				"@media	@media ${1:screen} {\n	${0}\n}"
+			],
+			[
+				"in",
+				"input	Tag"
+			],
+			[
+				"margin",
+				"margin-top"
+			],
+			[
+				"column",
+				"column-count:   (property)"
+			],
+			[
+				"max",
+				"max-width"
+			],
+			[
+				"med",
+				"@media	@media ${1:screen} {\n	${0}\n}"
+			],
+			[
+				"isDe",
+				"isDefault  (variable)"
+			],
+			[
+				"pading",
+				"padding-left"
+			],
+			[
+				"bor",
+				"border-radius"
+			],
+			[
+				"font",
+				"font-size"
+			],
+			[
+				"l",
+				"longitude  (variable)"
+			],
+			[
+				"bouton",
+				"boutonRecherche"
+			],
+			[
+				"liste",
+				"listeInputs"
+			],
+			[
+				"Favori",
+				"Favori"
+			],
+			[
+				"mar",
+				"margin"
+			],
+			[
+				"Fav",
+				"FavHTML"
+			],
+			[
+				"FAV",
+				"FavHTML"
+			],
+			[
+				"ar",
+				"arg"
+			],
+			[
+				"is",
+				"isDefault"
+			],
+			[
+				"ad",
+				"addFavori  (function)"
+			],
+			[
+				"check",
+				"checked"
+			],
+			[
+				"con",
+				"container"
+			],
+			[
+				"la",
+				"latitude"
+			],
+			[
+				"isChe",
+				"isCheckedContainer"
+			],
+			[
+				"isC",
+				"isCheckedLabel"
+			],
+			[
+				"add",
+				"addFavoriButton  (variable)"
+			],
+			[
+				"text-align",
+				"text-align:   (property)"
+			],
+			[
+				"backgrou",
+				"background-color"
+			],
+			[
+				"border-",
+				"border-color:   (property)"
+			],
+			[
+				"current",
+				"currentElement  (variable)"
+			],
+			[
+				"lad",
+				"lastChild"
+			],
+			[
+				"create",
+				"createTrans"
+			],
+			[
+				"dis",
+				"display"
+			],
+			[
+				"text",
+				"textContent"
+			],
+			[
+				"cre",
+				"createElement"
+			],
+			[
+				"id",
+				"isEditing"
+			],
+			[
+				"editin",
+				"editingView"
+			],
+			[
+				"edi",
+				"editingView"
+			],
+			[
+				"i",
+				"i"
+			],
+			[
+				"conr",
+				"container"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"ti",
+				"title"
+			],
+			[
+				"fa",
+				"favoris"
+			],
+			[
+				"edit",
+				"editButton"
+			],
+			[
+				"pae",
+				"parse"
+			],
+			[
+				"get",
+				"getFile"
+			],
+			[
+				"file",
+				"fileName"
+			],
+			[
+				"print",
+				"print_r"
+			],
+			[
+				"fil",
+				"fileName"
+			],
+			[
+				"dynami",
+				"dynamicView"
+			],
+			[
+				"dyna",
+				"dynamic"
+			],
+			[
+				"FavoriV",
+				"FavoriView"
+			],
+			[
+				"sta",
+				"staticView"
+			],
+			[
+				"Favor",
+				"FavoriView"
+			],
+			[
+				"Favo",
+				"FavorisManagerView"
+			],
+			[
+				"Manager",
+				"FavorisManager"
+			],
+			[
+				"Favr",
+				"FavorisView"
+			],
+			[
+				"Fa",
+				"FavorisManagerView"
+			],
+			[
+				"php",
+				"php"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "app/AppKernel.php",
+			"settings":
+			{
+				"buffer_size": 1401,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "Packages/User/PHP-Lint.sublime-build",
+	"command_palette":
+	{
+		"height": 167.0,
+		"selected_items":
+		[
+			[
+				"pa",
+				"Package Control: Install Package"
+			],
+			[
+				"snippet",
+				"Snippet: html"
+			],
+			[
+				"php",
+				"Set Syntax: PHP"
+			],
+			[
+				"ugr",
+				"Package Control: Upgrade Package"
+			],
+			[
+				"tabs",
+				"Indentation: Convert to Tabs"
+			],
+			[
+				"side",
+				"View: Toggle Side Bar"
+			],
+			[
+				"emmet bo",
+				"Emmet: Expand Abbreviation"
+			],
+			[
+				"border-ra",
+				"Snippet: border-radius"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"emmet",
+				"Emmet: Merge Lines"
+			],
+			[
+				"gist",
+				"Gist: Update File"
+			],
+			[
+				"convert",
+				"Indentation: Convert to Tabs"
+			],
+			[
+				"conver",
+				"Indentation: Convert to Tabs"
+			],
+			[
+				"remo",
+				"Package Control: Remove Package"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"open",
+				"File: Open In Browser - Testing Server"
+			],
+			[
+				"packe",
+				"Package Control: Remove Package"
+			],
+			[
+				"gis",
+				"Gist: Update File"
+			],
+			[
+				"gist open",
+				"Gist: Open Gist in Browser"
+			],
+			[
+				"giste",
+				"Gist: Add File to Gist"
+			],
+			[
+				"delete",
+				"File: Delete"
+			],
+			[
+				"sidebar",
+				"View: Toggle Side Bar"
+			],
+			[
+				"rename",
+				"File: Rename"
+			],
+			[
+				"html",
+				"Set Syntax: HTML"
+			],
+			[
+				"edit",
+				"Project: Edit"
+			],
+			[
+				"contro",
+				"Package Control: Remove Package"
+			],
+			[
+				"pro",
+				"Project: Edit"
+			],
+			[
+				"bro",
+				"Preferences: Browse Packages"
+			],
+			[
+				"instak",
+				"Package Control: Install Package"
+			],
+			[
+				"toggle s",
+				"View: Toggle Open Files in Side Bar"
+			],
+			[
+				"Snippet: ",
+				"Snippet: html"
+			],
+			[
+				"fet",
+				"Fetch: Package"
+			],
+			[
+				"fetch",
+				"Fetch: Manage"
+			],
+			[
+				"css",
+				"Set Syntax: CSS"
+			],
+			[
+				"mar",
+				"Set Syntax: Markdown"
+			],
+			[
+				"console",
+				"Set Syntax: R Console"
+			],
+			[
+				"java",
+				"Set Syntax: JavaScript"
+			]
+		],
+		"width": 557.0
+	},
+	"console":
+	{
+		"height": 111.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/adrienbocquet/Sites/MAMP/EVN/.gitignore",
+		"/Users/adrienbocquet/Sites/MAMP/EVN/app/AppKernel.php",
+		"/Users/adrienbocquet/Sites/MAMP/amabus/main.js",
+		"/Users/adrienbocquet/Desktop/test.html",
+		"/Users/adrienbocquet/Sites/MAMP/amabus_V2/main.js",
+		"/Users/adrienbocquet/Sites/MAMP/amabus_V2/index.html",
+		"/Users/adrienbocquet/Desktop/Informatique/codeweb.html",
+		"/Volumes/Primusvictor/public_html/amabus/css/design.css",
+		"/Volumes/Primusvictor/public_html/amabus/synchronize.php",
+		"/Volumes/Primusvictor/public_html/amabus/main.js",
+		"/Volumes/Primusvictor/public_html/amabus/index.html",
+		"/Volumes/Primusvictor/public_html/amabus/facebook/getStatus.php",
+		"/Users/adrienbocquet/Sites/MAMP/amabus/index.html",
+		"/Users/adrienbocquet/Sites/MAMP/amabus beta1/web/js/form_collection.js",
+		"/Users/adrienbocquet/Sites/MAMP/amabus/css/design.css",
+		"/Users/adrienbocquet/Library/Application Support/Sublime Text 2/Packages/User/JavaScript/comment-snippet.sublime-snippet",
+		"/Users/adrienbocquet/Sites/MAMP/amabus/templates/favori_dynamic.html",
+		"/Users/adrienbocquet/Library/Application Support/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+		"/Users/adrienbocquet/Library/Application Support/Sublime Text 2/Packages/Default/Default (OSX).sublime-keymap",
+		"/Users/adrienbocquet/Sites/MAMP/amabus/templates/favori_static.html",
+		"/Users/adrienbocquet/Sites/MAMP/amabus/cache/makeCache.php",
+		"/Users/adrienbocquet/Sites/MAMP/amabus/cache/templates.json",
+		"/Users/adrienbocquet/Sites/MAMP/amabus/templates/makeCache.php",
+		"/Users/adrienbocquet/Sites/MAMP/amabus/templates/interval_modif.html",
+		"/Users/adrienbocquet/Sites/MAMP/amabus/amabus.sublime-project",
+		"/Users/adrienbocquet/Library/Application Support/Sublime Text 2/Packages/User/Default (OSX).sublime-keymap",
+		"/Users/adrienbocquet/Library/Application Support/Sublime Text 2/Packages/User/PHP-Lint.sublime-build",
+		"/Users/adrienbocquet/Desktop/untitled.php",
+		"/Users/adrienbocquet/Library/Application Support/Sublime Text 2/Packages/HTML/html.sublime-snippet",
+		"/Users/adrienbocquet/Library/Application Support/Sublime Text 2/Packages/SideBarEnhancements/messages/11.13.2012.1305.0.txt",
+		"/Users/adrienbocquet/Library/Application Support/Sublime Text 2/Packages/User/JavaScript/Script-src.sublime-snippet",
+		"/Users/adrienbocquet/Desktop/SB2 raccourcis",
+		"/Users/adrienbocquet/Library/Application Support/Sublime Text 2/Packages/User/Fetch.sublime-settings",
+		"/Users/adrienbocquet/Sites/MAMP/amabus/Library/Router.php",
+		"/Users/adrienbocquet/Sites/MAMP/amabus/Library/Route.php",
+		"/Users/adrienbocquet/Sites/MAMP/amabus/Library/PDOFactory.php",
+		"/Users/adrienbocquet/Sites/MAMP/amabus/Library/Page.php",
+		"/Users/adrienbocquet/Sites/MAMP/amabus/Library/Managers.php",
+		"/Users/adrienbocquet/Sites/MAMP/amabus/Library/Manager.php",
+		"/Users/adrienbocquet/Sites/MAMP/amabus/Library/HTTPResponse.php",
+		"/Users/adrienbocquet/Sites/MAMP/amabus/Library/HTTPRequest.php",
+		"/Users/adrienbocquet/Sites/MAMP/amabus/Library/Entity.php",
+		"/Users/adrienbocquet/Sites/MAMP/amabus/Library/Config.php",
+		"/Users/adrienbocquet/Sites/MAMP/amabus/Library/BackController.php",
+		"/Users/adrienbocquet/Sites/MAMP/amabus/Library/autoload.php",
+		"/Users/adrienbocquet/Sites/MAMP/amabus/Library/Application.php",
+		"/Users/adrienbocquet/Sites/MAMP/amabus/Library/ApplicationComponent.php",
+		"/Users/adrienbocquet/Sites/MAMP/amabus/Library/User.php",
+		"/Applications/MAMP/conf/apache/httpd.conf",
+		"/Users/adrienbocquet/Sites/MAMP/amabus copie/app/AppCache.php",
+		"/Users/adrienbocquet/Sites/MAMP/amabus copie/composer.phar",
+		"/Users/adrienbocquet/Library/Application Support/Sublime Text 2/Packages/User/Distraction Free.sublime-settings",
+		"/Users/adrienbocquet/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"callback",
+			"prototype",
+			"object",
+			"model",
+			"for",
+			"new Interval(",
+			"new Interval",
+			"_POST",
+			"0",
+			"asd",
+			"syncUp",
+			"syncDown",
+			"facebookConainter",
+			"bind",
+			"\");\n",
+			"console",
+			"serialize",
+			"listeFavoris[i].serialize",
+			"serialize",
+			"req",
+			";",
+			",",
+			"user",
+			"$config[",
+			"fonction",
+			"explication",
+			"listeUnserialize",
+			"serialize",
+			"Favori",
+			"listeSerialize",
+			"horairesManager",
+			"this",
+			"stateContent",
+			"loginButton",
+			");\n",
+			"loginButton",
+			"logoutButton",
+			"this.logoutButton ",
+			"this.loginButton",
+			"this",
+			"loginButton",
+			"routeManager",
+			"Manager",
+			"collapsed",
+			"box-sizing",
+			"sizing",
+			"\n{",
+			"\n}",
+			"    }",
+			"a",
+			"dt",
+			"dl",
+			"centered",
+			"section",
+			"maps",
+			"this",
+			"5px",
+			"address",
+			"this",
+			"boutonRecherche",
+			"console.",
+			"mgs",
+			"element",
+			"div",
+			"console.log(this)",
+			"longitude",
+			"latitude",
+			"FavHTML",
+			"===",
+			"==",
+			"margin",
+			"VtoF",
+			"bindFavori",
+			"VtoF",
+			"numO",
+			"element",
+			"giveNextTag",
+			"console.log",
+			"console.log(",
+			"\");\n",
+			"isCheckedContainer",
+			"isCheckedLabel",
+			"isChecked",
+			"favori",
+			"Favori",
+			"favori",
+			"Favori",
+			";",
+			" =",
+			"that",
+			"favori",
+			",",
+			".:",
+			"\"",
+			"listeInputs",
+			"title",
+			"input",
+			"this",
+			"currentFav",
+			"this",
+			"hidden",
+			"container",
+			"longitude",
+			"mapContainer",
+			"addE",
+			"nom",
+			"sibling",
+			"nom",
+			"console",
+			"current",
+			"firstChild",
+			"mainManager",
+			"terminer",
+			"modifier",
+			"terminer",
+			"modifier",
+			"console",
+			"this.static",
+			"console",
+			"dynamic",
+			"modfier",
+			"left",
+			"static",
+			"createDynamic",
+			"console.log",
+			"manager",
+			"this.dynamic",
+			"array"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "app/AppKernel.php",
+					"settings":
+					{
+						"buffer_size": 1401,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								178,
+								178
+							]
+						],
+						"settings":
+						{
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
+							"csslint_options":
+							{
+								"adjoining-classes": "warning",
+								"box-model": true,
+								"box-sizing": "warning",
+								"compatible-vendor-prefixes": "warning",
+								"display-property-grouping": true,
+								"duplicate-background-images": "warning",
+								"duplicate-properties": true,
+								"empty-rules": true,
+								"errors": true,
+								"fallback-colors": "warning",
+								"floats": "warning",
+								"font-faces": "warning",
+								"font-sizes": "warning",
+								"gradients": "warning",
+								"ids": "warning",
+								"import": "warning",
+								"important": "warning",
+								"known-properties": true,
+								"outline-none": "warning",
+								"overqualified-elements": "warning",
+								"qualified-headings": "warning",
+								"regex-selectors": "warning",
+								"rules-count": "warning",
+								"shorthand": "warning",
+								"star-property-hack": "warning",
+								"text-indent": "warning",
+								"underscore-property-hack": "warning",
+								"unique-headings": "warning",
+								"universal-selector": "warning",
+								"vendor-prefix": true,
+								"zero-units": "warning"
+							},
+							"gjslint_ignore":
+							[
+								110.0
+							],
+							"gjslint_options":
+							[
+							],
+							"javascript_linter": "jshint",
+							"jshint_options":
+							{
+								"browser": true,
+								"evil": true,
+								"regexdash": true,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"sublimelinter": true,
+							"sublimelinter_delay": 2.0,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": true,
+							"sublimelinter_gutter_marks_theme": "simple",
+							"sublimelinter_mark_style": "none",
+							"sublimelinter_notes": false,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"C++": "c",
+								"Python Django": "python",
+								"Ruby on Rails": "ruby"
+							},
+							"sublimelinter_wrap_find": true,
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 34.0
+	},
+	"input":
+	{
+		"height": 34.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 118.0
+	},
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"in",
+				"index.html"
+			],
+			[
+				"css",
+				"css/design.css"
+			],
+			[
+				"main",
+				"main.js"
+			],
+			[
+				"m",
+				"main.js"
+			],
+			[
+				"",
+				"css/design.css"
+			],
+			[
+				"desin",
+				"css/design.css"
+			],
+			[
+				".c",
+				"css/design.css"
+			],
+			[
+				"templ",
+				"templates/favori_static.html"
+			],
+			[
+				"teme",
+				"templates/favori_dynamic.html"
+			],
+			[
+				"index",
+				"index.html"
+			],
+			[
+				"te",
+				"cache/templates.json"
+			],
+			[
+				".json",
+				"cache/templates.json"
+			],
+			[
+				"make",
+				"cache/makeCache.php"
+			],
+			[
+				"inter",
+				"templates/interval_modif.html"
+			],
+			[
+				"desi",
+				"css/design.css"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": false,
+	"side_bar_width": 187.0,
+	"status_bar_visible": true
+}

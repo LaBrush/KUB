@@ -7,6 +7,9 @@ class AppKernel extends Kernel
 {
     public function registerBundles()
     {
+
+        date_default_timezone_set("Europe/Paris");
+
         $bundles = array(
             new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
             new Symfony\Bundle\SecurityBundle\SecurityBundle(),
