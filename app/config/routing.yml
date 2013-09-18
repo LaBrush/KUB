@@ -1,0 +1,4 @@
+evn_home:
+    resource: "@EVNHomeBundle/Resources/config/routing.yml"
+    prefix:   /
+
