@@ -2,13 +2,8 @@
 	"folders":
 	[
 		{
-			"path": "app"
-		},
-		{
-			"path": "src"
-		},
-		{
-			"path": "web"
+			"path": "/Users/adrienbocquet/Sites/MAMP/EVN",
+			"folder_exclude_patterns": ["vendor"]
 		}
 	]
 }

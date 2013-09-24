@@ -1,6 +1,7 @@
 imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
+    - { resource: ../../src/EVN/UserBundle/Resources/config/config.yml }
 
 framework:
     #esi:             ~
@@ -65,7 +66,3 @@ swiftmailer:
     password:  %mailer_password%
     spool:     { type: memory }
 
-# fos_user:
-#     db_driver: orm
-#     firewall_name: main
-#     user_class: FOS\UserBundle\Entity\User

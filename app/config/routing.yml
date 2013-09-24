@@ -1,4 +1,23 @@
+evn_user:
+    resource: "@EVNUserBundle/Resources/config/routing.yml"
+    prefix:   /
+
 evn_home:
     resource: "@EVNHomeBundle/Resources/config/routing.yml"
     prefix:   /
 
+
+fos_user_security:
+    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+
+fos_user_profile:
+    resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
+    prefix: /me
+
+fos_user_resetting:
+    resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"
+    prefix: /reset
+
+fos_user_change_password:
+    resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
+    prefix: /me
