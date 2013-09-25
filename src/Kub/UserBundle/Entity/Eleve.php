@@ -32,6 +32,12 @@ class Eleve extends User
      */
     private $anniversaire;
 
+    public function __construct()
+    {
+        parent::__construct();
+
+        $this->addRole("ROLE_ELEVE");
+    }
 
     /**
      * Get id

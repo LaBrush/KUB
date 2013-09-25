@@ -3,7 +3,7 @@
 	[
 		{
 			"path": "/Users/adrienbocquet/Sites/MAMP/Kub",
-			"folder_exclude_patterns": ["vendor"]
+			"folder_exclude_patterns": ["vendor", "app/cache"]
 		}
 	]
 }
