@@ -1,9 +1,9 @@
-evn_user:
-    resource: "@EVNUserBundle/Resources/config/routing.yml"
+kub_user:
+    resource: "@KubUserBundle/Resources/config/routing.yml"
     prefix:   /
 
-evn_home:
-    resource: "@EVNHomeBundle/Resources/config/routing.yml"
+kub_home:
+    resource: "@KubHomeBundle/Resources/config/routing.yml"
     prefix:   /
 
 

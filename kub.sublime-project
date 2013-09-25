@@ -1,0 +1,9 @@
+{
+	"folders":
+	[
+		{
+			"path": "/Users/adrienbocquet/Sites/MAMP/Kub",
+			"folder_exclude_patterns": ["vendor"]
+		}
+	]
+}

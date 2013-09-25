@@ -1,9 +1,0 @@
-{
-	"folders":
-	[
-		{
-			"path": "/Users/adrienbocquet/Sites/MAMP/EVN",
-			"folder_exclude_patterns": ["vendor"]
-		}
-	]
-}

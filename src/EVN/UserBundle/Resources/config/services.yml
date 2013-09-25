@@ -1,7 +1,0 @@
-parameters:
-#    evn_user.example.class: EVN\UserBundle\Example
-
-services:
-#    evn_user.example:
-#        class: %evn_user.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]

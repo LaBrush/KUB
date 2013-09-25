@@ -1,0 +1,3 @@
+Kub_home_homepage:
+    pattern:  /
+    defaults: { _controller: KubHomeBundle:Default:index }

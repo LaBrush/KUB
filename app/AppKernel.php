@@ -22,8 +22,8 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new PUGX\MultiUserBundle\PUGXMultiUserBundle(),
             new FOS\UserBundle\FOSUserBundle(),
-            new EVN\HomeBundle\EVNHomeBundle(),
-            new EVN\UserBundle\EVNUserBundle(),
+            new Kub\HomeBundle\KubHomeBundle(),
+            new Kub\UserBundle\KubUserBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

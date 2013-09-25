@@ -1,0 +1,7 @@
+parameters:
+#    Kub_home.example.class: Kub\HomeBundle\Example
+
+services:
+#    Kub_home.example:
+#        class: %Kub_home.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
