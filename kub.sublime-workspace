@@ -584,10 +584,18 @@
 	},
 	"file_history":
 	[
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/HomeBundle/Resources/views/Visiteur/index.html.twig",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/HomeBundle/Resources/config/routing.yml",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/HomeBundle/Controller/DefaultController.php",
+		"/Users/adrienbocquet/Sites/MAMP/Maquette_EVN/sass/partials/_layout.scss",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/HomeBundle/Resources/views/Eleve/index.html.twig",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/app/config/config.yml",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/app/config/security.yml",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Entity/Eleve.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/kub.sublime-project",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/HomeBundle/Resources/views/Visitor/index.html.twig",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/app/AppKernel.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/app/config/routing.yml",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/app/config/config.yml",
 		"/Users/adrienbocquet/Sites/MAMP/EVN/.gitignore",
 		"/Users/adrienbocquet/Sites/MAMP/EVN/app/AppKernel.php",
 		"/Users/adrienbocquet/Sites/MAMP/amabus/main.js",
@@ -857,6 +865,38 @@
 		"selected_items":
 		[
 			[
+				"index.",
+				"src/Kub/HomeBundle/Resources/views/Visiteur/index.html.twig"
+			],
+			[
+				"index",
+				"src/Kub/HomeBundle/Resources/views/Eleve/index.html.twig"
+			],
+			[
+				"index.t",
+				"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/HomeBundle/Resources/views/Visitor/index.html.twig"
+			],
+			[
+				"eleve",
+				"src/Kub/UserBundle/Entity/Eleve.php"
+			],
+			[
+				"secu",
+				"app/config/security.yml"
+			],
+			[
+				"index.html",
+				"src/Kub/HomeBundle/Resources/views/Visitor/index.html.twig"
+			],
+			[
+				"config",
+				"app/config/config.yml"
+			],
+			[
+				"homerouting",
+				"src/Kub/HomeBundle/Resources/config/routing.yml"
+			],
+			[
 				"in",
 				"index.html"
 			],
@@ -891,10 +931,6 @@
 			[
 				"teme",
 				"templates/favori_dynamic.html"
-			],
-			[
-				"index",
-				"index.html"
 			],
 			[
 				"te",

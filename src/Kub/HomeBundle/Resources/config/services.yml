@@ -5,3 +5,4 @@ services:
 #    Kub_home.example:
 #        class: %Kub_home.example.class%
 #        arguments: [@service_id, "plain_value", %parameter%]
+#		 coucou les gens
