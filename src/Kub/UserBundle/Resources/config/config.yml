@@ -34,39 +34,12 @@ pugx_multi_user:
             name: fos_user_profile_form
             validation_groups:  [Profile, Default]
 
-    surveillant:
+    administrateur:
         entity: 
-            class: Kub\UserBundle\Entity\Surveillant
+            class: Kub\UserBundle\Entity\Administrateur
         profile:
           form:
-            type: Kub\UserBundle\Form\Type\ProfileSurveillantFormType
-            name: fos_user_profile_form
-            validation_groups:  [Profile, Default]
-
-    CPE:
-        entity: 
-            class: Kub\UserBundle\Entity\CPE
-        profile:
-          form:
-            type: Kub\UserBundle\Form\Type\ProfileCPEFormType
-            name: fos_user_profile_form
-            validation_groups:  [Profile, Default]
-
-    secretaire:
-        entity: 
-            class: Kub\UserBundle\Entity\Secretaire
-        profile:
-          form:
-            type: Kub\UserBundle\Form\Type\ProfileSecretaireFormType
-            name: fos_user_profile_form
-            validation_groups:  [Profile, Default]
-
-    manitou:
-        entity: 
-            class: Kub\UserBundle\Entity\Manitou
-        profile:
-          form:
-            type: Kub\UserBundle\Form\Type\ProfileManitouFormType
+            type: Kub\UserBundle\Form\Type\ProfileAdministrateurFormType
             name: fos_user_profile_form
             validation_groups:  [Profile, Default]
 

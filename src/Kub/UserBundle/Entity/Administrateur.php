@@ -5,15 +5,17 @@ namespace Kub\UserBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use PUGX\MultiUserBundle\Validator\Constraints\UniqueEntity;
 
+
 /**
- * Manitou
+ * Administrateur
+ *
  * @ORM\Entity
  * @ORM\Table()
  * @UniqueEntity(fields = "username", targetClass = "Acme\UserBundle\Entity\User", message="fos_user.username.already_used")
  * @UniqueEntity(fields = "email", targetClass = "Acme\UserBundle\Entity\User", message="fos_user.email.already_used")
  */
- 
-class Manitou extends User
+
+class Administrateur extends User
 {
     /**
      * @var integer
@@ -27,10 +29,8 @@ class Manitou extends User
     public function __construct()
     {
         parent::__construct();
-
-        $this->addRole("ROLE_MANITOU");
+        $this->addRole("ROLE_ADMINISTRATEUR");
     }
-
 
     /**
      * Get id

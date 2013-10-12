@@ -46,7 +46,7 @@ class LoadEleveData implements FixtureInterface, ContainerAwareInterface
 
         $userManager->updateUser($eleve, true);
 
-        $discriminator->setClass('Kub\UserBundle\Entity\Manitou');
+        $discriminator->setClass('Kub\UserBundle\Entity\Administrateur');
 
         $userManager = $this->container->get('pugx_user_manager');
         $manitou = $userManager->createUser();
@@ -54,6 +54,8 @@ class LoadEleveData implements FixtureInterface, ContainerAwareInterface
         $manitou->setUsername('tonystark');
         $manitou->setNom('Stark');
         $manitou->setPrenom('Tony');
+
+        $manitou->addRole("ROLE_MANITOU");
 
         $manitou->setEmail('tonystrack@mail.com');
         $manitou->setPlainPassword('123456');

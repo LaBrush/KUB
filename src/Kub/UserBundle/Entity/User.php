@@ -10,7 +10,7 @@ use FOS\UserBundle\Entity\User as BaseUser ;
  * @ORM\Table(name="users")
  * @ORM\InheritanceType("JOINED")
  * @ORM\DiscriminatorColumn(name="type", type="string")
-* @ORM\DiscriminatorMap({"eleve" = "Eleve", "cpe" = "CPE", "manitou" = "Manitou", "tuteur" = "Tuteur", "professeur" = "Professeur", "secretaire" = "Secretaire", "surveillant" = "Surveillant"})
+* @ORM\DiscriminatorMap({"eleve" = "Eleve", "tuteur" = "Tuteur", "professeur" = "Professeur", "administrateur" = "Administrateur"})
  *
  */
 abstract class User extends BaseUser
