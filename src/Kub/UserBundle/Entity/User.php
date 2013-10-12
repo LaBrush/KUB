@@ -10,7 +10,7 @@ use FOS\UserBundle\Entity\User as BaseUser ;
  * @ORM\Table(name="users")
  * @ORM\InheritanceType("JOINED")
  * @ORM\DiscriminatorColumn(name="type", type="string")
- * @ORM\DiscriminatorMap({"eleve" = "Eleve"})
+* @ORM\DiscriminatorMap({"eleve" = "Eleve", "cpe" = "CPE", "manitou" = "Manitou", "tuteur" = "Tuteur", "professeur" = "Professeur", "secretaire" = "Secretaire", "surveillant" = "Surveillant"})
  *
  */
 abstract class User extends BaseUser
@@ -25,6 +25,14 @@ abstract class User extends BaseUser
     protected $id;
 
     /**
+    * @var string
+    *   
+    * @ORM\Column(name="locale", type="string", length=2)
+    */
+
+    private $locale ;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="nom", type="string", length=255)
@@ -37,6 +45,13 @@ abstract class User extends BaseUser
      * @ORM\Column(name="prenom", type="string", length=255)
      */
     private $prenom;
+
+    public function __construct()
+    {
+        parent::__construct();
+
+        $this->locale = "fr";
+    }
 
 
     /**
@@ -116,5 +131,33 @@ abstract class User extends BaseUser
     public function getPrenom()
     {
         return $this->prenom;
+    }
+
+    /**
+     * Set locale
+     *
+     * @param string $locale
+     * @return User
+     */
+    public function setLocale($locale)
+    {
+        $locales = array("fr", "en", "es") ;
+
+        if(in_array($locale, $locales))
+        {
+            $this->locale = $locale;
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get locale
+     *
+     * @return string 
+     */
+    public function getLocale()
+    {
+        return $this->locale;
     }
 }

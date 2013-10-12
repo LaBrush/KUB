@@ -8,20 +8,11 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
-    	$user = $this->getUser();
+        $security = $this->get('security.context');
 
-    	if($this->getUser())
+    	if($security->isGranted("ROLE_USER"))
     	{
-    		$security = $this->get('security.context');
-
-    		if($security->isGranted("ROLE_ELEVE"))
-    		{
-    			return $this->render("KubHomeBundle:Eleve:index.html.twig");
-    		}
-    		else
-    		{
-    			throw new \Exception("coucou");	
-    		}
+    		return $this->render("KubHomeBundle:Eleve:index.html.twig");
     	}
     	else
     	{

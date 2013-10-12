@@ -1,3 +1,35 @@
+kub_ressource:
+    resource: "@KubRessourceBundle/Resources/config/routing.yml"
+    prefix:   /
+
+kub_casier:
+    resource: "@KubCasierBundle/Resources/config/routing.yml"
+    prefix:   /
+
+kub_edt:
+    resource: "@KubEDTBundle/Resources/config/routing.yml"
+    prefix:   /
+
+kub_agenda:
+    resource: "@KubAgendaBundle/Resources/config/routing.yml"
+    prefix:   /
+
+kub_absence:
+    resource: "@KubAbsenceBundle/Resources/config/routing.yml"
+    prefix:   /
+
+kub_collaboration:
+    resource: "@KubCollaborationBundle/Resources/config/routing.yml"
+    prefix:   /
+
+kub_ariane:
+    resource: "@KubArianeBundle/Resources/config/routing.yml"
+    prefix:   /
+
+kub_notes:
+    resource: "@KubNotesBundle/Resources/config/routing.yml"
+    prefix:   /
+
 kub_user:
     resource: "@KubUserBundle/Resources/config/routing.yml"
     prefix:   /

@@ -1,0 +1,7 @@
+parameters:
+#    kub_ressource.example.class: Kub\RessourceBundle\Example
+
+services:
+#    kub_ressource.example:
+#        class: %kub_ressource.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

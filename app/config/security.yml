@@ -4,6 +4,8 @@ security:
 
     role_hierarchy:
         ROLE_ADMIN:       ROLE_USER
+        ROLE_CPE:         ROLE_SURVEILLANT
+        ROLE_MANITOU:     ROLE_SECRETAIRE
         ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
 
     providers:
@@ -32,3 +34,6 @@ security:
     access_control:
         - { path: ^/demo/secured/hello/admin/, roles: ROLE_ADMIN }
         #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
+
+    acl:
+        connection: default

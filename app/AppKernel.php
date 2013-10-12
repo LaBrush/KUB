@@ -24,6 +24,14 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
             new Kub\HomeBundle\KubHomeBundle(),
             new Kub\UserBundle\KubUserBundle(),
+            new Kub\NotesBundle\KubNotesBundle(),
+            new Kub\ArianeBundle\KubArianeBundle(),
+            new Kub\CollaborationBundle\KubCollaborationBundle(),
+            new Kub\AbsenceBundle\KubAbsenceBundle(),
+            new Kub\AgendaBundle\KubAgendaBundle(),
+            new Kub\EDTBundle\KubEDTBundle(),
+            new Kub\CasierBundle\KubCasierBundle(),
+            new Kub\RessourceBundle\KubRessourceBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

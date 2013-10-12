@@ -1,0 +1,3 @@
+kub_notes_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: KubNotesBundle:Default:index }

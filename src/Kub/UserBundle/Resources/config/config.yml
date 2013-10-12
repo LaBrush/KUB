@@ -9,9 +9,64 @@ pugx_multi_user:
   users:
     eleve:
         entity: 
-          class: Kub\UserBundle\Entity\Eleve
+            class: Kub\UserBundle\Entity\Eleve
         profile:
           form:
             type: Kub\UserBundle\Form\Type\ProfileEleveFormType
             name: fos_user_profile_form
             validation_groups:  [Profile, Default]
+
+    tuteur:
+        entity: 
+            class: Kub\UserBundle\Entity\Tuteur
+        profile:
+          form:
+            type: Kub\UserBundle\Form\Type\ProfileTuteurFormType
+            name: fos_user_profile_form
+            validation_groups:  [Profile, Default]
+
+    professeur:
+        entity: 
+            class: Kub\UserBundle\Entity\Professeur
+        profile:
+          form:
+            type: Kub\UserBundle\Form\Type\ProfileProfesseurFormType
+            name: fos_user_profile_form
+            validation_groups:  [Profile, Default]
+
+    surveillant:
+        entity: 
+            class: Kub\UserBundle\Entity\Surveillant
+        profile:
+          form:
+            type: Kub\UserBundle\Form\Type\ProfileSurveillantFormType
+            name: fos_user_profile_form
+            validation_groups:  [Profile, Default]
+
+    CPE:
+        entity: 
+            class: Kub\UserBundle\Entity\CPE
+        profile:
+          form:
+            type: Kub\UserBundle\Form\Type\ProfileCPEFormType
+            name: fos_user_profile_form
+            validation_groups:  [Profile, Default]
+
+    secretaire:
+        entity: 
+            class: Kub\UserBundle\Entity\Secretaire
+        profile:
+          form:
+            type: Kub\UserBundle\Form\Type\ProfileSecretaireFormType
+            name: fos_user_profile_form
+            validation_groups:  [Profile, Default]
+
+    manitou:
+        entity: 
+            class: Kub\UserBundle\Entity\Manitou
+        profile:
+          form:
+            type: Kub\UserBundle\Form\Type\ProfileManitouFormType
+            name: fos_user_profile_form
+            validation_groups:  [Profile, Default]
+
