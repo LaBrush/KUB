@@ -1,0 +1,14 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+
+	<h1>Choisissez le type d'utilisateur à créer</h1>
+
+	<ul>
+		<li><a href="{{ path('user_create', {role: "eleve"}) }}">Elève</a></li>
+		<li><a href="{{ path('user_create', {role: "professeur"}) }}">Professeur</a></li>
+		<li><a href="{{ path('user_create', {role: "tuteur"}) }}">Tuteur</a></li>
+		<li><a href="{{ path('user_create', {role: "administrateur"}) }}">Membre de l'administration</a></li>
+	</ul>
+
+{% endblock %}

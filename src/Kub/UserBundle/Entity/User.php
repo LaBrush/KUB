@@ -3,15 +3,23 @@
 namespace Kub\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use FOS\UserBundle\Entity\User as BaseUser ;
+use FOS\UserBundle\Model\User as BaseUser ;
+use Gedmo\Mapping\Annotation as Gedmo;
+use PUGX\MultiUserBundle\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert ;
+
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="users")
  * @ORM\InheritanceType("JOINED")
  * @ORM\DiscriminatorColumn(name="type", type="string")
-* @ORM\DiscriminatorMap({"eleve" = "Eleve", "tuteur" = "Tuteur", "professeur" = "Professeur", "administrateur" = "Administrateur"})
+ * @ORM\DiscriminatorMap({"eleve" = "Eleve", "tuteur" = "Tuteur", "professeur" = "Professeur", "administrateur" = "Administrateur"})
+ * @ORM\AttributeOverrides({
+ *      @ORM\AttributeOverride(name="username", column=@ORM\Column(length=128, unique=true, nullable=false))
+ * }) 
  *
+ * @UniqueEntity(fields = "email", targetClass = "Kub\UserBundle\Entity\User", message="fos_user.email.already_used")
  */
 abstract class User extends BaseUser
 {
@@ -25,17 +33,32 @@ abstract class User extends BaseUser
     protected $id;
 
     /**
-    * @var string
-    *   
-    * @ORM\Column(name="locale", type="string", length=2)
-    */
+     * @var string
+     *
+     * @Gedmo\Slug(fields={"prenom", "nom"})
+     */
+    protected $username ;
 
-    private $locale ;
+    /**
+     * @var string
+     *
+     * @Gedmo\Slug(fields={"prenom", "nom"})
+     */
+    protected $usernameCanonical ;    
+
+    /**
+     * @Assert\Email(message="L'adresse e-mail est invalide")
+     * @Assert\NotBlank()
+     */
+    protected $email ;
 
     /**
      * @var string
      *
      * @ORM\Column(name="nom", type="string", length=255)
+     *
+     * @Assert\NotBlank()
+     * @Assert\Length(min="3", minMessage="Le nom doit faire au moins {{ limit }} caractères")
      */
     private $nom ;
 
@@ -43,14 +66,15 @@ abstract class User extends BaseUser
      * @var string
      *
      * @ORM\Column(name="prenom", type="string", length=255)
-     */
+     *
+     * @Assert\NotBlank()
+     * @Assert\Length(min="3", minMessage="Le prénom doit faire au moins {{ limit }} caractères")
+     */ 
     private $prenom;
 
     public function __construct()
     {
         parent::__construct();
-
-        $this->locale = "fr";
     }
 
 
@@ -96,6 +120,7 @@ abstract class User extends BaseUser
     public function setNom($nom)
     {
         $this->nom = $nom;
+        $this->updateUsername() ;
     
         return $this;
     }
@@ -119,7 +144,8 @@ abstract class User extends BaseUser
     public function setPrenom($prenom)
     {
         $this->prenom = $prenom;
-    
+        $this->updateUsername();
+
         return $this;
     }
 
@@ -133,31 +159,8 @@ abstract class User extends BaseUser
         return $this->prenom;
     }
 
-    /**
-     * Set locale
-     *
-     * @param string $locale
-     * @return User
-     */
-    public function setLocale($locale)
+    public function updateUsername()
     {
-        $locales = array("fr", "en", "es") ;
-
-        if(in_array($locale, $locales))
-        {
-            $this->locale = $locale;
-        }
-
-        return $this;
-    }
-
-    /**
-     * Get locale
-     *
-     * @return string 
-     */
-    public function getLocale()
-    {
-        return $this->locale;
+        $this->username = strtolower($this->prenom) . strtolower($this->nom);
     }
 }

@@ -23,7 +23,9 @@
         "pugx/multi-user-bundle": "3.0.*@dev",
         "jms/di-extra-bundle": "dev-master",
         "doctrine/doctrine-fixtures-bundle": "dev-master",
-        "doctrine/data-fixtures": "@dev"
+        "doctrine/data-fixtures": "@dev",
+        "jms/security-extra-bundle": "1.5.*",
+        "stof/doctrine-extensions-bundle": "1.1.*"
     },
     "scripts": {
         "post-install-cmd": [

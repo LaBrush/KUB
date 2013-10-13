@@ -1,0 +1,14 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+
+
+	<h1>Créer un élève</h1>
+	<form action='{{ path("user_create", {role: 'eleve'}) }}' method="POST">
+
+		{{ form_widget(form) }}
+    	<input type="submit" />
+
+	</form>
+
+{% endblock %}

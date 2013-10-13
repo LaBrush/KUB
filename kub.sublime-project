@@ -2,8 +2,15 @@
 	"folders":
 	[
 		{
-			"path": "/Users/adrienbocquet/Sites/MAMP/Kub",
-			"folder_exclude_patterns": ["vendor", "app/cache"]
+			"folder_exclude_patterns":
+			[
+				"vendor",
+				"app/cache"
+			],
+			"path": "/Users/adrienbocquet/Sites/MAMP/Kub"
+		},
+		{
+			"path": "src/Kub/UserBundle"
 		}
 	]
 }

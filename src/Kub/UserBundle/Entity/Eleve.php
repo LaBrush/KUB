@@ -3,16 +3,13 @@
 namespace Kub\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use PUGX\MultiUserBundle\Validator\Constraints\UniqueEntity;
-
+use Symfony\Component\Validator\Constraints as Assert ;
 
 /**
  * Eleve
  *
  * @ORM\Entity
  * @ORM\Table()
- * @UniqueEntity(fields = "username", targetClass = "Acme\UserBundle\Entity\User", message="fos_user.username.already_used")
- * @UniqueEntity(fields = "email", targetClass = "Acme\UserBundle\Entity\User", message="fos_user.email.already_used")
  */
 class Eleve extends User 
 {
@@ -29,6 +26,9 @@ class Eleve extends User
      * @var \DateTime
      *
      * @ORM\Column(name="anniversaire", type="date")
+     *
+     * @Assert\Date()
+     * @Assert\NotBlank()
      */
     private $anniversaire;
 

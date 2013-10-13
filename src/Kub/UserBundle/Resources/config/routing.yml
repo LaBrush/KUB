@@ -1,0 +1,5 @@
+user_create:
+    path: /utilisateurs/add/{role}
+    defaults: { _controller: KubUserBundle:Manage:create }
+    requirements:
+        role: eleve|tuteur|administrateur|professeur|
