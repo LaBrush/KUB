@@ -25,7 +25,9 @@
         "doctrine/doctrine-fixtures-bundle": "dev-master",
         "doctrine/data-fixtures": "@dev",
         "jms/security-extra-bundle": "1.5.*",
-        "stof/doctrine-extensions-bundle": "1.1.*"
+        "stof/doctrine-extensions-bundle": "1.1.*",
+        "knplabs/knp-menu-bundle": "1.1.2",
+        "knplabs/knp-menu": "1.1.2"
     },
     "scripts": {
         "post-install-cmd": [

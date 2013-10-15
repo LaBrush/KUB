@@ -18,6 +18,12 @@
             <p>{{ message }}</p>
         {% endfor %}
 
+        {% if is_granted("ROLE_USER") %}
+        
+            {{ knp_menu_render('main') }}
+
+        {% endif %}
+
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
     </body>
