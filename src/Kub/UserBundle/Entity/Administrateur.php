@@ -23,9 +23,9 @@ class Administrateur extends User
      */
     protected $id;
 
-    public function initClasse()
+    public function initClass()
     {
-        $this->classe = "administrateur";
+        $this->class = "administrateur";
     }
 
     public function __construct()

@@ -29,7 +29,7 @@ abstract class User extends BaseUser
      * @ORM\PostLoad
      */
 
-    public function initClasse() {}
+    public function initClass() {}
 
     /**
      * @var integer
@@ -80,12 +80,17 @@ abstract class User extends BaseUser
      */ 
     private $prenom;
 
-    public $classe ;
+    protected $class ;
 
     public function __construct()
     {
         parent::__construct();
-        $this->initClasse();
+        $this->initClass();
+    }
+
+    public function getClass()
+    {
+        return $this->class ;
     }
 
     /**

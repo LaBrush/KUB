@@ -22,9 +22,9 @@ class Professeur extends User
      */
     protected $id;
 
-    public function initClasse()
+    public function initClass()
     {
-        $this->classe = "professeur";
+        $this->class = "professeur";
     }
 
     public function __construct()

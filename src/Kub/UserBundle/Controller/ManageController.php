@@ -119,8 +119,13 @@ class ManageController extends Controller
 	 * @Secure(roles="ROLE_ADMINISTRATEUR")
 	 */
 
-	public function showAction(User $user, $role)
+	public function showAction(User $user, $role, $username)
 	{
+		if($user->getClass() != $role)
+		{
+			throw $this->createNotFoundException("L'utilisateur " . $username . " n'a pu être trouvé " . $user->getClass());
+		}
+
 		return $this->render("KubUserBundle:Show:show.html.twig", 
 			array(
 				"user" => $user

@@ -21,9 +21,9 @@ class Tuteur extends User
      */
     protected $id;
 
-    public function initClasse()
+    public function initClass()
     {
-        $this->classe = "tuteur";
+        $this->class = "tuteur";
     }
 
     public function __construct()
