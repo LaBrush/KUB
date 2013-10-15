@@ -5,6 +5,7 @@ namespace Kub\UserBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use JMS\SecurityExtraBundle\Annotation\Secure;
 
+use Kub\UserBundle\Entity\User ;
 use Kub\UserBundle\Entity\Eleve ;
 use Kub\UserBundle\Entity\Administrateur ;
 use Kub\UserBundle\Entity\Tuteur ;
@@ -98,6 +99,32 @@ class ManageController extends Controller
 		}
 	}
 
+	/*
+	 * @Secure(roles="ROLE_ADMINISTRATEUR")
+	 */
 
+	public function listAction($role)
+	{
+		$listeUsers = $this->getDoctrine()->getManager()
+			->getRepository("KubUserBundle:".ucfirst($role))
+			->findAll();
+
+		return $this->render("KubUserBundle:Show:list.html.twig", 
+			array(
+				"list_users" => $listeUsers
+		));
+	}
+
+	/*
+	 * @Secure(roles="ROLE_ADMINISTRATEUR")
+	 */
+
+	public function showAction(User $user, $role)
+	{
+		return $this->render("KubUserBundle:Show:show.html.twig", 
+			array(
+				"user" => $user
+		));
+	}
 
 }

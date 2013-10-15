@@ -23,6 +23,11 @@ class Administrateur extends User
      */
     protected $id;
 
+    public function initClasse()
+    {
+        $this->classe = "administrateur";
+    }
+
     public function __construct()
     {
         parent::__construct();

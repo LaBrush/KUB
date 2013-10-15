@@ -32,6 +32,10 @@ class Eleve extends User
      */
     private $anniversaire;
 
+    public function initClasse()
+    {
+        $this->classe = "eleve";
+    }
 
     public function __construct()
     {

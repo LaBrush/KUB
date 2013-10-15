@@ -21,6 +21,11 @@ class Tuteur extends User
      */
     protected $id;
 
+    public function initClasse()
+    {
+        $this->classe = "tuteur";
+    }
+
     public function __construct()
     {
         parent::__construct();

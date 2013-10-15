@@ -22,6 +22,11 @@ class Professeur extends User
      */
     protected $id;
 
+    public function initClasse()
+    {
+        $this->classe = "professeur";
+    }
+
     public function __construct()
     {
         parent::__construct();

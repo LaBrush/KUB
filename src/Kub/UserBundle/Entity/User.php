@@ -8,21 +8,29 @@ use Gedmo\Mapping\Annotation as Gedmo;
 use PUGX\MultiUserBundle\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert ;
 
-
 /**
  * @ORM\Entity
  * @ORM\Table(name="users")
  * @ORM\InheritanceType("JOINED")
  * @ORM\DiscriminatorColumn(name="type", type="string")
  * @ORM\DiscriminatorMap({"eleve" = "Eleve", "tuteur" = "Tuteur", "professeur" = "Professeur", "administrateur" = "Administrateur"})
- * @ORM\AttributeOverrides({
- *      @ORM\AttributeOverride(name="username", column=@ORM\Column(length=128, unique=true, nullable=false))
- * }) 
  *
  * @UniqueEntity(fields = "email", targetClass = "Kub\UserBundle\Entity\User", message="fos_user.email.already_used")
+ * 
+ * @ORM\HasLifecycleCallbacks()
+ *
+ * @ORM\Entity(repositoryClass="Kub\UserBundle\Entity\UserRepository")
  */
+
 abstract class User extends BaseUser
 {
+
+    /**
+     * @ORM\PostLoad
+     */
+
+    public function initClasse() {}
+
     /**
      * @var integer
      *
@@ -72,11 +80,13 @@ abstract class User extends BaseUser
      */ 
     private $prenom;
 
+    public $classe ;
+
     public function __construct()
     {
         parent::__construct();
+        $this->initClasse();
     }
-
 
     /**
      * Get id
