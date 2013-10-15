@@ -1,4 +1,4 @@
-<?
+<?php
 
 namespace Kub\UserBundle\DataFixtures\ORM;
 
