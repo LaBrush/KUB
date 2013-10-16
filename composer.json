@@ -24,10 +24,12 @@
         "jms/di-extra-bundle": "dev-master",
         "doctrine/doctrine-fixtures-bundle": "dev-master",
         "doctrine/data-fixtures": "@dev",
-        "jms/security-extra-bundle": "1.5.*",
+        "jms/security-extra-bundle": "dev-master",
+        "jms/di-extra-bundle": "dev-master",
         "stof/doctrine-extensions-bundle": "1.1.*",
         "knplabs/knp-menu-bundle": "1.1.2",
-        "knplabs/knp-menu": "1.1.2"
+        "knplabs/knp-menu": "1.1.2",
+        "misd/phone-number-bundle": "~1.0"
     },
     "scripts": {
         "post-install-cmd": [

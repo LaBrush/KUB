@@ -23,10 +23,9 @@ use Kub\UserBundle\Form\Handler\ProfesseurHandler ;
 
 class ManageController extends Controller
 {
-	/*
-	 * @Secure(roles="ROLE_ADMINISTRATEUR")
+	/**
+	 * @Secure(roles="ROLE_SECRETAIRE")
 	 */
-
 	public function createAction($role)
 	{
 		if($role == "")
@@ -49,7 +48,7 @@ class ManageController extends Controller
 					$type = new ProfesseurType ;
 					break;
 				case "Administrateur":
-					$type = new AdministrateurType ;
+					$type = new AdministrateurType($this->get("security.context")) ;
 					break;
 			}
 
@@ -86,7 +85,7 @@ class ManageController extends Controller
 				if($formHandler->process())
 				{
 					$this->get('session')->getFlashBag()->add('info', "L'utilisateur a bien été ajouté");
-					return $this->redirect($this->generateUrl("Kub_home_homepage"));
+					return $this->redirect($this->generateUrl("home_homepage"));
 				}
 
 			}
@@ -99,8 +98,8 @@ class ManageController extends Controller
 		}
 	}
 
-	/*
-	 * @Secure(roles="ROLE_ADMINISTRATEUR")
+	/**
+	 * @Secure(roles="ROLE_USER")
 	 */
 
 	public function listAction($role)
@@ -115,8 +114,8 @@ class ManageController extends Controller
 		));
 	}
 
-	/*
-	 * @Secure(roles="ROLE_ADMINISTRATEUR")
+	/**
+	 * @Secure(roles="ROLE_USER")
 	 */
 
 	public function showAction(User $user, $role, $username)

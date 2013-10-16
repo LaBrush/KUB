@@ -5,6 +5,7 @@ namespace Kub\UserBundle\Menu;
 
 use Knp\Menu\FactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\SecurityContext ;
 
 class MenuBuilder
 {
@@ -13,9 +14,10 @@ class MenuBuilder
     /**
      * @param FactoryInterface $factory
      */
-    public function __construct(FactoryInterface $factory)
+    public function __construct(FactoryInterface $factory, SecurityContext $security)
     {
         $this->factory = $factory;
+        $this->security = $security ;
     }
 
     public function createMainMenu(Request $request)
@@ -23,61 +25,65 @@ class MenuBuilder
         $menu = $this->factory->createItem('root');
 
         $menu->addChild('Home', array('route' => 'home_homepage'));
-        $menu->addChild('Eleves');
-            $menu["Eleves"]->addChild("Liste", 
-                array(
-                    "route" => "user_list_role",
-                    'routeParameters' => array('role' => "eleve")
-                )
-            );
-            $menu["Eleves"]->addChild("Créer", 
-                array(
-                    "route" => "user_create",
-                    'routeParameters' => array('role' => "eleve")
-                )
-            );
+            
+        if($this->security->isGranted("ROLE_SECRETAIRE"))
+        {
+            $menu->addChild('Eleves');
+                $menu["Eleves"]->addChild("Liste", 
+                    array(
+                        "route" => "user_list_role",
+                        'routeParameters' => array('role' => "eleve")
+                    )
+                );
+                $menu["Eleves"]->addChild("Créer", 
+                    array(
+                        "route" => "user_create",
+                        'routeParameters' => array('role' => "eleve")
+                    )
+                );
 
-        $menu->addChild('Professeurs');
-            $menu["Professeurs"]->addChild("Liste", 
-                array(
-                    "route" => "user_list_role",
-                    'routeParameters' => array('role' => "professeur")
-                )
-            );
-            $menu["Professeurs"]->addChild("Créer", 
-                array(
-                    "route" => "user_create",
-                    'routeParameters' => array('role' => "professeur")
-                )
-            );
+            $menu->addChild('Professeurs');
+                $menu["Professeurs"]->addChild("Liste", 
+                    array(
+                        "route" => "user_list_role",
+                        'routeParameters' => array('role' => "professeur")
+                    )
+                );
+                $menu["Professeurs"]->addChild("Créer", 
+                    array(
+                        "route" => "user_create",
+                        'routeParameters' => array('role' => "professeur")
+                    )
+                );
 
-        $menu->addChild('Tuteur');
-            $menu["Tuteur"]->addChild("Liste", 
-                array(
-                    "route" => "user_list_role",
-                    'routeParameters' => array('role' => "tuteur")
-                )
-            );
-            $menu["Tuteur"]->addChild("Créer", 
-                array(
-                    "route" => "user_create",
-                    'routeParameters' => array('role' => "tuteur")
-                )
-            );
+            $menu->addChild('Tuteur');
+                $menu["Tuteur"]->addChild("Liste", 
+                    array(
+                        "route" => "user_list_role",
+                        'routeParameters' => array('role' => "tuteur")
+                    )
+                );
+                $menu["Tuteur"]->addChild("Créer", 
+                    array(
+                        "route" => "user_create",
+                        'routeParameters' => array('role' => "tuteur")
+                    )
+                );
 
-        $menu->addChild('Administration');
-            $menu["Administration"]->addChild("Liste", 
-                array(
-                    "route" => "user_list_role",
-                    'routeParameters' => array('role' => "administrateur")
-                )
-            );
-            $menu["Administration"]->addChild("Créer", 
-                array(
-                    "route" => "user_create",
-                    'routeParameters' => array('role' => "administrateur")
-                )
-            );
+            $menu->addChild('Administration');
+                $menu["Administration"]->addChild("Liste", 
+                    array(
+                        "route" => "user_list_role",
+                        'routeParameters' => array('role' => "administrateur")
+                    )
+                );
+                $menu["Administration"]->addChild("Créer", 
+                    array(
+                        "route" => "user_create",
+                        'routeParameters' => array('role' => "administrateur")
+                    )
+                );
+        }
 
         $menu->addChild('Mon compte', 
             array(

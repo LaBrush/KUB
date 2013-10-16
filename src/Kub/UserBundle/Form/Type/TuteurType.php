@@ -5,6 +5,7 @@ namespace Kub\UserBundle\Form\Type;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use libphonenumber\PhoneNumberFormat;
 
 class TuteurType extends UserType
 {
@@ -15,7 +16,10 @@ class TuteurType extends UserType
 	public function buildForm(FormBuilderInterface $builder, array $options)
 	{
 		parent::buildForm($builder, $options);
-		// $builder->add("");
+			$builder
+				->add('fixe', 'tel', array('default_region' => 'FR', 'format' => PhoneNumberFormat::NATIONAL))
+				->add('mobile', 'tel', array('default_region' => 'FR', 'format' => PhoneNumberFormat::NATIONAL))
+				->add("adresse")
 		;
 
 		return $builder ;

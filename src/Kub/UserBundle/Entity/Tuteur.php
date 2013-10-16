@@ -3,6 +3,8 @@
 namespace Kub\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Misd\PhoneNumberBundle\Validator\Constraints\PhoneNumber as AssertPhoneNumber;
+
 
 /**
  * Tuteur
@@ -20,6 +22,33 @@ class Tuteur extends User
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="adresse", type="string", length=255, nullable=true)
+     */
+    private $adresse ;
+
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="mobile", type="phone_number", nullable=true)
+     *
+     * @AssertPhoneNumber(defaultRegion="FR")
+     */
+    private $mobile ;
+
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="fixe", type="phone_number", nullable=true)
+     *
+     * @AssertPhoneNumber(defaultRegion="FR")
+     */
+    private $fixe ;
 
     public function initClass()
     {
@@ -41,5 +70,74 @@ class Tuteur extends User
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set adresse
+     *
+     * @param string $adresse
+     * @return Tuteur
+     */
+    public function setAdresse($adresse)
+    {
+        $this->adresse = $adresse;
+    
+        return $this;
+    }
+
+    /**
+     * Get adresse
+     *
+     * @return string 
+     */
+    public function getAdresse()
+    {
+        return $this->adresse;
+    }
+
+    /**
+     * Set mobile
+     *
+     * @param integer $mobile
+     * @return Tuteur
+     */
+    public function setMobile($mobile)
+    {
+        $this->mobile = $mobile;
+    
+        return $this;
+    }
+
+    /**
+     * Get mobile
+     *
+     * @return integer 
+     */
+    public function getMobile()
+    {
+        return $this->mobile;
+    }
+
+    /**
+     * Set fixe
+     *
+     * @param integer $fixe
+     * @return Tuteur
+     */
+    public function setFixe($fixe)
+    {
+        $this->fixe = $fixe;
+    
+        return $this;
+    }
+
+    /**
+     * Get fixe
+     *
+     * @return integer 
+     */
+    public function getFixe()
+    {
+        return $this->fixe;
     }
 }

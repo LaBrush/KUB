@@ -40,4 +40,8 @@ security:
 
 jms_security_extra:
     secure_all_services: false
-    expressions: true
+    expressions:         true
+    voters:
+        disable_authenticated: false
+        disable_role:          false
+        disable_acl:           false
