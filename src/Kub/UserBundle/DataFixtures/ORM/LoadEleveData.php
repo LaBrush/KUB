@@ -6,6 +6,7 @@ use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+
 use Kub\UserBundle\Entity\Eleve;
 
 
@@ -35,9 +36,8 @@ class LoadEleveData implements FixtureInterface, ContainerAwareInterface
         $userManager = $this->container->get('pugx_user_manager');
         $eleve = $userManager->createUser();
 
-        $eleve->setUsername('johnsnow');
-        $eleve->setNom('John');
-        $eleve->setPrenom('snow');
+        $eleve->setNom('Snow');
+        $eleve->setPrenom('John');
         $eleve->setAnniversaire(new \Datetime());
 
         $eleve->setEmail('admin@mail.com');
@@ -45,22 +45,5 @@ class LoadEleveData implements FixtureInterface, ContainerAwareInterface
         $eleve->setEnabled(true);
 
         $userManager->updateUser($eleve, true);
-
-        $discriminator->setClass('Kub\UserBundle\Entity\Administrateur');
-
-        $userManager = $this->container->get('pugx_user_manager');
-        $manitou = $userManager->createUser();
-
-        $manitou->setUsername('tonystark');
-        $manitou->setNom('Stark');
-        $manitou->setPrenom('Tony');
-
-        $manitou->addRole("ROLE_MANITOU");
-
-        $manitou->setEmail('tonystrack@mail.com');
-        $manitou->setPlainPassword('123456');
-        $manitou->setEnabled(true);
-
-        $userManager->updateUser($manitou, true);
     }
 }
