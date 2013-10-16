@@ -33,7 +33,7 @@ class Eleve extends User
     private $anniversaire;
 
     /**
-     *  @ORM\ManyToMany(targetEntity="Kub\UserBundle\Entity\Tuteur", mappedBy="eleves", cascade={"persist"})
+     *  @ORM\ManyToMany(targetEntity="Kub\UserBundle\Entity\Tuteur", inversedBy="eleves", cascade={"persist"})
      */
     private $tuteurs ;
 
@@ -101,9 +101,7 @@ class Eleve extends User
      * @return Eleve
      */
     public function addTuteur(\Kub\UserBundle\Entity\Tuteur $tuteurs)
-    {
-        throw new Exception("Error Processing Eleve", 1);
-        
+    {        
         $this->tuteurs[] = $tuteurs;
         $tuteurs->addEleve($this);
     

@@ -50,7 +50,7 @@ class Tuteur extends User
     private $fixe ;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Kub\UserBundle\Entity\Eleve", inversedBy="tuteurs", cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity="Kub\UserBundle\Entity\Eleve", mappedBy="tuteurs", cascade={"persist"})
      * @ORM\JoinTable(name="tuteur_eleve")
      */
 

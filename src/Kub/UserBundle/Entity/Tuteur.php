@@ -50,7 +50,7 @@ class Tuteur extends User
     private $fixe ;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Kub\UserBundle\Entity\Eleve", inversedBy="tuteurs", cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity="Kub\UserBundle\Entity\Eleve", mappedBy="tuteurs", cascade={"persist"})
      * @ORM\JoinTable(name="tuteur_eleve")
      */
 
@@ -155,9 +155,7 @@ class Tuteur extends User
      * @return Tuteur
      */
     public function addEleve(\Kub\UserBundle\Entity\Eleve $eleves)
-    {
-        throw new Exception("Error Processing Request", 1);
-        
+    {   
         $this->eleves[] = $eleves;
     
         return $this;
