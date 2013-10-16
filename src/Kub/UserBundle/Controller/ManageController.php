@@ -52,8 +52,6 @@ class ManageController extends Controller
 					break;
 			}
 
-			$handler = $class . "Handler";
-
 			$userManager = $this->container->get('pugx_user_manager');
 
 			$discriminator = $this->container->get('pugx_user.manager.user_discriminator');
@@ -63,22 +61,23 @@ class ManageController extends Controller
 			$form = $this->createForm($type, $user);
 
 			$request = $this->get('request');
+			$em = $this->getDoctrine()->getManager();
 
 			if($request->getMethod() == "POST"){
 
 				switch($class)
 				{
 					case "Eleve":
-						$formHandler = new EleveHandler($form, $request, $this->getDoctrine()->getManager(), $discriminator, $userManager);
+						$formHandler = new EleveHandler($form, $request, $em, $discriminator, $userManager);
 						break;
 					case "Tuteur":
-						$formHandler = new TuteurHandler($form, $request, $this->getDoctrine()->getManager(), $discriminator, $userManager); ;
+						$formHandler = new TuteurHandler($form, $request, $em, $discriminator, $userManager); ;
 						break;
 					case "Professeur":
-						$formHandler = new ProfesseurHandler($form, $request, $this->getDoctrine()->getManager(), $discriminator, $userManager); ;
+						$formHandler = new ProfesseurHandler($form, $request, $em, $discriminator, $userManager); ;
 						break;
 					case "Administrateur":
-						$formHandler = new AdministrateurHandler($form, $request, $this->getDoctrine()->getManager(), $discriminator, $userManager); ;
+						$formHandler = new AdministrateurHandler($form, $request, $em, $discriminator, $userManager); ;
 						break;
 				}
 
@@ -90,12 +89,89 @@ class ManageController extends Controller
 
 			}
 
-			return $this->render('KubUserBundle:Manage:' . $role . '_create.html.twig',
+			return $this->render('KubUserBundle:Manage:user_create.html.twig',
 				array(
-					'form' => $form->createView()
+					'form' => $form->createView(),
+					'user' => $user
 				)
 			);
 		}
+	}
+
+	/**
+	 * @Secure(roles="ROLE_SECRETAIRE")
+	 */
+	public function editAction(User $user, $role, $username)
+	{
+			if($user->getClass() != $role)
+			{
+				throw $this->createNotFoundException("L'utilisateur " . $username . " n'a pu être trouvé " . $user->getClass());
+			}
+
+			$class = ucfirst($role);
+			switch($class)
+			{
+				case "Eleve":
+					$type = new EleveType ;
+					break;
+				case "Tuteur":
+					$type = new TuteurType ;
+					break;
+				case "Professeur":
+					$type = new ProfesseurType ;
+					break;
+				case "Administrateur":
+					$type = new AdministrateurType($this->get("security.context")) ;
+					break;
+			}
+
+			$form = $this->createForm($type, $user);
+
+			$request = $this->get('request');
+			$em = $this->getDoctrine()->getManager();
+
+			$discriminator = $this->container->get('pugx_user.manager.user_discriminator');
+			$discriminator->setClass('Kub\UserBundle\Entity\\'.$class);
+
+			$userManager = $this->container->get('pugx_user_manager');
+
+			if($request->getMethod() == "POST"){
+
+				switch($class)
+				{
+					case "Eleve":
+						$formHandler = new EleveHandler($form, $request, $em, $discriminator, $userManager);
+						break;
+					case "Tuteur":
+						$formHandler = new TuteurHandler($form, $request, $em, $discriminator, $userManager); 
+						break;
+					case "Professeur":
+						$formHandler = new ProfesseurHandler($form, $request, $em, $discriminator, $userManager); 
+						break;
+					case "Administrateur":
+						$formHandler = new AdministrateurHandler($form, $request, $em, $discriminator, $userManager);
+						break;
+				}
+
+				if($formHandler->process())
+				{
+					$this->get('session')->getFlashBag()->add('info', "L'utilisateur a bien été modifié");
+					return $this->redirect($this->generateUrl("home_homepage"));
+				}
+				else
+				{
+					$this->get('session')->getFlashBag()->add('info', "Erreur lors de la modification de l'utilisateur");
+				}
+
+			}
+
+			return $this->render('KubUserBundle:Manage:user_edit.html.twig',
+				array(
+					'form' => $form->createView(),
+					'user' => $user
+				)
+			);
+		
 	}
 
 	/**

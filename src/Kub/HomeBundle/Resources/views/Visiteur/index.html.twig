@@ -1,36 +1,7 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-	<meta charset="utf-8" />
-	<!--[if lt IE 9]>
-				<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-			<![endif]-->
-	<link href='http://fonts.googleapis.com/css?family=Raleway:400,300,700' rel='stylesheet' type='text/css'>
+{% extends "::base.html.twig" %}
 
-	{% stylesheets '@KubHomeBundle/Resources/public/css/home.css' filter='cssrewrite' %}
-    	<link rel="stylesheet" href="{{ asset_url }}" />
-	{% endstylesheets %}
+{% block body %}
 
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-</head>
+	<a href="{{ path('fos_user_security_login') }}">Se connecter</a>
 
-<body class="body">
-	
-	<nav class="nav">
-		<h1 class="h2">Kub</h1>
-		<a href="{{ path("fos_user_security_login") }}" class="button">Connexion</a>
-	</nav>
-
-	<section class="section">
-		<article class="article">
-			<h2>Titre Bidon</h2>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quam dolore nostrum voluptas dicta. Quae, consequatur, adipisci, sapiente, assumenda itaque alias quia dicta facere placeat quos similique ab nostrum a dolore aliquid nesciunt optio. Velit, facere, sint laborum quam eum rerum eaque molestiae nesciunt expedita aut quos animi modi quo ratione voluptate.</p>
-		</article>
-
-		<article class="article">
-			<h2>Titre Bidon</h2>
-			<p>Dignissimos mollitia nobis adipisci dicta tenetur iusto esse quisquam labore. Natus, dolore, esse quod corporis rerum voluptate voluptas id excepturi et eos repudiandae laborum expedita a laudantium aspernatur quaerat obcaecati dignissimos! Veritatis, incidunt, aliquid, laboriosam suscipit pariatur nihil deleniti dicta cum doloremque voluptatem obcaecati quae maxime tempore enim sint temporibus voluptates! Praesentium.</p>
-		</article>
-	</section>
-</body>
-</html>
+{% endblock %}

@@ -31,7 +31,7 @@ class MenuBuilder
             $menu->addChild('Eleves');
                 $menu["Eleves"]->addChild("Liste", 
                     array(
-                        "route" => "user_list_role",
+                        "route" => "user_list",
                         'routeParameters' => array('role' => "eleve")
                     )
                 );
@@ -45,7 +45,7 @@ class MenuBuilder
             $menu->addChild('Professeurs');
                 $menu["Professeurs"]->addChild("Liste", 
                     array(
-                        "route" => "user_list_role",
+                        "route" => "user_list",
                         'routeParameters' => array('role' => "professeur")
                     )
                 );
@@ -59,7 +59,7 @@ class MenuBuilder
             $menu->addChild('Tuteur');
                 $menu["Tuteur"]->addChild("Liste", 
                     array(
-                        "route" => "user_list_role",
+                        "route" => "user_list",
                         'routeParameters' => array('role' => "tuteur")
                     )
                 );
@@ -73,7 +73,7 @@ class MenuBuilder
             $menu->addChild('Administration');
                 $menu["Administration"]->addChild("Liste", 
                     array(
-                        "route" => "user_list_role",
+                        "route" => "user_list",
                         'routeParameters' => array('role' => "administrateur")
                     )
                 );
@@ -92,11 +92,11 @@ class MenuBuilder
         );
 
         //Penser à ajouter un discriminateur
-        // $menu->addChild('Parametres', 
-        //     array(
-        //         "route" => "fos_user_profile_edit"
-        //     )
-        // );
+        $menu->addChild('Parametres', 
+            array(
+                "route" => "fos_user_profile_edit"
+            )
+        );
 
         return $menu;
     }

@@ -1,30 +1,75 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <meta charset="utf-8" />
-        <!--[if lt IE 9]>
-            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
+<html lang="fr">
+<head>
+	<meta charset="utf-8" />
+	<!--[if lt IE 9]>
+				<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+			<![endif]-->
+	<link href='http://fonts.googleapis.com/css?family=Raleway:400,300,700' rel='stylesheet' type='text/css'>
+	
+	{% stylesheets '@KubHomeBundle/Resources/public/css/main.css' filter='cssrewrite' %}
+		<link rel="stylesheet" href="{{ asset_url }}" />
+	{% endstylesheets %}
 
-        {% block stylesheets %}{% endblock %}
-        {% block fonts %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
-    
-        {% for message in app.session.flashbag.get('info') %}
-            <p>{{ message }}</p>
-        {% endfor %}
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+	<!--[if IE 7]>
+	  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome-ie7.min.css">
+	<![endif]-->
+</head>
 
-        {% if is_granted("ROLE_USER") %}
-        
-            {{ knp_menu_render('main') }}
+<body class="body">
+	
+	<header class="header">
+		<div id="logo">
+			<h1 class="h2">Kub</h1>
+			<span class="slogan">Le nouvel ENT</span>
+		</div>
+	
+		{% if is_granted("ROLE_USER") %}
+			<div class="user">
+				<h2 class="profil-name h3">{{ app.user.prenom }} {{ app.user.nom }}</h2>
+			</div>
+		{% endif %}
+	</header>
 
-        {% endif %}
+	<span id="button-menu">
+		Menu <i id="chevron" class="icon-chevron-sign-down"></i>
+	</span>
 
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+	{% if is_granted("ROLE_USER") %}
+		<nav class="nav">
+			<div class="menu">
+				
+				{{ knp_menu_render('main') }}
+				
+			</div>
+		</nav>
+	{% endif %}
+
+
+	<section class="section">
+
+		<article class="article-news">
+			
+			{% for flashMessage in app.session.flashbag.get('notice') %}
+			    <p>
+			        {{ flashMessage }}
+			    </p>
+			{% endfor %}
+
+		</article>
+
+		<article class="article-news">
+			{% block body %}{% endblock %}
+		</article>
+	</section>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+
+	{% javascripts '@KubHomeBundle/Resources/public/js/nav.js' %}
+		<script type="text/javascript" src="{{ asset_url }}"></script>
+	{% endjavascripts %}
+	{% block javascripts %}{% endblock %}
+	
+</body>
 </html>
