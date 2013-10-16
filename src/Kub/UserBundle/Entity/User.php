@@ -32,6 +32,16 @@ abstract class User extends BaseUser
     public function initClass() {}
 
     /**
+     * @ORM\PrePersist()
+     */
+    public function initPassword(){ 
+        if($this->password == "")
+        {
+            $this->setPassword(sha1(uniqid()));
+        }
+    }
+
+    /**
      * @var integer
      *
      * @ORM\Column(name="id", type="integer")

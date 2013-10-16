@@ -40,7 +40,6 @@ class Tuteur extends User
      */
     private $mobile ;
 
-
     /**
      * @var integer
      *
@@ -49,6 +48,13 @@ class Tuteur extends User
      * @AssertPhoneNumber(defaultRegion="FR")
      */
     private $fixe ;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Kub\UserBundle\Entity\Eleve", inversedBy="tuteurs", cascade={"persist"})
+     * @ORM\JoinTable(name="tuteur_eleve")
+     */
+
+    private $eleves ;
 
     public function initClass()
     {
@@ -59,7 +65,8 @@ class Tuteur extends User
     {
         parent::__construct();
 
-        $this->addRole("ROLE_TUEUR");
+        $this->addRole("ROLE_TUTEUR");
+        $this->eleves = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -139,5 +146,40 @@ class Tuteur extends User
     public function getFixe()
     {
         return $this->fixe;
+    }
+
+    /**
+     * Add eleves
+     *
+     * @param \Kub\UserBundle\Entity\Eleve $eleves
+     * @return Tuteur
+     */
+    public function addEleve(\Kub\UserBundle\Entity\Eleve $eleves)
+    {
+        throw new Exception("Error Processing Request", 1);
+        
+        $this->eleves[] = $eleves;
+    
+        return $this;
+    }
+
+    /**
+     * Remove eleves
+     *
+     * @param \Kub\UserBundle\Entity\Eleve $eleves
+     */
+    public function removeEleve(\Kub\UserBundle\Entity\Eleve $eleves)
+    {
+        $this->eleves->removeElement($eleves);
+    }
+
+    /**
+     * Get eleves
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getEleves()
+    {
+        return $this->eleves;
     }
 }

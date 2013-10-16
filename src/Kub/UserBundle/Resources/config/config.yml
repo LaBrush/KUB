@@ -5,6 +5,9 @@ fos_user:
     service:
         user_manager: pugx_user_manager
 
+    group:
+        group_class: Kub\UserBundle\Entity\Groupe
+
 pugx_multi_user:
   users:
     eleve:

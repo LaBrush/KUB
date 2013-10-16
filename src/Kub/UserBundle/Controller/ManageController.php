@@ -89,7 +89,7 @@ class ManageController extends Controller
 
 			}
 
-			return $this->render('KubUserBundle:Manage:user_create.html.twig',
+			return $this->render('KubUserBundle:Manage:' . $role . '_create.html.twig',
 				array(
 					'form' => $form->createView(),
 					'user' => $user
@@ -165,7 +165,7 @@ class ManageController extends Controller
 
 			}
 
-			return $this->render('KubUserBundle:Manage:user_edit.html.twig',
+			return $this->render('KubUserBundle:Manage:' . $role . '_edit.html.twig',
 				array(
 					'form' => $form->createView(),
 					'user' => $user

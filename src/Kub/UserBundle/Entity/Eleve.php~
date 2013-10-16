@@ -32,6 +32,11 @@ class Eleve extends User
      */
     private $anniversaire;
 
+    /**
+     *  @ORM\ManyToMany(targetEntity="Kub\UserBundle\Entity\Tuteur", mappedBy="eleves", cascade={"persist"})
+     */
+    private $tuteurs ;
+
     public function initClass()
     {
         $this->class = "eleve";
@@ -42,6 +47,7 @@ class Eleve extends User
         parent::__construct();
 
         $this->addRole("ROLE_ELEVE");
+        $this->tuteurs = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -75,5 +81,53 @@ class Eleve extends User
     public function getAnniversaire()
     {
         return $this->anniversaire;
+    }
+
+    /**
+     *  @Assert\LessThanOrEqual(
+     *       value= 2,
+     *       message="L'élève ne peut avoir plus de deux tuteurs")
+     */
+    public function getNumberOfTuteurs()
+    {
+        return count($this->tuteurs);
+    }
+
+
+    /**
+     * Add tuteurs
+     *
+     * @param \Kub\UserBundle\Entity\Tuteur $tuteurs
+     * @return Eleve
+     */
+    public function addTuteur(\Kub\UserBundle\Entity\Tuteur $tuteurs)
+    {
+        throw new Exception("Error Processing Eleve", 1);
+        
+        $this->tuteurs[] = $tuteurs;
+        $tuteurs->addEleve($this);
+    
+        return $this;
+    }
+
+    /**
+     * Remove tuteurs
+     *
+     * @param \Kub\UserBundle\Entity\Tuteur $tuteurs
+     */
+    public function removeTuteur(\Kub\UserBundle\Entity\Tuteur $tuteurs)
+    {
+        $this->tuteurs->removeElement($tuteurs);
+        $tuteurs->removeEleve($this);
+    }
+
+    /**
+     * Get tuteurs
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTuteurs()
+    {
+        return $this->tuteurs;
     }
 }

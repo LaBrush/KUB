@@ -6,6 +6,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
+use Kub\UserBundle\Form\Type\TuteurType ;
+
 class EleveType extends UserType
 {
 		/**
@@ -22,9 +24,15 @@ class EleveType extends UserType
 			$years[] = $i ;
 		}
 
-		$builder->add("anniversaire", "date", array(
-			"years" => $years
-		))
+		$builder
+			->add("anniversaire", "date", array(
+				"years" => $years
+			))
+			->add('tuteurs', 'collection', array(
+				"type" => new TuteurType(),
+				"allow_add" => true,
+				"allow_delete" => true
+			))
 		;
 
 		return $builder ;
