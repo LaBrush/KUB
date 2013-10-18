@@ -37,6 +37,11 @@ class Eleve extends User
      */
     private $tuteurs ;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Kub\UserBundle\Entity\Niveau", inversedBy="eleves"))
+     */
+    private $niveau ;
+
     public function initClass()
     {
         $this->class = "eleve";
@@ -101,9 +106,7 @@ class Eleve extends User
      * @return Eleve
      */
     public function addTuteur(\Kub\UserBundle\Entity\Tuteur $tuteurs)
-    {
-        throw new Exception("Error Processing Eleve", 1);
-        
+    {        
         $this->tuteurs[] = $tuteurs;
         $tuteurs->addEleve($this);
     
@@ -129,5 +132,66 @@ class Eleve extends User
     public function getTuteurs()
     {
         return $this->tuteurs;
+    }
+
+    /**
+     * Add niveau
+     *
+     * @param \Kub\UserBundle\Entity\Niveau $niveau
+     * @return Eleve
+     */
+    public function addNiveau(\Kub\UserBundle\Entity\Niveau $niveau)
+    {
+        $this->niveau[] = $niveau;
+    
+        return $this;
+    }
+
+    /**
+     * Remove niveau
+     *
+     * @param \Kub\UserBundle\Entity\Niveau $niveau
+     */
+    public function removeNiveau(\Kub\UserBundle\Entity\Niveau $niveau)
+    {
+        $this->niveau->removeElement($niveau);
+    }
+
+    /**
+     * @Assert\True(message="L'élève doit avoir un niveau")
+     */
+    public function hasNiveau()
+    {
+        if($this->niveau != null)
+        {
+            return true ;
+        }
+        else
+        {
+            return false; 
+        }
+    }
+
+    /**
+     * Get niveau
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getNiveau()
+    {
+        return $this->niveau;
+    }
+
+    /**
+     * Set niveau
+     *
+     * @param \Kub\UserBundle\Entity\Niveau $niveau
+     * @return Eleve
+     */
+    public function setNiveau(\Kub\UserBundle\Entity\Niveau $niveau = null)
+    {
+        $this->niveau = $niveau;
+    
+        return $this;
     }
 }

@@ -27,6 +27,8 @@ class AppKernel extends Kernel
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new PUGX\MultiUserBundle\PUGXMultiUserBundle(),
             new Misd\PhoneNumberBundle\MisdPhoneNumberBundle(),
+            new Genemu\Bundle\FormBundle\GenemuFormBundle(),
+            new HappyR\Select2Bundle\HappyRSelect2Bundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new Kub\HomeBundle\KubHomeBundle(),
             new Kub\UserBundle\KubUserBundle(),

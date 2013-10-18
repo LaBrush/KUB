@@ -155,9 +155,7 @@ class Tuteur extends User
      * @return Tuteur
      */
     public function addEleve(\Kub\UserBundle\Entity\Eleve $eleves)
-    {
-        throw new Exception("Error Processing Request", 1);
-        
+    {   
         $this->eleves[] = $eleves;
     
         return $this;
