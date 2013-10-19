@@ -1,7 +1,11 @@
 {% extends "::base.html.twig" %}
 
 {% block body %}
-
-<p>{{ 'saluer'|trans }} {{ app.user.username }}</p>
+	
+	<section class="section">
+		<article class="article">
+			<h2 class="section-title">{{ 'Bonjour'|trans }} {{ app.user.prenom }}</h2>
+		</article>
+	</section>
 
 {% endblock %}

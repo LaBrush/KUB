@@ -2,14 +2,23 @@
 
 {% block body %}
 
-	<h1>Créer un {{ user.class }}</h1>
-	{{ form_start(form) }}
+	<section class="section">
+		<article class="article">
+			<h2 class="section-title">Créer un {{ user.class }}</h2 class="section-title">
+		</article>
 
-		{% block form %}
-		{% endblock %}
+		<article class="article">
+			{{ form_start(form) }}
 
-	<input type="submit">
+				{% block form %}
+				{% endblock %}
 
-	{{ form_end(form) }}
+			<input type="submit">
+
+			{{ form_end(form) }}
+		</article>
+	</section>	
+
+			
 
 {% endblock %}

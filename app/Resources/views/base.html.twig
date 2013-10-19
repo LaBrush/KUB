@@ -28,7 +28,7 @@
 				<h2 class="profil-name h3">{{ app.user.prenom }} {{ app.user.nom }}</h2>
 			</div>
 		{% else %}
-			<button class="button-login" onClick="OpenLoginOptions()">Connexion</button>
+			<button class="button-login" onClick="self.location.href='{{ path('fos_user_security_login') }}'">Connexion</button>
 
 			<div class="login-options-closed">
 				<span>
@@ -50,31 +50,25 @@
 		</span>
 		<nav class="nav">
 			<div class="menu">
-				
 				{{ knp_menu_render('main') }}
-				
 			</div>
 		</nav>
 	{% endif %}
 
 
-	<section class="section">
-
-		{% for flashMessage in app.session.flashbag.get('info') %}
+	{% for flashMessage in app.session.flashbag.get('info') %}
+		<section class="section">
 		    <div class="flash-message">
 		    	<p>{{ flashMessage }}</p>
 		    </div>
-		{% endfor %}
+		</section>
+	{% endfor %}
 
-		<article class="article">
-			{% block body %}{% endblock %}
-		</article>
-	</section>
+
+	{% block body %}{% endblock %}
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
-
 	<script type="text/javascript" src="{{ asset('ressources/jsmin/nav.min.js') }}"></script>
-
 	{% block javascripts %}{% endblock %}
 	
 </body>

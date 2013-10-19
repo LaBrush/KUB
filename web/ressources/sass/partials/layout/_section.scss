@@ -13,7 +13,6 @@ $away: 			#ffa9a9;
 
 .section
 {
-	width: 100%;
 	padding: 75px 10% 20px 10%;
 
 	@include box-sizing(border-box);
@@ -51,6 +50,29 @@ $away: 			#ffa9a9;
 	font-size: 1.8em;
 }
 
+.article
+{
+	margin: 40px auto 60px auto;
+	max-width: 800px;
+}
+
+
+/********************************************************************************/
+/* Page de login */
+.section-login
+{
+	padding: 75px 10% 20px 10%;
+}
+
+.img-present
+{
+	display: block;
+	margin: auto;
+	width: 100%;
+	max-width: 800px;
+	max-height: 260px;
+	overflow: hidden;
+}
 
 
 /********************************************************************************/
