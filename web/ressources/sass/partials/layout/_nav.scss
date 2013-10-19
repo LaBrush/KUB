@@ -35,7 +35,6 @@ $notifications-color: 	$logo-color;
 #button-menu
 {
 	display: none;
-	@include animate(0.4s);
 
 	@media all and (max-width: 950px)
 	{

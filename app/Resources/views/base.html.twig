@@ -6,10 +6,8 @@
 				<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 			<![endif]-->
 	<link href='http://fonts.googleapis.com/css?family=Raleway:400,300,700' rel='stylesheet' type='text/css'>
-	
-	{% stylesheets '@KubHomeBundle/Resources/public/css/main.css' filter='cssrewrite' %}
-		<link rel="stylesheet" href="{{ asset_url }}" />
-	{% endstylesheets %}
+
+	<link rel="stylesheet" href="{{ asset('ressources/stylesheets/main.css') }}" />
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 	<!--[if IE 7]>
@@ -46,11 +44,10 @@
 		{% endif %}
 	</header>
 
-	<span id="button-menu">
-		Menu <i id="chevron" class="icon-chevron-sign-down"></i>
-	</span>
-
 	{% if is_granted("ROLE_USER") %}
+		<span id="button-menu">
+			Menu <i id="chevron" class="icon-chevron-sign-down"></i>
+		</span>
 		<nav class="nav">
 			<div class="menu">
 				
@@ -76,9 +73,7 @@
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
 
-	{% javascripts '@KubHomeBundle/Resources/public/js/nav.js' %}
-		<script type="text/javascript" src="{{ asset_url }}"></script>
-	{% endjavascripts %}
+	<script type="text/javascript" src="{{ asset('ressources/jsmin/nav.min.js') }}"></script>
 
 	{% block javascripts %}{% endblock %}
 	
