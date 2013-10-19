@@ -1,0 +1,156 @@
+/* Couleurs */
+
+$header:     rgba(235, 235, 235, 0.9);
+$user:       #e67e22;
+$user-color: #fefefe;
+$logo:       #e67e22;
+$logo-color: #fefefe;
+
+
+/*********************************************************************************/
+/* Header */
+
+.header
+{
+	width: 100%;
+	position: fixed;
+	padding: 13px;
+	height: 24px;
+	background: $header;
+
+	z-index: 10;
+}
+
+#logo
+{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 200px;
+	height: 50px;
+	padding: 15px 20px;
+	@include box-sizing(border-box);
+
+	background: $logo;
+	color: $logo-color;
+
+	.h2
+	{
+		display: inline-block;
+	}
+
+	@media all and (max-width: 500px)
+	{
+		width: 100%;
+	}
+}
+
+.slogan
+{
+	float: right;
+
+	@media all and (max-width: 500px)
+	{
+		display: none;
+	}
+}
+
+
+
+/********************************************************************************/
+/* Pages ou l'utilisateur est connecté */
+
+.user
+{
+	position: fixed;
+	top: 0;
+	right: 0;
+	cursor: pointer;
+	background: $user;
+	color: $user-color;
+
+	&:hover, &:active, &:focus
+	{
+		background: darken($user, 5%);
+	}
+}
+
+.profil-name
+{
+	display: inline-block;
+	padding: 15px 30px;
+	vertical-align: middle;
+}
+
+
+
+/*******************************************************************************/
+/* Page de login */
+.button-login
+{
+	position: fixed;
+	top: 0;
+	right: 0;
+	height: 50px;
+	width: 200px;
+
+	z-index: 3;
+}
+
+
+.login-options
+{
+	display: block;
+	position: fixed;
+	right: 0;
+	top: 50px;
+	width: 200px;
+
+	background: $header;
+
+	z-index: 1;
+
+	span, button
+	{
+		margin: 13px 10px;
+		display: block;
+	}
+
+	#name, #password
+	{
+		width: 180px;
+		@include box-sizing(border-box);
+	}
+
+	@include animate(0.4s);
+
+	@include box-sizing(border-box);
+}
+
+.login-options-closed
+{
+	display: block;
+	position: fixed;
+	top: -100%;
+	right: 0;
+	width: 200px;
+	background: $header;
+
+	z-index: 0;
+
+	span, button
+	{
+		margin: 15px;
+		display: block;
+	}
+
+	#name, #password
+	{
+		width: 180px;
+		@include box-sizing(border-box);
+	}
+
+	@include animate(0.4s);
+
+	@include box-sizing(border-box);
+}

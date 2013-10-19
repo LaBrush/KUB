@@ -29,6 +29,20 @@
 			<div class="user">
 				<h2 class="profil-name h3">{{ app.user.prenom }} {{ app.user.nom }}</h2>
 			</div>
+		{% else %}
+			<button class="button-login" onClick="OpenLoginOptions()">Connexion</button>
+
+			<div class="login-options-closed">
+				<span>
+					<label for="name">Adresse mail :</label><br/>
+					<input type="mail" id="name">
+				</span>
+				<span>
+					<label for="password">Mot de passe :</label><br/>
+					<input type="password" id="password">
+				</span>
+				<button class="button-validate">Valider</button>
+			</div>
 		{% endif %}
 	</header>
 
@@ -49,17 +63,13 @@
 
 	<section class="section">
 
-		<article class="article-news">
-			
-			{% for flashMessage in app.session.flashbag.get('info') %}
-			    <p>
-			        {{ flashMessage }}
-			    </p>
-			{% endfor %}
+		{% for flashMessage in app.session.flashbag.get('info') %}
+		    <div class="flash-message">
+		    	<p>{{ flashMessage }}</p>
+		    </div>
+		{% endfor %}
 
-		</article>
-
-		<article class="article-news">
+		<article class="article">
 			{% block body %}{% endblock %}
 		</article>
 	</section>
@@ -69,6 +79,7 @@
 	{% javascripts '@KubHomeBundle/Resources/public/js/nav.js' %}
 		<script type="text/javascript" src="{{ asset_url }}"></script>
 	{% endjavascripts %}
+
 	{% block javascripts %}{% endblock %}
 	
 </body>

@@ -1,0 +1,173 @@
+
+/* Couleurs */
+
+$accueil: 				#e67e22;
+$espace-collaboratif: 	#c8d92f;
+$agenda: 				#2ccc6f;
+$bigbro: 				#d0384c;
+$vie-lyceenne: 			#9e66a2;
+$button-login: 			#e67e22;
+$button-text: 			#fefefe;
+
+
+/**************************************************************************/
+/* Menu */
+
+.bordered-accueil {border-left: 4px solid $accueil;}
+.bordered-espace-collaboratif {border-left: 4px solid $espace-collaboratif;}
+.bordered-cours {border-left: 4px solid $agenda;}
+.bordered-devoirs {border-left: 4px solid $agenda;}
+.bordered-agenda {border-left: 4px solid $agenda;}
+.bordered-bigbro {border-left: 4px solid $bigbro;}
+.bordered-notes {border-left: 4px solid $bigbro;}
+.bordered-vie-lyceenne {border-left: 4px solid $vie-lyceenne;}
+
+
+/**************************************************************************/
+/* Boutons */
+
+@mixin button
+{
+	border: none;
+	margin: 0;
+	@include border-radius(2px);
+	padding: 4px 10px;
+	color: $button-text;
+	font-size: 0.8em;
+	cursor: pointer;
+}
+
+.button-login
+{
+	@include button;
+
+	background: $button-login;
+	padding: 0 20px;
+	font-size: 1.1em;
+
+	@include border-radius(0);
+
+	&:hover, &:active, &:focus
+	{
+		background: darken($button-login, 5%);
+	}
+}
+
+.button-validate
+{
+	@include button;
+
+	background: $button-login;
+
+	&:hover, &:active, &:focus
+	{
+		background: darken($button-login, 5%);
+	}
+}
+
+.button-bigbro
+{
+	@include button;
+	background: $bigbro;
+
+	&:hover, &:focus, &:active
+	{
+		background: darken($bigbro, 5%);
+	}
+}
+
+.button-devoirs
+{
+	@include button;
+	background: $agenda;
+
+	&:hover, &:focus, &:active
+	{
+		background: darken($agenda, 5%);
+	}
+}
+
+.button-cours
+{
+	@include button;
+	background: $agenda;
+
+	&:hover, &:focus, &:active
+	{
+		background: darken($agenda, 5%);
+	}
+}
+
+.button-espace-collaboratif
+{
+	@include button;
+	background: $espace-collaboratif;
+
+	&:hover, &:focus, &:active
+	{
+		background: darken($espace-collaboratif, 5%);
+	}
+}
+
+.button-agenda
+{
+	@include button;
+	background: $agenda;
+
+	&:hover, &:focus, &:active
+	{
+		background: darken($agenda, 5%);
+	}
+}
+
+.button-vie-lyceenne
+{
+	@include button;
+	background: $vie-lyceenne;
+
+	&:hover, &:focus, &:active
+	{
+		background: darken($vie-lyceenne, 5%);
+	}
+}
+
+.button-notes
+{
+	@include button;
+	background: $bigbro;
+
+	&:hover, &:focus, &:active
+	{
+		background: darken($bigbro, 5%);
+	}
+}
+
+
+/*********************************************************************/
+/* Inputs */
+$input: 	#aaaaaa;
+
+input[type="text"], input[type="password"], input[type="mail"]
+{
+	padding: 3px;
+	border: 1px $input solid;
+	@include border-radius(3px);
+
+	&:hover, &:focus, &:active
+	{
+		border: 1px $input solid;
+	}
+}
+
+select
+{
+	padding: 3px;
+	border: 1px $input solid;
+	@include border-radius(3px);
+
+	&:hover, &:focus, &:active
+	{
+		border: 1px $input solid;
+	}
+}
+

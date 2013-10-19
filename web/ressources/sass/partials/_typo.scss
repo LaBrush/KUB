@@ -1,0 +1,72 @@
+//typo.scss
+/* Typographie de la page web ************************/
+
+$texte:         #5d5e64;
+$liens:         #5d5e64;
+$liensSurvoles: inherit;
+
+
+/* Symboles */
+
+
+/* Taille et police par défaut */
+*
+{
+	font-family: inherit;
+}
+
+html
+{
+	font-size: 100%;
+}
+
+body
+{
+    font-size: 0.9em;
+    font-family: 'Raleway', arial, sans-serif;
+    line-height: 1.4em;
+    color: $texte;
+    text-align: left;
+}
+
+
+/* Epaisseurs */
+.light 		{font-weight: 300;}
+.normal     {font-weight: 400;}
+.bold       {font-weight: 700;}
+strong 		{font-weight: 700;}
+em 			{font-style: italic; font-size: 0.8em;}
+
+
+/* Majuscules et petites majuscules */
+.majuscules       { text-transform:   uppercase;}
+.mini-majuscules  { font-variant:     small-caps;}
+
+/* Tailles polices */
+.large { font-size: 1.2em; }
+.small { font-size: 0.9em; }
+
+/* Titres */
+h1, .h1 { font-size: 2em; }
+h2, .h2 { font-size: 1.5em; }
+h3, .h3 { font-size: 1.2em; }
+h4, .h4 { font-size: 1.1em; }
+h5, .h5 { font-size: 1em; }
+h6, .h6 { font-size: 1em; }
+
+
+/* Liens */
+a
+{ 
+    color: inherit;
+    text-decoration: none;
+}
+a:hover    { color: $liensSurvoles;}
+a:focus    { color: $liensSurvoles;}
+a:visited  {}
+a:active   { color: $liensSurvoles;}
+
+
+/* Decoration */
+.raye {text-decoration: line-through;}
+.underline {text-decoration: underline;}
