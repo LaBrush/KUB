@@ -37,6 +37,18 @@ $button-text: 			#fefefe;
 	cursor: pointer;
 }
 
+button, input[type="submit"]
+{
+	@include button;
+
+	background: $button-login;
+
+	&:hover, &:active, &:focus
+	{
+		background: darken($button-login, 5%);
+	}
+}
+
 .button-login
 {
 	@include button;
@@ -46,18 +58,6 @@ $button-text: 			#fefefe;
 	font-size: 1.1em;
 
 	@include border-radius(0);
-
-	&:hover, &:active, &:focus
-	{
-		background: darken($button-login, 5%);
-	}
-}
-
-.button-validate
-{
-	@include button;
-
-	background: $button-login;
 
 	&:hover, &:active, &:focus
 	{
@@ -159,7 +159,7 @@ input[type="text"], input[type="password"], input[type="mail"]
 	}
 }
 
-select
+input[type="select"]
 {
 	padding: 3px;
 	border: 1px $input solid;
