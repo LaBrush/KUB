@@ -1,0 +1,145 @@
+/* Vue des notes - Section */
+
+.notes-by-matieres
+{
+	width: 100%;
+	
+	td
+	{
+		width: 10%;
+		text-align: center;
+	}
+
+	.axes
+	{
+		width: 0.2%;
+		border-left: 1px $table-border solid;
+	}
+
+	.graph-hidden
+	{
+		div
+		{
+			display: inline-block;
+			vertical-align: bottom;
+			width: 5%;
+			margin: 0 2%;
+			background: #5bacad;
+			height: 1px;
+		}
+	}
+
+	.graph
+	{
+		border-bottom: 1px $table-border solid;
+
+		td
+		{
+			padding: 0;
+		}
+
+		div
+		{
+			display: inline-block;
+			vertical-align: bottom;
+			width: 5%;
+			margin: 0 2%;
+			background: #5bacad;
+
+			@include box-sizing(border-box);
+			@include animate(1s);
+		}
+
+		.maths
+		{
+			height: 51px;
+		}
+
+		.francais
+		{
+			height: 69px;
+		}
+
+		.sciences-ingenieur
+		{
+			height: 111px;
+		}
+
+		.histoire-geographie
+		{
+			height: 66px;
+		}
+
+		.anglais
+		{
+			height: 78px;
+		}
+
+		.espagnol
+		{
+			height: 60px;
+		}
+
+		.eps
+		{
+			height: 96px;
+		}
+
+		.physique-chimie
+		{
+			height: 99px;
+		}
+
+		.ecjs
+		{
+			height: 1px;
+		}
+
+		.general
+		{
+			height: 69px;
+		}
+	}
+
+	.moyennes
+	{
+		height: 30px;
+
+		div
+		{
+			display: inline-block;
+			width: 9%;
+		}
+	}
+
+	.matieres-name
+	{
+		div
+		{
+			display: inline-block;
+			vertical-align: top;
+			width: 9%;
+
+			font-size: 0.75em;
+			line-height: 1.3em;
+		}
+	}
+}
+
+.detail
+{
+	border: 1px $table-border solid;
+
+	th
+	{
+		text-align: center;
+		padding: 10px;
+		border: 1px $table-border solid;
+	}
+
+	td
+	{
+		padding: 10px;
+		border: 1px $table-border solid;
+	}
+}

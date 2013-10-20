@@ -28,9 +28,9 @@
 				<h2 class="profil-name h3">{{ app.user.prenom }} {{ app.user.nom }}</h2>
 			</div>
 		{% else %}
-			<button class="button-login" onClick="self.location.href='{{ path('fos_user_security_login') }}'">Connexion</button>
+			<button class="button-login" >Connexion</button>
 
-			<div class="login-options-closed">
+			<div id="login-box" class="login-box-closed">
 				<span>
 					<label for="name">Adresse mail :</label><br/>
 					<input type="mail" id="name">
@@ -39,7 +39,7 @@
 					<label for="password">Mot de passe :</label><br/>
 					<input type="password" id="password">
 				</span>
-				<button class="button-validate">Valider</button>
+				<button class="button-validate" onClick="self.location.href='{{ path('fos_user_security_login') }}'">Valider</button>
 			</div>
 		{% endif %}
 	</header>
@@ -69,7 +69,7 @@
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
 	<script type="text/javascript" src="{{ asset('ressources/jsmin/nav.min.js') }}"></script>
-	{% block javascripts %}{% endblock %}
+	{% block js %}{% endblock %}
 	
 </body>
 </html>
