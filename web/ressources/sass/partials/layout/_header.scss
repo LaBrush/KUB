@@ -28,7 +28,7 @@ $logo-color: #fefefe;
 	left: 0;
 	width: 200px;
 	height: 50px;
-	padding: 15px 20px;
+	padding: 13px;
 	@include box-sizing(border-box);
 
 	background: $logo;
@@ -36,7 +36,20 @@ $logo-color: #fefefe;
 
 	.h2
 	{
+		float: left;
 		display: inline-block;
+	}
+
+	.slogan
+	{
+		margin: 2px 0 0 0;
+		float: right;
+		display: inline-block;
+
+		@media all and (max-width: 500px)
+		{
+			display: none;
+		}
 	}
 
 	@media all and (max-width: 500px)
@@ -45,16 +58,6 @@ $logo-color: #fefefe;
 	}
 
 	z-index: 2;
-}
-
-.slogan
-{
-	float: right;
-
-	@media all and (max-width: 500px)
-	{
-		display: none;
-	}
 }
 
 
