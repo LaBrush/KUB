@@ -28,20 +28,9 @@
 				<h2 class="profil-name h3">{{ app.user.prenom }} {{ app.user.nom }}</h2>
 			</div>
 		{% else %}
-			<button class="button-login" >Connexion</button>
-
-			<div id="login-box" class="login-box-closed">
-				<span>
-					<label for="name">Adresse mail :</label><br/>
-					<input type="mail" id="name">
-				</span>
-				<span>
-					<label for="password">Mot de passe :</label><br/>
-					<input type="password" id="password">
-				</span>
-				<button class="button-validate" onClick="self.location.href='{{ path('fos_user_security_login') }}'">Valider</button>
-			</div>
+			{% block login %}{% endblock %}
 		{% endif %}
+
 	</header>
 
 	{% if is_granted("ROLE_USER") %}

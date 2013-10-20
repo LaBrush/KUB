@@ -17,21 +17,36 @@
 	position: fixed;
 	right: 0;
 	width: 200px;
+	padding: 10px;
 
 	background: $header;
 
 	z-index: 1;
 
-	span, button
+	label
 	{
-		margin: 13px 10px;
+		margin: 13px auto 3px auto;
 		display: block;
 	}
 
-	#name, #password
+	input[type="submit"], input[type="checkbox"]
+	{
+		display: inline-block;
+	}
+
+	#username, #password
 	{
 		width: 180px;
 		@include box-sizing(border-box);
+		margin: auto;
+		display: block;
+	}
+
+	.remember
+	{
+		display: inline-block;
+		margin: 13px 10px 13px 0;
+		vertical-align: middle;
 	}
 
 	@include animate(0.4s);
