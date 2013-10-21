@@ -3,6 +3,9 @@
 namespace Kub\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use FOS\UserBundle\Model\Group as BaseGroup;
+use Gedmo\Mapping\Annotation as Gedmo;
+
 
 /**
  * Groupe
@@ -10,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="Kub\UserBundle\Entity\GroupeRepository")
  */
-class Groupe
+class Groupe extends BaseGroup
 {
     /**
      * @var integer
@@ -19,22 +22,23 @@ class Groupe
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="nom", type="string", length=255)
+     * @ORM\Column(name="slug", type="string", length=255)
+     * @Gedmo\Slug(fields={"nom"})
      */
-    private $nom;
+    private $slug ;
 
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="date_creation", type="datetime")
+     * @ORM\ManyToOne(targetEntity="Kub\UserBundle\Entity\Niveau", inversedBy="eleves"))
      */
-    private $dateCreation;
+    private $niveau ;
 
+    public function __construct($name, $roles = array())
+    {
+        parent::__construct($name, $roles = array());
+    }
 
     /**
      * Get id
@@ -44,51 +48,5 @@ class Groupe
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set nom
-     *
-     * @param string $nom
-     * @return Groupe
-     */
-    public function setNom($nom)
-    {
-        $this->nom = $nom;
-    
-        return $this;
-    }
-
-    /**
-     * Get nom
-     *
-     * @return string 
-     */
-    public function getNom()
-    {
-        return $this->nom;
-    }
-
-    /**
-     * Set dateCreation
-     *
-     * @param \DateTime $dateCreation
-     * @return Groupe
-     */
-    public function setDateCreation($dateCreation)
-    {
-        $this->dateCreation = $dateCreation;
-    
-        return $this;
-    }
-
-    /**
-     * Get dateCreation
-     *
-     * @return \DateTime 
-     */
-    public function getDateCreation()
-    {
-        return $this->dateCreation;
     }
 }

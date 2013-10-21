@@ -3,6 +3,9 @@
 namespace Kub\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use FOS\UserBundle\Model\Group as BaseGroup;
+use Gedmo\Mapping\Annotation as Gedmo;
+
 
 /**
  * Groupe
@@ -10,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="Kub\UserBundle\Entity\GroupeRepository")
  */
-class Groupe
+class Groupe extends BaseGroup
 {
     /**
      * @var integer
@@ -19,22 +22,23 @@ class Groupe
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="nom", type="string", length=255)
+     * @ORM\Column(name="slug", type="string", length=255)
+     * @Gedmo\Slug(fields={"name"})
      */
-    private $nom;
+    private $slug ;
 
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="date_creation", type="datetime")
+     * @ORM\ManyToOne(targetEntity="Kub\UserBundle\Entity\Niveau", inversedBy="eleves"))
      */
-    private $dateCreation;
+    private $niveau ;
 
+    public function __construct($name, $roles = array())
+    {
+        parent::__construct($name, $roles = array());
+    }
 
     /**
      * Get id
@@ -47,48 +51,48 @@ class Groupe
     }
 
     /**
-     * Set nom
+     * Set slug
      *
-     * @param string $nom
+     * @param string $slug
      * @return Groupe
      */
-    public function setNom($nom)
+    public function setSlug($slug)
     {
-        $this->nom = $nom;
+        $this->slug = $slug;
     
         return $this;
     }
 
     /**
-     * Get nom
+     * Get slug
      *
      * @return string 
      */
-    public function getNom()
+    public function getSlug()
     {
-        return $this->nom;
+        return $this->slug;
     }
 
     /**
-     * Set dateCreation
+     * Set niveau
      *
-     * @param \DateTime $dateCreation
+     * @param \Kub\UserBundle\Entity\Niveau $niveau
      * @return Groupe
      */
-    public function setDateCreation($dateCreation)
+    public function setNiveau(\Kub\UserBundle\Entity\Niveau $niveau = null)
     {
-        $this->dateCreation = $dateCreation;
+        $this->niveau = $niveau;
     
         return $this;
     }
 
     /**
-     * Get dateCreation
+     * Get niveau
      *
-     * @return \DateTime 
+     * @return \Kub\UserBundle\Entity\Niveau 
      */
-    public function getDateCreation()
+    public function getNiveau()
     {
-        return $this->dateCreation;
+        return $this->niveau;
     }
 }

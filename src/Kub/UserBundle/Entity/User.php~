@@ -113,27 +113,9 @@ abstract class User extends BaseUser
         return $this->id;
     }
 
-    /**
-     * Set string
-     *
-     * @param string $string
-     * @return User
-     */
-    public function setString($string)
+    public function getPrenomNom()
     {
-        $this->string = $string;
-    
-        return $this;
-    }
-
-    /**
-     * Get string
-     *
-     * @return string 
-     */
-    public function getString()
-    {
-        return $this->string;
+        return $this->prenom . " " . $this->nom ;
     }
 
     /**
