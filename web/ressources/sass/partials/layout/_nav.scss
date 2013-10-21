@@ -1,0 +1,121 @@
+/* Couleurs */
+
+$button:        		$header;
+$nav:	        		$header;
+$notifications: 		$logo;
+$notifications-color: 	$logo-color;
+
+
+/******************************************************************************/
+/* Nav */
+
+.nav
+{
+	position: fixed;
+	top: 0;
+	width: 200px;
+	height: 100%;
+	background: $nav;
+	z-index: 1;
+	overflow: auto;
+	
+	@include animate(0.4s);
+
+	@media all and (max-width: 950px)
+	{
+		top: -1000px;
+	}
+
+	@media all and (max-width: 500px)
+	{
+		width: 100%;
+	}
+}
+
+#button-menu
+{
+	display: none;
+
+	@media all and (max-width: 950px)
+	{
+		display: block;
+		position: fixed;
+		top: 50px;
+		left: 0;
+		width: 200px;
+		height: 50px;
+		padding: 15px 20px;
+		@include box-sizing(border-box);
+		z-index: 2;
+
+		font-size: 1.2em;
+		background: $button;
+		cursor: pointer;
+
+		i:before
+		{
+			float: right;
+		}
+
+		&:hover, &:active, &:focus
+		{
+			background: darken($button, 5%);
+		}
+	}
+
+	@media all and (max-width: 500px)
+	{
+		width: 100%;
+	}
+}
+
+.menu
+{
+	cursor: pointer;
+	margin: 50px 0 0 0;
+
+	@include animate(0.4s);
+
+	.h3
+	{
+		padding: 12px;
+	}
+
+	@media all and (max-width: 950px)
+	{
+		margin: 100px 0 0 0;
+	}
+}
+
+.li-menu
+{
+	display: inline-block;
+	width: 100%;
+	padding: 8px 13px;
+	@include box-sizing(border-box);
+
+	&:hover, &:active, &:focus
+	{
+		background: darken($button, 5%);
+	}
+
+	.notifications
+	{
+		float: right;
+
+		background-color: $notifications;
+		color: $notifications-color;
+		font-size: 0.8em;
+
+		@include border-radius(50px);
+		padding: 0 8px; 
+	}
+}
+
+.nav-open
+{
+	@media all and (max-width: 950px)
+	{
+		top: 0px;
+	}
+}

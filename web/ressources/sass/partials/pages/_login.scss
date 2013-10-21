@@ -1,0 +1,104 @@
+/* Header */
+.button-login
+{
+	position: fixed;
+	top: 0;
+	right: 0;
+	height: 50px;
+	width: 200px;
+
+	z-index: 3;
+}
+
+
+#login-box
+{
+	display: block;
+	position: fixed;
+	right: 0;
+	width: 200px;
+	padding: 10px;
+
+	background: $header;
+
+	z-index: 1;
+
+	label
+	{
+		margin: 13px auto 3px auto;
+		display: block;
+	}
+
+	input[type="submit"]
+	{
+		display: block;
+		margin: 0;
+	}
+
+	#username, #password
+	{
+		width: 180px;
+		@include box-sizing(border-box);
+		margin: 0;
+		display: block;
+	}
+
+	.remember
+	{
+		display: inline-block;
+		margin: 13px 10px 13px 0;
+		vertical-align: middle;
+	}
+
+	@include animate(0.4s);
+
+	@include box-sizing(border-box);
+
+	@media all and (max-width: 500px)
+	{
+		width: 100%;
+	}
+}
+
+.login-box-closed
+{
+	top: -1000px;
+}
+
+.login-box-open
+{
+	top: 50px;
+}
+
+
+
+/********************************************************************************/
+/* Section */
+.section-login
+{
+	padding: 75px 10% 20px 10%;
+
+	.article
+	{
+		h2
+		{
+			margin: 0 0 10px 0;
+		}
+
+		p
+		{
+			margin: 0 0 5px 0;
+			text-indent: 1em;
+		}
+	}
+}
+
+.img-present
+{
+	display: block;
+	margin: auto;
+	width: 100%;
+	max-width: 800px;
+	max-height: 260px;
+	overflow: hidden;
+}

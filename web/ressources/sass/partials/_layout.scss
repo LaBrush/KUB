@@ -1,0 +1,22 @@
+/* Mixins */
+
+@mixin animate($time)
+{
+	@include transform(translateZ(0));
+	@include transition(all ease $time);
+}
+
+/* Layout */
+$body:		rgb(250, 250, 250);
+
+.body { background: $body; }
+
+@import  "layout/header.scss";
+@import  "layout/nav.scss";
+@import  "layout/section.scss";
+
+@import "pages/accueil.scss";
+@import "pages/agenda.scss";
+@import "pages/appel.scss";
+@import "pages/login.scss";
+@import "pages/notes.scss";

@@ -1,0 +1,88 @@
+/* Couleurs */
+
+$header:     rgba(235, 235, 235, 0.9);
+$user:       #e67e22;
+$user-color: #fefefe;
+$logo:       #e67e22;
+$logo-color: #fefefe;
+
+
+/*********************************************************************************/
+/* Header */
+
+.header
+{
+	width: 100%;
+	position: fixed;
+	padding: 13px;
+	height: 24px;
+	background: $header;
+
+	z-index: 10;
+}
+
+#logo
+{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 200px;
+	height: 50px;
+	padding: 13px;
+	@include box-sizing(border-box);
+
+	background: $logo;
+	color: $logo-color;
+
+	.h2
+	{
+		float: left;
+		display: inline-block;
+	}
+
+	.slogan
+	{
+		margin: 2px 0 0 0;
+		float: right;
+		display: inline-block;
+
+		@media all and (max-width: 500px)
+		{
+			display: none;
+		}
+	}
+
+	@media all and (max-width: 500px)
+	{
+		width: 100%;
+	}
+
+	z-index: 2;
+}
+
+
+
+/********************************************************************************/
+/* Pages ou l'utilisateur est connecté */
+
+.user
+{
+	position: fixed;
+	top: 0;
+	right: 0;
+	cursor: pointer;
+	background: $user;
+	color: $user-color;
+
+	&:hover, &:active, &:focus
+	{
+		background: darken($user, 5%);
+	}
+}
+
+.profil-name
+{
+	display: inline-block;
+	padding: 15px 30px;
+	vertical-align: middle;
+}

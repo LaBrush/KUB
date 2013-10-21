@@ -2,13 +2,20 @@
 
 {% block body %}
 
-	<h1>Modifier {{ user.prenom }} {{ user.nom }}</h1>
-	{{ form_start(form) }}
+	<section class="section">
+		<article class="article">
+			<h2 class="section-title">Modifier {{ user.prenom }} {{ user.nom }}</h2 class="section-title">
+		</article>
 
-		{% block form %}
-		{% endblock %}
+		<article class="article">
+			{{ form_start(form) }}
 
-		<input type="submit">
-	{{ form_end(form) }}
+				{% block form %}
+				{% endblock %}
 
+				<input type="submit">
+			{{ form_end(form) }}
+		</article>
+	</section>	
+			
 {% endblock %}

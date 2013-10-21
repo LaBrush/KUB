@@ -1,0 +1,59 @@
+/* Section */
+
+.edt
+{
+	float: left;
+	border: 1px $table-border solid;
+	width: 100%;
+	font-family: arial;
+	
+	th
+	{
+		border-right: 1px $table-border solid;
+		border-bottom: 1px $table-border solid;
+		height: 40px;
+		text-align: center;
+		width: 19%;
+	}
+
+	td
+	{
+		border-right: 1px $table-border solid;
+		text-align: center;
+		height: 21px;
+		padding: 3px;
+		font-size: 0.6em;
+		line-height: 1.3em;
+	}
+
+	.bottom-dashed
+	{
+		border-bottom: 1px $table-border dashed;
+	}
+
+	.bottom-solid
+	{
+		border-bottom: 1px $table-border solid;
+	}
+
+	.info-cours
+	{
+		display: block;
+
+		em
+		{
+			font-size: 1em;
+		}
+	}
+
+	.hour
+	{
+		text-align: center;
+		height: 21px;
+		font-size: 0.7em;
+	}
+}
+
+.cour {background: $cour;}
+.cour-annule {background: $cour-annule;}
+.cour-ajoute {background: $cour-ajoute;}

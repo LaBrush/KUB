@@ -1,7 +1,75 @@
 {% extends "::base.html.twig" %}
 
+{% block login %}
+	
+	<button class="button-login" >Connexion</button>
+
+	{# Ici on devrait avoir le formulaire de connexion comme ci-dessous #}
+			
+	{% trans_default_domain 'FOSUserBundle' %}
+
+	<form id="login-box" class="login-box-closed" action="{{ path("fos_user_security_check") }}" method="post">
+		    {# <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" /> #}
+	
+		    <label for="username">{{ 'security.login.username'|trans }}</label>
+		    <input type="text" id="username" name="_username" value="" required="required" />
+	
+		    <label for="password">{{ 'security.login.password'|trans }}</label>
+		    <input type="password" id="password" name="_password" required="required" />
+	
+		    <label class="remember" for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+		    <input class="remember" type="checkbox" id="remember_me" name="_remember_me" value="on" />
+	
+		    <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+		</form>
+
+{% endblock %}
+
 {% block body %}
 
 	<a href="{{ path('fos_user_security_login') }}">Se connecter</a>
 
+	<section class="section-login">
+		<article class="article">
+			<img src="{{ asset('images/login/photo.png') }}" alt="" class="img-present">
+		</article>
+		
+		<article class="article">
+			<h2>Le Kub... Mais qu'est-ce que c'est ?</h2>
+			<p>
+				Kub... Un nom peu évocateur, et pourtant il représente tellement pour nous !
+			</p>
+			<p>
+				Le Kub n'est ni plus ni moins que l'aspect qu'aurait pu prendre l'Espace Numérique de Travail. Dans le cadre d'un projet de TPE, deux élèves de première SI du Lycée du Grésivaudan, Adrien Bocquet et moi-même, Nathan Rajohnson, nous sommes demandés si l'ENT que nous connaissions alors était perfectible. Vous avez sous vos yeux le fruit de nos efforts, un ENT plus rapide et plus ergonomique.
+			</p>
+		</article>
+		
+		<article class="article">
+			<h2>Ah d'accord... Mais comment ca marche ?</h2>
+			<p>
+				Le fonctionnement du Kub est simple. Il vous suffit de vous connecter a l'aide des identifiants que vous possédez, puis vous n'avez qu'a vous laisser guider par vos intuitions.
+			</p>
+			<p>
+				Vous aurez accès de manière simple et concise à tout ce qui peux vous concerner dans le cadre du lycée. Toutes les nouveautés qui vous concernent sont organisées pour que vous puissiez facilement y jeter un simple coup d'oeil. Vous pourrez évidement approfondir cet aperçu en vous redirigeant vers la page de l'article correspondant.
+			</p>
+			<p>
+				Ne vous y méprenez pas, laissez vos préjugés de côté et lancez-vous dans le Kub, car c'est une toute nouvelle experience qui s'offre a vous.
+			</p>
+		</article>
+
+		<article class="article">
+			<h2>Interessant... Mais n'est-ce pas un peu iréaliste ?</h2>
+			<p>
+				Lors de mise en place du projet, nous avions une contrainte de 4 mois pour la réalisation, et ce en comptant chaque phase de création, ainsi qu'un budget de 15€. Durant ces 4 mois, nous n'avons (est-ce une surprise ?) pas échappé a nos responsabilités de lycéen, à savoir aller en cours chaque jours et faire nos devoirs en rentrant.
+			</p>
+			<p>
+				C'est donc à deux et en grande partie sur du temps libre que nous avons dévelloppé tout ceci. Alors si nos idées sont retenues et que nous réussissont a marquer les esprits, il n'est pas exclus qu'un jour peut-être, un ENT semblable à celui-ci verra le jour...
+			</p>
+		</article>
+	</section>
+
+{% endblock %}
+
+{% block js %}
+	<script type="text/javascript" src="{{ asset('ressources/jsmin/login.min.js') }}"></script>
 {% endblock %}
