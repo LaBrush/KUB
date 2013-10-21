@@ -6,8 +6,9 @@
 			
 	{% trans_default_domain 'FOSUserBundle' %}
 
-	<form id="login-box" class="login-box-closed" action="{{ path("fos_user_security_check") }}" method="post">
-	
+	<div id="login-box" class="login-box-closed">
+		<form id="in-login-box" action="{{ path("fos_user_security_check") }}" method="post">
+		
 		    <label for="username">{{ 'security.login.username'|trans }}</label>
 		    <input type="text" id="username" name="_username" value="" required="required" />
 	
@@ -19,6 +20,8 @@
 	
 		    <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
 		</form>
+	</div>
+	
 
 {% endblock %}
 
