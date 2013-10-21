@@ -4,9 +4,24 @@ namespace Kub\UserBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Security\Core\SecurityContext;
+use Symfony\Component\HttpFoundation\Request ;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+
 use FOS\UserBundle\Controller\SecurityController as BaseController;
+
 class SecurityController extends BaseController
 {
+	public function loginAction(Request $request)
+	{
+		if ($this->container->get("security.context")->isGranted("ROLE_USER")) {
+			return new RedirectResponse($this->container->get('router')->generate("home_homepage", array(), UrlGeneratorInterface::ABSOLUTE_PATH), 302);
+		}
+
+		parent::loginAction($request);
+	}
+
 	/**
 	 * On modifie la façon dont est choisie la vue lors du rendu du formulaire de connexion
 	 */
