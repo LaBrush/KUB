@@ -102,3 +102,79 @@
 	max-height: 260px;
 	overflow: hidden;
 }
+
+.login-error-message
+{
+	width: 350px;
+	padding: 10px 3%;
+	color: $error-color;
+	background: $error;
+
+	@include box-sizing(border-box);
+
+	@media all and (max-width: 780px)
+	{
+		padding: 10px 5%;
+	}
+
+	@media all and (max-width: 500px)
+	{
+		margin: 0 0 30px 0;
+		width: 100%;
+		max-width: 350px;
+	}
+}
+
+
+.login-error-box
+{
+	margin: 60px auto 0 auto;
+	width: 350px;
+	padding: 25px 3%;
+	font-size: 1.3em;
+
+	background: $header;
+
+	label
+	{
+		margin: 13px 0 3px 0;
+		display: block;
+	}
+
+	input[type="submit"]
+	{
+		display: block;
+		margin: 0;
+	}
+
+	#username, #password
+	{
+		width: 100%;
+		@include box-sizing(border-box);
+		padding: 10px;
+		margin: 0;
+		display: block;
+		font-size: 1em;
+	}
+
+	.remember
+	{
+		display: inline-block;
+		margin: 13px 10px 13px 0;
+		vertical-align: middle;
+	}
+
+	@include box-sizing(border-box);
+
+	@media all and (max-width: 780px)
+	{
+		padding: 25px 5%;
+	}
+
+	@media all and (max-width: 500px)
+	{
+		margin: 0;
+		width: 100%;
+		max-width: 350px;
+	}
+}

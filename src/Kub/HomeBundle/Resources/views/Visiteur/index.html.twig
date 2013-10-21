@@ -3,13 +3,10 @@
 {% block login %}
 	
 	<button class="button-login" >Connexion</button>
-
-	{# Ici on devrait avoir le formulaire de connexion comme ci-dessous #}
 			
 	{% trans_default_domain 'FOSUserBundle' %}
 
 	<form id="login-box" class="login-box-closed" action="{{ path("fos_user_security_check") }}" method="post">
-		    {# <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" /> #}
 	
 		    <label for="username">{{ 'security.login.username'|trans }}</label>
 		    <input type="text" id="username" name="_username" value="" required="required" />
