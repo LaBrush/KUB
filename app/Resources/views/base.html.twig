@@ -26,6 +26,11 @@
 		{% if is_granted("ROLE_USER") %}
 			<div class="user">
 				<h2 class="profil-name h3">{{ app.user.prenom }} {{ app.user.nom }}</h2>
+				<div>
+					
+					{{ knp_menu_render('compte') }}
+
+				</div>
 			</div>
 		{% else %}
 			{% block login %}{% endblock %}

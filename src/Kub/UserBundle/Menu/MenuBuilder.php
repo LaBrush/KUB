@@ -91,16 +91,28 @@ class MenuBuilder
                 );
         }
 
+        return $menu;
+    }
+
+    public function createCompteMenu(Request $request)
+    {$menu = $this->factory->createItem('root');
+
         $menu->addChild('Mon compte', 
             array(
                 "route" => "fos_user_profile_show"
             )
         );
 
-        //Penser à ajouter un discriminateur
-        $menu->addChild('Parametres', 
+        //Penser à ajouter un discriminant
+        $menu->addChild('Parametres',
             array(
                 "route" => "fos_user_profile_edit"
+            )
+        );
+
+        $menu->addChild("Me déconnecter", 
+            array(
+                "route" => "fos_user_security_logout"
             )
         );
 
