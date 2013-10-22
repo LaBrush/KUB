@@ -24,13 +24,9 @@
 		</div>
 	
 		{% if is_granted("ROLE_USER") %}
-			<div class="user">
-				<h2 class="profil-name h3">{{ app.user.prenom }} {{ app.user.nom }}</h2>
-				<div>
-					
-					{{ knp_menu_render('compte') }}
-
-				</div>
+			<button class="button-options">{{ app.user.prenom }} {{ app.user.nom }}</button>
+			<div id="options-box" class="options-box-closed">	
+				{{ knp_menu_render('compte') }}
 			</div>
 		{% else %}
 			{% block login %}{% endblock %}
@@ -63,6 +59,7 @@
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
 	<script type="text/javascript" src="{{ asset('ressources/jsmin/nav.min.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('ressources/jsmin/options.min.js') }}"></script>
 	{% block js %}{% endblock %}
 	
 </body>

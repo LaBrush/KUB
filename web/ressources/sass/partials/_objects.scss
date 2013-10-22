@@ -6,8 +6,9 @@ $espace-collaboratif: 	#c8d92f;
 $agenda: 				#2ccc6f;
 $bigbro: 				#d0384c;
 $vie-lyceenne: 			#9e66a2;
+$button-color: 			#fefefe;
 $button-login: 			#e67e22;
-$button-text: 			#fefefe;
+$button-options: 		#e67e22;
 
 
 /**************************************************************************/
@@ -32,7 +33,7 @@ $button-text: 			#fefefe;
 	margin: 0;
 	@include border-radius(2px);
 	padding: 4px 10px;
-	color: $button-text;
+	color: $button-color;
 	font-size: 0.8em;
 	cursor: pointer;
 }
@@ -62,6 +63,22 @@ button, input[type="submit"]
 	&:hover, &:active, &:focus
 	{
 		background: darken($button-login, 5%);
+	}
+}
+
+.button-options
+{
+	@include button;
+
+	background: $button-options;
+	padding: 0 20px;
+	font-size: 1.1em;
+
+	@include border-radius(0);
+
+	&:hover, &:active, &:focus
+	{
+		background: darken($button-options, 5%);
 	}
 }
 

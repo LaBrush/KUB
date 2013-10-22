@@ -65,19 +65,15 @@ $logo-color: #fefefe;
 /********************************************************************************/
 /* Pages ou l'utilisateur est connecté */
 
-.user
+.button-options
 {
 	position: fixed;
 	top: 0;
 	right: 0;
-	cursor: pointer;
-	background: $user;
-	color: $user-color;
+	height: 50px;
+	width: 200px;
 
-	&:hover, &:active, &:focus
-	{
-		background: darken($user, 5%);
-	}
+	z-index: 3;
 }
 
 .profil-name
@@ -85,4 +81,39 @@ $logo-color: #fefefe;
 	display: inline-block;
 	padding: 15px 30px;
 	vertical-align: middle;
+}
+
+#options-box
+{
+	display: block;
+	position: fixed;
+	right: 0;
+	width: 200px;
+	padding: 10px;
+
+	background: $header;
+
+	z-index: 1;
+
+	@include animate(0.4s);
+
+	@include box-sizing(border-box);
+
+	@media all and (max-width: 500px)
+	{
+		width: 100%;
+		height: 100%;
+		padding: 3%;
+		@include animate(0);
+	}
+}
+
+.options-box-closed
+{
+	top: -500px;
+}
+
+.options-box-open
+{
+	top: 50px;
 }
