@@ -1,3 +1,18 @@
 {% set section = knp_menu_get ('main') %}
 
-{{ dump(section) }}
+{% for categorie in section.children %}
+{{ dump(categorie) }}
+
+	<ul class="submenu">
+			<li class="h3 li-menu">
+				<a href="">{{ categorie.name }}</a>
+			</li>
+
+		{% for page in categorie.children %}
+			<li class="li-menu">
+				<a href="{{ page.uri }}">{{ page.name }}</a>
+			</li>
+		{% endfor %}
+	</ul>
+
+{% endfor %}
