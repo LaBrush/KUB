@@ -32,7 +32,7 @@ class Groupe extends BaseGroup
     private $slug ;
 
     /**
-     * @ORM\OneToMany(targetEntity="Kub\UserBundle\Entity\Niveau", mappedBy="groupes"))
+     * @ORM\ManyToOne(targetEntity="Kub\UserBundle\Entity\Niveau", inversedBy="groupes"))
      */
     private $niveau ;
 
@@ -56,6 +56,13 @@ class Groupe extends BaseGroup
     public function __construct($name ="", $roles = array())
     {
         parent::__construct($name, $roles);
+
+        $eleves = new \Doctrine\Common\Collections\ArrayCollection ;
+    }
+
+    public function __toString()
+    {
+        return $this->niveau . " " . $this->name ;
     }
 
     /**
@@ -123,6 +130,7 @@ class Groupe extends BaseGroup
     public function addEleve(\Kub\UserBundle\Entity\Niveau $eleves)
     {
         $this->eleves[] = $eleves;
+        $eleves->addGroup($this);
     
         return $this;
     }
@@ -135,6 +143,7 @@ class Groupe extends BaseGroup
     public function removeEleve(\Kub\UserBundle\Entity\Niveau $eleves)
     {
         $this->eleves->removeElement($eleves);
+        $eleves->removeGroupe($this);
     }
 
     /**
@@ -156,6 +165,7 @@ class Groupe extends BaseGroup
     public function addNiveau(\Kub\UserBundle\Entity\Niveau $niveau)
     {
         $this->niveau[] = $niveau;
+        $niveau->addGroupe($this);
     
         return $this;
     }
@@ -168,5 +178,6 @@ class Groupe extends BaseGroup
     public function removeNiveau(\Kub\UserBundle\Entity\Niveau $niveau)
     {
         $this->niveau->removeElement($niveau);
+        $niveau->removeElement($this);
     }
 }

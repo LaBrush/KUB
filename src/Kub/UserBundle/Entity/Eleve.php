@@ -57,7 +57,8 @@ class Eleve extends User
 		parent::__construct();
 
 		$this->addRole("ROLE_ELEVE");
-		$this->tuteurs = new \Doctrine\Common\Collections\ArrayCollection();
+		$this->tuteurs = new \Doctrine\Common\Collections\ArrayCollection;
+		$this->groupes = new \Doctrine\Common\Collections\ArrayCollection;
 	}
 
 	/**
