@@ -1,5 +1,7 @@
 /* Couleurs */
 
+$error:   		#c0392b;
+$error-color: 	#fefefe;
 $table-border: 	rgb(230, 230, 230);
 $cour: 			#b1cbf3;
 $cour-annule: 	#ffa5a5;
@@ -54,4 +56,14 @@ $away: 			#ffa9a9;
 {
 	margin: 40px auto 60px auto;
 	max-width: 800px;
+}
+
+.error
+{
+	margin: 40px auto 60px auto;
+	max-width: 800px;
+
+	padding: 10px;
+	color: $error-color;
+	background: $error;
 }
