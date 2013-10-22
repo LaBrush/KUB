@@ -208,10 +208,10 @@ class Eleve extends User
 	/**
 	 * Add groupes
 	 *
-	 * @param \MyProject\MyBundle\Entity\Groupe $groupes
+	 * @param \Kub\UserBundle\Entity\Groupe $groupes
 	 * @return Eleve
 	 */
-	public function addGroupe(\MyProject\MyBundle\Entity\Groupe $groupes)
+	public function addGroupe(\Kub\UserBundle\Entity\Groupe $groupes)
 	{
 		$this->groupes[] = $groupes;
 	
@@ -221,9 +221,9 @@ class Eleve extends User
 	/**
 	 * Remove groupes
 	 *
-	 * @param \MyProject\MyBundle\Entity\Groupe $groupes
+	 * @param \Kub\UserBundle\Entity\Groupe $groupes
 	 */
-	public function removeGroupe(\MyProject\MyBundle\Entity\Groupe $groupes)
+	public function removeGroupe(\Kub\UserBundle\Entity\Groupe $groupes)
 	{
 		$this->groupes->removeElement($groupes);
 	}

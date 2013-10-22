@@ -1,23 +1,6 @@
-user_create:
-    path: /{role}/add/
-    defaults: { _controller: KubUserBundle:Manage:create }
-    requirements:
-        role: eleve|tuteur|administrateur|professeur|
+KubUserBundle_user:
+    resource: "@KubUserBundle/Resources/config/routing/user.yml"
 
-user_list:
-    path: /{role}/liste
-    defaults: { _controller: KubUserBundle:Manage:list }
-    requirements:
-        role: eleve|tuteur|administrateur|professeur
-
-user_show:
-    path: /{role}/{username}
-    defaults: { _controller: KubUserBundle:Manage:show }
-    requirements:
-        role: eleve|tuteur|administrateur|professeur
-
-user_edit:
-    path: /{role}/{username}/edit
-    defaults: { _controller: KubUserBundle:Manage:edit }
-    requirements:
-        role: eleve|tuteur|administrateur|professeur
+KubUserBundle_groupe:
+    resource: "@KubUserBundle/Resources/config/routing/groupe.yml"
+    prefix:   /groupe

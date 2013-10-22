@@ -19,7 +19,7 @@ class SecurityController extends BaseController
 			return new RedirectResponse($this->container->get('router')->generate("home_homepage", array(), UrlGeneratorInterface::ABSOLUTE_PATH), 302);
 		}
 
-		parent::loginAction($request);
+		return parent::loginAction($request);
 	}
 
 	/**

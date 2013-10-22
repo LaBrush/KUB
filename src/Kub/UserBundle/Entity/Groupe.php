@@ -35,9 +35,9 @@ class Groupe extends BaseGroup
      */
     private $niveau ;
 
-    public function __construct($name, $roles = array())
+    public function __construct($name ="", $roles = array())
     {
-        parent::__construct($name, $roles = array());
+        parent::__construct($name, $roles);
     }
 
     /**

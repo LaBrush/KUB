@@ -30,7 +30,6 @@ class EleveType extends UserType
 			))
 			->add('niveau', 'entity', array(
 				"class" => "Kub\UserBundle\Entity\Niveau",
-				"property" => "nom"
 			))
 			->add('tuteurs', 'collection', array(
 				"type" => new TuteurType(),
@@ -39,7 +38,6 @@ class EleveType extends UserType
 			))
 			->add('tuteurs', 'entity', array(
 				'class' => 'Kub\UserBundle\Entity\Tuteur',
-				'property' => 'prenomNom',
 				"multiple" => true,
 				"expanded" => true
 			))

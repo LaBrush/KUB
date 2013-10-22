@@ -1,0 +1,32 @@
+{% extends "KubUserBundle:Manage:user_edit.html.twig" %}
+
+{% block form %}
+	
+	{{ form_widget(form) }}
+	<a href="#" id="add-another-tuteurs">Ajouter un tuteur</a>
+
+{% endblock %}
+
+{% block javascripts %}
+
+	<script>
+    	// garde une trace du nombre de champs tuteurs qui ont été affichés
+    	var tuteurCount = '{{ form.tuteurs | length }}';
+
+	    $(document).ready(function() {
+	        $('#add-another-tuteurs').click(function() {
+	            var tuteurList = $('#kub_userbundle_eleve_tuteurs');
+
+	            var newWidget = tuteurList.attr('data-prototype');
+	            newWidget = newWidget.replace(/__name__/g, tuteurCount);
+	            tuteurCount++;
+
+	            var newLi = $('<p></p>').html(newWidget);
+	            newLi.appendTo(tuteurList);
+
+	            return false;
+	        });
+	    })
+	</script>
+
+{% endblock %}

@@ -83,6 +83,12 @@ class MenuBuilder
                         'routeParameters' => array('role' => "administrateur")
                     )
                 );
+            $menu->addChild("Groupes");
+                $menu["Groupes"]->addChild("Créer",
+                    array(
+                        "route" => "groupe_create"
+                    )
+                );
         }
 
         $menu->addChild('Mon compte', 
