@@ -22,8 +22,6 @@
 
 	z-index: 1;
 
-	@include animate(0.4s);
-
 	@include box-sizing(border-box);
 
 	@media all and (max-width: 500px)
@@ -31,7 +29,6 @@
 		width: 100%;
 		height: 100%;
 		padding: 3%;
-		@include animate(0);
 	}
 }
 
