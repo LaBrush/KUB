@@ -41,6 +41,11 @@ class Niveau
      */
     private $eleves ;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Kub\UserBundle\Entity\Groupe", inversedBy="niveau"))
+     */
+    private $groupes;
+
     public function __construct()
     {
         $this->eleves = new ArrayCollection();
@@ -151,5 +156,28 @@ class Niveau
         $this->eleves = $eleves;
     
         return $this;
+    }
+
+    /**
+     * Set groupes
+     *
+     * @param \Kub\UserBundle\Entity\Groupe $groupes
+     * @return Niveau
+     */
+    public function setGroupes(\Kub\UserBundle\Entity\Groupe $groupes = null)
+    {
+        $this->groupes = $groupes;
+    
+        return $this;
+    }
+
+    /**
+     * Get groupes
+     *
+     * @return \Kub\UserBundle\Entity\Groupe 
+     */
+    public function getGroupes()
+    {
+        return $this->groupes;
     }
 }

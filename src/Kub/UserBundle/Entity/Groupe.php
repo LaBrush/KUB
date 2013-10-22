@@ -5,6 +5,7 @@ namespace Kub\UserBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\Group as BaseGroup;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert ;
 
 
 /**
@@ -31,15 +32,26 @@ class Groupe extends BaseGroup
     private $slug ;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Kub\UserBundle\Entity\Niveau", inversedBy="groupes"))
+     * @ORM\OneToMany(targetEntity="Kub\UserBundle\Entity\Niveau", mappedBy="groupes"))
      */
     private $niveau ;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Kub\UserBundle\Entity\Niveau", inversedBy="groupes"))
+     * @ORM\ManyToMany(targetEntity="Kub\UserBundle\Entity\Eleve", inversedBy="groupes"))
      */
     private $eleves ;
 
+
+    /**
+     * @Assert\NotNull()
+     * @Assert\Length(
+     *      min = "2",
+     *      max = "255",
+     *      minMessage = "Le nom du groupe doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "Le nom du groupe ne peut pas être plus long que {{ limit }} caractères"
+     * )
+     */
+    protected $name ;
 
     public function __construct($name ="", $roles = array())
     {
@@ -133,5 +145,28 @@ class Groupe extends BaseGroup
     public function getEleves()
     {
         return $this->eleves;
+    }
+
+    /**
+     * Add niveau
+     *
+     * @param \Kub\UserBundle\Entity\Niveau $niveau
+     * @return Groupe
+     */
+    public function addNiveau(\Kub\UserBundle\Entity\Niveau $niveau)
+    {
+        $this->niveau[] = $niveau;
+    
+        return $this;
+    }
+
+    /**
+     * Remove niveau
+     *
+     * @param \Kub\UserBundle\Entity\Niveau $niveau
+     */
+    public function removeNiveau(\Kub\UserBundle\Entity\Niveau $niveau)
+    {
+        $this->niveau->removeElement($niveau);
     }
 }

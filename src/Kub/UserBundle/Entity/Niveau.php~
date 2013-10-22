@@ -41,6 +41,11 @@ class Niveau
      */
     private $eleves ;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Kub\UserBundle\Entity\Groupe", inversedBy="niveau"))
+     */
+    private $groupes;
+
     public function __construct()
     {
         $this->eleves = new ArrayCollection();

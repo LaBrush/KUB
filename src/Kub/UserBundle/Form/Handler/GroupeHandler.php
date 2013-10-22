@@ -47,7 +47,7 @@ class GroupeHandler
 
 	protected function onSuccess($data)
 	{
-		$em->persist($data);
-		$em->flush();
+		$this->em->persist($data);
+		$this->em->flush();
 	}
 }
