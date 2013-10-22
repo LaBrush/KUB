@@ -66,7 +66,7 @@ class Tuteur extends User
         parent::__construct();
 
         $this->addRole("ROLE_TUTEUR");
-        $this->eleves = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->eleves = new \Doctrine\Common\Collections\ArrayCollection;
     }
 
     /**

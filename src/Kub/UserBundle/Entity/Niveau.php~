@@ -42,13 +42,14 @@ class Niveau
     private $eleves ;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Kub\UserBundle\Entity\Groupe", inversedBy="niveau"))
+     * @ORM\OneToMany(targetEntity="Kub\UserBundle\Entity\Groupe", mappedBy="niveau"))
      */
     private $groupes;
 
     public function __construct()
     {
-        $this->eleves = new ArrayCollection();
+        $this->eleves = new ArrayCollection;
+        $this->groupes = new ArrayCollection;
     }
 
     public function __toString()
@@ -156,5 +157,28 @@ class Niveau
         $this->eleves = $eleves;
     
         return $this;
+    }
+
+    /**
+     * Set groupes
+     *
+     * @param \Kub\UserBundle\Entity\Groupe $groupes
+     * @return Niveau
+     */
+    public function setGroupes(\Kub\UserBundle\Entity\Groupe $groupes = null)
+    {
+        $this->groupes = $groupes;
+    
+        return $this;
+    }
+
+    /**
+     * Get groupes
+     *
+     * @return \Kub\UserBundle\Entity\Groupe 
+     */
+    public function getGroupes()
+    {
+        return $this->groupes;
     }
 }
