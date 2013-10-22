@@ -1,0 +1,5 @@
+{% set section = knp_menu_get ('main') %}
+
+{% for item in section %}
+	{{ dump(item) }}
+{% endfor %}

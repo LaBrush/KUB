@@ -34,13 +34,20 @@
 
 	</header>
 
+	<section class="section">
+		<article class="article">
+			{% include 'KubUserBundle:Menu:menu.html.twig' %}
+		</article>
+	</section>
+
 	{% if is_granted("ROLE_USER") %}
 		<span id="button-menu">
 			Menu <i id="chevron" class="icon-chevron-sign-down"></i>
 		</span>
 		<nav class="nav">
 			<div class="menu">
-				{{ knp_menu_render('main') }}
+				{# {{ knp_menu_render('main') }} #}
+				{% include 'KubUserBundle:Menu:menu.html.twig' %}
 			</div>
 		</nav>
 	{% endif %}
