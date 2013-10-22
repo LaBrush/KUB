@@ -2,12 +2,16 @@
 
 {% block body %}
 
-	<ul>
-		{% for user in list_users %}
-		
-			<li><a href="{{ path('user_show', { role: app.request.get('role'), username: user.username }) }}">{{ user.nom }} {{ user.prenom }}</a></li>
+	<section class="section">
+		<article class="article">
+			<ul>
+				{% for user in list_users %}
+				
+					<li><a href="{{ path('user_show', { role: app.request.get('role'), username: user.username }) }}">{{ user.nom }} {{ user.prenom }}</a></li>
 
-		{% endfor %}
-	</ul>
+				{% endfor %}
+			</ul>
+		</article>
+	</section>	
 
 {% endblock %}

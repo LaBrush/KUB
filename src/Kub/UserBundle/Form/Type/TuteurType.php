@@ -17,9 +17,9 @@ class TuteurType extends UserType
 	{
 		parent::buildForm($builder, $options);
 			$builder
-				->add('fixe', 'tel', array('default_region' => 'FR', 'format' => PhoneNumberFormat::NATIONAL))
-				->add('mobile', 'tel', array('default_region' => 'FR', 'format' => PhoneNumberFormat::NATIONAL))
-				->add("adresse")
+				->add('fixe', 'tel', array('required' => false, 'default_region' => 'FR', 'format' => PhoneNumberFormat::NATIONAL))
+				->add('mobile', 'tel', array('required' => false, 'default_region' => 'FR', 'format' => PhoneNumberFormat::NATIONAL))
+				->add("adresse", 'text', array('required' => false))
 		;
 
 		return $builder ;
