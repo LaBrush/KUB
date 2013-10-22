@@ -2,7 +2,7 @@ $(function() {
 
 	// Cette fonction permet l'ouverture de la boite d'options au clic sur le bouton .bouton-login
 
-	$('.button-options').click( function() {
+	$('#button-options').click( function() {
 
 		if ($('#options-box').hasClass('options-box-open'))
 		{

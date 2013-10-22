@@ -24,7 +24,7 @@
 		</div>
 	
 		{% if is_granted("ROLE_USER") %}
-			<button class="button-options">{{ app.user.prenom }} {{ app.user.nom }}</button>
+			<button id="button-options" class="button-options-{{ app.user.class }}">{{ app.user.prenom }} {{ app.user.nom }}</button>
 			<div id="options-box" class="options-box-closed">	
 				{{ knp_menu_render('compte') }}
 			</div>
