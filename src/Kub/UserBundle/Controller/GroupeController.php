@@ -30,6 +30,8 @@ class GroupeController extends Controller
 
         if($request->getMethod() == "POST"){
 
+            $formHandler = new GroupeHandler($form, $request, $this->getDoctrine()->getManager());
+
             if($formHandler->process())
             {
                 $this->get('session')->getFlashBag()->add('info', "Le groupe a bien été ajouté");
