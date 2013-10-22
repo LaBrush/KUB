@@ -43,11 +43,10 @@ $logo-color: #fefefe;
 
 	.slogan
 	{
-		margin: 2px 0 0 0;
-		float: right;
+		margin: 2px 0 0 0.8em;
 		display: inline-block;
 
-		@media all and (max-width: 500px)
+		@media all and (max-width: 400px)
 		{
 			display: none;
 		}
@@ -108,7 +107,7 @@ $logo-color: #fefefe;
 
 .options-box-closed
 {
-	top: -500px;
+	top: -100%;
 }
 
 .options-box-open

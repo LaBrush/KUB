@@ -1,5 +1,7 @@
 {% extends "::base.html.twig" %}
 
+{% block sectionClass %}section-login{% endblock %}
+
 {% block login %}
 	
 	<button class="button-login" >Connexion</button>
@@ -27,9 +29,6 @@
 
 {% block body %}
 
-	<a href="{{ path('fos_user_security_login') }}">Se connecter</a>
-
-	<section class="section-login">
 		<article class="article">
 			<img src="{{ asset('images/login/photo.png') }}" alt="" class="img-present">
 		</article>

@@ -1,9 +1,10 @@
 {% extends "::base.html.twig" %}
 
+{% block sectionClass %}section-login{% endblock %}
+
 {% block body %}
-	
-	<section class="section-login">
+
 		{% include "KubUserBundle:Security:login_content.html.twig" %}
-	</section>
+	
 	
 {% endblock %}

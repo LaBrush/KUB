@@ -45,19 +45,30 @@ $(function() {
 
 	// Cette fonction bloque la section lors du scroll du menu 
 
-	$('nav').mouseenter( function() {
+	/*$('nav').mouseenter( function() {
+
+
 
 		var actualScroll = window.scrollY;
 		var top = '-' + actualScroll + 'px';
-
-		$('section').css('position', 'fixed');
-		$('section').css('top', top);
 
 		$('nav').mouseleave( function() {
 
 			$('section').removeAttr('style');
 			window.scrollTo(0, actualScroll);
 		});
-	});
+	});*/
+
+	var section = $("section");
+	
+	$('nav').mouseenter( function() {
+			$(this).removeClass('unscrollable');
+			section.addClass('unscrollable');
+		})
+		.mouseleave( function() {
+			$(this).addClass('unscrollable');
+			section.removeClass('unscrollable');
+		})
+		.addClass('unscrollable');
 
 });

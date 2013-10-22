@@ -24,11 +24,11 @@ class MenuBuilder
     {
         $menu = $this->factory->createItem('root');
 
-        $menu->addChild('Home', array('route' => 'home_homepage'));
+        $menu->addChild('Accueil', array('route' => 'home_homepage', "labelAttributes" => array("className" => "accueil")));
             
         if($this->security->isGranted('ROLE_SECRETAIRE'))
         {
-            $menu->addChild('Eleves');
+            $menu->addChild('Eleves', array("labelAttributes" => array("className" => "eleve")));
                 $menu['Eleves']->addChild('Liste', 
                     array(
                         'route' => 'user_list',
@@ -43,7 +43,7 @@ class MenuBuilder
                     )
                 );
 
-            $menu->addChild('Professeurs');
+            $menu->addChild('Professeurs', array("labelAttributes" => array("className" => "professeur")));
                 $menu['Professeurs']->addChild('Liste', 
                     array(
                         'route' => 'user_list',
@@ -57,21 +57,21 @@ class MenuBuilder
                     )
                 );
 
-            $menu->addChild('Tuteur');
-                $menu['Tuteur']->addChild('Liste', 
+            $menu->addChild('Tuteurs', array("labelAttributes" => array("className" => "tuteur")));
+                $menu['Tuteurs']->addChild('Liste', 
                     array(
                         'route' => 'user_list',
                         'routeParameters' => array('role' => 'tuteur')
                     )
                 );
-                $menu['Tuteur']->addChild('Créer', 
+                $menu['Tuteurs']->addChild('Créer', 
                     array(
                         'route' => 'user_create',
                         'routeParameters' => array('role' => 'tuteur')
                     )
                 );
 
-            $menu->addChild('Administration');
+            $menu->addChild('Administration', array("labelAttributes" => array("className" => "administrateur")));
                 $menu['Administration']->addChild('Liste', 
                     array(
                         'route' => 'user_list',
@@ -84,12 +84,22 @@ class MenuBuilder
                         'routeParameters' => array('role' => 'administrateur')
                     )
                 );
-            $menu->addChild('Groupes');
+            $menu->addChild('Groupes', array("labelAttributes" => array("className" => "groupe")));
                 $menu['Groupes']->addChild('Créer',
                     array(
                         'route' => 'groupe_create'
                     )
                 );
+        }
+
+        foreach ($menu as $key => $categorie) {
+            if($categorie->getUri() == "" && count($categorie->getChildren()) > 0)
+            {
+                foreach ($categorie->getChildren() as $key => $child) {
+                    $categorie->setUri($child->getUri());
+                    break ;
+                }
+            }
         }
 
         return $menu;

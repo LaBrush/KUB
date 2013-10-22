@@ -20,7 +20,7 @@ class EleveType extends UserType
 		
 		$years = array();
 
-		for ($i=1990; $i < 2010 ; $i++) { 
+		for ($i=1973; $i < 2010 ; $i++) { 
 			$years[] = $i ;
 		}
 
