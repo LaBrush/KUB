@@ -2,14 +2,20 @@
 
 {% block body %}
 
-	<article class="article">
-		{{ form_start(form) }}
+	<section class="section">
+		<article class="article">
+			<h2 class="section-title">Creer un groupe</h2 class="section-title">
+		</article>
 
-			{{ form_widget(form) }}
-	
-			<input type="submit">
+		<article class="article">
+			{{ form_start(form) }}
 
-		{{ form_end(form) }}
-	</article>
+				{{ form_widget(form) }}
+		
+				<input type="submit">
+
+			{{ form_end(form) }}
+		</article>
+	</section>
 
 {% endblock %}
