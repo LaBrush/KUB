@@ -58,8 +58,12 @@
 	{% block body %}{% endblock %}
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
-	<script type="text/javascript" src="{{ asset('ressources/jsmin/nav.min.js') }}"></script>
-	<script type="text/javascript" src="{{ asset('ressources/jsmin/options.min.js') }}"></script>
+
+	{% if is_granted("ROLE_USER") %}
+		<script type="text/javascript" src="{{ asset('ressources/jsmin/nav.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('ressources/jsmin/options.min.js') }}"></script>
+	{% endif %}
+
 	{% block js %}{% endblock %}
 	
 </body>
