@@ -34,12 +34,6 @@
 
 	</header>
 
-	<section class="section">
-		<article class="article">
-			{% include 'KubUserBundle:Menu:menu.html.twig' %}
-		</article>
-	</section>
-
 	{% if is_granted("ROLE_USER") %}
 		<span id="button-menu">
 			Menu <i id="chevron" class="icon-chevron-sign-down"></i>
@@ -50,6 +44,12 @@
 				{% include 'KubUserBundle:Menu:menu.html.twig' %}
 			</div>
 		</nav>
+
+		<section class="section">
+			<article class="article">
+				{% include 'KubUserBundle:Menu:menu.html.twig' %}
+			</article>
+		</section>
 	{% endif %}
 
 
