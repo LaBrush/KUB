@@ -113,7 +113,7 @@ abstract class User extends BaseUser
         return $this->id;
     }
 
-    public function getPrenomNom()
+    public function __toString()
     {
         return $this->prenom . " " . $this->nom ;
     }

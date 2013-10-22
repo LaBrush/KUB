@@ -32,7 +32,7 @@ class GroupeController extends Controller
 
 		}
 
-		return $this->render('KubUserBundle:Manage:groupe_create.html.twig',
+		return $this->render('KubUserBundle:User:groupe_create.html.twig',
 			array(
 				'form' => $form->createView(),
 				'groupe' => $groupe

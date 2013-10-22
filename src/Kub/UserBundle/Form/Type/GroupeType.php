@@ -6,6 +6,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
+use Kub\UserBundle\Form\EventListener\addMemberFieldSuscriber ;
+
 class GroupeType extends AbstractType
 {
         /**
@@ -17,6 +19,7 @@ class GroupeType extends AbstractType
         $builder
             ->add('name')
             ->add('niveau')
+            ->addEventSubscriber(new addMemberFieldSuscriber());
         ;
     }
     

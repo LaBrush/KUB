@@ -46,6 +46,11 @@ class Niveau
         $this->eleves = new ArrayCollection();
     }
 
+    public function __toString()
+    {
+        return $this->nom ;
+    }
+
     /**
      * Get id
      *

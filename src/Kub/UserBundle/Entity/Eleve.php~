@@ -43,12 +43,7 @@ class Eleve extends User
 	private $niveau ;
 
 	/**
-	 * @ORM\ManyToMany(targetEntity="Kub\UserBundle\Entity\Groupe")
-	 * @ORM\JoinTable(
-	 *		name="fos_user_user_group",
-	 *		joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
-	 *		inverseJoinColumns={@ORM\JoinColumn(name="groupe_id", referencedColumnName="id")}
-	 * )
+	 * @ORM\ManyToMany(targetEntity="Kub\UserBundle\Entity\Groupe", mappedBy="eleves")
 	 */
 	protected $groupes;
 

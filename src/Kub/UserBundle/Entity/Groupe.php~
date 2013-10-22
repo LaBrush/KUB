@@ -26,18 +26,24 @@ class Groupe extends BaseGroup
 
     /**
      * @ORM\Column(name="slug", type="string", length=255)
-     * @Gedmo\Slug(fields={"nom"})
+     * @Gedmo\Slug(fields={"name"})
      */
     private $slug ;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Kub\UserBundle\Entity\Niveau", inversedBy="eleves"))
+     * @ORM\ManyToOne(targetEntity="Kub\UserBundle\Entity\Niveau", inversedBy="groupes"))
      */
     private $niveau ;
 
-    public function __construct($name, $roles = array())
+    /**
+     * @ORM\ManyToMany(targetEntity="Kub\UserBundle\Entity\Niveau", inversedBy="groupes"))
+     */
+    private $eleves ;
+
+
+    public function __construct($name ="", $roles = array())
     {
-        parent::__construct($name, $roles = array());
+        parent::__construct($name, $roles);
     }
 
     /**
@@ -48,5 +54,51 @@ class Groupe extends BaseGroup
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     * @return Groupe
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+    
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string 
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
+     * Set niveau
+     *
+     * @param \Kub\UserBundle\Entity\Niveau $niveau
+     * @return Groupe
+     */
+    public function setNiveau(\Kub\UserBundle\Entity\Niveau $niveau = null)
+    {
+        $this->niveau = $niveau;
+    
+        return $this;
+    }
+
+    /**
+     * Get niveau
+     *
+     * @return \Kub\UserBundle\Entity\Niveau 
+     */
+    public function getNiveau()
+    {
+        return $this->niveau;
     }
 }

@@ -26,67 +26,68 @@ class MenuBuilder
 
         $menu->addChild('Home', array('route' => 'home_homepage'));
             
-        if($this->security->isGranted("ROLE_SECRETAIRE"))
+        if($this->security->isGranted('ROLE_SECRETAIRE'))
         {
             $menu->addChild('Eleves');
-                $menu["Eleves"]->addChild("Liste", 
+                $menu['Eleves']->addChild('Liste', 
                     array(
-                        "route" => "user_list",
-                        'routeParameters' => array('role' => "eleve")
+                        'route' => 'user_list',
+                        'routeParameters' => array('role' => 'eleve'),
+                        ''
                     )
                 );
-                $menu["Eleves"]->addChild("Créer", 
+                $menu['Eleves']->addChild('Créer', 
                     array(
-                        "route" => "user_create",
-                        'routeParameters' => array('role' => "eleve")
+                        'route' => 'user_create',
+                        'routeParameters' => array('role' => 'eleve')
                     )
                 );
 
             $menu->addChild('Professeurs');
-                $menu["Professeurs"]->addChild("Liste", 
+                $menu['Professeurs']->addChild('Liste', 
                     array(
-                        "route" => "user_list",
-                        'routeParameters' => array('role' => "professeur")
+                        'route' => 'user_list',
+                        'routeParameters' => array('role' => 'professeur')
                     )
                 );
-                $menu["Professeurs"]->addChild("Créer", 
+                $menu['Professeurs']->addChild('Créer', 
                     array(
-                        "route" => "user_create",
-                        'routeParameters' => array('role' => "professeur")
+                        'route' => 'user_create',
+                        'routeParameters' => array('role' => 'professeur')
                     )
                 );
 
             $menu->addChild('Tuteur');
-                $menu["Tuteur"]->addChild("Liste", 
+                $menu['Tuteur']->addChild('Liste', 
                     array(
-                        "route" => "user_list",
-                        'routeParameters' => array('role' => "tuteur")
+                        'route' => 'user_list',
+                        'routeParameters' => array('role' => 'tuteur')
                     )
                 );
-                $menu["Tuteur"]->addChild("Créer", 
+                $menu['Tuteur']->addChild('Créer', 
                     array(
-                        "route" => "user_create",
-                        'routeParameters' => array('role' => "tuteur")
+                        'route' => 'user_create',
+                        'routeParameters' => array('role' => 'tuteur')
                     )
                 );
 
             $menu->addChild('Administration');
-                $menu["Administration"]->addChild("Liste", 
+                $menu['Administration']->addChild('Liste', 
                     array(
-                        "route" => "user_list",
-                        'routeParameters' => array('role' => "administrateur")
+                        'route' => 'user_list',
+                        'routeParameters' => array('role' => 'administrateur')
                     )
                 );
-                $menu["Administration"]->addChild("Créer", 
+                $menu['Administration']->addChild('Créer', 
                     array(
-                        "route" => "user_create",
-                        'routeParameters' => array('role' => "administrateur")
+                        'route' => 'user_create',
+                        'routeParameters' => array('role' => 'administrateur')
                     )
                 );
-            $menu->addChild("Groupes");
-                $menu["Groupes"]->addChild("Créer",
+            $menu->addChild('Groupes');
+                $menu['Groupes']->addChild('Créer',
                     array(
-                        "route" => "groupe_create"
+                        'route' => 'groupe_create'
                     )
                 );
         }
@@ -99,20 +100,20 @@ class MenuBuilder
 
         $menu->addChild('Mon compte', 
             array(
-                "route" => "fos_user_profile_show"
+                'route' => 'fos_user_profile_show'
             )
         );
 
         //Penser à ajouter un discriminant
         $menu->addChild('Parametres',
             array(
-                "route" => "fos_user_profile_edit"
+                'route' => 'fos_user_profile_edit'
             )
         );
 
-        $menu->addChild("Me déconnecter", 
+        $menu->addChild('Me déconnecter', 
             array(
-                "route" => "fos_user_security_logout"
+                'route' => 'fos_user_security_logout'
             )
         );
 
