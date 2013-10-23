@@ -2,7 +2,7 @@
 /* Typographie de la page web ************************/
 
 $texte:         #5d5e64;
-$liens:         #5d5e64;
+$liens:         #4478a2;
 $liensSurvoles: inherit;
 
 
@@ -64,6 +64,11 @@ a:hover    { color: $liensSurvoles;}
 a:focus    { color: $liensSurvoles;}
 a:visited  {}
 a:active   { color: $liensSurvoles;}
+
+.link
+{
+	color: $liens;
+}
 
 
 /* Decoration */
