@@ -48,16 +48,17 @@
 	{% endif %}
 
 
-	{% for flashMessage in app.session.flashbag.get('info') %}
-		<section class="section">
-		    <div class="flash-message">
-		    	<p>{{ flashMessage }}</p>
-		    </div>
-		</section>
-	{% endfor %}
-
-
 	<section class="{% block sectionClass %}section{% endblock %}">
+		{% for flashMessage in app.session.flashbag.get('info') %}
+			<article class="error">
+			    <p>{{ flashMessage }}</p>
+			</article>
+		{% endfor %}
+
+		<article class="error">
+		    <p>Ceci est une erreur générée par symfony</p>
+		</article>
+
 		{% block body %}{% endblock %}
 	</section>
 

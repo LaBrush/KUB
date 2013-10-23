@@ -1,73 +1,46 @@
 $(function() {
 
 	// Cette ligne retire l'attribut style du body ajouté par jquery
+	
+	var body = $("body");
+	var nav = $('nav');
+	var chevron = $('#chevron');
 
-	$('body').removeAttr('style');
-
+	body.removeAttr('style');
 
 	// Cette fonction permet l'ouverture du menu au clic sur le bouton #bouton-menu
 
 	$('#button-menu').click( function() {
 
-		if($('#chevron').hasClass('icon-chevron-sign-up') == true)
+		if(nav.hasClass('nav-open'))
 		{
-			$('#chevron')
+			chevron
 			.removeClass('icon-chevron-sign-up')
 			.addClass('icon-chevron-sign-down');
+
+			nav.removeClass('nav-open');
 		}
 		else
 		{
-			$('#chevron')
+			chevron
 			.removeClass('icon-chevron-sign-down')
 			.addClass('icon-chevron-sign-up');
+
+			nav.addClass('nav-open');
 		};
-
-		if ($('nav').hasClass('nav-open'))
-		{
-			$('nav').removeClass('nav-open');
-		}
-		else
-		{
-			$('nav').addClass('nav-open');
-		}
 	});
-
-
-	// On affiche le sous-menu dans lequel on se trouve
-
-	var actualPage = '.submenu:contains("' + $('.section-title').text() + '")';
-
-	$(actualPage)
-	.addClass('submenu-actual')
-	.removeClass('submenu');
 
 
 
 	// Cette fonction bloque la section lors du scroll du menu 
-
-	/*$('nav').mouseenter( function() {
-
-
-
-		var actualScroll = window.scrollY;
-		var top = '-' + actualScroll + 'px';
-
-		$('nav').mouseleave( function() {
-
-			$('section').removeAttr('style');
-			window.scrollTo(0, actualScroll);
-		});
-	});*/
-
-	var section = $("section");
 	
-	$('nav').mouseenter( function() {
+	nav.mouseenter( function() {
 			$(this).removeClass('unscrollable');
-			section.addClass('unscrollable');
+			body.addClass('unscrollable');
 		})
 		.mouseleave( function() {
 			$(this).addClass('unscrollable');
-			section.removeClass('unscrollable');
+			body.removeClass('unscrollable');
 		})
 		.addClass('unscrollable');
 
