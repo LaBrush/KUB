@@ -4,7 +4,7 @@
 
 	
 		<article class="article">
-			<h2 class="section-title">Modifier {{ user.prenom }} {{ user.nom }}</h2 class="section-title">
+			<h2 class="section-title">Modifier {{ user.prenom }} {{ user.nom }}</h2>
 		</article>
 
 		<article class="article">
@@ -15,6 +15,12 @@
 
 				<input type="submit">
 			{{ form_end(form) }}
+		</article>
+
+		<article class="article">
+			
+			<a href="{{ path("user_delete", { username: user.username, role: role }) }}">...ou supprimer {{ user.prenom }} {{ user.nom }}</a>
+
 		</article>
 		
 			

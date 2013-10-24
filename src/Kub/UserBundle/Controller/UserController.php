@@ -105,7 +105,7 @@ class UserController extends Controller
 	{
 			if($user->getClass() != $role)
 			{
-				throw $this->createNotFoundException("L'utilisateur " . $username . " n'a pu être trouvé " . $user->getClass());
+				throw $this->createNotFoundException("L'utilisateur " . $username . " n'a pu être trouvé.");
 			}
 
 			$class = ucfirst($role);
@@ -168,11 +168,48 @@ class UserController extends Controller
 			return $this->render('KubUserBundle:User:' . $role . '_edit.html.twig',
 				array(
 					'form' => $form->createView(),
-					'user' => $user
+					'user' => $user,
+					'role' => $role
 				)
 			);
-		
 	}
+
+	/**
+	 * @Secure(roles="ROLE_SECRETAIRE")
+	 */
+	public function deleteAction(User $user, $role, $username)
+	{
+		if($user->getClass() != $role)
+		{
+			throw $this->createNotFoundException("L'utilisateur " . $username . " n'a pu être trouvé.");
+		}
+
+		$form = $this->createFormBuilder()->getForm();
+		$request = $this->getRequest();
+
+		if ($request->getMethod() == 'POST') {
+			$form->bind($request);
+
+			if ($form->isValid()) {
+
+				$em = $this->getDoctrine()->getManager();
+				$em->remove($user);
+				$em->flush();
+
+				$this->get('session')->getFlashBag()->add('info', 'Utilisateur bien supprimé');
+	
+				return $this->redirect($this->generateUrl('home_homepage'));
+			}
+		}
+
+		return $this->render('KubUserBundle:User:user_delete.html.twig', array(
+			'user' => $user,
+			'form' => $form->createView(),
+			'role' => $role
+		));
+
+	}
+
 
 	/**
 	 * @Secure(roles="ROLE_USER")
@@ -198,7 +235,7 @@ class UserController extends Controller
 	{
 		if($user->getClass() != $role)
 		{
-			throw $this->createNotFoundException("L'utilisateur " . $username . " n'a pu être trouvé " . $user->getClass());
+			throw $this->createNotFoundException("L'utilisateur " . $username . " n'a pu être trouvé.");
 		}
 
 		return $this->render("KubUserBundle:Show:show.html.twig", 

@@ -21,3 +21,9 @@ user_edit:
     defaults: { _controller: KubUserBundle:User:edit }
     requirements:
         role: eleve|tuteur|administrateur|professeur
+
+user_delete:
+    path: /{role}/{username}/delete
+    defaults: { _controller: KubUserBundle:User:delete }
+    requirements:
+        role: eleve|tuteur|administrateur|professeur

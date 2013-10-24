@@ -34,6 +34,7 @@ class Eleve extends User
 
 	/**
 	 *  @ORM\ManyToMany(targetEntity="Kub\UserBundle\Entity\Tuteur", inversedBy="eleves", cascade={"persist"})
+	 * @Assert\Valid()
 	 */
 	private $tuteurs ;
 

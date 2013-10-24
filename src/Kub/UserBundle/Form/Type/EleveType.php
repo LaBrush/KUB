@@ -31,15 +31,16 @@ class EleveType extends UserType
 			->add('niveau', 'entity', array(
 				"class" => "Kub\UserBundle\Entity\Niveau",
 			))
-			->add('tuteurs', 'collection', array(
-				"type" => new TuteurType(),
-				"allow_add" => true,
-				"allow_delete" => true
-			))
 			->add('tuteurs', 'entity', array(
 				'class' => 'Kub\UserBundle\Entity\Tuteur',
 				"multiple" => true,
 				"expanded" => true
+			))
+			->add('tuteurs_add', 'collection', array(
+				"type" => new TuteurType(),
+				"allow_add" => true,
+				"allow_delete" => true,
+				"property_path" => "tuteurs"
 			))
 		;
 

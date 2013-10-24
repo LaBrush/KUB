@@ -4,7 +4,7 @@
 
 	
 		<article class="article">
-			<h2 class="section-title">Créer un {{ user.class }}</h2>
+			<h2 class="section-title">Êtes vous sûr de vouloir supprimer le compte de {{ user.prenom }} {{ user.nom }} ?</h2>
 		</article>
 
 		<article class="article">
@@ -13,12 +13,10 @@
 				{% block form %}
 				{% endblock %}
 
-			<input type="submit">
-
+				<input type="submit"> ou 
+				<a href="{{ path('user_list', { role: role }) }}">Annuler</a>	
 			{{ form_end(form) }}
 		</article>
 		
-
 			
-
 {% endblock %}
