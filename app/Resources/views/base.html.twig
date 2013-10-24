@@ -7,6 +7,9 @@
 			<![endif]-->
 	<link href='http://fonts.googleapis.com/css?family=Raleway:400,700' rel='stylesheet' type='text/css'>
 
+	<link rel="apple-touch-icon-precomposed" href="{{ asset('images/logo.png') }}">
+	<link rel="shortcut icon" type="image/x-icon" href="{{ asset('images/logo.png') }}">
+
 	<link rel="stylesheet" href="{{ asset('ressources/stylesheets/main.css') }}" />
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
@@ -19,8 +22,9 @@
 	
 	<header class="header">
 		<div id="logo">
+			<img class="icone" src="{{ asset('images/logo_no_bg.png') }}" alt="Kub">
 			<h1 class="h2">Kub</h1>
-			<span class="slogan">créé par LaBrush</span>
+			<span class="slogan">par LaBrush</span>
 		</div>
 	
 		{% if is_granted("ROLE_USER") %}
