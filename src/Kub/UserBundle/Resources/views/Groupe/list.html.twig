@@ -1,0 +1,17 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+
+	
+		<article class="article">
+			<ul>
+				{% for groupe in list_users %}
+				
+					<li><a href="{{ path('groupe_show', { id: groupe.id }) }}">{{ groupe.name }}</a></li>
+
+				{% endfor %}
+			</ul>
+		</article>
+		
+
+{% endblock %}

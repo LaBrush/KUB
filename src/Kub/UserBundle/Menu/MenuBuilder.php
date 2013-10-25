@@ -85,6 +85,11 @@ class MenuBuilder
                     )
                 );
             $menu->addChild('Groupes', array("labelAttributes" => array("className" => "groupe")));
+                $menu['Groupes']->addChild('Liste',
+                    array(
+                        'route' => 'groupe_list'
+                    )
+                );
                 $menu['Groupes']->addChild('Créer',
                     array(
                         'route' => 'groupe_create'
