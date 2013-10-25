@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"us",
+				"username"
+			],
+			[
+				"user",
+				"user"
+			],
+			[
 				"var",
 				"var_dump"
 			],
@@ -110,10 +118,6 @@
 			[
 				"username",
 				"usernameCanonical"
-			],
-			[
-				"user",
-				"userManager"
 			],
 			[
 				"lo",
@@ -510,10 +514,6 @@
 			[
 				"Favo",
 				"FavorisManagerView"
-			],
-			[
-				"Manager",
-				"FavorisManager"
 			]
 		]
 	},
@@ -523,9 +523,17 @@
 	"build_system": "Packages/User/PHP-Lint.sublime-build",
 	"command_palette":
 	{
-		"height": 67.0,
+		"height": 307.0,
 		"selected_items":
 		[
+			[
+				"rena",
+				"File: Rename"
+			],
+			[
+				"tabs",
+				"Indentation: Convert to Tabs"
+			],
 			[
 				"rename",
 				"File: Rename"
@@ -545,14 +553,6 @@
 			[
 				"renam",
 				"File: Rename"
-			],
-			[
-				"rena",
-				"File: Rename"
-			],
-			[
-				"tabs",
-				"Indentation: Convert to Tabs"
 			],
 			[
 				"refresh",
@@ -723,7 +723,7 @@
 				"Set Syntax: JavaScript"
 			]
 		],
-		"width": 557.0
+		"width": 575.0
 	},
 	"console":
 	{
@@ -740,11 +740,23 @@
 	},
 	"file_history":
 	[
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Entity/User.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Form/Type/EleveType.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/views/User/eleve_edit.html.twig",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Entity/Eleve.php",
+		"/Users/adrienbocquet/Desktop/cv_zozor_images/index.html",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/views/User/eleve_create.html.twig",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/views/User/user_edit.html.twig",
+		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/UserBundle/Resources/views/User/user_delete.html.twig",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/config/routing/user.yml",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Controller/UserController.php",
+		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/UserBundle/Resources/views/User/user.delete.html.twig",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/views/User/user_create.html.twig",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/views/Groupe/create.html.twig",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/app/Resources/views/base.html.twig",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/views/Menu/menu.html.twig",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Entity/Groupe.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Entity/Niveau.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Entity/Eleve.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Menu/MenuBuilder.php",
 		"/Users/adrienbocquet/Downloads/data.php",
 		"/Users/adrienbocquet/Downloads/ecoquart@ecoquartier.lu.duck",
@@ -757,29 +769,21 @@
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Entity/Tuteur.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Entity/Tuteur.php~",
 		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/UserBundle/Form/EventListener/addMemberFieldSuscriber.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Entity/User.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/DataFixtures/ORM/LoadEleveData.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/DataFixtures/ORM/LoadNiveauData.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Controller/GroupeController.php.old",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/views/User/administrateur_create.html.twig",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/views/User/administrateur_edit.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/views/User/eleve_create.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/views/User/eleve_edit.html.twig",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/views/User/professeur_create.html.twig",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/views/User/professeur_edit.html.twig",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/views/User/tuteur_create.html.twig",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/views/User/tuteur_edit.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Form/Type/EleveType.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/config/services.yml",
 		"/Users/adrienbocquet/Sites/MAMP/Maquette_EVN/index.html",
 		"/Users/adrienbocquet/Sites/MAMP/KUB/LICENSE",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/views/User/user_create.html.twig",
 		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/UserBundle/Form/Handler/GroupeHandler.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/views/Groupe/create.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/config/routing/user.yml",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/config/routing/groupe.yml",
 		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/UserBundle/Resources/views/Groupe/create.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Controller/UserController.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Form/Handler/UserHandler.php",
 		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/UserBundle/Controller/GroupeController.php.old",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/config/routing.yml",
@@ -863,11 +867,7 @@
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Entity/CPE.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Entity/Manitou.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Entity/Secretaire.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Entity/Surveillant.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/HomeBundle/Resources/translations/message.es.yml",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/HomeBundle/Resources/translations/message.en.yml",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/HomeBundle/Resources/views/Eleve/index.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/HomeBundle/Resources/translations/message.fr.yml"
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Entity/Surveillant.php"
 	],
 	"find":
 	{
@@ -896,6 +896,10 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"javascripts",
+			"</h2 class=\"section-title\">",
+			"article",
+			" . $user->getClass()",
 			"inversedBy",
 			"ManyToOne",
 			"ArrayCollection()",
@@ -1019,11 +1023,7 @@
 			"administrateur",
 			"Administrateur",
 			"administrateur",
-			"Administrateur",
-			"administrateur",
-			"acme",
-			"$",
-			"manager"
+			"Administrateur"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1031,6 +1031,8 @@
 		"regex": false,
 		"replace_history":
 		[
+			"js",
+			"</h2>",
 			"ArrayCollection",
 			":User:",
 			"User",
@@ -1103,6 +1105,34 @@
 		"selected_items":
 		[
 			[
+				"eleve",
+				"Kub/src/Kub/UserBundle/Entity/Eleve.php"
+			],
+			[
+				"user",
+				"Kub/src/Kub/UserBundle/Entity/User.php"
+			],
+			[
+				"elevetype",
+				"UserBundle/Form/Type/EleveType.php"
+			],
+			[
+				"usered",
+				"UserBundle/Resources/views/User/user_edit.html.twig"
+			],
+			[
+				"user_edi",
+				"UserBundle/Resources/views/User/user_edit.html.twig"
+			],
+			[
+				"user.yml",
+				"UserBundle/Resources/config/routing/user.yml"
+			],
+			[
+				"controller",
+				"UserBundle/Controller/UserController.php"
+			],
+			[
 				"base",
 				"Kub/app/Resources/views/base.html.twig"
 			],
@@ -1141,14 +1171,6 @@
 			[
 				"niveau",
 				"UserBundle/Entity/Niveau.php"
-			],
-			[
-				"user",
-				"Kub/src/Kub/UserBundle/Entity/User.php"
-			],
-			[
-				"eleve",
-				"Kub/src/Kub/UserBundle/Entity/Eleve.php"
 			],
 			[
 				"loni",
@@ -1229,10 +1251,6 @@
 			[
 				"secu",
 				"UserBundle/Controller/SecurityController.php"
-			],
-			[
-				"elevetype",
-				"UserBundle/Form/Type/EleveType.php"
 			],
 			[
 				"usertype",
@@ -1597,22 +1615,6 @@
 			[
 				"userroutin",
 				"src/Kub/UserBundle/Resources/config/routing.yml"
-			],
-			[
-				"sec",
-				"app/config/security.yml"
-			],
-			[
-				"userconfig",
-				"src/Kub/UserBundle/Resources/config/config.yml"
-			],
-			[
-				"usrecon",
-				"src/Kub/UserBundle/Resources/config/config.yml"
-			],
-			[
-				"homedefault",
-				"src/Kub/HomeBundle/Controller/DefaultController.php"
 			]
 		],
 		"width": 0.0
