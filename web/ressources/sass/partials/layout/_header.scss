@@ -2,9 +2,7 @@
 
 $header:     rgba(235, 235, 235, 0.9);
 $user:       #e67e22;
-$user-color: #fefefe;
 $logo:       #e67e22;
-$logo-color: #fefefe;
 
 
 /*********************************************************************************/
@@ -33,22 +31,12 @@ $logo-color: #fefefe;
 	@include box-sizing(border-box);
 
 	background: $logo;
-	color: $logo-color;
-
-	.icone
-	{
-		position: fixed;
-		top: 5px;
-		left: 7px;
-		z-index: 3;
-		max-width: 40px;
-	}
 
 	.h2
 	{
 		float: left;
 		display: inline-block;
-		margin: 0 0 0 58px;
+		margin: 0 0 0 14px;
 	}
 
 	.slogan

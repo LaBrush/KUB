@@ -28,6 +28,13 @@ class MenuBuilder
             
         if($this->security->isGranted('ROLE_SECRETAIRE'))
         {
+            $menu->addChild('Groupes', array("labelAttributes" => array("className" => "groupes")));
+                $menu['Groupes']->addChild('Créer',
+                    array(
+                        'route' => 'groupe_create'
+                    )
+                );
+
             $menu->addChild('Eleves', array("labelAttributes" => array("className" => "eleve")));
                 $menu['Eleves']->addChild('Liste', 
                     array(
@@ -82,12 +89,6 @@ class MenuBuilder
                     array(
                         'route' => 'user_create',
                         'routeParameters' => array('role' => 'administrateur')
-                    )
-                );
-            $menu->addChild('Groupes', array("labelAttributes" => array("className" => "groupe")));
-                $menu['Groupes']->addChild('Créer',
-                    array(
-                        'route' => 'groupe_create'
                     )
                 );
         }

@@ -4,6 +4,7 @@
 $texte:         #5d5e64;
 $liens:         #4478a2;
 $liensSurvoles: inherit;
+$color-light:   #fefefe;
 
 
 /* Symboles */
@@ -74,3 +75,8 @@ a:active   { color: $liensSurvoles;}
 /* Decoration */
 .raye {text-decoration: line-through;}
 .underline {text-decoration: underline;}
+.color-light
+{
+    color: $color-light;
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.2);
+}

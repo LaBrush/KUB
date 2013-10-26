@@ -1,15 +1,25 @@
 /* Couleurs */
 
 $accueil: 				#e67e22;
-$espace-collaboratif: 	#c8d92f;
-$agenda: 				#2ccc6f;
-$bigbro: 				#d0384c;
+$espace-collaboratif: 	#f2c72f;
+$agenda: 				#22b6e6;
 $vie-lyceenne: 			#9e66a2;
+$bigbro: 				#f28fbe;
 
-$eleve: 				#e67e22;
-$tuteur: 				#3498db;
-$professeur: 			#2ecc71;
-$administrateur: 		#e74c3c;
+
+$groupes: 				#f2c72f;
+$eleve: 				#80d625;
+$professeur: 			#22b6e6;
+$tuteur: 				#f28fbe;
+$administrateur: 		#f73b40;
+
+
+$scientifique: 			#f2c72f;
+$social-histoire: 		#80d625;
+$langues: 				#22b6e6;
+$sport-options:			#f28fbe;
+$autres: 				#f73b40;
+
 
 $button-color: 			#fefefe;
 $button-login: 			#e67e22;
@@ -24,14 +34,16 @@ $button-options: 		#e67e22;
 .bordered-cours {border-left: 4px solid $agenda;}
 .bordered-devoirs {border-left: 4px solid $agenda;}
 .bordered-agenda {border-left: 4px solid $agenda;}
+.bordered-vie-lyceenne {border-left: 4px solid $vie-lyceenne;}
 .bordered-bigbro {border-left: 4px solid $bigbro;}
 .bordered-notes {border-left: 4px solid $bigbro;}
-.bordered-vie-lyceenne {border-left: 4px solid $vie-lyceenne;}
+
 
 .bordered-eleve {border-left: 4px solid $eleve;}
 .bordered-tuteur {border-left: 4px solid $tuteur;}
 .bordered-professeur {border-left: 4px solid $professeur;}
 .bordered-administrateur {border-left: 4px solid $administrateur;}
+.bordered-groupes {border-left: 4px solid $groupes;}
 
 
 
@@ -46,6 +58,7 @@ $button-options: 		#e67e22;
 	@include border-radius(2px);
 	padding: 4px 10px;
 	color: $button-color;
+	text-shadow: 1px 1px rgba(0, 0, 0, 0.2);
 	font-size: 0.8em;
 	cursor: pointer;
 }
@@ -78,11 +91,11 @@ button, input[type="submit"]
 	}
 }
 
-.button-options-eleve
+.button-options
 {
 	@include button;
 
-	background: $eleve;
+	background: $accueil;
 	padding: 0 20px;
 	font-size: 1.1em;
 
@@ -90,55 +103,7 @@ button, input[type="submit"]
 
 	&:hover, &:active, &:focus
 	{
-		background: darken($eleve, 5%);
-	}
-}
-
-.button-options-tuteur
-{
-	@include button;
-
-	background: $tuteur;
-	padding: 0 20px;
-	font-size: 1.1em;
-
-	@include border-radius(0);
-
-	&:hover, &:active, &:focus
-	{
-		background: darken($tuteur, 5%);
-	}
-}
-
-.button-options-professeur
-{
-	@include button;
-
-	background: $professeur;
-	padding: 0 20px;
-	font-size: 1.1em;
-
-	@include border-radius(0);
-
-	&:hover, &:active, &:focus
-	{
-		background: darken($professeur, 5%);
-	}
-}
-
-.button-options-administrateur
-{
-	@include button;
-
-	background: $administrateur;
-	padding: 0 20px;
-	font-size: 1.1em;
-
-	@include border-radius(0);
-
-	&:hover, &:active, &:focus
-	{
-		background: darken($administrateur, 5%);
+		background: darken($accueil, 5%);
 	}
 }
 

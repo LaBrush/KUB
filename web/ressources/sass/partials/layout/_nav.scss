@@ -3,7 +3,6 @@
 $button:        		$header;
 $nav:	        		$header;
 $notifications: 		$logo;
-$notifications-color: 	$logo-color;
 
 
 /******************************************************************************/
@@ -44,7 +43,7 @@ $notifications-color: 	$logo-color;
 		left: 0;
 		width: 200px;
 		height: 50px;
-		padding: 15px 20px;
+		padding: 15px 14px;
 		@include box-sizing(border-box);
 		z-index: 2;
 
@@ -104,7 +103,6 @@ $notifications-color: 	$logo-color;
 		float: right;
 
 		background-color: $notifications;
-		color: $notifications-color;
 		font-size: 0.8em;
 
 		@include border-radius(50px);
