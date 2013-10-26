@@ -10,6 +10,8 @@ use Misd\PhoneNumberBundle\Validator\Constraints\PhoneNumber as AssertPhoneNumbe
  * Tuteur
  * @ORM\Entity
  * @ORM\Table()
+ *
+ * @ORM\Entity(repositoryClass="Kub\UserBundle\Entity\TuteurRepository")
  */
 
 class Tuteur extends User

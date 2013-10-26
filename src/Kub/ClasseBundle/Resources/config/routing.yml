@@ -1,0 +1,19 @@
+groupe_show:
+    pattern:  /groupe/{id}/show
+    defaults: { _controller: "KubClasseBundle:Groupe:show" }
+
+groupe_create:
+    pattern:  /groupe/add
+    defaults: { _controller: "KubClasseBundle:Groupe:create" }
+
+groupe_edit:
+    pattern:  /groupe/{id}/edit
+    defaults: { _controller: "KubClasseBundle:Groupe:edit" }
+
+groupe_delete:
+    pattern:  /groupe/{id}/delete
+    defaults: { _controller: "KubClasseBundle:Groupe:delete" }
+
+groupe_list:
+    pattern:  /groupe/list
+    defaults: { _controller: "KubClasseBundle:Groupe:list" }

@@ -10,6 +10,8 @@ use Symfony\Component\Validator\Constraints as Assert ;
  *
  * @ORM\Entity
  * @ORM\Table()
+ *
+ * @ORM\Entity(repositoryClass="Kub\UserBundle\Entity\EleveRepository")
  */
 class Eleve extends User 
 {
@@ -39,12 +41,12 @@ class Eleve extends User
 	private $tuteurs ;
 
 	/**
-	 * @ORM\ManyToOne(targetEntity="Kub\UserBundle\Entity\Niveau", inversedBy="eleves"))
+	 * @ORM\ManyToOne(targetEntity="Kub\ClasseBundle\Entity\Niveau", inversedBy="eleves"))
 	 */
 	private $niveau ;
 
 	/**
-	 * @ORM\ManyToMany(targetEntity="Kub\UserBundle\Entity\Groupe", mappedBy="eleves")
+	 * @ORM\ManyToMany(targetEntity="Kub\ClasseBundle\Entity\Groupe", mappedBy="eleves")
 	 */
 	protected $groupes;
 
@@ -144,10 +146,10 @@ class Eleve extends User
 	/**
 	 * Add niveau
 	 *
-	 * @param \Kub\UserBundle\Entity\Niveau $niveau
+	 * @param \Kub\ClasseBundle\Entity\Niveau $niveau
 	 * @return Eleve
 	 */
-	public function addNiveau(\Kub\UserBundle\Entity\Niveau $niveau)
+	public function addNiveau(\Kub\ClasseBundle\Entity\Niveau $niveau)
 	{
 		$this->niveau[] = $niveau;
 	
@@ -157,9 +159,9 @@ class Eleve extends User
 	/**
 	 * Remove niveau
 	 *
-	 * @param \Kub\UserBundle\Entity\Niveau $niveau
+	 * @param \Kub\ClasseBundle\Entity\Niveau $niveau
 	 */
-	public function removeNiveau(\Kub\UserBundle\Entity\Niveau $niveau)
+	public function removeNiveau(\Kub\ClasseBundle\Entity\Niveau $niveau)
 	{
 		$this->niveau->removeElement($niveau);
 	}
@@ -192,10 +194,10 @@ class Eleve extends User
 	/**
 	 * Set niveau
 	 *
-	 * @param \Kub\UserBundle\Entity\Niveau $niveau
+	 * @param \Kub\ClasseBundle\Entity\Niveau $niveau
 	 * @return Eleve
 	 */
-	public function setNiveau(\Kub\UserBundle\Entity\Niveau $niveau = null)
+	public function setNiveau(\Kub\ClasseBundle\Entity\Niveau $niveau = null)
 	{
 		$this->niveau = $niveau;
 	
@@ -205,10 +207,10 @@ class Eleve extends User
 	/**
 	 * Add groupes
 	 *
-	 * @param \Kub\UserBundle\Entity\Groupe $groupes
+	 * @param \Kub\ClasseBundle\Entity\Groupe $groupes
 	 * @return Eleve
 	 */
-	public function addGroupe(\Kub\UserBundle\Entity\Groupe $groupes)
+	public function addGroupe(\Kub\ClasseBundle\Entity\Groupe $groupes)
 	{
 		$this->groupes[] = $groupes;
 	
@@ -218,9 +220,9 @@ class Eleve extends User
 	/**
 	 * Remove groupes
 	 *
-	 * @param \Kub\UserBundle\Entity\Groupe $groupes
+	 * @param \Kub\ClasseBundle\Entity\Groupe $groupes
 	 */
-	public function removeGroupe(\Kub\UserBundle\Entity\Groupe $groupes)
+	public function removeGroupe(\Kub\ClasseBundle\Entity\Groupe $groupes)
 	{
 		$this->groupes->removeElement($groupes);
 	}

@@ -1,0 +1,19 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+
+	
+		<article class="article">
+			<h2 class="section-title">Êtes vous sûr de vouloir supprimer le groupe {{ groupe.name }} ?</h2>
+		</article>
+
+		<article class="article">
+			{{ form_start(form) }}
+
+				<input type="submit"> ou 
+				<a href="{{ path('groupe_list') }}">Annuler</a>	
+			{{ form_end(form) }}
+		</article>
+		
+			
+{% endblock %}

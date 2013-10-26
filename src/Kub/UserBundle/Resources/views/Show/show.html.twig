@@ -6,18 +6,13 @@
 		<article class="article">
 			<h2>Nom utilisateur: {{ user.username }}</h2>
 			<p><a href="{{ path("user_edit", {username: user.username, role: user.class }) }}">Modifier</a></p>
+		</article>
 
-			<p>Groupes de l'uilisateur: 
+		<article class="article">
+			
+			{% block details %}
+			{% endblock %}
 
-				<ul>
-					
-					{% for groupe in user.groupes %}
-						<li><a href="{{ path('groupe_show', {id: groupe.id})}}">{{ groupe.name }}</a></li>
-					{% endfor %}
-
-				</ul>
-				
-			</p>
 		</article>
 	
 
