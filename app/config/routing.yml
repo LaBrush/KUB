@@ -1,3 +1,7 @@
+kub_edt:
+    resource: "@KubEDTBundle/Resources/config/routing.yml"
+    prefix:   /
+
 kub_classe:
     resource: "@KubClasseBundle/Resources/config/routing.yml"
     prefix:   /

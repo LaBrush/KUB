@@ -38,6 +38,7 @@ class AppKernel extends Kernel
             new Kub\CasierBundle\KubCasierBundle(),
             new Kub\RessourceBundle\KubRessourceBundle(),
             new Kub\ClasseBundle\KubClasseBundle(),
+            new Kub\EDTBundle\KubEDTBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
