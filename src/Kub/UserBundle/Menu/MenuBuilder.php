@@ -63,16 +63,20 @@ class MenuBuilder
                     )
                 );
 
-<<<<<<< HEAD
             $menu->addChild('Emplois du temps', array("labelAttributes" => array("className" => "tuteur")));
                 $menu['Emplois du temps']->addChild('Frequences',
                     array(
                         'route' => 'frequence_list'
                     )
                 );
-=======
+
             $menu->addChild('Emplois du temps', array("labelAttributes" => array("className" => "agenda")));
->>>>>>> 4663c73a722a9d8ccb7dbe848d9514e5e5d40408
+                $menu['Emplois du temps']->addChild('Liste',
+                    array(
+                        'route' => 'frequence_list'
+                    )
+                );
+
         }
 
         foreach ($menu as $key => $categorie) {
