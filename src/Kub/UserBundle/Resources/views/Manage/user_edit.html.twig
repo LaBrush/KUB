@@ -4,7 +4,7 @@
 
 	
 		<article class="article">
-			<h2 class="section-title">Modifier {{ user.prenom }} {{ user.nom }}</h2>
+			<h2 class="section-title">{{ user.prenom }} {{ user.nom }}</h2>
 		</article>
 
 		<article class="article">
@@ -13,13 +13,12 @@
 				{% block form %}
 				{% endblock %}
 
-				<input type="submit">
+				<input class="button-yes" type="submit">
+				<a class="button" href="{{ path('user_list', { role: user.class }) }}">Annuler</a>
+				<a class="button-no" href="{{ path("user_delete", { username: user.username, role: role }) }}">Supprimer {{ user.prenom }} {{ user.nom }}</a>
 			{{ form_end(form) }}
-		</article>
-
-		<article class="article">
 			
-			<a href="{{ path("user_delete", { username: user.username, role: role }) }}">...ou supprimer {{ user.prenom }} {{ user.nom }}</a>
+			
 
 		</article>
 		

@@ -1,29 +1,27 @@
 /* Couleurs */
 
 $accueil: 				#e67e22;
-$espace-collaboratif: 	#f2c72f;
+$espace-collaboratif:	#80d625;
 $agenda: 				#22b6e6;
-$vie-lyceenne: 			#9e66a2;
-$bigbro: 				#f28fbe;
+$vie-lyceenne: 			#f28fbe;
+$bigbro: 				#f73b40;
 
 
-$groupes: 				#f2c72f;
-$eleve: 				#80d625;
-$professeur: 			#22b6e6;
-$tuteur: 				#f28fbe;
-$administrateur: 		#f73b40;
+$utilisateurs: 			#f2c72f;
+$groupes: 				#80d625;
 
 
-$scientifique: 			#f2c72f;
-$social-histoire: 		#80d625;
-$langues: 				#22b6e6;
-$sport-options:			#f28fbe;
-$autres: 				#f73b40;
+$scientifique: 			#f2c72f;  // Jaune
+$social-histoire: 		#80d625;  // Vert
+$langues: 				#22b6e6;  // Bleu
+$sport-options:			#f28fbe;  // Rose
+$autres: 				#f73b40;  // Rouge
 
 
 $button-color: 			#fefefe;
-$button-login: 			#e67e22;
-$button-options: 		#e67e22;
+$button: 				$accueil;
+$button-yes: 			#80d625;
+$button-no: 			#f73b40;
 
 
 /**************************************************************************/
@@ -39,10 +37,7 @@ $button-options: 		#e67e22;
 .bordered-notes {border-left: 4px solid $bigbro;}
 
 
-.bordered-eleve {border-left: 4px solid $eleve;}
-.bordered-tuteur {border-left: 4px solid $tuteur;}
-.bordered-professeur {border-left: 4px solid $professeur;}
-.bordered-administrateur {border-left: 4px solid $administrateur;}
+.bordered-utilisateurs {border-left: 4px solid $utilisateurs;}
 .bordered-groupes {border-left: 4px solid $groupes;}
 
 
@@ -63,15 +58,39 @@ $button-options: 		#e67e22;
 	cursor: pointer;
 }
 
-button, input[type="submit"]
+.button
 {
 	@include button;
 
-	background: $button-login;
+	background: $button;
 
 	&:hover, &:active, &:focus
 	{
-		background: darken($button-login, 5%);
+		background: darken($button, 5%);
+	}
+}
+
+.button-yes
+{
+	@include button;
+
+	background: $button-yes;
+
+	&:hover, &:active, &:focus
+	{
+		background: darken($button-yes, 5%);
+	}
+}
+
+.button-no
+{
+	@include button;
+
+	background: $button-no;
+
+	&:hover, &:active, &:focus
+	{
+		background: darken($button-no, 5%);
 	}
 }
 
@@ -79,7 +98,7 @@ button, input[type="submit"]
 {
 	@include button;
 
-	background: $button-login;
+	background: $button;
 	padding: 0 20px;
 	font-size: 1.1em;
 
@@ -87,7 +106,7 @@ button, input[type="submit"]
 
 	&:hover, &:active, &:focus
 	{
-		background: darken($button-login, 5%);
+		background: darken($button, 5%);
 	}
 }
 
@@ -95,7 +114,7 @@ button, input[type="submit"]
 {
 	@include button;
 
-	background: $accueil;
+	background: $button;
 	padding: 0 20px;
 	font-size: 1.1em;
 
@@ -103,7 +122,7 @@ button, input[type="submit"]
 
 	&:hover, &:active, &:focus
 	{
-		background: darken($accueil, 5%);
+		background: darken($button, 5%);
 	}
 }
 

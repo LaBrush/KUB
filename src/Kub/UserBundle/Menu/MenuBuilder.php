@@ -29,7 +29,7 @@ class MenuBuilder
             
         if($this->security->isGranted('ROLE_SECRETAIRE'))
         {
-            $menu->addChild('Utilisateurs', array("labelAttributes" => array("className" => "professeur")));
+            $menu->addChild('Utilisateurs', array("labelAttributes" => array("className" => "utilisateurs")));
                 $menu['Utilisateurs']->addChild('Eleves', 
                     array(
                         'route' => 'user_list',
@@ -56,19 +56,23 @@ class MenuBuilder
                     )
                 );
 
-            $menu->addChild('Groupes', array("labelAttributes" => array("className" => "administrateur")));
+            $menu->addChild('Groupes', array("labelAttributes" => array("className" => "groupes")));
                 $menu['Groupes']->addChild('Liste',
                     array(
                         'route' => 'groupe_list'
                     )
                 );
 
+<<<<<<< HEAD
             $menu->addChild('Emplois du temps', array("labelAttributes" => array("className" => "tuteur")));
                 $menu['Emplois du temps']->addChild('Frequences',
                     array(
                         'route' => 'frequence_list'
                     )
                 );
+=======
+            $menu->addChild('Emplois du temps', array("labelAttributes" => array("className" => "agenda")));
+>>>>>>> 4663c73a722a9d8ccb7dbe848d9514e5e5d40408
         }
 
         foreach ($menu as $key => $categorie) {
