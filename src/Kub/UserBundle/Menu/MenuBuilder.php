@@ -64,6 +64,11 @@ class MenuBuilder
                 );
 
             $menu->addChild('Emplois du temps', array("labelAttributes" => array("className" => "tuteur")));
+                $menu['Emplois du temps']->addChild('Frequences',
+                    array(
+                        'route' => 'frequence_list'
+                    )
+                );
         }
 
         foreach ($menu as $key => $categorie) {

@@ -1,0 +1,19 @@
+frequence_create:
+    pattern:  /add
+    defaults: { _controller: "KubEDTBundle:Frequence:create" }
+
+frequence_list:
+    pattern:  /list
+    defaults: { _controller: "KubEDTBundle:Frequence:list" }
+
+frequence_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "KubEDTBundle:Frequence:delete" }
+    requirements: 
+        id: \d+
+
+frequence_edit:
+    pattern:  /{id}
+    requirements: 
+        id: \d+
+    defaults: { _controller: "KubEDTBundle:Frequence:edit" }

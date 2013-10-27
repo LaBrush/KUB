@@ -1,0 +1,21 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+
+	
+		<article class="article">
+			<h2 class="section-title">Creer un groupe</h2>
+		</article>
+
+		<article class="article">
+			{{ form_start(form) }}
+
+				{{ form_widget(form) }}
+		
+				<input type="submit">
+
+			{{ form_end(form) }}
+		</article>
+	
+
+{% endblock %}

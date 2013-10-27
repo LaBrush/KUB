@@ -1,0 +1,22 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+
+		<article class="article">
+			
+			<p><a href="{{ path('frequence_create') }}">Créer une frequence</a></p>
+
+		</article>
+
+		<article class="article">
+			<ul>
+				{% for frequence in list_frequence %}
+				
+					<li><a href="{{ path('frequence_edit', { id: frequence.id }) }}">{{ frequence.name }}</a></li>
+
+				{% endfor %}
+			</ul>
+		</article>
+		
+
+{% endblock %}
