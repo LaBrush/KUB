@@ -29,7 +29,7 @@ class EleveType extends UserType
 				"years" => $years
 			))
 			->add('niveau', 'entity', array(
-				"class" => "Kub\UserBundle\Entity\Niveau",
+				"class" => "Kub\ClasseBundle\Entity\Niveau",
 			))
 			->add('tuteurs', 'entity', array(
 				'class' => 'Kub\UserBundle\Entity\Tuteur',

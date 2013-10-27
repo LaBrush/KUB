@@ -1,0 +1,22 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+
+		<article class="article">
+			
+			<p><a href="{{ path('groupe_create') }}">Créer un groupe de classe</a></p>
+
+		</article>
+
+		<article class="article">
+			<ul>
+				{% for groupe in list_users %}
+				
+					<li><a href="{{ path('groupe_show', { id: groupe.id }) }}">{{ groupe.name }}</a></li>
+
+				{% endfor %}
+			</ul>
+		</article>
+		
+
+{% endblock %}

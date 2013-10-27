@@ -12,5 +12,15 @@ use Doctrine\ORM\EntityRepository;
  */
 class UserRepository extends EntityRepository
 {
-	
+
+	public function getWithAll($username)
+	{
+		$qb = $this->createQueryBuilder("e")
+			->where("e.username = :username")
+			->setParameter("username", $username)
+		;
+
+		return $qb->getQuery()->getResult();
+	}
+
 }

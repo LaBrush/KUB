@@ -7,6 +7,13 @@
 			<h2>Nom utilisateur: {{ user.username }}</h2>
 			<p><a href="{{ path("user_edit", {username: user.username, role: user.class }) }}">Modifier</a></p>
 		</article>
+
+		<article class="article">
+			
+			{% block details %}
+			{% endblock %}
+
+		</article>
 	
 
 {% endblock %}

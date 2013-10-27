@@ -30,7 +30,7 @@ class UserController extends Controller
 	{
 		if($role == "")
 		{
-			return $this->render('KubUserBundle:User:index_create.html.twig');
+			return $this->render('KubUserBundle:Manage:index_create.html.twig');
 		}
 		else
 		{
@@ -89,7 +89,7 @@ class UserController extends Controller
 
 			}
 
-			return $this->render('KubUserBundle:User:' . $role . '_create.html.twig',
+			return $this->render('KubUserBundle:Manage:' . $role . '_create.html.twig',
 				array(
 					'form' => $form->createView(),
 					'user' => $user
@@ -165,7 +165,7 @@ class UserController extends Controller
 
 			}
 
-			return $this->render('KubUserBundle:User:' . $role . '_edit.html.twig',
+			return $this->render('KubUserBundle:Manage:' . $role . '_edit.html.twig',
 				array(
 					'form' => $form->createView(),
 					'user' => $user,
@@ -202,14 +202,12 @@ class UserController extends Controller
 			}
 		}
 
-		return $this->render('KubUserBundle:User:user_delete.html.twig', array(
+		return $this->render('KubUserBundle:Manage:user_delete.html.twig', array(
 			'user' => $user,
 			'form' => $form->createView(),
 			'role' => $role
 		));
-
 	}
-
 
 	/**
 	 * @Secure(roles="ROLE_USER")
@@ -223,7 +221,8 @@ class UserController extends Controller
 
 		return $this->render("KubUserBundle:Show:list.html.twig", 
 			array(
-				"list_users" => $listeUsers
+				"list_users" => $listeUsers,
+				"role" => $role
 		));
 	}
 
@@ -238,10 +237,9 @@ class UserController extends Controller
 			throw $this->createNotFoundException("L'utilisateur " . $username . " n'a pu être trouvé.");
 		}
 
-		return $this->render("KubUserBundle:Show:show.html.twig", 
+		return $this->render("KubUserBundle:Show:show_" . $role . ".html.twig", 
 			array(
 				"user" => $user
 		));
 	}
-
 }

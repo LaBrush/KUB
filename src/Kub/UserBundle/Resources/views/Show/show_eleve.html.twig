@@ -1,0 +1,22 @@
+{% extends "KubUserBundle:Show:show.html.twig" %}
+
+{% block details %}
+
+	
+	<p>Niveau de l'élève: {{ user.niveau }}</p>	
+
+	{% if user.groupes|length > 0 %}
+		<p>Groupes de l'uilisateur: 
+
+			<ul>
+				
+				{% for groupe in user.groupes %}
+					<li><a href="{{ path('groupe_show', {id: groupe.id})}}">{{ groupe.name }}</a></li>
+				{% endfor %}
+
+			</ul>
+			
+		</p>
+	{% endif %}
+
+{% endblock %}

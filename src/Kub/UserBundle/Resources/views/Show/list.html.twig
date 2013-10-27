@@ -2,14 +2,25 @@
 
 {% block body %}
 
+		<article class="article">
+			
+			<p><a href="{{ path('user_create', { role: role }) }}">Créer un compte {{ role }}</a></p>
+
+		</article>
 	
 		<article class="article">
+			<h3 class="h3">Liste des {{ role }}s</h3>
 			<ul>
 				{% for user in list_users %}
 				
-					<li><a href="{{ path('user_show', { role: app.request.get('role'), username: user.username }) }}">{{ user.nom }} {{ user.prenom }}</a></li>
+					<li><a href="{{ path('user_show', { role: role, username: user.username }) }}">{{ user.nom }} {{ user.prenom }}</a></li>
 
 				{% endfor %}
+
+				{% if list_users|length == 0 %}
+					<p>Aucun {{ role }} enregistré pour le moment</p>
+				{% endif %}
+
 			</ul>
 		</article>
 		

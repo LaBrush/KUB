@@ -6,27 +6,10 @@ fos_user:
         user_manager: pugx_user_manager
 
     group:
-        group_class: Kub\UserBundle\Entity\Groupe
+        group_class: Kub\ClasseBundle\Entity\Groupe
 
 pugx_multi_user:
   users:
-    eleve:
-        entity: 
-            class: Kub\UserBundle\Entity\Eleve
-        profile:
-          form:
-            type: Kub\UserBundle\Form\Type\ProfileEleveFormType
-            name: fos_user_profile_form
-            validation_groups:  [Profile, Default]
-
-    tuteur:
-        entity: 
-            class: Kub\UserBundle\Entity\Tuteur
-        profile:
-          form:
-            type: Kub\UserBundle\Form\Type\ProfileTuteurFormType
-            name: fos_user_profile_form
-            validation_groups:  [Profile, Default]
 
     professeur:
         entity: 
@@ -34,6 +17,15 @@ pugx_multi_user:
         profile:
           form:
             type: Kub\UserBundle\Form\Type\ProfileProfesseurFormType
+            name: fos_user_profile_form
+            validation_groups:  [Profile, Default]
+
+    eleve:
+        entity: 
+            class: Kub\UserBundle\Entity\Eleve
+        profile:
+          form:
+            type: Kub\UserBundle\Form\Type\ProfileEleveFormType
             name: fos_user_profile_form
             validation_groups:  [Profile, Default]
 
@@ -46,3 +38,11 @@ pugx_multi_user:
             name: fos_user_profile_form
             validation_groups:  [Profile, Default]
 
+    tuteur:
+        entity: 
+            class: Kub\UserBundle\Entity\Tuteur
+        profile:
+          form:
+            type: Kub\UserBundle\Form\Type\ProfileTuteurFormType
+            name: fos_user_profile_form
+            validation_groups:  [Profile, Default]
