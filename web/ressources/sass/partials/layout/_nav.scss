@@ -51,9 +51,11 @@ $notifications: 		$logo;
 		background: $button;
 		cursor: pointer;
 
-		i:before
+		#chevron-haut, #chevron-bas
 		{
 			float: right;
+			margin: 3px 0 0 0;
+			width: 0.8em;
 		}
 
 		&:hover, &:active, &:focus

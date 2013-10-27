@@ -4,7 +4,8 @@ $(function() {
 	
 	var body = $("body");
 	var nav = $('nav');
-	var chevron = $('#chevron');
+	var chevronHaut = $('#chevron-haut');
+	var chevronBas = $('#chevron-bas');
 
 	body.removeAttr('style');
 
@@ -14,22 +15,19 @@ $(function() {
 
 		if(nav.hasClass('nav-open'))
 		{
-			chevron
-			.removeClass('icon-chevron-sign-up')
-			.addClass('icon-chevron-sign-down');
+			chevronHaut.hide();
+			chevronBas.show();
 
 			nav
 			.removeClass('nav-open')
 			.addClass('unscrollable');
 			
 			body.removeClass('unscrollable');
-			;
 		}
 		else
 		{
-			chevron
-			.removeClass('icon-chevron-sign-down')
-			.addClass('icon-chevron-sign-up');
+			chevronHaut.show();
+			chevronBas.hide();
 
 			nav
 			.addClass('nav-open')
