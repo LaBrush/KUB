@@ -10,6 +10,7 @@ use Symfony\Component\Security\Core\SecurityContext ;
 class MenuBuilder
 {
     private $factory;
+    private $security;
 
     /**
      * @param FactoryInterface $factory
@@ -91,6 +92,8 @@ class MenuBuilder
                         'routeParameters' => array('role' => 'administrateur')
                     )
                 );
+
+            $menu->addChild('Emplois du temps', array("labelAttributes" => array("className" => "tuteur")));
         }
 
         foreach ($menu as $key => $categorie) {
@@ -107,7 +110,8 @@ class MenuBuilder
     }
 
     public function createCompteMenu(Request $request)
-    {$menu = $this->factory->createItem('root');
+    {
+        $menu = $this->factory->createItem('root');
 
         $menu->addChild('Mon compte', 
             array(
