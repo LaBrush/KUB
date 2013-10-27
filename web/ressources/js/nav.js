@@ -18,7 +18,12 @@ $(function() {
 			.removeClass('icon-chevron-sign-up')
 			.addClass('icon-chevron-sign-down');
 
-			nav.removeClass('nav-open');
+			nav
+			.removeClass('nav-open')
+			.addClass('unscrollable');
+			
+			body.removeClass('unscrollable');
+			;
 		}
 		else
 		{
@@ -26,7 +31,11 @@ $(function() {
 			.removeClass('icon-chevron-sign-down')
 			.addClass('icon-chevron-sign-up');
 
-			nav.addClass('nav-open');
+			nav
+			.addClass('nav-open')
+			.removeClass('unscrollable');
+
+			body.addClass('unscrollable')
 		};
 	});
 
