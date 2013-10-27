@@ -13,9 +13,11 @@
 				{% block form %}
 				{% endblock %}
 
-			<input type="submit">
-
+			<input class="button-yes" type="submit">
+			<a class="button-no" href="{{ path('user_list', { role: user.class }) }}">Annuler</a>
 			{{ form_end(form) }}
+
+
 		</article>
 		
 
