@@ -10,6 +10,7 @@ use Symfony\Component\Security\Core\SecurityContext ;
 class MenuBuilder
 {
     private $factory;
+    private $security;
 
     /**
      * @param FactoryInterface $factory
@@ -28,69 +29,41 @@ class MenuBuilder
             
         if($this->security->isGranted('ROLE_SECRETAIRE'))
         {
-            $menu->addChild('Groupes', array("labelAttributes" => array("className" => "groupes")));
-                $menu['Groupes']->addChild('Créer',
-                    array(
-                        'route' => 'groupe_create'
-                    )
-                );
-
-            $menu->addChild('Eleves', array("labelAttributes" => array("className" => "eleve")));
-                $menu['Eleves']->addChild('Liste', 
+            $menu->addChild('Utilisateurs', array("labelAttributes" => array("className" => "professeur")));
+                $menu['Utilisateurs']->addChild('Eleves', 
                     array(
                         'route' => 'user_list',
                         'routeParameters' => array('role' => 'eleve'),
                         ''
                     )
                 );
-                $menu['Eleves']->addChild('Créer', 
-                    array(
-                        'route' => 'user_create',
-                        'routeParameters' => array('role' => 'eleve')
-                    )
-                );
-
-            $menu->addChild('Professeurs', array("labelAttributes" => array("className" => "professeur")));
-                $menu['Professeurs']->addChild('Liste', 
+                $menu['Utilisateurs']->addChild('Professeurs', 
                     array(
                         'route' => 'user_list',
                         'routeParameters' => array('role' => 'professeur')
                     )
                 );
-                $menu['Professeurs']->addChild('Créer', 
-                    array(
-                        'route' => 'user_create',
-                        'routeParameters' => array('role' => 'professeur')
-                    )
-                );
-
-            $menu->addChild('Tuteurs', array("labelAttributes" => array("className" => "tuteur")));
-                $menu['Tuteurs']->addChild('Liste', 
+                $menu['Utilisateurs']->addChild('Tuteurs', 
                     array(
                         'route' => 'user_list',
                         'routeParameters' => array('role' => 'tuteur')
                     )
                 );
-                $menu['Tuteurs']->addChild('Créer', 
-                    array(
-                        'route' => 'user_create',
-                        'routeParameters' => array('role' => 'tuteur')
-                    )
-                );
-
-            $menu->addChild('Administration', array("labelAttributes" => array("className" => "administrateur")));
-                $menu['Administration']->addChild('Liste', 
+                $menu['Utilisateurs']->addChild('Administration', 
                     array(
                         'route' => 'user_list',
                         'routeParameters' => array('role' => 'administrateur')
                     )
                 );
-                $menu['Administration']->addChild('Créer', 
+
+            $menu->addChild('Groupes', array("labelAttributes" => array("className" => "administrateur")));
+                $menu['Groupes']->addChild('Liste',
                     array(
-                        'route' => 'user_create',
-                        'routeParameters' => array('role' => 'administrateur')
+                        'route' => 'groupe_list'
                     )
                 );
+
+            $menu->addChild('Emplois du temps', array("labelAttributes" => array("className" => "tuteur")));
         }
 
         foreach ($menu as $key => $categorie) {
@@ -107,7 +80,8 @@ class MenuBuilder
     }
 
     public function createCompteMenu(Request $request)
-    {$menu = $this->factory->createItem('root');
+    {
+        $menu = $this->factory->createItem('root');
 
         $menu->addChild('Mon compte', 
             array(
