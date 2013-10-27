@@ -4,12 +4,52 @@
 		"selected_items":
 		[
 			[
-				"us",
-				"username"
+				"text",
+				"text-align"
+			],
+			[
+				"margin",
+				"margin"
+			],
+			[
+				"border",
+				"border-top"
+			],
+			[
+				"inline",
+				"inline-block"
+			],
+			[
+				"groupe",
+				"groupe_list"
+			],
+			[
+				"Kub",
+				"KubUserBundle"
 			],
 			[
 				"user",
-				"user"
+				"username"
+			],
+			[
+				"Confi",
+				"ConfigurationInterface"
+			],
+			[
+				"th",
+				"throw	Throw Exception"
+			],
+			[
+				"ele",
+				"EleveRepository"
+			],
+			[
+				"Ele",
+				"EleveRepository"
+			],
+			[
+				"us",
+				"username"
 			],
 			[
 				"var",
@@ -38,14 +78,6 @@
 			[
 				"Ku",
 				"KubUserBundle"
-			],
-			[
-				"Kub",
-				"Kub"
-			],
-			[
-				"margin",
-				"margin-top"
 			],
 			[
 				"font",
@@ -128,10 +160,6 @@
 				"security"
 			],
 			[
-				"border",
-				"border"
-			],
-			[
 				"border-BO",
 				"border-bottom"
 			],
@@ -174,10 +202,6 @@
 			[
 				"tabl",
 				"tableau"
-			],
-			[
-				"text",
-				"text-decoration"
 			],
 			[
 				"padi",
@@ -490,30 +514,6 @@
 			[
 				"fil",
 				"fileName"
-			],
-			[
-				"dynami",
-				"dynamicView"
-			],
-			[
-				"dyna",
-				"dynamic"
-			],
-			[
-				"FavoriV",
-				"FavoriView"
-			],
-			[
-				"sta",
-				"staticView"
-			],
-			[
-				"Favor",
-				"FavoriView"
-			],
-			[
-				"Favo",
-				"FavorisManagerView"
 			]
 		]
 	},
@@ -523,16 +523,24 @@
 	"build_system": "Packages/User/PHP-Lint.sublime-build",
 	"command_palette":
 	{
-		"height": 307.0,
+		"height": 147.0,
 		"selected_items":
 		[
 			[
-				"rena",
-				"File: Rename"
+				"media",
+				"Snippet: @media screen"
+			],
+			[
+				"side",
+				"View: Toggle Side Bar"
 			],
 			[
 				"tabs",
 				"Indentation: Convert to Tabs"
+			],
+			[
+				"rena",
+				"File: Rename"
 			],
 			[
 				"rename",
@@ -561,10 +569,6 @@
 			[
 				"ren",
 				"File: Rename"
-			],
-			[
-				"side",
-				"View: Toggle Side Bar"
 			],
 			[
 				"jquer",
@@ -723,7 +727,7 @@
 				"Set Syntax: JavaScript"
 			]
 		],
-		"width": 575.0
+		"width": 476.0
 	},
 	"console":
 	{
@@ -740,33 +744,94 @@
 	},
 	"file_history":
 	[
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Entity/User.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Form/Type/EleveType.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/views/User/eleve_edit.html.twig",
+		"/Users/adrienbocquet/Desktop/cv_zozor_images/style.css",
+		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/ClasseBundle/Form/Type/GroupeType.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/ClasseBundle/Entity/Groupe.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/ClasseBundle/Controller/GroupeController.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Entity/Eleve.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/ClasseBundle/Form/EventListener/addMemberFieldSuscriber.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Form/Type/GroupeType.php",
+		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/ClasseBundle/DataFixtures/LoadNiveauData.php",
+		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/ClasseBundle/Form/Handler/GroupeHandler.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/ClasseBundle/Resources/views/Groupe/show.html.twig",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/ClasseBundle/Resources/views/Groupe/list.html.twig",
+		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/ClasseBundle/Entity/Groupe.php",
+		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/UserBundle/Entity/Eleve.php",
+		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/UserBundle/Form/Type/EleveType.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/ClasseBundle/Entity/Niveau.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/views/Show/list.html.twig",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/ClasseBundle/Entity/GroupeRepository.php",
+		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/UserBundle/Entity/Niveau.php",
+		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/UserBundle/Form/Type/GroupeType.php",
+		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/UserBundle/Resources/config/config.yml",
+		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/ClasseBundle/Controller/GroupeController.php",
+		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/ClasseBundle/Resources/config/routing.yml",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/config/config.yml",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/KubUserBundle.php",
+		"/Users/adrienbocquet/Sites/MAMP/KUB/vendor/pugx/multi-user-bundle/PUGX/MultiUserBundle/Doctrine/UserManager.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/app/AppKernel.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/MultiUserBundle/KubMultiUserBundle.php",
+		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/UserBundle/Resources/config/routing/user.yml",
+		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/UserBundle/Controller/GroupeController.php.old",
+		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/UserBundle/Resources/views/Manage/administrateur_create.html.twig",
+		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/UserBundle/Resources/views/Manage/eleve_create.html.twig",
+		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/UserBundle/Resources/views/Manage/professeur_create.html.twig",
+		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/UserBundle/Resources/views/Manage/tuteur_create.html.twig",
+		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/MultiUserBundle/Doctrine/UserManager.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Entity/ProfesseurRepository.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Entity/TuteurRepository.php",
+		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/UserBundle/ParamConverter/UserParamConverter.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Controller/UserController.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Entity/UserRepository.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Entity/EleveRepository.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Entity/Administrateur.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Entity/Tuteur.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Entity/Professeur.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Entity/User.php",
+		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/UserBundle/Resources/views/Manage/administrateur_edit.html.twig",
+		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/UserBundle/Resources/views/Manage/eleve_edit.html.twig",
+		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/UserBundle/Resources/views/Manage/professeur_edit.html.twig",
+		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/UserBundle/Resources/views/Manage/tuteur_edit.html.twig",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/config/services.yml",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Menu/MenuBuilder.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/config/routing/user.yml",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/views/Show/show.html.twig",
+		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/UserBundle/Resources/views/Show/show_eleve.html.twig",
+		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/UserBundle/Resources/views/Show/show_administrateur.html.twig",
+		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/UserBundle/Resources/views/Show/show_professeur.html.twig",
+		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/UserBundle/Resources/views/Show/show_tuteur.html.twig",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/views/Groupe/show.html.twig",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/app/config/routing.yml",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Entity/Groupe.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Form/EventListener/addMemberFieldSuscriber.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Controller/GroupeController.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/views/Groupe/edit.html.twig",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/config/routing/groupe.yml",
+		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/UserBundle/Resources/views/Groupe/delete.html.twig",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/views/Profile/edit.html.twig",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/views/layout.html.twig",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/views/User/user_edit.html.twig",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/views/User/eleve_edit.html.twig",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/views/User/user_delete.html.twig",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Form/Handler/GroupeHandler.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/app/Resources/views/base.html.twig",
+		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/UserBundle/Resources/views/Groupe/list.html.twig",
+		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/UserBundle/Resources/views/Groupe/show.html.twig",
+		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/UserBundle/Resources/views/Groupe/edit.html.twig",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Form/Type/EleveType.php",
 		"/Users/adrienbocquet/Desktop/cv_zozor_images/index.html",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/views/User/eleve_create.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/views/User/user_edit.html.twig",
 		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/UserBundle/Resources/views/User/user_delete.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/config/routing/user.yml",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Controller/UserController.php",
 		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/UserBundle/Resources/views/User/user.delete.html.twig",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/views/User/user_create.html.twig",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/views/Groupe/create.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/app/Resources/views/base.html.twig",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/views/Menu/menu.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Entity/Groupe.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Entity/Niveau.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Menu/MenuBuilder.php",
 		"/Users/adrienbocquet/Downloads/data.php",
 		"/Users/adrienbocquet/Downloads/ecoquart@ecoquartier.lu.duck",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Form/Handler/GroupeHandler.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Controller/GroupeController.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Form/Type/GroupeType.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Entity/Eleve.php~",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Entity/Groupe.php~",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Entity/Niveau.php~",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Entity/Tuteur.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Entity/Tuteur.php~",
 		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/UserBundle/Form/EventListener/addMemberFieldSuscriber.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/DataFixtures/ORM/LoadEleveData.php",
@@ -778,16 +843,12 @@
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/views/User/professeur_edit.html.twig",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/views/User/tuteur_create.html.twig",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/views/User/tuteur_edit.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/config/services.yml",
 		"/Users/adrienbocquet/Sites/MAMP/Maquette_EVN/index.html",
 		"/Users/adrienbocquet/Sites/MAMP/KUB/LICENSE",
 		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/UserBundle/Form/Handler/GroupeHandler.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/config/routing/groupe.yml",
 		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/UserBundle/Resources/views/Groupe/create.html.twig",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Form/Handler/UserHandler.php",
-		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/UserBundle/Controller/GroupeController.php.old",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/config/routing.yml",
-		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/UserBundle/Resources/config/routing/user.yml",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Controller/SecurityController.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/views/Groupe/index.html.twig",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Form/Type/UserType.php",
@@ -795,79 +856,22 @@
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Entity/NotificationRepository.php",
 		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/UserBundle/Controller/GroupeController.php",
 		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/UserBundle/Resources/views/Groupe/groupe_create.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/app/config/routing.yml",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/HomeBundle/Resources/config/routing.yml",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Controller/ManageController.php",
 		"/Users/adrienbocquet/Library/Caches/Cleanup At Startup/Transmit/38241957-1EC1-46F7-A150-441F5A50B49E/footer-extensions.php",
 		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/UserBundle/Resources/views/layout.html.twig",
 		"/Volumes/Cadastre solaire/public_html/wp-content/themes/atitude-child/style.css",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/app/config/config.yml",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/config/config.yml",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/composer.json",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/app/AppKernel.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/views/Manage/tuteur_edit.html.twig",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/views/Manage/eleve_edit.html.twig",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/views/Manage/eleve_create.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/KubUserBundle.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/FormBundle/KubFormBundle.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/web/bundles/framework/css/body.css",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/views/Manage/user_create.html.twig",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/views/Manage/administrateur_edit.html.twig",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/HomeBundle/Resources/views/Visiteur/index.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/views/Manage/professeur_edit.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/views/Manage/user_edit.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/views/Manage/user_edit.html.twig copie",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/views/Manage/user_create.html.twig copie",
-		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/UserBundle/DataFixtures/ORM/LoadManitouData.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/views/Show/show.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/views/Profile/edit.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/views/Security/login.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/app/Resources/views/base.html.twig1",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Form/Type/AdministrateurType.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/app/config/security.yml",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Form/Handler/AdministrateurHandler.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Form/Type/TuteurType.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/app/console",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Form/Type/ProfileUserFormType.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/views/Default/index.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/views/Profile/show.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/views/Security/show.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Form/Type/ProfileProfesseurFormType.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Form/Type/ProfileAdministrateurFormType.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Form/Type/ProfileTuteurFormType.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Form/Type/ProfileEleveFormType.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Entity/Administrateur.php",
-		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/UserBundle/Form/Handler/ProfileAdministrateurFormType.php",
-		"/Applications/Open-Sankore.app/Contents/Resources/library/applications/Calendrier.wgt/config.xml",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Entity/Professeur.php",
-		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/UserBundle/Controller/SecurityController.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/views/Security/login_content.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/UserBundle/Resources/views/Show/show.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Entity/UserRepository.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/views/Show/list.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/app/config/parameters.yml",
-		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/UserBundle/Resources/views/list.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/UserBundle/Resources/views/Show",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/views/Manage/professeur_create.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/views/Manage/tuteur_create.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/views/Manage/index_create.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/views/Manage/administrateur_create.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/web/.htaccess",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Form/Type/ProfesseurType.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Form/ProfesseurType.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Form/TuteurType.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Form/EleveType.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Form/UserType.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Form/AdministrateurType.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/composer.phar",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/views/Manage/parent_create.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/views/Manage/index.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/AbsenceBundle/Controller/DefaultController.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/HomeBundle/Controller/DefaultController.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Entity/CPE.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Entity/Manitou.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Entity/Secretaire.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Entity/Surveillant.php"
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/views/Manage/professeur_edit.html.twig"
 	],
 	"find":
 	{
@@ -878,6 +882,13 @@
 		"height": 0.0,
 		"where_history":
 		[
+			"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/ClasseBundle",
+			"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/",
+			"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/UserBundle",
+			"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/UserBundle/Resources",
+			"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/",
+			"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/",
+			"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/view/Groupe/",
 			"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/",
 			"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Ressources/",
 			"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Ressources/View",
@@ -896,6 +907,52 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"Kub\\ClasseBundle\\Entity\\Eleve",
+			"Kub\\ClasseBundle\\Entity\\EleveRepository",
+			"home_homepage",
+			"userbundle",
+			"UserBundle",
+			"ClasseBundle",
+			"UserBundle",
+			"Kub\\UserBundle\\Entity\\Niveau",
+			"KubUserBundle:Groupe",
+			"Kub\\UserBundle\\Entity\\Groupe",
+			":Manager:",
+			"Manager",
+			":User:",
+			"e",
+			"findUserWithAll",
+			"getWithAll",
+			"getUser",
+			"getUser($username)",
+			"KubUserBundle:User:user_edit.html.twig",
+			"public",
+			"/",
+			"ParamConverterInterface",
+			"\":KubUserBundle:Show:show.html.twig\"",
+			"{% extends \":KubUserBundle:Show:show.html.twig\" %}\n{% extends \":KubUserBundle:Show:show.html.twig\" %}",
+			"KubUserBundle:User:",
+			":user",
+			":User",
+			"User",
+			"['']",
+			"Utilisateurs",
+			"form",
+			"data",
+			"er",
+			"nom",
+			"GroupeHandler($form, $request, $this->getDoctrine()->getManager());",
+			":Groupe:",
+			":groupe:",
+			"groupe",
+			"user",
+			"User",
+			"user",
+			"groupename",
+			"user",
+			"username",
+			"user",
+			"listeUsers",
 			"javascripts",
 			"</h2 class=\"section-title\">",
 			"article",
@@ -977,53 +1034,7 @@
 			"array(\"route\"",
 			"path",
 			";",
-			"s\"]",
-			"Administrateurs",
-			"eleve",
-			"Eleves",
-			"eleve",
-			"Eleves",
-			"eleve",
-			"Eleves",
-			", array('route' => 'home_homepage')",
-			"acme",
-			"MainBundle",
-			"Acme",
-			"$this->classe",
-			"initClasse",
-			"Ã©",
-			"			",
-			"h1",
-			"class user",
-			"user",
-			"|",
-			"Create",
-			"Handler ;",
-			"Handler",
-			"Create",
-			"Form",
-			"Type",
-			"type",
-			"Type",
-			"type",
-			"Eleve",
-			"type",
-			"categorie",
-			"Type",
-			"type",
-			"form",
-			"Tuteur",
-			"\"handler\" =>\n		)\n",
-			")",
-			"$userManager = $this->container->get('pugx_user_manager');\n\n		$discriminator = $this->container->get('pugx_user.manager.user_discriminator');\n		$discriminator->setClass('Kub\\UserBundle\\Entity\\Administrateur');\n\n		$administrateur = $userManager->createUser();\n		$form = $this->createForm(new AdministrateurType, $administrateur);\n\n		$request = $this->get('request');\n\n		if($request->getMethod() == \"POST\"){\n\n			$formHandler = new AdministrateurHandler($form, $request, $this->getDoctrine()->getManager(), $discriminator, $userManager);\n			if($formHandler->process())\n			{\n				$this->get('session')->getFlashBag()->add('info', \"L'utilisateur a bien été ajouté\");\n				return $this->redirect($this->generateUrl(\"Kub_home_homepage\"));\n			}\n\n		}\n\n		return $this->render('KubUserBundle:Manage:administrateur_create.html.twig',\n			array(\n				'form' => $form->createView()\n			)\n		);",
-			"$type",
-			"Type",
-			"type",
-			"$administrateur",
-			"administrateur",
-			"Administrateur",
-			"administrateur",
-			"Administrateur"
+			"s\"]"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1031,6 +1042,16 @@
 		"regex": false,
 		"replace_history":
 		[
+			"Kub\\ClasseBundle\\Entity\\Niveau",
+			"KubClasseBundle:Groupe",
+			"Kub\\ClasseBundle\\Entity\\Groupe",
+			":Manage:",
+			"Manage",
+			":Manager:",
+			"getWithAll",
+			"KubUserBundle:Manage:user_edit.html.twig",
+			"\"KubUserBundle:Show:show.html.twig\"",
+			"{% extends \"KubUserBundle:Show:show.html.twig\" %}",
 			"js",
 			"</h2>",
 			"ArrayCollection",
@@ -1106,11 +1127,183 @@
 		[
 			[
 				"eleve",
-				"Kub/src/Kub/UserBundle/Entity/Eleve.php"
+				"UserBundle/Entity/Eleve.php"
+			],
+			[
+				"groupecon",
+				"Kub/src/Kub/ClasseBundle/Controller/GroupeController.php"
+			],
+			[
+				"groupe",
+				"Kub/src/Kub/ClasseBundle/Entity/Groupe.php"
+			],
+			[
+				"addm",
+				"Kub/src/Kub/ClasseBundle/Form/EventListener/addMemberFieldSuscriber.php"
+			],
+			[
+				"group",
+				"UserBundle/Form/Type/GroupeType.php"
+			],
+			[
+				"nivea",
+				"Kub/src/Kub/ClasseBundle/Entity/Niveau.php"
+			],
+			[
+				"groupety",
+				"UserBundle/Form/Type/GroupeType.php"
+			],
+			[
+				"groulist",
+				"Kub/src/Kub/ClasseBundle/Resources/views/Groupe/list.html.twig"
+			],
+			[
+				"gshow",
+				"Kub/src/Kub/ClasseBundle/Resources/views/Groupe/show.html.twig"
+			],
+			[
+				"clarepos",
+				"Kub/src/Kub/ClasseBundle/Entity/GroupeRepository.php"
+			],
+			[
+				"groupecont",
+				"Kub/src/Kub/ClasseBundle/Controller/GroupeController.php"
+			],
+			[
+				"config",
+				"UserBundle/Resources/config/config.yml"
+			],
+			[
+				"user.",
+				"UserBundle/Resources/config/routing/user.yml"
+			],
+			[
+				"kern",
+				"Kub/app/AppKernel.php"
+			],
+			[
+				"userbun",
+				"UserBundle/KubUserBundle.php"
+			],
+			[
+				"mul",
+				"Kub/src/Kub/MultiUserBundle/KubMultiUserBundle.php"
+			],
+			[
+				"ele",
+				"UserBundle/Entity/Eleve.php"
+			],
+			[
+				"prore",
+				"UserBundle/Entity/ProfesseurRepository.php"
+			],
+			[
+				"tutrepo",
+				"UserBundle/Entity/TuteurRepository.php"
+			],
+			[
+				"repo",
+				"UserBundle/Entity/EleveRepository.php"
+			],
+			[
+				"admini",
+				"UserBundle/Entity/Administrateur.php"
+			],
+			[
+				"tut",
+				"UserBundle/Entity/Tuteur.php"
+			],
+			[
+				"prof",
+				"UserBundle/Entity/Professeur.php"
 			],
 			[
 				"user",
 				"Kub/src/Kub/UserBundle/Entity/User.php"
+			],
+			[
+				"userre",
+				"UserBundle/Entity/UserRepository.php"
+			],
+			[
+				"usercon",
+				"UserBundle/Controller/UserController.php"
+			],
+			[
+				"userservi",
+				"UserBundle/Resources/config/services.yml"
+			],
+			[
+				"show",
+				"UserBundle/Resources/views/Show/show.html.twig"
+			],
+			[
+				"controll",
+				"UserBundle/Controller/UserController.php"
+			],
+			[
+				"list",
+				"UserBundle/Resources/views/Show/list.html.twig"
+			],
+			[
+				"routing.",
+				"Kub/app/config/routing.yml"
+			],
+			[
+				"buil",
+				"UserBundle/Menu/MenuBuilder.php"
+			],
+			[
+				"layou",
+				"UserBundle/Resources/views/layout.html.twig"
+			],
+			[
+				"edit",
+				"UserBundle/Resources/views/Profile/edit.html.twig"
+			],
+			[
+				"user_edit",
+				"UserBundle/Resources/views/User/user_edit.html.twig"
+			],
+			[
+				"delete",
+				"UserBundle/Resources/views/User/user_delete.html.twig"
+			],
+			[
+				"groupe.yml",
+				"UserBundle/Resources/config/routing/groupe.yml"
+			],
+			[
+				"grupecon",
+				"UserBundle/Controller/GroupeController.php"
+			],
+			[
+				"bas",
+				"Kub/app/Resources/views/base.html.twig"
+			],
+			[
+				"mem",
+				"UserBundle/Form/EventListener/addMemberFieldSuscriber.php"
+			],
+			[
+				"usercontrol",
+				"UserBundle/Controller/UserController.php"
+			],
+			[
+				"groupehand",
+				"UserBundle/Form/Handler/GroupeHandler.php"
+			],
+			[
+				"usercontroll",
+				"UserBundle/Controller/UserController.php"
+			],
+			[
+				"groupec",
+				"UserBundle/Controller/GroupeController.php"
+			],
+			[
+				"menu",
+				"UserBundle/Menu/MenuBuilder.php"
 			],
 			[
 				"elevetype",
@@ -1141,27 +1334,11 @@
 				"UserBundle/Menu/MenuBuilder.php"
 			],
 			[
-				"menu",
-				"UserBundle/Resources/views/Menu/menu.html.twig"
-			],
-			[
-				"group",
-				"UserBundle/Entity/Groupe.php"
-			],
-			[
 				"niv",
 				"UserBundle/Entity/Niveau.php"
 			],
 			[
 				"el",
-				"UserBundle/Entity/Eleve.php"
-			],
-			[
-				"nivea",
-				"UserBundle/Entity/Niveau.php"
-			],
-			[
-				"ele",
 				"UserBundle/Entity/Eleve.php"
 			],
 			[
@@ -1183,10 +1360,6 @@
 			[
 				"groupehandler",
 				"UserBundle/Form/Handler/GroupeHandler.php"
-			],
-			[
-				"groupecon",
-				"UserBundle/Controller/GroupeController.php"
 			],
 			[
 				"eltype",
@@ -1213,18 +1386,6 @@
 				"UserBundle/Resources/views/Groupe/create.html.twig"
 			],
 			[
-				"groupety",
-				"UserBundle/Form/Type/GroupeType.php"
-			],
-			[
-				"usercon",
-				"UserBundle/Controller/UserController.php"
-			],
-			[
-				"user.",
-				"UserBundle/Resources/config/routing/user.yml"
-			],
-			[
 				"routing",
 				"UserBundle/Resources/config/routing/groupe.yml"
 			],
@@ -1235,10 +1396,6 @@
 			[
 				"usercontrole",
 				"UserBundle/Controller/UserController.php"
-			],
-			[
-				"groupe",
-				"UserBundle/Controller/GroupeController.php"
 			],
 			[
 				"usercontr",
@@ -1289,10 +1446,6 @@
 				"UserBundle/Entity/Groupe.php"
 			],
 			[
-				"config",
-				"UserBundle/Resources/config/config.yml"
-			],
-			[
 				"ernel",
 				"Kub/app/AppKernel.php"
 			],
@@ -1311,10 +1464,6 @@
 			[
 				"elevecrea",
 				"UserBundle/Resources/views/Manage/eleve_create.html.twig"
-			],
-			[
-				"kern",
-				"Kub/app/AppKernel.php"
 			],
 			[
 				"composer",
@@ -1437,10 +1586,6 @@
 				"UserBundle/Form/Type/UserType.php"
 			],
 			[
-				"show",
-				"UserBundle/Resources/views/Show/show.html.twig"
-			],
-			[
 				"man",
 				"UserBundle/Controller/ManageController.php"
 			],
@@ -1473,10 +1618,6 @@
 				"UserBundle/Form/Type/AdministrateurType.php"
 			],
 			[
-				"admini",
-				"UserBundle/Form/Handler/AdministrateurHandler.php"
-			],
-			[
 				"twig",
 				"UserBundle/Resources/views/Default/index.html.twig"
 			],
@@ -1495,126 +1636,6 @@
 			[
 				"tuteurfor",
 				"UserBundle/Form/Type/ProfileTuteurFormType.php"
-			],
-			[
-				"eleveforme",
-				"UserBundle/Form/Type/ProfileEleveFormType.php"
-			],
-			[
-				"pro",
-				"UserBundle/Entity/Professeur.php"
-			],
-			[
-				"tu",
-				"UserBundle/Entity/Tuteur.php"
-			],
-			[
-				"mana",
-				"UserBundle/Controller/ManageController.php"
-			],
-			[
-				"tue",
-				"UserBundle/Entity/Tuteur.php"
-			],
-			[
-				"base.",
-				"Kub/app/Resources/views/base.html.twig"
-			],
-			[
-				"prof",
-				"UserBundle/Entity/Professeur.php"
-			],
-			[
-				"admii",
-				"UserBundle/Entity/Administrateur.php"
-			],
-			[
-				"pa",
-				"Kub/app/config/parameters.yml"
-			],
-			[
-				"list",
-				"UserBundle/Resources/views/Show/list.html.twig"
-			],
-			[
-				"repos",
-				"UserBundle/Entity/UserRepository.php"
-			],
-			[
-				"controll",
-				"UserBundle/Controller/ManageController.php"
-			],
-			[
-				"userh",
-				"UserBundle/Form/Handler/UserHandler.php"
-			],
-			[
-				"manag",
-				"UserBundle/Controller/ManageController.php"
-			],
-			[
-				"tuteurcr",
-				"UserBundle/Resources/views/Manage/tuteur_create.html.twig"
-			],
-			[
-				"prea",
-				"UserBundle/Resources/views/Manage/professeur_create.html.twig"
-			],
-			[
-				"indexcr",
-				"UserBundle/Resources/views/Manage/index_create.html.twig"
-			],
-			[
-				"conf",
-				"Kub/app/config/config.yml"
-			],
-			[
-				"handerl",
-				"UserBundle/Form/Handler/UserHandler.php"
-			],
-			[
-				"usert",
-				"UserBundle/Form/Type/UserType.php"
-			],
-			[
-				"tut",
-				"UserBundle/Form/Type/TuteurType.php"
-			],
-			[
-				"elet",
-				"UserBundle/Form/Type/EleveType.php"
-			],
-			[
-				"tyope",
-				"UserBundle/Form/Type/ProfesseurType.php"
-			],
-			[
-				"indexcre",
-				"UserBundle/Resources/views/Manage/index_create.html.twig"
-			],
-			[
-				"prt",
-				"UserBundle/Form/ProfesseurType.php"
-			],
-			[
-				"type",
-				"UserBundle/Form/TuteurType.php"
-			],
-			[
-				"index_c",
-				"src/Kub/UserBundle/Resources/views/Manage/index_create.html.twig"
-			],
-			[
-				"defu",
-				"src/Kub/AbsenceBundle/Controller/DefaultController.php"
-			],
-			[
-				"appe",
-				"app/AppKernel.php"
-			],
-			[
-				"userroutin",
-				"src/Kub/UserBundle/Resources/config/routing.yml"
 			]
 		],
 		"width": 0.0
