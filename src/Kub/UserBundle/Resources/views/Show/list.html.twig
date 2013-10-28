@@ -3,31 +3,32 @@
 {% block body %}
 
 		<article class="article">
-			<h2 class="section-title">{{ role | capitalize }}</h2>
+			<h2 class="section-title">{{ role | capitalize }}s</h2>
 		</article>
-	
-		<article class="article">
-			<h3 class="h2">Liste des {{ role }}s</h3>
 
+		<article class="article">
+			<div class="create">
+				<a class="button-yes" class="button-yes" href="{{ path('groupe_create') }}">Créer un {{ role }}</a>
+			</div>
 
 			<label for="search-in-list">Chercher dans la liste :</label>
-			<input id="search-in-list" type="search">
-			<a class="button-yes" href="{{ path('user_create', { role: role }) }}">Créer un {{ role }}</a>
-			<ul>
+			<input id="search-in-list" type="text">
+			
+			<ul class="liste">
 				{% for user in list_users %}
 				
-					<li><a class="in-list" href="{{ path('user_show', { role: role, username: user.username }) }}">{{ user.nom }} {{ user.prenom }}</a></li>
-					<li><a class="in-list" href="{{ path('user_show', { role: role, username: user.username }) }}">{{ user.nom }} {{ user.prenom }}</a></li>
+					<a href="{{ path('user_show', { role: role, username: user.username }) }}">
+						<li class="in-list li-list">
+							<span>{{ user.nom }} {{ user.prenom }}</span>
+						</li>
+					</a>
 
 				{% endfor %}
 
+				{% if list_users|length == 0 %}
+					<li>Aucun {{ role }} enregistré pour le moment</li>
+				{% endif %}
 			</ul>
-
-			{% if list_users|length == 0 %}
-				<p>Aucun {{ role }} enregistré pour le moment</p>
-			{% endif %}
-
-
 		</article>
 		
 
