@@ -58,6 +58,16 @@ class Frequence
         return $this->name ;
     }
     
+
+    /**
+     * @Assert\GreaterThanOrEqual(value=1, message="Une fréquence ne peut avoir moins d'une semaine")
+     */
+    public function getSemainesNumber(){
+
+        return count($this->semaines);
+
+    }
+
     /**
      * Add semaines
      *

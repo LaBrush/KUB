@@ -1,0 +1,26 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+
+	
+		<article class="article">
+			<h2 class="section-title">Modifier {{ cours.name }}</h2>
+		</article>
+
+		<article class="article">
+			{{ form_start(form) }}
+
+				{{ form_widget(form) }}
+
+				<input type="submit">
+			{{ form_end(form) }}
+		</article>
+
+		<article class="article">
+			
+			<a href="{{ path("cours_delete", { id: cours.id }) }}">...ou supprimer {{ cours.name }}</a>
+
+		</article>
+		
+			
+{% endblock %}

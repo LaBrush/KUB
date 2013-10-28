@@ -40,7 +40,16 @@ class Cours
      */
     private $groupe ;
 
+    /** 
+     * @ORM\ManyToOne(targetEntity="Kub\UserBundle\Entity\Professeur", inversedBy="cours")
+     */
+    private $professeur ;
 
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Kub\EDTBundle\Entity\Semaine")
+     */
+    private $semaines ;
 
     /**
      * Get id
@@ -136,5 +145,28 @@ class Cours
     public function getGroupe()
     {
         return $this->groupe;
+    }
+
+    /**
+     * Set professeur
+     *
+     * @param \Kub\UserBundle\Entity\Professeur $professeur
+     * @return Cours
+     */
+    public function setProfesseur(\Kub\UserBundle\Entity\Professeur $professeur = null)
+    {
+        $this->professeur = $professeur;
+    
+        return $this;
+    }
+
+    /**
+     * Get professeur
+     *
+     * @return \Kub\UserBundle\Entity\Professeur 
+     */
+    public function getProfesseur()
+    {
+        return $this->professeur;
     }
 }

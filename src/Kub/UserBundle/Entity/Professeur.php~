@@ -24,6 +24,11 @@ class Professeur extends User
      */
     protected $id;
 
+    /** 
+     * @ORM\OneToMany(targetEntity="Kub\EDTBundle\Entity\Cours", mappedBy="professeur")
+     */
+    private $cours ;
+
     public function initClass()
     {
         $this->class = "professeur";
@@ -44,5 +49,38 @@ class Professeur extends User
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Add cours
+     *
+     * @param \Kub\EDTBundle\Entity\Cours $cours
+     * @return Professeur
+     */
+    public function addCour(\Kub\EDTBundle\Entity\Cours $cours)
+    {
+        $this->cours[] = $cours;
+    
+        return $this;
+    }
+
+    /**
+     * Remove cours
+     *
+     * @param \Kub\EDTBundle\Entity\Cours $cours
+     */
+    public function removeCour(\Kub\EDTBundle\Entity\Cours $cours)
+    {
+        $this->cours->removeElement($cours);
+    }
+
+    /**
+     * Get cours
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCours()
+    {
+        return $this->cours;
     }
 }

@@ -4,18 +4,16 @@
 
 	
 		<article class="article">
-			<h2 class="section-title">Creer une féquence</h2>
+			<h2 class="section-title">Êtes vous sûr de vouloir supprimer la fréquence {{ cours.name }} ?</h2>
 		</article>
 
 		<article class="article">
 			{{ form_start(form) }}
 
-				{{ form_widget(form) }}
-		
-				<input type="submit">
-
+				<input type="submit"> ou 
+				<a href="{{ path('groupe_list') }}">Annuler</a>	
 			{{ form_end(form) }}
 		</article>
-	
-
+		
+			
 {% endblock %}
