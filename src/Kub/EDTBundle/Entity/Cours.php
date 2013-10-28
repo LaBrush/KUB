@@ -3,6 +3,7 @@
 namespace Kub\EDTBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert ;
 
 /**
  * Cours
@@ -41,21 +42,75 @@ class Cours
     private $fin;
 
     /**
-     * @ORM\OneToMany(targetEntity="Kub\ClasseBundle\Entity\Groupe", mappedBy="cours")
+     * @ORM\ManyToMany(targetEntity="Kub\ClasseBundle\Entity\Groupe", inversedBy="cours", cascade={"persist"})
+     * @Assert\Count(min=1)
      */
     private $groupes ;
 
     /** 
      * @ORM\ManyToOne(targetEntity="Kub\UserBundle\Entity\Professeur", inversedBy="cours")
+     * @Assert\NotNull()
      */
     private $professeur ;
 
+    /** 
+     * @ORM\ManyToOne(targetEntity="Kub\EDTBundle\Entity\Matiere")
+     * @Assert\NotNull()
+     */
+    private $matiere ;
 
     /**
      * @ORM\ManyToMany(targetEntity="Kub\EDTBundle\Entity\Semaine")
+     * @Assert\NotNull()
      */
     private $semaines ;
 
+    /**
+     * @Assert\True(message="Un cours ne peut avoir d'éléves de niveau différents")
+     */
+    public function isMonoLevel()
+    {
+        if(count($this->groupes))
+        {
+            $groupes = $this->groupes ;
+            $niveauRef = $groupes[0]->getNiveau();
+
+            foreach ($groupes as $key => $groupe) {
+                
+                if($groupe->getNiveau() != $niveauRef)
+                {
+                    return false ;
+                }
+
+            }
+
+            return true ;
+        }
+
+        return true ;
+    }
+
+    public function __toString()
+    {
+        $groupesNames = "" ;
+
+        foreach ($this->groupes as $key => $groupe) {
+            $groupesNames .= $groupe . "a ";
+        }
+
+        $name = "Cours de " . $this->debut->format("H:i") . " à " . $this->fin->format("H:i") . " avec " . $this->professeur . ' et ' . $groupesNames ;
+        return $name ;
+    }
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->groupes = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->semaines = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
     /**
      * Get id
      *
@@ -72,7 +127,7 @@ class Cours
      * @param \DateTime $debut
      * @return Cours
      */
-    public function setDebut(\DateTime $debut)
+    public function setDebut($debut)
     {
         $this->debut = $debut;
     
@@ -111,12 +166,40 @@ class Cours
     {
         return $this->fin;
     }
+
     /**
-     * Constructor
+     * Add groupes
+     *
+     * @param \Kub\ClasseBundle\Entity\Groupe $groupes
+     * @return Cours
      */
-    public function __construct()
+    public function addGroupe(\Kub\ClasseBundle\Entity\Groupe $groupes)
     {
-        $this->groupe = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->groupes[] = $groupes;
+        $groupes->addCours($this);
+    
+        return $this;
+    }
+
+    /**
+     * Remove groupes
+     *
+     * @param \Kub\ClasseBundle\Entity\Groupe $groupes
+     */
+    public function removeGroupe(\Kub\ClasseBundle\Entity\Groupe $groupes)
+    {
+        $this->groupes->removeElement($groupes);
+        $groupes->removeCours($this);
+    }
+
+    /**
+     * Get groupes
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getGroupes()
+    {
+        return $this->groupes;
     }
 
     /**
@@ -150,11 +233,8 @@ class Cours
      */
     public function addSemaine(\Kub\EDTBundle\Entity\Semaine $semaines)
     {
-        if(!in_array($semaines, $this->semaines))
-        {
-            $this->semaines[] = $semaines;
-        }
-
+        $this->semaines[] = $semaines;
+    
         return $this;
     }
 
@@ -179,12 +259,25 @@ class Cours
     }
 
     /**
-     * Get groupes
+     * Set matiere
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @param \Kub\EDTBundle\Entity\Matiere $matiere
+     * @return Cours
      */
-    public function getGroupes()
+    public function setMatiere(\Kub\EDTBundle\Entity\Matiere $matiere = null)
     {
-        return $this->groupes;
+        $this->matiere = $matiere;
+    
+        return $this;
+    }
+
+    /**
+     * Get matiere
+     *
+     * @return \Kub\EDTBundle\Entity\Matiere 
+     */
+    public function getMatiere()
+    {
+        return $this->matiere;
     }
 }

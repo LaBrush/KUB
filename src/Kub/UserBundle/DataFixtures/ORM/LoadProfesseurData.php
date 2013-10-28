@@ -10,10 +10,10 @@ use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 
 
-use Kub\UserBundle\Entity\Eleve;
+use Kub\UserBundle\Entity\Professeur;
 
 
-class LoadEleveData extends AbstractFixture implements FixtureInterface, ContainerAwareInterface, OrderedFixtureInterface
+class LoadProfesseurData extends AbstractFixture implements FixtureInterface, ContainerAwareInterface, OrderedFixtureInterface
 {
     /**
      * @var ContainerInterface
@@ -34,23 +34,19 @@ class LoadEleveData extends AbstractFixture implements FixtureInterface, Contain
     public function load(ObjectManager $manager)
     {
         $discriminator = $this->container->get('pugx_user.manager.user_discriminator');
-        $discriminator->setClass('Kub\UserBundle\Entity\Eleve');
+        $discriminator->setClass('Kub\UserBundle\Entity\Professeur');
 
         $userManager = $this->container->get('pugx_user_manager');
-        $eleve = $userManager->createUser();
+        $professeur = $userManager->createUser();
 
-        $eleve->setNom('Snow');
-        $eleve->setPrenom('John');
-        $eleve->setAnniversaire(new \Datetime());
-        $eleve->setNiveau($this->getReference('premiere'));
+        $professeur->setNom('Bach');
+        $professeur->setPrenom('Jean-Sébastien');
 
-        $eleve->setEmail('admin@mail.com');
-        $eleve->setPlainPassword('123456');
-        $eleve->setEnabled(true);
+        $professeur->setEmail('admina@mail.com');
+        $professeur->setPlainPassword('123456');
+        $professeur->setEnabled(true);
 
-        $this->addReference('johnsnow', $eleve);
-
-        $userManager->updateUser($eleve, true);
+        $userManager->updateUser($professeur, true);
     }
 
     public function getOrder()

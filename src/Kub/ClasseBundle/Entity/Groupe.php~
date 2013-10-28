@@ -56,7 +56,7 @@ class Groupe extends BaseGroup
 
 
     /**
-     * @ORM\ManyToOne(targetEntity="Kub\EDTBundle\Entity\Cours", inversedBy="groupes")
+     * @ORM\ManyToMany(targetEntity="Kub\EDTBundle\Entity\Cours", mappedBy="groupes", cascade={"persist"})
      */
     private $cours ;
 
@@ -71,6 +71,7 @@ class Groupe extends BaseGroup
     {
         return $this->niveau . " " . $this->name ;
     }
+
 
     /**
      * Get id
@@ -131,13 +132,12 @@ class Groupe extends BaseGroup
     /**
      * Add eleves
      *
-     * @param \Kub\ClasseBundle\Entity\Niveau $eleves
+     * @param \Kub\UserBundle\Entity\Eleve $eleves
      * @return Groupe
      */
-    public function addEleve(\Kub\ClasseBundle\Entity\Niveau $eleves)
+    public function addEleve(\Kub\UserBundle\Entity\Eleve $eleves)
     {
         $this->eleves[] = $eleves;
-        $eleves->addGroup($this);
     
         return $this;
     }
@@ -145,12 +145,11 @@ class Groupe extends BaseGroup
     /**
      * Remove eleves
      *
-     * @param \Kub\ClasseBundle\Entity\Niveau $eleves
+     * @param \Kub\UserBundle\Entity\Eleve $eleves
      */
-    public function removeEleve(\Kub\ClasseBundle\Entity\Niveau $eleves)
+    public function removeEleve(\Kub\UserBundle\Entity\Eleve $eleves)
     {
         $this->eleves->removeElement($eleves);
-        $eleves->removeGroupe($this);
     }
 
     /**
@@ -164,37 +163,12 @@ class Groupe extends BaseGroup
     }
 
     /**
-     * Add niveau
-     *
-     * @param \Kub\ClasseBundle\Entity\Niveau $niveau
-     * @return Groupe
-     */
-    public function addNiveau(\Kub\ClasseBundle\Entity\Niveau $niveau)
-    {
-        $this->niveau[] = $niveau;
-        $niveau->addGroupe($this);
-    
-        return $this;
-    }
-
-    /**
-     * Remove niveau
-     *
-     * @param \Kub\ClasseBundle\Entity\Niveau $niveau
-     */
-    public function removeNiveau(\Kub\ClasseBundle\Entity\Niveau $niveau)
-    {
-        $this->niveau->removeElement($niveau);
-        $niveau->removeElement($this);
-    }
-
-    /**
      * Set cours
      *
-     * @param \Kub\EDTBundle\Enity\Cours $cours
+     * @param \Kub\EDTBundle\Entity\Cours $cours
      * @return Groupe
      */
-    public function setCours(\Kub\EDTBundle\Enity\Cours $cours = null)
+    public function setCours(\Kub\EDTBundle\Entity\Cours $cours = null)
     {
         $this->cours = $cours;
     
@@ -204,10 +178,33 @@ class Groupe extends BaseGroup
     /**
      * Get cours
      *
-     * @return \Kub\EDTBundle\Enity\Cours 
+     * @return \Kub\EDTBundle\Entity\Cours 
      */
     public function getCours()
     {
         return $this->cours;
+    }
+
+    /**
+     * Add cours
+     *
+     * @param \Kub\EDTBundle\Entity\Cours $cours
+     * @return Groupe
+     */
+    public function addCour(\Kub\EDTBundle\Entity\Cours $cours)
+    {
+        $this->cours[] = $cours;
+    
+        return $this;
+    }
+
+    /**
+     * Remove cours
+     *
+     * @param \Kub\EDTBundle\Entity\Cours $cours
+     */
+    public function removeCour(\Kub\EDTBundle\Entity\Cours $cours)
+    {
+        $this->cours->removeElement($cours);
     }
 }

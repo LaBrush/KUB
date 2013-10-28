@@ -12,7 +12,7 @@
 			<ul>
 				{% for cours in list_cours %}
 				
-					<li><a href="{{ path('cours_edit', { id: cours.id }) }}">{{ cours.name }}</a></li>
+					<li><a href="{{ path('cours_edit', { id: cours.id }) }}">{{ cours }}</a></li>
 
 				{% endfor %}
 			</ul>

@@ -77,7 +77,7 @@ class CoursController extends Controller
 		return $this->render('KubEDTBundle:Cours:edit.html.twig',
 			array(
 				'form' => $form->createView(),
-				'Cours' => $cours
+				'cours' => $cours
 			)
 		);
 	}

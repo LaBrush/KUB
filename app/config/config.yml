@@ -21,6 +21,8 @@ framework:
     session:         ~
     fragments:       ~
     http_method_override: true
+    session:
+        cookie_lifetime: 345600
 
 # Twig Configuration
 twig:
