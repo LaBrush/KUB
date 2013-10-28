@@ -43,7 +43,7 @@ class Cours
     /**
      * @ORM\OneToMany(targetEntity="Kub\ClasseBundle\Entity\Groupe", mappedBy="cours")
      */
-    private $groupe ;
+    private $groupes ;
 
     /** 
      * @ORM\ManyToOne(targetEntity="Kub\UserBundle\Entity\Professeur", inversedBy="cours")
@@ -118,39 +118,6 @@ class Cours
     {
         $this->groupe = new \Doctrine\Common\Collections\ArrayCollection();
     }
-    
-    /**
-     * Add groupe
-     *
-     * @param \Kub\ClasseBundle\Enity\Groupe $groupe
-     * @return Cours
-     */
-    public function addGroupe(\Kub\ClasseBundle\Enity\Groupe $groupe)
-    {
-        $this->groupe[] = $groupe;
-    
-        return $this;
-    }
-
-    /**
-     * Remove groupe
-     *
-     * @param \Kub\ClasseBundle\Enity\Groupe $groupe
-     */
-    public function removeGroupe(\Kub\ClasseBundle\Enity\Groupe $groupe)
-    {
-        $this->groupe->removeElement($groupe);
-    }
-
-    /**
-     * Get groupe
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getGroupe()
-    {
-        return $this->groupe;
-    }
 
     /**
      * Set professeur
@@ -209,5 +176,15 @@ class Cours
     public function getSemaines()
     {
         return $this->semaines;
+    }
+
+    /**
+     * Get groupes
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getGroupes()
+    {
+        return $this->groupes;
     }
 }

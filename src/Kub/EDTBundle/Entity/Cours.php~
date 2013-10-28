@@ -29,6 +29,11 @@ class Cours
     private $debut;
 
     /**
+     *
+     */
+    private $jour ;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="fin", type="time")
@@ -38,7 +43,7 @@ class Cours
     /**
      * @ORM\OneToMany(targetEntity="Kub\ClasseBundle\Entity\Groupe", mappedBy="cours")
      */
-    private $groupe ;
+    private $groupes ;
 
     /** 
      * @ORM\ManyToOne(targetEntity="Kub\UserBundle\Entity\Professeur", inversedBy="cours")
@@ -67,7 +72,7 @@ class Cours
      * @param \DateTime $debut
      * @return Cours
      */
-    public function setDebut($debut)
+    public function setDebut(\DateTime $debut)
     {
         $this->debut = $debut;
     
@@ -168,5 +173,41 @@ class Cours
     public function getProfesseur()
     {
         return $this->professeur;
+    }
+
+    /**
+     * Add semaines
+     *
+     * @param \Kub\EDTBundle\Entity\Semaine $semaines
+     * @return Cours
+     */
+    public function addSemaine(\Kub\EDTBundle\Entity\Semaine $semaines)
+    {
+        if(!in_array($semaines, $this->semaines))
+        {
+            $this->semaines[] = $semaines;
+        }
+
+        return $this;
+    }
+
+    /**
+     * Remove semaines
+     *
+     * @param \Kub\EDTBundle\Entity\Semaine $semaines
+     */
+    public function removeSemaine(\Kub\EDTBundle\Entity\Semaine $semaines)
+    {
+        $this->semaines->removeElement($semaines);
+    }
+
+    /**
+     * Get semaines
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getSemaines()
+    {
+        return $this->semaines;
     }
 }
