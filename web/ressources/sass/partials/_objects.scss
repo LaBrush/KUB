@@ -1,30 +1,3 @@
-/* Couleurs */
-
-$accueil: 				#e67e22;
-$espace-collaboratif:	#80d625;
-$agenda: 				#22b6e6;
-$vie-lyceenne: 			#f28fbe;
-$bigbro: 				#f73b40;
-
-
-$utilisateurs: 			#f2c72f;
-$groupes: 				#80d625;
-
-
-$scientifique: 			#f2c72f;  // Jaune
-$social-histoire: 		#80d625;  // Vert
-$langues: 				#22b6e6;  // Bleu
-$sport-options:			#f28fbe;  // Rose
-$autres: 				#f73b40;  // Rouge
-
-
-$button-color: 			#fefefe;
-$button: 				$accueil;
-$button-yes: 			#80d625;
-$button-no: 			#f73b40;
-
-
-/**************************************************************************/
 /* Menu */
 
 .bordered-accueil {border-left: 4px solid $accueil;}
@@ -123,6 +96,23 @@ $button-no: 			#f73b40;
 	&:hover, &:active, &:focus
 	{
 		background: darken($button, 5%);
+	}
+}
+
+
+.button-menu
+{
+	@include button;
+
+	background: $nav;
+	padding: 0 20px;
+	font-size: 1.1em;
+
+	@include border-radius(0);
+
+	&:hover, &:active, &:focus
+	{
+		background: darken($nav, 5%);
 	}
 }
 

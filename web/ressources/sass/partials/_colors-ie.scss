@@ -1,0 +1,63 @@
+/* Layout */
+$body:					#fafafa;
+
+
+/*******************************************/
+/* Header */
+$header:    			rgb(235, 235, 235);
+$user:      			#e67e22;
+$logo:      			#e67e22;
+
+
+/*******************************************/
+/* Nav */
+$button:        		$header;
+$nav:	        		$header;
+$notifications: 		$logo;
+
+
+/*******************************************/
+/* Sections */
+$error:   				#e67e22;
+$table-border: 			#ebebeb;
+$cour: 					#b1cbf3;
+$cour-annule: 			#ffa5a5;
+$cour-ajoute: 			#a7fdab;
+$person: 				#cdf1e2;
+$away: 					#ffa9a9;
+
+
+
+/******************************************************************************/
+/* Objets */
+$accueil: 				#e67e22;
+$espace-collaboratif:	#80d625;
+$agenda: 				#22b6e6;
+$vie-lyceenne: 			#f28fbe;
+$bigbro: 				#f73b40;
+
+
+$utilisateurs: 			#f2c72f;
+$groupes: 				#80d625;
+
+
+$scientifique: 			#f2c72f;  // Jaune
+$social-histoire: 		#80d625;  // Vert
+$langues: 				#22b6e6;  // Bleu
+$sport-options:			#f28fbe;  // Rose
+$autres: 				#f73b40;  // Rouge
+
+
+$button-color: 			#fefefe;
+$button: 				$accueil;
+$button-yes: 			#80d625;
+$button-no: 			#f73b40;
+
+
+
+/******************************************************************************/
+/* Typo */
+$texte:         		#5d5e64;
+$liens:         		#4478a2;
+$liensSurvoles: 		none;
+$color-light:   		#fefefe;
