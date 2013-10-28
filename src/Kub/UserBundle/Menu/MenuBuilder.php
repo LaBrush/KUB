@@ -71,9 +71,14 @@ class MenuBuilder
                 );
 
             $menu->addChild('Emplois du temps', array("labelAttributes" => array("className" => "agenda")));
-                $menu['Emplois du temps']->addChild('Liste',
+                $menu['Emplois du temps']->addChild('Fréquences',
                     array(
                         'route' => 'frequence_list'
+                    )
+                );
+                $menu['Emplois du temps']->addChild('Cours',
+                    array(
+                        'route' => 'cours_list'
                     )
                 );
 
@@ -96,14 +101,8 @@ class MenuBuilder
     {
         $menu = $this->factory->createItem('root');
 
-        $menu->addChild('Mon compte', 
-            array(
-                'route' => 'fos_user_profile_show'
-            )
-        );
-
         //Penser à ajouter un discriminant
-        $menu->addChild('Parametres',
+        $menu->addChild('Mon compte',
             array(
                 'route' => 'fos_user_profile_edit'
             )

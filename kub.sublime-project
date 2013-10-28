@@ -8,9 +8,6 @@
 				"app/cache"
 			],
 			"path": "/Users/adrienbocquet/Sites/MAMP/Kub"
-		},
-		{
-			"path": "src/Kub/UserBundle"
 		}
 	]
 }

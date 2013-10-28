@@ -31,7 +31,7 @@ class FrequenceController extends Controller
 			if($formHandler->process())
 			{
 				$this->get('session')->getFlashBag()->add('info', "la fréquence a bien été ajoutée");
-				return $this->redirect($this->generateUrl("home_homepage"));
+				return $this->redirect($this->generateUrl("frequence_list"));
 			}
 			else
 			{
@@ -65,7 +65,7 @@ class FrequenceController extends Controller
 			if($formHandler->process())
 			{
 				$this->get('session')->getFlashBag()->add('info', "la fréquence a bien été modifiée");
-				return $this->redirect($this->generateUrl("home_homepage"));
+				return $this->redirect($this->generateUrl("frequence_list"));
 			}
 			else
 			{

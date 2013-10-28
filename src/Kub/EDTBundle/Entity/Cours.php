@@ -29,6 +29,11 @@ class Cours
     private $debut;
 
     /**
+     *
+     */
+    private $jour ;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="fin", type="time")
@@ -38,9 +43,18 @@ class Cours
     /**
      * @ORM\OneToMany(targetEntity="Kub\ClasseBundle\Entity\Groupe", mappedBy="cours")
      */
-    private $groupe ;
+    private $groupes ;
+
+    /** 
+     * @ORM\ManyToOne(targetEntity="Kub\UserBundle\Entity\Professeur", inversedBy="cours")
+     */
+    private $professeur ;
 
 
+    /**
+     * @ORM\ManyToMany(targetEntity="Kub\EDTBundle\Entity\Semaine")
+     */
+    private $semaines ;
 
     /**
      * Get id
@@ -58,7 +72,7 @@ class Cours
      * @param \DateTime $debut
      * @return Cours
      */
-    public function setDebut($debut)
+    public function setDebut(\DateTime $debut)
     {
         $this->debut = $debut;
     
@@ -104,37 +118,73 @@ class Cours
     {
         $this->groupe = new \Doctrine\Common\Collections\ArrayCollection();
     }
-    
+
     /**
-     * Add groupe
+     * Set professeur
      *
-     * @param \Kub\ClasseBundle\Enity\Groupe $groupe
+     * @param \Kub\UserBundle\Entity\Professeur $professeur
      * @return Cours
      */
-    public function addGroupe(\Kub\ClasseBundle\Enity\Groupe $groupe)
+    public function setProfesseur(\Kub\UserBundle\Entity\Professeur $professeur = null)
     {
-        $this->groupe[] = $groupe;
+        $this->professeur = $professeur;
     
         return $this;
     }
 
     /**
-     * Remove groupe
+     * Get professeur
      *
-     * @param \Kub\ClasseBundle\Enity\Groupe $groupe
+     * @return \Kub\UserBundle\Entity\Professeur 
      */
-    public function removeGroupe(\Kub\ClasseBundle\Enity\Groupe $groupe)
+    public function getProfesseur()
     {
-        $this->groupe->removeElement($groupe);
+        return $this->professeur;
     }
 
     /**
-     * Get groupe
+     * Add semaines
+     *
+     * @param \Kub\EDTBundle\Entity\Semaine $semaines
+     * @return Cours
+     */
+    public function addSemaine(\Kub\EDTBundle\Entity\Semaine $semaines)
+    {
+        if(!in_array($semaines, $this->semaines))
+        {
+            $this->semaines[] = $semaines;
+        }
+
+        return $this;
+    }
+
+    /**
+     * Remove semaines
+     *
+     * @param \Kub\EDTBundle\Entity\Semaine $semaines
+     */
+    public function removeSemaine(\Kub\EDTBundle\Entity\Semaine $semaines)
+    {
+        $this->semaines->removeElement($semaines);
+    }
+
+    /**
+     * Get semaines
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getGroupe()
+    public function getSemaines()
     {
-        return $this->groupe;
+        return $this->semaines;
+    }
+
+    /**
+     * Get groupes
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getGroupes()
+    {
+        return $this->groupes;
     }
 }

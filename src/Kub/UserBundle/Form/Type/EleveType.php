@@ -25,7 +25,7 @@ class EleveType extends UserType
 		}
 
 		$builder
-			->add("anniversaire", "date", array(
+			->add("anniversaire", "birthday", array(
 				"years" => $years
 			))
 			->add('niveau', 'entity', array(

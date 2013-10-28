@@ -4,6 +4,13 @@
 
 	
 		<article class="article">
+			<p>Nom d'utilisateur: {{ app.user.username }}</p>
+    		<p>Mon email: {{ app.user.email }}</p>
+		</article>
+
+		<article class="article">
+			<h3>Parametres</h3>
+
 			{% include "FOSUserBundle:Profile:edit_content.html.twig" %}
 		</article>
 		

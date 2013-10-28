@@ -1,3 +1,7 @@
 edt_frequence:
     resource: "@KubEDTBundle/Resources/config/routing/frequence.yml"
     prefix: /frequence
+
+edt_cours:
+    resource: "@KubEDTBundle/Resources/config/routing/cours.yml"
+    prefix: /cours

@@ -56,7 +56,7 @@ class Groupe extends BaseGroup
 
 
     /**
-     * @ORM\ManyToOne(targetEntity="Kub\EDTBundle\Entity\Cours", inversedBy="groupe")
+     * @ORM\ManyToOne(targetEntity="Kub\EDTBundle\Entity\Cours", inversedBy="groupes")
      */
     private $cours ;
 
