@@ -51,7 +51,7 @@
 
 	<section class="{% block sectionClass %}section{% endblock %}">
 		{% for flashMessage in app.session.flashbag.get('info') %}
-			<article class="error color-light">
+			<article class="error">
 			    <p>{{ flashMessage }}</p>
 			</article>
 		{% endfor %}

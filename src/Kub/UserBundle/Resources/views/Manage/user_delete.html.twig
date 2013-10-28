@@ -2,15 +2,10 @@
 
 {% block body %}
 
-	
-		<article class="article">
-			<h2 class="section-title">Supprimer un {{ user.class }}</h2>
-		</article>
-
-		<article class="error color-light">
+		<article class="error">
 			{{ form_start(form) }}
 
-			<p>Êtes vous sûr de vouloir supprimer le compte de {{ user }} ?</p>
+			<p>Êtes vous sûr de vouloir supprimer le compte {{ role }} de <strong>{{ user }}</strong> ?</p>
 
 				{% block form %}
 				{% endblock %}
