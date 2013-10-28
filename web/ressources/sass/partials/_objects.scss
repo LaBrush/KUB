@@ -51,7 +51,7 @@ $button-no: 			#f73b40;
 	border: none;
 	margin: 0;
 	@include border-radius(2px);
-	padding: 4px 10px;
+	padding: 5px 10px 4px 10px;
 	color: $button-color;
 	text-shadow: 1px 1px rgba(0, 0, 0, 0.2);
 	font-size: 0.8em;
