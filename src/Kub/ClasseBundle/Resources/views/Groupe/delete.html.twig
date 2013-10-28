@@ -4,14 +4,19 @@
 
 	
 		<article class="article">
-			<h2 class="section-title">Êtes vous sûr de vouloir supprimer le groupe {{ groupe.name }} ?</h2>
+			<h2 class="section-title">Supprimer un groupe</h2>
 		</article>
 
-		<article class="article">
+		<article class="error color-light">
 			{{ form_start(form) }}
 
-				<input type="submit"> ou 
-				<a href="{{ path('groupe_list') }}">Annuler</a>	
+			<p>Êtes vous sûr de vouloir supprimer le groupe {{ groupe.name }} ?</p>
+
+				{% block form %}
+				{% endblock %}
+				
+				<br />
+				<input class="button-yes" type="submit"> ou <a class="button-no" href="{{ path('groupe_list') }}">Annuler</a>	
 			{{ form_end(form) }}
 		</article>
 		
