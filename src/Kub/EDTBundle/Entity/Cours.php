@@ -26,6 +26,7 @@ class Cours
      * @var \DateTime
      *
      * @ORM\Column(name="debut", type="time")
+     * @Kub\EDTBundle\Validator\Constraints\TimeEDTCompatible()
      */
     private $debut;
 
@@ -38,6 +39,7 @@ class Cours
      * @var \DateTime
      *
      * @ORM\Column(name="fin", type="time")
+     * @Kub\EDTBundle\Validator\Constraints\TimeEDTCompatible()
      */
     private $fin;
 

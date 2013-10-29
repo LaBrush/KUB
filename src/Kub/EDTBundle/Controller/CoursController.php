@@ -52,7 +52,7 @@ class CoursController extends Controller
 	 */
 	public function editAction(Cours $cours)
 	{
-		$type = new CoursType() ;
+		$type = new CoursType($this->get('kub.edt.time')) ;
 		$form = $this->createForm($type, $cours);
 
 		$request = $this->get('request');

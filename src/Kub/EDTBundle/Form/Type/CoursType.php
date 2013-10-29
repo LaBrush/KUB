@@ -8,34 +8,43 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class CoursType extends AbstractType
 {
+    private $timeService ; 
+
+    public function __construct($timeService)
+    {
+        $this->timeService = $timeService ;
+    }
+
     /**
      * @param FormBuilderInterface $builder
      * @param array $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $hours = array();
-        for ($i=7; $i <= 17 ; $i++) { 
-            $hours[] = $i ;
-        }
+        // $hours = array();
+        // for ($i=7; $i <= 17 ; $i++) { 
+        //     $hours[] = $i ;
+        // }
 
-        $minutes = array();
-        $minutes[] = 0 ;
-        $minutes[] = 5 ;
-        $minutes[] = 20;
-        $minutes[] = 25;
-        $minutes[] = 50;
-        $minutes[] = 55;
+        // $minutes = array();
+        // $minutes[] = 0 ;
+        // $minutes[] = 5 ;
+        // $minutes[] = 20;
+        // $minutes[] = 25;
+        // $minutes[] = 50;
+        // $minutes[] = 55;
 
         $builder
             ->add('debut', 'time', array(
-                    "hours" => $hours,
-                    "minutes" => $minutes
+                    "hours" => $this->timeService->getHours(),
+                    "minutes" => $this->timeService->getMinutes()
                 )
             )
             ->add('fin', 'time', array(
-                    "hours" => $hours,
-                    "minutes" => $minutes
+                    // "hours" => $hours,
+                    // "minutes" => $minutes
+                    "hours" => $this->timeService->getHours(),
+                    "minutes" => $this->timeService->getMinutes()
                 )
             )
             ->add('professeur', "entity", array(
