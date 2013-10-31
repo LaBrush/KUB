@@ -31,7 +31,8 @@ class Cours
     private $debut;
 
     /**
-     *
+     * @ORM\ManyToOne(targetEntity="Kub\EDTBundle\Entity\Jour")
+     * @Assert\NotNull()
      */
     private $jour ;
 
@@ -94,6 +95,7 @@ class Cours
 
     public function __toString()
     {
+
         $groupesNames = "" ;
 
         foreach ($this->groupes as $key => $groupe) {
@@ -109,6 +111,9 @@ class Cours
      */
     public function __construct()
     {
+        $this->debut = new \DateTime();
+        $this->fin = new \DateTime();
+
         $this->groupes = new \Doctrine\Common\Collections\ArrayCollection();
         $this->semaines = new \Doctrine\Common\Collections\ArrayCollection();
     }
@@ -281,5 +286,28 @@ class Cours
     public function getMatiere()
     {
         return $this->matiere;
+    }
+
+    /**
+     * Set jour
+     *
+     * @param integer $jour
+     * @return Cours
+     */
+    public function setJour($jour)
+    {
+        $this->jour = $jour;
+    
+        return $this;
+    }
+
+    /**
+     * Get jour
+     *
+     * @return integer 
+     */
+    public function getJour()
+    {
+        return $this->jour;
     }
 }

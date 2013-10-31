@@ -5,11 +5,15 @@ namespace Kub\EDTBundle\Services ;
 class TimeService
 {
 	private $horaires ;
+	private $jours ;
 
 	public function __construct($edt)
 	{
 		$this->horaires = $edt["horaires"];
+		$this->jours = $edt["jours"];
 	}
+
+	//Fonctions sur les horaires
 
 	public function getHours(){
 
@@ -61,6 +65,12 @@ class TimeService
 		}		
 
 		return array();
+	}
 
+	//Fonctions sur les jours
+
+	public function getJours(){
+
+		return $this->jours ;
 	}
 }

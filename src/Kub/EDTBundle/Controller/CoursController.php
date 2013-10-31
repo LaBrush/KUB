@@ -16,13 +16,14 @@ class CoursController extends Controller
 	 */
 	public function createAction()
 	{
-		$type = new CoursType() ;
+		$request = $this->get('request');
+		$em = $this->getDoctrine()->getManager();
+		$time = $this->get('kub.edt.time');
+
+		$type = new CoursType($time) ;
 		$cours = new Cours();
 
 		$form = $this->createForm($type, $cours);
-
-		$request = $this->get('request');
-		$em = $this->getDoctrine()->getManager();
 
 		$formHandler = new CoursHandler($form, $request, $em);
 
@@ -52,11 +53,13 @@ class CoursController extends Controller
 	 */
 	public function editAction(Cours $cours)
 	{
-		$type = new CoursType($this->get('kub.edt.time')) ;
-		$form = $this->createForm($type, $cours);
-
 		$request = $this->get('request');
 		$em = $this->getDoctrine()->getManager();
+		$time = $this->get('kub.edt.time');
+
+		$type = new CoursType($time) ;
+
+		$form = $this->createForm($type, $cours);
 
 		$formHandler = new CoursHandler($form, $request, $em);
 

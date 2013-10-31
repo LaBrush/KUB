@@ -4,6 +4,7 @@ namespace Kub\EDTBundle\Form\Handler;
 
 use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\Request;
+use Kub\EDTBundle\Services\TimeService ;
 
 class CoursHandler
 {
@@ -21,9 +22,9 @@ class CoursHandler
 	 */
 	public function __construct(Form $form, Request $request, $em)
 	{
-		$this->form = $form;
+		$this->form    = $form;
 		$this->request = $request;
-		$this->em = $em;
+		$this->em      = $em;
 	}
 
 	public function process()
@@ -46,7 +47,15 @@ class CoursHandler
 	}
 
 	protected function onSuccess($data)
-	{
+	{	
+		$frequences = $this->form["frequences"]->getData();
+
+		foreach ($frequences as $key => $frequence) {
+			foreach ($frequence->getSemaines() as $key => $semaine) {
+				$data->addSemaine($semaine);
+			}
+		}
+
 		$this->em->persist($data);
 		$this->em->flush();
 	}

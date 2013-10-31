@@ -26,11 +26,12 @@ class Cours
      * @var \DateTime
      *
      * @ORM\Column(name="debut", type="time")
+     * @Kub\EDTBundle\Validator\Constraints\TimeEDTCompatible()
      */
     private $debut;
 
     /**
-     *
+     * @ORM\ManyToOne(targetEntity="Kub\EDTBundle\Entity\Jour")
      */
     private $jour ;
 
@@ -38,6 +39,7 @@ class Cours
      * @var \DateTime
      *
      * @ORM\Column(name="fin", type="time")
+     * @Kub\EDTBundle\Validator\Constraints\TimeEDTCompatible()
      */
     private $fin;
 
@@ -92,6 +94,7 @@ class Cours
 
     public function __toString()
     {
+
         $groupesNames = "" ;
 
         foreach ($this->groupes as $key => $groupe) {
@@ -107,6 +110,9 @@ class Cours
      */
     public function __construct()
     {
+        $this->debut = new \DateTime();
+        $this->fin = new \DateTime();
+
         $this->groupes = new \Doctrine\Common\Collections\ArrayCollection();
         $this->semaines = new \Doctrine\Common\Collections\ArrayCollection();
     }
@@ -279,5 +285,28 @@ class Cours
     public function getMatiere()
     {
         return $this->matiere;
+    }
+
+    /**
+     * Set jour
+     *
+     * @param integer $jour
+     * @return Cours
+     */
+    public function setJour($jour)
+    {
+        $this->jour = $jour;
+    
+        return $this;
+    }
+
+    /**
+     * Get jour
+     *
+     * @return integer 
+     */
+    public function getJour()
+    {
+        return $this->jour;
     }
 }

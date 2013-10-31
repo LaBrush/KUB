@@ -21,46 +21,45 @@ class CoursType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        // $hours = array();
-        // for ($i=7; $i <= 17 ; $i++) { 
-        //     $hours[] = $i ;
-        // }
-
-        // $minutes = array();
-        // $minutes[] = 0 ;
-        // $minutes[] = 5 ;
-        // $minutes[] = 20;
-        // $minutes[] = 25;
-        // $minutes[] = 50;
-        // $minutes[] = 55;
-
         $builder
             ->add('debut', 'time', array(
-                    "hours" => $this->timeService->getHours(),
-                    "minutes" => $this->timeService->getMinutes()
+                    'hours' => $this->timeService->getHours(),
+                    'minutes' => $this->timeService->getMinutes()
                 )
             )
             ->add('fin', 'time', array(
-                    // "hours" => $hours,
-                    // "minutes" => $minutes
-                    "hours" => $this->timeService->getHours(),
-                    "minutes" => $this->timeService->getMinutes()
+                    'hours' => $this->timeService->getHours(),
+                    'minutes' => $this->timeService->getMinutes()
                 )
             )
-            ->add('professeur', "entity", array(
+            ->add('jour', 'entity', array(
+                    'empty_value' => 'Jour du cours',
+                    'class' => 'Kub\EDTBundle\Entity\Jour'   
+                )
+            )
+            ->add('professeur', 'entity', array(
                     'empty_value' => 'Choisissez un professeur',
-                    'class' => "Kub\UserBundle\Entity\Professeur"
+                    'class' => 'Kub\UserBundle\Entity\Professeur'
                 )
             )
-            ->add('groupes', "entity", array(
-                    "multiple" => true,
-                    "expanded" => true,
-                    "class" => "Kub\ClasseBundle\Entity\Groupe"
+            ->add('groupes', 'entity', array(
+                    'multiple' => true,
+                    'expanded' => true,
+                    'class' => 'Kub\ClasseBundle\Entity\Groupe'
                 )
             )
-            ->add('matiere', "entity", array(
+            ->add('matiere', 'entity', array(
                     'empty_value' => 'Choisissez une matière',
-                    'class' => "Kub\EDTBundle\Entity\Matiere"
+                    'class' => 'Kub\EDTBundle\Entity\Matiere'
+                )
+            )
+            ->add('semaines')
+            ->add('frequences', 'entity', array(
+                    "mapped" => false,
+                    "class" => "Kub\EDTBundle\Entity\Frequence",
+                    "expanded" => true,
+                    "multiple" => true,
+                    "label" => "Copier les semaines d'une fréquence"
                 )
             )
         ;
