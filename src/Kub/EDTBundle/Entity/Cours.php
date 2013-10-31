@@ -240,7 +240,10 @@ class Cours
      */
     public function addSemaine(\Kub\EDTBundle\Entity\Semaine $semaines)
     {
-        $this->semaines[] = $semaines;
+        if(!$this->semaines->contains($semaines))
+        {
+            $this->semaines[] = $semaines;
+        }
     
         return $this;
     }
