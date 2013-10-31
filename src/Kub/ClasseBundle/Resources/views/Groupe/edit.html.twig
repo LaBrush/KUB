@@ -12,15 +12,10 @@
 
 				{{ form_widget(form) }}
 
-				<input type="submit">
+				<input class="button-yes" type="submit">
+				<a class="button" href="{{ path('groupe_list') }}">Annuler</a>
+				<a class="button-no" href="{{ path("groupe_delete", { id: groupe.id }) }}">Supprimer le groupe {{ groupe }}</a>
 			{{ form_end(form) }}
-		</article>
-
-		<article class="article">
-			
-			<a href="{{ path("groupe_delete", { id: groupe.id }) }}">...ou supprimer {{ groupe }}</a>
-
-		</article>
-		
+		</article>		
 			
 {% endblock %}
