@@ -6,6 +6,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
+use Kub\EDTBundle\Form\Type\HoraireType ;
+
 class CoursType extends AbstractType
 {
     private $timeService ; 
@@ -22,21 +24,6 @@ class CoursType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('debut', 'time', array(
-                    'hours' => $this->timeService->getHours(),
-                    'minutes' => $this->timeService->getMinutes()
-                )
-            )
-            ->add('fin', 'time', array(
-                    'hours' => $this->timeService->getHours(),
-                    'minutes' => $this->timeService->getMinutes()
-                )
-            )
-            ->add('jour', 'entity', array(
-                    'empty_value' => 'Jour du cours',
-                    'class' => 'Kub\EDTBundle\Entity\Jour'   
-                )
-            )
             ->add('professeur', 'entity', array(
                     'empty_value' => 'Choisissez un professeur',
                     'class' => 'Kub\UserBundle\Entity\Professeur'
@@ -53,15 +40,15 @@ class CoursType extends AbstractType
                     'class' => 'Kub\EDTBundle\Entity\Matiere'
                 )
             )
-            ->add('semaines')
-            ->add('frequences', 'entity', array(
-                    "mapped" => false,
-                    "class" => "Kub\EDTBundle\Entity\Frequence",
-                    "expanded" => true,
-                    "multiple" => true,
-                    "label" => "Copier les semaines d'une fréquence"
+            ->add('horaires', 'collection', array(
+
+                    'type' => new HoraireType($this->timeService),
+                    'allow_add' => true,
+                    'allow_delete' => true
+
                 )
             )
+            
         ;
     }
     

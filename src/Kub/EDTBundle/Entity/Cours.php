@@ -23,28 +23,6 @@ class Cours
     private $id;
 
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="debut", type="time")
-     * @Kub\EDTBundle\Validator\Constraints\TimeEDTCompatible()
-     */
-    private $debut;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="Kub\EDTBundle\Entity\Jour")
-     * @Assert\NotNull()
-     */
-    private $jour ;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="fin", type="time")
-     * @Kub\EDTBundle\Validator\Constraints\TimeEDTCompatible()
-     */
-    private $fin;
-
-    /**
      * @ORM\ManyToMany(targetEntity="Kub\ClasseBundle\Entity\Groupe", inversedBy="cours", cascade={"persist"})
      * @Assert\Count(min=1)
      */
@@ -62,11 +40,12 @@ class Cours
      */
     private $matiere ;
 
-    /**
-     * @ORM\ManyToMany(targetEntity="Kub\EDTBundle\Entity\Semaine")
-     * @Assert\NotNull()
+    /** 
+     * @ORM\OneToMany(targetEntity="Kub\EDTBundle\Entity\Horaire", mappedBy="cours")
+     * @Assert\Count(min=1, minMessage="Un cours doit avoir au moins un horaire")
+     * @Assert\Valid()
      */
-    private $semaines ;
+    private $horaires ;    
 
     /**
      * @Assert\True(message="Un cours ne peut avoir d'éléves de niveau différents")
@@ -102,7 +81,7 @@ class Cours
             $groupesNames .= $groupe . "a ";
         }
 
-        $name = "Cours de " . $this->debut->format("H:i") . " à " . $this->fin->format("H:i") . " avec " . $this->professeur . ' et ' . $groupesNames ;
+        $name = "Cours de avec " . $this->professeur . ' et ' . $groupesNames ;
         return $name ;
     }
 
@@ -111,13 +90,10 @@ class Cours
      */
     public function __construct()
     {
-        $this->debut = new \DateTime();
-        $this->fin = new \DateTime();
-
         $this->groupes = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->semaines = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
+
     /**
      * Get id
      *
@@ -129,52 +105,6 @@ class Cours
     }
 
     /**
-     * Set debut
-     *
-     * @param \DateTime $debut
-     * @return Cours
-     */
-    public function setDebut($debut)
-    {
-        $this->debut = $debut;
-    
-        return $this;
-    }
-
-    /**
-     * Get debut
-     *
-     * @return \DateTime 
-     */
-    public function getDebut()
-    {
-        return $this->debut;
-    }
-
-    /**
-     * Set fin
-     *
-     * @param \DateTime $fin
-     * @return Cours
-     */
-    public function setFin($fin)
-    {
-        $this->fin = $fin;
-    
-        return $this;
-    }
-
-    /**
-     * Get fin
-     *
-     * @return \DateTime 
-     */
-    public function getFin()
-    {
-        return $this->fin;
-    }
-
-    /**
      * Add groupes
      *
      * @param \Kub\ClasseBundle\Entity\Groupe $groupes
@@ -183,7 +113,6 @@ class Cours
     public function addGroupe(\Kub\ClasseBundle\Entity\Groupe $groupes)
     {
         $this->groupes[] = $groupes;
-        $groupes->addCours($this);
     
         return $this;
     }
@@ -196,7 +125,6 @@ class Cours
     public function removeGroupe(\Kub\ClasseBundle\Entity\Groupe $groupes)
     {
         $this->groupes->removeElement($groupes);
-        $groupes->removeCours($this);
     }
 
     /**
@@ -233,42 +161,6 @@ class Cours
     }
 
     /**
-     * Add semaines
-     *
-     * @param \Kub\EDTBundle\Entity\Semaine $semaines
-     * @return Cours
-     */
-    public function addSemaine(\Kub\EDTBundle\Entity\Semaine $semaines)
-    {
-        if(!$this->semaines->contains($semaines))
-        {
-            $this->semaines[] = $semaines;
-        }
-    
-        return $this;
-    }
-
-    /**
-     * Remove semaines
-     *
-     * @param \Kub\EDTBundle\Entity\Semaine $semaines
-     */
-    public function removeSemaine(\Kub\EDTBundle\Entity\Semaine $semaines)
-    {
-        $this->semaines->removeElement($semaines);
-    }
-
-    /**
-     * Get semaines
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getSemaines()
-    {
-        return $this->semaines;
-    }
-
-    /**
      * Set matiere
      *
      * @param \Kub\EDTBundle\Entity\Matiere $matiere
@@ -292,25 +184,35 @@ class Cours
     }
 
     /**
-     * Set jour
+     * Add horaires
      *
-     * @param integer $jour
+     * @param \Kub\EDTBundle\Entity\Horaire $horaires
      * @return Cours
      */
-    public function setJour($jour)
+    public function addHoraire(\Kub\EDTBundle\Entity\Horaire $horaires)
     {
-        $this->jour = $jour;
+        $this->horaires[] = $horaires;
     
         return $this;
     }
 
     /**
-     * Get jour
+     * Remove horaires
      *
-     * @return integer 
+     * @param \Kub\EDTBundle\Entity\Horaire $horaires
      */
-    public function getJour()
+    public function removeHoraire(\Kub\EDTBundle\Entity\Horaire $horaires)
     {
-        return $this->jour;
+        $this->horaires->removeElement($horaires);
+    }
+
+    /**
+     * Get horaires
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getHoraires()
+    {
+        return $this->horaires;
     }
 }
