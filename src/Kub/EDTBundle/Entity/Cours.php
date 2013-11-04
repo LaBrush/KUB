@@ -4,6 +4,7 @@ namespace Kub\EDTBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert ;
+use Kub\EDTBundle\Entity\Horaire ;
 
 /**
  * Cours
@@ -41,7 +42,7 @@ class Cours
     private $matiere ;
 
     /** 
-     * @ORM\OneToMany(targetEntity="Kub\EDTBundle\Entity\Horaire", mappedBy="cours")
+     * @ORM\OneToMany(targetEntity="Kub\EDTBundle\Entity\Horaire", mappedBy="cours", cascade={"persist", "remove"})
      * @Assert\Count(min=1, minMessage="Un cours doit avoir au moins un horaire")
      * @Assert\Valid()
      */
@@ -91,6 +92,8 @@ class Cours
     public function __construct()
     {
         $this->groupes = new \Doctrine\Common\Collections\ArrayCollection();
+
+        $this->addHoraire(new Horaire());
     }
     
 
@@ -192,6 +195,8 @@ class Cours
     public function addHoraire(\Kub\EDTBundle\Entity\Horaire $horaires)
     {
         $this->horaires[] = $horaires;
+
+        $horaires->setCours($this);
     
         return $this;
     }
@@ -204,6 +209,7 @@ class Cours
     public function removeHoraire(\Kub\EDTBundle\Entity\Horaire $horaires)
     {
         $this->horaires->removeElement($horaires);
+        $horaires->setCours();
     }
 
     /**

@@ -48,15 +48,16 @@ class CoursHandler
 
 	protected function onSuccess($data)
 	{	
-		$liste_horaires = $this->form["horaires"]->getData();
+		$liste_horaires_form = $this->form["horaires"];
 
-		foreach ($liste_horaires as $key => $horaires) {
+		foreach ($liste_horaires_form as $key => $horaire_form) {
 
-			$frequences = $horaire['frequences']->getData();
+			$liste_frequences = $horaire_form["frequences"]->getData();
+			$horaire = $horaire_form->getData();
 
-			foreach ($frequences as $key => $frequence) {
+			foreach ($liste_frequences as $key => $frequence) {
 				foreach ($frequence->getSemaines() as $key => $semaine) {
-					$data->addSemaine($semaine);
+					$horaire->addSemaine($semaine);
 				}
 			}
 
