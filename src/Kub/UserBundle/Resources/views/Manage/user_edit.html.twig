@@ -9,8 +9,7 @@
 		<article class="article">
 			{{ form_start(form, { 'attr': {'class': 'formulaire-creation-utilisateur'} }) }}
 
-				{% block form %}
-				{% endblock %}
+				{% include "KubUserBundle:Manage:" ~ user.class ~ "_form.html.twig" %}
 
 				<span class="validate">
 					<input class="button-yes" type="submit">
