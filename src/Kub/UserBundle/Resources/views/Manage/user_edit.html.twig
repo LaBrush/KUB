@@ -12,9 +12,13 @@
 				{% block form %}
 				{% endblock %}
 
-				<input class="button-yes" type="submit">
-				<a class="button" href="{{ path('user_list', { role: user.class }) }}">Annuler</a>
-				<a class="button-no" href="{{ path("user_delete", { username: user.username, role: role }) }}">Supprimer {{ user.prenom }} {{ user.nom }}</a>
+				<span class="validate">
+					<input class="button-yes" type="submit">
+					<a class="button" href="{{ path('user_list', { role: user.class }) }}">Annuler</a>
+					<a class="button-no" href="{{ path("user_delete", { username: user.username, role: role }) }}">Supprimer {{ user.prenom }} {{ user.nom }}</a>
+				</span>
+
+				
 			{{ form_end(form) }}
 		</article>
 			
