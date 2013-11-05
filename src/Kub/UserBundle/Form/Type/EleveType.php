@@ -31,11 +31,11 @@ class EleveType extends UserType
 			->add('niveau', 'entity', array(
 				"class" => "Kub\ClasseBundle\Entity\Niveau",
 			))
-			->add('tuteurs', 'entity', array(
-				'class' => 'Kub\UserBundle\Entity\Tuteur',
-				"multiple" => true,
-				"expanded" => true
-			))
+			->add('tuteurs', 'genemu_jqueryselect2_entity', array(
+					"class" => "Kub\UserBundle\Entity\Tuteur",
+					"multiple" => true
+				)
+			)
 			->add('tuteurs_add', 'collection', array(
 				"type" => new TuteurType(),
 				"allow_add" => true,

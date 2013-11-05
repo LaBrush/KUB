@@ -39,6 +39,7 @@ class AppKernel extends Kernel
             new Kub\RessourceBundle\KubRessourceBundle(),
             new Kub\ClasseBundle\KubClasseBundle(),
             new Kub\EDTBundle\KubEDTBundle(),
+            new Genemu\Bundle\FormBundle\GenemuFormBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
