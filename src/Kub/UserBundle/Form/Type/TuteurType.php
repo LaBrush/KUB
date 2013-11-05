@@ -20,6 +20,7 @@ class TuteurType extends UserType
 				->add('fixe', 'tel', array('required' => false, 'default_region' => 'FR', 'format' => PhoneNumberFormat::NATIONAL))
 				->add('mobile', 'tel', array('required' => false, 'default_region' => 'FR', 'format' => PhoneNumberFormat::NATIONAL))
 				->add("adresse", 'text', array('required' => false))
+				->add('eleves', 'genemu_select2')
 		;
 
 		return $builder ;
