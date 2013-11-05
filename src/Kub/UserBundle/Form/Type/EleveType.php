@@ -36,7 +36,7 @@ class EleveType extends UserType
 					"multiple" => true
 				)
 			)
-			->add('tuteurs_add', 'collection', array(
+			->add('tuteursAdd', 'collection', array(
 				"type" => new TuteurType(),
 				"allow_add" => true,
 				"allow_delete" => true,

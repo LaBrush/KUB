@@ -198,7 +198,7 @@
 /* Inputs */
 $input: 	#aaaaaa;
 
-input[type="text"], input[type="password"], input[type="mail"], input[type="search"]
+input[type="text"], input[type="password"], input[type="email"], input[type="search"], input[type="tel"]
 {
 	padding: 3px;
 	border: 1px $input solid;
@@ -210,7 +210,7 @@ input[type="text"], input[type="password"], input[type="mail"], input[type="sear
 	}
 }
 
-input[type="select"]
+input[type="select"], select
 {
 	padding: 3px;
 	border: 1px $input solid;

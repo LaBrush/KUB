@@ -1,0 +1,44 @@
+.formulaire-creation-utilisateur
+{
+	.nom
+	{
+		margin: 0 0 0 20px;
+	}
+
+	.nom, .prenom
+	{
+		.input
+		{
+			display: inline-block;
+		}
+
+		input, select
+		{
+			margin: 3px 5px 10px 3px;
+		}
+	}
+
+	.email, .anniversaire, .niveau, .tuteurs, .tuteurs-add
+	{
+		display: block;
+
+		.input
+		{
+			display: block;	
+		}
+
+		input, select, .select2-container, .add-another-tuteurs
+		{
+			margin: 3px 5px 10px 0;
+		}
+	}
+
+	.tuteurs
+	{
+		.select2-container
+		{
+			min-width: 150px;
+		}
+	}
+	
+}

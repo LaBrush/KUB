@@ -2,20 +2,47 @@
 
 {% block form %}
 	
-	{{ form_widget(form) }}
-	<a href="#" id="add-another-tuteurs">Ajouter un tuteur</a>
+	<span class="prenom">
+		{{ form_label(form.prenom) }} <div class="input">{{ form_widget(form.prenom) }}</div>
+	</span>
+
+	<span class="nom">
+		{{ form_label(form.nom) }} <div class="input">{{ form_widget(form.nom) }}</div>
+	</span>
+
+	<span class="email">
+		{{ form_label(form.email) }} <div class="input">{{ form_widget(form.email) }}</div>
+	</span>
+
+	<span class="anniversaire">
+		{{ form_label(form.anniversaire) }} <div class="input">{{ form_widget(form.anniversaire) }}</div>
+	</span> 
+
+	<span class="niveau">
+		{{ form_label(form.niveau) }} <div class="input">{{ form_widget(form.niveau) }}</div>
+	</span>
+
+	<span class="tuteurs">
+		{{ form_label(form.tuteurs) }} <div class="input">{{ form_widget(form.tuteurs) }}</div>
+	</span>
+
+	<span class="tuteurs-add">
+		<div class="input">{{ form_widget(form.tuteursAdd) }}</div>
+		<a class="button add-another-tuteurs" href="#" >Ajouter un tuteur</a>
+	</span>
 
 {% endblock %}
 
 {% block js %}
+{{ parent() }}
 
 	<script>
     	// garde une trace du nombre de champs tuteurs qui ont été affichés
     	var tuteurCount = '{{ form.tuteurs | length }}';
 
 	    $(document).ready(function() {
-	        $('#add-another-tuteurs').click(function() {
-	            var tuteurList = $('#kub_userbundle_eleve_tuteurs_add');
+	        $('.add-another-tuteurs').click(function() {
+	            var tuteurList = $('#kub_userbundle_eleve_tuteursAdd');
 
 	            var newWidget = tuteurList.attr('data-prototype');
 	            newWidget = newWidget.replace(/__name__/g, tuteurCount);
