@@ -212,7 +212,6 @@ class UserController extends Controller
 	/**
 	 * @Secure(roles="ROLE_USER")
 	 */
-
 	public function listAction($role)
 	{
 		$listeUsers = $this->getDoctrine()->getManager()
@@ -229,7 +228,6 @@ class UserController extends Controller
 	/**
 	 * @Secure(roles="ROLE_USER")
 	 */
-
 	public function showAction(User $user, $role, $username)
 	{
 		if($user->getClass() != $role)
