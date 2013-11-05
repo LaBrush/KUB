@@ -44,6 +44,8 @@ class LoadTuteurData implements FixtureInterface, ContainerAwareInterface
         $tuteur1->setPlainPassword('adrien');
         $tuteur1->setEnabled(true);
 
+        $tuteur2 = $userManager->createUser();
+
         $tuteur2->setNom('Marin');
         $tuteur2->setPrenom('Martin');
 
