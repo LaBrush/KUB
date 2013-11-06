@@ -4,8 +4,28 @@
 		"selected_items":
 		[
 			[
+				"hor",
+				"horaire_form"
+			],
+			[
+				"ho",
+				"horaires"
+			],
+			[
+				"E",
+				"Entity"
+			],
+			[
+				"Cours",
+				"CoursType"
+			],
+			[
+				"for",
+				"foreach	foreach …"
+			],
+			[
 				"th",
-				"this"
+				"throw	Throw Exception"
 			],
 			[
 				"clas",
@@ -14,10 +34,6 @@
 			[
 				"option",
 				"options"
-			],
-			[
-				"hor",
-				"horaires"
 			],
 			[
 				"print",
@@ -42,10 +58,6 @@
 			[
 				"min",
 				"minute"
-			],
-			[
-				"for",
-				"for	for …"
 			],
 			[
 				"pri",
@@ -502,78 +514,42 @@
 			[
 				"text-align",
 				"text-align:   (property)"
-			],
-			[
-				"backgrou",
-				"background-color"
-			],
-			[
-				"border-",
-				"border-color:   (property)"
-			],
-			[
-				"current",
-				"currentElement  (variable)"
 			]
 		]
 	},
 	"buffers":
 	[
-		{
-			"file": "src/Kub/EDTBundle/Services/TimeService.php",
-			"settings":
-			{
-				"buffer_size": 1205,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/Kub/EDTBundle/Form/Type/CoursType.php",
-			"settings":
-			{
-				"buffer_size": 2138,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/Kub/EDTBundle/Entity/Cours.php",
-			"settings":
-			{
-				"buffer_size": 6094,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/Kub/EDTBundle/Form/Handler/CoursHandler.php",
-			"settings":
-			{
-				"buffer_size": 1072,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/Users/adrienbocquet/Library/Caches/Cleanup At Startup/Transmit/0D362ABD-F7D0-440B-941D-DA89908B7205/traitement.php",
-			"settings":
-			{
-				"buffer_size": 12587,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/Kub/EDTBundle/Controller/CoursController.php",
-			"settings":
-			{
-				"buffer_size": 2970,
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "Packages/User/PHP-Lint.sublime-build",
 	"command_palette":
 	{
-		"height": 147.0,
+		"height": 47.0,
 		"selected_items":
 		[
+			[
+				"dupl",
+				"File: Duplicate"
+			],
+			[
+				"dee",
+				"File: Delete"
+			],
+			[
+				"move",
+				"File: Move"
+			],
+			[
+				"s",
+				"Side Bar: Refresh"
+			],
+			[
+				"refre",
+				"Side Bar: Refresh"
+			],
+			[
+				"du",
+				"File: Duplicate"
+			],
 			[
 				"snihtml",
 				"Snippet: html"
@@ -603,14 +579,6 @@
 				"File: Delete"
 			],
 			[
-				"dupl",
-				"File: Duplicate"
-			],
-			[
-				"du",
-				"File: Duplicate"
-			],
-			[
 				"rea",
 				"File: Rename"
 			],
@@ -637,10 +605,6 @@
 			[
 				"rename",
 				"File: Rename"
-			],
-			[
-				"refre",
-				"Side Bar: Refresh"
 			],
 			[
 				"delete",
@@ -811,7 +775,7 @@
 				"Set Syntax: JavaScript"
 			]
 		],
-		"width": 575.0
+		"width": 557.0
 	},
 	"console":
 	{
@@ -828,14 +792,37 @@
 	},
 	"file_history":
 	[
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/views/Manage/eleve_create.html.twig",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/views/Manage/eleve_form.html.twig",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/views/Manage/user_edit.html.twig",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/views/Manage/user_create.html.twig",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Controller/UserController.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/DataFixtures/ORM/LoadManitouData.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/DataFixtures/ORM/LoadTuteurData.php",
+		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/UserBundle/Resources/views/Manage/eleve_edit.html.twig",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/EDTBundle/Form/Type/CoursType.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/EDTBundle/Form/Type/HoraireType.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/EDTBundle/Entity/Cours.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/EDTBundle/Form/Handler/CoursHandler.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/EDTBundle/Entity/Jour.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/EDTBundle/Entity/Horaire.php",
+		"/Users/adrienbocquet/Library/Caches/Cleanup At Startup/Transmit/3FF399E5-82EB-41FF-9143-F4B9B3E9F72B/parser.php",
+		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/EDTBundle/Form/Handler/HoraireHandler.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/EDTBundle/Controller/CoursController.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/EDTBundle/Form/HoraireType.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/EDTBundle/Services/TimeService.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/EDTBundle/Resources/views/Cours/delete.html.twig",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/EDTBundle/Resources/config/routing/cours.yml",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/EDTBundle/Resources/views/Cours/edit.html.twig",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/EDTBundle/DataFixtures/ORM/LoadFrequenceData.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/EDTBundle/Resources/config/services.yml",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/EDTBundle/DataFixtures/ORM/LoadJourData.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/maintenance.bash",
+		"/Users/adrienbocquet/Library/Caches/Cleanup At Startup/Transmit/0D362ABD-F7D0-440B-941D-DA89908B7205/traitement.php",
 		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/EDTBundle/Validator/Constraints/TimeEDTCompatible.php",
 		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/EDTBundle/Validator/Constraints/TimeEDTCompatibleValidator.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/EDTBundle/Entity/Cours.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/EDTBundle/Resources/config/services.yml",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/EDTBundle/Controller/CoursController.php",
 		"/Users/adrienbocquet/Desktop/untitled.html",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/EDTBundle/DependencyInjection/KubEDTExtension.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/EDTBundle/Form/Type/CoursType.php",
 		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/EDTBundle/Services/TimeService.php",
 		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/EDTBundle/Services/TimeService",
 		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/EDTBundle/Resources/config/parameters.yml",
@@ -844,7 +831,6 @@
 		"/Users/adrienbocquet/Sites/MAMP/Kub/app/config/config.yml",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/EDTBundle/DataFixtures/ORM/LoadMatiereData.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/EDTBundle/Entity/Matiere.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/EDTBundle/DataFixtures/ORM/LoadFrequenceData.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/ClasseBundle/Form/Type/GroupeType.php",
 		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/EDTBundle/Controller/CoursController.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/DataFixtures/ORM/LoadEleveData.php",
@@ -863,10 +849,7 @@
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/EDTBundle/Resources/views/Cours/list.html.twig",
 		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/EDTBundle/Resources/views/Cours/delete.html.twig",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Entity/User.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/views/Manage/user_create.html.twig",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Menu/MenuBuilder.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Controller/UserController.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/EDTBundle/Form/Handler/CoursHandler.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/EDTBundle/Controller/FrequenceController.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Entity/Professeur.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Form/Type/EleveType.php",
@@ -877,7 +860,6 @@
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/views/Profile/show.html.twig",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/views/Show/show.html.twig",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/config/routing.yml",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/maintenance.bash",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/EDTBundle/Resources/config/routing.yml",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/EDTBundle/Resources/config/routing/frequence.yml",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/EDTBundle/Resources/views/Frequence/delete.html.twig",
@@ -937,25 +919,7 @@
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Entity/EleveRepository.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Entity/Administrateur.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Entity/Tuteur.php",
-		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/UserBundle/Resources/views/Manage/administrateur_edit.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/UserBundle/Resources/views/Manage/eleve_edit.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/UserBundle/Resources/views/Manage/professeur_edit.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/UserBundle/Resources/views/Manage/tuteur_edit.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/config/services.yml",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/config/routing/user.yml",
-		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/UserBundle/Resources/views/Show/show_eleve.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/UserBundle/Resources/views/Show/show_administrateur.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/UserBundle/Resources/views/Show/show_professeur.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/UserBundle/Resources/views/Show/show_tuteur.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/views/Groupe/show.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/app/config/routing.yml",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Entity/Groupe.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Form/EventListener/addMemberFieldSuscriber.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Controller/GroupeController.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/views/Groupe/edit.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/config/routing/groupe.yml",
-		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/UserBundle/Resources/views/Groupe/delete.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/views/layout.html.twig"
+		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/UserBundle/Resources/views/Manage/administrateur_edit.html.twig"
 	],
 	"find":
 	{
@@ -995,6 +959,23 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"tuteur1",
+			"manitou",
+			"Administrateur",
+			"user_edit",
+			"frequences",
+			"horaires",
+			"frequences",
+			"semaine",
+			"semaines",
+			"$time = $this->get('kub.edt.time');",
+			"CoursHandler($form, $request, $em, $time);",
+			"multiple",
+			"class",
+			"\"",
+			"listeSemaines",
+			"everyWeek",
+			"length",
 			"'",
 			"CoursType",
 			"[5",
@@ -1105,24 +1086,7 @@
 			"UserBundle",
 			"groupe",
 			"'role' => $role",
-			"' . $role . '_",
-			"Manage",
-			"KubUserBundle",
-			"User $user, $role, $username",
-			"KubClasseBundle",
-			"/Frequence",
-			"Groupe",
-			"groupe",
-			"Groupe",
-			"groupe",
-			"Groupe",
-			"groupe",
-			"Groupe",
-			"groupe",
-			"Groupe",
-			"groupe",
-			"Frequence",
-			"LoadSemaineData"
+			"' . $role . '_"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1164,173 +1128,8 @@
 	"groups":
 	[
 		{
-			"selected": 4,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "src/Kub/EDTBundle/Services/TimeService.php",
-					"settings":
-					{
-						"buffer_size": 1205,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1200,
-								1200
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "src/Kub/EDTBundle/Form/Type/CoursType.php",
-					"settings":
-					{
-						"buffer_size": 2138,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1033,
-								1033
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "src/Kub/EDTBundle/Entity/Cours.php",
-					"settings":
-					{
-						"buffer_size": 6094,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2439,
-								2439
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 981.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "src/Kub/EDTBundle/Form/Handler/CoursHandler.php",
-					"settings":
-					{
-						"buffer_size": 1072,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1009,
-								1009
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 11.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "/Users/adrienbocquet/Library/Caches/Cleanup At Startup/Transmit/0D362ABD-F7D0-440B-941D-DA89908B7205/traitement.php",
-					"settings":
-					{
-						"buffer_size": 12587,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 5777.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "src/Kub/EDTBundle/Controller/CoursController.php",
-					"settings":
-					{
-						"buffer_size": 2970,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1874,
-								1874
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 644.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				}
 			]
 		}
 	],
@@ -1380,12 +1179,44 @@
 		"selected_items":
 		[
 			[
-				"courcontrol",
-				"src/Kub/EDTBundle/Controller/CoursController.php"
+				"data",
+				"src/Kub/UserBundle/DataFixtures/ORM/LoadManitouData.php"
 			],
 			[
-				"courhand",
+				"usercreate",
+				"src/Kub/UserBundle/Resources/views/Manage/user_create.html.twig"
+			],
+			[
+				"useredit",
+				"src/Kub/UserBundle/Resources/views/Manage/user_edit.html.twig"
+			],
+			[
+				"elevefor",
+				"src/Kub/UserBundle/Resources/views/Manage/eleve_form.html.twig"
+			],
+			[
+				"usercon",
+				"src/Kub/UserBundle/Controller/UserController.php"
+			],
+			[
+				"elecre",
+				"src/Kub/UserBundle/Resources/views/Manage/eleve_create.html.twig"
+			],
+			[
+				"courshandler",
 				"src/Kub/EDTBundle/Form/Handler/CoursHandler.php"
+			],
+			[
+				"courhan",
+				"src/Kub/EDTBundle/Form/Handler/CoursHandler.php"
+			],
+			[
+				"horaity",
+				"src/Kub/EDTBundle/Form/HoraireType.php"
+			],
+			[
+				"hor",
+				"src/Kub/EDTBundle/Entity/Horaire.php"
 			],
 			[
 				"cours",
@@ -1394,6 +1225,50 @@
 			[
 				"courscon",
 				"src/Kub/EDTBundle/Controller/CoursController.php"
+			],
+			[
+				"courty",
+				"src/Kub/EDTBundle/Form/Type/CoursType.php"
+			],
+			[
+				"coursdelete",
+				"src/Kub/EDTBundle/Resources/views/Cours/delete.html.twig"
+			],
+			[
+				"courscontroller",
+				"src/Kub/EDTBundle/Controller/CoursController.php"
+			],
+			[
+				"jour",
+				"src/Kub/EDTBundle/Entity/Jour.php"
+			],
+			[
+				"main",
+				"maintenance.bash"
+			],
+			[
+				"service",
+				"src/Kub/EDTBundle/Resources/config/services.yml"
+			],
+			[
+				"load",
+				"src/Kub/EDTBundle/DataFixtures/ORM/LoadFrequenceData.php"
+			],
+			[
+				"coursed",
+				"src/Kub/EDTBundle/Resources/views/Cours/edit.html.twig"
+			],
+			[
+				"cou.yml",
+				"src/Kub/EDTBundle/Resources/config/routing/cours.yml"
+			],
+			[
+				"courcontrol",
+				"src/Kub/EDTBundle/Controller/CoursController.php"
+			],
+			[
+				"courhand",
+				"src/Kub/EDTBundle/Form/Handler/CoursHandler.php"
 			],
 			[
 				"court",
@@ -1438,10 +1313,6 @@
 			[
 				"matir",
 				"src/Kub/EDTBundle/Entity/Matiere.php"
-			],
-			[
-				"load",
-				"src/Kub/EDTBundle/DataFixtures/ORM/LoadFrequenceData.php"
 			],
 			[
 				"coursty",
@@ -1500,10 +1371,6 @@
 				"src/Kub/EDTBundle/Resources/views/Cours/list.html.twig"
 			],
 			[
-				"courshandler",
-				"src/Kub/EDTBundle/Form/Handler/CoursHandler.php"
-			],
-			[
 				"elet",
 				"src/Kub/UserBundle/Form/Type/EleveType.php"
 			],
@@ -1554,10 +1421,6 @@
 			[
 				"frequencedele",
 				"Kub/src/Kub/EDTBundle/Resources/views/Frequence/delete.html.twig"
-			],
-			[
-				"main",
-				"Kub/maintenance.bash"
 			],
 			[
 				"fre",
@@ -1736,10 +1599,6 @@
 				"UserBundle/Entity/UserRepository.php"
 			],
 			[
-				"usercon",
-				"UserBundle/Controller/UserController.php"
-			],
-			[
 				"userservi",
 				"UserBundle/Resources/config/services.yml"
 			],
@@ -1830,66 +1689,6 @@
 			[
 				"menu.",
 				"UserBundle/Menu/MenuBuilder.php"
-			],
-			[
-				"niv",
-				"UserBundle/Entity/Niveau.php"
-			],
-			[
-				"el",
-				"UserBundle/Entity/Eleve.php"
-			],
-			[
-				"nive",
-				"UserBundle/Entity/Niveau.php"
-			],
-			[
-				"niveau",
-				"UserBundle/Entity/Niveau.php"
-			],
-			[
-				"loni",
-				"UserBundle/DataFixtures/ORM/LoadNiveauData.php"
-			],
-			[
-				"loa",
-				"UserBundle/DataFixtures/ORM/LoadEleveData.php"
-			],
-			[
-				"groupehandler",
-				"UserBundle/Form/Handler/GroupeHandler.php"
-			],
-			[
-				"eltype",
-				"UserBundle/Form/Type/EleveType.php"
-			],
-			[
-				"groupetype",
-				"UserBundle/Form/Type/GroupeType.php"
-			],
-			[
-				"groue",
-				"UserBundle/Entity/Groupe.php"
-			],
-			[
-				"se",
-				"UserBundle/Resources/config/services.yml"
-			],
-			[
-				"user_crea",
-				"UserBundle/Resources/views/User/user_create.html.twig"
-			],
-			[
-				"create",
-				"UserBundle/Resources/views/Groupe/create.html.twig"
-			],
-			[
-				"userhandler",
-				"UserBundle/Form/Handler/UserHandler.php"
-			],
-			[
-				"usercontrole",
-				"UserBundle/Controller/UserController.php"
 			]
 		],
 		"width": 0.0
