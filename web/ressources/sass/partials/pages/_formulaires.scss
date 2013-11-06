@@ -1,24 +1,6 @@
 .formulaire-creation-utilisateur
 {
-	.nom
-	{
-		margin: 0 0 0 20px;
-	}
-
-	.nom, .prenom
-	{
-		.input
-		{
-			display: inline-block;
-		}
-
-		input, select
-		{
-			margin: 3px 5px 10px 3px;
-		}
-	}
-
-	.email, .anniversaire, .niveau, .tuteurs, .tuteurs-add
+	span
 	{
 		display: block;
 
@@ -33,11 +15,21 @@
 		}
 	}
 
-	.tuteurs
+	.nom, .prenom, .fixe, .mobile
+	{
+		display: inline-block;
+	}
+
+	.nom, .mobile
+	{
+		margin: 0 0 0 20px;
+	}
+
+	.tuteurs, .eleves
 	{
 		.select2-container
 		{
-			min-width: 150px;
+			min-width: 158px;
 		}
 	}
 	
@@ -45,5 +37,6 @@
 	{
 		margin-top: 11px;
 		display: inline-block;
-	}	
+		float: right;
+	}
 }

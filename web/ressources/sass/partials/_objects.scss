@@ -198,19 +198,7 @@
 /* Inputs */
 $input: 	#aaaaaa;
 
-input[type="text"], input[type="password"], input[type="email"], input[type="search"], input[type="tel"]
-{
-	padding: 3px;
-	border: 1px $input solid;
-	@include border-radius(3px);
-
-	&:hover, &:focus, &:active
-	{
-		border: 1px $input solid;
-	}
-}
-
-input[type="select"], select
+input[type="text"], input[type="password"], input[type="email"], input[type="search"], input[type="tel"], input[type="select"], select, option
 {
 	padding: 3px;
 	border: 1px $input solid;
