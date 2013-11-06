@@ -30,17 +30,19 @@
 
 		    $(document).ready(function() {
 		        $('.add-another-tuteurs').click(function() {
-		            var tuteurList = $('#kub_userbundle_eleve_tuteursAdd');
+		            var tuteurList = $('.tuteurs-add');
 
 		            var newWidget = tuteurList.attr('data-prototype');
 		            newWidget = newWidget.replace(/__name__/g, tuteurCount);
 		            tuteurCount++;
 
-		            var newLi = $('<p></p>').html(newWidget);
+		            var newLi = $('<div></div>').html(newWidget);
 		            newLi.appendTo(tuteurList);
 
 		            return false;
 		        });
+
+		        $('div:contains("Tuteurs add")').hide();
 		    })
 		</script>
 
