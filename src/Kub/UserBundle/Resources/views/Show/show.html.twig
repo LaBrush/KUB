@@ -4,15 +4,24 @@
 
 	
 		<article class="article">
-			<h2>Nom utilisateur: {{ user.username }}</h2>
-			<p><a href="{{ path("user_edit", {username: user.username, role: user.class }) }}">Modifier</a></p>
+			<h2 class="section-title">{{ user }}</h2>
+			
 		</article>
 
-		<article class="article">
+		<article class="article infos-utilisateur">
+
+			<span class="label">Identifiant :</span>
+			<span class="info">{{ user.username }}</span>
+
+			<span class="label">Adresse mail :</span>
+			<span class="info">{{ user.email }}</span>
 			
 			{% block details %}
 			{% endblock %}
-
+			
+			<span class="modifier">
+				<a class="button" href="{{ path("user_edit", {username: user.username, role: user.class }) }}">Modifier</a>
+			</span>
 		</article>
 	
 

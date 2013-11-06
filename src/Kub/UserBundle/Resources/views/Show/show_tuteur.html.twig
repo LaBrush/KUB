@@ -1,1 +1,42 @@
 {% extends "KubUserBundle:Show:show.html.twig" %}
+
+{% block details %}
+
+	{% if user.fixe or user.mobile %}
+		<span class="label">Telephone :</span>
+
+		{% if user.fixe %}
+
+			<span class="info"><em>Fixe:</em> {{ user.fixe }}</span>
+
+		{% endif %}
+
+		{% if user.mobile %}
+
+			<span class="info"><em>Mobile:</em> {{ user.mobile }}</span>
+			
+		{% endif %}
+	{% endif %}
+	
+	{% if user.adresse %}
+
+		<span class="label">Adresse :</span>
+		<span class="info">{{ user.adresse }}</span>
+		
+	{% endif %}
+
+	{% if user.eleves|length > 0 %}
+		<span class="label">Eleves de {{ user }}</span> 
+
+			<ul>
+				
+				{% for eleve in user.eleves %}
+					<li><a href="{{ path('eleve_show', {id: eleve.id}) }}">{{ eleve.prenom }} {{ eleve.nom }}</a></li>
+				{% endfor %}
+
+			</ul>
+			
+		</p>
+	{% endif %}
+
+{% endblock %}

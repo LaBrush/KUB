@@ -2,16 +2,33 @@
 
 {% block details %}
 
-	
-	<p>Niveau de l'élève: {{ user.niveau }}</p>	
+	<span class="label">Date de naissance :</span>
+	<span class="info">{{ user.anniversaire | date('d/m/Y') }}</span>
+
+	<span class="label">Niveau de l'élève :</span>
+	<span class="info">{{ user.niveau | capitalize }}</span>
+
+	{% if user.tuteurs|length > 0 %}
+		<span class="label">Tuteurs de {{ user }}</span> 
+
+			<ul>
+				
+				{% for tuteur in user.tuteurs %}
+					<li><a href="{{ path('tuteur_show', {id: tuteur.id}) }}">{{ tuteur.prenom }} {{ tuteur.nom }}</a></li>
+				{% endfor %}
+
+			</ul>
+			
+		</p>
+	{% endif %}
 
 	{% if user.groupes|length > 0 %}
-		<p>Groupes de l'uilisateur: 
+		<span class="label">Groupes auquels {{ user }} appartient :</span>
 
 			<ul>
 				
 				{% for groupe in user.groupes %}
-					<li><a href="{{ path('groupe_show', {id: groupe.id})}}">{{ groupe.name }}</a></li>
+					<li class="li-list"><a href="{{ path('groupe_show', {id: groupe.id}) }}">{{ groupe.name }}</a></li>
 				{% endfor %}
 
 			</ul>

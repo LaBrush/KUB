@@ -1,1 +1,24 @@
 {% extends "KubUserBundle:Show:show.html.twig" %}
+
+{% block details %}
+
+	<span class="label">Type d'aministrateur :</span>
+	{% if is_granted("ROLE_SURVEILLANT") %}
+		
+		<span class="info">Surveillant</span>
+
+	{% elseif is_granted("ROLE_CPE") %}
+		
+		<span class="info">Conseiller Principal d'éducation</span>
+
+	{% elseif is_granted("ROLE_MANITOU") %}
+		
+		<span class="info">Grand Manitou</span>
+
+	{% elseif is_granted("ROLE_SECRETAIRE") %}
+		
+		<span class="info">Secrétaire</span>
+	
+	{% endif %}
+
+{% endblock %}

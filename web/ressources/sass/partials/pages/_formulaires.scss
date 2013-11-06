@@ -41,3 +41,32 @@
 		float: right;
 	}
 }
+
+.infos-utilisateur
+{
+	font-size: 1em;
+
+	.label
+	{
+		font-weight: 700;
+		display: block;
+		margin: 13px 0 0 0;
+	}
+
+	.info
+	{
+		display: block;	
+		margin: 3px 5px 0 0;
+	}
+
+	.nom, .prenom, .fixe, .mobile
+	{
+		display: inline-block;
+	}
+	
+	.modifier
+	{
+		margin-top: 11px;
+		float: right;
+	}
+}
