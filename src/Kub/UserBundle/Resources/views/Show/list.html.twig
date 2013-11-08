@@ -6,6 +6,22 @@
 			<h2 class="section-title">{{ role | capitalize }}s</h2>
 		</article>
 
+		{% if liste_niveaux != null %}
+			<article class="article">
+				
+				<ul>
+					
+					{% for niveau in liste_niveaux %}
+
+						<li><a href="{{ path('user_list', { role: role, niveau: niveau.name }) }}">{{ niveau.name }}</a></li>
+
+					{% endfor %}
+
+				</ul>
+
+			</article>
+		{% endif %}
+
 		<article class="article">
 			<div class="create">
 				<a class="button-yes" class="button-yes" href="{{ path('user_create', { role: role }) }}">Créer un {{ role }}</a>

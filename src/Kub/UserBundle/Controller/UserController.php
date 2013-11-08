@@ -212,16 +212,38 @@ class UserController extends Controller
 	/**
 	 * @Secure(roles="ROLE_USER")
 	 */
-	public function listAction($role)
+	public function listAction($role, $niveau)
 	{
-		$listeUsers = $this->getDoctrine()->getManager()
-			->getRepository("KubUserBundle:".ucfirst($role))
-			->findAll();
+
+		if($role != "eleve" && $niveau != null)
+		{
+			throw $this->createNotFoundException('Seuls les élèves ont un niveau');
+		}
+
+		$manager = $this->getDoctrine()->getManager();
+		$repository = $manager->getRepository("KubUserBundle:".ucfirst($role));
+
+		$liste_niveaux = null ;
+
+		if($role == "eleve")
+		{
+			$liste_niveaux = $manager->getRepository('KubClasseBundle:Niveau')->findAll();
+		}
+
+		if($niveau != null)
+		{
+			$listeUsers = $repository->findByNiveauName($niveau);
+		}
+		else
+		{
+			$listeUsers = $repository->findAll();	
+		}
 
 		return $this->render("KubUserBundle:Show:list.html.twig", 
 			array(
 				"list_users" => $listeUsers,
-				"role" => $role
+				"role" => $role,
+				"liste_niveaux" => $liste_niveaux
 		));
 	}
 

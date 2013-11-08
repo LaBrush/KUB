@@ -16,14 +16,24 @@ class EleveRepository extends UserRepository
 	// fonction utilisee pour charger l'ensemble des données de l'utilisateur
 	public function findWithAll($username)
 	{
-		$qb = $this->createQueryBuilder("u")
-			->join('u')
+		$qb = $this->createQueryBuilder("e")
 			->join('e.groupe', 'g')
 			->addSelect('g')
 			->join('e.niveau', 'n')
 			->addSelect('n')
-			->where("u.username = :username")
+			->where("e.username = :username")
 			->setParameter("username", $username)
+		;
+
+		return $qb->getQuery()->getResult();
+	}
+
+	public function findByNiveauName($niveau)
+	{
+		$qb = $this->createQueryBuilder("e")
+			->join('e.niveau', 'n')
+			->where("n.name = :niveau")
+			->setParameter("niveau", $niveau)
 		;
 
 		return $qb->getQuery()->getResult();

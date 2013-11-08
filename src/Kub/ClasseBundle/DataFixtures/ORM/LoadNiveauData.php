@@ -34,15 +34,15 @@ class LoadNiveauData extends AbstractFixture implements FixtureInterface, Contai
     {
         // $manager = $this->container->get("doctrine")->getManager();
         $seconde = new Niveau();
-            $seconde->setNom("seconde");
+            $seconde->setName("seconde");
             $seconde->setAnnee("2");
 
         $premiere = new Niveau();
-            $premiere->setNom("premiere");
+            $premiere->setName("premiere");
             $premiere->setAnnee("1");
 
         $terminale = new Niveau();
-            $terminale->setNom("terminale");
+            $terminale->setName("terminale");
             $terminale->setAnnee("0");
 
         $manager->persist($seconde);
