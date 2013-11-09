@@ -50,6 +50,11 @@ class Eleve extends User
 	 */
 	protected $groupes;
 
+	/**
+	 * @ORM\OneToOne(targetEntity="Kub\ArianeBundle\Entity\Fil")
+	 */
+	private $filAriane ;
+
 	public function initClass()
 	{
 		$this->class = "eleve";

@@ -1,3 +1,3 @@
-kub_ariane_homepage:
-    pattern:  /hello/{name}
+ariane_homepage:
+    pattern:  /ariane
     defaults: { _controller: KubArianeBundle:Default:index }

@@ -50,6 +50,11 @@ class Eleve extends User
 	 */
 	protected $groupes;
 
+	/**
+	 * @ORM\OneToOne(targetEntity="Kub\ArianeBundle\Entity\Fil")
+	 */
+	private $filAriane ;
+
 	public function initClass()
 	{
 		$this->class = "eleve";
@@ -236,4 +241,27 @@ class Eleve extends User
 	{
 		return $this->groupes;
 	}
+
+    /**
+     * Set filAriane
+     *
+     * @param \Kub\ArianeBundle\Entity\Fil $filAriane
+     * @return Eleve
+     */
+    public function setFilAriane(\Kub\ArianeBundle\Entity\Fil $filAriane = null)
+    {
+        $this->filAriane = $filAriane;
+    
+        return $this;
+    }
+
+    /**
+     * Get filAriane
+     *
+     * @return \Kub\ArianeBundle\Entity\Fil 
+     */
+    public function getFilAriane()
+    {
+        return $this->filAriane;
+    }
 }

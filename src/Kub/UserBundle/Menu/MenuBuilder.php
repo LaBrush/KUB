@@ -81,7 +81,15 @@ class MenuBuilder
                         'route' => 'cours_list'
                     )
                 );
-
+        }
+        else if($this->security->isGranted('ROLE_ELEVE'))
+        {
+            $menu->addChild('Fil d\'Ariane', array("labelAttributes" => array("className" => "ariane")));
+                $menu['Fil d\'Ariane']->addChild('Eleves', 
+                    array(
+                        'route' => 'ariane_homepage',
+                    )
+                );
         }
 
         foreach ($menu as $key => $categorie) {

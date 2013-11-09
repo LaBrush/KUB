@@ -1,0 +1,40 @@
+<?php
+
+namespace Kub\ArianeBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Fil
+ *
+ * @ORM\Table()
+ * @ORM\Entity
+ */
+class Fil
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+
+    /**
+     * @ORM\OneToMany(targetEntity="Kub\ArianeBundle\Entity\Post", mappedBy="fil")
+     */
+    private $posts ;
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+}
