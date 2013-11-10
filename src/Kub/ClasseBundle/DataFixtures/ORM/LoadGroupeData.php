@@ -32,14 +32,14 @@ class LoadGroupeData extends AbstractFixture implements FixtureInterface, Contai
      */
     public function load(ObjectManager $manager)
     {
-        // $manager = $this->container->get("doctrine")->getManager();
-        $premiere = new Groupe();
-            $premiere->setName("SI-3");
-            $premiere->setNiveau($this->getReference('premiere'));
-            $premiere->addEleve($this->getReference('johnsnow'));
+        $si3 = new Groupe();
+            $si3->setName("SI-3");
+            $si3->setNiveau($this->getReference('premiere'));
+            $si3->addEleve($this->getReference('johnsnow'));
 
-        $manager->persist($premiere);
+        $this->addReference('si3', $si3);
 
+        $manager->persist($si3);
         $manager->flush();
     }
 

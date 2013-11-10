@@ -3,6 +3,7 @@
 namespace Kub\ClasseBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
+use Kub\UserBundle\Entity\Professeur ;
 
 /**
  * GroupeRepository
@@ -12,4 +13,15 @@ use Doctrine\ORM\EntityRepository;
  */
 class GroupeRepository extends EntityRepository
 {
+	public function getGroupesOfProfesseur(Professeur $professeur)
+	{
+		$qb = $this->createQueryBuilder("g")
+			->join('g.cours', 'c')
+			->join('c.professeur', 'p')
+			->where('p.id = :id')
+			->setParameter('id', $professeur->getId())
+			;
+
+		return $qb->getQuery()->getResult();
+	}
 }

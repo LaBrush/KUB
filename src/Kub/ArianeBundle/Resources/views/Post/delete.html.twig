@@ -1,0 +1,14 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+
+		<article class="error">
+			{{ form_start(form) }}
+				
+				{{ form_widget(form) }}
+				<input class="button-yes" type="submit"> ou <a class="button-no" href="{{ path('groupe_list') }}">Annuler</a>	
+			{{ form_end(form) }}
+		</article>
+		
+			
+{% endblock %}

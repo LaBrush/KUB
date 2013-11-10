@@ -24,10 +24,11 @@ class AppKernel extends Kernel
             new JMS\AopBundle\JMSAopBundle(),
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
             new JMS\DiExtraBundle\JMSDiExtraBundle($this),
+            new FOS\UserBundle\FOSUserBundle(),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new PUGX\MultiUserBundle\PUGXMultiUserBundle(),
             new Misd\PhoneNumberBundle\MisdPhoneNumberBundle(),
-            new FOS\UserBundle\FOSUserBundle(),
+            new Genemu\Bundle\FormBundle\GenemuFormBundle(),
             new Kub\HomeBundle\KubHomeBundle(),
             new Kub\UserBundle\KubUserBundle(),
             new Kub\NotesBundle\KubNotesBundle(),
@@ -39,7 +40,6 @@ class AppKernel extends Kernel
             new Kub\RessourceBundle\KubRessourceBundle(),
             new Kub\ClasseBundle\KubClasseBundle(),
             new Kub\EDTBundle\KubEDTBundle(),
-            new Genemu\Bundle\FormBundle\GenemuFormBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

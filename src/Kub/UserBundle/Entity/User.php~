@@ -91,7 +91,6 @@ abstract class User extends BaseUser
     private $prenom;
 
     protected $class ;
-
     public function __construct()
     {
         parent::__construct();
@@ -169,5 +168,24 @@ abstract class User extends BaseUser
     public function updateUsername()
     {
         $this->username = strtolower($this->prenom) . strtolower($this->nom);
+        $this->username = str_replace(
+            array(
+                'à', 'â', 'ä', 'á', 'ã', 'å',
+                'î', 'ï', 'ì', 'í', 
+                'ô', 'ö', 'ò', 'ó', 'õ', 'ø', 
+                'ù', 'û', 'ü', 'ú', 
+                'é', 'è', 'ê', 'ë', 
+                'ç', 'ÿ', 'ñ', 
+            ),
+            array(
+                'a', 'a', 'a', 'a', 'a', 'a', 
+                'i', 'i', 'i', 'i', 
+                'o', 'o', 'o', 'o', 'o', 'o', 
+                'u', 'u', 'u', 'u', 
+                'e', 'e', 'e', 'e', 
+                'c', 'y', 'n', 
+            ),
+            $this->username
+        );
     }
 }

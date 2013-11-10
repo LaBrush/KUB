@@ -40,6 +40,7 @@ class LoadJourData extends AbstractFixture implements FixtureInterface, Containe
             $jour = new Jour();
             $jour->setName($nomJour);
 
+            $this->addReference($nomJour, $jour);
             $manager->persist($jour);
         }
 

@@ -53,6 +53,7 @@ class LoadMatiereData extends AbstractFixture implements FixtureInterface, Conta
             $matiere = new Matiere();
             $matiere->setName($name);
 
+            $this->addReference($name, $matiere);
             $manager->persist($matiere);
         }
 

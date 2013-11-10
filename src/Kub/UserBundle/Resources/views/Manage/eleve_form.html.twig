@@ -32,6 +32,8 @@
 
 	</div>
 	
-
+	{% if user.photo is not null %}
+        <img src="{{ asset(user.photo.webPath) }}" alt="{{ user.prenom }}" />
+      {% endif %}
 
 {% endblock %}

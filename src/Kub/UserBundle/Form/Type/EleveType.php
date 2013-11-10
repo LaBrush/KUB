@@ -7,6 +7,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 use Kub\UserBundle\Form\Type\TuteurType ;
+use Kub\UserBundle\Form\Type\PhotoType ;
 
 class EleveType extends UserType
 {
@@ -25,6 +26,7 @@ class EleveType extends UserType
 		}
 
 		$builder
+			 ->add('photo', new PhotoType(), array('required' => false))
 			->add("anniversaire", "birthday", array(
 				"years" => $years
 			))

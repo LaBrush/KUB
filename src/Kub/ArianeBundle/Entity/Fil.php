@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Fil
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Kub\ArianeBundle\Entity\FilRepository")
  */
 class Fil
 {
@@ -21,12 +21,15 @@ class Fil
      */
     private $id;
 
-
     /**
-     * @ORM\OneToMany(targetEntity="Kub\ArianeBundle\Entity\Post", mappedBy="fil")
+     * @ORM\OneToMany(targetEntity="Kub\ArianeBundle\Entity\Post", mappedBy="fil", cascade={"persist", "remove"})
      */
     private $posts ;
 
+    /**
+     * @ORM\OneToOne(targetEntity="Kub\UserBundle\Entity\Eleve", mappedBy="fil")
+     */
+    private $eleve ;
 
     /**
      * Get id
@@ -54,6 +57,7 @@ class Fil
     public function addPost(\Kub\ArianeBundle\Entity\Post $posts)
     {
         $this->posts[] = $posts;
+        $posts->setFil($this);
     
         return $this;
     }
@@ -66,6 +70,7 @@ class Fil
     public function removePost(\Kub\ArianeBundle\Entity\Post $posts)
     {
         $this->posts->removeElement($posts);
+        $posts->setFil();
     }
 
     /**
@@ -76,5 +81,28 @@ class Fil
     public function getPosts()
     {
         return $this->posts;
+    }
+
+    /**
+     * Set eleve
+     *
+     * @param \Kub\UserBundle\Entity\Eleve $eleve
+     * @return Fil
+     */
+    public function setEleve(\Kub\UserBundle\Entity\Eleve $eleve = null)
+    {
+        $this->eleve = $eleve;
+    
+        return $this;
+    }
+
+    /**
+     * Get eleve
+     *
+     * @return \Kub\UserBundle\Entity\Eleve 
+     */
+    public function getEleve()
+    {
+        return $this->eleve;
     }
 }

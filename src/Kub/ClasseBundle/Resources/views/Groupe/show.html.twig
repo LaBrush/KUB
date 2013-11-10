@@ -4,7 +4,19 @@
 
 		<article class="article">
 			<h2>Nom du groupe: {{ groupe }}</h2>
-			<p><a href="{{ path("groupe_edit", {id: groupe.id }) }}">Modifier</a></p>
+
+			{% if is_granted('ROLE_SECRETAIRE') %}
+				<p><a href="{{ path("groupe_edit", {id: groupe.id }) }}">Modifier</a></p>
+			{% endif %}
+
+			<ul>
+				{% for eleve in groupe.eleves %}
+
+					<li><a href="{{ path('user_show', { username: eleve.username, role: 'eleve' }) }}">{{ eleve.username}}</a></li>
+
+				{% endfor %}
+			</ul>
+
 		</article>
 	
 

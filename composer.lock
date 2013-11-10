@@ -792,16 +792,16 @@
         },
         {
             "name": "gedmo/doctrine-extensions",
-            "version": "v2.3.7",
+            "version": "v2.3.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/l3pp4rd/DoctrineExtensions.git",
-                "reference": "0aa660ffea298b630b8ded7bd2a7eae0d8619fdb"
+                "reference": "d2bef940268e4dc5f0f050e80458169a7267813a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/l3pp4rd/DoctrineExtensions/zipball/0aa660ffea298b630b8ded7bd2a7eae0d8619fdb",
-                "reference": "0aa660ffea298b630b8ded7bd2a7eae0d8619fdb",
+                "url": "https://api.github.com/repos/l3pp4rd/DoctrineExtensions/zipball/d2bef940268e4dc5f0f050e80458169a7267813a",
+                "reference": "d2bef940268e4dc5f0f050e80458169a7267813a",
                 "shasum": ""
             },
             "require": {
@@ -868,7 +868,7 @@
                 "tree",
                 "uploadable"
             ],
-            "time": "2013-08-18 07:18:44"
+            "time": "2013-11-09 21:23:13"
         },
         {
             "name": "genemu/form-bundle",

@@ -1,1 +1,33 @@
-coucou
+{% extends "::base.html.twig" %}
+
+{% block body %}
+
+	<article class="article">
+		<a href="{{ path('ariane_post_add') }}">Ajouter une journée</a>
+	</article>
+
+	<article class="article">
+
+		{% for post in liste_posts %}
+
+			<h2>{{ post.titre }}</h2>
+			<p>{{ post.contenu }}</p>
+
+			<ul>
+				{% for commentaire in post.commentaires %}
+
+					<li>commentaire.contenu</li>
+
+				{% endfor %}
+			</ul>
+
+			{% if is_granted("ROLE_ELEVE") %}
+				<p><a href="{{ path('ariane_post_edit', { 'id': post.id }) }}">Modifier la trace</a></p>
+				<p><a href="{{ path('ariane_post_delete', { 'id': post.id }) }}">Supprimer la trace</a></p>
+			{% endif %}
+
+		{% endfor %}
+
+	</article>
+
+{% endblock %}

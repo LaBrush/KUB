@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Post
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Kub\ArianeBundle\Entity\PostRepository")
  */
 class Post
 {
@@ -19,7 +19,7 @@ class Post
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @ORM\ManyToOne(targetEntity="Kub\ArianeBundle\Entity\Fil", inversedBy="posts")
@@ -41,11 +41,38 @@ class Post
     private $fin;
 
     /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_ajout", type="datetime")
+     */
+    private $dateAjout;
+
+    /**
      * @var string
      *
-     * @ORM\Column(name="text", type="text")
+     * @ORM\Column(name="titre", type="string", length=255)
      */
-    private $text;
+    private $titre;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="contenu", type="text")
+     */
+    private $contenu;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Kub\ArianeBundle\Entity\Commentaire", mappedBy="post", cascade={"persist", "remove"})
+     */
+    private $commentaires; 
+
+    public function __construct()
+    {
+        $this->dateAjout = new \DateTime();
+
+        $this->debut = new \DateTime('yesterday');
+        $this->fin = new \Datetime();
+    }
 
     /**
      * Get id
@@ -135,7 +162,7 @@ class Post
     public function setFil(\Kub\ArianeBundle\Entity\Fil $fil = null)
     {
         $this->fil = $fil;
-    
+
         return $this;
     }
 
@@ -147,5 +174,107 @@ class Post
     public function getFil()
     {
         return $this->fil;
+    }
+
+    /**
+     * Set dateAjout
+     *
+     * @param \DateTime $dateAjout
+     * @return Post
+     */
+    public function setDateAjout($dateAjout)
+    {
+        $this->dateAjout = $dateAjout;
+    
+        return $this;
+    }
+
+    /**
+     * Get dateAjout
+     *
+     * @return \DateTime 
+     */
+    public function getDateAjout()
+    {
+        return $this->dateAjout;
+    }
+
+    /**
+     * Set contenu
+     *
+     * @param string $contenu
+     * @return Post
+     */
+    public function setContenu($contenu)
+    {
+        $this->contenu = $contenu;
+    
+        return $this;
+    }
+
+    /**
+     * Get contenu
+     *
+     * @return string 
+     */
+    public function getContenu()
+    {
+        return $this->contenu;
+    }
+
+    /**
+     * Set titre
+     *
+     * @param string $titre
+     * @return Post
+     */
+    public function setTitre($titre)
+    {
+        $this->titre = $titre;
+    
+        return $this;
+    }
+
+    /**
+     * Get titre
+     *
+     * @return string 
+     */
+    public function getTitre()
+    {
+        return $this->titre;
+    }
+
+    /**
+     * Add commentaires
+     *
+     * @param \Kub\ArianeBundle\Entity\Commentaire $commentaires
+     * @return Post
+     */
+    public function addCommentaire(\Kub\ArianeBundle\Entity\Commentaire $commentaires)
+    {
+        $this->commentaires[] = $commentaires;
+    
+        return $this;
+    }
+
+    /**
+     * Remove commentaires
+     *
+     * @param \Kub\ArianeBundle\Entity\Commentaire $commentaires
+     */
+    public function removeCommentaire(\Kub\ArianeBundle\Entity\Commentaire $commentaires)
+    {
+        $this->commentaires->removeElement($commentaires);
+    }
+
+    /**
+     * Get commentaires
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCommentaires()
+    {
+        return $this->commentaires;
     }
 }

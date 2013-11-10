@@ -5,6 +5,7 @@ imports:
 
 framework:
     #esi:             ~
+    http_method_override: true
     translator:      { fallback: %locale% }
     secret:          %secret%
     router:
@@ -75,3 +76,4 @@ swiftmailer:
 #Genemu Form Bundle
 genemu_form:
     select2: ~
+    image: ~

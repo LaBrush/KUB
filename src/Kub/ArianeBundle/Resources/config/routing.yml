@@ -1,3 +1,23 @@
 ariane_homepage:
     pattern:  /ariane
     defaults: { _controller: KubArianeBundle:Default:index }
+
+ariane_post_add:
+    pattern: /ariane/add
+    defaults: { _controller: KubArianeBundle:Post:add }
+
+ariane_post_edit:
+    pattern: ariane/edit/{id}
+    defaults: { _controller: KubArianeBundle:Post:edit }
+    requirements: 
+        id: \d+
+
+ariane_post_delete:
+    pattern: ariane/delete/{id}
+    defaults: { _controller: KubArianeBundle:Post:delete }
+    requirements: 
+        id: \d+
+
+ariane_eleve_show:
+    pattern: eleve/{username}/ariane
+    defaults: { _controller: KubArianeBundle:Default:show }

@@ -40,11 +40,13 @@ class LoadProfesseurData extends AbstractFixture implements FixtureInterface, Co
         $professeur = $userManager->createUser();
 
         $professeur->setNom('Bach');
-        $professeur->setPrenom('Jean-Sébastien');
+        $professeur->setPrenom('Jean-Sebastien');
 
         $professeur->setEmail('admina@mail.com');
         $professeur->setPlainPassword('123456');
         $professeur->setEnabled(true);
+
+        $this->addReference('professeur', $professeur);
 
         $userManager->updateUser($professeur, true);
     }

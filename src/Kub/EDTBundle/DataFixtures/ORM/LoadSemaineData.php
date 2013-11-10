@@ -39,6 +39,7 @@ class LoadSemaineData extends AbstractFixture implements FixtureInterface, Conta
                 $semaine->setNumero($i);
                 $semaine->setAnnee(date('y'));
 
+            $this->addReference('semaine'.$i, $semaine);
             $manager->persist($semaine);
 
         }

@@ -12,6 +12,7 @@ use Symfony\Component\Validator\Constraints as Assert ;
  * @ORM\Table()
  *
  * @ORM\Entity(repositoryClass="Kub\UserBundle\Entity\EleveRepository")
+ * @ORM\HasLifecycleCallbacks
  */
 class Eleve extends User 
 {
@@ -35,7 +36,7 @@ class Eleve extends User
 	private $anniversaire;
 
 	/**
-	 *  @ORM\ManyToMany(targetEntity="Kub\UserBundle\Entity\Tuteur", inversedBy="eleves", cascade={"persist"})
+	 * @ORM\ManyToMany(targetEntity="Kub\UserBundle\Entity\Tuteur", inversedBy="eleves", cascade={"persist"})
 	 * @Assert\Valid()
 	 */
 	private $tuteurs ;
@@ -51,9 +52,14 @@ class Eleve extends User
 	protected $groupes;
 
 	/**
-	 * @ORM\OneToOne(targetEntity="Kub\ArianeBundle\Entity\Fil")
+	 * @ORM\OneToOne(targetEntity="Kub\ArianeBundle\Entity\Fil", inversedBy="eleve", cascade={"persist", "remove"})
 	 */
-	private $filAriane ;
+	private $fil ;
+
+	/**
+  	 * @ORM\OneToOne(targetEntity="Kub\UserBundle\Entity\Photo", cascade={"persist", "remove"})
+   	 */
+  	private $photo;
 
 	public function initClass()
 	{
@@ -65,6 +71,7 @@ class Eleve extends User
 		parent::__construct();
 
 		$this->addRole("ROLE_ELEVE");
+		$this->setfil(new \Kub\ArianeBundle\Entity\Fil) ;
 		$this->tuteurs = new \Doctrine\Common\Collections\ArrayCollection;
 		$this->groupes = new \Doctrine\Common\Collections\ArrayCollection;
 	}
@@ -243,25 +250,48 @@ class Eleve extends User
 	}
 
     /**
-     * Set filAriane
+     * Set fil
      *
-     * @param \Kub\ArianeBundle\Entity\Fil $filAriane
+     * @param \Kub\ArianeBundle\Entity\Fil $fil
      * @return Eleve
      */
-    public function setFilAriane(\Kub\ArianeBundle\Entity\Fil $filAriane = null)
+    public function setFil(\Kub\ArianeBundle\Entity\Fil $fil = null)
     {
-        $this->filAriane = $filAriane;
+        $this->fil = $fil;
     
         return $this;
     }
 
     /**
-     * Get filAriane
+     * Get fil
      *
      * @return \Kub\ArianeBundle\Entity\Fil 
      */
-    public function getFilAriane()
+    public function getFil()
     {
-        return $this->filAriane;
+        return $this->fil;
+    }
+
+    /**
+     * Set photo
+     *
+     * @param \Kub\UserBundle\Entity\Photo $photo
+     * @return Eleve
+     */
+    public function setPhoto(\Kub\UserBundle\Entity\Photo $photo = null)
+    {
+        $this->photo = $photo;
+    
+        return $this;
+    }
+
+    /**
+     * Get photo
+     *
+     * @return \Kub\UserBundle\Entity\Photo 
+     */
+    public function getPhoto()
+    {
+        return $this->photo;
     }
 }
