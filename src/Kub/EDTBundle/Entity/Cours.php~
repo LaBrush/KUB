@@ -24,7 +24,7 @@ class Cours
     private $id;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Kub\ClasseBundle\Entity\Groupe", inversedBy="cours", cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity="Kub\ClasseBundle\Entity\Groupe", inversedBy="cours", cascade={"all"})
      * @Assert\Count(min=1)
      */
     private $groupes ;

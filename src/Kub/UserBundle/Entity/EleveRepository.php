@@ -38,4 +38,23 @@ class EleveRepository extends UserRepository
 
 		return $qb->getQuery()->getResult();
 	}
+
+	public function getEDTByid($id)
+	{
+		$qb = $this->createQueryBuilder("e")
+			->join('e.groupes', 'g')
+			->addSelect('g')
+			->join('g.cours', 'c')
+			->addSelect('c')
+			->join('c.horaires', 'h')
+			->addSelect('h')
+			->join('h.jour', 'j')
+			->addSelect('j')
+			->where('e.id = :id')
+			->setParameter('id', $id)
+			->orderBy('j.id, h.debut')
+		;
+
+		return $qb->getQuery()->getSingleResult();
+	}
 }

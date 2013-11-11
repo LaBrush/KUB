@@ -36,8 +36,9 @@ class Eleve extends User
 	private $anniversaire;
 
 	/**
-	 * @ORM\ManyToMany(targetEntity="Kub\UserBundle\Entity\Tuteur", inversedBy="eleves", cascade={"persist"})
+	 * @ORM\ManyToMany(targetEntity="Kub\UserBundle\Entity\Tuteur", inversedBy="eleves", cascade={"all"})
 	 * @Assert\Valid()
+	 * @Assert\Count(max=2, maxMessage="L'élève ne peut avoir plus de deux tuteurs")
 	 */
 	private $tuteurs ;
 
@@ -77,108 +78,6 @@ class Eleve extends User
 	}
 
 	/**
-	 * Get id
-	 *
-	 * @return integer 
-	 */
-	public function getId()
-	{
-		return $this->id;
-	}
-
-	/**
-	 * Set anniversaire
-	 *
-	 * @param \DateTime $anniversaire
-	 * @return Eleve
-	 */
-	public function setAnniversaire($anniversaire)
-	{
-		$this->anniversaire = $anniversaire;
-	
-		return $this;
-	}
-
-	/**
-	 * Get anniversaire
-	 *
-	 * @return \DateTime 
-	 */
-	public function getAnniversaire()
-	{
-		return $this->anniversaire;
-	}
-
-	/**
-	 *  @Assert\LessThanOrEqual(
-	 *       value= 2,
-	 *       message="L'élève ne peut avoir plus de deux tuteurs")
-	 */
-	public function getNumberOfTuteurs()
-	{
-		return count($this->tuteurs);
-	}
-
-
-	/**
-	 * Add tuteurs
-	 *
-	 * @param \Kub\UserBundle\Entity\Tuteur $tuteurs
-	 * @return Eleve
-	 */
-	public function addTuteur(\Kub\UserBundle\Entity\Tuteur $tuteurs)
-	{        
-		$this->tuteurs[] = $tuteurs;
-		$tuteurs->addEleve($this);
-	
-		return $this;
-	}
-
-	/**
-	 * Remove tuteurs
-	 *
-	 * @param \Kub\UserBundle\Entity\Tuteur $tuteurs
-	 */
-	public function removeTuteur(\Kub\UserBundle\Entity\Tuteur $tuteurs)
-	{
-		$this->tuteurs->removeElement($tuteurs);
-		$tuteurs->removeEleve($this);
-	}
-
-	/**
-	 * Get tuteurs
-	 *
-	 * @return \Doctrine\Common\Collections\Collection 
-	 */
-	public function getTuteurs()
-	{
-		return $this->tuteurs;
-	}
-
-	/**
-	 * Add niveau
-	 *
-	 * @param \Kub\ClasseBundle\Entity\Niveau $niveau
-	 * @return Eleve
-	 */
-	public function addNiveau(\Kub\ClasseBundle\Entity\Niveau $niveau)
-	{
-		$this->niveau[] = $niveau;
-	
-		return $this;
-	}
-
-	/**
-	 * Remove niveau
-	 *
-	 * @param \Kub\ClasseBundle\Entity\Niveau $niveau
-	 */
-	public function removeNiveau(\Kub\ClasseBundle\Entity\Niveau $niveau)
-	{
-		$this->niveau->removeElement($niveau);
-	}
-
-	/**
 	 * @Assert\True(message="L'élève doit avoir un niveau")
 	 */
 	public function isNiveauHaving()
@@ -193,61 +92,129 @@ class Eleve extends User
 		}
 	}
 
-	/**
-	 * Get niveau
-	 *
-	 * @return \Doctrine\Common\Collections\Collection 
-	 */
-	public function getNiveau()
-	{
-		return $this->niveau;
-	}
 
-	/**
-	 * Set niveau
-	 *
-	 * @param \Kub\ClasseBundle\Entity\Niveau $niveau
-	 * @return Eleve
-	 */
-	public function setNiveau(\Kub\ClasseBundle\Entity\Niveau $niveau = null)
-	{
-		$this->niveau = $niveau;
-	
-		return $this;
-	}
 
-	/**
-	 * Add groupes
-	 *
-	 * @param \Kub\ClasseBundle\Entity\Groupe $groupes
-	 * @return Eleve
-	 */
-	public function addGroupe(\Kub\ClasseBundle\Entity\Groupe $groupes)
-	{
-		$this->groupes[] = $groupes;
-	
-		return $this;
-	}
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 
-	/**
-	 * Remove groupes
-	 *
-	 * @param \Kub\ClasseBundle\Entity\Groupe $groupes
-	 */
-	public function removeGroupe(\Kub\ClasseBundle\Entity\Groupe $groupes)
-	{
-		$this->groupes->removeElement($groupes);
-	}
+    /**
+     * Set anniversaire
+     *
+     * @param \DateTime $anniversaire
+     * @return Eleve
+     */
+    public function setAnniversaire($anniversaire)
+    {
+        $this->anniversaire = $anniversaire;
+    
+        return $this;
+    }
 
-	/**
-	 * Get groupes
-	 *
-	 * @return \Doctrine\Common\Collections\Collection 
-	 */
-	public function getGroupes()
-	{
-		return $this->groupes;
-	}
+    /**
+     * Get anniversaire
+     *
+     * @return \DateTime 
+     */
+    public function getAnniversaire()
+    {
+        return $this->anniversaire;
+    }
+
+    /**
+     * Add tuteurs
+     *
+     * @param \Kub\UserBundle\Entity\Tuteur $tuteurs
+     * @return Eleve
+     */
+    public function addTuteur(\Kub\UserBundle\Entity\Tuteur $tuteurs)
+    {
+        $this->tuteurs[] = $tuteurs;
+    
+        return $this;
+    }
+
+    /**
+     * Remove tuteurs
+     *
+     * @param \Kub\UserBundle\Entity\Tuteur $tuteurs
+     */
+    public function removeTuteur(\Kub\UserBundle\Entity\Tuteur $tuteurs)
+    {
+        $this->tuteurs->removeElement($tuteurs);
+    }
+
+    /**
+     * Get tuteurs
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTuteurs()
+    {
+        return $this->tuteurs;
+    }
+
+    /**
+     * Set niveau
+     *
+     * @param \Kub\ClasseBundle\Entity\Niveau $niveau
+     * @return Eleve
+     */
+    public function setNiveau(\Kub\ClasseBundle\Entity\Niveau $niveau = null)
+    {
+        $this->niveau = $niveau;
+    
+        return $this;
+    }
+
+    /**
+     * Get niveau
+     *
+     * @return \Kub\ClasseBundle\Entity\Niveau 
+     */
+    public function getNiveau()
+    {
+        return $this->niveau;
+    }
+
+    /**
+     * Add groupes
+     *
+     * @param \Kub\ClasseBundle\Entity\Groupe $groupes
+     * @return Eleve
+     */
+    public function addGroupe(\Kub\ClasseBundle\Entity\Groupe $groupes)
+    {
+        $this->groupes[] = $groupes;
+    
+        return $this;
+    }
+
+    /**
+     * Remove groupes
+     *
+     * @param \Kub\ClasseBundle\Entity\Groupe $groupes
+     */
+    public function removeGroupe(\Kub\ClasseBundle\Entity\Groupe $groupes)
+    {
+        $this->groupes->removeElement($groupes);
+    }
+
+    /**
+     * Get groupes
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getGroupes()
+    {
+        return $this->groupes;
+    }
 
     /**
      * Set fil

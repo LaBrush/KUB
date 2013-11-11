@@ -5,3 +5,7 @@ edt_frequence:
 edt_cours:
     resource: "@KubEDTBundle/Resources/config/routing/cours.yml"
     prefix: /cours
+
+edt_homepage:
+    pattern:  /agenda
+    defaults: { _controller: KubEDTBundle:EDT:index }

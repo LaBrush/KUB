@@ -52,7 +52,7 @@ class Tuteur extends User
     private $fixe ;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Kub\UserBundle\Entity\Eleve", mappedBy="tuteurs", cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity="Kub\UserBundle\Entity\Eleve", mappedBy="tuteurs", cascade={"all"})
      * @ORM\JoinTable(name="tuteur_eleve")
      */
 
@@ -107,7 +107,7 @@ class Tuteur extends User
     /**
      * Set mobile
      *
-     * @param integer $mobile
+     * @param phone_number $mobile
      * @return Tuteur
      */
     public function setMobile($mobile)
@@ -120,7 +120,7 @@ class Tuteur extends User
     /**
      * Get mobile
      *
-     * @return integer 
+     * @return phone_number 
      */
     public function getMobile()
     {
@@ -130,7 +130,7 @@ class Tuteur extends User
     /**
      * Set fixe
      *
-     * @param integer $fixe
+     * @param phone_number $fixe
      * @return Tuteur
      */
     public function setFixe($fixe)
@@ -143,7 +143,7 @@ class Tuteur extends User
     /**
      * Get fixe
      *
-     * @return integer 
+     * @return phone_number 
      */
     public function getFixe()
     {
@@ -157,7 +157,7 @@ class Tuteur extends User
      * @return Tuteur
      */
     public function addEleve(\Kub\UserBundle\Entity\Eleve $eleves)
-    {   
+    {
         $this->eleves[] = $eleves;
     
         return $this;

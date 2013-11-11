@@ -47,6 +47,6 @@ class LoadFrequenceData extends AbstractFixture implements FixtureInterface, Con
 
     public function getOrder()
     {
-        return 0 ;
+        return 1 ;
     }
 }

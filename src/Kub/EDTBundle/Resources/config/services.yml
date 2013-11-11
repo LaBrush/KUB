@@ -25,7 +25,7 @@ services:
 #        arguments: [@service_id, "plain_value", %parameter%]
     kub.edt.time:
         class: "Kub\EDTBundle\Services\TimeService"
-        arguments: [%edt%]
+        arguments: [%edt%, @doctrine.orm.entity_manager]
 
     validator.unique.time_edt_compatible:
         class: Kub\EDTBundle\Validator\Constraints\TimeEDTCompatibleValidator

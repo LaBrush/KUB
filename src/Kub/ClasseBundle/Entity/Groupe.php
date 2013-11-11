@@ -50,13 +50,13 @@ class Groupe extends BaseGroup
     private $niveau ;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Kub\UserBundle\Entity\Eleve", inversedBy="groupes"))
+     * @ORM\ManyToMany(targetEntity="Kub\UserBundle\Entity\Eleve", inversedBy="groupes", cascade={"all"}))
      */
     private $eleves ;
 
 
     /**
-     * @ORM\ManyToMany(targetEntity="Kub\EDTBundle\Entity\Cours", mappedBy="groupes", cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity="Kub\EDTBundle\Entity\Cours", mappedBy="groupes", cascade={"all"})
      */
     private $cours ;
 
@@ -71,7 +71,6 @@ class Groupe extends BaseGroup
     {
         return $this->niveau . " " . $this->name ;
     }
-
 
     /**
      * Get id
@@ -163,29 +162,6 @@ class Groupe extends BaseGroup
     }
 
     /**
-     * Set cours
-     *
-     * @param \Kub\EDTBundle\Entity\Cours $cours
-     * @return Groupe
-     */
-    public function setCours(\Kub\EDTBundle\Entity\Cours $cours = null)
-    {
-        $this->cours = $cours;
-    
-        return $this;
-    }
-
-    /**
-     * Get cours
-     *
-     * @return \Kub\EDTBundle\Entity\Cours 
-     */
-    public function getCours()
-    {
-        return $this->cours;
-    }
-
-    /**
      * Add cours
      *
      * @param \Kub\EDTBundle\Entity\Cours $cours
@@ -206,5 +182,15 @@ class Groupe extends BaseGroup
     public function removeCour(\Kub\EDTBundle\Entity\Cours $cours)
     {
         $this->cours->removeElement($cours);
+    }
+
+    /**
+     * Get cours
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCours()
+    {
+        return $this->cours;
     }
 }

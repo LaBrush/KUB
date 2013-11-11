@@ -46,7 +46,6 @@ class Horaire
 
     /**
      * @ORM\ManyToMany(targetEntity="Kub\EDTBundle\Entity\Semaine")
-     * @Assert\Count(min=1)
      */
     private $semaines ;
 
@@ -55,7 +54,6 @@ class Horaire
      * @Assert\NotNull()
      */
     private $cours ;
-
 
     /**
      * Get id

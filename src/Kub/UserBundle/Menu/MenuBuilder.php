@@ -119,6 +119,12 @@ class MenuBuilder
             ),
             'route' => 'ariane_homepage'
         ));   
+        $menu->addChild('Mon emploi du temps', array(
+            'labelAttributes' => array(
+                'className' => 'edt',  
+            ),
+            'route' => 'edt_homepage'
+        ));   
     }
 
     public function generateProfesseurMenu($menu)

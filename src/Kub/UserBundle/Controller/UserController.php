@@ -84,7 +84,7 @@ class UserController extends Controller
 				if($formHandler->process())
 				{
 					$this->get('session')->getFlashBag()->add('info', "L'utilisateur a bien été ajouté");
-					return $this->redirect($this->generateUrl("user_liste", array( "role"=> $role )));
+					return $this->redirect($this->generateUrl("user_list", array( "role"=> $role )));
 				}
 
 			}
@@ -156,7 +156,7 @@ class UserController extends Controller
 				if($formHandler->process())
 				{
 					$this->get('session')->getFlashBag()->add('info', "L'utilisateur a bien été modifié");
-					return $this->redirect($this->generateUrl("home_homepage"));
+					return $this->redirect($this->generateUrl("user_show",  array("role" => $role, "username" => $user->getUsername())));
 				}
 				else
 				{
@@ -198,7 +198,7 @@ class UserController extends Controller
 
 				$this->get('session')->getFlashBag()->add('info', 'Utilisateur bien supprimé');
 	
-				return $this->redirect($this->generateUrl('home_homepage'));
+				return $this->redirect($this->generateUrl('user_list'));
 			}
 		}
 

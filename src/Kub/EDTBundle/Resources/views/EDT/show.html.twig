@@ -1,0 +1,19 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+
+	<article class="article">
+	
+		{% for cour in edt %}
+
+			<ul>
+				<li>{{ cour.debut|date('H:i') }}</li>
+				<li>{{ cour.fin|date('H:i') }}</li>
+				<li>{{ cour.jour }}</li>
+			</ul>
+
+		{% endfor %}
+
+	</article>
+
+{% endblock %}
