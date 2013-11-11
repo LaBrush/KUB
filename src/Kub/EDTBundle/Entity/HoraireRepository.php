@@ -25,6 +25,7 @@ class HoraireRepository extends EntityRepository
 			 JOIN e.groupes g2 
 			 JOIN g2.cours c2 
 			 JOIN c2.horaires h2
+			 JOIN h2.debut 
 			"
 		);
   		

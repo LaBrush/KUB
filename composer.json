@@ -30,7 +30,9 @@
         "knplabs/knp-menu-bundle": "1.1.2",
         "knplabs/knp-menu": "1.1.2",
         "misd/phone-number-bundle": "~1.0",
-        "genemu/form-bundle": "dev-master"
+        "genemu/form-bundle": "dev-master",
+        "friendsofsymfony/rest-bundle": "dev-master",
+        "jms/serializer-bundle": "dev-master"
     },
     "scripts": {
         "post-install-cmd": [
