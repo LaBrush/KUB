@@ -70,4 +70,116 @@ class Tuteur extends User
         $this->addRole("ROLE_TUTEUR");
         $this->eleves = new \Doctrine\Common\Collections\ArrayCollection;
     }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set adresse
+     *
+     * @param string $adresse
+     * @return Tuteur
+     */
+    public function setAdresse($adresse)
+    {
+        $this->adresse = $adresse;
+    
+        return $this;
+    }
+
+    /**
+     * Get adresse
+     *
+     * @return string 
+     */
+    public function getAdresse()
+    {
+        return $this->adresse;
+    }
+
+    /**
+     * Set mobile
+     *
+     * @param phone_number $mobile
+     * @return Tuteur
+     */
+    public function setMobile($mobile)
+    {
+        $this->mobile = $mobile;
+    
+        return $this;
+    }
+
+    /**
+     * Get mobile
+     *
+     * @return phone_number 
+     */
+    public function getMobile()
+    {
+        return $this->mobile;
+    }
+
+    /**
+     * Set fixe
+     *
+     * @param phone_number $fixe
+     * @return Tuteur
+     */
+    public function setFixe($fixe)
+    {
+        $this->fixe = $fixe;
+    
+        return $this;
+    }
+
+    /**
+     * Get fixe
+     *
+     * @return phone_number 
+     */
+    public function getFixe()
+    {
+        return $this->fixe;
+    }
+
+    /**
+     * Add eleves
+     *
+     * @param \Kub\UserBundle\Entity\Eleve $eleves
+     * @return Tuteur
+     */
+    public function addEleve(\Kub\UserBundle\Entity\Eleve $eleves)
+    {
+        $this->eleves[] = $eleves;
+    
+        return $this;
+    }
+
+    /**
+     * Remove eleves
+     *
+     * @param \Kub\UserBundle\Entity\Eleve $eleves
+     */
+    public function removeEleve(\Kub\UserBundle\Entity\Eleve $eleves)
+    {
+        $this->eleves->removeElement($eleves);
+    }
+
+    /**
+     * Get eleves
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getEleves()
+    {
+        return $this->eleves;
+    }
 }

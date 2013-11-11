@@ -32,3 +32,9 @@ services:
         arguments: [@kub.edt.time]
         tags:
             - { name: validator.constraint_validator, alias: time_edt_compatible }
+
+    validator.unique.time_edt_no_conflict:
+        class: Kub\EDTBundle\Validator\Constraints\NoHoraireConflictValidator
+        arguments: [@doctrine.orm.entity_manager]
+        tags:
+            - { name: validator.constraint_validator, alias: time_edt_no_conflict }

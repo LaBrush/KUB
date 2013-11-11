@@ -71,4 +71,126 @@ class Groupe extends BaseGroup
     {
         return $this->niveau . " " . $this->name ;
     }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     * @return Groupe
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+    
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string 
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
+     * Set niveau
+     *
+     * @param \Kub\ClasseBundle\Entity\Niveau $niveau
+     * @return Groupe
+     */
+    public function setNiveau(\Kub\ClasseBundle\Entity\Niveau $niveau = null)
+    {
+        $this->niveau = $niveau;
+    
+        return $this;
+    }
+
+    /**
+     * Get niveau
+     *
+     * @return \Kub\ClasseBundle\Entity\Niveau 
+     */
+    public function getNiveau()
+    {
+        return $this->niveau;
+    }
+
+    /**
+     * Add eleves
+     *
+     * @param \Kub\UserBundle\Entity\Eleve $eleves
+     * @return Groupe
+     */
+    public function addEleve(\Kub\UserBundle\Entity\Eleve $eleves)
+    {
+        $this->eleves[] = $eleves;
+    
+        return $this;
+    }
+
+    /**
+     * Remove eleves
+     *
+     * @param \Kub\UserBundle\Entity\Eleve $eleves
+     */
+    public function removeEleve(\Kub\UserBundle\Entity\Eleve $eleves)
+    {
+        $this->eleves->removeElement($eleves);
+    }
+
+    /**
+     * Get eleves
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getEleves()
+    {
+        return $this->eleves;
+    }
+
+    /**
+     * Add cours
+     *
+     * @param \Kub\EDTBundle\Entity\Cours $cours
+     * @return Groupe
+     */
+    public function addCour(\Kub\EDTBundle\Entity\Cours $cours)
+    {
+        $this->cours[] = $cours;
+    
+        return $this;
+    }
+
+    /**
+     * Remove cours
+     *
+     * @param \Kub\EDTBundle\Entity\Cours $cours
+     */
+    public function removeCour(\Kub\EDTBundle\Entity\Cours $cours)
+    {
+        $this->cours->removeElement($cours);
+    }
+
+    /**
+     * Get cours
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCours()
+    {
+        return $this->cours;
+    }
 }

@@ -4,12 +4,15 @@ namespace Kub\EDTBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert ;
+use Kub\EDTBundle\Validator\Constraints as KAssert ;
 
 /**
  * Horaire
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Kub\EDTBundle\Entity\HoraireRepository")
+ *
+ * @KAssert\NoHoraireConflict()
  */
 class Horaire
 {
@@ -26,7 +29,7 @@ class Horaire
      * @var \DateTime
      *
      * @ORM\Column(name="debut", type="time")
-     * @Kub\EDTBundle\Validator\Constraints\TimeEDTCompatible()
+     * @KAssert\TimeEDTCompatible()
      */
     private $debut;
 
@@ -40,7 +43,7 @@ class Horaire
      * @var \DateTime
      *
      * @ORM\Column(name="fin", type="time")
-     * @Kub\EDTBundle\Validator\Constraints\TimeEDTCompatible()
+     * @KAssert\TimeEDTCompatible()
      */
     private $fin;
 
