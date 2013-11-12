@@ -3,7 +3,7 @@ cours_create:
     defaults: { _controller: "KubEDTBundle:Cours:create" }
 
 cours_list:
-    pattern:  /list
+    pattern:  /
     defaults: { _controller: "KubEDTBundle:Cours:list" }
 
 cours_delete:

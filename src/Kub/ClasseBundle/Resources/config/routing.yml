@@ -15,5 +15,5 @@ groupe_delete:
     defaults: { _controller: "KubClasseBundle:Groupe:delete" }
 
 groupe_list:
-    pattern:  /groupe/list
+    pattern:  /groupes
     defaults: { _controller: "KubClasseBundle:Groupe:list" }

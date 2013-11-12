@@ -18,12 +18,11 @@
 			<ul class="liste">
 				
 				{% for tuteur in user.tuteurs %}
-					<li><a href="{{ path('tuteur_show', {id: tuteur.id}) }}">{{ tuteur.prenom }} {{ tuteur.nom }}</a></li>
+					<li class="li-list"><a href="{{ path('user_show', {role: user.class, username: user.username}) }}">{{ tuteur.prenom }} {{ tuteur.nom }}</a></li>
 				{% endfor %}
 
 			</ul>
-			
-		</span>
+
 	{% endif %}
 
 	{% if user.groupes|length > 0 %}
@@ -36,8 +35,7 @@
 				{% endfor %}
 
 			</ul>
-			
-		</span>
+
 	{% endif %}
 
 {% endblock %}

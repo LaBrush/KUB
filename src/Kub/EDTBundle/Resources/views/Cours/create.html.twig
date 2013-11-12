@@ -1,21 +1,21 @@
 {% extends "::base.html.twig" %}
 
 {% block body %}
-
 	
 		<article class="article">
-			<h2 class="section-title">Creer un cours</h2>
+			<h2 class="section-title">Créer un cours</h2>
 		</article>
 
 		<article class="article">
-			{{ form_start(form) }}
+			{{ form_start(form, { 'attr': {'class': 'formulaire-creation-utilisateur'} }) }}
 
-				{{ form_widget(form) }}
-		
-				<input type="submit">
+				{% include "KubEDTBundle:Cours:form.html.twig" %}
 
+				<span class="validate">
+					<input class="button-yes" type="submit">
+					<a class="button" href="{{ path('cours_list') }}">Annuler</a>
+				</span>
 			{{ form_end(form) }}
-		</article>
-	
+		</article>			
 
 {% endblock %}

@@ -3,7 +3,7 @@ frequence_create:
     defaults: { _controller: "KubEDTBundle:Frequence:create" }
 
 frequence_list:
-    pattern:  /list
+    pattern:  /
     defaults: { _controller: "KubEDTBundle:Frequence:list" }
 
 frequence_delete:
