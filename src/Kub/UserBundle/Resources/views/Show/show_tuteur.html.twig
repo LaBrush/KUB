@@ -28,15 +28,15 @@
 	{% if user.eleves|length > 0 %}
 		<span class="label">Eleves de {{ user }}</span> 
 
-			<ul>
+			<ul class="liste">
 				
 				{% for eleve in user.eleves %}
-					<li><a href="{{ path('eleve_show', {id: eleve.id}) }}">{{ eleve.prenom }} {{ eleve.nom }}</a></li>
+					<li class="li-list"><a href="{{ path('user_show', {role: user.class, username: eleve.username}) }}">{{ eleve.prenom }} {{ eleve.nom }}</a></li>
 				{% endfor %}
 
 			</ul>
 			
-		</p>
+		</span>
 	{% endif %}
 
 {% endblock %}

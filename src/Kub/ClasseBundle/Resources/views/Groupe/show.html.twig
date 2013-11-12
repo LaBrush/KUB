@@ -2,20 +2,37 @@
 
 {% block body %}
 
+	
 		<article class="article">
-			<h2>Nom du groupe: {{ groupe }}</h2>
+			<h2 class="section-title">Groupe {{ groupe }}</h2>
+		</article>
 
-			{% if is_granted('ROLE_SECRETAIRE') %}
-				<p><a href="{{ path("groupe_edit", {id: groupe.id }) }}">Modifier</a></p>
+		<article class="article infos-utilisateur">
+
+			<span class="label">Niveau :</span>
+			<span class="info">{{ groupe.niveau | capitalize }}</span>
+
+			
+
+			{% if groupe.eleves|length > 0 %}
+				<span class="label">Eleves de {{ groupe }}:</span>
+					<ul class="liste">
+						
+						{% for eleve in groupe.eleves %}
+							<li class="li-list"><a href="{{ path('user_show', {role: eleve.class, username: eleve.username}) }}">{{ eleve.prenom }} {{ eleve.nom }}</a></li>
+						{% endfor %}
+
+					</ul>
+				</span>
 			{% endif %}
+			
+			{% if is_granted('ROLE_SECRETAIRE') %}
+				
+				<span class="modifier">
+					<a class="button" href="{{ path("groupe_edit", {id: groupe.id }) }}">Modifier</a>
+				</span>
 
-			<ul>
-				{% for eleve in groupe.eleves %}
-
-					<li><a href="{{ path('user_show', { username: eleve.username, role: 'eleve' }) }}">{{ eleve.username}}</a></li>
-
-				{% endfor %}
-			</ul>
+			{% endif %}
 
 		</article>
 	

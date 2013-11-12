@@ -1,22 +1,30 @@
 {% extends "::base.html.twig" %}
 
 {% block body %}
-
 	
 		<article class="article">
 			<h2 class="section-title">Creer un groupe</h2>
 		</article>
 
 		<article class="article">
-			{{ form_start(form) }}
+			{{ form_start(form, { 'attr': {'class': 'formulaire-creation-utilisateur'} }) }}
 
-				{{ form_widget(form) }}
-		
-				<input class="button-yes" type="submit">
-				<a class="button-no" href="{{ path('groupe_list') }}">Annuler</a>
+				{% include "KubUserBundle:Manage:_form.html.twig" %}
 
+				<span class="validate">
+					<input class="button-yes" type="submit">
+					<a class="button" href="{{ path('groupe_list') }}">Annuler</a>
+				</span>
 			{{ form_end(form) }}
-		</article>
-	
+		</article>			
+
+{% endblock %}
+
+{% block js %}
+		
+	<script type="text/javascript" src="{{ asset('ressources/select2/select2.min.js') }}"></script>
+	<link rel="stylesheet" href="{{ asset('ressources/select2/select2.css') }}" />
+	{{ form_javascript(form) }}
+	{{ form_stylesheet(form) }}
 
 {% endblock %}

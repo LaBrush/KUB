@@ -15,7 +15,7 @@
 	{% if user.tuteurs|length > 0 %}
 		<span class="label">Tuteurs de {{ user }}</span> 
 
-			<ul>
+			<ul class="liste">
 				
 				{% for tuteur in user.tuteurs %}
 					<li><a href="{{ path('tuteur_show', {id: tuteur.id}) }}">{{ tuteur.prenom }} {{ tuteur.nom }}</a></li>
@@ -23,13 +23,13 @@
 
 			</ul>
 			
-		</p>
+		</span>
 	{% endif %}
 
 	{% if user.groupes|length > 0 %}
 		<span class="label">Groupes auquels {{ user }} appartient :</span>
 
-			<ul>
+			<ul class="liste">
 				
 				{% for groupe in user.groupes %}
 					<li class="li-list"><a href="{{ path('groupe_show', {id: groupe.id}) }}">{{ groupe.name }}</a></li>
@@ -37,7 +37,7 @@
 
 			</ul>
 			
-		</p>
+		</span>
 	{% endif %}
 
 {% endblock %}
