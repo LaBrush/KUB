@@ -20,10 +20,12 @@ class EDT2JsArrayExtension extends \Twig_Extension
     public function EDT2JsArray()
     {
 
-        $js_array = $this->time->getHours();
+        $hours = $this->time->getHours();
 
-        foreach ($js_array as $key => $hour) {
-            # code...
+        foreach ($hours as $key => $hour) {
+            
+            $js_array[$hour] = $this->time->getMinutesForHour($hour);
+
         }
 
         return json_encode($js_array);
