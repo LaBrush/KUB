@@ -18,7 +18,7 @@ class GroupeType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('niveau', "entity", array(
+            ->add('niveau', "genemu_jqueryselect2_entity", array(
                 "multiple" => false,
                 "expanded" => true,
                 "class" => "Kub\ClasseBundle\Entity\Niveau"

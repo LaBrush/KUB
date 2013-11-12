@@ -38,3 +38,9 @@ services:
         arguments: [@doctrine.orm.entity_manager]
         tags:
             - { name: validator.constraint_validator, alias: time_edt_no_conflict }
+
+    kub.twig.kub_extension:
+        class: Kub\EDTBundle\Twig\EDT2JsArrayExtension
+        arguments: [@kub.edt.time]
+        tags:
+            - { name: twig.extension }

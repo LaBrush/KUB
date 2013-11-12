@@ -28,12 +28,6 @@ class UserController extends Controller
 	 */
 	public function createAction($role)
 	{
-		if($role == "")
-		{
-			return $this->render('KubUserBundle:Manage:index_create.html.twig');
-		}
-		else
-		{
 			$class = ucfirst($role);
 
 			switch($class)
@@ -95,7 +89,6 @@ class UserController extends Controller
 					'user' => $user
 				)
 			);
-		}
 	}
 
 	/**
