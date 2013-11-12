@@ -79,6 +79,11 @@ class TimeService
 
 	//Fonctions sur l'emplois du temps
 
+	public function getCurrentCoursOf()
+	{
+		
+	}
+
 	public function getEDTOf($user){
 
 		$edt = false ;
