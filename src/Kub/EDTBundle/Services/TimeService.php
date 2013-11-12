@@ -2,6 +2,8 @@
 
 namespace Kub\EDTBundle\Services ;
 
+use Kub\UserBundle\Entity\Professeur ;
+
 class TimeService
 {
 	private $horaires ;
@@ -79,9 +81,9 @@ class TimeService
 
 	//Fonctions sur l'emplois du temps
 
-	public function getCurrentCoursOf()
+	public function getCurrentCoursOf(Professeur $professeur)
 	{
-		
+		return $edt = $this->em->getRepository('KubUserBundle:Professeur')->getCurrentCoursOf( $professeur->getId() );
 	}
 
 	public function getEDTOf($user){

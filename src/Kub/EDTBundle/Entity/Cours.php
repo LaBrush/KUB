@@ -82,7 +82,7 @@ class Cours
             $groupesNames .= $groupe . "a ";
         }
 
-        $name = "Cours de avec " . $this->professeur . ' et ' . $groupesNames ;
+        $name = $this->matiere . " avec " . $this->professeur . ' et ' . $groupesNames ;
         return $name ;
     }
 
