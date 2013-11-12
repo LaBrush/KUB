@@ -26,7 +26,6 @@ class AppKernel extends Kernel
             new JMS\DiExtraBundle\JMSDiExtraBundle($this),
             new JMS\SerializerBundle\JMSSerializerBundle(),
             new FOS\UserBundle\FOSUserBundle(),
-            new FOS\RestBundle\FOSRestBundle(),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new PUGX\MultiUserBundle\PUGXMultiUserBundle(),
             new Misd\PhoneNumberBundle\MisdPhoneNumberBundle(),
