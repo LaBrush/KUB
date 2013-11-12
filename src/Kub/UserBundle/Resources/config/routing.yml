@@ -5,7 +5,7 @@ user_create:
         role: eleve|tuteur|administrateur|professeur
 
 user_list:
-    path: /{role}s/{niveau}
+    path: /{role}/liste/{niveau}
     defaults: { _controller: KubUserBundle:User:list, niveau: null}
     requirements:
         role: eleve|tuteur|administrateur|professeur
