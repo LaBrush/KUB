@@ -19,14 +19,11 @@ class NoHoraireConflictValidator extends ConstraintValidator
 
     public function validate($horaire, Constraint $constraint)
     {
-    	if($this->em->getRepository("KubEDTBundle:Horaire")->countConflictualCours($horaire) > 0)
+    	$conflits = $this->em->getRepository("KubEDTBundle:Horaire")->findConflictualCours($horaire);
+
+    	if(count($conflits) > 0)
     	{	
-    		$this->context->addViolation($constraint->message);
+    		$this->context->addViolation($constraint->getMessage($conflits));
     	}
     }
-
-    public function getTargets()
-	{
-	    return self::CLASS_CONSTRAINT;
-	}
 }

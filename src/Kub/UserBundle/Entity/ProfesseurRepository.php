@@ -24,9 +24,12 @@ class ProfesseurRepository extends UserRepository
 			->addSelect('h')
 			->join('h.jour', 'j')
 			->addSelect('j')
+			
 			->where('p.id = :id')
 			->setParameter('id', $id)
-			->andWhere('j.id')
+			->andWhere('j.id = :day_id')
+			->setParameter('day_id', date('N'))
+			->andWhere('NOW BETWEEN h.debut AND h.fin')
 		;
 
 		return $qb->getQuery()->getSingleOrNullResult();

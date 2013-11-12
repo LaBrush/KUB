@@ -12,17 +12,12 @@ class DefaultController extends Controller
 
     	if($security->isGranted("ROLE_USER"))
     	{
-    		return $this->render("KubHomeBundle:Eleve:index.html.twig");
+    		return $this->render("KubHomeBundle:User:index.html.twig");
     	}
     	else
     	{
     		return $this->render("KubHomeBundle:Visiteur:index.html.twig");
     	}
-
-    }
-
-    public function showEleveAction()
-    {
 
     }
 }

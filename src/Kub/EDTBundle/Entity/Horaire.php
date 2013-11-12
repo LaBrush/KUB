@@ -12,6 +12,7 @@ use Kub\EDTBundle\Validator\Constraints as KAssert ;
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="Kub\EDTBundle\Entity\HoraireRepository")
  *
+ * @KAssert\NoHoraireConflict()
  */
 class Horaire
 {
@@ -90,6 +91,11 @@ class Horaire
         $this->semaines = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
+    public function __toString()
+    {
+        return "De " . $this->debut->format("H:i") . " à " . $this->fin->format("H:i") . " le " . $this->jour ;
+    }
+
     /**
      * Set debut
      *
