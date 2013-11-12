@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "32710283b62f62c594efa14754984c3b",
+    "hash": "bf6c1cbcf4f8eb137dc26f6a7f169b0b",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -720,82 +720,6 @@
                 "orm"
             ],
             "time": "2013-05-11 07:51:12"
-        },
-        {
-            "name": "friendsofsymfony/rest-bundle",
-            "version": "dev-master",
-            "target-dir": "FOS/RestBundle",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/FriendsOfSymfony/FOSRestBundle.git",
-                "reference": "a6eff7a910a4bd87b31fdb4b1110b869d4b46e01"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSRestBundle/zipball/a6eff7a910a4bd87b31fdb4b1110b869d4b46e01",
-                "reference": "a6eff7a910a4bd87b31fdb4b1110b869d4b46e01",
-                "shasum": ""
-            },
-            "require": {
-                "doctrine/inflector": "1.0.*",
-                "php": ">=5.3.2",
-                "symfony/framework-bundle": "~2.1",
-                "willdurand/negotiation": "1.0.*"
-            },
-            "conflict": {
-                "jms/serializer": "<0.12",
-                "jms/serializer-bundle": "<0.11"
-            },
-            "require-dev": {
-                "jms/serializer-bundle": "0.12.*",
-                "sensio/framework-extra-bundle": "~2.1",
-                "symfony/form": "~2.1",
-                "symfony/security": "~2.1",
-                "symfony/serializer": "~2.1",
-                "symfony/validator": "~2.1",
-                "symfony/yaml": "~2.1"
-            },
-            "suggest": {
-                "jms/serializer-bundle": "Add support for advanced serialization capabilities, recommended, requires 0.12.*",
-                "sensio/framework-extra-bundle": "Add support for route annotations and the view response listener",
-                "symfony/serializer": "Add support for basic serialization capabilities and xml decoding, requires ~2.1"
-            },
-            "type": "symfony-bundle",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "FOS\\RestBundle": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Lukas Kahwe Smith",
-                    "email": "smith@pooteeweet.org"
-                },
-                {
-                    "name": "FriendsOfSymfony Community",
-                    "homepage": "https://github.com/friendsofsymfony/FOSRestBundle/contributors"
-                },
-                {
-                    "name": "Konstantin Kudryashov",
-                    "email": "ever.zet@gmail.com",
-                    "homepage": "http://everzet.com"
-                }
-            ],
-            "description": "This Bundle provides various tools to rapidly develop RESTful API's with Symfony2",
-            "homepage": "http://friendsofsymfony.github.com",
-            "keywords": [
-                "rest"
-            ],
-            "time": "2013-11-04 21:23:23"
         },
         {
             "name": "friendsofsymfony/user-bundle",
@@ -2792,56 +2716,6 @@
                 "templating"
             ],
             "time": "2013-10-30 08:20:53"
-        },
-        {
-            "name": "willdurand/negotiation",
-            "version": "1.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/willdurand/Negotiation.git",
-                "reference": "6021e6a9e14d6ab62dcd4f83364058d4978d6890"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/willdurand/Negotiation/zipball/6021e6a9e14d6ab62dcd4f83364058d4978d6890",
-                "reference": "6021e6a9e14d6ab62dcd4f83364058d4978d6890",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Negotiation": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "William Durand",
-                    "email": "william.durand1@gmail.com",
-                    "homepage": "http://www.willdurand.fr"
-                }
-            ],
-            "description": "Content Negotiation tools for PHP provided as a standalone library.",
-            "homepage": "http://williamdurand.fr/Negotiation/",
-            "keywords": [
-                "accept",
-                "content",
-                "format",
-                "header",
-                "negotiation"
-            ],
-            "time": "2013-08-01 14:42:09"
         }
     ],
     "packages-dev": [
@@ -2859,7 +2733,6 @@
         "doctrine/data-fixtures": 20,
         "jms/security-extra-bundle": 20,
         "genemu/form-bundle": 20,
-        "friendsofsymfony/rest-bundle": 20,
         "jms/serializer-bundle": 20
     },
     "platform": {
