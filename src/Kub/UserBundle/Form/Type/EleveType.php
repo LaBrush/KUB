@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-use Kub\UserBundle\Form\Type\TuteurType ;
+use Kub\UserBundle\Form\Type\TuteurCollectionType ;
 use Kub\UserBundle\Form\Type\PhotoType ;
 
 class EleveType extends UserType
@@ -39,7 +39,7 @@ class EleveType extends UserType
 				)
 			)
 			->add('tuteursAdd', 'collection', array(
-				"type" => new TuteurType(),
+				"type" => new TuteurCollectionType(),
 				"allow_add" => true,
 				"allow_delete" => true,
 				"property_path" => "tuteurs"

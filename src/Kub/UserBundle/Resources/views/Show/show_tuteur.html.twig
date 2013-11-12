@@ -31,12 +31,12 @@
 			<ul>
 				
 				{% for eleve in user.eleves %}
-					<li><a href="{{ path('eleve_show', {id: eleve.id}) }}">{{ eleve.prenom }} {{ eleve.nom }}</a></li>
+					<li class="li-list"><a href="{{ path('user_show', {role: user.class, username: eleve.username}) }}">{{ eleve.prenom }} {{ eleve.nom }}</a></li>
 				{% endfor %}
 
 			</ul>
 			
-		</p>
+		</span>
 	{% endif %}
 
 {% endblock %}

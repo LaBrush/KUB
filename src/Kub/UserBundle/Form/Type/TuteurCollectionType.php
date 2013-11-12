@@ -7,7 +7,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use libphonenumber\PhoneNumberFormat;
 
-class TuteurType extends UserType
+class TuteurCollectionType extends TuteurType
 {
 		/**
 	 * @param FormBuilderInterface $builder
@@ -17,14 +17,8 @@ class TuteurType extends UserType
 	{
 		parent::buildForm($builder, $options);
 			$builder
-				->add('fixe', 'tel', array('required' => false, 'default_region' => 'FR', 'format' => PhoneNumberFormat::NATIONAL))
-				->add('mobile', 'tel', array('required' => false, 'default_region' => 'FR', 'format' => PhoneNumberFormat::NATIONAL))
-				->add("adresse", 'text', array('required' => false))
-				->add('eleves', 'genemu_jqueryselect2_entity', array(
-						"class" => "Kub\UserBundle\Entity\Eleve",
-						"multiple" => true
-					)
-				);
+				->remove('eleves')
+		;
 
 		return $builder ;
 	}

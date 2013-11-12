@@ -19,9 +19,14 @@
 			{% block details %}
 			{% endblock %}
 			
-			<span class="modifier">
-				<a class="button" href="{{ path("user_edit", {username: user.username, role: user.class }) }}">Modifier</a>
-			</span>
+			{% if is_granted('ROLE_SECRETAIRE') %}
+				
+				<span class="modifier">
+					<a class="button" href="{{ path("user_edit", {username: user.username, role: user.class }) }}">Modifier</a>
+				</span>
+
+			{% endif %}
+			
 		</article>
 	
 
