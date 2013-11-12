@@ -16,7 +16,7 @@
 
 			{% if groupe.eleves|length > 0 %}
 				<span class="label">Eleves de {{ groupe }}:</span>
-					<ul class="liste">
+					<ul>
 						
 						{% for eleve in groupe.eleves %}
 							<li class="li-list"><a href="{{ path('user_show', {role: eleve.class, username: eleve.username}) }}">{{ eleve.prenom }} {{ eleve.nom }}</a></li>
