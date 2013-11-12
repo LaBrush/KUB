@@ -30,7 +30,7 @@ class addMemberFieldSuscriber implements EventSubscriberInterface
                 'class' => 'Kub\UserBundle\Entity\Eleve',
                 "multiple" => true,
                 "expanded" => true,
-                "property_path" => "eleves"
+                "property_path" => "eleves",
                 'query_builder' => function(EleveRepository $er) {
 
                     return $er->createQueryBuilder('e')
