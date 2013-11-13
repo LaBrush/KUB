@@ -2,21 +2,21 @@
 
 {% block body %}
 	
-		<article class="article">
-			<h2 class="section-title">Créer un {{ user.class }}</h2>
-		</article>
+	<article class="article">
+		<h2 class="section-title">Créer un {{ user.class }}</h2>
+	</article>
 
-		<article class="article">
-			{{ form_start(form, { 'attr': {'class': 'formulaire-creation-utilisateur'} }) }}
+	<article class="article">
+		{{ form_start(form, { 'attr': {'class': 'formulaire-creation-utilisateur'} }) }}
 
-				{% include "KubUserBundle:Manage:" ~ user.class ~ "_form.html.twig" %}
+			{% include "KubUserBundle:Manage:" ~ user.class ~ "_form.html.twig" %}
 
-				<span class="validate">
-					<input class="button-yes" type="submit">
-					<a class="button" href="{{ path('user_list', { role: user.class }) }}">Annuler</a>
-				</span>
-			{{ form_end(form) }}
-		</article>			
+			<span class="validate">
+				<input class="button-yes" type="submit">
+				<a class="button" href="{{ path('user_list', { role: user.class }) }}">Annuler</a>
+			</span>
+		{{ form_end(form) }}
+	</article>
 
 {% endblock %}
 

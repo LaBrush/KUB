@@ -2,32 +2,32 @@
 
 {% block body %}
 
-	
-		<article class="article">
-			<h2 class="section-title">{{ user }}</h2>
-			
-		</article>
 
-		<article class="article infos-utilisateur">
+	<article class="article">
+		<h2 class="section-title">{{ user }}</h2>
+		
+	</article>
 
-			<span class="label">Identifiant :</span>
-			<span class="info">{{ user.username }}</span>
+	<article class="article infos-utilisateur">
 
-			<span class="label">Adresse mail :</span>
-			<span class="info">{{ user.email }}</span>
-			
-			{% block details %}
-			{% endblock %}
-			
-			{% if is_granted('ROLE_SECRETAIRE') %}
-				
-				<span class="modifier">
-					<a class="button" href="{{ path("user_edit", {username: user.username, role: user.class }) }}">Modifier</a>
-				</span>
+		<span class="label">Identifiant :</span>
+		<span class="info">{{ user.username }}</span>
 
-			{% endif %}
+		<span class="label">Adresse mail :</span>
+		<span class="info">{{ user.email }}</span>
+		
+		{% block details %}
+		{% endblock %}
+		
+		{% if is_granted('ROLE_SECRETAIRE') %}
 			
-		</article>
+			<span class="modifier">
+				<a class="button" href="{{ path("user_edit", {username: user.username, role: user.class }) }}">Modifier</a>
+			</span>
+
+		{% endif %}
+		
+	</article>
 	
 
 {% endblock %}

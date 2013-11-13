@@ -2,21 +2,21 @@
 
 {% block body %}
 	
-		<article class="article">
-			<h2 class="section-title">Creer un groupe</h2>
-		</article>
+	<article class="article">
+		<h2 class="section-title">Creer un groupe</h2>
+	</article>
 
-		<article class="article">
-			{{ form_start(form, { 'attr': {'class': 'formulaire-creation-utilisateur'} }) }}
+	<article class="article">
+		{{ form_start(form, { 'attr': {'class': 'formulaire-creation-utilisateur'} }) }}
 
-				{% include "KubClasseBundle:Groupe:form.html.twig" %}
+			{% include "KubClasseBundle:Groupe:form.html.twig" %}
 
-				<span class="validate">
-					<input class="button-yes" type="submit">
-					<a class="button" href="{{ path('groupe_list') }}">Annuler</a>
-				</span>
-			{{ form_end(form) }}
-		</article>			
+			<span class="validate">
+				<input class="button-yes" type="submit">
+				<a class="button" href="{{ path('groupe_list') }}">Annuler</a>
+			</span>
+		{{ form_end(form) }}
+	</article>
 
 {% endblock %}
 

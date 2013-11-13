@@ -1,40 +1,38 @@
 {% extends "::base.html.twig" %}
 
 {% block body %}
-
 	
-		<article class="article">
-			<h2 class="section-title">Groupe {{ groupe }}</h2>
-		</article>
+	<article class="article">
+		<h2 class="section-title">Groupe {{ groupe }}</h2>
+	</article>
 
-		<article class="article infos-utilisateur">
+	<article class="article infos-utilisateur">
 
-			<span class="label">Niveau :</span>
-			<span class="info">{{ groupe.niveau | capitalize }}</span>
+		<span class="label">Niveau :</span>
+		<span class="info">{{ groupe.niveau | capitalize }}</span>
 
+		
+
+		{% if groupe.eleves|length > 0 %}
+			<span class="label">Eleves de {{ groupe }}:</span>
+				<ul>
+					
+					{% for eleve in groupe.eleves %}
+						<li class="li-list"><a href="{{ path('user_show', {role: eleve.class, username: eleve.username}) }}">{{ eleve.prenom }} {{ eleve.nom }}</a></li>
+					{% endfor %}
+
+				</ul>
+			</span>
+		{% endif %}
+		
+		{% if is_granted('ROLE_SECRETAIRE') %}
 			
+			<span class="modifier">
+				<a class="button" href="{{ path("groupe_edit", {id: groupe.id }) }}">Modifier</a>
+			</span>
 
-			{% if groupe.eleves|length > 0 %}
-				<span class="label">Eleves de {{ groupe }}:</span>
-					<ul>
-						
-						{% for eleve in groupe.eleves %}
-							<li class="li-list"><a href="{{ path('user_show', {role: eleve.class, username: eleve.username}) }}">{{ eleve.prenom }} {{ eleve.nom }}</a></li>
-						{% endfor %}
+		{% endif %}
 
-					</ul>
-				</span>
-			{% endif %}
-			
-			{% if is_granted('ROLE_SECRETAIRE') %}
-				
-				<span class="modifier">
-					<a class="button" href="{{ path("groupe_edit", {id: groupe.id }) }}">Modifier</a>
-				</span>
-
-			{% endif %}
-
-		</article>
-	
+	</article>
 
 {% endblock %}

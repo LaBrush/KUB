@@ -2,18 +2,17 @@
 
 {% block body %}
 
-		<article class="error">
-			{{ form_start(form) }}
+	<article class="error">
+		{{ form_start(form) }}
 
-			<p>Êtes vous sûr de vouloir supprimer le groupe <strong>{{ groupe.name }}</strong> ?</p>
+		<p>Êtes vous sûr de vouloir supprimer le groupe <strong>{{ groupe.name }}</strong> ?</p>
 
-				{% block form %}
-				{% endblock %}
-				
-				<br />
-				<input class="button-yes" type="submit"> ou <a class="button-no" href="{{ path('groupe_list') }}">Annuler</a>	
-			{{ form_end(form) }}
-		</article>
-		
+			{% block form %}
+			{% endblock %}
+			
+			<br />
+			<input class="button-yes" type="submit"> ou <a class="button-no" href="{{ path('groupe_list') }}">Annuler</a>	
+		{{ form_end(form) }}
+	</article>
 			
 {% endblock %}

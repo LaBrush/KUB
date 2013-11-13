@@ -2,18 +2,17 @@
 
 {% block body %}
 
-		<article class="error">
-			{{ form_start(form) }}
+	<article class="error">
+		{{ form_start(form) }}
 
-			<p>Êtes vous sûr de vouloir supprimer le compte {{ role }} de <strong>{{ user }}</strong> ?</p>
+		<p>Êtes vous sûr de vouloir supprimer le compte {{ role }} de <strong>{{ user }}</strong> ?</p>
 
-				{% block form %}
-				{% endblock %}
-				
-				<br />
-				<input class="button-yes" type="submit"> ou <a class="button" href="{{ path('user_list', { role: role }) }}">Annuler</a>	
-			{{ form_end(form) }}
-		</article>
-		
+			{% block form %}
+			{% endblock %}
 			
+			<br />
+			<input class="button-yes" type="submit"> ou <a class="button" href="{{ path('user_list', { role: role }) }}">Annuler</a>	
+		{{ form_end(form) }}
+	</article>
+	
 {% endblock %}

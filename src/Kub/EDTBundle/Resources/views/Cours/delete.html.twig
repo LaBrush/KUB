@@ -2,18 +2,17 @@
 
 {% block body %}
 
-	
-		<article class="article">
-			<h2 class="section-title">Êtes vous sûr de vouloir supprimer le cours {{ cours }} ?</h2>
-		</article>
+	<article class="error">
+		{{ form_start(form) }}
 
-		<article class="article">
-			{{ form_start(form) }}
+		<p>Êtes vous sûr de vouloir supprimer le cours <strong>{{ cours }}</strong> ?</p>
 
-				<input type="submit"> ou 
-				<a href="{{ path('groupe_list') }}">Annuler</a>	
-			{{ form_end(form) }}
-		</article>
-		
+			{% block form %}
+			{% endblock %}
+			
+			<br />
+			<input class="button-yes" type="submit"> ou <a class="button-no" href="{{ path('cours_list') }}">Annuler</a>	
+		{{ form_end(form) }}
+	</article>
 			
 {% endblock %}
