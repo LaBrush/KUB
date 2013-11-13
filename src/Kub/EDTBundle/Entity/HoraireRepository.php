@@ -14,22 +14,38 @@ use Kub\EDTBundle\Entity\Horaire ;
 class HoraireRepository extends EntityRepository
 {
 
-	public function countConflictualCours(Horaire $horaires)
+	public function findConflictualCours(Horaire $horaire)
 	{
 		$query = $this->_em->createQuery(
-			"SELECT COUNT(h) 
+			"SELECT h, c, g
 			 FROM KubEDTBundle:Horaire h 
 			 JOIN h.cours c 
-			 JOIN c.groupes g 
-			 JOIN g.eleves e 
-			 JOIN e.groupes g2 
-			 JOIN g2.cours c2 
-			 JOIN c2.horaires h2
-			 JOIN h2.debut 
+			 JOIN c.groupes g
+			 JOIN g.eleves e
+			 JOIN h.jour j
+
+			 WHERE h.id != :id 
+			 AND 
+			 (
+				 (
+				 	h.debut BETWEEN :debut AND :fin
+				 OR h.fin   BETWEEN :debut AND :fin 
+				 ) OR (
+				     :debut  BETWEEN h.debut AND h.fin
+				 AND :fin    BETWEEN h.debut AND h.fin
+				 )  
+			 )
+			  AND
+			  j.id = :jour
 			"
-		);
-  		
-  		return $query->getOneScalarResult();
+		)
+		->setParameter('id', $horaire->getId())
+		->setParameter('debut', $horaire->getDebut())
+		->setParameter('fin', $horaire->getFin())
+		->setParameter('jour', $horaire->getJour()->getId())
+		;	
+
+  		return $query->getResult();
 	}
 
 }
