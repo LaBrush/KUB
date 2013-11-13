@@ -877,12 +877,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/genemu/GenemuFormBundle.git",
-                "reference": "9a68d6811fd80d1fe908af014687562301329d6e"
+                "reference": "156089856016abde934b92961724b9aa728b7eae"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/genemu/GenemuFormBundle/zipball/9a68d6811fd80d1fe908af014687562301329d6e",
-                "reference": "9a68d6811fd80d1fe908af014687562301329d6e",
+                "url": "https://api.github.com/repos/genemu/GenemuFormBundle/zipball/156089856016abde934b92961724b9aa728b7eae",
+                "reference": "156089856016abde934b92961724b9aa728b7eae",
                 "shasum": ""
             },
             "require": {
@@ -939,7 +939,7 @@
                 "extra form",
                 "form"
             ],
-            "time": "2013-09-03 21:48:06"
+            "time": "2013-11-13 16:22:53"
         },
         {
             "name": "giggsey/libphonenumber-for-php",
@@ -1995,15 +1995,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/PUGX/PUGXMultiUserBundle.git",
-                "reference": "b72191e3ac4ad2db8b5d01a6395ca0f545009b2a"
+                "reference": "8979f3ef026094bf834d177b3a84f99aad6daa32"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PUGX/PUGXMultiUserBundle/zipball/b72191e3ac4ad2db8b5d01a6395ca0f545009b2a",
-                "reference": "b72191e3ac4ad2db8b5d01a6395ca0f545009b2a",
+                "url": "https://api.github.com/repos/PUGX/PUGXMultiUserBundle/zipball/8979f3ef026094bf834d177b3a84f99aad6daa32",
+                "reference": "8979f3ef026094bf834d177b3a84f99aad6daa32",
                 "shasum": ""
             },
             "require": {
+                "doctrine/doctrine-bundle": "*",
                 "friendsofsymfony/user-bundle": "2.0.x-dev"
             },
             "type": "symfony-bundle",
@@ -2036,7 +2037,7 @@
             "keywords": [
                 "user management multi user management"
             ],
-            "time": "2013-06-27 18:02:29"
+            "time": "2013-11-13 16:02:19"
         },
         {
             "name": "sensio/distribution-bundle",

@@ -17,12 +17,12 @@ class HoraireRepository extends EntityRepository
 	public function findConflictualCours(Horaire $horaire)
 	{
 		$query = $this->_em->createQuery(
-			"SELECT h, c, g
+			"SELECT DISTINCT h, j
 			 FROM KubEDTBundle:Horaire h 
-			 JOIN h.cours c 
-			 JOIN c.groupes g
-			 JOIN g.eleves e
 			 JOIN h.jour j
+			 JOIN h.cours c
+			 JOIN c.groupes g 
+			 JOIN g.eleves e
 
 			 WHERE h.id != :id 
 			 AND 
@@ -35,14 +35,15 @@ class HoraireRepository extends EntityRepository
 				 AND :fin    BETWEEN h.debut AND h.fin
 				 )  
 			 )
-			  AND
-			  j.id = :jour
+			  AND j.id = :jour
+			  AND c.id != :cours 
 			"
 		)
 		->setParameter('id', $horaire->getId())
 		->setParameter('debut', $horaire->getDebut())
 		->setParameter('fin', $horaire->getFin())
 		->setParameter('jour', $horaire->getJour()->getId())
+		->setParameter('cours', $horaire->getCours()->getId())
 		;	
 
   		return $query->getResult();
