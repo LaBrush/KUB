@@ -30,6 +30,13 @@ class Niveau
     private $name;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="abreviation", type="string", length=10)
+     */
+    private $abreviation;
+
+    /**
      * @var integer
      *
      * @ORM\Column(name="annee", type="integer")
@@ -203,5 +210,28 @@ class Niveau
     public function removeGroupe(\Kub\ClasseBundle\Entity\Groupe $groupes)
     {
         $this->groupes->removeElement($groupes);
+    }
+
+    /**
+     * Set abreviation
+     *
+     * @param string $abreviation
+     * @return Niveau
+     */
+    public function setAbreviation($abreviation)
+    {
+        $this->abreviation = $abreviation;
+    
+        return $this;
+    }
+
+    /**
+     * Get abreviation
+     *
+     * @return string 
+     */
+    public function getAbreviation()
+    {
+        return $this->abreviation;
     }
 }

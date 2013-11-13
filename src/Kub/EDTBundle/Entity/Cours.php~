@@ -5,12 +5,15 @@ namespace Kub\EDTBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert ;
 use Kub\EDTBundle\Entity\Horaire ;
+use Kub\EDTBundle\Validator\Constraints as KAssert ;
 
 /**
  * Cours
  *
  * @ORM\Table()
  * @ORM\Entity
+ * 
+ * @KAssert\NoHoraireConflict()
  */
 class Cours
 {
@@ -82,7 +85,7 @@ class Cours
             $groupesNames .= $groupe . "a ";
         }
 
-        $name = "Cours de avec " . $this->professeur . ' et ' . $groupesNames ;
+        $name = $this->matiere . " avec " . $this->professeur . ' et ' . $groupesNames ;
         return $name ;
     }
 

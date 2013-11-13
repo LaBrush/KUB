@@ -11,8 +11,6 @@ use Kub\EDTBundle\Validator\Constraints as KAssert ;
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="Kub\EDTBundle\Entity\HoraireRepository")
- *
- * @KAssert\NoHoraireConflict()
  */
 class Horaire
 {

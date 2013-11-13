@@ -5,12 +5,15 @@ namespace Kub\EDTBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert ;
 use Kub\EDTBundle\Entity\Horaire ;
+use Kub\EDTBundle\Validator\Constraints as KAssert ;
 
 /**
  * Cours
  *
  * @ORM\Table()
  * @ORM\Entity
+ * 
+ * @KAssert\NoHoraireConflict()
  */
 class Cours
 {
