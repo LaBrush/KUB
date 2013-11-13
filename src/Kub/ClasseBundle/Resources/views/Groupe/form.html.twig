@@ -1,0 +1,11 @@
+{% block form %}
+
+	<span class="prenom">
+		{{ form_label(form.name) }} <div class="input">{{ form_widget(form.name) }}</div>
+	</span>
+
+	<span class="niveau">
+		{{ form_label(form.niveau) }} <div class="input">{{ form_widget(form.niveau) }}</div>
+	</span>
+
+{% endblock %}
