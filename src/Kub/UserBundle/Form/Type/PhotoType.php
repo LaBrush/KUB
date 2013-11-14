@@ -11,7 +11,7 @@ class PhotoType extends AbstractType
   {
     $builder
       // ->add('file', 'genemu_jqueryimage')
-    ->add('file', 'file')
+      ->add('file', 'file')
     ;
   }
 
