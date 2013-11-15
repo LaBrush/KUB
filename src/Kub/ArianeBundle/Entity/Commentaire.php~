@@ -3,6 +3,7 @@
 namespace Kub\ArianeBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert ;
 
 /**
  * @ORM\Entity
@@ -24,7 +25,13 @@ class Commentaire
     protected $post;
 
     /**
+     * @ORM\ManyToOne(targetEntity="Kub\UserBundle\Entity\User")
+     */
+    protected $auteur;
+
+    /**
      * @ORM\Column(name="contenu", type="text")
+     * @Assert\NotNull()
      */
     protected $contenu;
 
@@ -32,6 +39,11 @@ class Commentaire
      * @ORM\Column(name="date", type="datetime")
      */
     protected $date ;
+
+    public function __construct()
+    {
+        $this->date = new \DateTime();
+    }
 
     /**
      * Get id
@@ -110,5 +122,28 @@ class Commentaire
     public function getDate()
     {
         return $this->date;
+    }
+
+    /**
+     * Set auteur
+     *
+     * @param \Kub\UserBundle\Entity\User $auteur
+     * @return Commentaire
+     */
+    public function setAuteur(\Kub\UserBundle\Entity\User $auteur = null)
+    {
+        $this->auteur = $auteur;
+    
+        return $this;
+    }
+
+    /**
+     * Get auteur
+     *
+     * @return \Kub\UserBundle\Entity\User 
+     */
+    public function getAuteur()
+    {
+        return $this->auteur;
     }
 }

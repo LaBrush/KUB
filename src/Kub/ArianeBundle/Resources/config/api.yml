@@ -1,0 +1,13 @@
+ariane_api_add_comment:
+    pattern:  /ariane/{fil}/comment/add
+    defaults: { _controller: KubArianeBundle:Comment:add }
+    requirements:
+        _method:  POST
+        fil: \d+
+
+ariane_api_remove_comment:
+    pattern:  /ariane/{fil}/comment/remove/{comment}
+    defaults: { _controller: KubArianeBundle:Comment:remove }
+    requirements:
+        fil: \d+
+        _method:  POST

@@ -1,3 +1,7 @@
+ariane_api:
+    resource: "@KubArianeBundle/Resources/config/api.yml"
+    prefix:   /api
+
 ariane_homepage:
     pattern:  /ariane
     defaults: { _controller: KubArianeBundle:Default:index }

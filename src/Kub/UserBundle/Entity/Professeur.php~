@@ -29,6 +29,21 @@ class Professeur extends User
      */
     private $cours ;
 
+    public function hasEleve($eleve){
+
+        foreach ($this->getCours() as $key => $cours) {
+            foreach ($cours->getGroupes() as $key => $groupe) {
+                if(in_array($eleve, $groupe->getEleves()))
+                {
+                    return true ;
+                }
+            }
+        }
+
+        return false ;
+
+    }
+
     public function initClass()
     {
         $this->class = "professeur";
