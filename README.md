@@ -17,7 +17,9 @@ following command:
     php composer.phar install
 
 To set up the database, run the maintenance.bash for Unix system (Linux, OS X)
-and the maintenance.bat for Window system
+and the maintenance.bat for Window system:
+
+	./composer.bash
 
 2) Checking your System Configuration
 -------------------------------------

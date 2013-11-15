@@ -24,9 +24,11 @@ class PostController extends Controller
         $request = $this->get('request');
         $em = $this->getDoctrine()->getManager();
 
+        $fil = $this->getUser()->getFil();
+
         if($request->getMethod() == "POST"){
 
-            $formHandler = new PostHandler($form, $request, $this->getDoctrine()->getManager(), $this->getUser());
+            $formHandler = new PostHandler($form, $request, $this->getDoctrine()->getManager(), $fil);
 
             if($formHandler->process())
             {
@@ -53,9 +55,11 @@ class PostController extends Controller
         $request = $this->get('request');
         $em = $this->getDoctrine()->getManager();
 
+        $fil = $this->getUser()->getFil();
+
         if($request->getMethod() == "POST"){
 
-            $formHandler = new PostHandler($form, $request, $this->getDoctrine()->getManager(), $this->getUser());
+            $formHandler = new PostHandler($form, $request, $this->getDoctrine()->getManager(), $fil);
 
             if($formHandler->process())
             {

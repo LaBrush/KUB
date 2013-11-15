@@ -20,7 +20,7 @@ class Commentaire
     protected $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Kub\ArianeBundle\Entity\Post", inversedBy="commentaires", cascade={"all"})
+     * @ORM\ManyToOne(targetEntity="Kub\ArianeBundle\Entity\Post", inversedBy="commentaires", cascade={"persist", "merge"})
      */
     protected $post;
 

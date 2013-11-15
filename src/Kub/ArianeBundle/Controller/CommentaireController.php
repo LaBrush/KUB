@@ -6,95 +6,102 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 
 use Kub\ArianeBundle\Entity\Commentaire ;
-use Kub\ArianeBundle\Entity\Fil  ;
+use Kub\ArianeBundle\Entity\Post  ;
 
 use Kub\ArianeBundle\Form\Type\CommentaireType ;
 use Kub\ArianeBundle\Form\Handler\CommentaireHandler ;
 
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+use JMS\SecurityExtraBundle\Annotation\Secure;
 
 class CommentaireController extends Controller
 {
-    //Afin de savoir si l'utilisateur courant est autorisé à déposer des commentaires
-    public function checkIfTokenAllowed($fil)
-    {
-        $security = $this->get('security.context');
 
-        $allowed = false ;
-        if($security->isGranted('ROLE_ELEVE'))
-        {
-            $allowed = true ;
-        }
-        else if($security->isGranted('ROLE_PROFESSEUR'))
-        {
-            if($security->getToken()->getUser()->hasEleve($fil->getEleve()))
-            {
-                $allowed = true;
-            }
-        }
+	/**
+	 * @Secure(roles={"ROLE_ARIANE"})
+	 */
+	public function addAction(Post $post)
+	{
+		if($this->getUser() != $post->getFil()->getEleve())
+		{
+			if($this->getUser()->hasEleve($post->getFil()->getEleve()))
+			{
+				throw new AccessDeniedException("Vous n'êtes pas autorisé à commenter ce post");
+			}
+		}
 
-        if(!$allowed)
-        {
-            throw new AccessDeniedException("Vous n'êtes pas autorisé à commenter ce fil");
-        }
-    }
+		$commentaire = new Commentaire ;
+		$commentaire->setAuteur($this->getUser());
 
-    public function addAction(Fil $fil)
-    {
-        $this->checkIfTokenAllowed($fil);
+		$form = $this->createForm(new CommentaireType, $commentaire, array(
+			'action' => $this->generateUrl('ariane_commentaire_add', 
+				array(
+					'post' => $post->getId()
+			))
+		));
 
-        $commentaire = new Commentaire ;
-        $commentaire->setAuteur($this->getUser());
+		$request = $this->get('request');
+		$em = $this->getDoctrine()->getManager();
 
-        $form = $this->createForm(new CommentaireType, $commentaire);
+		if($request->getMethod() == "POST"){
 
-        $request = $this->get('request');
-        $em = $this->getDoctrine()->getManager();
+			$formHandler = new CommentaireHandler($form, $request, $this->getDoctrine()->getManager(), $this->getUser(), $post);
 
-        if($request->getMethod() == "POST"){
+			if($formHandler->process())
+			{
+				$this->get('session')->getFlashBag()->add('info', "Le commentaire a été posté");   
+			}
 
-            $formHandler = new CommentaireHandler($form, $request, $this->getDoctrine()->getManager(), $this->getUser());
+			return $this->redirect($this->generateUrl("ariane_homepage"));
 
-            $handler_response = $formHandler->process();
-            // si le handler response n'est pas un booléen, alors c'est une liste d'erreurs du formulaire
-            if($handler_response !== true)
-            {
-                $response = new Response($handler_response, 400) ;
-                return $response ;   
-            }
+		}
 
-        }
+		return $this->render('KubArianeBundle:Commentaire:create.html.twig',
+			array(
+				'form' => $form->createView()
+			)
+		);   
+	}
 
-        return $this->render('KubArianeBundle:Commentaire:create.html.twig',
-            array(
-                'form' => $form->createView(),
-            )
-        );   
-    }
+	/**
+	 * @Secure(roles={"ROLE_ARIANE"})
+	 */
+	public function deleteAction(Commentaire $commentaire)
+	{
+		$form = $this->createFormBuilder(null, array(
+			'action' => $this->generateUrl('ariane_commentaire_delete', 
+				array(
+					'commentaire' => $commentaire->getId()
+			))
+		))->getForm();
 
-    public function deleteAction(Fil $fil, Commentaire $commentaire)
-    {
-        $response = new Response();
+		$request = $this->getRequest();
 
-        $this->checkIfTokenAllowed($fil);
+		if ($request->getMethod() == 'POST') {
+			
+			if($commentaire->getAuteur() != $this->getUser())
+			{
+				throw new AccessDeniedException("Vous n'êtes pas autorisé à supprimer ce commentaire");
+			}
 
-        $form = $this->createFormBuilder()->getForm();
-        $request = $this->getRequest();
+			$form->bind($request);
 
-        if ($request->getMethod() == 'POST') {
-            $form->bind($request);
+			if ($form->isValid()) {
 
-            if ($form->isValid()) {
+				$em = $this->getDoctrine()->getManager();
+				$em->remove($commentaire);
+				$em->flush();
+		
+				$this->get('session')->getFlashBag()->add('info', "Le commentaire a été supprimé");
 
-                $em = $this->getDoctrine()->getManager();
-                $em->remove($commentaire);
-                $em->flush();
-        
-                $response->setStatusCode(200);
-            }
-        }
+				return $this->redirect($this->generateUrl("ariane_homepage"));
+			}
+		}
 
-        $response->setStatusCode(400);
-        return $response ;
-    }
+		return $this->render('KubArianeBundle:Commentaire:delete.html.twig',
+			array(
+				'form' => $form->createView(),
+			)
+		);
+	}
 }

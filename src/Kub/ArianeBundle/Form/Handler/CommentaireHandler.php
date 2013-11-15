@@ -7,7 +7,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 use Kub\UserBundle\Entity\User ;
 
-class PostHandler
+class CommentaireHandler
 {
 	protected $request;
 	protected $form;
@@ -22,12 +22,13 @@ class PostHandler
 	 * @param $em
 	 * 
 	 */
-	public function __construct(Form $form, Request $request, $em, User $user)
+	public function __construct(Form $form, Request $request, $em, User $user, $post)
 	{
 		$this->form = $form;
 		$this->request = $request;
 		$this->em = $em;
 		$this->user = $user ;
+		$this->post = $post ;
 	}
 
 	public function process()
@@ -51,6 +52,7 @@ class PostHandler
 	protected function onSuccess($data)
 	{
 		$data->setAuteur( $this->user );
+		$data->setPost( $this->post );
 
 		$this->em->persist($data);
 		$this->em->flush();

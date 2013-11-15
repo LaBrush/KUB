@@ -5,14 +5,14 @@ namespace Kub\ArianeBundle\Form\Handler;
 use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\Request;
 
-use Kub\UserBundle\Entity\Eleve ;
+use Kub\ArianeBundle\Entity\Fil ;
 
 class PostHandler
 {
 	protected $request;
 	protected $form;
 	protected $em;
-	protected $eleve ;
+	protected $fil ;
 
 	/**
 	 * Initialize the handler with the form and the request
@@ -22,12 +22,12 @@ class PostHandler
 	 * @param $em
 	 * 
 	 */
-	public function __construct(Form $form, Request $request, $em, Eleve $eleve)
+	public function __construct(Form $form, Request $request, $em, Fil $fil)
 	{
 		$this->form = $form;
 		$this->request = $request;
 		$this->em = $em;
-		$this->eleve = $eleve ;
+		$this->fil = $fil ;
 	}
 
 	public function process()
@@ -50,7 +50,7 @@ class PostHandler
 
 	protected function onSuccess($data)
 	{
-		$data->setFil( $this->eleve->getFil() );
+		$data->setFil( $this->fil );
 
 		$this->em->persist($data);
 		$this->em->flush();
