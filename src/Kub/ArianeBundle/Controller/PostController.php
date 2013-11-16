@@ -39,16 +39,7 @@ class PostController extends Controller
 
         }
 
-		$view ;        
-		if ($this->container->get('request')->attributes->get('_route') == 'ariane_post_add') {
-			$view = 'create';
-		} else {
-			// Mais sinon, il s'agit du formulaire de connexion intégré au menu, on utilise la vue "login_content"
-			// car il ne faut pas hériter du layout !
-			$view = 'create_content';
-		}
-
-        return $this->render('KubArianeBundle:Post:' . $view . '.html.twig',
+        return $this->render('KubArianeBundle:Post:create.html.twig',
             array(
                 'form' => $form->createView(),
             )
@@ -82,6 +73,7 @@ class PostController extends Controller
         return $this->render('KubArianeBundle:Post:edit.html.twig',
             array(
                 'form' => $form->createView(),
+                'post' => $post,
             )
         );   
     }
@@ -111,6 +103,7 @@ class PostController extends Controller
 
         return $this->render('KubArianeBundle:Post:delete.html.twig', array(
             'form' => $form->createView(),
+            'post' => $post,
         ));
     }
 }

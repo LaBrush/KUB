@@ -3,10 +3,20 @@
 {% block body %}
 
 	<article class="article">
+		<h2 class="section-title">Modifier la trace {{ post.titre }}</h2>
+	</article>
+
+	<article class="article">
 		
-		{{ form_start(form) }}
-			{{ form_widget(form) }}
-			<input type="submit">
+		{{ form_start(form, { 'attr': {'class': 'formulaire-creation'} }) }}
+			
+			{% include('KubArianeBundle:Post:form.html.twig') %}
+			
+			<div class="validate">
+				<input type="submit" class="button-yes">
+				<a class="button" href="{{ path('ariane_homepage') }}">Annuler</a>
+				<a class="button-no" href="{{ path('ariane_post_delete', { 'id': post.id }) }}">Supprimer</a>
+			</div>
 		{{ form_end(form) }}
 
 	</article>

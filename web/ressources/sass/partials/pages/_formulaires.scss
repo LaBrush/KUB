@@ -25,9 +25,15 @@
 			display: block;	
 		}
 
-		input, select, .select2-container, .add-another-tuteurs
+		input, select, .select2-container, .add-another-tuteurs, textarea
 		{
 			margin: 3px 5px 0 0;
+		}
+
+		textarea
+		{
+			width: 60%;
+			min-width: 280px;
 		}
 	}
 

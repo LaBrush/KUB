@@ -2,21 +2,13 @@
 
 {% block body %}
 
-<<<<<<< HEAD
-	{% if is_granted('ROLE_ELEVE') %}
-		<article class="article">
-			{{ render(controller("KubArianeBundle:Post:add")) }}
-		</article>
-	{% endif %}
-=======
 	<div class="article">
-			<h3 class="section-title">Fil d'Arianne</h3>
+			<h3 class="section-title">Fil d'Ariane</h3>
 		</div>
 
-	<article class="article">
-		<a href="{{ path('ariane_post_add') }}">Ajouter une journée</a>
-	</article>
->>>>>>> 44d8306ef5d42e474d1f7d0dafca341644367eeb
+	{% if is_granted('ROLE_ELEVE') %}
+		<a href="{{ path('ariane_post_add') }}" class="button-yes new">Nouveau post</a>
+	{% endif %}
 
 	{% for post in liste_posts %}
 
@@ -33,8 +25,7 @@
 
 				{% if is_granted("ROLE_ELEVE") %}
 				<div class="buttons">
-					<a class="button" href="{{ path('ariane_post_edit', { 'id': post.id }) }}">Modifier</a>
-					<a class="button-no" href="{{ path('ariane_post_delete', { 'id': post.id }) }}">Supprimer</a>
+					<a class="button-espace-collaboratif" href="{{ path('ariane_post_edit', { 'id': post.id }) }}">Modifier</a>
 				</div>
 				{% endif %}
 			</div>
@@ -55,11 +46,9 @@
 				</ul>
 
 				{{ render(controller('KubArianeBundle:Commentaire:add', { post: post.id })) }}
-
 			</div>
-
 		</article>
 
-	{% endfor %}			
+	{% endfor %}
 
 {% endblock %}

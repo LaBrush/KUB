@@ -200,7 +200,7 @@
 /* Inputs */
 $input: 	#aaaaaa;
 
-input[type="text"], input[type="password"], input[type="email"], input[type="search"], input[type="tel"], input[type="select"], select, option
+input[type="text"], input[type="password"], input[type="email"], input[type="search"], input[type="tel"], input[type="select"], select, option, textarea
 {
 	padding: 3px;
 	border: 1px $input solid;

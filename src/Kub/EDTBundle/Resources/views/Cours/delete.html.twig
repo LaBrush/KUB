@@ -5,11 +5,8 @@
 	<article class="error">
 		{{ form_start(form) }}
 
-		<p>Êtes vous sûr de vouloir supprimer le cours <strong>{{ cours }}</strong> ?</p>
+			<p>Êtes vous sûr de vouloir supprimer le cours <strong>{{ cours }}</strong> ?</p>
 
-			{% block form %}
-			{% endblock %}
-			
 			<br />
 			<input class="button-yes" type="submit"> ou <a class="button-no" href="{{ path('cours_list') }}">Annuler</a>	
 		{{ form_end(form) }}

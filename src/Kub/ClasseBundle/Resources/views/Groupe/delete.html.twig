@@ -5,10 +5,7 @@
 	<article class="error">
 		{{ form_start(form) }}
 
-		<p>Êtes vous sûr de vouloir supprimer le groupe <strong>{{ groupe.name }}</strong> ?</p>
-
-			{% block form %}
-			{% endblock %}
+			<p>Êtes vous sûr de vouloir supprimer le groupe <strong>{{ groupe.name }}</strong> ?</p>
 			
 			<br />
 			<input class="button-yes" type="submit"> ou <a class="button-no" href="{{ path('groupe_list') }}">Annuler</a>	

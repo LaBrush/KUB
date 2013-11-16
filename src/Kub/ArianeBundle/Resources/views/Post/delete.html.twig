@@ -2,13 +2,14 @@
 
 {% block body %}
 
-		<article class="error">
-			{{ form_start(form) }}
-				
-				{{ form_widget(form) }}
-				<input class="button-yes" type="submit"> ou <a class="button-no" href="{{ path('groupe_list') }}">Annuler</a>	
-			{{ form_end(form) }}
-		</article>
-		
+	<article class="error">
+		{{ form_start(form) }}
+			
+			<p>Êtes vous sûr de vouloir supprimer le post <strong>{{ post.titre | lower }}</strong> ?</p>
+
+			<br />
+			<input class="button-yes" type="submit"> ou <a class="button-no" href="{{ path('ariane') }}">Annuler</a>	
+		{{ form_end(form) }}
+	</article>
 			
 {% endblock %}
