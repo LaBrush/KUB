@@ -2,20 +2,31 @@
 
 {% block body %}
 
-	
-		<article class="article">
-			<p>Nom d'utilisateur: {{ app.user.username }}</p>
-    		<p>Mon email: {{ app.user.email }}</p>
+	<article class="article">
+		<h2 class="section-title">Mon compte</h2>
+		
+	</article>
+
+	<article class="article infos">
+
+		<span class="label">Identifiant :</span>
+		<span class="info">{{ app.user.username }}</span>
+
+		<span class="label">Adresse mail :</span>
+		<span class="info">{{ app.user.email }}</span>
+		
 		</article>
 
-		<article class="article">
+		<article class="article infos">
 			<h3>Parametres</h3>
 
 			{% include "FOSUserBundle:Profile:edit_content.html.twig" %}
-		</article>
+
+			<span class="label">Mot de passe :</span>
+			<span class="input">
+				<a href="{{ path('fos_user_change_password') }}">Modifier le mot de passe</a>
+			</span>
 		
-		<article class="article">
-			<p><a href="{{ path('fos_user_change_password') }}">Changer de mot de passe</a></p>
-		</article>
+	</article>
 
 {% endblock %}

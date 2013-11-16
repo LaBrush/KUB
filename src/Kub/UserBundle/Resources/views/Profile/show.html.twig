@@ -2,10 +2,30 @@
 
 {% block body %}
 
-	
-		<article class="article">
-			{% include "FOSUserBundle:Profile:show_content.html.twig" %}
-		</article>
+
+	<article class="article">
+		<h2 class="section-title">{{ user }}</h2>
 		
+	</article>
+
+	<article class="article infos">
+
+		<span class="label">Identifiant :</span>
+		<span class="info">{{ user.username }}</span>
+
+		<span class="label">Adresse mail :</span>
+		<span class="info">{{ user.email }}</span>
+		
+		{% block details %}
+		{% endblock %}
+					
+		<span class="modifier">
+			<a class="button" href="{{ path("user_edit", {username: user.username, role: user.class }) }}">Modifier</a>
+		</span>
+
+		{% endif %}
+		
+	</article>
+	
 
 {% endblock %}
