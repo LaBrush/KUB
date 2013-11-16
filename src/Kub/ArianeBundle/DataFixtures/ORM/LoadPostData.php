@@ -47,6 +47,8 @@ class LoadPostData extends AbstractFixture implements FixtureInterface, Containe
             $post2->setDebut(new \DateTime("2013-11-06"));
             $post2->setFin(new \DateTime("2013-11-06"));
 
+        $this->addReference('post_ariane', $post1);
+
         $fil->addPost($post1);
         $fil->addPost($post2);
 

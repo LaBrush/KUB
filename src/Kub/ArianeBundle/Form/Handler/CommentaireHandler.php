@@ -5,14 +5,14 @@ namespace Kub\ArianeBundle\Form\Handler;
 use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\Request;
 
-use Kub\ArianeBundle\Entity\Fil ;
+use Kub\UserBundle\Entity\User ;
 
-class PostHandler
+class CommentaireHandler
 {
 	protected $request;
 	protected $form;
 	protected $em;
-	protected $fil ;
+	protected $user ;
 
 	/**
 	 * Initialize the handler with the form and the request
@@ -22,12 +22,13 @@ class PostHandler
 	 * @param $em
 	 * 
 	 */
-	public function __construct(Form $form, Request $request, $em, Fil $fil)
+	public function __construct(Form $form, Request $request, $em, User $user, $post)
 	{
 		$this->form = $form;
 		$this->request = $request;
 		$this->em = $em;
-		$this->fil = $fil ;
+		$this->user = $user ;
+		$this->post = $post ;
 	}
 
 	public function process()
@@ -50,7 +51,8 @@ class PostHandler
 
 	protected function onSuccess($data)
 	{
-		$data->setFil( $this->fil );
+		$data->setAuteur( $this->user );
+		$data->setPost( $this->post );
 
 		$this->em->persist($data);
 		$this->em->flush();

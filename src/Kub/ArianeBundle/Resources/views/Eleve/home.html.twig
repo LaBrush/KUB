@@ -13,18 +13,27 @@
 			<h2>{{ post.titre }}</h2>
 			<p>{{ post.contenu }}</p>
 
-			<ul>
-				{% for commentaire in post.commentaires %}
-
-					<li>commentaire.contenu</li>
-
-				{% endfor %}
-			</ul>
-
 			{% if is_granted("ROLE_ELEVE") %}
 				<p><a href="{{ path('ariane_post_edit', { 'id': post.id }) }}">Modifier la trace</a></p>
 				<p><a href="{{ path('ariane_post_delete', { 'id': post.id }) }}">Supprimer la trace</a></p>
 			{% endif %}
+
+			<br><br>
+
+			<ul>
+				{% for commentaire in post.commentaires %}
+
+					<li> {{ commentaire.contenu }} 
+
+					{% if app.user == commentaire.auteur %}
+						{{ render(controller('KubArianeBundle:Commentaire:delete', { commentaire: commentaire.id })) }}</li>
+					{% endif %}
+
+				{% endfor %}
+
+				{{ render(controller('KubArianeBundle:Commentaire:add', { post: post.id })) }}
+
+			</ul>
 
 		{% endfor %}
 

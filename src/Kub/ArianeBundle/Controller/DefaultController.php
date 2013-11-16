@@ -20,7 +20,8 @@ class DefaultController extends Controller
         $liste_posts = $this->getDoctrine()->getManager()->getRepository('KubArianeBundle:Post')->findByUser( $this->getUser()->getUsername() );
 
         return $this->render('KubArianeBundle:Eleve:home.html.twig', array(
-            'liste_posts' => $liste_posts
+            'liste_posts' => $liste_posts,
+            'fil' => $this->getUser()->getFil()
         ));
     }
 
