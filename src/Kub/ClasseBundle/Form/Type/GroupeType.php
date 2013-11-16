@@ -20,7 +20,7 @@ class GroupeType extends AbstractType
             ->add('name')
             ->add('niveau', "entity", array(
                 "multiple" => false,
-                "expanded" => true,
+                "expanded" => false,
                 "class" => "Kub\ClasseBundle\Entity\Niveau"
             ))
             ->addEventSubscriber(new addMemberFieldSuscriber());

@@ -1,5 +1,20 @@
-.formulaire-creation-utilisateur
+.formulaire-creation
 {
+	.title
+	{
+		margin: 0;
+		display: block;
+		font-weight: 700;
+	}
+
+	.horaires, .tuteur-in-eleve
+	{
+		background: $header;
+		padding: 10px;
+		margin: 20px 0 0 0;
+		@include border-radius(3px);
+	}
+
 	span
 	{
 		display: block;
@@ -42,7 +57,7 @@
 	}
 }
 
-.infos-utilisateur
+.infos
 {
 	font-size: 1em;
 

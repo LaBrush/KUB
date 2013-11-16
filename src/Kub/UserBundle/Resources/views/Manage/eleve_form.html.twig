@@ -8,6 +8,19 @@
 		{{ form_label(form.nom) }} <div class="input">{{ form_widget(form.nom) }}</div>
 	</span>
 
+	<span class="photo">
+		{{ form_label(form.photo) }}
+		<div class="input">
+			{% for field in form.photo %}
+				{{ form_widget(field) }}
+			{% endfor %}
+		</div>
+	</span>
+
+	{% if user.photo is not null %}
+        <img src="{{ asset(user.photo.webPath) }}" alt="{{ user }}" />
+    {% endif %}
+
 	<span class="email">
 		{{ form_label(form.email) }} <div class="input">{{ form_widget(form.email) }}</div>
 	</span>
@@ -24,16 +37,11 @@
 		{{ form_label(form.tuteurs) }} <div class="input">{{ form_widget(form.tuteurs) }}</div>
 	</span>
 
-	<span class="tuteurs-button">
-		<a class="button add-another-tuteurs" href="#" >Créer un tuteur</a>
-	</span>
-
 	<div class="tuteurs-add" data-prototype="{% filter escape %}{% include 'KubUserBundle:Manage:tuteur_form_in_eleve.html.twig' with {'form': form.tuteursAdd.vars.prototype} %}{% endfilter %}">
-
 	</div>
-	
-	{% if user.photo is not null %}
-        <img src="{{ asset(user.photo.webPath) }}" alt="{{ user.prenom }}" />
-      {% endif %}
+
+	<span class="tuteurs-button">
+		<a class="button add-another-tuteurs" href="#">Créer un tuteur</a>
+	</span>
 
 {% endblock %}

@@ -7,7 +7,7 @@
 	</article>
 
 	<article class="article">
-		{{ form_start(form, { 'attr': {'class': 'formulaire-creation-utilisateur'} }) }}
+		{{ form_start(form, { 'attr': {'class': 'formulaire-creation'} }) }}
 
 			{% include "KubEDTBundle:Cours:form.html.twig" %}
 
@@ -21,6 +21,26 @@
 {% endblock %}
 
 {% block js %}
+	
+	<script>
+    	// garde une trace du nombre de champs horaires qui ont été affichés
+    	var tuteurCount = '{{ form.horaires | length }}';
+
+	    $(document).ready(function() {
+	        $('.add-another-horaires').click(function() {
+	            var tuteurList = $('.horaires-add');
+
+	            var newWidget = tuteurList.attr('data-prototype');
+	            newWidget = newWidget.replace(/__name__/g, tuteurCount);
+	            tuteurCount++;
+
+	            var newLi = $('<div class="horaires"></div>').html(newWidget);
+	            newLi.appendTo(tuteurList);
+
+	            return false;
+	        });
+	    })
+	</script>
 
 	<script type="text/javascript" src="{{ asset('ressources/select2/select2.min.js') }}"></script>
 	<link rel="stylesheet" href="{{ asset('ressources/select2/select2.css') }}" />

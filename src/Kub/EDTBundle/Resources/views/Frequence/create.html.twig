@@ -1,21 +1,30 @@
 {% extends "::base.html.twig" %}
 
 {% block body %}
-
 	
-		<article class="article">
-			<h2 class="section-title">Creer une féquence</h2>
-		</article>
+	<article class="article">
+		<h2 class="section-title">Créer une fréquence de semaine</h2>
+	</article>
 
-		<article class="article">
-			{{ form_start(form) }}
+	<article class="article">
+		{{ form_start(form, { 'attr': {'class': 'formulaire-creation'} }) }}
 
-				{{ form_widget(form) }}
-		
-				<input type="submit">
+			{% include "KubEDTBundle:Frequence:form.html.twig" %}
 
-			{{ form_end(form) }}
-		</article>
-	
+			<span class="validate">
+				<input class="button-yes" type="submit">
+				<a class="button" href="{{ path('cours_list') }}">Annuler</a>
+			</span>
+		{{ form_end(form) }}
+	</article>			
+
+{% endblock %}
+
+{% block js %}
+
+	<script type="text/javascript" src="{{ asset('ressources/select2/select2.min.js') }}"></script>
+	<link rel="stylesheet" href="{{ asset('ressources/select2/select2.css') }}" />
+	{{ form_javascript(form) }}
+	{{ form_stylesheet(form) }}
 
 {% endblock %}

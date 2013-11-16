@@ -7,7 +7,7 @@
 	</article>
 
 	<article class="article">
-		{{ form_start(form, { 'attr': {'class': 'formulaire-creation-utilisateur'} }) }}
+		{{ form_start(form, { 'attr': {'class': 'formulaire-creation'} }) }}
 
 			{% include "KubUserBundle:Manage:" ~ user.class ~ "_form.html.twig" %}
 
@@ -36,7 +36,7 @@
 		            newWidget = newWidget.replace(/__name__/g, tuteurCount);
 		            tuteurCount++;
 
-		            var newLi = $('<div></div>').html(newWidget);
+		            var newLi = $('<div class="tuteur-in-eleve"></div>').html(newWidget);
 		            newLi.appendTo(tuteurList);
 
 		            return false;

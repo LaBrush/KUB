@@ -1,0 +1,27 @@
+{% block form %}
+	
+	<span class="title">
+		Nouvel horaire
+	</span>
+
+	<span class="debut">
+		{{ form_label(form.debut) }} <div class="input">{{ form_widget(form.debut) }}</div>
+	</span>
+
+	<span class="fin">
+		{{ form_label(form.fin) }} <div class="input">{{ form_widget(form.fin) }}</div>
+	</span>
+
+	<span class="jour">
+		{{ form_label(form.jour) }} <div class="input">{{ form_widget(form.jour) }}</div>
+	</span>
+
+	<span class="frequences">
+		{{ form_label(form.frequences) }} <div class="input">{{ form_widget(form.frequences) }}</div>
+	</span>
+
+	<span class="semaines">
+		{{ form_label(form.semaines) }} <div class="input">{{ form_widget(form.semaines) }}</div>
+	</span>
+
+{% endblock %}

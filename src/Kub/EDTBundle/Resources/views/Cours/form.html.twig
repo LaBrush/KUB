@@ -1,0 +1,52 @@
+{% block form %}
+	
+	<span class="professeur">
+		{{ form_label(form.professeur) }} <div class="input">{{ form_widget(form.professeur) }}</div>
+	</span>
+
+	<span class="groupes">
+		{{ form_label(form.groupes) }} <div class="input">{{ form_widget(form.groupes) }}</div>
+	</span>
+
+	<span class="matiere">
+		{{ form_label(form.matiere) }} <div class="input">{{ form_widget(form.matiere) }}</div>
+	</span>
+
+	{% for horaire in form.horaires %}
+		<div class="horaires">
+			<span class="title">
+				Horaire
+			</span>
+
+			<span class="debut">
+				{{ form_label(horaire.debut) }} <div class="input">{{ form_widget(horaire.debut) }}</div>
+			</span>
+
+			<span class="fin">
+				{{ form_label(horaire.fin) }} <div class="input">{{ form_widget(horaire.fin) }}</div>
+			</span>
+
+			<span class="jour">
+				{{ form_label(horaire.jour) }} <div class="input">{{ form_widget(horaire.jour) }}</div>
+			</span>
+
+			<span class="frequences">
+				{{ form_label(horaire.frequences) }} <div class="input">{{ form_widget(horaire.frequences) }}</div>
+			</span>
+
+			<span class="semaines">
+				{{ form_label(horaire.semaines) }} <div class="input">{{ form_widget(horaire.semaines) }}</div>
+			</span>
+		</div>
+		
+	{% endfor %}
+
+	<div class="horaires-add" data-prototype="{% filter escape %}{% include 'KubEDTBundle:Cours:horaires_form.html.twig' with {'form': form.horaires.vars.prototype} %}{% endfilter %}">
+
+	</div>
+
+	<span class="horaires-button">
+		<a class="button add-another-horaires" href="#" >Ajouter un horaire</a>
+	</span>
+
+{% endblock %}

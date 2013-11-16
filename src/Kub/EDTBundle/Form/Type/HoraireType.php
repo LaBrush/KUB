@@ -37,15 +37,15 @@ class HoraireType extends AbstractType
                     'class' => 'Kub\EDTBundle\Entity\Jour'   
                 )
             )
-            ->add('semaines')
             ->add('frequences', 'entity', array(
                     "mapped" => false,
                     "class" => "Kub\EDTBundle\Entity\Frequence",
                     "expanded" => true,
                     "multiple" => true,
-                    "label" => "Copier les semaines d'une fréquence"
+                    "label" => "Séléctionner une fréquence de cours (ex: Semaines A)"
                 )
             )
+            ->add('semaines')
         ;
     }
     
