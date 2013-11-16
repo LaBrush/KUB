@@ -101,6 +101,7 @@ class CommentaireController extends Controller
 		return $this->render('KubArianeBundle:Commentaire:delete.html.twig',
 			array(
 				'form' => $form->createView(),
+				'commentaire' => $commentaire
 			)
 		);
 	}

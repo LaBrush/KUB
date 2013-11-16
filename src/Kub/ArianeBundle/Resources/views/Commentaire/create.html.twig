@@ -1,4 +1,6 @@
 {{ form_start(form) }}
-	{{ form_widget(form) }}
-	<input type="submit">
+
+	<span class="commentaire">{{ form_widget(form.contenu) }}</span>
+	<input type="submit" class="button-yes"></input>
+
 {{ form_end(form) }}
