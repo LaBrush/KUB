@@ -1,6 +1,9 @@
 {{ form_start(form) }}
 
-	<span class="commentaire">{{ form_widget(form.contenu) }}</span>
-	<input type="submit" class="button-yes"></input>
+	<span class="commentaire">
+		{{ form_widget(form.contenu, { 'attr': {'placeholder': 'Commentez ici...'} }) }}
+		<label for="create-new-commentaire-{{ post.id }}" class="button-yes add">Ajouter</label>
+		<input id="create-new-commentaire-{{ post.id }}" type="submit" hidden=""></input>
+	</span>
 
 {{ form_end(form) }}

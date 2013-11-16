@@ -58,7 +58,8 @@ class CommentaireController extends Controller
 
 		return $this->render('KubArianeBundle:Commentaire:create.html.twig',
 			array(
-				'form' => $form->createView()
+				'form' => $form->createView(),
+				'post' => $post,
 			)
 		);   
 	}

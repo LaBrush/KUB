@@ -1,0 +1,61 @@
+.comments
+{
+	display: block;
+	padding: 8px;
+	background-color: $header;
+	margin: 15px 0 0 0;
+	@include border-radius(3px);
+
+	.delete
+	{
+		font-size: 0.75em;
+		margin: 0 0 0 10px;
+		padding: 3px;
+		cursor: pointer;
+		color: lighten($texte, 30%);
+		background: $header;
+
+
+
+		&:hover, &:focus, &:active
+		{
+			background: $button-no;
+			color: $color-light;
+			text-shadow: 1px 1px rgba(0, 0, 0, 0.2);
+			@include border-radius(2px);
+		}
+	}
+
+	input[type="text"]
+	{
+		display: inline-block;
+		vertical-align: middle;
+		margin: 5px 0 0 0;
+		height: 14px;
+		width: 50%;
+		resize: none;
+		padding: 5px 65px 5px 5px;
+	}
+
+	.add
+	{
+		display: inline-block;
+		vertical-align: middle;
+		max-height: 17px;
+		margin: 5px 0 0 0;
+		padding: 0 10px 1px 10px;
+		position: relative;
+		right: 61px;
+	}
+
+	.auteur
+	{
+		font-weight: 700;
+	}
+
+	.commentaire
+	{
+		font-size: 0.9em;
+	}
+
+}

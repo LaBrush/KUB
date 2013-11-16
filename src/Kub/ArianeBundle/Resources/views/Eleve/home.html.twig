@@ -32,11 +32,12 @@
 
 			<div class="comments">
 				<ul>
-
 				{% for commentaire in post.commentaires %}
-						<li>
+						<li class="commentaire">
 							<span>
-								{{ commentaire.contenu }}
+								<span class="auteur">{{ commentaire.auteur }} : </span>
+								<span>{{ commentaire.contenu | capitalize }}</span>
+								
 								{% if app.user == commentaire.auteur %}
 									{{ render(controller('KubArianeBundle:Commentaire:delete', { commentaire: commentaire.id })) }}
 								{% endif %}

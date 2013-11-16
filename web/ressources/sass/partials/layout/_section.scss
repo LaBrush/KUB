@@ -116,24 +116,3 @@
 		}
 	}
 }
-
-.comments
-{
-	display: inline-block;
-	width: 70%;
-	padding: 8px;
-	background-color: $header;
-
-	p
-	{
-		width: 100%;
-	}
-
-	.delete
-	{
-		font-size: 0.8em;
-		margin: 0 0 0 10px;
-		color: $button-no;
-		cursor: pointer;
-	}
-}
