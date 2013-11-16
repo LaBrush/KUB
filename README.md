@@ -1,5 +1,5 @@
-Symfony Standard Edition
-========================
+the Kub by LabRush
+==================
 
 Welcome on the Kub, made by Nathan Rajonhson and Adrien Bocquet.
 Kub is a numeric work space we do for an hightschool project.
