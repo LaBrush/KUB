@@ -95,8 +95,7 @@ abstract class File
 		}
 	}
 
-	abstract public function getUploadDir()
-	{}
+	abstract public function getUploadDir();
 
 	protected function getUploadRootDir()
 	{

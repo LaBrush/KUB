@@ -3,6 +3,7 @@
 namespace Kub\ArianeBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpKernel\HttpKernelInterface;
 use JMS\SecurityExtraBundle\Annotation\Secure;
 
 use Kub\ArianeBundle\Entity\Post ;
@@ -38,7 +39,16 @@ class PostController extends Controller
 
         }
 
-        return $this->render('KubArianeBundle:Post:create.html.twig',
+		$view ;        
+		if ($this->container->get('request')->attributes->get('_route') == 'ariane_post_add') {
+			$view = 'create';
+		} else {
+			// Mais sinon, il s'agit du formulaire de connexion intégré au menu, on utilise la vue "login_content"
+			// car il ne faut pas hériter du layout !
+			$view = 'create_content';
+		}
+
+        return $this->render('KubArianeBundle:Post:' . $view . '.html.twig',
             array(
                 'form' => $form->createView(),
             )

@@ -2,9 +2,11 @@
 
 {% block body %}
 
-	<article class="article">
-		<a href="{{ path('ariane_post_add') }}">Ajouter une journée</a>
-	</article>
+	{% if is_granted('ROLE_ELEVE') %}
+		<article class="article">
+			{{ render(controller("KubArianeBundle:Post:add")) }}
+		</article>
+	{% endif %}
 
 	<article class="article">
 

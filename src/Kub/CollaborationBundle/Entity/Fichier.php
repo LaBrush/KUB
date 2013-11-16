@@ -3,13 +3,13 @@ namespace Kub\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-use Kub\HomeBundle\Entity\File as BaseFichier ;
+use Kub\HomeBundle\Entity\File ;
 
 /**
  * @ORM\Table(name="collaboration_file")
  * @ORM\HasLifecycleCallbacks
  */
-class Fichier extends BaseFichier
+class Fichier extends File
 {
 	/**
 	 * @ORM\Column(name="id", type="integer")
@@ -21,7 +21,7 @@ class Fichier extends BaseFichier
 	public function getUploadDir()
 	{
 		// On retourne le chemin relatif vers l'image pour un navigateur
-		return 'images/photos';
+		return 'collaboration';
 	}
 
 }
