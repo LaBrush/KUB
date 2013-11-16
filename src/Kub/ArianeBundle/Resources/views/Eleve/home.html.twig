@@ -2,43 +2,64 @@
 
 {% block body %}
 
+<<<<<<< HEAD
 	{% if is_granted('ROLE_ELEVE') %}
 		<article class="article">
 			{{ render(controller("KubArianeBundle:Post:add")) }}
 		</article>
 	{% endif %}
+=======
+	<div class="article">
+			<h3 class="section-title">Fil d'Arianne</h3>
+		</div>
 
 	<article class="article">
+		<a href="{{ path('ariane_post_add') }}">Ajouter une journée</a>
+	</article>
+>>>>>>> 44d8306ef5d42e474d1f7d0dafca341644367eeb
 
-		{% for post in liste_posts %}
+	{% for post in liste_posts %}
 
-			<h2>{{ post.titre }}</h2>
-			<p>{{ post.contenu }}</p>
+		<article class="article-news bordered-espace-collaboratif">
+			<div class="head-article">
+				<h3 class="h2">{{ post.titre }}</h3>
+				<span class="small bold">{{ post.dateAjout | date('d/m/Y')}}</span>
+			</div>
 
-			{% if is_granted("ROLE_ELEVE") %}
-				<p><a href="{{ path('ariane_post_edit', { 'id': post.id }) }}">Modifier la trace</a></p>
-				<p><a href="{{ path('ariane_post_delete', { 'id': post.id }) }}">Supprimer la trace</a></p>
-			{% endif %}
+			<div class="content-article">
+				<p>
+					{{ post.contenu }}
+				</p>
 
-			<br><br>
+				{% if is_granted("ROLE_ELEVE") %}
+				<div class="buttons">
+					<a class="button" href="{{ path('ariane_post_edit', { 'id': post.id }) }}">Modifier</a>
+					<a class="button-no" href="{{ path('ariane_post_delete', { 'id': post.id }) }}">Supprimer</a>
+				</div>
+				{% endif %}
+			</div>
 
-			<ul>
+			<div class="comments">
+				<ul>
+
 				{% for commentaire in post.commentaires %}
-
-					<li> {{ commentaire.contenu }} 
-
-					{% if app.user == commentaire.auteur %}
-						{{ render(controller('KubArianeBundle:Commentaire:delete', { commentaire: commentaire.id })) }}</li>
-					{% endif %}
-
+						<li>
+							<span>
+								{{ commentaire.contenu }}
+								{% if app.user == commentaire.auteur %}
+									{{ render(controller('KubArianeBundle:Commentaire:delete', { commentaire: commentaire.id })) }}
+								{% endif %}
+							</span>
+						</li>
 				{% endfor %}
+				</ul>
 
 				{{ render(controller('KubArianeBundle:Commentaire:add', { post: post.id })) }}
 
-			</ul>
+			</div>
 
-		{% endfor %}
+		</article>
 
-	</article>
+	{% endfor %}			
 
 {% endblock %}

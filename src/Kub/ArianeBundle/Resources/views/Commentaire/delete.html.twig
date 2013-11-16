@@ -1,4 +1,6 @@
-{{ form_start(form) }}
-	{{ form_widget(form) }}
-	<input type="submit">
+{{ form_start(form, { 'attr': {'class': 'inline-block'} }) }}
+	
+	<label for="delete-{{ commentaire.id }}" class="bold delete">Suppr.</label>
+	<input id="delete-{{ commentaire.id }}" type="submit" hidden=""></input>
+
 {{ form_end(form) }}

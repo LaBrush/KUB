@@ -53,3 +53,87 @@
 	padding: 10px;
 	background: $error;
 }
+
+
+/*********************************************************************************/
+/* Articles news et posts */
+
+.article-news
+{
+	margin: 45px auto;
+	padding: 0 0 0 15px;
+	max-width: 800px;
+	@include pie-clearfix;
+}
+
+
+.head-article
+{
+	@include pie-clearfix;
+	text-align: right;
+
+	span
+	{
+		float: right;
+		vertical-align: middle;
+	}
+
+	.h2
+	{
+		float: left;
+		margin: 2px 0;
+	}
+}
+
+.content-article
+{
+	@include pie-clearfix;
+
+	p
+	{
+		display: inline-block;
+		width: 80%;
+		margin: 4px 0 0 0;
+	}
+	
+	.buttons
+	{
+		display: inline-block;
+		float: right;
+		margin: 6px 0 0 0;
+	}
+
+	.extract
+	{
+		display: inline-block;
+		width: 60%;
+		margin: 0 17px 17px 17px;
+		padding: 8px;
+
+		p
+		{
+			width: 100%;
+		}
+	}
+}
+
+.comments
+{
+	display: inline-block;
+	width: 70%;
+	padding: 8px;
+	background-color: $header;
+
+	p
+	{
+		width: 100%;
+	}
+
+	.delete
+	{
+		font-size: 0.8em;
+		margin: 0 0 0 10px;
+		color: $button-no;
+		cursor: pointer;
+	}
+}
