@@ -1,7 +1,30 @@
+.show-comments
+{
+	display: inline-block;
+	font-size: 0.9em;
+	background: $header;
+	padding: 3px 8px;
+	@include border-radius(3px);
+	margin: 15px 0 0 0;
+
+	img
+	{
+		margin: 2px 0 0 5px;
+		height: 0.95em;
+		display: inline;
+		vertical-align: text-top;
+	}
+
+	&:hover, &:focus, &:active
+	{
+		background: darken($header, 5%);
+	}
+}
+
 .comments
 {
 	display: block;
-	padding: 8px;
+	padding: 4px 8px;
 	background-color: $header;
 	margin: 15px 0 0 0;
 	@include border-radius(3px);
@@ -30,9 +53,10 @@
 	{
 		display: inline-block;
 		vertical-align: middle;
-		margin: 5px 0 0 0;
+		margin: 5px 0;
 		height: 14px;
 		width: 50%;
+		min-width: 150px;
 		resize: none;
 		padding: 5px 65px 5px 5px;
 	}
@@ -42,7 +66,7 @@
 		display: inline-block;
 		vertical-align: middle;
 		max-height: 17px;
-		margin: 5px 0 0 0;
+		margin: 5px 0;
 		padding: 0 10px 1px 10px;
 		position: relative;
 		right: 61px;

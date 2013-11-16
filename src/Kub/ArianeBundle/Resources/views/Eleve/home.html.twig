@@ -3,7 +3,7 @@
 {% block body %}
 
 	<div class="article">
-			<h3 class="section-title">Fil d'Ariane</h3>
+			<h3 class="section-title">Fil d'Ariane de USER</h3>
 		</div>
 
 	{% if is_granted('ROLE_ELEVE') %}
@@ -29,27 +29,41 @@
 				</div>
 				{% endif %}
 			</div>
+			
+			<a class="show-comments" href="#">Afficher les commentaires <img  id="chevron-bas" src="{{ asset('ressources/images/Chevron-bas.png') }}"></a>
 
 			<div class="comments">
-				<ul>
-				{% for commentaire in post.commentaires %}
-						<li class="commentaire">
-							<span>
-								<span class="auteur">{{ commentaire.auteur }} : </span>
-								<span>{{ commentaire.contenu | capitalize }}</span>
-								
-								{% if app.user == commentaire.auteur %}
-									{{ render(controller('KubArianeBundle:Commentaire:delete', { commentaire: commentaire.id })) }}
-								{% endif %}
-							</span>
-						</li>
-				{% endfor %}
-				</ul>
+				{% if post.commentaires | length > 0 %}
+					<ul>
+
+					{% for commentaire in post.commentaires %}
+							<li class="commentaire">
+								<span>
+									<span class="auteur">{{ commentaire.auteur }} : </span>
+									<span>{{ commentaire.contenu | capitalize }}</span>
+									
+									{% if app.user == commentaire.auteur %}
+										{{ render(controller('KubArianeBundle:Commentaire:delete', { commentaire: commentaire.id })) }}
+									{% endif %}
+								</span>
+							</li>
+					{% endfor %}
+					</ul>
+				{% else %}
+					<span class="commentaire">Aucun commentaire pour le moment</span>
+				{% endif %}
 
 				{{ render(controller('KubArianeBundle:Commentaire:add', { post: post.id })) }}
 			</div>
 		</article>
 
 	{% endfor %}
+
+{% endblock %}
+
+{% block js %}
+
+	<script type="text/javascript" src="{{ asset('ressources/jsmin/ariane.min.js') }}"></script>
+
 
 {% endblock %}
