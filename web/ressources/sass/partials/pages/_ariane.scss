@@ -7,17 +7,19 @@
 	@include border-radius(3px);
 	margin: 15px 0 0 0;
 
-	img
-	{
-		margin: 2px 0 0 5px;
-		height: 0.95em;
-		display: inline;
-		vertical-align: text-top;
-	}
-
 	&:hover, &:focus, &:active
 	{
 		background: darken($header, 5%);
+	}
+
+	.nombre-commentaires
+	{
+		background-color: $texte;
+		color: $color-light;
+		font-size: 0.9em;
+		@include border-radius(50px);
+		padding: 1px 6px;
+		margin: 0 0 1px 8px;
 	}
 }
 

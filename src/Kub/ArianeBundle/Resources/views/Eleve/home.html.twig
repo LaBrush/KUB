@@ -30,7 +30,7 @@
 				{% endif %}
 			</div>
 			
-			<a class="show-comments" href="#">Afficher les commentaires <img  id="chevron-bas" src="{{ asset('ressources/images/Chevron-bas.png') }}"></a>
+			<a class="show-comments" href="#">Afficher les commentaires <span class="nombre-commentaires">{{ post.commentaires | length}}</span></a>
 
 			<div class="comments">
 				{% if post.commentaires | length > 0 %}
