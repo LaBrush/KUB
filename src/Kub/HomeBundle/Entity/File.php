@@ -1,15 +1,10 @@
 <?php
-namespace Kub\UserBundle\Entity;
+namespace Kub\HomeBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
-/**
- * @ORM\Table(name="eleve_photo")
- * @ORM\Entity(repositoryClass="Kub\UserBundle\Entity\ImageRepository")
- * @ORM\HasLifecycleCallbacks
- */
-class Photo
+abstract class File
 {
 	/**
 	 * @ORM\Column(name="id", type="integer")
@@ -100,11 +95,8 @@ class Photo
 		}
 	}
 
-	public function getUploadDir()
-	{
-		// On retourne le chemin relatif vers l'image pour un navigateur
-		return 'images/photos';
-	}
+	abstract public function getUploadDir()
+	{}
 
 	protected function getUploadRootDir()
 	{
