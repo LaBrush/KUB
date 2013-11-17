@@ -3,7 +3,7 @@
 	<span class="commentaire">
 		{{ form_widget(form.contenu, { 'attr': {'placeholder': 'Commentez ici...'} }) }}
 		<label for="create-new-commentaire-{{ post.id }}" class="add">Ajouter</label>
-		<input id="create-new-commentaire-{{ post.id }}" type="submit" hidden=""></input>
+		<input id="create-new-commentaire-{{ post.id }}" type="submit" hidden="" style="display: inline-block; height: 0; border: none; width: 0; padding: 0; margin: 0;"></input>
 	</span>
 
 {{ form_end(form) }}
