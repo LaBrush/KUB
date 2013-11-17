@@ -1,5 +1,9 @@
 {% extends "::base.html.twig" %}
 
+{% block title %}
+	{{ parent() }} - liste des {{ role }}s
+{% endblock %}
+
 {% block body %}
 
 	<article class="article">

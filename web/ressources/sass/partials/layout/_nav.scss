@@ -10,8 +10,6 @@
 	z-index: 1;
 	overflow: auto;
 	
-	@include animate(0.4s);
-
 	@media all and (max-width: 950px)
 	{
 		top: -1000px;
@@ -66,8 +64,6 @@
 {
 	cursor: pointer;
 	margin: 50px 0 0 0;
-
-	@include animate(0.4s);
 
 	.h3
 	{

@@ -1,9 +1,13 @@
 {% extends "::base.html.twig" %}
 
+{% block title %}
+	{{ parent() }} - Modifier la trace {{ post }}
+{% endblock %}
+
 {% block body %}
 
 	<article class="article">
-		<h2 class="section-title">Modifier la trace {{ post.titre }}</h2>
+		<h2 class="section-title">{{ post }}</h2>
 	</article>
 
 	<article class="article">

@@ -1,11 +1,15 @@
 {% extends "::base.html.twig" %}
 
+{% block title %}
+	{{ parent() }} - Supprimer le groupe {{ groupe }}
+{% endblock %}
+
 {% block body %}
 
 	<article class="error">
 		{{ form_start(form) }}
 
-			<p>Êtes vous sûr de vouloir supprimer le groupe <strong>{{ groupe.name }}</strong> ?</p>
+			<p>Êtes vous sûr de vouloir supprimer le groupe <strong>{{ groupe }}</strong> ?</p>
 			
 			<br />
 			<input class="button-yes" type="submit"> ou <a class="button-no" href="{{ path('groupe_list') }}">Annuler</a>	

@@ -20,7 +20,7 @@
 		display: block;
 		margin: 10px 0 0 0;
 
-		.input
+		.input input
 		{
 			display: block;	
 		}
@@ -47,11 +47,11 @@
 		margin: 0 0 0 20px;
 	}
 
-	.tuteurs, .eleves
+	.tuteurs, .eleves, .titre
 	{
-		.select2-container
+		.select2-container, input
 		{
-			min-width: 158px;
+			min-width: 164px;
 		}
 	}
 

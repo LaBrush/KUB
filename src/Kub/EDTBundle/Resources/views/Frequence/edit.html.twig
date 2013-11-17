@@ -1,9 +1,13 @@
 {% extends "::base.html.twig" %}
 
+{% block title %}
+	{{ parent() }} - Modifier la fréquence {{ frequence }}
+{% endblock %}
+
 {% block body %}
 	
 	<article class="article">
-		<h2 class="section-title">Modifier la fréquence {{ frequence }}</h2>
+		<h2 class="section-title">{{ frequence }}</h2>
 	</article>
 
 	{{ form_start(form, { 'attr': {'class': 'formulaire-creation'} }) }}

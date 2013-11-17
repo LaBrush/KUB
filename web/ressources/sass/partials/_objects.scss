@@ -24,10 +24,10 @@
 	border: none;
 	margin: 0;
 	@include border-radius(2px);
-	padding: 5px 10px 4px 10px;
+	padding: 3px 8px 2px 8px;
 	color: $button-color;
 	text-shadow: 1px 1px rgba(0, 0, 0, 0.2);
-	font-size: 0.8em;
+	font-size: 0.9em;
 	cursor: pointer;
 
 	@include appearance(none);
@@ -200,7 +200,7 @@
 /* Inputs */
 $input: 	#aaaaaa;
 
-input[type="text"], input[type="password"], input[type="email"], input[type="search"], input[type="tel"], input[type="select"], select, option, textarea
+input[type="text"], input[type="password"], input[type="email"], input[type="search"], input[type="tel"], input[type="select"], select, textarea
 {
 	padding: 3px;
 	border: 1px $input solid;
@@ -210,6 +210,11 @@ input[type="text"], input[type="password"], input[type="email"], input[type="sea
 	{
 		border: 1px $input solid;
 	}
+}
+
+input[type="text"], input[type="password"], input[type="email"], input[type="search"], input[type="tel"]
+{
+	min-width: 164px;
 }
 
 

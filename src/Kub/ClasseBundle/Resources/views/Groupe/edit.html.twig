@@ -1,9 +1,13 @@
 {% extends "::base.html.twig" %}
 
+{% block title %}
+	{{ parent() }} - Modifier le groupe {{ groupe }}
+{% endblock %}
+
 {% block body %}
 
 	<article class="article">
-		<h2 class="section-title">Modifier {{ groupe }}</h2>
+		<h2 class="section-title">{{ groupe }}</h2>
 	</article>
 
 	<article class="article">

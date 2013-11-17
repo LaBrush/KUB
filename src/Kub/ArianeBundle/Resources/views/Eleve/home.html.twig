@@ -1,9 +1,13 @@
 {% extends "::base.html.twig" %}
 
+{% block title %}
+	{{ parent() }} - Fil d'Ariane
+{% endblock %}
+
 {% block body %}
 
 	<div class="article">
-			<h3 class="section-title">Fil d'Ariane de USER</h3>
+			<h3 class="section-title">Fil d'Ariane</h3>
 		</div>
 
 	{% if is_granted('ROLE_ELEVE') %}

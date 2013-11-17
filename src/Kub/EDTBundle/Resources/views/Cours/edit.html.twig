@@ -1,9 +1,13 @@
 {% extends "::base.html.twig" %}
 
+{% block title %}
+	{{ parent() }} - Modifier le cours {{ cours }}
+{% endblock %}
+
 {% block body %}
 	
 	<article class="article">
-		<h2 class="section-title">Modifier le cours {{ cours }}</h2>
+		<h2 class="section-title">{{ cours }}</h2>
 	</article>
 
 	{{ form_start(form, { 'attr': {'class': 'formulaire-creation'} }) }}
