@@ -40,11 +40,21 @@
 	.nom, .prenom, .fixe, .mobile
 	{
 		display: inline-block;
+
+		@media all and (max-width: 450px)
+		{
+			display: block;
+		}
 	}
 
 	.nom, .mobile
 	{
 		margin: 0 0 0 20px;
+
+		@media all and (max-width: 450px)
+		{
+			margin: 10px 0 0 0;
+		}
 	}
 
 	.tuteurs, .eleves, .titre
