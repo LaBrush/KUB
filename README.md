@@ -1,8 +1,8 @@
-the Kub by LabRush
+The Kub by LabRush
 ==================
 
 Welcome on the Kub, made by Nathan Rajonhson and Adrien Bocquet.
-Kub is a numeric work space we do for an hightschool project.
+Kub is a numeric work space we do for an highschool project.
 
 This document contains information on how to download, install, and start
 using the Kub.
