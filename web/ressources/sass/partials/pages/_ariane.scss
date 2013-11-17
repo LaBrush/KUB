@@ -39,8 +39,7 @@
 		cursor: pointer;
 		color: lighten($texte, 30%);
 		background: $header;
-
-
+		border: none;
 
 		&:hover, &:focus, &:active
 		{
