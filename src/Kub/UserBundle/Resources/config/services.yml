@@ -4,7 +4,7 @@ parameters:
 services:
     kub_main.menu_builder:
         class: Kub\UserBundle\Menu\MenuBuilder
-        arguments: ["@knp_menu.factory", @security.context, @doctrine.orm.entity_manager]
+        arguments: [@knp_menu.factory, @security.context, @doctrine.orm.entity_manager, @fos_message.provider]
 
     kub_main.menu.main:
         class: Knp\Menu\MenuItem # the service definition requires setting the class

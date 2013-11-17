@@ -18,7 +18,7 @@ class PostType extends AbstractType
             ->add('debut')
             ->add('fin')
             ->add('titre')
-            ->add('contenu')
+            ->add('contenu', 'genemu_tinymce')
         ;
     }
     

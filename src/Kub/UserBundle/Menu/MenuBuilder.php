@@ -7,20 +7,25 @@ use Knp\Menu\FactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\SecurityContext ;
 use Doctrine\ORM\EntityManager ;
+use FOS\MessageBundle\Provider\ProviderInterface as MessageProviderInterface;
+
 
 class MenuBuilder
 {
     private $factory;
     private $security;
+    private $em; 
+    private $messages;
 
     /**
      * @param FactoryInterface $factory
      */
-    public function __construct(FactoryInterface $factory, SecurityContext $security, EntityManager $em)
+    public function __construct(FactoryInterface $factory, SecurityContext $security, EntityManager $em, MessageProviderInterface $messages)
     {
         $this->factory = $factory;
         $this->security = $security ;
         $this->em = $em ;
+        $this->messages = $messages ;
     }
 
     public function createMainMenu(Request $request)
@@ -29,7 +34,7 @@ class MenuBuilder
 
         $menu->addChild('Accueil', array('route' => 'home_homepage', 'labelAttributes' => array('className' => 'accueil')));
             
-        $menu->addChild('Mes messages {{ fos_message_nb_unread() }}', array('route' => 'fos_message_inbox', 'labelAttributes' => array('className' => 'messagerie')));
+        $this->generateMessagesMenu($menu);
 
         if($this->security->isGranted('ROLE_SECRETAIRE'))
         {
@@ -55,6 +60,17 @@ class MenuBuilder
         }
 
         return $menu;
+    }
+
+    public function generateMessagesMenu($menu)
+    {
+        $text = 'Mes messages'; $nb_unread = $this->messages->getNbUnreadMessages();
+
+        if($nb_unread){
+            $text .= '<span class="number">' . $nb_unread . '</span>';
+        }
+
+        $menu->addChild($text, array('route' => 'fos_message_inbox', 'labelAttributes' => array('className' => 'messagerie')));
     }
 
     public function generateSecretaireMenu($menu)
