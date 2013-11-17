@@ -1,0 +1,16 @@
+parameters:
+#    kub_notification.example.class: Kub\NotificationBundle\Example
+    notification_type:
+        - ariane_comment_add: 
+            class: Kub\NotificationBundle\Notification\Type\ArianeCommentAdd.php
+            path: "ariane_homepage"
+            titre: "Un commentaire a été ajouté à votre fil d'ariane"
+
+services:
+#    kub_notification.example:
+#        class: %kub_notification.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
+
+#    kub.notification_service:
+        # class: Kub\NotificationBundle\Notification\NotificationService
+        # arguments: [ %notification_type%, @doctrine.orm.entity_manager, @security.context ]

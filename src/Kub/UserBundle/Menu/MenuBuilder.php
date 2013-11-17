@@ -29,6 +29,8 @@ class MenuBuilder
 
         $menu->addChild('Accueil', array('route' => 'home_homepage', 'labelAttributes' => array('className' => 'accueil')));
             
+        $menu->addChild('Mes messages {{ fos_message_nb_unread() }}', array('route' => 'fos_message_inbox', 'labelAttributes' => array('className' => 'messagerie')));
+
         if($this->security->isGranted('ROLE_SECRETAIRE'))
         {
             $this->generateSecretaireMenu($menu);   

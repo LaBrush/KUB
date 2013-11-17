@@ -3,10 +3,12 @@
 namespace Kub\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use FOS\UserBundle\Model\User as BaseUser ;
 use Gedmo\Mapping\Annotation as Gedmo;
 use PUGX\MultiUserBundle\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert ;
+
+use FOS\UserBundle\Model\User as BaseUser ;
+use FOS\MessageBundle\Model\ParticipantInterface;
 
 /**
  * @ORM\Entity
@@ -22,7 +24,7 @@ use Symfony\Component\Validator\Constraints as Assert ;
  * @ORM\Entity(repositoryClass="Kub\UserBundle\Entity\UserRepository")
  */
 
-abstract class User extends BaseUser
+abstract class User extends BaseUser implements ParticipantInterface
 {
 
     /**

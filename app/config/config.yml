@@ -77,3 +77,8 @@ swiftmailer:
 genemu_form:
     select2: ~
     image: ~
+
+fos_message:
+    db_driver: orm
+    thread_class: Kub\MessageBundle\Entity\Thread
+    message_class: Kub\MessageBundle\Entity\Message
