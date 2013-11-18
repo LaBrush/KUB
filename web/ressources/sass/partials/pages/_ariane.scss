@@ -1,11 +1,12 @@
 .show-comments
 {
+	float: left;
 	display: inline-block;
 	font-size: 0.9em;
 	background: $header;
-	padding: 3px 8px;
+	margin: 8px 0 0 0;
+	padding: 2px 8px;
 	@include border-radius(3px);
-	margin: 15px 0 0 0;
 
 	&:hover, &:focus, &:active
 	{
@@ -25,21 +26,26 @@
 
 .comments
 {
+	@include box-sizing(border-box);
+	float: left;
 	display: block;
 	padding: 4px 8px;
 	background-color: $header;
-	margin: 15px 0 0 0;
+	margin: 16px 0 0 0;
 	@include border-radius(3px);
+	clear: none;
+	width: 100%;
 
 	.delete
 	{
 		font-size: 0.75em;
-		margin: 0 0 0 10px;
+		margin: 0;
 		padding: 0 3px;
 		cursor: pointer;
 		color: lighten($texte, 30%);
 		background: $header;
 		border: none;
+		@include appearance(none);
 
 		&:hover, &:focus, &:active
 		{
@@ -52,25 +58,29 @@
 
 	input[type="text"]
 	{
-		display: inline-block;
-		vertical-align: middle;
+		@include box-sizing(border-box);
+		display: block;
 		margin: 5px 0;
-		height: 14px;
-		width: 50%;
-		min-width: 150px;
-		resize: none;
-		padding: 5px 62px 5px 5px;
+		height: 26px;
+		width: 376px;
+		padding: 3px 62px 3px 5px;
+		position: relative;
+
+		@media all and (max-width: 500px)
+		{
+			width: 100%;
+		}
+
+		z-index: 0;
 	}
 
 	.add
 	{
-		display: inline-block;
-		vertical-align: middle;
-		max-height: 17px;
-		margin: 5px 0;
-		padding: 1px 8px 2px 8px;
+		margin: 4px 0;
+		padding: 2px 8px;
 		position: relative;
-		right: 62px;
+		left: 246px;
+		top: 32px;
 		
 		font-size: 0.9em;
 		background: $header;
@@ -87,6 +97,25 @@
 			background: $button-yes;
 		}
 		
+		@media all and (max-width: 500px)
+		{
+			float: right;
+			top: 27px;
+			right: 4px;
+			left: auto;
+		}
+
+		z-index: 5;
+	}
+
+	label
+	{
+		display: none;
+		font-style: italic;
+		float: left;
+		display: inline-block;
+		position: relative;
+		top: 5px;
 	}
 
 	.auteur

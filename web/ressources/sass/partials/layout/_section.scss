@@ -26,7 +26,7 @@
 		padding: 75px 10% 20px 10%;
 	}
 
-	@media all and (max-width: 500px)
+	@media all and (max-width: 550px)
 	{
 		padding: 75px 10% 20px 5%;
 	}
@@ -69,38 +69,47 @@
 
 .head-article
 {
-	@include pie-clearfix;
-	text-align: right;
+	margin: 2px 0;
 
 	span
 	{
 		float: right;
-		vertical-align: middle;
+
+		@media all and (max-width: 500px)
+		{
+			float: none;
+			display: block;
+		}
 	}
 
 	.h2
 	{
 		float: left;
-		margin: 2px 0;
+
+		@media all and (max-width: 500px)
+		{
+			float: none;
+			display: block;
+		}
 	}
 }
 
 .content-article
 {
-	@include pie-clearfix;
+	width: 80%;
+	display: inline-block;
+	float: left;
 
 	p
 	{
 		display: inline-block;
-		width: 80%;
 		margin: 4px 0 0 0;
-	}
-	
-	.buttons
-	{
-		display: inline-block;
-		float: right;
-		margin: 6px 0 0 0;
+		text-align: justify;
+
+		@media all and (max-width: 500px)
+		{
+			width: 100%;
+		}
 	}
 
 	.extract
@@ -114,5 +123,24 @@
 		{
 			width: 100%;
 		}
+	}
+
+	@media all and (max-width: 500px)
+	{
+		width: 100%;
+	}
+}
+
+.buttons-article-news
+{
+	display: inline-block;
+	text-align: right;
+	float: right;
+	width: 20%;
+	margin: 4px 0 0 0;
+
+	@media all and (max-width: 500px)
+	{
+		margin: 10px 0 0 0;
 	}
 }

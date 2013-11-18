@@ -26,14 +26,14 @@
 				<p>
 					{{ post.contenu }}
 				</p>
-
-				{% if is_granted("ROLE_ELEVE") %}
-				<div class="buttons">
-					<a class="button-espace-collaboratif" href="{{ path('ariane_post_edit', { 'id': post.id }) }}">Modifier</a>
-				</div>
-				{% endif %}
 			</div>
 			
+			{% if is_granted("ROLE_ELEVE") %}
+			<div class="buttons-article-news">
+				<a class="button-espace-collaboratif" href="{{ path('ariane_post_edit', { 'id': post.id }) }}">Modifier</a>
+			</div>
+			{% endif %}
+
 			<a class="show-comments" href="#">Afficher les commentaires <span class="nombre-commentaires">{{ post.commentaires | length}}</span></a>
 
 			<div class="comments">
@@ -47,7 +47,7 @@
 									<span>{{ commentaire.contenu | capitalize }}</span>
 									
 									{% if app.user == commentaire.auteur %}
-										{{ render(controller('KubArianeBundle:Commentaire:delete', { commentaire: commentaire.id })) }}
+										&nbsp;{{ render(controller('KubArianeBundle:Commentaire:delete', { commentaire: commentaire.id })) }}
 									{% endif %}
 								</span>
 							</li>
