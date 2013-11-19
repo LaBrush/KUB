@@ -5,3 +5,7 @@ services:
 #    kub_ariane.example:
 #        class: %kub_ariane.example.class%
 #        arguments: [@service_id, "plain_value", %parameter%]
+
+    kub.notification_manager:
+        class: Kub\NotificationBundle\Manager\NotificationManager
+        arguments: [@doctrine.orm.entity_manager, @security.context]
