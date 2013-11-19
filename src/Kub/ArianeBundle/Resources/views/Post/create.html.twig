@@ -1,28 +1,17 @@
-{% extends "::base.html.twig" %}
+{{ form_start(form, { 'attr': {'class': 'formulaire-creation'} }) }}
 
-{% block title %}
-	{{ parent() }} - Poster une trace
-{% endblock %}
+	{% include('KubArianeBundle:Post:form.html.twig') %}
+	
+	<div class="validate">
+		<input type="submit" class="button-yes">
+		<a class="button" href="{{ path('ariane_homepage') }}">Annuler</a>
+	</div>
+	
+{{ form_end(form) }}
 
-{% block body %}
-
-	<article class="article">
-		<h2 class="section-title">Poster une nouvelle trace</h2>
-	</article>
-
-	<article class="article">
-		
-		{{ form_start(form, { 'attr': {'class': 'formulaire-creation'} }) }}
-
-			{% include('KubArianeBundle:Post:form.html.twig') %}		
-			
-			<div class="validate">
-				<input type="submit" class="button-yes">
-				<a class="button" href="{{ path('ariane_homepage') }}">Annuler</a>
-			</div>
-			
-		{{ form_end(form) }}
-
-	</article>
+{% block js %}
+	
+	{{ form_stylesheet(form) }}
+	{{ form_javascript(form) }}
 
 {% endblock %}

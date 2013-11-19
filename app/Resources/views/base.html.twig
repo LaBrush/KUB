@@ -14,6 +14,9 @@
 	  <link rel="stylesheet" href="{{ asset('ressources/stylesheets/main-ie8.css') }}">
 	<![endif]-->
 	<title>{% block title %}Kub{% endblock %}</title>
+
+	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script> -->
+	<script type="text/javascript" src="{{ asset('ressources/jsmin/jquery.min.js') }}"></script>
 </head>
 
 <body class="body">
@@ -59,10 +62,6 @@
 
 		{% block body %}{% endblock %}
 	</section>
-
-	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script> -->
-	<script type="text/javascript" src="{{ asset('ressources/jsmin/jquery.min.js') }}"></script>
-
 
 	{% if is_granted("ROLE_USER") %}
 		<script type="text/javascript" src="{{ asset('ressources/jsmin/nav.min.js') }}"></script>

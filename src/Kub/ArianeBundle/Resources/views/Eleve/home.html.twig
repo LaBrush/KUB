@@ -11,7 +11,9 @@
 	</div>
 
 	{% if is_granted('ROLE_ELEVE') %}
-		<a href="{{ path('ariane_post_add') }}" class="button-yes new">Nouveau post</a>
+		<article class="article">
+			{{ render(controller('KubArianeBundle:Post:add')) }}
+		</article>
 	{% endif %}
 
 	{% for post in liste_posts %}
@@ -66,8 +68,11 @@
 {% endblock %}
 
 {% block js %}
-
+	
+	{{ parent() }}
 	<script type="text/javascript" src="{{ asset('ressources/jsmin/ariane.min.js') }}"></script>
 
+	<!-- <script src="//tinymce.cachefly.net/4.0/tinymce.min.js"></script> -->
+	<script type="text/javascript" src="{{ asset('ressources/tinymce/tinymce.min.js') }}"></script>
 
 {% endblock %}

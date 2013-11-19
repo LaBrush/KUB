@@ -77,7 +77,8 @@ swiftmailer:
 genemu_form:
     select2: ~
     image: ~
-    tinymce: ~
+    tinymce:
+        theme:   modern
 
 fos_message:
     db_driver: orm
