@@ -57,13 +57,23 @@ abstract class Notification
     /**
      * @ORM\ManyToOne(targetEntity="Kub\UserBundle\Entity\User")
      */
-    private $thrower ;
+    private $author ;
 
     private $route ;
 
     private $titre ;
 
     abstract function getContenu();
+
+    public function getTitre()
+    {
+        return $this->titre ;
+    }
+
+    public function getRoute()
+    {
+        return $this->route ;
+    }
 
     /**
      * Get id
@@ -188,25 +198,25 @@ abstract class Notification
     }
 
     /**
-     * Set thrower
+     * Set author
      *
-     * @param \Kub\UserBundle\User $thrower
+     * @param \Kub\UserBundle\User $author
      * @return Notification
      */
-    public function setThrower(\Kub\UserBundle\User $thrower = null)
+    public function setAuthor(\Kub\UserBundle\User $author = null)
     {
-        $this->thrower = $thrower;
+        $this->author = $author;
     
         return $this;
     }
 
     /**
-     * Get thrower
+     * Get author
      *
      * @return \Kub\UserBundle\User 
      */
-    public function getThrower()
+    public function getAuthor()
     {
-        return $this->thrower;
+        return $this->author;
     }
 }

@@ -1,4 +1,4 @@
-{{ form_start(form, { 'attr': {'class': 'formulaire-creation'} }) }}
+{{ form_start(form, { 'attr': {'class': 'formulaire-creation'}, 'action': path('ariane_post_add') }) }}
 
 	{% include('KubArianeBundle:Post:form.html.twig') %}
 	

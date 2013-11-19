@@ -8,4 +8,4 @@ services:
 
     kub.notification_manager:
         class: Kub\NotificationBundle\Manager\NotificationManager
-        arguments: @doctrine.orm.entity_manager, @security.context
+        arguments: [@doctrine.orm.entity_manager, @security.context]
