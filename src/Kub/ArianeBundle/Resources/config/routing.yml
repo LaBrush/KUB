@@ -1,35 +1,35 @@
 ariane_homepage:
-    pattern:  /ariane
+    pattern:  /
     defaults: { _controller: KubArianeBundle:Default:index }
 
 ariane_post_add:
-    pattern: /ariane/add
+    pattern: /add
     defaults: { _controller: KubArianeBundle:Post:add }
 
 ariane_post_edit:
-    pattern: ariane/edit/{id}
+    pattern: /edit/{id}
     defaults: { _controller: KubArianeBundle:Post:edit }
     requirements: 
         id: \d+
 
 ariane_post_delete:
-    pattern: ariane/delete/{id}
+    pattern: /delete/{id}
     defaults: { _controller: KubArianeBundle:Post:delete }
     requirements: 
         id: \d+
 
 ariane_eleve_show:
-    pattern: eleve/{username}/ariane
+    pattern: /{username}
     defaults: { _controller: KubArianeBundle:Default:show }
 
 ariane_commentaire_add:
-    pattern: ariane/{post}/comment/add
+    pattern: /{post}/comment/add
     defaults: { _controller: KubArianeBundle:Commentaire:add }
     requirements: 
         id: \d+
 
 ariane_commentaire_delete:
-    pattern: ariane/comment/{commentaire}/delete
+    pattern: /comment/{commentaire}/delete
     defaults: { _controller: KubArianeBundle:Commentaire:delete }
     requirements: 
         id: \d+

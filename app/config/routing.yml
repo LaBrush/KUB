@@ -36,7 +36,7 @@ kub_collaboration:
 
 kub_ariane:
     resource: "@KubArianeBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /ariane
 
 kub_notes:
     resource: "@KubNotesBundle/Resources/config/routing.yml"

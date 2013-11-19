@@ -7,8 +7,8 @@
 {% block body %}
 
 	<div class="article">
-			<h3 class="section-title">Fil d'Ariane</h3>
-		</div>
+		<h3 class="section-title">Fil d'Ariane</h3>
+	</div>
 
 	{% if is_granted('ROLE_ELEVE') %}
 		<a href="{{ path('ariane_post_add') }}" class="button-yes new">Nouveau post</a>

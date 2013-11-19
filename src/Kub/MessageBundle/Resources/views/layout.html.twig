@@ -1,18 +1,20 @@
 {% extends "::base.html.twig" %}
 
 {% block body %}
+    
+    <div class="article">
+        <h3 class="section-title">Mes messages</h3>
+    </div>
 
 	<article class="article">
-		
-		<h1>{% trans from 'FOSMessageBundle' %}messenger{% endtrans %}</h1>
 
-        <ul>
-            <li><a href="{{ url('fos_message_inbox') }}">{% trans from 'FOSMessageBundle' %}inbox{% endtrans %}</a></li>
-            <li><a href="{{ url('fos_message_sent') }}">{% trans from 'FOSMessageBundle' %}sent{% endtrans %}</a></li>
-            <li><a href="{{ url('fos_message_deleted') }}">{% trans from 'FOSMessageBundle' %}deleted{% endtrans %}</a></li>
+        <ul class="liens">
+            <li><a class="button" href="{{ url('fos_message_inbox') }}">Boite de réception</a></li>
+            <li><a class="button-espace-collaboratif" href="{{ url('fos_message_sent') }}">Messages envoyées</a></li>
+            <li><a class="button-no" href="{{ url('fos_message_deleted') }}">Messages supprimés</a></li>
         </ul>
 
-        {% block fos_message_content %}{% endblock %}
+    {% block fos_message_content %}{% endblock %}
 
 	</article>
 {% endblock %}

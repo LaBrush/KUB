@@ -1,0 +1,13 @@
+.liens
+{
+	@include pie-clearfix();
+	display: block;
+	margin: 0 0 10px 0;
+
+	li
+	{
+		float: left;
+		margin: 0 10px 0 0;
+	}
+}
+
