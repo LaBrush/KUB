@@ -1,5 +1,5 @@
 ariane_homepage:
-    pattern: /{username}
+    pattern: /
     defaults: { _controller: KubArianeBundle:Default:index,  username: null }
 
 ariane_post_add:

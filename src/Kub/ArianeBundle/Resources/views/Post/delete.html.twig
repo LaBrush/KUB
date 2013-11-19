@@ -1,7 +1,7 @@
 {% extends "::base.html.twig" %}
 
 {% block title %}
-	{{ parent() }} - Supprimer le post {{ post }}
+	{{ parent() }} - Supprimer le post {{ post.titre }}
 {% endblock %}
 
 {% block body %}
@@ -9,7 +9,7 @@
 	<article class="error">
 		{{ form_start(form) }}
 			
-			<p>Êtes vous sûr de vouloir supprimer le post <strong>{{ post }}</strong> ?</p>
+			<p>Êtes vous sûr de vouloir supprimer le post <strong>{{ post.titre }}</strong> ?</p>
 
 			<br />
 			<input class="button-yes" type="submit"> ou <a class="button-no" href="{{ path('ariane_homepage') }}">Annuler</a>	
