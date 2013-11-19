@@ -3,18 +3,29 @@
 namespace Kub\ArianeBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use JMS\SecurityExtraBundle\Annotation\Secure;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException ;
 
 use Kub\ArianeBundle\Entity\Post ;
 use Kub\ArianeBundle\Entity\Fil  ;
 
 class DefaultController extends Controller
 {
+    public function indexAction($username)
+    {
+        switch($this->getUser()->getClass())
+        {
+            case 'eleve':
+                return $this->showEleveAction();
+                break ;
+            case 'professeur':
+                return $this->showProfesseurAction($username);
+                break ;
+            default:
+                throw new AccessDeniedException("Vous n'avez pas accès aux fils d'ariane");
+        }
+    }
 
-    /**
-     * @Secure(roles="ROLE_ELEVE")
-     */
-    public function indexAction()
+    public function showEleveAction()
     {
         $security = $this->get('security.context');
         $liste_posts = $this->getDoctrine()->getManager()->getRepository('KubArianeBundle:Post')->findByUser( $this->getUser()->getUsername() );
@@ -25,10 +36,7 @@ class DefaultController extends Controller
         ));
     }
 
-    /**
-     * @Secure(roles="ROLE_PROFESSEUR")
-     */
-    public function showAction($username)
+    public function showProfesseurAction($username)
     {
     	$liste_posts = $this->getDoctrine()->getManager()->getRepository('KubArianeBundle:Post')->findByUser($username);
 
