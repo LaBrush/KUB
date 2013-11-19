@@ -11,9 +11,7 @@
 	</div>
 
 	{% if is_granted('ROLE_ELEVE') %}
-		<article class="article">
-			{{ render(controller('KubArianeBundle:Post:add')) }}
-		</article>
+		<a href="{{ path('ariane_post_add') }}" class="button-yes new">Nouveau post</a>
 	{% endif %}
 
 	{% for post in liste_posts %}
@@ -25,9 +23,7 @@
 			</div>
 
 			<div class="content-article">
-				<p>
-					{{ post.contenu }}
-				</p>
+				{{ post.contenu | raw }}
 			</div>
 			
 			{% if is_granted("ROLE_ELEVE") %}
@@ -46,7 +42,7 @@
 							<li class="commentaire">
 								<span>
 									<span class="auteur">{{ commentaire.auteur }} : </span>
-									<span>{{ commentaire.contenu | capitalize }}</span>
+									<span>{{ commentaire.contenu }}</span>
 									
 									{% if app.user == commentaire.auteur %}
 										&nbsp;{{ render(controller('KubArianeBundle:Commentaire:delete', { commentaire: commentaire.id })) }}
@@ -71,8 +67,5 @@
 	
 	{{ parent() }}
 	<script type="text/javascript" src="{{ asset('ressources/jsmin/ariane.min.js') }}"></script>
-
-	<!-- <script src="//tinymce.cachefly.net/4.0/tinymce.min.js"></script> -->
-	<script type="text/javascript" src="{{ asset('ressources/tinymce/tinymce.min.js') }}"></script>
 
 {% endblock %}

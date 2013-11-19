@@ -69,6 +69,7 @@
 
 .head-article
 {
+	@include pie-clearfix();
 	margin: 2px 0;
 
 	span
