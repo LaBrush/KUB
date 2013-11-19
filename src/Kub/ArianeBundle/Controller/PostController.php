@@ -20,12 +20,17 @@ class PostController extends Controller
     public function addAction()
     {
         $post = new Post ;
-        $form = $this->createForm(new PostType, $post);
+        $form = $this->createForm(new PostType, $post, array(
+            "method" => "POST"
+        ));
 
         $request = $this->get('request');
         $em = $this->getDoctrine()->getManager();
 
         $fil = $this->getUser()->getFil();
+
+        // throw new \Exception($request->getMethod());
+        
 
         if($request->getMethod() == "POST"){
 
@@ -34,7 +39,12 @@ class PostController extends Controller
             if($formHandler->process())
             {
                 $this->get('session')->getFlashBag()->add('info', "Le post a bien été ajouté");
-                return $this->redirect($this->generateUrl("ariane_homepage"));
+                // return $this->redirect($this->generateUrl("ariane_homepage"));
+            }
+            else
+            {
+                $this->get('session')->getFlashBag()->add('info', "bip"); 
+                $this->get('session')->getFlashBag()->add('info', $form->getErrorsAsString());   
             }
 
         }

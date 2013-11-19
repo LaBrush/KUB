@@ -9,9 +9,18 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table()
  * @ORM\Entity
+ * @ORM\InheritanceType("SINGLE_TABLE")
+ * @ORM\DiscriminatorColumn(name="discr", type="string")
+ * @ORM\DiscriminatorMap({"addCommentaireNotification" = "ArianeCommentaireNotification"})
  */
-class Notification
+abstract class Notification
 {
+    public function __construct()
+    {
+        $this->everyone = false ;
+        $this->date = new \DateTime ;
+    }
+
     /**
      * @var integer
      *
@@ -36,9 +45,35 @@ class Notification
     private $everyone;
 
     /**
-     * @ORM\Column(name="description", type="array")
+     * @ORM\ManyToMany(targetEntity="Kub\ClasseBundle\Entity\Groupe")
      */
-    private $descriptionArguments ;
+    private $groupesTarget;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Kub\UserBundle\Entity\User")
+     */
+    private $userTarget;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Kub\UserBundle\Entity\User")
+     */
+    private $author ;
+
+    private $route ;
+
+    private $titre ;
+
+    abstract function getContenu();
+
+    public function getTitre()
+    {
+        return $this->titre ;
+    }
+
+    public function getRoute()
+    {
+        return $this->route ;
+    }
 
     /**
      * Get id
@@ -97,71 +132,91 @@ class Notification
     }
 
     /**
-     * Set titre
+     * Add groupesTarget
      *
-     * @param string $titre
+     * @param \Kub\UserBundle\Entity\Groupe $groupesTarget
      * @return Notification
      */
-    public function setTitre($titre)
+    public function addGroupesTarget(\Kub\UserBundle\Entity\Groupe $groupesTarget)
     {
-        $this->titre = $titre;
+        $this->groupesTarget[] = $groupesTarget;
     
         return $this;
     }
 
     /**
-     * Get titre
+     * Remove groupesTarget
      *
-     * @return string 
+     * @param \Kub\UserBundle\Entity\Groupe $groupesTarget
      */
-    public function getTitre()
+    public function removeGroupesTarget(\Kub\UserBundle\Entity\Groupe $groupesTarget)
     {
-        return $this->titre;
+        $this->groupesTarget->removeElement($groupesTarget);
     }
 
     /**
-     * Set contenu
+     * Get groupesTarget
      *
-     * @param string $contenu
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getGroupesTarget()
+    {
+        return $this->groupesTarget;
+    }
+
+    /**
+     * Add userTarget
+     *
+     * @param \Kub\UserBundle\Entity\User $userTarget
      * @return Notification
      */
-    public function setContenu($contenu)
+    public function addUserTarget(\Kub\UserBundle\Entity\User $userTarget)
     {
-        $this->contenu = $contenu;
+        $this->userTarget[] = $userTarget;
     
         return $this;
     }
 
     /**
-     * Get contenu
+     * Remove userTarget
      *
-     * @return string 
+     * @param \Kub\UserBundle\Entity\User $userTarget
      */
-    public function getContenu()
+    public function removeUserTarget(\Kub\UserBundle\Entity\User $userTarget)
     {
-        return $this->contenu;
+        $this->userTarget->removeElement($userTarget);
     }
 
     /**
-     * Set descriptionArguments
+     * Get userTarget
      *
-     * @param array $descriptionArguments
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getUserTarget()
+    {
+        return $this->userTarget;
+    }
+
+    /**
+     * Set author
+     *
+     * @param \Kub\UserBundle\User $author
      * @return Notification
      */
-    public function setDescriptionArguments($descriptionArguments)
+    public function setAuthor(\Kub\UserBundle\User $author = null)
     {
-        $this->descriptionArguments = $descriptionArguments;
+        $this->author = $author;
     
         return $this;
     }
 
     /**
-     * Get descriptionArguments
+     * Get author
      *
-     * @return array 
+     * @return \Kub\UserBundle\User 
      */
-    public function getDescriptionArguments()
+    public function getAuthor()
     {
-        return $this->descriptionArguments;
+        return $this->author;
     }
 }
