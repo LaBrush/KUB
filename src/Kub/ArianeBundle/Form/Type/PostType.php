@@ -15,8 +15,8 @@ class PostType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('debut')
-            ->add('fin')
+            ->add('debut', 'date')
+            ->add('fin', 'date')
             ->add('titre')
             ->add('contenu', 'genemu_tinymce')
         ;
