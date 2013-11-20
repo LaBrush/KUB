@@ -49,8 +49,8 @@ class Thread extends BaseThread
     {
          parent::__construct();
         
-        $this->messages = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->metadata = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->messages = new \Doctrine\Common\Collections\ArrayCollection;
+        $this->metadata = new \Doctrine\Common\Collections\ArrayCollection;
     }
 
 

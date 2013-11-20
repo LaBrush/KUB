@@ -50,13 +50,13 @@ class Groupe extends BaseGroup
     private $niveau ;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Kub\UserBundle\Entity\Eleve", inversedBy="groupes", cascade={"all"}))
+     * @ORM\ManyToMany(targetEntity="Kub\UserBundle\Entity\Eleve", inversedBy="groupes", cascade={"merge", "detach", "persist"}))
      */
     private $eleves ;
 
 
     /**
-     * @ORM\ManyToMany(targetEntity="Kub\EDTBundle\Entity\Cours", mappedBy="groupes", cascade={"all"})
+     * @ORM\ManyToMany(targetEntity="Kub\EDTBundle\Entity\Cours", mappedBy="groupes", cascade={"merge", "detach", "persist"})
      */
     private $cours ;
 

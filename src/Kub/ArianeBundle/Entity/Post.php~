@@ -3,6 +3,7 @@
 namespace Kub\ArianeBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert ;
 
 /**
  * Post
@@ -30,6 +31,7 @@ class Post
      * @var \DateTime
      *
      * @ORM\Column(name="debut", type="date")
+     * @Assert\Date()
      */
     private $debut;
 
@@ -37,6 +39,7 @@ class Post
      * @var \DateTime
      *
      * @ORM\Column(name="fin", type="date")
+     * @Assert\Date()
      */
     private $fin;
 
@@ -51,6 +54,7 @@ class Post
      * @var string
      *
      * @ORM\Column(name="titre", type="string", length=255)
+     * @Assert\NotNull()
      */
     private $titre;
 
@@ -58,6 +62,7 @@ class Post
      * @var string
      *
      * @ORM\Column(name="contenu", type="text")
+     * @Assert\NotNull()
      */
     private $contenu;
 
@@ -71,7 +76,7 @@ class Post
         $this->dateAjout = new \DateTime();
 
         $this->debut = new \DateTime('yesterday');
-        $this->fin = new \Datetime();
+        $this->fin = new \Datetime('now');
     }
 
     /**

@@ -36,7 +36,7 @@ class Eleve extends User
 	private $anniversaire;
 
 	/**
-	 * @ORM\ManyToMany(targetEntity="Kub\UserBundle\Entity\Tuteur", inversedBy="eleves", cascade={"all"})
+	 * @ORM\ManyToMany(targetEntity="Kub\UserBundle\Entity\Tuteur", inversedBy="eleves", cascade={"merge", "detach", "persist"})
 	 * @Assert\Valid()
 	 * @Assert\Count(max=2, maxMessage="L'élève ne peut avoir plus de deux tuteurs")
 	 */

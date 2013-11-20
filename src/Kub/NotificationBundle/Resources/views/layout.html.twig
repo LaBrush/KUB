@@ -2,5 +2,6 @@
 	
 	<li> {{ notification.titre }} </li>
 	<li> <a href="{{ path(notification.route) }}"> {{ notification.routeTitle }} </a></li>
+	{% block detail %}{% endblock %}
 
 </ul>

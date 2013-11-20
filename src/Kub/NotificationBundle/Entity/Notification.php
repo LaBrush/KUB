@@ -24,6 +24,9 @@ abstract class Notification
 	{
 		$this->everyone = false ;
 		$this->date = new \DateTime ;
+
+		$this->groupesTarget = new \Doctrine\Common\Collections\ArrayCollection;
+		$this->userTarget = new \Doctrine\Common\Collections\ArrayCollection;
 	}
 
 	public function __construct()
@@ -67,7 +70,7 @@ abstract class Notification
 	/**
 	 * @ORM\ManyToOne(targetEntity="Kub\UserBundle\Entity\User")
 	 */
-	private $author ;
+	private $auteur ;
 
 	private $route ;
 
@@ -196,7 +199,8 @@ abstract class Notification
 	 */
 	public function removeUserTarget(\Kub\UserBundle\Entity\User $userTarget)
 	{
-		$this->userTarget->removeElement($userTarget);
+		if( $this->userTarget->contains($userTarget) )
+			$this->userTarget->removeElement($userTarget);
 	}
 
 	/**
@@ -210,26 +214,27 @@ abstract class Notification
 	}
 
 	/**
-	 * Set author
+	 * Set auteur
 	 *
-	 * @param \Kub\UserBundle\User $author
+	 * @param \Kub\UserBundle\User $auteur
 	 * @return Notification
 	 */
-	// public function setAuthor(\Kub\UserBundle\User $author = null)
-	public function setAuthor($author = null)
+	// public function setAuteur(\Kub\UserBundle\User $auteur = null)
+	public function setAuteur($auteur = null)
 	{
-		$this->author = $author;
+		$this->auteur = $auteur;
 	
 		return $this;
 	}
 
 	/**
-	 * Get author
+	 * Get auteur
 	 *
 	 * @return \Kub\UserBundle\User 
 	 */
-	public function getAuthor()
+	public function getAuteur()
 	{
-		return $this->author;
+		return $this->auteur;
 	}
+
 }

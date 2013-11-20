@@ -49,7 +49,7 @@ class Message extends BaseMessage
     public function __construct()
     {
         parent::__construct();
-        $this->metadata = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->metadata = new \Doctrine\Common\Collections\ArrayCollection;
     }
 
 }

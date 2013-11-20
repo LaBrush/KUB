@@ -22,16 +22,10 @@ class CommentaireController extends Controller
 	 */
 	public function addAction(Post $post)
 	{
-		if($this->getUser() != $post->getFil()->getEleve())
-		{
-			if($this->getUser()->hasEleve($post->getFil()->getEleve()))
-			{
-				throw new AccessDeniedException("Vous n'êtes pas autorisé à commenter ce post");
-			}
-		}
-
 		$commentaire = new Commentaire ;
 		$commentaire->setAuteur($this->getUser());
+
+		$eleve = $post->getFil()->getEleve() ;
 
 		$form = $this->createForm(new CommentaireType, $commentaire, array(
 			'action' => $this->generateUrl('ariane_commentaire_add', 
@@ -45,15 +39,30 @@ class CommentaireController extends Controller
 
 		if($request->getMethod() == "POST"){
 
+			if($this->getUser() != $post->getFil()->getEleve())
+			{
+				if(!$this->getUser()->hasEleve($post->getFil()->getEleve()))
+				{
+					throw new AccessDeniedException("Vous n'êtes pas autorisé à commenter ce post");
+				}
+			}
+
 			$formHandler = new CommentaireHandler($form, $request, $this->getDoctrine()->getManager(), $this->getUser(), $post);
 
 			if($formHandler->process())
 			{
-				$this->get('session')->getFlashBag()->add('info', "Le commentaire a été posté");   
+				$this->get('session')->getFlashBag()->add('info', "Le commentaire a été posté"); 
+				$this->get('kub.notification_manager')->addNotification('ArianeCommentaireNotification', array(
+
+					"userTarget" => $eleve,
+					"commentaire" => $commentaire
+
+				)) ;
 			}
 
-			return $this->redirect($this->generateUrl("ariane_homepage"));
-
+			$arg = array();
+			if($this->getUser()->getClass() == "professeur"){ $arg["username"] = $eleve->getUsername();}
+			return $this->redirect($this->generateUrl("ariane_homepage", $arg));
 		}
 
 		return $this->render('KubArianeBundle:Commentaire:create.html.twig',
@@ -95,7 +104,8 @@ class CommentaireController extends Controller
 		
 				$this->get('session')->getFlashBag()->add('info', "Le commentaire a été supprimé");
 
-				return $this->redirect($this->generateUrl("ariane_homepage"));
+
+				return $this->redirect($this->generateUrl($this->getRequest()->headers->get('referer')));
 			}
 		}
 

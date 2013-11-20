@@ -32,8 +32,10 @@ class Professeur extends User
     public function hasEleve($eleve){
 
         foreach ($this->getCours() as $key => $cours) {
+
             foreach ($cours->getGroupes() as $key => $groupe) {
-                if(in_array($eleve, $groupe->getEleves()))
+
+                if($groupe->getEleves()->contains($eleve))
                 {
                     return true ;
                 }
@@ -53,6 +55,7 @@ class Professeur extends User
     {
         parent::__construct();
 
+        $this->cours = new \Doctrine\Common\Collections\ArrayCollection;
         $this->addRole("ROLE_PROFESSEUR");
     }
 

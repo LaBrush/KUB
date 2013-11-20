@@ -50,7 +50,7 @@ class Frequence
      */
     public function __construct()
     {
-        $this->semaines = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->semaines = new \Doctrine\Common\Collections\ArrayCollection;
     }
 
     public function __tostring()

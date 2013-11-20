@@ -18,13 +18,60 @@ class NotificationManager
 		$this->security = $security;
 	}
 
-	public function addNotification($type)
+	public function addNotification($type, array $config)
 	{
 		$type = 'Kub\NotificationBundle\Entity\\' . $type ;		
+		$default = array(
+		
+			"everyOne" => false,
+			"specific" => array()			
+
+		);
+		$user = $this->security->getToken()->getUser();
+
+		$config = array_merge($config, $default);
 
 		$notification = new $type ;
-		$notification->setAuthor( $this->security->getToken()->getUser() );
-		$notification->addUserTarget( $this->security->getToken()->getUser() );
+		$notification->setAuteur( $user );
+
+		if(array_key_exists("userTarget", $config))
+		{
+			if(is_array($config["userTarget"]))
+			{
+				for ($i = 0; $i < count($config["userTarget"]) ; $i++) { 
+					$notification->addUserTarget( $config["userTarget"][$i] );		
+				}
+			}
+			else
+			{
+				$notification->addUserTarget( $config["userTarget"] );
+			}
+
+			$notification->removeUserTarget($user);
+		}
+
+		if(array_key_exists("groupeTarget", $config))
+		{
+			if(is_array($config["groupeTarget"]))
+			{
+				for ($i = 0; $i < count($config["groupeTarget"]) ; $i++) { 
+					$notification->addGroupeTarget( $config["groupeTarget"][$i] );		
+				}
+			}
+			else
+			{
+				$notification->addGroupeTarget( $config["groupeTarget"] );
+			}
+		}
+
+		$notification->setEveryone( $config["everyOne"] );
+
+		foreach ($config['specific'] as $attr => $value) {
+
+			$method = 'set' . ucfirst($attr);
+			$notification->$method($value);
+
+		}
 
 		$this->em->persist($notification);
 		$this->em->flush();

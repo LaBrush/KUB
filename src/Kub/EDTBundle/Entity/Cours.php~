@@ -27,13 +27,13 @@ class Cours
     private $id;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Kub\ClasseBundle\Entity\Groupe", inversedBy="cours", cascade={"all"})
+     * @ORM\ManyToMany(targetEntity="Kub\ClasseBundle\Entity\Groupe", inversedBy="cours", cascade={"merge", "detach", "persist"})
      * @Assert\Count(min=1)
      */
     private $groupes ;
 
     /** 
-     * @ORM\ManyToOne(targetEntity="Kub\UserBundle\Entity\Professeur", inversedBy="cours")
+     * @ORM\ManyToOne(targetEntity="Kub\UserBundle\Entity\Professeur", inversedBy="cours", cascade={"merge", "detach", "persist"})
      * @Assert\NotNull()
      */
     private $professeur ;
@@ -94,7 +94,7 @@ class Cours
      */
     public function __construct()
     {
-        $this->groupes = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->groupes = new \Doctrine\Common\Collections\ArrayCollection;
 
         $this->addHoraire(new Horaire());
     }
@@ -223,5 +223,28 @@ class Cours
     public function getHoraires()
     {
         return $this->horaires;
+    }
+
+    /**
+     * Add professeur
+     *
+     * @param \Kub\UserBundle\Entity\Professeur $professeur
+     * @return Cours
+     */
+    public function addProfesseur(\Kub\UserBundle\Entity\Professeur $professeur)
+    {
+        $this->professeur[] = $professeur;
+    
+        return $this;
+    }
+
+    /**
+     * Remove professeur
+     *
+     * @param \Kub\UserBundle\Entity\Professeur $professeur
+     */
+    public function removeProfesseur(\Kub\UserBundle\Entity\Professeur $professeur)
+    {
+        $this->professeur->removeElement($professeur);
     }
 }
