@@ -39,7 +39,7 @@ services:
         tags:
             - { name: validator.constraint_validator, alias: time_edt_no_conflict }
 
-    kub.twig.kub_extension:
+    kub.twig.kub.time_extension:
         class: Kub\EDTBundle\Twig\EDT2JsArrayExtension
         arguments: [@kub.edt.time]
         tags:

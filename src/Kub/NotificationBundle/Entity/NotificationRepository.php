@@ -13,14 +13,9 @@ use Doctrine\ORM\EntityRepository;
 class NotificationRepository extends EntityRepository
 {
 
-	public function findByUser($user)
-	{
-		$qb = $this->createQueryBuilder("n")
-			->leftJoin('n.userTarget', 'u')
-			->where('u.id = :id')
-			->setParameter('id', $user->getId())
-			->orderBy('n.date', 'DESC')
-		;
+	public function findByUser($user) { $qb = $this->createQueryBuilder("n")
+	->leftJoin('n.userTarget', 'u') ->where('u.id = :id') ->setParameter('id',
+	$user->getId()) ->orderBy('n.date', 'DESC') ;
 
 		if($user->getClass() == "eleve")
 		{

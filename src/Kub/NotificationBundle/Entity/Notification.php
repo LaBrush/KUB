@@ -17,217 +17,219 @@ use Doctrine\ORM\Mapping as ORM;
  */
 abstract class Notification
 {
-    /**
-     * @ORM\postLoad()
-     */
-    public function init()
-    {
-        $this->everyone = false ;
-        $this->date = new \DateTime ;
-    }
+	/**
+	 * @ORM\postLoad()
+	 */
+	public function init()
+	{
+		$this->everyone = false ;
+		$this->date = new \DateTime ;
+	}
 
-    public function __construct()
-    {
-        $this->init();
-    }
+	public function __construct()
+	{
+		$this->init();
+	}
 
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    private $id;
+	/**
+	 * @var integer
+	 *
+	 * @ORM\Column(name="id", type="integer")
+	 * @ORM\Id
+	 * @ORM\GeneratedValue(strategy="AUTO")
+	 */
+	private $id;
 
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="date", type="datetime")
-     */
-    private $date;
+	/**
+	 * @var \DateTime
+	 *
+	 * @ORM\Column(name="date", type="datetime")
+	 */
+	private $date;
 
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(name="everyone", type="boolean")
-     */
-    private $everyone;
+	/**
+	 * @var boolean
+	 *
+	 * @ORM\Column(name="everyone", type="boolean")
+	 */
+	private $everyone;
 
-    /**
-     * @ORM\ManyToMany(targetEntity="Kub\ClasseBundle\Entity\Groupe")
-     */
-    private $groupesTarget;
+	/**
+	 * @ORM\ManyToMany(targetEntity="Kub\ClasseBundle\Entity\Groupe")
+	 */
+	private $groupesTarget;
 
-    /**
-     * @ORM\ManyToMany(targetEntity="Kub\UserBundle\Entity\User")
-     */
-    private $userTarget;
+	/**
+	 * @ORM\ManyToMany(targetEntity="Kub\UserBundle\Entity\User")
+	 */
+	private $userTarget;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="Kub\UserBundle\Entity\User")
-     */
-    private $author ;
+	/**
+	 * @ORM\ManyToOne(targetEntity="Kub\UserBundle\Entity\User")
+	 */
+	private $author ;
 
-    private $route ;
+	private $route ;
 
-    private $titre ;
+	private $routeName ;
 
-    abstract function getContenu();
+	private $titre ;
 
-    public function getTitre()
-    {
-        return $this->titre ;
-    }
+	abstract function getContenu();
 
-    public function getRoute()
-    {
-        return $this->route ;
-    }
+	public function getRoute()
+	{
+		return $this->route ;
+	}
 
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
+	public function getTitre()
+	{
+		return $this->titre ;
+	}
 
-    /**
-     * Set date
-     *
-     * @param \DateTime $date
-     * @return Notification
-     */
-    public function setDate($date)
-    {
-        $this->date = $date;
-    
-        return $this;
-    }
+	/**
+	 * Get id
+	 *
+	 * @return integer 
+	 */
+	public function getId()
+	{
+		return $this->id;
+	}
 
-    /**
-     * Get date
-     *
-     * @return \DateTime 
-     */
-    public function getDate()
-    {
-        return $this->date;
-    }
+	/**
+	 * Set date
+	 *
+	 * @param \DateTime $date
+	 * @return Notification
+	 */
+	public function setDate($date)
+	{
+		$this->date = $date;
+	
+		return $this;
+	}
 
-    /**
-     * Set everyone
-     *
-     * @param boolean $everyone
-     * @return Notification
-     */
-    public function setEveryone($everyone)
-    {
-        $this->everyone = $everyone;
-    
-        return $this;
-    }
+	/**
+	 * Get date
+	 *
+	 * @return \DateTime 
+	 */
+	public function getDate()
+	{
+		return $this->date;
+	}
 
-    /**
-     * Get everyone
-     *
-     * @return boolean 
-     */
-    public function getEveryone()
-    {
-        return $this->everyone;
-    }
+	/**
+	 * Set everyone
+	 *
+	 * @param boolean $everyone
+	 * @return Notification
+	 */
+	public function setEveryone($everyone)
+	{
+		$this->everyone = $everyone;
+	
+		return $this;
+	}
 
-    /**
-     * Add groupesTarget
-     *
-     * @param \Kub\UserBundle\Entity\Groupe $groupesTarget
-     * @return Notification
-     */
-    public function addGroupesTarget(\Kub\UserBundle\Entity\Groupe $groupesTarget)
-    {
-        $this->groupesTarget[] = $groupesTarget;
-    
-        return $this;
-    }
+	/**
+	 * Get everyone
+	 *
+	 * @return boolean 
+	 */
+	public function getEveryone()
+	{
+		return $this->everyone;
+	}
 
-    /**
-     * Remove groupesTarget
-     *
-     * @param \Kub\UserBundle\Entity\Groupe $groupesTarget
-     */
-    public function removeGroupesTarget(\Kub\UserBundle\Entity\Groupe $groupesTarget)
-    {
-        $this->groupesTarget->removeElement($groupesTarget);
-    }
+	/**
+	 * Add groupesTarget
+	 *
+	 * @param \Kub\UserBundle\Entity\Groupe $groupesTarget
+	 * @return Notification
+	 */
+	public function addGroupesTarget(\Kub\UserBundle\Entity\Groupe $groupesTarget)
+	{
+		$this->groupesTarget[] = $groupesTarget;
+	
+		return $this;
+	}
 
-    /**
-     * Get groupesTarget
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getGroupesTarget()
-    {
-        return $this->groupesTarget;
-    }
+	/**
+	 * Remove groupesTarget
+	 *
+	 * @param \Kub\UserBundle\Entity\Groupe $groupesTarget
+	 */
+	public function removeGroupesTarget(\Kub\UserBundle\Entity\Groupe $groupesTarget)
+	{
+		$this->groupesTarget->removeElement($groupesTarget);
+	}
 
-    /**
-     * Add userTarget
-     *
-     * @param \Kub\UserBundle\Entity\User $userTarget
-     * @return Notification
-     */
-    public function addUserTarget(\Kub\UserBundle\Entity\User $userTarget)
-    {
-        $this->userTarget[] = $userTarget;
-    
-        return $this;
-    }
+	/**
+	 * Get groupesTarget
+	 *
+	 * @return \Doctrine\Common\Collections\Collection 
+	 */
+	public function getGroupesTarget()
+	{
+		return $this->groupesTarget;
+	}
 
-    /**
-     * Remove userTarget
-     *
-     * @param \Kub\UserBundle\Entity\User $userTarget
-     */
-    public function removeUserTarget(\Kub\UserBundle\Entity\User $userTarget)
-    {
-        $this->userTarget->removeElement($userTarget);
-    }
+	/**
+	 * Add userTarget
+	 *
+	 * @param \Kub\UserBundle\Entity\User $userTarget
+	 * @return Notification
+	 */
+	public function addUserTarget(\Kub\UserBundle\Entity\User $userTarget)
+	{
+		$this->userTarget[] = $userTarget;
+	
+		return $this;
+	}
 
-    /**
-     * Get userTarget
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getUserTarget()
-    {
-        return $this->userTarget;
-    }
+	/**
+	 * Remove userTarget
+	 *
+	 * @param \Kub\UserBundle\Entity\User $userTarget
+	 */
+	public function removeUserTarget(\Kub\UserBundle\Entity\User $userTarget)
+	{
+		$this->userTarget->removeElement($userTarget);
+	}
 
-    /**
-     * Set author
-     *
-     * @param \Kub\UserBundle\User $author
-     * @return Notification
-     */
-    // public function setAuthor(\Kub\UserBundle\User $author = null)
-    public function setAuthor($author = null)
-    {
-        $this->author = $author;
-    
-        return $this;
-    }
+	/**
+	 * Get userTarget
+	 *
+	 * @return \Doctrine\Common\Collections\Collection 
+	 */
+	public function getUserTarget()
+	{
+		return $this->userTarget;
+	}
 
-    /**
-     * Get author
-     *
-     * @return \Kub\UserBundle\User 
-     */
-    public function getAuthor()
-    {
-        return $this->author;
-    }
+	/**
+	 * Set author
+	 *
+	 * @param \Kub\UserBundle\User $author
+	 * @return Notification
+	 */
+	// public function setAuthor(\Kub\UserBundle\User $author = null)
+	public function setAuthor($author = null)
+	{
+		$this->author = $author;
+	
+		return $this;
+	}
+
+	/**
+	 * Get author
+	 *
+	 * @return \Kub\UserBundle\User 
+	 */
+	public function getAuthor()
+	{
+		return $this->author;
+	}
 }
