@@ -6,6 +6,16 @@
 		<article class="article">
 			<h2 class="section-title">{{ 'Bonjour'|trans }} {{ app.user.prenom }}</h2>
 		</article>
+
+		<article class="article">
+			
+			{% for notification in liste_notifications %}
+
+				<p>{{ notification.titre }}</p>
+	
+			{% endfor %}
+
+		</article>
 	
 
 {% endblock %}

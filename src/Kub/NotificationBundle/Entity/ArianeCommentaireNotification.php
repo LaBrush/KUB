@@ -10,12 +10,18 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class ArianeCommentaireNotification extends Notification
 {
-    public function __construct()
+    
+    public function init()
     {
-        parent::__construct();
+        parent::init();
 
         $this->route = "ariane_homepage" ;
         $this->titre = "Un commentaire à été ajouté à votre fil d'Ariane ";
+    }
+
+    public function __construct()
+    {
+        parent::__construct();
     }
 
     public function getContenu()

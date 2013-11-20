@@ -8,17 +8,27 @@ use Doctrine\ORM\Mapping as ORM;
  * Notification
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Kub\NotificationBundle\Entity\NotificationRepository")
  * @ORM\InheritanceType("SINGLE_TABLE")
  * @ORM\DiscriminatorColumn(name="discr", type="string")
- * @ORM\DiscriminatorMap({"addCommentaireNotification" = "ArianeCommentaireNotification"})
+ * @ORM\DiscriminatorMap({"acn" = "ArianeCommentaireNotification"})
+ *
+ * @ORM\HasLifecycleCallbacks()
  */
 abstract class Notification
 {
-    public function __construct()
+    /**
+     * @ORM\postLoad()
+     */
+    public function init()
     {
         $this->everyone = false ;
         $this->date = new \DateTime ;
+    }
+
+    public function __construct()
+    {
+        $this->init();
     }
 
     /**
@@ -203,7 +213,8 @@ abstract class Notification
      * @param \Kub\UserBundle\User $author
      * @return Notification
      */
-    public function setAuthor(\Kub\UserBundle\User $author = null)
+    // public function setAuthor(\Kub\UserBundle\User $author = null)
+    public function setAuthor($author = null)
     {
         $this->author = $author;
     

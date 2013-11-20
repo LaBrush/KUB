@@ -12,7 +12,6 @@ use Doctrine\ORM\EntityRepository;
  */
 class EleveRepository extends UserRepository
 {
-
 	// fonction utilisee pour charger l'ensemble des données de l'utilisateur
 	public function findWithAll($username)
 	{
