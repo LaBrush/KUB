@@ -13,4 +13,21 @@ use Kub\UserBundle\Entity\Eleve ;
  */
 class FilRepository extends EntityRepository
 {
+
+	public function findByUser($username)
+	{
+		$qb = $this->createQueryBuilder("f")
+			->leftJoin('f.posts', 'p')
+			->addSelect('p')
+			->join('p.commentaires', 'c')
+			->addSelect('c')
+			->join('f.eleve', 'e')
+			->where('e.username = :username')
+			->setParameter("username", $username )
+			->orderBy('p.dateAjout', 'DESC')
+		;
+
+		return $qb->getQuery()->getSingleResult();
+	}
+
 }

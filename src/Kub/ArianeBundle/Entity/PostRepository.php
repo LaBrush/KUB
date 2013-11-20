@@ -13,17 +13,4 @@ use Kub\UserBundle\Entity\Eleve ;
  */
 class PostRepository extends EntityRepository
 {
-	public function findByUser($username)
-	{
-		$qb = $this->createQueryBuilder("p")
-			->leftJoin('p.fil', 'f')
-			->join('f.eleve', 'e')
-			->where('e.username = :username')
-			->setParameter("username", $username )
-			->orderBy('p.dateAjout', 'DESC')
-		;
-
-		return $qb->getQuery()->getResult();
-	}
-
 }
