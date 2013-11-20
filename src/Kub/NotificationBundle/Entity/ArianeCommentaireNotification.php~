@@ -16,6 +16,7 @@ class ArianeCommentaireNotification extends Notification
         parent::init();
 
         $this->route = "ariane_homepage" ;
+        $this->routeTitle = "Voir votre fil" ;
         $this->titre = "Un commentaire à été ajouté à votre fil d'Ariane ";
     }
 

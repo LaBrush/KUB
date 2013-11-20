@@ -11,7 +11,7 @@
 	</div>
 
 	{% if is_granted('ROLE_ELEVE') %}
-		<a href="{{ path('ariane_post_add') }}" class="button-yes new">Nouveau post</a>
+		{% render(controller("KubArianeBundle:Post:add")) %}
 	{% endif %}
 
 	{% for post in liste_posts %}
