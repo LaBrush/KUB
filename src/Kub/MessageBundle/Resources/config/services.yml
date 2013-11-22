@@ -1,3 +1,6 @@
+imports:
+    - { resource: form.yml }
+
 parameters:
 #    kub_message.example.class: Kub\MessageBundle\Example
 

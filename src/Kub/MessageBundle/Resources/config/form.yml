@@ -1,0 +1,5 @@
+services:
+    fos_message.new_thread_form.factory.default:
+        class : Kub\MessageBundle\FormFactory\NewThreadMessageFormFactory
+        public : false"
+        arguments: [@form.factory, @fos_message.new_thread_form.type, %fos_message.new_thread_form.name%, %fos_message.new_thread_form.model%, @doctrine.orm.entity_manager]
