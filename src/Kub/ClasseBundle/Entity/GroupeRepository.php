@@ -18,10 +18,26 @@ class GroupeRepository extends EntityRepository
 		$qb = $this->createQueryBuilder("g")
 			->join('g.cours', 'c')
 			->join('c.professeur', 'p')
+			->join('g.eleves', 'e')
+			->addSelect('e')
 			->where('p.id = :id')
 			->setParameter('id', $professeur->getId())
 			;
 
 		return $qb->getQuery()->getResult();
+	}
+
+	public function findOneByName($name)
+	{
+		$qb = $this->createQueryBuilder("g")
+			->join('g.eleves', 'e')
+			->addSelect('e')
+			->join('g.niveau', 'n')
+			->addSelect('n')
+			->where('g.name = :name')
+			->setParameter('name', $name)
+		;
+
+		return $qb->getQuery()->getSingleResult();		
 	}
 }

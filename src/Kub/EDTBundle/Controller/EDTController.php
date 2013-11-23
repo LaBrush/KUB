@@ -21,7 +21,7 @@ class EDTController extends Controller
 				$edt = $this->get('kub.edt.time')->getEDTOf( $user );
 				break;
 			default: 
-				throw new \AccessDeniedException("Vous n'avez pas d'emplois du temps. Ici.");
+				throw new AccessDeniedException("Vous n'avez pas d'emplois du temps. Ici.");
 				break;
 		}
 

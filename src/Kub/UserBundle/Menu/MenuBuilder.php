@@ -148,11 +148,11 @@ class MenuBuilder
 				'className' => 'bigbro',  
 			)
 		));  
-		$menu['1984']->addChild('Mes notes', 
-			array(
-				'route' => 'kub_notes_eleve_homepage',
-			)
-		);
+			$menu['1984']->addChild('Mes notes', 
+				array(
+					'route' => 'kub_notes_eleve_homepage',
+				)
+			);
 	}
 
 	public function generateProfesseurMenu($menu)
@@ -170,6 +170,11 @@ class MenuBuilder
 					)
 				);
 			}
+
+		$menu->addChild('Noter', array(
+			'labelAttributes' => array('className' => 'bigbro'),
+			'route' => 'kub_notes_professeur_homepage'
+		));
 	}
 
 	public function createCompteMenu(Request $request)

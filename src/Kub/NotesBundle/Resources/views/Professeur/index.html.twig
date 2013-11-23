@@ -1,0 +1,29 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+    
+    <div class="article">
+     
+		<p>Ici vous pouvez noter vos diférents groupes. Indequer le groupe à noter</p>
+		<p>NB: CHANGER CE TEXTE MERDE</p>
+
+		{% if groupes|length > 0 %}
+			<ul>
+				
+				{% for groupe in groupes %}
+
+					<li>
+						<a href="{{ path('kub_notes_professeur_homepage', { groupe: groupe.name }) }}">{{ groupe.name }}</a>
+					</li>
+
+				{% endfor %}
+
+			</ul>
+		{% else %}
+
+			<p>Vous n'avez pas encore de groupe attribué </p>
+
+		{% endif %}
+
+	</article>
+{% endblock %}
