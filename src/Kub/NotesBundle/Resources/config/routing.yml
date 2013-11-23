@@ -1,3 +1,3 @@
-kub_notes_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: KubNotesBundle:Default:index }
+kub_notes_eleve_homepage:
+    pattern:  /notes
+    defaults: { _controller: KubNotesBundle:Eleve:index }

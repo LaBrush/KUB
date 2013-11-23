@@ -1,0 +1,24 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+    
+    <div class="article">
+     
+		{% set matiere = "" %}        
+		
+	
+		{% for note in notes %}
+
+			{% if note.matiere.name != matiere %}
+			
+				{% set matiere = note.matiere.name %}
+				<h3>{{ matiere }}</h3>
+
+			{% endif %}
+
+			<p> {{ note.note }} / {{ note.coefficient }} </p>
+
+		{% endfor %}
+
+	</article>
+{% endblock %}

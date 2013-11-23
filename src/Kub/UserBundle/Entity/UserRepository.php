@@ -15,9 +15,7 @@ class UserRepository extends EntityRepository
 
 	public function finAllWithNames()
 	{
-		$qb = $this->_em->createQuery("SELECT u.nom, u.prenom, u.username FROM Kub\UserBundle\Entity\User u ")->getArrayResult()
-
-		;
+		return $qb = $this->_em->createQuery("SELECT u.nom, u.prenom, u.username FROM Kub\UserBundle\Entity\User u ")->getArrayResult();
 	}
 
 }

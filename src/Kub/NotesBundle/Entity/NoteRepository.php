@@ -3,6 +3,7 @@
 namespace Kub\NotesBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
+use Kub\UserBundle\Entity\Eleve ;
 
 /**
  * NoteRepository
@@ -12,4 +13,15 @@ use Doctrine\ORM\EntityRepository;
  */
 class NoteRepository extends EntityRepository
 {
+
+	public function findByEleve(Eleve $eleve)
+	{
+		$qb = $this->createQueryBuilder('n')
+			->join('n.matiere', 'm')
+			->addSelect('m')
+		;
+
+		return $qb->getQuery()->getArrayResult();
+	}
+
 }

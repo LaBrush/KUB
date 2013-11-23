@@ -32,7 +32,7 @@ class LoadMatiereData extends AbstractFixture implements FixtureInterface, Conta
     public function load(ObjectManager $manager)
     {
         $matieresNames = array(
-            "Francais",
+            "Français",
             "Mathématiques",
             "Anglais",
             "Espagnol",
