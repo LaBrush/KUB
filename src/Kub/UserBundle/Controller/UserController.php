@@ -21,6 +21,8 @@ use Kub\UserBundle\Form\Handler\AdministrateurHandler ;
 use Kub\UserBundle\Form\Handler\TuteurHandler ;
 use Kub\UserBundle\Form\Handler\ProfesseurHandler ;
 
+use Symfony\Component\Security\Core\Exception\AccessDeniedException; 
+
 class UserController extends Controller
 {
 	/**
@@ -96,75 +98,80 @@ class UserController extends Controller
 	 */
 	public function editAction(User $user, $role, $username)
 	{
-			if($user->getClass() != $role)
-			{
-				throw $this->createNotFoundException("L'utilisateur " . $username . " n'a pu être trouvé.");
-			}
+		if($this->getUser()->getId() == $user->getId())
+		{
+			throw new AccessDeniedException('Vous ne pouvez modifier votre propre compte');
+		}
 
-			$class = ucfirst($role);
+		if($user->getClass() != $role)
+		{
+			throw $this->createNotFoundException("L'utilisateur " . $username . " n'a pu être trouvé.");
+		}
+
+		$class = ucfirst($role);
+		switch($class)
+		{
+			case "Eleve":
+				$type = new EleveType ;
+				break;
+			case "Tuteur":
+				$type = new TuteurType ;
+				break;
+			case "Professeur":
+				$type = new ProfesseurType ;
+				break;
+			case "Administrateur":
+				$type = new AdministrateurType($this->get("security.context")) ;
+				break;
+		}
+
+		$form = $this->createForm($type, $user);
+
+		$request = $this->get('request');
+		$em = $this->getDoctrine()->getManager();
+
+		$discriminator = $this->container->get('pugx_user.manager.user_discriminator');
+		$discriminator->setClass('Kub\UserBundle\Entity\\'.$class);
+
+		$userManager = $this->container->get('pugx_user_manager');
+
+		if($request->getMethod() == "POST"){
+
 			switch($class)
 			{
 				case "Eleve":
-					$type = new EleveType ;
+					$formHandler = new EleveHandler($form, $request, $em, $discriminator, $userManager);
 					break;
 				case "Tuteur":
-					$type = new TuteurType ;
+					$formHandler = new TuteurHandler($form, $request, $em, $discriminator, $userManager); 
 					break;
 				case "Professeur":
-					$type = new ProfesseurType ;
+					$formHandler = new ProfesseurHandler($form, $request, $em, $discriminator, $userManager); 
 					break;
 				case "Administrateur":
-					$type = new AdministrateurType($this->get("security.context")) ;
+					$formHandler = new AdministrateurHandler($form, $request, $em, $discriminator, $userManager);
 					break;
 			}
 
-			$form = $this->createForm($type, $user);
-
-			$request = $this->get('request');
-			$em = $this->getDoctrine()->getManager();
-
-			$discriminator = $this->container->get('pugx_user.manager.user_discriminator');
-			$discriminator->setClass('Kub\UserBundle\Entity\\'.$class);
-
-			$userManager = $this->container->get('pugx_user_manager');
-
-			if($request->getMethod() == "POST"){
-
-				switch($class)
-				{
-					case "Eleve":
-						$formHandler = new EleveHandler($form, $request, $em, $discriminator, $userManager);
-						break;
-					case "Tuteur":
-						$formHandler = new TuteurHandler($form, $request, $em, $discriminator, $userManager); 
-						break;
-					case "Professeur":
-						$formHandler = new ProfesseurHandler($form, $request, $em, $discriminator, $userManager); 
-						break;
-					case "Administrateur":
-						$formHandler = new AdministrateurHandler($form, $request, $em, $discriminator, $userManager);
-						break;
-				}
-
-				if($formHandler->process())
-				{
-					$this->get('session')->getFlashBag()->add('info', "L'utilisateur a bien été modifié");
-					return $this->redirect($this->generateUrl("user_show",  array("role" => $role, "username" => $user->getUsername())));
-				}
-				else
-				{
-					$this->get('session')->getFlashBag()->add('info', "Erreur lors de la modification de l'utilisateur");
-				}
-
+			if($formHandler->process())
+			{
+				$this->get('session')->getFlashBag()->add('info', "L'utilisateur a bien été modifié");
+				return $this->redirect($this->generateUrl("user_show",  array("role" => $role, "username" => $user->getUsername())));
+			}
+			else
+			{
+				$this->get('session')->getFlashBag()->add('info', "Erreur lors de la modification de l'utilisateur");
 			}
 
-			return $this->render('KubUserBundle:Manage:user_edit.html.twig',
-				array(
-					'form' => $form->createView(),
-					'user' => $user,
-					'role' => $role
-				)
-			);
+		}
+
+		return $this->render('KubUserBundle:Manage:user_edit.html.twig',
+			array(
+				'form' => $form->createView(),
+				'user' => $user,
+				'role' => $role
+			)
+		);
 	}
 
 	/**
@@ -172,6 +179,11 @@ class UserController extends Controller
 	 */
 	public function deleteAction(User $user, $role, $username)
 	{
+		if($this->getUser()->getId() == $user->getId())
+		{
+			throw new AccessDeniedException('Vous ne pouvez modifier votre propre compte');
+		}
+
 		if($user->getClass() != $role)
 		{
 			throw $this->createNotFoundException("L'utilisateur " . $username . " n'a pu être trouvé.");

@@ -39,7 +39,7 @@ class AdministrateurType extends UserType
 			->add("type", "choice",
 				array(
 					"mapped" => false,
-					"choices" => $choices
+					"choices" => $choices,
 			))
 		;
 

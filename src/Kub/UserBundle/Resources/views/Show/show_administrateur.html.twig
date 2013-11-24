@@ -3,19 +3,19 @@
 {% block details %}
 
 	<span class="label">Type d'aministrateur :</span>
-	{% if is_granted("ROLE_SURVEILLANT") %}
+	{% if "ROLE_SURVEILLANT" in user.roles %}
 		
 		<span class="info">Surveillant</span>
 
-	{% elseif is_granted("ROLE_CPE") %}
+	{% elseif "ROLE_CPE" in user.roles %}
 		
 		<span class="info">Conseiller Principal d'éducation</span>
 
-	{% elseif is_granted("ROLE_MANITOU") %}
+	{% elseif "ROLE_MANITOU" in user.roles %}
 		
 		<span class="info">Grand Manitou</span>
 
-	{% elseif is_granted("ROLE_SECRETAIRE") %}
+	{% elseif "ROLE_SECRETAIRE" in user.roles %}
 		
 		<span class="info">Secrétaire</span>
 	
