@@ -243,8 +243,10 @@ class UserController extends Controller
 	/**
 	 * @Secure(roles="ROLE_USER")
 	 */
-	public function showAction(User $user, $role, $username)
+	public function showAction($role, $username)
 	{
+		$user = $this->get('doctrine.orm.entity_manager')->getRepository('KubUserBundle:' . ucfirst($role))->findOneByUsername($username);
+
 		if($user->getClass() != $role)
 		{
 			throw $this->createNotFoundException("L'utilisateur " . $username . " n'a pu être trouvé.");

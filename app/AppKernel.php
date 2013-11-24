@@ -33,7 +33,7 @@ class AppKernel extends Kernel
             new Genemu\Bundle\FormBundle\GenemuFormBundle(),
             new Kub\HomeBundle\KubHomeBundle(),
             new Kub\UserBundle\KubUserBundle(),
-            new Kub\NotesBundle\KubNotesBundle(),
+            new Kub\NoteBundle\KubNoteBundle(),
             new Kub\ArianeBundle\KubArianeBundle(),
             new Kub\CollaborationBundle\KubCollaborationBundle(),
             new Kub\AbsenceBundle\KubAbsenceBundle(),

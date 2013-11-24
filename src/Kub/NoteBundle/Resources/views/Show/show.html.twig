@@ -1,0 +1,11 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}
+	{{ parent() }} - Notes de {{ eleve }}
+{% endblock %}
+
+{% block body %}
+
+	{% include "KubNoteBundle:Show:show_content.html.twig" %}
+
+{% endblock %}

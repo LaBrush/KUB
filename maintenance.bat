@@ -12,7 +12,7 @@ php app/console doctrine:generate:entities KubClasseBundle
 php app/console doctrine:generate:entities KubCollaborationBundle
 php app/console doctrine:generate:entities KubEDTBundle
 php app/console doctrine:generate:entities KubHomeBundle
-php app/console doctrine:generate:entities KubNotesBundle
+php app/console doctrine:generate:entities KubNoteBundle
 php app/console doctrine:generate:entities KubNotificationBundle
 php app/console doctrine:generate:entities KubRessourceBundle
 php app/console doctrine:generate:entities KubUserBundle

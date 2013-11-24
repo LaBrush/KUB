@@ -39,7 +39,7 @@ kub_ariane:
     prefix:   /ariane
 
 kub_notes:
-    resource: "@KubNotesBundle/Resources/config/routing.yml"
+    resource: "@KubNoteBundle/Resources/config/routing.yml"
     prefix:   /
 
 kub_user:

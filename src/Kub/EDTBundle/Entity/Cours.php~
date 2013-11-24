@@ -39,7 +39,7 @@ class Cours
     private $professeur ;
 
     /** 
-     * @ORM\ManyToOne(targetEntity="Kub\EDTBundle\Entity\Matiere")
+     * @ORM\ManyToOne(targetEntity="Kub\EDTBundle\Entity\Matiere", inversedBy="cours", cascade={"persist", "merge", "detach"})
      * @Assert\NotNull()
      */
     private $matiere ;

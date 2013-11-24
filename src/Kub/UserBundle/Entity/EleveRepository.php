@@ -13,18 +13,20 @@ use Doctrine\ORM\EntityRepository;
 class EleveRepository extends UserRepository
 {
 	// fonction utilisee pour charger l'ensemble des données de l'utilisateur
-	public function findWithAll($username)
+	public function findOneByUsername($username)
 	{
 		$qb = $this->createQueryBuilder("e")
-			->join('e.groupe', 'g')
+			->leftJoin('e.groupes', 'g')
 			->addSelect('g')
-			->join('e.niveau', 'n')
+			->leftJoin('e.niveau', 'n')
 			->addSelect('n')
+			->leftJoin('e.tuteurs', 't')
+			->addSelect('t')
 			->where("e.username = :username")
 			->setParameter("username", $username)
 		;
 
-		return $qb->getQuery()->getResult();
+		return $qb->getQuery()->getSingleResult();
 	}
 
 	public function findByNiveauName($niveau)

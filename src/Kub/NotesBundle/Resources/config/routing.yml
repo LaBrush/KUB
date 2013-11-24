@@ -1,7 +1,0 @@
-kub_notes_eleve_homepage:
-    pattern:  /notes
-    defaults: { _controller: KubNotesBundle:Eleve:index }
-
-kub_notes_professeur_homepage:
-    pattern:  /noter/{groupe}
-    defaults: { _controller: KubNotesBundle:Professeur:index, groupe: null }

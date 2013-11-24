@@ -14,109 +14,109 @@ use Kub\ArianeBundle\Form\Handler\PostHandler ;
 
 class PostController extends Controller
 {
-    /**
-     * @Secure(roles="ROLE_ELEVE")
-     */
-    public function addAction()
-    {
-        // throw new \Exception("hey");
-        
+	/**
+	 * @Secure(roles="ROLE_ELEVE")
+	 */
+	public function addAction()
+	{
+		// throw new \Exception("hey");
+		
 
-        $post = new Post ;
-        $form = $this->createForm(new PostType, $post, array(
-            "method" => "POST",
-            "action" => $this->generateUrl('ariane_post_add')
-        ));
+		$post = new Post ;
+		$form = $this->createForm(new PostType, $post, array(
+			"method" => "POST",
+			"action" => $this->generateUrl('ariane_post_add')
+		));
 
-        $request = $this->get('request');
-        $em = $this->getDoctrine()->getManager();
+		$request = $this->get('request');
+		$em = $this->getDoctrine()->getManager();
 
-        $fil = $this->getUser()->getFil();
+		$fil = $this->getUser()->getFil();
 
-        if($request->getMethod() == "POST"){
+		if($request->getMethod() == "POST"){
 
-            $formHandler = new PostHandler($form, $request, $this->getDoctrine()->getManager(), $fil);
+			$formHandler = new PostHandler($form, $request, $this->getDoctrine()->getManager(), $fil);
 
-            if($formHandler->process())
-            {
-                $this->get('session')->getFlashBag()->add('info', "Le post a bien été ajouté");
-                return $this->redirect($this->generateUrl("ariane_homepage"));
-            }
+			if($formHandler->process())
+			{
+				$this->get('session')->getFlashBag()->add('info', "Le post a bien été ajouté");
+				return $this->redirect($this->generateUrl("ariane_homepage"));
+			}
 
-        }
+		}
 
-        $template = 'create';
+		$template = 'create';
 
-        if($this->get('request')->attributes->get('_route') != 'ariane_post_add')
-        {
-            $template .= "_content" ; 
-        }
+		if($this->get('request')->attributes->get('_route') != 'ariane_post_add')
+		{
+			$template .= "_content" ; 
+		}
 
-        return $this->render('KubArianeBundle:Post:' . $template . '.html.twig',
-            array(
-                'form' => $form->createView(),
-            )
-        );   
-    }
+		return $this->render('KubArianeBundle:Post:' . $template . '.html.twig',
+			array(
+				'form' => $form->createView(),
+			)
+		);   
+	}
 
-    /**
-     * @Secure(roles="ROLE_ELEVE")
-     */
-    public function editAction(Post $post)
-    {
-        $form = $this->createForm(new PostType, $post);
+	/**
+	 * @Secure(roles="ROLE_ELEVE")
+	 */
+	public function editAction(Post $post)
+	{
+		$form = $this->createForm(new PostType, $post);
 
-        $request = $this->get('request');
-        $em = $this->getDoctrine()->getManager();
+		$request = $this->get('request');
+		$em = $this->getDoctrine()->getManager();
 
-        $fil = $this->getUser()->getFil();
+		$fil = $this->getUser()->getFil();
 
-        if($request->getMethod() == "POST"){
+		if($request->getMethod() == "POST"){
 
-            $formHandler = new PostHandler($form, $request, $this->getDoctrine()->getManager(), $fil);
+			$formHandler = new PostHandler($form, $request, $this->getDoctrine()->getManager(), $fil);
 
-            if($formHandler->process())
-            {
-                $this->get('session')->getFlashBag()->add('info', "Le post a bien été modifié");
-                return $this->redirect($this->generateUrl("ariane_homepage"));
-            }
+			if($formHandler->process())
+			{
+				$this->get('session')->getFlashBag()->add('info', "Le post a bien été modifié");
+				return $this->redirect($this->generateUrl("ariane_homepage"));
+			}
 
-        }
+		}
 
-        return $this->render('KubArianeBundle:Post:edit.html.twig',
-            array(
-                'form' => $form->createView(),
-                'post' => $post,
-            )
-        );   
-    }
+		return $this->render('KubArianeBundle:Post:edit.html.twig',
+			array(
+				'form' => $form->createView(),
+				'post' => $post,
+			)
+		);   
+	}
 
-    /**
-     * @Secure(roles="ROLE_ELEVE")
-     */
-    public function deleteAction(Post $post)
-    {
-        $form = $this->createFormBuilder()->getForm();
-        $request = $this->getRequest();
+	/**
+	 * @Secure(roles="ROLE_ELEVE")
+	 */
+	public function deleteAction(Post $post)
+	{
+		$form = $this->createFormBuilder()->getForm();
+		$request = $this->getRequest();
 
-        if ($request->getMethod() == 'POST') {
-            $form->bind($request);
+		if ($request->getMethod() == 'POST') {
+			$form->bind($request);
 
-            if ($form->isValid()) {
+			if ($form->isValid()) {
 
-                $em = $this->getDoctrine()->getManager();
-                $em->remove($post);
-                $em->flush();
+				$em = $this->getDoctrine()->getManager();
+				$em->remove($post);
+				$em->flush();
 
-                $this->get('session')->getFlashBag()->add('info', 'Trace bien supprimée');
-    
-                return $this->redirect($this->generateUrl('ariane_homepage'));
-            }
-        }
+				$this->get('session')->getFlashBag()->add('info', 'Trace bien supprimée');
+	
+				return $this->redirect($this->generateUrl('ariane_homepage'));
+			}
+		}
 
-        return $this->render('KubArianeBundle:Post:delete.html.twig', array(
-            'form' => $form->createView(),
-            'post' => $post,
-        ));
-    }
+		return $this->render('KubArianeBundle:Post:delete.html.twig', array(
+			'form' => $form->createView(),
+			'post' => $post,
+		));
+	}
 }

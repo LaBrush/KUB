@@ -1,0 +1,28 @@
+<div class="article">
+     
+		{% set matiere = "" %}
+	
+		{% for note in notes %}
+
+			{% if note.matiere.name != matiere %}
+			
+				{% set matiere = note.matiere.name %}
+				<h3>{{ matiere }}</h3>
+
+			{% endif %}
+
+			<p> 
+
+				{{ note.note }} / {{ note.coefficient }} 
+
+				{% if app.user.id == note.professeur.id %}
+					
+					<a href="{{ path('kub_notes_professeur_delete', {note: note.id}) }}">Supprimer la note</a>
+
+				{% endif %}
+
+			</p>
+
+		{% endfor %}
+
+	</article>
