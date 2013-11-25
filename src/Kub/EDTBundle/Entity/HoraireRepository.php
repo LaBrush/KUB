@@ -23,6 +23,7 @@ class HoraireRepository extends EntityRepository
 			 JOIN h.cours c
 			 JOIN c.groupes g 
 			 JOIN g.eleves e
+			 JOIN h.semaines s
 
 			 WHERE h.id != :id 
 			 AND 
@@ -37,6 +38,7 @@ class HoraireRepository extends EntityRepository
 			 )
 			  AND j.id = :jour
 			  AND c.id != :cours 
+			  AND s.id IN ( :semaine_ids )
 			"
 		)
 		->setParameter('id', $horaire->getId())
@@ -44,6 +46,7 @@ class HoraireRepository extends EntityRepository
 		->setParameter('fin', $horaire->getFin())
 		->setParameter('jour', $horaire->getJour()->getId())
 		->setParameter('cours', $horaire->getCours()->getId())
+		->setParameter('semaine_ids', $horaire->getSemaines())
 		;	
 
   		return $query->getResult();
