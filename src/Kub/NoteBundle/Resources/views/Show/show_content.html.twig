@@ -1,4 +1,4 @@
-<div class="article">
+{# <div class="article">
      
 		{% set matiere = "" %}
 	
@@ -26,3 +26,103 @@
 		{% endfor %}
 
 	</article>
+#}
+
+{# On prépare les variables twig #}
+
+{% set matiere = "" %}
+{% set jauges = "" %}
+{% set legendes = "" %}
+{% set moyennes = "" %}
+{% set selecteur = "" %}
+{% set details = "" %}
+{% set coefficientRatio = 0 %}
+{% set noteSurVingt = 0 %}
+
+	
+{% for note in notes %}
+
+	{% if note.matiere.name != matiere %}
+
+		{% if loop.first == false %}
+
+			{% set moyennes = moyennes ~ '<div class="' ~ matiere ~ '">' ~ moyenneMatiere | number_format(1) ~ '</div>' %}
+
+		{% endif %}
+		
+		{% set totalNotes = 0 %}
+
+		{% set totalCoefficient = 0 %}
+
+		{% set moyenneMatiere = 0 %}
+	
+		{% set matiere = note.matiere.name %}
+
+		{% set jauges = jauges ~ '<div class="' ~ matiere ~ '">&nbsp;</div>' %}
+
+		{% set legendes = legendes ~ '<div class="' ~ matiere ~ '">' ~ matiere ~ '</div>' %}
+
+		{% set selecteur = selecteur ~ '<option value="' ~ matiere ~ '">' ~ matiere ~ '</option>' %}
+
+	{% endif %}
+
+	{% set details = details ~ '<tr class="detail-' ~ matiere ~ '">
+		<th><strong>' ~ note.note | number_format(1) ~ ' / ' ~ note.coefficient | number_format(1) ~ '</strong></th>
+		<td><em>Note ajoutée le ' ~ note.date | date('d/m/y') ~ '</em></td>
+	</tr>' %}
+
+	{% set coefficientRatio = note.coefficient / 20 %}
+
+	{% set noteSurVingt = note.note / note.coefficient * 20 %}
+
+	{% set totalCoefficient = totalCoefficient + coefficientRatio %}
+
+	{% set totalNotes = totalNotes + ( noteSurVingt * coefficientRatio ) %}
+
+	{% set moyenneMatiere = totalNotes / totalCoefficient %}
+
+	{% if loop.last %}
+
+		{% set moyennes = moyennes ~ '<div class="' ~ matiere ~ '">' ~ moyenneMatiere | number_format(1) ~ '</div>' %}
+
+	{% endif %}
+
+{% endfor %}
+
+
+<article class="article">
+	<h3 class="section-title">Mes notes</h3>
+</article>
+
+<article class="article">
+	<table class="notes-by-matieres">
+		<tr class="graph-hidden">
+			<td colspan="10">
+				{{ jauges | raw }}
+			</td>
+		</tr>
+		<tr class="moyennes">
+			<td>
+				{{ moyennes | raw }}
+			</td>
+		</tr>
+		<tr class="matieres-name">
+			<td>
+				{{ legendes | raw }}
+			</td>
+		</tr>
+	</table>
+</article>
+
+<article class="article">
+	<label for="selecteur">Détail des notes en </label>
+		<select id="selecteur">
+			{{ selecteur | raw }}
+		</select>
+</article>
+
+<article class="article">
+	<table class="detail">
+		{{ details | raw }}
+	</table>
+</article>

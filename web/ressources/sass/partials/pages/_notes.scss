@@ -26,6 +26,8 @@
 			margin: 0 2%;
 			background: #5bacad;
 			height: 1px;
+
+			@include transition(all ease 1.2s);
 		}
 	}
 
@@ -47,6 +49,8 @@
 			background: #5bacad;
 
 			@include box-sizing(border-box);
+
+			@include transition(all ease 1.2s);
 		}
 
 		.maths

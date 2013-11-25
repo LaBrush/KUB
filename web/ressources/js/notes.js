@@ -5,6 +5,4 @@ $(function() {
 	$('.graph-hidden')
 	.addClass('graph')
 	.removeClass('graph-hidden');
-
-
 });

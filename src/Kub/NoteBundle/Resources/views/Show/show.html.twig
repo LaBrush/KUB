@@ -9,3 +9,10 @@
 	{% include "KubNoteBundle:Show:show_content.html.twig" %}
 
 {% endblock %}
+
+{% block js %}
+	
+	{{ parent() }}
+	<script type="text/javascript" src="{{ asset('ressources/jsmin/notes.min.js') }}"></script>
+
+{% endblock %}
