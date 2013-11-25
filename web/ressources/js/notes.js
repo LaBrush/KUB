@@ -7,11 +7,9 @@ $(function() {
 
 		var matiere = $('.graph-hidden>td>div').get(i).className.replace(reg, "") ;
 		var moyenneMatiere = $('.moyenne-' + matiere).text();
-		var tailleJauge = moyenneMatiere * 2 + 'px' ;
+		var tailleJauge = moyenneMatiere * 6 + 'px' ;
 
-		$('.jauge-' + matiere).class('height', tailleJauge);
-
-		console.log();
+		$('.jauge-' + matiere).css('height', tailleJauge);
 	}
 
 	// Cette fonction lance l'animation des notes au lancement
