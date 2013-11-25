@@ -38,7 +38,6 @@
 {% set details = "" %}
 {% set coefficientRatio = 0 %}
 {% set noteSurVingt = 0 %}
-
 	
 {% for note in notes %}
 
@@ -46,7 +45,7 @@
 
 		{% if loop.first == false %}
 
-			{% set moyennes = moyennes ~ '<div class="' ~ matiere ~ '">' ~ moyenneMatiere | number_format(1) ~ '</div>' %}
+			{% set moyennes = moyennes ~ '<div class="moyenne-' ~ matiere ~ '">' ~ moyenneMatiere | number_format(1) ~ '</div>' %}
 
 		{% endif %}
 		
@@ -58,9 +57,9 @@
 	
 		{% set matiere = note.matiere.name %}
 
-		{% set jauges = jauges ~ '<div class="' ~ matiere ~ '">&nbsp;</div>' %}
+		{% set jauges = jauges ~ '<div class="jauge-' ~ matiere ~ '">&nbsp;</div>' %}
 
-		{% set legendes = legendes ~ '<div class="' ~ matiere ~ '">' ~ matiere ~ '</div>' %}
+		{% set legendes = legendes ~ '<div class="legende-' ~ matiere ~ '">' ~ matiere ~ '</div>' %}
 
 		{% set selecteur = selecteur ~ '<option value="' ~ matiere ~ '">' ~ matiere ~ '</option>' %}
 
@@ -83,7 +82,7 @@
 
 	{% if loop.last %}
 
-		{% set moyennes = moyennes ~ '<div class="' ~ matiere ~ '">' ~ moyenneMatiere | number_format(1) ~ '</div>' %}
+		{% set moyennes = moyennes ~ '<div class="moyenne-' ~ matiere ~ '">' ~ moyenneMatiere | number_format(1) ~ '</div>' %}
 
 	{% endif %}
 
