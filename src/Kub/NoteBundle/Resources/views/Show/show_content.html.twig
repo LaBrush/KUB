@@ -34,7 +34,6 @@
 {% set jauges = "" %}
 {% set legendes = "" %}
 {% set moyennes = "" %}
-{% set selecteur = "" %}
 {% set details = "" %}
 {% set coefficientRatio = 0 %}
 {% set noteSurVingt = 0 %}
@@ -44,6 +43,8 @@
 	{% if note.matiere.name != matiere %}
 
 		{% if loop.first == false %}
+
+			{% set details = details ~ '</tr></table>' %}
 
 			{% set moyennes = moyennes ~ '<div class="moyenne-' ~ matiere ~ '">' ~ moyenneMatiere | number_format(1) ~ '</div>' %}
 
@@ -61,14 +62,16 @@
 
 		{% set legendes = legendes ~ '<div class="legende-' ~ matiere ~ '">' ~ matiere ~ '</div>' %}
 
-		{% set selecteur = selecteur ~ '<option value="' ~ matiere ~ '">' ~ matiere ~ '</option>' %}
+		{% set details = details ~ '
+
+		<table class="detail detail-' ~ matiere ~ '">
+			<tr>
+				<th colspan="3">' ~ matiere ~ '</th>
+			</tr>
+			<tr>
+		' %}
 
 	{% endif %}
-
-	{% set details = details ~ '<tr class="detail-' ~ matiere ~ '">
-		<th><strong>' ~ note.note | number_format(1) ~ ' / ' ~ note.coefficient | number_format(1) ~ '</strong></th>
-		<td><em>Note ajoutée le ' ~ note.date | date('d/m/y') ~ '</em></td>
-	</tr>' %}
 
 	{% set coefficientRatio = note.coefficient / 20 %}
 
@@ -79,6 +82,11 @@
 	{% set totalNotes = totalNotes + ( noteSurVingt * coefficientRatio ) %}
 
 	{% set moyenneMatiere = totalNotes / totalCoefficient %}
+
+	{% set details = details ~ '
+		<td><strong>' ~ note.note | number_format(1) ~ ' / ' ~ note.coefficient ~ '</strong></td>
+		<td>Note ajoutée le ' ~ note.date | date('d/m/y') ~ '</td>
+	' %}
 
 	{% if loop.last %}
 
@@ -114,14 +122,9 @@
 </article>
 
 <article class="article">
-	<label for="selecteur">Détail des notes en </label>
-		<select id="selecteur">
-			{{ selecteur | raw }}
-		</select>
-</article>
 
-<article class="article">
-	<table class="detail">
+	<div class="wrap-details">
 		{{ details | raw }}
-	</table>
+	</div>
+
 </article>

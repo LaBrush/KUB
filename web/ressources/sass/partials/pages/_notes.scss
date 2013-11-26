@@ -79,20 +79,28 @@
 	}
 }
 
+.wrap-details
+{
+	padding: auto;
+	text-align: center;
+}
+
 .detail
 {
-	border: 1px $table-border solid;
+	margin: 5px;
+	display: inline-block;
 
 	th
 	{
 		text-align: center;
-		padding: 10px;
+		padding: 8px;
 		border: 1px $table-border solid;
+		background-color: $header;
 	}
 
 	td
 	{
-		padding: 10px;
+		padding: 8px;
 		border: 1px $table-border solid;
 	}
 }
