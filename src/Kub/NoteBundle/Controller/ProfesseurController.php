@@ -35,11 +35,12 @@ class ProfesseurController extends Controller
 			$request = $this->get('request');
 			if($request->getMethod() == "POST"){
 
-				$formHandler = new NoteGroupeHandler($form, $request, $this->getDoctrine()->getManager());
+				$formHandler = new NoteGroupeHandler($form, $request, $this->getDoctrine()->getManager(), $this->get('kub.notification_manager'));
 
 				if($formHandler->process())
 				{
 					$this->get('session')->getFlashBag()->add('info', "Les notes ont bien été ajoutées");
+
 					return $this->redirect($this->generateUrl("home_homepage"));
 				}
 				else
@@ -98,9 +99,6 @@ class ProfesseurController extends Controller
 		);
 	}
 
-	/**
-	 * @Secure(roles="ROLE_PROFESSEUR")
-	 */
 	public function showEleveAction(Eleve $eleve)
 	{
 		$liste_notes = $this->get('doctrine.orm.entity_manager')->getRepository('KubNoteBundle:Note')->findByEleve( $eleve );

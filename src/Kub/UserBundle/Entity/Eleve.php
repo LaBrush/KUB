@@ -59,7 +59,7 @@ class Eleve extends User
 	private $fil ;
 
 	/**
-	 * @ORM\OneToOne(targetEntity="Kub\UserBundle\Entity\Photo", cascade={"persist", "remove"})
+	 * @ORM\OneToOne(targetEntity="Kub\UserBundle\Entity\Photo", cascade={"all"})
 	 */
 	private $photo;
 
@@ -67,10 +67,9 @@ class Eleve extends User
 	{
 		$this->class = "eleve";
 
-		if(null == $this->photo)
+		if($this->photo == null)
 		{
 			$this->photo = new Photo ;
-			$this->photo->setId('0');
 			$this->photo->setUrl('png');
 		}
 	}

@@ -15,6 +15,8 @@ class NotificationRepository extends EntityRepository
 
 	public function findByUser($user) { 
 		$qb = $this->createQueryBuilder("n")
+			->leftJoin('n.auteur', 'a') 
+			->addSelect('a')
 			->leftJoin('n.userTarget', 'u') 
 			->where('u.id = :id') 
 			->setParameter('id',$user->getId()) 

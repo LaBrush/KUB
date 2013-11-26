@@ -10,6 +10,7 @@ class NoteSingleHandler
 	protected $request;
 	protected $form;
 	protected $em;
+	protected $notifications;
 
 	/**
 	 * Initialize the handler with the form and the request
@@ -19,11 +20,12 @@ class NoteSingleHandler
 	 * @param $em
 	 * 
 	 */
-	public function __construct(Form $form, Request $request, $em)
+	public function __construct(Form $form, Request $request, $em, $notifications)
 	{
 		$this->form = $form;
 		$this->request = $request;
 		$this->em = $em;
+		$this->notifications = $notifications;
 	}
 
 	public function process()
@@ -48,6 +50,13 @@ class NoteSingleHandler
 
 	protected function onSuccess($data)
 	{
+		$this->notifications->addNotification('NoteAddedNotification', array(
+
+			"userTarget" => $data->getEleve(),
+			"note" => $data
+
+		)) ;
+
 		$this->em->persist($data);
 		$this->em->flush();
 

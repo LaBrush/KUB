@@ -1,0 +1,10 @@
+services:
+    fos_user.username_form_type: 
+        class: Kub\UserBundle\Form\Type\UsernameFormType
+        tags:
+            - { name: form.type, alias: kub_user_username }
+        arguments: [@fos_user.user_to_username_transformer]
+
+    fos_user.user_to_username_transformer: 
+        class: FOS\UserBundle\Form\DataTransformer\UserToUsernameTransformer 
+        arguments: [ @fos_user.user_manager ]

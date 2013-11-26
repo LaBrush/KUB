@@ -26,7 +26,7 @@ class EleveType extends UserType
 		}
 
 		$builder
-			 ->add('photo', new PhotoType(), array('required' => false))
+			->add('photo', new PhotoType(), array('required' => false))
 			->add("anniversaire", "birthday", array(
 				"years" => $years
 			))

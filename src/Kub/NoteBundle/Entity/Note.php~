@@ -67,7 +67,7 @@ class Note
 		$this->date = new \DateTime ;
 	}
 
-	public function __tostring()
+	public function __toString()
 	{
 		return $this->note . ' / ' . $this->coefficient ;
 	}

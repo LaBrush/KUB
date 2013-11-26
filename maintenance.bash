@@ -18,6 +18,7 @@ app/console doctrine:generate:entities KubNoteBundle ;
 app/console doctrine:generate:entities KubNotificationBundle ;
 app/console doctrine:generate:entities KubRessourceBundle ;
 app/console doctrine:generate:entities KubUserBundle ;
+# app/console doctrine:generate:entities Kub ;
 
 # app/console doctrine:schema:update --dump-sql ;
 app/console doctrine:schema:update --force ;
