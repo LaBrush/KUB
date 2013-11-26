@@ -38,6 +38,10 @@
 
 	{% endif %}
 
-	{{ render(controller('KubNoteBundle:Professeur:showEleve', {eleve: user.id})) }}
+	{% if app.user.class == professeur and app.user.hasEleve(eleve) %}
+
+		{{ render(controller('KubNoteBundle:Professeur:showEleve', {eleve: user.id})) }}
+
+	{% endif %}
 
 {% endblock %}
