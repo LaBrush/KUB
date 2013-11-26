@@ -11,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity(repositoryClass="Kub\NotificationBundle\Entity\NotificationRepository")
  * @ORM\InheritanceType("SINGLE_TABLE")
  * @ORM\DiscriminatorColumn(name="discr", type="string")
- * @ORM\DiscriminatorMap({"acn" = "ArianeCommentaireNotification"})
+ * @ORM\DiscriminatorMap({"acn" = "ArianeCommentaireNotification", "nan" = "NoteAddedNotification"})
  *
  * @ORM\HasLifecycleCallbacks()
  */

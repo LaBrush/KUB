@@ -196,4 +196,27 @@ class Note
 	{
 		return $this->eleve;
 	}
+
+    /**
+     * Set professeur
+     *
+     * @param \Kub\UserBundle\Entity\Professeur $professeur
+     * @return Note
+     */
+    public function setProfesseur(\Kub\UserBundle\Entity\Professeur $professeur = null)
+    {
+        $this->professeur = $professeur;
+    
+        return $this;
+    }
+
+    /**
+     * Get professeur
+     *
+     * @return \Kub\UserBundle\Entity\Professeur 
+     */
+    public function getProfesseur()
+    {
+        return $this->professeur;
+    }
 }

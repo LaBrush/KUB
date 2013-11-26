@@ -4,6 +4,7 @@ namespace Kub\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert ;
+use Kub\UserBundle\Entity\Photo;
 
 /**
  * Eleve
@@ -58,13 +59,19 @@ class Eleve extends User
 	private $fil ;
 
 	/**
-  	 * @ORM\OneToOne(targetEntity="Kub\UserBundle\Entity\Photo", cascade={"persist", "remove"})
-   	 */
-  	private $photo;
+	 * @ORM\OneToOne(targetEntity="Kub\UserBundle\Entity\Photo", cascade={"persist", "remove"})
+	 */
+	private $photo;
 
 	public function initClass()
 	{
 		$this->class = "eleve";
+
+		if(null == $this->photo)
+		{
+			$this->photo = new Photo ;
+			$this->photo->setUrl('__winter_lamberjack.png');
+		}
 	}
 
 	public function __construct()
@@ -94,171 +101,171 @@ class Eleve extends User
 
 
 
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
+	/**
+	 * Get id
+	 *
+	 * @return integer 
+	 */
+	public function getId()
+	{
+		return $this->id;
+	}
 
-    /**
-     * Set anniversaire
-     *
-     * @param \DateTime $anniversaire
-     * @return Eleve
-     */
-    public function setAnniversaire($anniversaire)
-    {
-        $this->anniversaire = $anniversaire;
-    
-        return $this;
-    }
+	/**
+	 * Set anniversaire
+	 *
+	 * @param \DateTime $anniversaire
+	 * @return Eleve
+	 */
+	public function setAnniversaire($anniversaire)
+	{
+		$this->anniversaire = $anniversaire;
+	
+		return $this;
+	}
 
-    /**
-     * Get anniversaire
-     *
-     * @return \DateTime 
-     */
-    public function getAnniversaire()
-    {
-        return $this->anniversaire;
-    }
+	/**
+	 * Get anniversaire
+	 *
+	 * @return \DateTime 
+	 */
+	public function getAnniversaire()
+	{
+		return $this->anniversaire;
+	}
 
-    /**
-     * Add tuteurs
-     *
-     * @param \Kub\UserBundle\Entity\Tuteur $tuteurs
-     * @return Eleve
-     */
-    public function addTuteur(\Kub\UserBundle\Entity\Tuteur $tuteurs)
-    {
-        $this->tuteurs[] = $tuteurs;
-    
-        return $this;
-    }
+	/**
+	 * Add tuteurs
+	 *
+	 * @param \Kub\UserBundle\Entity\Tuteur $tuteurs
+	 * @return Eleve
+	 */
+	public function addTuteur(\Kub\UserBundle\Entity\Tuteur $tuteurs)
+	{
+		$this->tuteurs[] = $tuteurs;
+	
+		return $this;
+	}
 
-    /**
-     * Remove tuteurs
-     *
-     * @param \Kub\UserBundle\Entity\Tuteur $tuteurs
-     */
-    public function removeTuteur(\Kub\UserBundle\Entity\Tuteur $tuteurs)
-    {
-        $this->tuteurs->removeElement($tuteurs);
-    }
+	/**
+	 * Remove tuteurs
+	 *
+	 * @param \Kub\UserBundle\Entity\Tuteur $tuteurs
+	 */
+	public function removeTuteur(\Kub\UserBundle\Entity\Tuteur $tuteurs)
+	{
+		$this->tuteurs->removeElement($tuteurs);
+	}
 
-    /**
-     * Get tuteurs
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getTuteurs()
-    {
-        return $this->tuteurs;
-    }
+	/**
+	 * Get tuteurs
+	 *
+	 * @return \Doctrine\Common\Collections\Collection 
+	 */
+	public function getTuteurs()
+	{
+		return $this->tuteurs;
+	}
 
-    /**
-     * Set niveau
-     *
-     * @param \Kub\ClasseBundle\Entity\Niveau $niveau
-     * @return Eleve
-     */
-    public function setNiveau(\Kub\ClasseBundle\Entity\Niveau $niveau = null)
-    {
-        $this->niveau = $niveau;
-    
-        return $this;
-    }
+	/**
+	 * Set niveau
+	 *
+	 * @param \Kub\ClasseBundle\Entity\Niveau $niveau
+	 * @return Eleve
+	 */
+	public function setNiveau(\Kub\ClasseBundle\Entity\Niveau $niveau = null)
+	{
+		$this->niveau = $niveau;
+	
+		return $this;
+	}
 
-    /**
-     * Get niveau
-     *
-     * @return \Kub\ClasseBundle\Entity\Niveau 
-     */
-    public function getNiveau()
-    {
-        return $this->niveau;
-    }
+	/**
+	 * Get niveau
+	 *
+	 * @return \Kub\ClasseBundle\Entity\Niveau 
+	 */
+	public function getNiveau()
+	{
+		return $this->niveau;
+	}
 
-    /**
-     * Add groupes
-     *
-     * @param \Kub\ClasseBundle\Entity\Groupe $groupes
-     * @return Eleve
-     */
-    public function addGroupe(\Kub\ClasseBundle\Entity\Groupe $groupes)
-    {
-        $this->groupes[] = $groupes;
-    
-        return $this;
-    }
+	/**
+	 * Add groupes
+	 *
+	 * @param \Kub\ClasseBundle\Entity\Groupe $groupes
+	 * @return Eleve
+	 */
+	public function addGroupe(\Kub\ClasseBundle\Entity\Groupe $groupes)
+	{
+		$this->groupes[] = $groupes;
+	
+		return $this;
+	}
 
-    /**
-     * Remove groupes
-     *
-     * @param \Kub\ClasseBundle\Entity\Groupe $groupes
-     */
-    public function removeGroupe(\Kub\ClasseBundle\Entity\Groupe $groupes)
-    {
-        $this->groupes->removeElement($groupes);
-    }
+	/**
+	 * Remove groupes
+	 *
+	 * @param \Kub\ClasseBundle\Entity\Groupe $groupes
+	 */
+	public function removeGroupe(\Kub\ClasseBundle\Entity\Groupe $groupes)
+	{
+		$this->groupes->removeElement($groupes);
+	}
 
-    /**
-     * Get groupes
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getGroupes()
-    {
-        return $this->groupes;
-    }
+	/**
+	 * Get groupes
+	 *
+	 * @return \Doctrine\Common\Collections\Collection 
+	 */
+	public function getGroupes()
+	{
+		return $this->groupes;
+	}
 
-    /**
-     * Set fil
-     *
-     * @param \Kub\ArianeBundle\Entity\Fil $fil
-     * @return Eleve
-     */
-    public function setFil(\Kub\ArianeBundle\Entity\Fil $fil = null)
-    {
-        $this->fil = $fil;
-    
-        return $this;
-    }
+	/**
+	 * Set fil
+	 *
+	 * @param \Kub\ArianeBundle\Entity\Fil $fil
+	 * @return Eleve
+	 */
+	public function setFil(\Kub\ArianeBundle\Entity\Fil $fil = null)
+	{
+		$this->fil = $fil;
+	
+		return $this;
+	}
 
-    /**
-     * Get fil
-     *
-     * @return \Kub\ArianeBundle\Entity\Fil 
-     */
-    public function getFil()
-    {
-        return $this->fil;
-    }
+	/**
+	 * Get fil
+	 *
+	 * @return \Kub\ArianeBundle\Entity\Fil 
+	 */
+	public function getFil()
+	{
+		return $this->fil;
+	}
 
-    /**
-     * Set photo
-     *
-     * @param \Kub\UserBundle\Entity\Photo $photo
-     * @return Eleve
-     */
-    public function setPhoto(\Kub\UserBundle\Entity\Photo $photo = null)
-    {
-        $this->photo = $photo;
-    
-        return $this;
-    }
+	/**
+	 * Set photo
+	 *
+	 * @param \Kub\UserBundle\Entity\Photo $photo
+	 * @return Eleve
+	 */
+	public function setPhoto(\Kub\UserBundle\Entity\Photo $photo = null)
+	{
+		$this->photo = $photo;
+	
+		return $this;
+	}
 
-    /**
-     * Get photo
-     *
-     * @return \Kub\UserBundle\Entity\Photo 
-     */
-    public function getPhoto()
-    {
-        return $this->photo;
-    }
+	/**
+	 * Get photo
+	 *
+	 * @return \Kub\UserBundle\Entity\Photo 
+	 */
+	public function getPhoto()
+	{
+		return $this->photo;
+	}
 }

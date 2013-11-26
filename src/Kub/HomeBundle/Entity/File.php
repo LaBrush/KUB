@@ -19,11 +19,6 @@ abstract class File
 	private $url;
 
 	/**
-	 * @ORM\Column(name="alt", type="string", length=255)
-	 */
-	private $alt;
-
-	/**
 	 * @Assert\File(maxSize="500k")
 	 */
 	private $file;
@@ -124,24 +119,6 @@ abstract class File
 	public function setUrl($url)
 	{
 		$this->url = $url;
-		return $this;
-	}
-
-	/**
-	 * @return string
-	 */
-	public function getUrl()
-	{
-		return $this->url;
-	}
-
-	/**
-	 * @param string $alt
-	 * @return Image
-	 */
-	public function setAlt($alt)
-	{
-		$this->alt = $alt;
 		return $this;
 	}
 
