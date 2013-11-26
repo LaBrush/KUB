@@ -15,9 +15,22 @@
 	display: inline-block;
 
 	background: $header;
+	text-align: center;
 
 	&:hover, &:active, &:focus
 	{
 		background: darken($header, 5%);
+	}
+
+	span
+	{
+		display: block;
+	}
+
+	img
+	{
+		display: inline;
+		max-height: 100px;
+		max-width: 100px;
 	}
 }

@@ -15,19 +15,6 @@
 			<a class="button-yes" class="button-yes" href="{{ path('user_create', { role: role }) }}">Créer un {{ role }}</a>
 		</div>
 
-		{% if liste_niveaux != null %}
-			<span>Choisir un niveau :</span>
-				<ul>
-					
-					{% for niveau in liste_niveaux %}
-
-						<li class="li-list"><a href="{{ path('user_list', { role: role, niveau: niveau.name }) }}">{{ niveau.name | capitalize }}</a></li>
-
-					{% endfor %}
-
-				</ul>
-		{% endif %}
-
 		<label for="search-in-list">Chercher dans la liste :</label>
 		<input id="search-in-list" type="text">
 		
@@ -36,6 +23,13 @@
 			
 				<a href="{{ path('user_show', { role: role, username: user.username }) }}">
 					<li class="in-list li-list">
+
+						{% if role == 'eleve' %}
+			
+							<img src="{{ user.photo }}" alt="{{ user.nom }} {{ user.prenom }}">
+
+						{% endif %}
+
 						<span>{{ user.nom }} {{ user.prenom }}</span>
 					</li>
 				</a>

@@ -18,8 +18,4 @@ $(function() {
 	$('.graph-hidden')
 	.addClass('graph')
 	.removeClass('graph-hidden');
-
-	// Cette fonction affiche le détail uniquement de la matiere selectionnée
-
-	
 });
