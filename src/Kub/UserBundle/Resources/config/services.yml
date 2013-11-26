@@ -1,3 +1,6 @@
+imports:
+    - { resource: username_form_type.yml }
+
 parameters:
 #    Kub_user.example.class: Kub\UserBundle\Example
 

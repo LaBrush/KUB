@@ -6,33 +6,26 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Kub\HomeBundle\Entity\FIle ;
 
 /**
- * @ORM\Table(name="eleve_photo")
- * @ORM\Entity(repositoryClass="Kub\UserBundle\Entity\ImageRepository")
- * @ORM\HasLifecycleCallbacks
+ * @ORM\Table(name="Photo")
+ * @ORM\Entity
  */
 class Photo extends File
 {
-	/**
-	 * @ORM\Column(name="id", type="integer")
-	 * @ORM\Id
-	 * @ORM\GeneratedValue(strategy="AUTO")
-	 */
-	protected $id;
-
 	public function getUploadDir()
 	{
 		// On retourne le chemin relatif vers l'image pour un navigateur
 		return 'images/photos';
 	}
 
-
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
+	public function getWebPath()
+	{
+		if($this->id > 0)
+		{
+			return parent::getWebPath();
+		}
+		else
+		{
+			return $this->getUploadDir().'/0' . $this->url ;
+		}
+	}
 }

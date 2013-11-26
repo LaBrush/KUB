@@ -27,7 +27,7 @@ class NotificationManager
 			"specific" => array()			
 
 		);
-		$user = $this->security->getToken()->getUser();
+		$user = $this->security->getToken()->getUser();		
 
 		$config = array_merge($config, $default);
 
@@ -73,6 +73,8 @@ class NotificationManager
 
 		}
 
+		throw new \Exception($notification->getNote());
+		
 		$this->em->persist($notification);
 		$this->em->flush();
 	}

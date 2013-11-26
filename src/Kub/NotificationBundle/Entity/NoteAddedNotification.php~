@@ -22,7 +22,7 @@ class NoteAddedNotification extends Notification
 
 
     /**
-     * @ORM\OneToOne(targetEntity="Kub\NoteBundle\Entity\Note")
+     * @ORM\OneToOne(targetEntity="Kub\NoteBundle\Entity\Note", cascade={"all"})
      */
     private $note ; 
 
@@ -35,11 +35,13 @@ class NoteAddedNotification extends Notification
     {
         if($scope == 'eleve')
         {
-            return ($this->auteur . ' vous a ajouté la note de ' . $this->note)  ;
+            throw new \Exception($this->note->getId());
+            
+            return $this->getAuteur() . ' vous a ajouté la note de ' . $this->getNote() ;
         }
         else
         {
-            return ($this->auteur . ' a ajouté la note de ' . $this->note . ' à ' . $this->note->getEleve()) ;
+            return $this->getAuteur() . ' a ajouté la note de ' . $this->getNote() . ' à ' . $this->note->getEleve() ;
         }
     }
 

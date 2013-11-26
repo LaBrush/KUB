@@ -26,7 +26,7 @@
 
 						{% if role == 'eleve' %}
 			
-							<img src="{{ user.photo.webPath }}" alt="{{ user.nom }} {{ user.prenom }}">
+							<img src="{{ asset(user.photo.webPath) }}" alt="{{ user.nom }} {{ user.prenom }}">
 
 						{% endif %}
 

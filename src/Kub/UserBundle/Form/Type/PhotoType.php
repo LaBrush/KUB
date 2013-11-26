@@ -24,6 +24,6 @@ class PhotoType extends AbstractType
 
   public function getName()
   {
-    return 'sdz_blogbundle_Phototype';
+    return 'kub_userbundle_Phototype';
   }
 }

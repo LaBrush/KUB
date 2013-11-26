@@ -10,6 +10,7 @@ class NoteGroupeHandler
 	protected $request;
 	protected $form;
 	protected $em;
+	protected $notifications;
 
 	/**
 	 * Initialize the handler with the form and the request
@@ -19,11 +20,12 @@ class NoteGroupeHandler
 	 * @param $em
 	 * 
 	 */
-	public function __construct(Form $form, Request $request, $em)
+	public function __construct(Form $form, Request $request, $em, $notifications)
 	{
 		$this->form = $form;
 		$this->request = $request;
 		$this->em = $em;
+		$this->notifications = $notifications ;
 	}
 
 	public function process()
@@ -48,7 +50,7 @@ class NoteGroupeHandler
 
 			$this->form[$i]->getData()->setMatiere( $matiere ); 
 
-			$handler = new NoteSingleHandler($this->form[$i], $this->request, $this->em);
+			$handler = new NoteSingleHandler($this->form[$i], $this->request, $this->em, $this->notifications);
 
 			if(!$handler->process())
 			{

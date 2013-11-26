@@ -14,7 +14,6 @@ class DefaultController extends Controller
     	{
             $notification = $this->get('kub.notification_manager');
 
-            // $notification->addNotification('ArianeCommentaireNotification');
             $liste_notifications = $notification->getNotifications();
 
     		return $this->render("KubHomeBundle:User:index.html.twig", array(

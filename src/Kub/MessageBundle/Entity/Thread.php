@@ -53,5 +53,4 @@ class Thread extends BaseThread
         $this->metadata = new \Doctrine\Common\Collections\ArrayCollection;
     }
 
-
 }
