@@ -112,6 +112,11 @@ abstract class File
 		return $this->id;
 	}
 
+	public function getUrl()
+	{
+		return $this->url ;
+	}
+
 	/**
 	 * @param string $url
 	 * @return Image

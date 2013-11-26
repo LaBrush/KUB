@@ -19,7 +19,8 @@ class NewThreadMessageFormFactory extends BaseFactory
 		parent::__construct($formFactory, $formType, $formName, $messageClass);
 
 		$this->formFactory = $formFactory;
-		$this->formType = $formType;
+		// $this->formType = $formType;
+		$this->formType = new \Kub\MessageBundle\FormType\NewThreadMessageFormType ;
 		$this->formName = $formName;
 		$this->messageClass = $messageClass;
 
