@@ -127,14 +127,6 @@ abstract class File
 		return $this;
 	}
 
-	/**
-	 * @return string
-	 */
-	public function getAlt()
-	{
-		return $this->alt;
-	}
-
 	public function setFile($file)
 	{
 		$this->file = $file;

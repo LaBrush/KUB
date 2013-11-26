@@ -70,7 +70,8 @@ class Eleve extends User
 		if(null == $this->photo)
 		{
 			$this->photo = new Photo ;
-			$this->photo->setUrl('__winter_lamberjack.png');
+			$this->photo->setId('0');
+			$this->photo->setUrl('png');
 		}
 	}
 
