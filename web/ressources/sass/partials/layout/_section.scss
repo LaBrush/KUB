@@ -2,6 +2,8 @@
 
 .section
 {
+	@include pie-clearfix();
+
 	padding: 75px 10% 20px 10%;
 
 	@include box-sizing(border-box);
