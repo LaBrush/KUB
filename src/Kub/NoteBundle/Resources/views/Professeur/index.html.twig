@@ -1,29 +1,38 @@
 {% extends "::base.html.twig" %}
 
+{% block title %}
+	{{ parent() }} - Noter un groupe
+{% endblock %}
+
 {% block body %}
-    
-    <div class="article">
-     
-		<p>Ici vous pouvez noter vos diférents groupes. Indequer le groupe à noter</p>
-		<p>NB: CHANGER CE TEXTE MERDE</p>
 
-		{% if groupes|length > 0 %}
-			<ul>
-				
-				{% for groupe in groupes %}
-
-					<li>
-						<a href="{{ path('kub_notes_professeur_homepage', { groupe: groupe.name }) }}">{{ groupe.name }}</a>
-					</li>
-
-				{% endfor %}
-
-			</ul>
-		{% else %}
-
-			<p>Vous n'avez pas encore de groupe attribué </p>
-
-		{% endif %}
-
+	<article class="article">
+		<h2 class="section-title">Noter un groupe</h2>
 	</article>
+    
+	<article class="article">
+		<div class="create">
+			<a class="button" href="">Dernieres notes ajoutées</a>
+		</div>
+
+		<label for="search-in-list">Chercher dans la liste :</label>
+		<input id="search-in-list" type="text">
+		
+		<ul class="liste">
+			{% for groupe in groupes %}
+			
+				<a href="{{ path('kub_notes_professeur_homepage', { groupe: groupe.name }) }}">
+					<li class="in-list li-list">
+						<span>{{ groupe }}</span>
+					</li>
+				</a>
+
+			{% endfor %}
+
+			{% if groupes|length == 0 %}
+				<li>Aucun groupe enregistré pour le moment</li>
+			{% endif %}
+		</ul>
+	</article>
+
 {% endblock %}

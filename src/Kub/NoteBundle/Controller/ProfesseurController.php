@@ -51,7 +51,8 @@ class ProfesseurController extends Controller
 			}
 
 			return $this->render('KubNoteBundle:Professeur:noter.html.twig', array(
-				'form' => $form->createView()
+				'form' => $form->createView(),
+				'groupe' => $groupe
 			));
 		}
 	}
