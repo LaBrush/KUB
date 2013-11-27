@@ -34,12 +34,11 @@
 
 	{% endif %}
 
-	{{ app.user.class }}
-
-	{% if true %}{#app.user.class == 'professeur' %} {#and app.user.hasEleve(eleve) #}
-
-		{{ render(controller('KubNoteBundle:Professeur:showEleve', {eleve: user.id})) }}
-
+	{% if app.user.hasEleve(user) is defined and app.user.hasEleve(user) %}
+		<span class="label">Notes de l'élève :</span>
+		<span class="info">
+			{{ render(controller('KubNoteBundle:Professeur:showEleve', {eleve: user.id})) }}
+		</span>
 	{% endif %}
 
 {% endblock %}

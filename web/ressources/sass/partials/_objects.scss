@@ -233,6 +233,7 @@ input[type="text"], input[type="password"], input[type="email"], input[type="sea
 
 .profil-picture
 {
+	@include border-radius(3px);
 	max-height: 100px;
 	max-width: 100px;
 }

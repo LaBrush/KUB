@@ -51,7 +51,7 @@
 	{
 		margin: 0 0 0 20px;
 
-		@media all and (max-width: 450px)
+		@media all and (max-width: 650px)
 		{
 			margin: 10px 0 0 0;
 		}
@@ -77,6 +77,11 @@
 	{
 		margin-top: 11px;
 		display: inline-block;
+		float: right;
+	}
+
+	.profil-picture
+	{
 		float: right;
 	}
 }

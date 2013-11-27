@@ -1,5 +1,9 @@
 {% block form %}
 	
+	{% if user.photo is not null %}
+        <img src="{{ asset(user.photo.webPath) }}" alt="{{ user }}" class="profil-picture"/>
+    {% endif %}
+
 	<span class="prenom">
 		{{ form_label(form.prenom) }} <div class="input">{{ form_widget(form.prenom) }}</div>
 	</span>
@@ -16,10 +20,6 @@
 			{% endfor %}
 		</div>
 	</span>
-
-	{% if user.photo is not null %}
-        <img src="{{ asset(user.photo.webPath) }}" alt="{{ user }}" />
-    {% endif %}
 
 	<span class="email">
 		{{ form_label(form.email) }} <div class="input">{{ form_widget(form.email) }}</div>
