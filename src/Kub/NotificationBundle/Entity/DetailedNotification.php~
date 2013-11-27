@@ -1,0 +1,31 @@
+<?php
+
+namespace Kub\NotificationBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * DetailedNotification
+ * @ORM\Entity
+ * @ORM\DiscriminatorColumn(name="discr_detailed", type="string")
+ * @ORM\DiscriminatorMap({"nan" = "NoteAddedNotification", "acn" = "ArianeCommentaireNotification"})
+ */
+abstract class DetailedNotification extends Notification
+{
+	private $contenu ;
+
+	public function getContenu()
+    {
+        return $this->contenu;
+    }
+
+    function __toString()
+    {
+        return (string)$this->getContenu();
+    }
+
+    function setContenu($contenu)
+    {
+        $this->contenu = $contenu ;
+    }
+}

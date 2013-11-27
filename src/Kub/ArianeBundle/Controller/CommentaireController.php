@@ -55,7 +55,7 @@ class CommentaireController extends Controller
 				$this->get('kub.notification_manager')->addNotification('ArianeCommentaireNotification', array(
 
 					"userTarget" => $eleve,
-					"commentaire" => $commentaire
+					"contenu" => $commentaire
 
 				)) ;
 			}

@@ -11,9 +11,10 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity(repositoryClass="Kub\NotificationBundle\Entity\NotificationRepository")
  * @ORM\InheritanceType("SINGLE_TABLE")
  * @ORM\DiscriminatorColumn(name="discr", type="string")
- * @ORM\DiscriminatorMap({"acn" = "ArianeCommentaireNotification", "nan" = "NoteAddedNotification"})
+ * @ORM\DiscriminatorMap({"acn" = "ArianeCommentaireNotification", "nan" = "NoteAddedNotification", "apn" = "ArianePostNotification"})
  *
  * @ORM\HasLifecycleCallbacks()
+ * @ORM\MappedSuperclass
  */
 abstract class Notification
 {
@@ -77,6 +78,15 @@ abstract class Notification
 	private $routeName ;
 
 	private $titre ;
+
+	private $contenu ;
+
+	public function setContenu($contenu)
+    {
+        $this->contenu = $contenu;
+    
+        return $this;
+    }
 
 	abstract function getContenu();
 

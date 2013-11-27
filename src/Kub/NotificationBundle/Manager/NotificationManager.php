@@ -64,16 +64,14 @@ class NotificationManager
 			}
 		}
 
-		$notification->setEveryone( $config["everyOne"] );
-
-		foreach ($config['specific'] as $attr => $value) {
-
-			$method = 'set' . ucfirst($attr);
-			$notification->$method($value);
-
+		if(array_key_exists("contenu", $config))
+		{
+			$notification->setContenu( $config["contenu"] );
 		}
 
-		throw new \Exception($notification->getNote());
+		$notification->setEveryone( $config["everyOne"] );
+
+		// throw new \Exception($notification->getNote());
 		
 		$this->em->persist($notification);
 		$this->em->flush();

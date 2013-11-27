@@ -35,11 +35,12 @@ class PostController extends Controller
 
 		if($request->getMethod() == "POST"){
 
-			$formHandler = new PostHandler($form, $request, $this->getDoctrine()->getManager(), $fil);
+			$formHandler = new PostHandler($form, $request, $this->getDoctrine()->getManager(), $fil, $this->get('kub.notification_manager'));
 
 			if($formHandler->process())
 			{
 				$this->get('session')->getFlashBag()->add('info', "Le post a bien été ajouté");
+
 				return $this->redirect($this->generateUrl("ariane_homepage"));
 			}
 

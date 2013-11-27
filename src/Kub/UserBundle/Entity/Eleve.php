@@ -49,7 +49,7 @@ class Eleve extends User
 	private $niveau ;
 
 	/**
-	 * @ORM\ManyToMany(targetEntity="Kub\ClasseBundle\Entity\Groupe", mappedBy="eleves")
+	 * @ORM\ManyToMany(targetEntity="Kub\ClasseBundle\Entity\Groupe", mappedBy="eleves", cascade={"merge", "detach", "persist"})
 	 */
 	protected $groupes;
 
@@ -82,6 +82,23 @@ class Eleve extends User
 		$this->setfil(new \Kub\ArianeBundle\Entity\Fil) ;
 		$this->tuteurs = new \Doctrine\Common\Collections\ArrayCollection;
 		$this->groupes = new \Doctrine\Common\Collections\ArrayCollection;
+	}
+
+	public function getProfesseurs()
+	{
+		$professeurs = array();
+
+		foreach ($this->getGroupes() as $groupe) {
+			foreach ($groupe->getCours() as $cours) {
+				$professeur = $cours->getProfesseur();
+				if(!in_array($professeur, $professeurs))
+				{
+					$professeurs[] = $professeur ;
+				}
+			}
+		}
+
+		return $professeurs ;
 	}
 
 	/**

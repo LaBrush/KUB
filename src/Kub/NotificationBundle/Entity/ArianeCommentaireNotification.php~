@@ -24,7 +24,7 @@ class ArianeCommentaireNotification extends Notification
     /**
      * @ORM\OneToOne(targetEntity="Kub\ArianeBundle\Entity\Commentaire")
      */
-    private $commentaire ; 
+    private $contenu ; 
 
     public function __construct()
     {
@@ -33,30 +33,6 @@ class ArianeCommentaireNotification extends Notification
 
     public function getContenu()
     {
-        return $this->getAuteur() . ' a dit ' . $this->commentaire->getContenu() ;
-    }
-
-
-    /**
-     * Set commentaire
-     *
-     * @param \Kub\ArianeBundle\Entity\Commentaire $commentaire
-     * @return ArianeCommentaireNotification
-     */
-    public function setCommentaire(\Kub\ArianeBundle\Entity\Commentaire $commentaire = null)
-    {
-        $this->commentaire = $commentaire;
-    
-        return $this;
-    }
-
-    /**
-     * Get commentaire
-     *
-     * @return \Kub\ArianeBundle\Entity\Commentaire 
-     */
-    public function getCommentaire()
-    {
-        return $this->commentaire;
+        return $this->getAuteur() . ' a dit ' . $this->contenu->getContenu() ;
     }
 }
