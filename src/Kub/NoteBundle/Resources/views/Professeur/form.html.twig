@@ -1,6 +1,10 @@
 {% block form %}
 
-	<span class="matiere">{{ form_label(form.matiere) }}  {{ form_widget(form.matiere) }}</span>
+	<span class="matiere">{{ form_label(form.matiere) }}  <div class="input">{{ form_widget(form.matiere) }}</div></span>
+
+	<span class="coefficient-global">
+		Coefficient commun a toute la classe (Modifiable au cas par cas) : <div class="input coeff-global"><input type="text" class="coeff-global-value"></div>
+	</span>
 	
 	<span class="eleves-a-noter">
 		<table class="liste-eleves-a-noter">
@@ -29,7 +33,7 @@
 							{{ form_widget(i.noter) }}
 						</td>
 						<td>
-							{{ form_widget(i.note) }} / {{ form_widget(i.coefficient) }}
+							{{ form_widget(i.note) }} / {{ form_widget(i.coefficient, { 'attr': {'class': 'coeff'} }) }}
 						</td>
 					</tr>
 
