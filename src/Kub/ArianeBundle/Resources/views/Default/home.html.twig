@@ -67,5 +67,14 @@
 	
 	{{ parent() }}
 	<script type="text/javascript" src="{{ asset('ressources/jsmin/ariane.min.js') }}"></script>
+	<!-- <script src="//tinymce.cachefly.net/4.0/tinymce.min.js"></script> -->
+    <script type="text/javascript" src="{{ asset('ressources/tinymce/tinymce.min.js') }}"></script>
+	<script>
+		jQuery(document).ready(function($) {
+		    var $configs = {"language":"fr","theme":"modern","mode":"exact","elements":"kub_arianebundle_post_contenu"};
+		    tinyMCE.init($configs);
+		});
+	</script>
+    
 
 {% endblock %}
