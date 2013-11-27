@@ -1,4 +1,4 @@
-/* Menu */
+*/* Menu */
 
 .bordered-accueil {border-left: 4px solid $accueil;}
 .bordered-espace-collaboratif {border-left: 4px solid $espace-collaboratif;}
@@ -229,4 +229,10 @@ input[type="text"], input[type="password"], input[type="email"], input[type="sea
 .inline-block
 {
 	display: inline-block;
+}
+
+.profil-picture
+{
+	max-height: 100px;
+	max-width: 100px;
 }

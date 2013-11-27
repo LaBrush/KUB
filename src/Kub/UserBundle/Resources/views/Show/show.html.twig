@@ -7,11 +7,14 @@
 {% block body %}
 
 	<article class="article">
-		<h2 class="section-title">{{ user }}</h2>
-		
+		<h2 class="section-title">{{ user }}</h2>	
 	</article>
 
 	<article class="article infos">
+		
+		{% if user.photo is defined and user.photo is not null %}
+			<span class="info"> <img src="{{ asset(user.photo.webPath) }}" alt="{{ user.prenom }}" class="profil-picture"/></span>
+	    {% endif %}
 
 		<span class="label">Identifiant :</span>
 		<span class="info">{{ user.username }}</span>
@@ -31,5 +34,13 @@
 		{% endif %}
 		
 	</article>
+
+{% endblock %}
+
+{% block js %}
+	
+	{{ parent() }}
+	<script type="text/javascript" src="{{ asset('ressources/jsmin/notes.min.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('ressources/jsmin/infos.min.js') }}"></script>
 
 {% endblock %}

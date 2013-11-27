@@ -2,10 +2,6 @@
 
 {% block details %}
 
-	{% if user.photo is not null %}
-        <img src="{{ asset(user.photo.webPath) }}" alt="{{ user.prenom }}" />
-    {% endif %}
-
 	<span class="label">Date de naissance :</span>
 	<span class="info">{{ user.anniversaire | date('d/m/Y') }}</span>
 
