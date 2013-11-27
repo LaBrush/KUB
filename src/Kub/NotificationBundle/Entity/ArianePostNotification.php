@@ -16,8 +16,8 @@ class ArianePostNotification extends Notification
         parent::init();
 
         $this->route = "ariane_homepage" ;
-        $this->routeTitle = "Voir votre fil" ;
-        $this->titre = "Un commentaire à été ajouté à votre fil d'Ariane ";
+        $this->routeTitle = "Voir le fil" ;
+        $this->titre = $this->getAuteur() . ' a ajouté une trace à son fil d\'Ariane' ;;
     }
 
 
@@ -33,6 +33,6 @@ class ArianePostNotification extends Notification
 
     public function getContenu()
     {
-        return $this->getAuteur() . ' a ajouté une trace à son fil d\'Ariane' ;
+        return $this->getContenu()->getContenu();
     }
 }

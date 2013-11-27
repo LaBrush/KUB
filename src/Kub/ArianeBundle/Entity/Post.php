@@ -23,7 +23,7 @@ class Post
 	protected $id;
 
 	/**
-	 * @ORM\ManyToOne(targetEntity="Kub\ArianeBundle\Entity\Fil", inversedBy="posts")
+	 * @ORM\ManyToOne(targetEntity="Kub\ArianeBundle\Entity\Fil", inversedBy="posts", cascade={"merge", "persist", "detach"})
 	 */
 	private $fil ;
 
