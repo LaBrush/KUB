@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * ArianeCommentaireNotification
  * @ORM\Entity
  */
-class ArianeCommentaireNotification extends Notification
+class ArianePostNotification extends Notification
 {
     
     public function init()
@@ -33,6 +33,6 @@ class ArianeCommentaireNotification extends Notification
 
     public function getContenu()
     {
-        return $this->getAuteur() . ' a dit ' . $this->contenu->getContenu() ;
+        return $this->getAuteur() . ' a ajouté une trace à son fil d\'Ariane' ;
     }
 }

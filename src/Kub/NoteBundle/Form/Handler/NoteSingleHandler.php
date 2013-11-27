@@ -50,15 +50,15 @@ class NoteSingleHandler
 
 	protected function onSuccess($data)
 	{
+		$this->em->persist($data);
+		$this->em->flush();
+		
 		$this->notifications->addNotification('NoteAddedNotification', array(
 
 			"userTarget" => $data->getEleve(),
-			"note" => $data
+			"contenu" => $data
 
 		)) ;
-
-		$this->em->persist($data);
-		$this->em->flush();
 
 		return true;
 	}

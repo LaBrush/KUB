@@ -19,7 +19,7 @@ class Photo extends File
 
 	public function getWebPath()
 	{
-		if($this->id > 0)
+		if($this->getId() > 0)
 		{
 			return parent::getWebPath();
 		}

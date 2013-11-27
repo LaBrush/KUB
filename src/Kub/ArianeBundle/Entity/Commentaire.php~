@@ -80,29 +80,6 @@ class Commentaire
     }
 
     /**
-     * Set contenu
-     *
-     * @param string $contenu
-     * @return Commentaire
-     */
-    public function setContenu($contenu)
-    {
-        $this->contenu = $contenu;
-    
-        return $this;
-    }
-
-    /**
-     * Get contenu
-     *
-     * @return string 
-     */
-    public function getContenu()
-    {
-        return $this->contenu;
-    }
-
-    /**
      * Set date
      *
      * @param \DateTime $date
@@ -146,5 +123,28 @@ class Commentaire
     public function getAuteur()
     {
         return $this->auteur;
+    }
+
+    /**
+     * Set contenu
+     *
+     * @param string $contenu
+     * @return Commentaire
+     */
+    public function setContenu($contenu)
+    {
+        $this->contenu = $contenu;
+    
+        return $this;
+    }
+
+    /**
+     * Get contenu
+     *
+     * @return string 
+     */
+    public function getContenu()
+    {
+        return $this->contenu;
     }
 }

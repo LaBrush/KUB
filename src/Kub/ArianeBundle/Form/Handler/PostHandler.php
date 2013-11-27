@@ -13,21 +13,15 @@ class PostHandler
 	protected $form;
 	protected $em;
 	protected $fil ;
+	protected $notification ;
 
-	/**
-	 * Initialize the handler with the form and the request
-	 *
-	 * @param Form $form
-	 * @param Request $request
-	 * @param $em
-	 * 
-	 */
-	public function __construct(Form $form, Request $request, $em, Fil $fil)
+	public function __construct(Form $form, Request $request, $em, Fil $fil, $notification)
 	{
 		$this->form = $form;
 		$this->request = $request;
 		$this->em = $em;
 		$this->fil = $fil ;
+		$this->notification = $notification ;
 	}
 
 	public function process()
@@ -54,5 +48,15 @@ class PostHandler
 
 		$this->em->persist($data);
 		$this->em->flush();
+
+		$this->notification->addNotification('ArianePostNotification', array(
+
+			'userTarget' => $this->getUser()->getProfesseurs(),q
+			'contenu' => $post
+
+		));
+
+		throw new \Exception("Error Processing Request", 1);
+		
 	}
 }
