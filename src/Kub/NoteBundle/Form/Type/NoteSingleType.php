@@ -23,7 +23,8 @@ class NoteSingleType extends AbstractType
 	{
 		$builder
 			->add('noter', 'checkbox', array(
-				"mapped" => false
+				"mapped" => false,
+				'attr'     => array('checked'   => 'checked'),
 			))
 			->add('note', 'number')
 			->add('coefficient', 'number')
