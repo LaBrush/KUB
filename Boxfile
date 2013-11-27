@@ -1,35 +1,44 @@
 web1:
-    name: mysf2site
-    document_root: web
-    default_gateway: app.php
-    index_list: [app.php]
-    php_version: 5.3.8
-
-    shared\_writable\_dirs:
-      - app/cache
+  ################################################
+  ## GENERAL SETTINGS
+  ################################################
+  shared_writable_dirs:
+      - app/cache #remove when you can warm all the cache
       - app/logs
 
-    php_extensions:
-      - intl
-      - mbstring
-      - xsl
-      - apc
-      - mysql
-      - pdo_mysql
-      - zip
+  ################################################
+  ## WEB SPECIFIC SETTINGS
+  ################################################
+  document_root: web
+  default_gateway: app.php
+  index_list: [app.php]
 
-    after_build:
-      - "echo 'parameters:' >> app/config/parameters.yml"
-      - "echo ' database_driver: pdo_mysql' >> app/config/parameters.yml"
-      - "echo ' database_host: %database.host%' >> app/config/parameters.yml"
-      - "echo ' database_port: 3306' >> app/config/parameters.yml"
-      - "echo ' database_name: %database.name%' >> app/config/parameters.yml"
-      - "echo ' database_user: %database.user%' >> app/config/parameters.yml"
-      - "echo ' database_password: %database.password%' >> app/config/parameters.yml"
-      - "echo ' mailer_transport: smtp' >> app/config/parameters.yml"
-      - "echo ' mailer_host: localhost' >> app/config/parameters.yml"
-      - "echo ' mailer_user: ~' >> app/config/parameters.yml"
-      - "echo ' mailer_password: ~' >> app/config/parameters.yml"
-      - "echo ' locale: en' >> app/config/parameters.yml"
-      - "echo ' secret: [secret]' >> app/config/parameters.yml"
-      - "php bin/composer.phar install"
+  ################################################
+  ## PHP SPECIFIC SETTINGS
+  ################################################
+  php_version: 5.4.14
+  php_extensions:
+    - intl
+    - mbstring
+    - xsl
+    - apc # for doctrine common
+    - mysql # for doctrine orm
+    - pdo_mysql # for doctrine orm
+    - curl # for bin/vendors
+    - zip # for composer
+  php_session_autostart: Off
+  php_short_open_tag: Off
+  magic_quotes_gpc: Off
+
+  ################################################
+  ## DEPLOYMENT HOOKS
+  ################################################
+  # this config works with app/cache in shared writables
+  after_build:
+    - "curl -s http://getcomposer.org/installer | php"
+    - "php composer.phar install --prefer-source"
+
+  before_deploy:
+    - "app/console cache:clear --env=prod"
+    - "app/console doctrine:ensure-production-settings"
+    - "app/console doctrine:schema:update --env=prod --force"
