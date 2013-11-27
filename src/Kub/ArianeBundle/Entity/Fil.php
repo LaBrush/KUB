@@ -57,7 +57,6 @@ class Fil
     public function addPost(\Kub\ArianeBundle\Entity\Post $posts)
     {
         $this->posts[] = $posts;
-        $posts->setFil($this);
     
         return $this;
     }
@@ -70,7 +69,6 @@ class Fil
     public function removePost(\Kub\ArianeBundle\Entity\Post $posts)
     {
         $this->posts->removeElement($posts);
-        $posts->setFil();
     }
 
     /**

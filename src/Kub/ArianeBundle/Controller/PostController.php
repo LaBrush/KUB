@@ -35,7 +35,7 @@ class PostController extends Controller
 
 		if($request->getMethod() == "POST"){
 
-			$formHandler = new PostHandler($form, $request, $this->getDoctrine()->getManager(), $fil, $this->get('kub.notification_manager'));
+			$formHandler = new PostHandler($form, $request, $this->getDoctrine()->getManager(), $fil, $this->get('kub.notification_manager'), $this->get('security.context'));
 
 			if($formHandler->process())
 			{
@@ -74,7 +74,7 @@ class PostController extends Controller
 
 		if($request->getMethod() == "POST"){
 
-			$formHandler = new PostHandler($form, $request, $this->getDoctrine()->getManager(), $fil);
+			$formHandler = new PostHandler($form, $request, $this->getDoctrine()->getManager(), $fil, $this->get('kub.notification_manager'), $this->get('security.context'));
 
 			if($formHandler->process())
 			{

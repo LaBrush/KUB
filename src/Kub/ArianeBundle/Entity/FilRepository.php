@@ -19,7 +19,7 @@ class FilRepository extends EntityRepository
 		$qb = $this->createQueryBuilder("f")
 			->leftJoin('f.posts', 'p')
 			->addSelect('p')
-			->join('p.commentaires', 'c')
+			->leftJoin('p.commentaires', 'c')
 			->addSelect('c')
 			->join('f.eleve', 'e')
 			->where('e.username = :username')

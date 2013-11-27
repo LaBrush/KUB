@@ -1,7 +1,3 @@
-ariane_homepage:
-    pattern: /{username}
-    defaults: { _controller: KubArianeBundle:Default:index,  username: null }
-
 ariane_post_add:
     pattern: /add
     defaults: { _controller: KubArianeBundle:Post:add }
@@ -17,6 +13,10 @@ ariane_post_delete:
     defaults: { _controller: KubArianeBundle:Post:delete }
     requirements: 
         id: \d+
+
+ariane_homepage:
+    pattern: /{username}
+    defaults: { _controller: KubArianeBundle:Default:index,  username: null }
 
 ariane_commentaire_add:
     pattern: /{post}/comment/add
