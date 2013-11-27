@@ -3,27 +3,43 @@
 	<span class="matiere">
 		{{ form_label(form.matiere) }} <div class="input">{{ form_widget(form.matiere) }}</div>
 	</span>
+	
+	<span class="eleves-a-noter">
+		<table class="liste-eleves-a-noter">
 
-	{% for i in form %}
+			{% for i in form %}
+				
+				{% if i.noter is defined %}
+					
+					<tr>
+						<th>
+							Elève
+						</th>
+						<th>
+							Present
+						</th>
+						<th>
+							Note
+						</th>
+					</tr>
 
-		{% if i.noter is defined %}
-			
-			{{ form_label(i) }}
-			
-			<span class="noter">
-				{{ form_label(i.noter) }} <div class="input">{{ form_widget(i.noter) }}</div>
-			</span>
+					<tr>
+						<td>
+							<strong>{{ form_label(i) }}</strong>
+						</td>
+						<td>
+							{{ form_widget(i.noter) }}
+						</td>
+						<td>
+							{{ form_widget(i.note) }} / {{ form_widget(i.coefficient) }}
+						</td>
+					</tr>
 
-			<span class="note">
-				{{ form_label(i.note) }} <div class="input">{{ form_widget(i.note) }}</div>
-			</span>
+				{% endif %}
 
-			<span class="coefficient">
-				{{ form_label(i.coefficient) }} <div class="input">{{ form_widget(i.coefficient) }}</div>
-			</span>
+			{% endfor %}
 
-		{% endif %}
-
-	{% endfor %}
+		</table>
+	</span>
 
 {% endblock %}

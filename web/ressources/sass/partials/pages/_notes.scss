@@ -83,11 +83,15 @@
 {
 	padding: auto;
 	text-align: center;
+	
+	*
+	{
+		margin: 5px;
+	}
 }
 
-.detail
+.detail, .liste-eleves-a-noter
 {
-	margin: 5px;
 	display: inline-block;
 
 	th
@@ -100,7 +104,28 @@
 
 	td
 	{
+		text-align: center;
 		padding: 8px;
 		border: 1px $table-border solid;
+	}
+}
+
+.eleves-a-noter
+{
+	text-align: center;
+}
+
+.liste-eleves-a-noter
+{
+	input[type="text"]
+	{
+		max-width: 20px;
+		min-width: 20px;
+		margin: 0;
+	}
+
+	input[type="checkbox"]
+	{
+		margin: 3px 0 0 0;
 	}
 }
