@@ -27,6 +27,6 @@ web1:
     - "php composer.phar install --prefer-source"
 
   before_deploy:
-    - "app/console cache:clear --env=prod"
-    - "app/console doctrine:ensure-production-settings"
-    - "app/console doctrine:schema:update --env=prod --force"
+    - "php app/console cache:clear --env=prod"
+    - "php app/console doctrine:ensure-production-settings"
+    - "php app/console doctrine:schema:update --env=prod --force"
