@@ -26,9 +26,6 @@ web1:
     - "curl -s http://getcomposer.org/installer | php"
     - "php composer.phar install --prefer-source"
 
-  before_deploy:
-    - "php app/console doctrine:schema:update --force"
-
 db1:
   name: kubdb
   type: mysql
