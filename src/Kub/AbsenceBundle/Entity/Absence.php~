@@ -84,4 +84,73 @@ class Absence
 	{
 		return $this->date;
 	}
+
+    /**
+     * Set statut
+     *
+     * @param integer $statut
+     * @return Absence
+     */
+    public function setStatut($statut)
+    {
+        $this->statut = $statut;
+    
+        return $this;
+    }
+
+    /**
+     * Get statut
+     *
+     * @return integer 
+     */
+    public function getStatut()
+    {
+        return $this->statut;
+    }
+
+    /**
+     * Set cours
+     *
+     * @param \Kub\EDTBundle\Entity\Cours $cours
+     * @return Absence
+     */
+    public function setCours(\Kub\EDTBundle\Entity\Cours $cours = null)
+    {
+        $this->cours = $cours;
+    
+        return $this;
+    }
+
+    /**
+     * Get cours
+     *
+     * @return \Kub\EDTBundle\Entity\Cours 
+     */
+    public function getCours()
+    {
+        return $this->cours;
+    }
+
+    /**
+     * Set eleve
+     *
+     * @param \Kub\UserBundle\Entity\Eleve $eleve
+     * @return Absence
+     */
+    public function setEleve(\Kub\UserBundle\Entity\Eleve $eleve = null)
+    {
+        $this->eleve = $eleve;
+    
+        return $this;
+    }
+
+    /**
+     * Get eleve
+     *
+     * @return \Kub\UserBundle\Entity\Eleve 
+     */
+    public function getEleve()
+    {
+        return $this->eleve;
+    }
 }

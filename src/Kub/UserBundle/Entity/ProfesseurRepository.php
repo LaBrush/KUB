@@ -12,32 +12,6 @@ use Doctrine\ORM\EntityRepository;
  */
 class ProfesseurRepository extends UserRepository
 {
-
-	public function getCurrentCoursOf($professeur)
-	{
-		$qb = $this->createQueryBuilder('p')
-			->join('p.cours', 'c')
-			->addSelect('c')
-			->join('c.groupes', 'c')
-			->addSelect('g')
-			->join('c.horaires', 'h')
-			->addSelect('h')
-			->join('h.jour', 'j')
-			->addSelect('j')
-			->join('h.semaines', 's')
-			->addSelect('s')
-			
-			->where('p.id = :id')
-			->setParameter('id', $id)
-			->andWhere('j.id = :day_id')
-			->setParameter('day_id', date('N'))
-			->andWhere('NOW BETWEEN h.debut AND h.fin')
-			->expr()->in( date('W'), 'd.id');
-		;
-
-		return $qb->getQuery()->getSingleOrNullResult();
-	}
-
 	public function getEDTByid($id)
 	{
 		$qb = $this->createQueryBuilder('p')

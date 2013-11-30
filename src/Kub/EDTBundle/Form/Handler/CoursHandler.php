@@ -4,13 +4,15 @@ namespace Kub\EDTBundle\Form\Handler;
 
 use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\Request;
-use Kub\EDTBundle\Services\TimeService ;
+use Kub\EDTBundle\Services\TimeService ; 
+use Symfony\Component\Form\FormError;
 
 class CoursHandler
 {
 	protected $request;
 	protected $form;
 	protected $em;
+	protected $validator ;
 
 	/**
 	 * Initialize the handler with the form and the request
@@ -20,11 +22,12 @@ class CoursHandler
 	 * @param $manager
 	 * 
 	 */
-	public function __construct(Form $form, Request $request, $em)
+	public function __construct(Form $form, Request $request, $em, $validator)
 	{
-		$this->form    = $form;
-		$this->request = $request;
-		$this->em      = $em;
+		$this->form      = $form;
+		$this->request   = $request;
+		$this->em        = $em;
+		$this->validator = $validator ;
 	}
 
 	public function process()
@@ -36,10 +39,19 @@ class CoursHandler
 
 			if($this->form->isValid())
 			{
-				$data = $this->form->getData();
-				$this->onSuccess($data);
+				$errorList = $this->validator->validate($this->form->getData(), array('second_pass'));
+ 
+				foreach ($errorList as $error) {
+					$this->form->get("horaires")->addError(new FormError($error->getMessage()));
+				}
 
-				return true;
+				if(!count($errorList))
+				{
+					$data = $this->form->getData();
+					$this->onSuccess($data);
+
+					return true;
+				}
 			}
 		}
 

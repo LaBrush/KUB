@@ -25,7 +25,7 @@ class CoursController extends Controller
 
 		$form = $this->createForm($type, $cours);
 
-		$formHandler = new CoursHandler($form, $request, $em);
+		$formHandler = new CoursHandler($form, $request, $em, $this->get('validator'));
 
 		if($request->getMethod() == "POST"){
 
@@ -61,7 +61,7 @@ class CoursController extends Controller
 
 		$form = $this->createForm($type, $cours);
 
-		$formHandler = new CoursHandler($form, $request, $em);
+		$formHandler = new CoursHandler($form, $request, $em, $this->get('validator'));
 
 		if($request->getMethod() == "POST"){
 

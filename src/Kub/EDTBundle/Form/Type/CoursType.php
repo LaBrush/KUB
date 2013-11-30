@@ -58,7 +58,8 @@ class CoursType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Kub\EDTBundle\Entity\Cours'
+            'data_class' => 'Kub\EDTBundle\Entity\Cours',
+            'validation_groups' => array('Default')
         ));
     }
 

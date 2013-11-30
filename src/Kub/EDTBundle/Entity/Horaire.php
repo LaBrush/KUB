@@ -47,6 +47,9 @@ class Horaire
 
     /**
      * @ORM\ManyToMany(targetEntity="Kub\EDTBundle\Entity\Semaine")
+     * @Assert\Count(
+     *      min=1, minMessage = "Un horaire doit avoir au moins une semaine dans l'année"
+     * )
      */
     private $semaines ;
 
