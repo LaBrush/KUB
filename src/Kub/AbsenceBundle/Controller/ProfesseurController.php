@@ -1,16 +1,16 @@
 <?php
 
-namespace Kub\NoteBundle\Controller;
+namespace Kub\AbsenceBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use JMS\SecurityExtraBundle\Annotation\Secure;
 
-use Kub\NoteBundle\Form\Type\ControleType ;
-use Kub\NoteBundle\Form\Handler\ControleHandler; 
+use Kub\AbsenceBundle\Form\Type\ControleType ;
+use Kub\AbsenceBundle\Form\Handler\ControleHandler; 
 
 use Kub\UserBundle\Entity\Eleve ;
-use Kub\NoteBundle\Entity\Note ;
-use Kub\NoteBundle\Entity\Controle ;
+use Kub\AbsenceBundle\Entity\Note ;
+use Kub\AbsenceBundle\Entity\Controle ;
 
 class ProfesseurController extends Controller
 {
@@ -22,7 +22,7 @@ class ProfesseurController extends Controller
 		if (null == $groupe) {
 			$liste_groupes = $this->get('doctrine.orm.entity_manager')->getRepository('KubClasseBundle:Groupe')->getGroupesOfProfesseur( $this->getUser() );
 
-			return $this->render('KubNoteBundle:Professeur:index.html.twig', array(
+			return $this->render('KubAbsenceBundle:Professeur:index.html.twig', array(
 				'groupes' => $liste_groupes
 			));
 		}
@@ -30,11 +30,11 @@ class ProfesseurController extends Controller
 		{
 			$groupe = $this->get('doctrine.orm.entity_manager')->getRepository('KubClasseBundle:Groupe')->findOneByName( $groupe );
 
-			$controle = new Controle ;
-			$controle->setGroupe($groupe);
-			$controle->setProfesseur( $this->getUser() );
+			$absence = new Controle ;
+			$absence->setGroupe($groupe);
+			$absence->setProfesseur( $this->getUser() );
 
-			$form  = $this->createForm(new ControleType( $this->getUser(), $groupe ), $controle, 
+			$form  = $this->createForm(new ControleType( $this->getUser(), $groupe ), $absence, 
 				array(
 					'action' => $this->generateUrl('kub_notes_professeur_homepage', array( 'groupe' => $groupe->getName() )
 				))
@@ -58,7 +58,7 @@ class ProfesseurController extends Controller
 
 			}
 
-			return $this->render('KubNoteBundle:Professeur:noter.html.twig', array(
+			return $this->render('KubAbsenceBundle:Professeur:noter.html.twig', array(
 				'form' => $form->createView(),
 				'groupe' => $groupe
 			));
@@ -100,7 +100,7 @@ class ProfesseurController extends Controller
 			}
 		}
 
-		return $this->render('KubNoteBundle:Professeur:delete.html.twig',
+		return $this->render('KubAbsenceBundle:Professeur:delete.html.twig',
 			array(
 				'form' => $form->createView(),
 				'note' => $note
@@ -110,12 +110,12 @@ class ProfesseurController extends Controller
 
 	public function showEleveAction(Eleve $eleve)
 	{
-		$liste_notes = $this->get('doctrine.orm.entity_manager')->getRepository('KubNoteBundle:Note')->findByEleve( $eleve );
+		$liste_notes = $this->get('doctrine.orm.entity_manager')->getRepository('KubAbsenceBundle:Note')->findByEleve( $eleve );
 
 		$template = 'show';
 		if($this->get('request')->attributes->get('_route') != 'kub_notes_eleve_show') { $template .= "_content" ; }
 
-		return $this->render('KubNoteBundle:Show:' . $template . '.html.twig',
+		return $this->render('KubAbsenceBundle:Show:' . $template . '.html.twig',
 			array(
 				'notes' => $liste_notes,
 				'eleve' => $eleve

@@ -8,13 +8,8 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 use Kub\NoteBundle\Entity\Note ;
 
-class NoteSingleType extends AbstractType
+class NoteType extends AbstractType
 {
-	public function __construct(Note $note)
-	{
-		$this->note = $note;
-	}
-
 	/**
 	 * @param FormBuilderInterface $builder
 	 * @param array $options
@@ -22,10 +17,7 @@ class NoteSingleType extends AbstractType
 	public function buildForm(FormBuilderInterface $builder, array $options)
 	{
 		$builder
-			->add('noter', 'checkbox', array(
-				"mapped" => false,
-				'attr'     => array('checked'   => 'checked'),
-			))
+			->add('noter', 'checkbox')
 			->add('note', 'number')
 			->add('coefficient', 'number')
 		;
@@ -37,7 +29,8 @@ class NoteSingleType extends AbstractType
 	public function setDefaultOptions(OptionsResolverInterface $resolver)
 	{
 		$resolver->setDefaults(array(
-			'empty_data' => $this->note
+			// 'empty_data' => $this->note
+			'data_class' => 'Kub\NoteBundle\Entity\Note'
 		));
 	}
 

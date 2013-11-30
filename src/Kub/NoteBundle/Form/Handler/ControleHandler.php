@@ -5,7 +5,7 @@ namespace Kub\NoteBundle\Form\Handler;
 use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\Request;
 
-class NoteSingleHandler
+class ControleHandler
 {
 	protected $request;
 	protected $form;
@@ -25,41 +25,53 @@ class NoteSingleHandler
 		$this->form = $form;
 		$this->request = $request;
 		$this->em = $em;
-		$this->notifications = $notifications;
+		$this->notifications = $notifications ;
 	}
 
 	public function process()
 	{
 		if('POST' == $this->request->getMethod())
 		{
-			if($this->form["noter"]->getData() == false)
-			{
-				return true ;
-			}
+			$this->form->bind($this->request);
 
 			if($this->form->isValid())
 			{
-				$data = $this->form->getData();
-				$this->onSuccess($data);
-				return true ;
+				return $this->onSuccess();
 			}
 		}
 
 		return false;
 	}
 
-	protected function onSuccess($data)
+	private function onSuccess()
 	{
-		$this->em->persist($data);
-		$this->em->flush();
-		
-		$this->notifications->addNotification('NoteAddedNotification', array(
+		$notes = $this->form['notes']->getData();
+		$controle = $this->form->getData();
 
-			"userTarget" => $data->getEleve(),
-			"contenu" => $data
+		foreach ($notes as $note) {
 
-		)) ;
+			if(!$note->getNoter())
+			{
+				$controle->removeNote( $note ) ;
+			}
+			else
+			{
+				$this->notifications->addNotification('NoteAddedNotification', array(
 
-		return true;
+					"userTarget" => $note->getEleve(),
+					"contenu" => $note
+
+				)) ;
+			}
+	
+		}
+
+		if( count($controle->getNotes()) > 0)
+		{
+			$this->em->persist($controle);
+			$this->em->flush();
+		}
+
+		return true ;
 	}
 }

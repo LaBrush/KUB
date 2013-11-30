@@ -13,6 +13,18 @@ use Symfony\Component\Validator\Constraints as Assert ;
  */
 class Note
 {
+    private $noter ;
+
+    public function getNoter()
+    {
+        return $this->noter ;
+    }
+
+    public function setNoter($noter)
+    {
+        $this->noter = $noter ;
+    }
+
 	/**
 	 * @var integer
 	 *
@@ -20,12 +32,7 @@ class Note
 	 * @ORM\Id
 	 * @ORM\GeneratedValue(strategy="AUTO")
 	 */
-	private $id;
-
-	/**
-	 * @ORM\ManyToOne(targetEntity="Kub\EDTBundle\Entity\Matiere")
-	 */
-	private $matiere;    
+	private $id;  
 
 	/**
 	 * @ORM\ManyToOne(targetEntity="Kub\UserBundle\Entity\Eleve")
@@ -33,9 +40,9 @@ class Note
 	private $eleve;
 
 	/**
-	 * @ORM\ManyToOne(targetEntity="Kub\UserBundle\Entity\Professeur")
-	 */
-	private $professeur;
+     * @ORM\ManyToOne(targetEntity="Kub\NoteBundle\Entity\Controle", inversedBy="notes")
+     */
+    private $controle ;
 
 	/**
 	 * @var double
@@ -55,16 +62,9 @@ class Note
 	 */
 	private $coefficient;
 
-	/**
-	 * @var \DateTime
-	 *
-	 * @ORM\Column(name="date", type="datetime")
-	 */
-	private $date;
-
 	public function __construct()
 	{
-		$this->date = new \DateTime ;
+        $this->noter = false ;
 	}
 
 	public function __toString()
@@ -72,151 +72,128 @@ class Note
 		return $this->note . ' / ' . $this->coefficient ;
 	}
 
-	/**
-	 * Get id
-	 *
-	 * @return integer 
-	 */
-	public function getId()
-	{
-		return $this->id;
-	}
-
-	/**
-	 * Set note
-	 *
-	 * @param integer $note
-	 * @return Note
-	 */
-	public function setNote($note)
-	{
-		$this->note = $note;
-	
-		return $this;
-	}
-
-	/**
-	 * Get note
-	 *
-	 * @return integer 
-	 */
-	public function getNote()
-	{
-		return $this->note;
-	}
-
-	/**
-	 * Set coefficient
-	 *
-	 * @param integer $coefficient
-	 * @return Note
-	 */
-	public function setCoefficient($coefficient)
-	{
-		$this->coefficient = $coefficient;
-	
-		return $this;
-	}
-
-	/**
-	 * Get coefficient
-	 *
-	 * @return integer 
-	 */
-	public function getCoefficient()
-	{
-		return $this->coefficient;
-	}
-
-	/**
-	 * Set date
-	 *
-	 * @param \DateTime $date
-	 * @return Note
-	 */
-	public function setDate($date)
-	{
-		$this->date = $date;
-	
-		return $this;
-	}
-
-	/**
-	 * Get date
-	 *
-	 * @return \DateTime 
-	 */
-	public function getDate()
-	{
-		return $this->date;
-	}
-
-	/**
-	 * Set matiere
-	 *
-	 * @param \Kub\EDTBundle\Entity\Matiere $matiere
-	 * @return Note
-	 */
-	public function setMatiere(\Kub\EDTBundle\Entity\Matiere $matiere = null)
-	{
-		$this->matiere = $matiere;
-	
-		return $this;
-	}
-
-	/**
-	 * Get matiere
-	 *
-	 * @return \Kub\EDTBundle\Entity\Matiere 
-	 */
-	public function getMatiere()
-	{
-		return $this->matiere;
-	}
-
-	/**
-	 * Set eleve
-	 *
-	 * @param \Kub\UserBundle\Entity\Eleve $eleve
-	 * @return Note
-	 */
-	public function setEleve(\Kub\UserBundle\Entity\Eleve $eleve = null)
-	{
-		$this->eleve = $eleve;
-	
-		return $this;
-	}
-
-	/**
-	 * Get eleve
-	 *
-	 * @return \Kub\UserBundle\Entity\Eleve 
-	 */
-	public function getEleve()
-	{
-		return $this->eleve;
-	}
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 
     /**
-     * Set professeur
+     * Set note
      *
-     * @param \Kub\UserBundle\Entity\Professeur $professeur
+     * @param float $note
      * @return Note
      */
-    public function setProfesseur(\Kub\UserBundle\Entity\Professeur $professeur = null)
+    public function setNote($note)
     {
-        $this->professeur = $professeur;
+        $this->note = $note;
     
         return $this;
     }
 
     /**
-     * Get professeur
+     * Get note
      *
-     * @return \Kub\UserBundle\Entity\Professeur 
+     * @return float 
      */
-    public function getProfesseur()
+    public function getNote()
     {
-        return $this->professeur;
+        return $this->note;
+    }
+
+    /**
+     * Set coefficient
+     *
+     * @param float $coefficient
+     * @return Note
+     */
+    public function setCoefficient($coefficient)
+    {
+        $this->coefficient = $coefficient;
+    
+        return $this;
+    }
+
+    /**
+     * Get coefficient
+     *
+     * @return float 
+     */
+    public function getCoefficient()
+    {
+        return $this->coefficient;
+    }
+
+    /**
+     * Set eleve
+     *
+     * @param \Kub\UserBundle\Entity\Eleve $eleve
+     * @return Note
+     */
+    public function setEleve(\Kub\UserBundle\Entity\Eleve $eleve = null)
+    {
+        $this->eleve = $eleve;
+    
+        return $this;
+    }
+
+    /**
+     * Get eleve
+     *
+     * @return \Kub\UserBundle\Entity\Eleve 
+     */
+    public function getEleve()
+    {
+        return $this->eleve;
+    }
+
+    /**
+     * Add controle
+     *
+     * @param \Kub\NoteBundle\Entity\Controle $controle
+     * @return Note
+     */
+    public function addControle(\Kub\NoteBundle\Entity\Controle $controle)
+    {
+        $this->controle[] = $controle;
+    
+        return $this;
+    }
+
+    /**
+     * Remove controle
+     *
+     * @param \Kub\NoteBundle\Entity\Controle $controle
+     */
+    public function removeControle(\Kub\NoteBundle\Entity\Controle $controle)
+    {
+        $this->controle->removeElement($controle);
+    }
+
+    /**
+     * Get controle
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getControle()
+    {
+        return $this->controle;
+    }
+
+    /**
+     * Set controle
+     *
+     * @param \Kub\NoteBundle\Entity\Controle $controle
+     * @return Note
+     */
+    public function setControle(\Kub\NoteBundle\Entity\Controle $controle = null)
+    {
+        $this->controle = $controle;
+    
+        return $this;
     }
 }
