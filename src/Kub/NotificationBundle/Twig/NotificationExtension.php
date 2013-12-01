@@ -35,6 +35,11 @@ class NotificationExtension extends \Twig_Extension
             ));
         }
 
+        if(count($liste_notifications) == 0)
+        {
+            $response = $this->templating->render('KubNotificationBundle:Notification:no_notification.html.twig');
+        }
+
         return $response ;
     }
 

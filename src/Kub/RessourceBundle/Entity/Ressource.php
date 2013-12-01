@@ -3,19 +3,15 @@
 namespace Kub\RessourceBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert ;
 
 /**
  * Ressource
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="Kub\RessourceBundle\Entity\RessourceRepository")
- * @ORM\InheritanceType("SINGLE_TABLE")
- * @ORM\DiscriminatorColumn(name="type", type="string")
- * @ORM\DiscriminatorMap({})
- *
- * @ORM\HasLifecycleCallbacks()
  */
-abstract class Ressource
+class Ressource
 {
     /**
      * @var integer
@@ -29,14 +25,14 @@ abstract class Ressource
     /**
      * @var string
      *
-     * @ORM\Column(name="nom", type="string", length=255)
+     * @ORM\Column(name="titre", type="string", length=255)
      */
-    private $nom;
+    private $titre;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="text")
+     * @ORM\Column(name="description", type="text", nullable=true)
      */
     private $description;
 
@@ -48,6 +44,29 @@ abstract class Ressource
     private $date;
 
     /**
+     * @ORM\ManyToOne(targetEntity="Kub\UserBundle\Entity\User", cascade={"all"})
+     */
+    private $auteur ;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="url", type="string", length=255, nullable=true)
+     * @Assert\Url()
+     */
+    private $url;
+
+    /**
+     * @ORM\OneToOne(targetEntity="Kub\RessourceBundle\Entity\File", cascade={"all"})
+     */
+    private $file ;
+
+    public function __construct()
+    {
+        $this->date = new \DateTime ;
+    }
+
+    /**
      * Get id
      *
      * @return integer 
@@ -55,29 +74,6 @@ abstract class Ressource
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set nom
-     *
-     * @param string $nom
-     * @return Ressource
-     */
-    public function setNom($nom)
-    {
-        $this->nom = $nom;
-    
-        return $this;
-    }
-
-    /**
-     * Get nom
-     *
-     * @return string 
-     */
-    public function getNom()
-    {
-        return $this->nom;
     }
 
     /**
@@ -127,29 +123,6 @@ abstract class Ressource
     }
 
     /**
-     * Set type
-     *
-     * @param integer $type
-     * @return Ressource
-     */
-    public function setType($type)
-    {
-        $this->type = $type;
-    
-        return $this;
-    }
-
-    /**
-     * Get type
-     *
-     * @return integer 
-     */
-    public function getType()
-    {
-        return $this->type;
-    }
-
-    /**
      * Set url
      *
      * @param string $url
@@ -170,5 +143,74 @@ abstract class Ressource
     public function getUrl()
     {
         return $this->url;
+    }
+
+    /**
+     * Set auteur
+     *
+     * @param \Kub\UserBundle\Entity\Professeur $auteur
+     * @return Ressource
+     */
+    public function setAuteur(\Kub\UserBundle\Entity\Professeur $auteur = null)
+    {
+        $this->auteur = $auteur;
+    
+        return $this;
+    }
+
+    /**
+     * Get auteur
+     *
+     * @return \Kub\UserBundle\Entity\Professeur 
+     */
+    public function getAuteur()
+    {
+        return $this->auteur;
+    }
+
+    /**
+     * Set titre
+     *
+     * @param string $titre
+     * @return Ressource
+     */
+    public function setTitre($titre)
+    {
+        $this->titre = $titre;
+    
+        return $this;
+    }
+
+    /**
+     * Get titre
+     *
+     * @return string 
+     */
+    public function getTitre()
+    {
+        return $this->titre;
+    }
+
+    /**
+     * Set file
+     *
+     * @param \Kub\RessourceBundle\Entity\File $file
+     * @return Ressource
+     */
+    public function setFile(\Kub\RessourceBundle\Entity\File $file = null)
+    {
+        $this->file = $file;
+    
+        return $this;
+    }
+
+    /**
+     * Get file
+     *
+     * @return \Kub\RessourceBundle\Entity\File 
+     */
+    public function getFile()
+    {
+        return $this->file;
     }
 }

@@ -2,13 +2,38 @@
 
 {% block body %}
 
-	<article class="article">
-		
-		{% for ressource in ressources %}
-	
-			
+	{% if is_granted('ROLE_PROFESSEUR') %}
 
-		{% endfor %}
+		<article class="article">
+			
+			{{ render(controller("KubRessourceBundle:Default:add")) }}
+
+		</article>
+
+	{% endif %}
+
+	<article class="article">
+			
+		<ul>
+			{% for ressource in ressources %}
+		
+				<li>
+					{{ ressource.titre }} - {{ ressource.description }}
+
+					{% if ressource.url %}
+	
+						<a href="{{ ressource.url }}">Voir sur le web</a>
+	
+					{% elseif ressource.file == 'file' %}
+
+						<a href="{{ path(ressource.webPath) }}">Télécharger</a>					
+	
+					{% endif %}
+
+				</li>
+
+			{% endfor %}
+		</ul>
 
 	</article>
 

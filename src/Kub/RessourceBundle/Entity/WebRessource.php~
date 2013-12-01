@@ -3,6 +3,7 @@
 namespace Kub\RessourceBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert ;
 
 /**
  * WebRessource
@@ -12,33 +13,39 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class WebRessource extends Ressource
 {
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="url", type="string", length=255)
-     */
-    private $url;
+	public function initClass()
+	{
+		$this->type = 'web' ;
+	}
 
-    /**
-     * Set url
-     *
-     * @param string $url
-     * @return WebRessource
-     */
-    public function setUrl($url)
-    {
-        $this->url = $url;
-    
-        return $this;
-    }
+	/**
+	 * @var string
+	 *
+	 * @ORM\Column(name="url", type="string", length=255)
+	 * @Assert\Url()
+	 */
+	private $url;
 
-    /**
-     * Get url
-     *
-     * @return string 
-     */
-    public function getUrl()
-    {
-        return $this->url;
-    }
+	/**
+	 * Set url
+	 *
+	 * @param string $url
+	 * @return WebRessource
+	 */
+	public function setUrl($url)
+	{
+		$this->url = $url;
+	
+		return $this;
+	}
+
+	/**
+	 * Get url
+	 *
+	 * @return string 
+	 */
+	public function getUrl()
+	{
+		return $this->url;
+	}
 }

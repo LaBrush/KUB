@@ -16,7 +16,7 @@ kub_classe:
 
 kub_ressource:
     resource: "@KubRessourceBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /ressources
 
 kub_casier:
     resource: "@KubCasierBundle/Resources/config/routing.yml"

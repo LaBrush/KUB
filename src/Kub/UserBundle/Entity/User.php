@@ -30,7 +30,6 @@ abstract class User extends BaseUser implements ParticipantInterface
     /**
      * @ORM\PostLoad
      */
-
     public function initClass() {}
 
     /**

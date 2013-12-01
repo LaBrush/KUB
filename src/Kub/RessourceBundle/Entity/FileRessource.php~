@@ -12,31 +12,36 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class FileRessource extends Ressource
 {
-    /**
-     * @ORM\OneToOne(targetEntity="Kub\RessourceBundle\Entity\File", cascade={"all"})
-     */
-    private $file ;
+	public function initClass()
+	{
+		$this->type = 'file' ;
+	}
 
-    /**
-     * Set file
-     *
-     * @param \Kub\RessourceBundle\Entity\File $file
-     * @return FileRessource
-     */
-    public function setFile(\Kub\RessourceBundle\Entity\File $file = null)
-    {
-        $this->file = $file;
-    
-        return $this;
-    }
+	/**
+	 * @ORM\OneToOne(targetEntity="Kub\RessourceBundle\Entity\File", cascade={"all"})
+	 */
+	private $file ;
 
-    /**
-     * Get file
-     *
-     * @return \Kub\RessourceBundle\Entity\File 
-     */
-    public function getFile()
-    {
-        return $this->file;
-    }
+	/**
+	 * Set file
+	 *
+	 * @param \Kub\RessourceBundle\Entity\File $file
+	 * @return FileRessource
+	 */
+	public function setFile(\Kub\RessourceBundle\Entity\File $file = null)
+	{
+		$this->file = $file;
+	
+		return $this;
+	}
+
+	/**
+	 * Get file
+	 *
+	 * @return \Kub\RessourceBundle\Entity\File 
+	 */
+	public function getFile()
+	{
+		return $this->file;
+	}
 }
