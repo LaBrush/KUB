@@ -3,13 +3,13 @@ namespace Kub\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-use Kub\HomeBundle\Entity\File ;
+use Kub\HomeBundle\Entity\File as BaseFile;
 
 /**
  * @ORM\Table(name="collaboration_file")
  * @ORM\HasLifecycleCallbacks
  */
-class Fichier extends File
+class Fichier extends BaseFile
 {
 	/**
 	 * @ORM\Column(name="id", type="integer")

@@ -36,7 +36,7 @@ class CoursController extends Controller
 			}
 			else
 			{
-				$this->get('session')->getFlashBag()->add('info', "Erreur lors de l'ajout du cours");
+				$this->get('session')->getFlashBag()->add('info', "Erreur lors de l'ajout du cours ");
 			}
 
 		}

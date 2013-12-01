@@ -12,9 +12,10 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Absence
 {
-	CONST ABSENCE = 0 ;
-	CONST RETARD = 1 ;
-	CONST JUSTIFIE = 2 ;
+	CONST PRESENT  = 0 ;
+	CONST ABSENCE  = 1 ;
+	CONST RETARD   = 2 ;
+	CONST JUSTIFIE = 3 ;
 
 	/**
 	 * @var integer
@@ -26,21 +27,14 @@ class Absence
 	private $id;
 
 	/**
-	 * @var \DateTime
-	 *
-	 * @ORM\Column(name="date", type="datetime")
-	 */
-	private $date;
+     * @ORM\ManyToOne(targetEntity="Kub\AbsenceBundle\Entity\Appel", inversedBy="absences", cascade={"merge", "detach", "persist"})
+     */
+    private $appel ;
 
 	/** 
 	 * @ORM\Column(name="statut", type="integer")
 	 */
 	private $statut ;
-
-	/**
-	 * @ORM\ManyToOne(targetEntity="Kub\EDTBundle\Entity\Cours")
-	 */
-	private $cours ;
 
 	/**
 	 * @ORM\ManyToOne(targetEntity="Kub\UserBundle\Entity\Eleve")
@@ -49,41 +43,18 @@ class Absence
 
 	public function __construct()
 	{
-		$this->statut = self::ABSENCE ;
+		$this->statut = self::PRESENT ;
 	}
 
-	/**
-	 * Get id
-	 *
-	 * @return integer 
-	 */
-	public function getId()
-	{
-		return $this->id;
-	}
-
-	/**
-	 * Set date
-	 *
-	 * @param \DateTime $date
-	 * @return Absence
-	 */
-	public function setDate($date)
-	{
-		$this->date = $date;
-	
-		return $this;
-	}
-
-	/**
-	 * Get date
-	 *
-	 * @return \DateTime 
-	 */
-	public function getDate()
-	{
-		return $this->date;
-	}
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 
     /**
      * Set statut
@@ -109,26 +80,26 @@ class Absence
     }
 
     /**
-     * Set cours
+     * Set appel
      *
-     * @param \Kub\EDTBundle\Entity\Cours $cours
+     * @param \Kub\AbsenceBundle\Entity\Appel $appel
      * @return Absence
      */
-    public function setCours(\Kub\EDTBundle\Entity\Cours $cours = null)
+    public function setAppel(\Kub\AbsenceBundle\Entity\Appel $appel = null)
     {
-        $this->cours = $cours;
+        $this->appel = $appel;
     
         return $this;
     }
 
     /**
-     * Get cours
+     * Get appel
      *
-     * @return \Kub\EDTBundle\Entity\Cours 
+     * @return \Kub\AbsenceBundle\Entity\Appel 
      */
-    public function getCours()
+    public function getAppel()
     {
-        return $this->cours;
+        return $this->appel;
     }
 
     /**

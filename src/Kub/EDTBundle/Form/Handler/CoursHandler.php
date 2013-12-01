@@ -36,7 +36,23 @@ class CoursHandler
 		if('POST' == $this->request->getMethod())
 		{
 			$this->form->bind($this->request);
+		
+			// On attribut les semaines de chaque cours en fonction des fréquences
+			$liste_horaires_form = $this->form["horaires"];
+			foreach ($liste_horaires_form as $horaire_form) {
 
+				$liste_frequences = $horaire_form["frequences"]->getData();
+				$horaire = $horaire_form->getData();
+
+				foreach ($liste_frequences as $frequence) {
+					foreach ($frequence->getSemaines() as $semaine) {
+						$horaire->addSemaine($semaine);
+					}
+				}
+
+			}
+
+			// Puis on lance la validation
 			if($this->form->isValid())
 			{
 				$errorList = $this->validator->validate($this->form->getData(), array('second_pass'));
@@ -52,7 +68,13 @@ class CoursHandler
 
 					return true;
 				}
+				else
+				{
+					throw new \Exception($form->getErrorsAsString());
+				}
 			}
+			throw new \Exception($this->form->getErrorsAsString());
+			
 		}
 
 		return false;
@@ -60,21 +82,6 @@ class CoursHandler
 
 	protected function onSuccess($data)
 	{	
-		$liste_horaires_form = $this->form["horaires"];
-
-		foreach ($liste_horaires_form as $key => $horaire_form) {
-
-			$liste_frequences = $horaire_form["frequences"]->getData();
-			$horaire = $horaire_form->getData();
-
-			foreach ($liste_frequences as $key => $frequence) {
-				foreach ($frequence->getSemaines() as $key => $semaine) {
-					$horaire->addSemaine($semaine);
-				}
-			}
-
-		}
-
 		$this->em->persist($data);
 		$this->em->flush();
 	}

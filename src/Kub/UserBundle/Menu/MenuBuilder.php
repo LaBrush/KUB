@@ -177,7 +177,7 @@ class MenuBuilder
 			'route' => 'kub_notes_professeur_homepage'
 		));
 
-		$menu['1984']->addChild('Absences', array(
+		$menu['1984']->addChild('Appel', array(
 			'route' => 'kub_absence_professeur_appel'
 		));
 

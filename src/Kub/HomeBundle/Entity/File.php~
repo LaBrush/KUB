@@ -23,7 +23,7 @@ abstract class File
 	private $url;
 
 	/**
-	 * @Assert\File(maxSize="500k")
+	 * @Assert\File(maxSize="1024k")
 	 */
 	private $file;
 

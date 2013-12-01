@@ -3,13 +3,13 @@ namespace Kub\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-use Kub\HomeBundle\Entity\FIle ;
+use Kub\HomeBundle\Entity\File as BaseFile ;
 
 /**
  * @ORM\Table(name="Photo")
  * @ORM\Entity
  */
-class Photo extends File
+class Photo extends BaseFile
 {
 	public function getUploadDir()
 	{

@@ -31,10 +31,10 @@ class CoursRepository extends EntityRepository
 			->setParameter('id', $professeur->getId())
 			->andWhere('j.id = :day_id')
 			->setParameter('day_id', date('N'))
-			->andWhere(' :NOW BETWEEN h.debut AND h.fin')
-			->setParameter('NOW', new \DateTime );
+			->andWhere(' CURRENT_TIME() BETWEEN h.debut AND h.fin')
+		;
 
-			// $qb->andWhere( $qb->expr()->in( 'd.id', date('W')) )
+			$qb->andWhere( $qb->expr()->in( 's.id', date('W')) )
 		;
 
 		return $qb->getQuery()->getOneOrNullResult();

@@ -37,7 +37,7 @@ class Semaine
 
     public function __toString()
     {
-        return "Semaine n°" . $this->numero . " de " . $this->annee ;
+        return "Semaine n°" . $this->numero . " de 20" . $this->annee ;
     }
 
     /**

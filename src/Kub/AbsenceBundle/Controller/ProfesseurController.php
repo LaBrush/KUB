@@ -5,12 +5,12 @@ namespace Kub\AbsenceBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use JMS\SecurityExtraBundle\Annotation\Secure;
 
-use Kub\AbsenceBundle\Form\Type\ControleType ;
-use Kub\AbsenceBundle\Form\Handler\ControleHandler; 
+use Kub\AbsenceBundle\Form\Type\AppelType ;
+use Kub\AbsenceBundle\Form\Handler\AppelHandler; 
 
 use Kub\UserBundle\Entity\Eleve ;
-use Kub\AbsenceBundle\Entity\Note ;
-use Kub\AbsenceBundle\Entity\Controle ;
+use Kub\AbsenceBundle\Entity\Appel ;
+use Kub\AbsenceBundle\Entity\Absence ;
 
 class ProfesseurController extends Controller
 {
@@ -19,16 +19,21 @@ class ProfesseurController extends Controller
 	 */
 	public function appelAction()
 	{
-		$cours = $this->get('doctrine.orm.entity_manager')->getRepository('KubEDTBundle:Cours')->getCurrentCoursOf( $this->getUser() );
+		$em = $this->get('doctrine.orm.entity_manager');
+		$cours = $em->getRepository('KubEDTBundle:Cours')->getCurrentCoursOf( $this->getUser() );
 
 		if($cours)
-		{
+		{	
+			throw new \Exception("T'as trouvé un hash pour l'annee et le numéro ? Non ? Qu'est ce que t'attends alors ?", 1);
+			
+			$semaine = $em->getRepository('KubEDTBundle:Semaine')->findOneBy(array( "numero" ));
+			$appel = $em->getRepository('KubEDTBundle:Cours')->findOneOrNullByCoursAndSemaine( $cours, $semaine );
 
-			$absence = new Controle ;
-			$absence->setGroupe($groupe);
-			$absence->setProfesseur( $this->getUser() );
+			$appel = new Appel ;
+			$appel->setCours( $cours );
+			$appel->setSemaine(  );
 
-			$form  = $this->createForm(new ControleType( $this->getUser(), $groupe ), $absence, 
+			$form  = $this->createForm(new AppelType( $this->getUser(), $groupe ), $appel, 
 				array(
 					'action' => $this->generateUrl('kub_notes_professeur_homepage', array( 'groupe' => $groupe->getName() )
 				))
@@ -37,18 +42,18 @@ class ProfesseurController extends Controller
 			$request = $this->get('request');
 			if($request->getMethod() == "POST"){
 
-				$formHandler = new ControleHandler($form, $request, $this->getDoctrine()->getManager(), $this->get('kub.notification_manager'));
+				// $formHandler = new AbsenceHandler($form, $request, $this->getDoctrine()->getManager(), $this->get('kub.notification_manager'));
 
-				if($formHandler->process())
-				{
-					$this->get('session')->getFlashBag()->add('info', "Les notes ont bien été ajoutées");
+				// if($formHandler->process())
+				// {
+				// 	$this->get('session')->getFlashBag()->add('info', "L'appel a bien été pris en compte");
 
-					return $this->redirect($this->generateUrl("home_homepage"));
-				}
-				else
-				{
-					$this->get('session')->getFlashBag()->add('info', "Une erreur est survenue lors de l'ajout des notes");   
-				}
+				// 	return $this->redirect($this->generateUrl("home_homepage"));
+				// }
+				// else
+				// {
+				// 	$this->get('session')->getFlashBag()->add('info', "Une erreur est survenue lors de l'appel");   
+				// }
 
 			}
 
