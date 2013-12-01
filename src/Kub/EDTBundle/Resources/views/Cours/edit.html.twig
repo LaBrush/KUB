@@ -10,7 +10,9 @@
 		<h2 class="section-title">{{ cours }}</h2>
 	</article>
 
-	{{ form_start(form, { 'attr': {'class': 'formulaire-creation'} }) }}
+	<article class="article">
+
+		{{ form_start(form, { 'attr': {'class': 'formulaire-creation'} }) }}
 
 			{% include "KubEDTBundle:Cours:form.html.twig" %}
 
@@ -19,7 +21,8 @@
 				<a class="button" href="{{ path('cours_list') }}">Annuler</a>
 				<a class="button-no" href="{{ path("cours_delete", { id: cours.id }) }}">Supprimer {{ cours }}</a>
 			</span>
-		{{ form_end(form) }}		
+		{{ form_end(form) }}	
+	</article>	
 			
 {% endblock %}
 

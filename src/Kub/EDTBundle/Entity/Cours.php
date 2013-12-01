@@ -11,9 +11,9 @@ use Kub\EDTBundle\Validator\Constraints as KAssert ;
  * Cours
  *
  * @ORM\Table()
- * @ORM\Entity
- * 
- * @KAssert\NoHoraireConflict()
+ * @ORM\Entity(repositoryClass="Kub\EDTBundle\Entity\CoursRepository")
+ *
+ * @KAssert\NoHoraireConflict(groups={"second_pass"})
  */
 class Cours
 {

@@ -40,7 +40,7 @@
 	
 {% for note in notes %}
 
-	{% if note.matiere.name != matiere %}
+	{% if note.controle.matiere.name != matiere %}
 
 		{% if loop.first == false %}
 
@@ -56,7 +56,7 @@
 
 		{% set moyenneMatiere = 0 %}
 	
-		{% set matiere = note.matiere.name %}
+		{% set matiere = note.controle.matiere.name %}
 
 		{% set jauges = jauges ~ '<div class="jauge-' ~ matiere ~ '">&nbsp;</div>' %}
 
@@ -85,7 +85,7 @@
 
 	{% set details = details ~ '
 		<td><strong>' ~ note.note | number_format(1) ~ ' / ' ~ note.coefficient ~ '</strong></td>
-		<td>Note ajoutée le ' ~ note.date | date('d/m/y') ~ '</td>
+		<td>Note ajoutée le ' ~ note.controle.date | date('d/m/y') ~ '</td>
 	' %}
 
 	{% if loop.last %}

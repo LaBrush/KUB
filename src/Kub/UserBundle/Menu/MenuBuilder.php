@@ -171,10 +171,16 @@ class MenuBuilder
 				);
 			}
 
-		$menu->addChild('Noter', array(
-			'labelAttributes' => array('className' => 'bigbro'),
+		$menu->addChild('1984', array('labelAttributes' => array('className' => 'bigbro')));
+
+		$menu['1984']->addChild('Noter', array(
 			'route' => 'kub_notes_professeur_homepage'
 		));
+
+		$menu['1984']->addChild('Absences', array(
+			'route' => 'kub_absence_professeur_appel'
+		));
+
 	}
 
 	public function createCompteMenu(Request $request)

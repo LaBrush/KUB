@@ -5,11 +5,12 @@ namespace Kub\NoteBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use JMS\SecurityExtraBundle\Annotation\Secure;
 
-use Kub\NoteBundle\Form\Type\NoteGroupeType ;
-use Kub\NoteBundle\Form\Handler\NoteGroupeHandler; 
+use Kub\NoteBundle\Form\Type\ControleType ;
+use Kub\NoteBundle\Form\Handler\ControleHandler; 
 
 use Kub\UserBundle\Entity\Eleve ;
 use Kub\NoteBundle\Entity\Note ;
+use Kub\NoteBundle\Entity\Controle ;
 
 class ProfesseurController extends Controller
 {
@@ -28,14 +29,21 @@ class ProfesseurController extends Controller
 		else
 		{
 			$groupe = $this->get('doctrine.orm.entity_manager')->getRepository('KubClasseBundle:Groupe')->findOneByName( $groupe );
-			$form  = $this->createForm(new NoteGroupeType( $groupe, $this->getUser() ), null, array( 
-				'action' => $this->generateUrl('kub_notes_professeur_homepage', array( 'groupe' => $groupe->getName() )
-			)));
+
+			$controle = new Controle ;
+			$controle->setGroupe($groupe);
+			$controle->setProfesseur( $this->getUser() );
+
+			$form  = $this->createForm(new ControleType( $this->getUser(), $groupe ), $controle, 
+				array(
+					'action' => $this->generateUrl('kub_notes_professeur_homepage', array( 'groupe' => $groupe->getName() )
+				))
+			);
 
 			$request = $this->get('request');
 			if($request->getMethod() == "POST"){
 
-				$formHandler = new NoteGroupeHandler($form, $request, $this->getDoctrine()->getManager(), $this->get('kub.notification_manager'));
+				$formHandler = new ControleHandler($form, $request, $this->getDoctrine()->getManager(), $this->get('kub.notification_manager'));
 
 				if($formHandler->process())
 				{

@@ -9,10 +9,10 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 
-use Kub\NoteBundle\Entity\Note;
+use Kub\NoteBundle\Entity\Controle;
 
 
-class LoadNoteData extends AbstractFixture implements FixtureInterface, ContainerAwareInterface, OrderedFixtureInterface
+class LoadControleData extends AbstractFixture implements FixtureInterface, ContainerAwareInterface, OrderedFixtureInterface
 {
     /**
      * @var ContainerInterface
@@ -32,28 +32,20 @@ class LoadNoteData extends AbstractFixture implements FixtureInterface, Containe
      */
     public function load(ObjectManager $manager)
     {
-        $note1 = new Note ;
-            $note1->setNote('15');
-            $note1->setCoefficient('20');
-            $note1->setEleve( $this->getReference('johnsnow') );
+        $controle = new Controle ;
+            $controle->setMatiere( $this->getReference('Mathématiques') );
+            $controle->setProfesseur( $this->getReference('professeur') );
+            $controle->setNom('Evaluation sur les vecteurs');
 
+            $controle->addNote( $this->getReference('note1') );
+            $controle->addNote( $this->getReference('note2') );        
 
-        $note2 = new Note ;
-            $note2->setNote('17');
-            $note2->setCoefficient('34.5');
-            $note2->setEleve( $this->getReference('johnsnow') );
-
-        $this->addReference('note1', $note1);
-        $this->addReference('note2', $note2);
-
-        $manager->persist( $note1 );
-        $manager->persist( $note2 );
-
+        $manager->persist( $controle );
         $manager->flush();
     }
 
     public function getOrder()
     {
-        return 6; // l'ordre dans lequel les fichiers sont chargés
+        return 7; // l'ordre dans lequel les fichiers sont chargés
     }
 }
