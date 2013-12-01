@@ -5,10 +5,12 @@
     {% endif %}
 
 	<span class="prenom">
+		{{ form_error(form.prenom) }}
 		{{ form_label(form.prenom) }} <div class="input">{{ form_widget(form.prenom) }}</div>
 	</span>
 
 	<span class="nom">
+		{{ form_error(form.nom) }}
 		{{ form_label(form.nom) }} <div class="input">{{ form_widget(form.nom) }}</div>
 	</span>
 
@@ -16,24 +18,29 @@
 		{{ form_label(form.photo) }}
 		<div class="input">
 			{% for field in form.photo %}
+				{{ form_error(field) }}
 				{{ form_widget(field) }}
 			{% endfor %}
 		</div>
 	</span>
 
 	<span class="email">
+		{{ form_error(form.email) }}
 		{{ form_label(form.email) }} <div class="input">{{ form_widget(form.email) }}</div>
 	</span>
 
 	<span class="anniversaire">
+		{{ form_error(form.anniversaire) }}
 		{{ form_label(form.anniversaire) }} <div class="input">{{ form_widget(form.anniversaire) }}</div>
 	</span> 
 
 	<span class="niveau">
+		{{ form_error(form.niveau) }}
 		{{ form_label(form.niveau) }} <div class="input">{{ form_widget(form.niveau) }}</div>
 	</span>
 
 	<span class="tuteurs">
+		{{ form_error(form.tuteurs) }}
 		{{ form_label(form.tuteurs) }} <div class="input">{{ form_widget(form.tuteurs) }}</div>
 	</span>
 
