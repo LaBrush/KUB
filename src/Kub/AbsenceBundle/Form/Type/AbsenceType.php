@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-use Kub\AbsenceType\Entity\Absence ;
+use Kub\AbsenceBundle\Entity\Absence ;
 
 class AbsenceType extends AbstractType
 {
@@ -17,8 +17,8 @@ class AbsenceType extends AbstractType
 	public function buildForm(FormBuilderInterface $builder, array $options)
 	{
 		$builder
-			->add('statut', 'option', array(
-				"options" => array(
+			->add('statut', 'choice', array(
+				"choices" => array(
 
 					Absence::PRESENT => "Présent",
 					Absence::ABSENCE => "Absent",

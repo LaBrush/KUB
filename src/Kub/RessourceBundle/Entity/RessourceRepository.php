@@ -12,4 +12,27 @@ use Doctrine\ORM\EntityRepository;
  */
 class RessourceRepository extends EntityRepository
 {
+
+	public function findByAll($search)
+	{
+		$qb = $this->_em->createQuery(
+			"SELECT r, m, n
+			 FROM KubRessourceBundle:Ressource r
+			 LEFT JOIN r.matiere m
+			 LEFT JOIN r.niveau n
+
+			 WHERE 
+			 	(r.titre LIKE :search) OR
+			 	(r.description LIKE :search) OR
+			 	(m.name LIKE :search) OR
+			 	(n.name LIKE :search)
+			"
+		);
+
+		$qb->setParameter('search', '%' . $search . '%');
+		
+
+		return $qb->getArrayResult();
+	}
+
 }

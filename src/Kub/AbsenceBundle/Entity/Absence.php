@@ -46,6 +46,11 @@ class Absence
 		$this->statut = self::PRESENT ;
 	}
 
+    public function hasEleve($eleve)
+    {
+        return $this->eleve == $eleve ;
+    }
+
     /**
      * Get id
      *

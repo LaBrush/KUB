@@ -17,6 +17,8 @@ class RessourceType extends AbstractType
 		$builder
 			->add('titre')
 			->add('description', "textarea")
+			->add('niveau')
+			->add('matiere')
 			->add('type', 'choice', array(
 				"expanded" => true,
 				'choices' => array(

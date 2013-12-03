@@ -79,6 +79,7 @@ class Eleve extends User
 		parent::__construct();
 
 		$this->addRole("ROLE_ELEVE");
+
 		$this->setfil(new \Kub\ArianeBundle\Entity\Fil) ;
 		$this->tuteurs = new \Doctrine\Common\Collections\ArrayCollection;
 		$this->groupes = new \Doctrine\Common\Collections\ArrayCollection;

@@ -50,6 +50,11 @@ class Semaine
         return $this->id;
     }
 
+    public function getHash()
+    {
+        return $this->annee * 100 + $this->numero ;
+    }
+
     /**
      * Set numero
      *

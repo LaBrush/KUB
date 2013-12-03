@@ -16,7 +16,7 @@ class FrequenceType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('semaines', 'entity', array(
+            ->add('semaines', 'genemu_jqueryselect2_entity', array(
                 "multiple" => true,
                 "expanded" => true,
                 "class" => "Kub\EDTBundle\Entity\Semaine"

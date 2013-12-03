@@ -51,7 +51,7 @@ class Ressource
     /**
      * @var string
      *
-     * @ORM\Column(name="url", type="string", length=255, nullable=true)
+     * @ORM\Column(name="url", type="text", nullable=true)
      * @Assert\Url()
      */
     private $url;
@@ -60,6 +60,16 @@ class Ressource
      * @ORM\OneToOne(targetEntity="Kub\RessourceBundle\Entity\File", cascade={"all"})
      */
     private $file ;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Kub\EDTBundle\Entity\Matiere", cascade={"all"})
+     */
+    private $matiere ;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Kub\ClasseBundle\Entity\Niveau", cascade={"all"})
+     */
+    private $niveau ;
 
     public function __construct()
     {
@@ -212,5 +222,51 @@ class Ressource
     public function getFile()
     {
         return $this->file;
+    }
+
+    /**
+     * Set matiere
+     *
+     * @param \Kub\EDTBundle\Entity\Matiere $matiere
+     * @return Ressource
+     */
+    public function setMatiere(\Kub\EDTBundle\Entity\Matiere $matiere = null)
+    {
+        $this->matiere = $matiere;
+    
+        return $this;
+    }
+
+    /**
+     * Get matiere
+     *
+     * @return \Kub\EDTBundle\Entity\Matiere 
+     */
+    public function getMatiere()
+    {
+        return $this->matiere;
+    }
+
+    /**
+     * Set niveau
+     *
+     * @param \Kub\ClasseBundle\Entity\Niveau $niveau
+     * @return Ressource
+     */
+    public function setNiveau(\Kub\ClasseBundle\Entity\Niveau $niveau = null)
+    {
+        $this->niveau = $niveau;
+    
+        return $this;
+    }
+
+    /**
+     * Get niveau
+     *
+     * @return \Kub\ClasseBundle\Entity\Niveau 
+     */
+    public function getNiveau()
+    {
+        return $this->niveau;
     }
 }

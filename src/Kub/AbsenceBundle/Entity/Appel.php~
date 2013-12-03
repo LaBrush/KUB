@@ -39,7 +39,7 @@ class Appel
     private $semaine ;
 
     /**
-     * @ORM\OneToMany(targetEntity="Kub\AbsenceBundle\Entity\Absence", mappedBy="absence", cascade={"all"})
+     * @ORM\OneToMany(targetEntity="Kub\AbsenceBundle\Entity\Absence", mappedBy="appel", cascade={"all"})
      */
     private $absences ;
 
@@ -47,6 +47,15 @@ class Appel
     {
         $this->date = new \DateTime();
         $this->absences = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    public function hasEleve($eleve)
+    {
+        foreach ($absences as $absence) {
+            if($absence->hasEleve($eleve)){ return true ; }
+        }
+
+        return false ;
     }
 
     /**

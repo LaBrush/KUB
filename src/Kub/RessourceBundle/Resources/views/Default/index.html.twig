@@ -2,18 +2,14 @@
 
 {% block body %}
 
-	{% if is_granted('ROLE_PROFESSEUR') %}
+	<article class="article">
+		
+		{{ include('KubRessourceBundle:Search:form.html.twig') }}
 
-		<article class="article">
-			
-			{{ render(controller("KubRessourceBundle:Default:add")) }}
-
-		</article>
-
-	{% endif %}
+	</article>
 
 	<article class="article">
-			
+
 		<ul>
 			{% for ressource in ressources %}
 		
