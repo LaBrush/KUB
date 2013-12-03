@@ -15,11 +15,15 @@ class FrequenceType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
+            ->add('name', 'text', array(
+                "label" => "Nom de la fréquence",
+
+            ))
             ->add('semaines', 'entity', array(
                 "multiple" => true,
                 "expanded" => true,
-                "class" => "Kub\EDTBundle\Entity\Semaine"
+                "class" => "Kub\EDTBundle\Entity\Semaine",
+                "label" => "Semaines comprises"
             ))
         ;
     }

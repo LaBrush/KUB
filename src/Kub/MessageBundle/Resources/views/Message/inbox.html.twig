@@ -2,9 +2,7 @@
 
 {% block fos_message_content %}
 
-<h2>Boite de réception</h2>
-
-<a href="{{ url('fos_message_thread_new' )}}">Nouveau</a>
+<h2 class="message-box-title">Boite de réception</h2>
 
 {% include 'KubMessageBundle:Message:threads_list.html.twig' with {'threads': threads} %}
 

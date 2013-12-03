@@ -2,7 +2,7 @@
 
 {% block fos_message_content %}
 
-<h2>Rechercher</h2>
+<h2 class="message-box-title">Rechercher</h2>
 
 <p>{% transchoice threads|length with {'%num%': threads|length } from 'FOSMessageBundle' %}
     threads_found

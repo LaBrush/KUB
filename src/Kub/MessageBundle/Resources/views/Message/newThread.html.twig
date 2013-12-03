@@ -2,7 +2,7 @@
 
 {% block fos_message_content %}
 
-<h2>Nouveau message</h2>
+<h2 class="message-box-title">Nouveau message</h2>
 
 <form action="{{ url('fos_message_thread_new') }}" method="post">
     {{ form_widget(form) }}
