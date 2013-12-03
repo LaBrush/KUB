@@ -1,22 +1,22 @@
 {% block form %}
 
 	<span class="debut">
-		{{ form_error(form.debut) }}
+		{{ form_errors(form.debut) }}
 		{{ form_label(form.debut) }} <div class="input">{{ form_widget(form.debut) }}</div>
 	</span>
 
 	<span class="fin">
-		{{ form_error(form.fin) }}
+		{{ form_errors(form.fin) }}
 		{{ form_label(form.fin) }} <div class="input">{{ form_widget(form.fin) }}</div>
 	</span>
 
 	<span class="titre">
-		{{ form_error(form.titre) }}
+		{{ form_errors(form.titre) }}
 		{{ form_label(form.titre) }} <div class="input">{{ form_widget(form.titre) }}</div>
 	</span>
 
 	<span class="contenu">
-		{{ form_error(form.contenu) }}
+		{{ form_errors(form.contenu) }}
 		{{ form_label(form.contenu) }} <div class="input">{{ form_widget(form.contenu) }}</div>
 	</span>
 

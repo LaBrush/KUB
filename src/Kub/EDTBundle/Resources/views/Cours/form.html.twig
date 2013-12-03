@@ -1,17 +1,17 @@
 {% block form %}
 	
 	<span class="professeur">
-		{{ form_error(form.professeur) }}
+		{{ form_errors(form.professeur) }}
 		{{ form_label(form.professeur) }} <div class="input">{{ form_widget(form.professeur) }}</div>
 	</span>
 
 	<span class="groupes">
-		{{ form_error(form.groupes) }}
+		{{ form_errors(form.groupes) }}
 		{{ form_label(form.groupes) }} <div class="input">{{ form_widget(form.groupes) }}</div>
 	</span>
 
 	<span class="matiere">
-		{{ form_error(form.matiere) }}
+		{{ form_errors(form.matiere) }}
 		{{ form_label(form.matiere) }} <div class="input">{{ form_widget(form.matiere) }}</div>
 	</span>
 
@@ -22,27 +22,27 @@
 			</span>
 
 			<span class="debut">
-				{{ form_error(horaire.debut) }}
+				{{ form_errors(horaire.debut) }}
 				{{ form_label(horaire.debut) }} <div class="input">{{ form_widget(horaire.debut) }}</div>
 			</span>
 
 			<span class="fin">
-				{{ form_error(horaire.fin) }}
+				{{ form_errors(horaire.fin) }}
 				{{ form_label(horaire.fin) }} <div class="input">{{ form_widget(horaire.fin) }}</div>
 			</span>
 
 			<span class="jour">
-				{{ form_error(horaire.jour) }}
+				{{ form_errors(horaire.jour) }}
 				{{ form_label(horaire.jour) }} <div class="input">{{ form_widget(horaire.jour) }}</div>
 			</span>
 
 			<span class="frequences">
-				{{ form_error(horaire.frequences) }}
+				{{ form_errors(horaire.frequences) }}
 				{{ form_label(horaire.frequences) }} <div class="input">{{ form_widget(horaire.frequences) }}</div>
 			</span>
 
 			<span class="semaines">
-				{{ form_error(horaire.semaines) }}
+				{{ form_errors(horaire.semaines) }}
 				{{ form_label(horaire.semaines) }} <div class="input">{{ form_widget(horaire.semaines) }}</div>
 			</span>
 		</div>

@@ -1,7 +1,7 @@
 {% block form %}
 
 	<span class="matiere">
-		{{ form_error(form.matiere) }}
+		{{ form_errors(form.matiere) }}
 		{{ form_label(form.matiere) }}  <div class="input">{{ form_widget(form.matiere) }}</div>
 	</span>
 
@@ -33,11 +33,11 @@
 							<strong>{{ form_label(i) }}</strong>
 						</td>
 						<td>
-							{{ form_error(i.noter) }}
+							{{ form_errors(i.noter) }}
 							{{ form_widget(i.noter) }}
 						</td>
 						<td>
-							{{ form_error(i.note) }} - {{ form_error(i.coefficient) }}
+							{{ form_errors(i.note) }} - {{ form_errors(i.coefficient) }}
 							{{ form_widget(i.note) }} / {{ form_widget(i.coefficient, { 'attr': {'class': 'coeff'} }) }}
 						</td>
 					</tr>
