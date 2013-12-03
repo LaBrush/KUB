@@ -15,11 +15,20 @@ class FrequenceType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+<<<<<<< HEAD
             ->add('name')
             ->add('semaines', 'genemu_jqueryselect2_entity', array(
+=======
+            ->add('name', 'text', array(
+                "label" => "Nom de la fréquence",
+
+            ))
+            ->add('semaines', 'entity', array(
+>>>>>>> e745555f64cba50323fdead3188e06ca2823fb57
                 "multiple" => true,
                 "expanded" => true,
-                "class" => "Kub\EDTBundle\Entity\Semaine"
+                "class" => "Kub\EDTBundle\Entity\Semaine",
+                "label" => "Semaines comprises"
             ))
         ;
     }

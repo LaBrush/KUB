@@ -21,10 +21,6 @@ class SearchController extends Controller
 
 		$ressources = $this->get('doctrine.orm.default_entity_manager')->getRepository("KubRessourceBundle:Ressource")->findByAll( $ressource );
 
-		if(count($ressources) == 0){
-			throw $this->createNotFoundException("Aucune ressource correspondant à vos critère n'a été trouvée");
-		}
-
 		return $this->render('KubRessourceBundle:Default:index.html.twig', array(
 			'ressources' => $ressources
 		));
