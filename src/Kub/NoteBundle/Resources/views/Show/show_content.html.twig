@@ -84,8 +84,8 @@
 	{% set moyenneMatiere = totalNotes / totalCoefficient %}
 
 	{% set details = details ~ '
-		<td><strong>' ~ note.note | number_format(1) ~ ' / ' ~ note.coefficient ~ '</strong></td>
-		<td>Note ajoutée le ' ~ note.controle.date | date('d/m/y') ~ '</td>
+		<tr><td><strong>' ~ note.note | number_format(1) ~ ' / ' ~ note.coefficient ~ '</strong></td>
+		<td>Note ajoutée le ' ~ note.controle.date | date('d/m/y') ~ '</td></tr>
 	' %}
 
 	{% if loop.last %}
