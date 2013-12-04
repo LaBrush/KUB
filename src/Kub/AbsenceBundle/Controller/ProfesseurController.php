@@ -24,36 +24,53 @@ class ProfesseurController extends Controller
 
 		if($cours)
 		{	
-			throw new \Exception("T'as trouvé un hash pour l'annee et le numéro ? Non ? Qu'est ce que t'attends alors ?", 1);
-			
-			$semaine = $em->getRepository('KubEDTBundle:Semaine')->findOneBy(array( "numero" ));
-			$appel = $em->getRepository('KubEDTBundle:Cours')->findOneOrNullByCoursAndSemaine( $cours, $semaine );
+			$semaine = $em->getRepository('KubEDTBundle:Semaine')->findOneBy(array( "numero" => date('W'), "annee" => date('y') ));
+			$appel = $em->getRepository('KubAbsenceBundle:Appel')->findOneOrNullByCoursAndSemaine( $cours, $semaine );
 
-			$appel = new Appel ;
-			$appel->setCours( $cours );
-			$appel->setSemaine(  );
+			if(!$appel)
+			{
+				$appel = new Appel ;
+				$appel->setCours( $cours );
+				$appel->setSemaine( $semaine );
+			}
 
-			$form  = $this->createForm(new AppelType( $this->getUser(), $groupe ), $appel, 
+			$eleves = array();
+
+			foreach ($this->groupes as $groupe) { $eleves = array_merge($eleves, $groupe->getEleves()->toArray() ); }
+
+			foreach ($eleves as $eleve) {
+
+				if(!$appel->hasEleve($eleve))
+				{
+					$absence = new Absence ;
+					$absence->setEleve( $eleve );
+
+					$appel->addAbsence( $absence );
+				}
+
+			}
+
+			$form  = $this->createForm(new AppelType( $cours->getGroupes() ), $appel, 
 				array(
-					'action' => $this->generateUrl('kub_notes_professeur_homepage', array( 'groupe' => $groupe->getName() )
-				))
+					'action' => $this->generateUrl('kub_absence_professeur_appel')
+				)
 			);
 
 			$request = $this->get('request');
 			if($request->getMethod() == "POST"){
 
-				// $formHandler = new AbsenceHandler($form, $request, $this->getDoctrine()->getManager(), $this->get('kub.notification_manager'));
+				$formHandler = new AbsenceHandler($form, $request, $this->getDoctrine()->getManager(), $this->get('kub.notification_manager'));
 
-				// if($formHandler->process())
-				// {
-				// 	$this->get('session')->getFlashBag()->add('info', "L'appel a bien été pris en compte");
+				if($formHandler->process())
+				{
+					$this->get('session')->getFlashBag()->add('info', "L'appel a bien été pris en compte");
 
-				// 	return $this->redirect($this->generateUrl("home_homepage"));
-				// }
-				// else
-				// {
-				// 	$this->get('session')->getFlashBag()->add('info', "Une erreur est survenue lors de l'appel");   
-				// }
+					return $this->redirect($this->generateUrl("home_homepage"));
+				}
+				else
+				{
+					$this->get('session')->getFlashBag()->add('info', "Une erreur est survenue lors de l'appel");   
+				}
 
 			}
 

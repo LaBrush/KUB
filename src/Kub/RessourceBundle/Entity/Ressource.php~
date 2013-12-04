@@ -51,7 +51,7 @@ class Ressource
     /**
      * @var string
      *
-     * @ORM\Column(name="url", type="string", length=255, nullable=true)
+     * @ORM\Column(name="url", type="text", nullable=true)
      * @Assert\Url()
      */
     private $url;
@@ -60,6 +60,16 @@ class Ressource
      * @ORM\OneToOne(targetEntity="Kub\RessourceBundle\Entity\File", cascade={"all"})
      */
     private $file ;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Kub\EDTBundle\Entity\Matiere", cascade={"all"})
+     */
+    private $matiere ;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Kub\ClasseBundle\Entity\Niveau", cascade={"all"})
+     */
+    private $niveau ;
 
     public function __construct()
     {

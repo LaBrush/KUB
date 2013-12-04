@@ -21,11 +21,18 @@ class AppelRepository extends EntityRepository
 			->join('a.semaine', 's')
 			->addSelect('s')
 
-			->where('s.id = :sid')
-			->setParameter('sid', $semaine->getId())
-			->where('c.id = :cid')
-			->setParameter('cid', $semaine->getId())
+			->where('s.annee = :s_annee')
+			->setParameter('s_annee', $semaine->getAnnee())
+
+			->andWhere('s.numero = :s_numero')
+			->setParameter('s_numero', $semaine->getNumero())
+
+			->andWhere('c.id = :cid')
+			->setParameter('cid', $cours->getId())
 		;
+
+		// throw new \Exception($qb->getQuery()->getDql());
+		
 
 		return $qb->getQuery()->getOneOrNullResult();
 	}

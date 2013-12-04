@@ -20,11 +20,6 @@ class DefaultController extends Controller
 		));
 	}
 
-	public function searchAction()
-	{
-
-	}
-
 	/**
 	 * @Secure(roles={"ROLE_PROFESSEUR"})
 	 */
@@ -52,13 +47,7 @@ class DefaultController extends Controller
 			}
 		}
 
-		$template = 'create';
-		if($this->get('request')->attributes->get('_route') != 'kub_ressource_add')
-		{
-			$template .= "_content" ; 
-		}
-
-		return $this->render('KubRessourceBundle:Ressource:' . $template . '.html.twig',
+		return $this->render('KubRessourceBundle:Ressource:create.html.twig',
 			array(
 				'form' => $form->createView(),
 			)

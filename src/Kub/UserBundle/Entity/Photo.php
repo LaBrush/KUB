@@ -11,6 +11,16 @@ use Kub\HomeBundle\Entity\File as BaseFile ;
  */
 class Photo extends BaseFile
 {
+	 /**
+     * @Assert\Image(
+     *     minWidth = 200,
+     *     maxWidth = 400,
+     *     minHeight = 200,
+     *     maxHeight = 400
+     * )
+     */
+	protected $file ;
+
 	public function getUploadDir()
 	{
 		// On retourne le chemin relatif vers l'image pour un navigateur

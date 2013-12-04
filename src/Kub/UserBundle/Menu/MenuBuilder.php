@@ -143,6 +143,13 @@ class MenuBuilder
 			),
 			'route' => 'edt_homepage'
 		)); 
+		$menu->addChild("Ressources en ligne", array(
+			'route' => 'kub_ressource_homepage', 
+			'labelAttributes' => array(
+				'className' => 'ressources')
+			)
+		);
+
 		$menu->addChild('1984', array(
 			'labelAttributes' => array(
 				'className' => 'bigbro',  
@@ -170,6 +177,20 @@ class MenuBuilder
 					)
 				);
 			}
+
+		$menu->addChild("Ressources en ligne", array(
+			'labelAttributes' => array(
+				'className' => 'ressources'
+			)
+		));
+
+		$menu["Ressources en ligne"]->addChild("Consulter", array(
+			'route' => 'kub_ressource_homepage', 
+		));
+
+		$menu["Ressources en ligne"]->addChild("Ajouter", array(
+			'route' => 'kub_ressource_add', 
+		));
 
 		$menu->addChild('1984', array('labelAttributes' => array('className' => 'bigbro')));
 
