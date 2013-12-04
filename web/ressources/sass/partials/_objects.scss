@@ -246,6 +246,11 @@ input[type="text"], input[type="password"], input[type="email"], input[type="sea
 	display: inline-block;
 }
 
+.hidden
+{
+	display: none;
+}
+
 .profil-picture
 {
 	@include border-radius(3px);

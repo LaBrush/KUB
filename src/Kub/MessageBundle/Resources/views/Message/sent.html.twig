@@ -2,8 +2,6 @@
 
 {% block fos_message_content %}
 
-<h2 class="message-box-title">Messages envoyés</h2>
-
 {% include 'KubMessageBundle:Message:threads_list.html.twig' with {'threads': threads} %}
 
 {% endblock %}

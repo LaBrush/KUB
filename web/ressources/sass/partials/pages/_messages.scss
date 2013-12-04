@@ -2,12 +2,17 @@
 {
 	@include pie-clearfix();
 	display: block;
-	margin: 0 0 10px 0;
 
-	li
+	.button-message-right
+	{
+		float: right;
+		margin: 0 5px 10px 5px;
+	}
+
+	.button-message-left
 	{
 		float: left;
-		margin: 0 10px 0 0;
+		margin: 0 10px 10px 0;
 	}
 }
 
@@ -16,22 +21,73 @@
 	margin: 0 0 5px 0;
 }
 
-.delete-message
+.apercu-message
+{
+	padding: 8px 5px;
+
+	&:hover, &:focus, &:active
+	{
+		background: $header;
+	}
+}
+
+.new-message
+{
+	line-height: 1.35em;
+	float: none;
+	padding: 1px 7px;
+	margin: 0 0 0 5px;
+}
+
+.actions-messages
+{
+	float: right;
+	display: inline-block;
+
+	@media all and (max-width: 760px)
+	{
+		display: block;
+		text-align: center;	
+	}
+}
+
+@mixin action-message
 {
 	font-size: 0.8em;
 	margin: 0;
 	padding: 1px 4px;
 	cursor: pointer;
-	background: inherit;
+	background: $header;
 	color: $texte;
 	border: none;
 	@include appearance(none);
 
+	display: inline;
+
 	&:hover, &:focus, &:active
 	{
-		background: $button-no;
 		color: $color-light;
 		text-shadow: 1px 1px rgba(0, 0, 0, 0.2);
 		@include border-radius(2px);
+	}
+}
+
+.show-message, .undelete-message
+{
+	@include action-message;
+
+	&:hover, &:focus, &:active
+	{
+		background: $button-yes;
+	}
+}
+
+.delete-message
+{
+	@include action-message;
+
+	&:hover, &:focus, &:active
+	{
+		background: $button-no;
 	}
 }

@@ -1,25 +1,29 @@
 {% extends "::base.html.twig" %}
 
 {% block title %}
-    {{ parent() }} - Messages
+	{{ parent() }} - Messages
 {% endblock %}
 
 {% block body %}
-    
-    <div class="article">
-        <h3 class="section-title">Mes messages</h3>
-    </div>
+	
+	<div class="article">
+		<h3 class="section-title">Mes messages</h3>
+	</div>
 
 	<article class="article">
 
-        <ul class="liens">
-            <li><a class="button" href="{{ url('fos_message_inbox') }}">Boite de réception</a></li>
-            <li><a href="{{ url('fos_message_thread_new' )}}" class="button-yes">Nouveau</a></li>
-            <li><a class="button-espace-collaboratif" href="{{ url('fos_message_sent') }}">Messages envoyés</a></li>
-            <li><a class="button-no" href="{{ url('fos_message_deleted') }}">Messages supprimés</a></li>
-        </ul>
+		<ul class="liens">
+			<li><a class="button-yes button-message-left" href="{{ url('fos_message_thread_new' )}}">Nouveau</a></li>
 
-    {% block fos_message_content %}{% endblock %}
+			{% if app.request.attributes.get("_route") == "fos_message_deleted" %}
+				<li><a class="button-no button-message-right" href="{{ url('fos_message_deleted') }}">Messages supprimés</a></li>
+			{% endif %}
 
+			{% if app.request.attributes.get("_route") != "fos_message_index" %}
+				<li><a class="button button-message-right" href="{{ url('fos_message_inbox') }}">Boite de réception</a></li>
+			{% endif %}
+		</ul>
+
+		{% block fos_message_content %}{% endblock %}
 	</article>
 {% endblock %}
