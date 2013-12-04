@@ -13,9 +13,9 @@ class Photo extends BaseFile
 {
 	 /**
      * @Assert\Image(
-     *     minWidth = 200,
+     *     minWidth = 100,
      *     maxWidth = 400,
-     *     minHeight = 200,
+     *     minHeight = 100,
      *     maxHeight = 400
      * )
      */

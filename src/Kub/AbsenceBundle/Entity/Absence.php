@@ -27,7 +27,7 @@ class Absence
 	private $id;
 
 	/**
-     * @ORM\ManyToOne(targetEntity="Kub\AbsenceBundle\Entity\Appel", inversedBy="absences", cascade={"merge", "detach", "persist"})
+     * @ORM\ManyToOne(targetEntity="Kub\AbsenceBundle\Entity\Appel", inversedBy="absences",  cascade={"all"})
      */
     private $appel ;
 

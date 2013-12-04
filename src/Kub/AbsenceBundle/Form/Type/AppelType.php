@@ -6,6 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
+use Kub\AbsenceBundle\Form\EventListener\setEleveLabelSuscriber ;
 use Kub\AbsenceBundle\Form\Type\AbsenceType ;
 
 class AppelType extends AbstractType
@@ -24,10 +25,12 @@ class AppelType extends AbstractType
 	 */
 	public function buildForm(FormBuilderInterface $builder, array $options)
 	{
-
-		
-
+		$builder->add('absences', 'collection', array(
+			"type" => new AbsenceType()
+		));
+		// $builder->addEventSubscriber(new setEleveLabelSuscriber());
 	}
+
 	
 	/**
 	 * @param OptionsResolverInterface $resolver

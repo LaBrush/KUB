@@ -25,7 +25,7 @@ class ProfesseurController extends Controller
 		if($cours)
 		{	
 			$semaine = $em->getRepository('KubEDTBundle:Semaine')->findOneBy(array( "numero" => date('W'), "annee" => date('y') ));
-			$appel = $em->getRepository('KubAbsenceBundle:Appel')->findOneOrNullByCoursAndSemaine( $cours, $semaine );
+			$appel = $em->getRepository('KubAbsenceBundle:Appel')->findOneOrNullByCoursAndSemaine( $cours, $semaine );			
 
 			if(!$appel)
 			{
@@ -36,7 +36,7 @@ class ProfesseurController extends Controller
 
 			$eleves = array();
 
-			foreach ($this->groupes as $groupe) { $eleves = array_merge($eleves, $groupe->getEleves()->toArray() ); }
+			foreach ($cours->getGroupes() as $groupe) { $eleves = array_merge($eleves, $groupe->getEleves()->toArray() ); }
 
 			foreach ($eleves as $eleve) {
 
@@ -59,7 +59,7 @@ class ProfesseurController extends Controller
 			$request = $this->get('request');
 			if($request->getMethod() == "POST"){
 
-				$formHandler = new AbsenceHandler($form, $request, $this->getDoctrine()->getManager(), $this->get('kub.notification_manager'));
+				$formHandler = new AppelHandler($form, $request, $this->getDoctrine()->getManager(), $this->get('kub.notification_manager'));
 
 				if($formHandler->process())
 				{

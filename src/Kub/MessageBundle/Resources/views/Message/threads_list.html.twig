@@ -50,8 +50,9 @@
                         {% endif %}
 
 						<span class="actions-messages">
-							<span class="undelete-message">Afficher</span> ou 
+							<span class="undelete-message">Afficher</span> 
 							{% if fos_message_can_delete_thread(thread) %}
+								ou
 								{% if fos_message_deleted_by_participant(thread) %}
 									{% set formAction %}{{ url('fos_message_thread_undelete', {'threadId': thread.id}) }}{% endset %}
 									{% set submitValue %}Restaurer{% endset %}
