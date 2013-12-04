@@ -1,13 +1,34 @@
 {% extends 'KubMessageBundle::layout.html.twig' %}
 
 {% block fos_message_content %}
+<div class="conversation">
+	<form action="{{ url('fos_message_thread_new') }}" method="post">
+		{{ form_errors(form) }}
+	    <span class="receveur">Pour&nbsp;&nbsp;</span>
+	    <span class="input">
+	    	{{ form_errors(form.recipient) }}{{ form_widget(form.recipient) }}
+	    </span>
 
-<h2 class="message-box-title">Nouveau message</h2>
+	    <input type="submit" class="button-yes send-message" value="Envoyer" />
 
-<form action="{{ url('fos_message_thread_new') }}" method="post">
-    {{ form_widget(form) }}
+	    {{ form_widget(form.subject, {"attr" : {"class" : "hidden", "value" : app.user.username } }) }}
 
-    <input type="submit" />
-</form>
+	    <div class="message-write">{{ form_errors(form.body) }}{{ form_widget(form.body, {"attr" : {"placeholder" : "Rédiger un message"}}) }}</div>
 
+	    {{ form_widget(form) }}
+	</form>
+</div>
+
+{% endblock %}
+
+{% block js %}
+
+	{{ parent() }}
+
+	<script type="text/javascript" src="{{ asset('ressources/select2/select2.min.js') }}"></script>
+	<link rel="stylesheet" href="{{ asset('ressources/select2/select2.css') }}" />
+	{{ form_javascript(form) }}
+	{{ form_stylesheet(form) }}
+
+    
 {% endblock %}

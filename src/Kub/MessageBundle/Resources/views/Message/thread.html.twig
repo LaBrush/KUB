@@ -2,24 +2,37 @@
 
 {% block fos_message_content %}
 
-{% for message in thread.messages %}
-    <div class="messenger_thread_message">
-        <div class="messenger_thread_message_info">
-            {% trans with {'%sender%': message.sender|e, '%date%': message.createdAt|date} from 'FOSMessageBundle' %}message_info{% endtrans %}
+<div class="conversation">
+    <div class="messages">
+        <div class="participants">
+            {% for participant in thread.participants %}
+                {% if participant.username != app.user.username %}
+                    <span class="sender"><h3 class="bold">{{ participant }}</h3 class="bold"></span>
+                {% else %}
+                    <span class="recever"><h3 class="bold">{{ participant }}</h3 class="bold"></span>
+                {% endif %}    
+            {% endfor %}
         </div>
 
-        <div class="messenger_thread_message_body" id="message_{{ message.id }}">
-            {{ message.body }}
-        </div>
+        {% for message in thread.messages %}
+            <div class="from-{% if message.sender.username == app.user.username %}sender{% else %}recever{% endif %}">
+                <span><em>
+                    Le <strong>{{ thread.lastMessage.createdAt | date('d/m/y')}}</strong> à <strong>{{ thread.lastMessage.createdAt | date('H:i')}} :</strong>
+                </em></span>
+                <p>{{ message.body }}</p>
+            </div>
+        {% endfor %}
     </div>
-{% endfor %}
 
-<h3>Répondre</h3>
+    <form action="{{ url('fos_message_thread_view', {'threadId': thread.id}) }}" method="post" class="message-write">
+        {{ form_errors(form) }}
 
-<form action="{{ url('fos_message_thread_view', {'threadId': thread.id}) }}" method="post">
-    {{ form_widget(form) }}
+        <input type="submit" class="button-yes send-message" value="Envoyer" />
 
-    <input type="submit" />
-</form>
+        <div class="message-write">{{ form_errors(form.body) }}{{ form_widget(form.body, {"attr" : {"placeholder" : "Répondre..."}}) }}</div>
+
+        {{ form_widget(form) }}
+    </form>
+</div>
 
 {% endblock %}

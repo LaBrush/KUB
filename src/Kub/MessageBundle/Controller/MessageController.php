@@ -15,7 +15,7 @@ class MessageController extends BaseController
 	{
 		$threads = array_merge($this->getProvider()->getInboxThreads(), $this->getProvider()->getSentThreads());
 
-		return $this->container->get('templating')->renderResponse('FOSMessageBundle:Message:sent.html.twig', array(
+		return $this->container->get('templating')->renderResponse('FOSMessageBundle:Message:inbox.html.twig', array(
             'threads' => $threads
         ));
 	}

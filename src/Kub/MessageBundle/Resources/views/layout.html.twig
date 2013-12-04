@@ -13,17 +13,21 @@
 	<article class="article">
 
 		<ul class="liens">
-			<li><a class="button-yes button-message-left" href="{{ url('fos_message_thread_new' )}}">Nouveau</a></li>
+			{% if app.request.attributes.get("_route") != "fos_message_thread_new" %}
+				<li><a class="button-yes button-message-left" href="{{ url('fos_message_thread_new' )}}">Nouveau</a></li>
+			{% endif %}
 
-			{% if app.request.attributes.get("_route") == "fos_message_deleted" %}
+			{% if app.request.attributes.get("_route") != "fos_message_deleted" and app.request.attributes.get("_route") != "fos_message_thread_new" and app.request.attributes.get("_route") != "fos_message_thread_view" %}
 				<li><a class="button-no button-message-right" href="{{ url('fos_message_deleted') }}">Messages supprimés</a></li>
 			{% endif %}
 
-			{% if app.request.attributes.get("_route") != "fos_message_index" %}
-				<li><a class="button button-message-right" href="{{ url('fos_message_inbox') }}">Boite de réception</a></li>
+			{% if app.request.attributes.get("_route") != "fos_message_inbox" %}
+				<li><a class="button button-message-{% if app.request.attributes.get("_route") != "fos_message_thread_new" %}right{% else %}left{% endif %}" href="{{ url('fos_message_inbox') }}">Boite de réception</a></li>
 			{% endif %}
 		</ul>
 
 		{% block fos_message_content %}{% endblock %}
 	</article>
 {% endblock %}
+
+{% block js %}{% endblock %}
