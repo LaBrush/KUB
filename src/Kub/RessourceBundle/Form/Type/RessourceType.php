@@ -17,8 +17,12 @@ class RessourceType extends AbstractType
 		$builder
 			->add('titre')
 			->add('description', "textarea")
-			->add('niveau')
-			->add('matiere')
+			->add('niveau', 'entity', array(
+				"class" => "Kub\ClasseBundle\Entity\Niveau"
+			))
+			->add('matiere', 'entity', array(
+				"class" => "Kub\EDTBundle\Entity\Matiere"
+			))
 			->add('type', 'choice', array(
 				"expanded" => true,
 				'choices' => array(

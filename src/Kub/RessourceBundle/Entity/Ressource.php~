@@ -223,4 +223,50 @@ class Ressource
     {
         return $this->file;
     }
+
+    /**
+     * Set matiere
+     *
+     * @param \Kub\EDTBundle\Entity\Matiere $matiere
+     * @return Ressource
+     */
+    public function setMatiere(\Kub\EDTBundle\Entity\Matiere $matiere = null)
+    {
+        $this->matiere = $matiere;
+    
+        return $this;
+    }
+
+    /**
+     * Get matiere
+     *
+     * @return \Kub\EDTBundle\Entity\Matiere 
+     */
+    public function getMatiere()
+    {
+        return $this->matiere;
+    }
+
+    /**
+     * Set niveau
+     *
+     * @param \Kub\ClasseBundle\Entity\Niveau $niveau
+     * @return Ressource
+     */
+    public function setNiveau(\Kub\ClasseBundle\Entity\Niveau $niveau = null)
+    {
+        $this->niveau = $niveau;
+    
+        return $this;
+    }
+
+    /**
+     * Get niveau
+     *
+     * @return \Kub\ClasseBundle\Entity\Niveau 
+     */
+    public function getNiveau()
+    {
+        return $this->niveau;
+    }
 }
