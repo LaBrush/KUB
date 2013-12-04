@@ -15,46 +15,62 @@ use Kub\UserBundle\Entity\Eleve;
 
 class LoadEleveData extends AbstractFixture implements FixtureInterface, ContainerAwareInterface, OrderedFixtureInterface
 {
-    /**
-     * @var ContainerInterface
-     */
-    private $container;
+	/**
+	 * @var ContainerInterface
+	 */
+	private $container;
 
-    /**
-     * {@inheritDoc}
-     */
-    public function setContainer(ContainerInterface $container = null)
-    {
-        $this->container = $container;
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	public function setContainer(ContainerInterface $container = null)
+	{
+		$this->container = $container;
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    public function load(ObjectManager $manager)
-    {
-        $discriminator = $this->container->get('pugx_user.manager.user_discriminator');
-        $discriminator->setClass('Kub\UserBundle\Entity\Eleve');
+	/**
+	 * {@inheritDoc}
+	 */
+	public function load(ObjectManager $manager)
+	{
+		$discriminator = $this->container->get('pugx_user.manager.user_discriminator');
+		$discriminator->setClass('Kub\UserBundle\Entity\Eleve');
 
-        $userManager = $this->container->get('pugx_user_manager');
-        $eleve = $userManager->createUser();
+		$userManager = $this->container->get('pugx_user_manager');
+		$johnsnow = $userManager->createUser();
 
-        $eleve->setNom('Snow');
-        $eleve->setPrenom('John');
-        $eleve->setAnniversaire(new \Datetime());
-        $eleve->setNiveau($this->getReference('premiere'));
+		$johnsnow->setNom('Snow');
+		$johnsnow->setPrenom('John');
+		$johnsnow->setAnniversaire(new \Datetime());
+		$johnsnow->setNiveau($this->getReference('premiere'));
 
-        $eleve->setEmail('admin@mail.com');
-        $eleve->setPlainPassword('123456');
-        $eleve->setEnabled(true);
+		$johnsnow->setEmail('admin@mail.com');
+		$johnsnow->setPlainPassword('123456');
+		$johnsnow->setEnabled(true);
 
-        $this->addReference('johnsnow', $eleve);
+		$this->addReference('johnsnow', $johnsnow);
 
-        $userManager->updateUser($eleve, true);
-    }
+		$userManager->updateUser($johnsnow, true);
 
-    public function getOrder()
-    {
-        return 2; // l'ordre dans lequel les fichiers sont chargés
-    }
+
+		$deneris = $userManager->createUser();
+
+		$deneris->setNom('Thargarien');
+		$deneris->setPrenom('Deneris');
+		$deneris->setAnniversaire(new \Datetime());
+		$deneris->setNiveau($this->getReference('premiere'));
+
+		$deneris->setEmail('adfdmin@mail.com');
+		$deneris->setPlainPassword('123456');
+		$deneris->setEnabled(true);
+
+		$this->addReference('deneristhargarien', $deneris);
+
+		$userManager->updateUser($deneris, true);
+	}
+
+	public function getOrder()
+	{
+		return 2; // l'ordre dans lequel les fichiers sont chargés
+	}
 }

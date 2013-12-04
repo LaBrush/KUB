@@ -4,6 +4,18 @@
 		"selected_items":
 		[
 			[
+				"Ressour",
+				"Ressource"
+			],
+			[
+				"Ress",
+				"Ressource"
+			],
+			[
+				"Ressou",
+				"RessourceBundle"
+			],
+			[
 				"Abse",
 				"Absence"
 			],
@@ -120,10 +132,6 @@
 				"AbsenceType"
 			],
 			[
-				"Ressou",
-				"Ressouce"
-			],
-			[
 				"Ressource",
 				"RessourceBundle"
 			],
@@ -150,10 +158,6 @@
 			[
 				"Re",
 				"Ressource"
-			],
-			[
-				"Ressour",
-				"RessourceBundle"
 			],
 			[
 				"Appel",
@@ -510,10 +514,6 @@
 			[
 				"minute",
 				"minutes"
-			],
-			[
-				"heure",
-				"heure"
 			]
 		]
 	},
@@ -523,9 +523,13 @@
 	"build_system": "Packages/User/PHP-Lint.sublime-build",
 	"command_palette":
 	{
-		"height": 367.0,
+		"height": 392.0,
 		"selected_items":
 		[
+			[
+				"side",
+				"View: Toggle Side Bar"
+			],
 			[
 				"rena",
 				"File: Rename"
@@ -549,10 +553,6 @@
 			[
 				"duplce",
 				"File: Duplicate"
-			],
-			[
-				"side",
-				"View: Toggle Side Bar"
 			],
 			[
 				"space",
@@ -876,6 +876,19 @@
 	},
 	"file_history":
 	[
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/RessourceBundle/Controller/DefaultController.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/RessourceBundle/Form/Handler/RessourceHandler.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/RessourceBundle/Form/Type/RessourceType.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/RessourceBundle/Entity/Ressource.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/DataFixtures/ORM/LoadEleveData.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/ClasseBundle/DataFixtures/ORM/LoadGroupeData.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/RessourceBundle/Entity/FileRessource.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/ArianeBundle/Form/Type/PostType.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/RessourceBundle/Entity/FileRessource.php~",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/HomeBundle/Entity/File.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/RessourceBundle/Entity/WebRessource.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/RessourceBundle/Entity/WebRessource.php~",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/RessourceBundle/Resources/views/Ressource/create.html.twig",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/web/app_dev.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Entity/Photo.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NotificationBundle/Manager/NotificationManager.php",
@@ -921,24 +934,19 @@
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/MessageBundle/Resources/config/routing.yml",
 		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/MessageBundle/Resources/config/orm.yml",
 		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/MessageBundle/EntityManager/ThreadManager.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/RessourceBundle/Form/Type/RessourceType.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/EDTBundle/Form/Type/CoursType.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/app/config/parameters.yml",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Form/Type/PhotoType.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/HomeBundle/Entity/File.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/RessourceBundle/Resources/views/Default/index.html.twig",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/RessourceBundle/Resources/config/routing.yml",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/RessourceBundle/Resources/views/Search/form.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/RessourceBundle/Controller/DefaultController.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/RessourceBundle/Entity/RessourceRepository.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/RessourceBundle/Controller/SearchController.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/EDTBundle/Form/Type/FrequenceType.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/RessourceBundle/Entity/Ressource.php",
 		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/RessourceBundle/Resources/views/Search/form.html.twig",
 		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/RessourceBundle/Controller/SearchController.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/EDTBundle/Entity/HoraireRepository.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/ClasseBundle/Entity/Niveau.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/RessourceBundle/Resources/views/Ressource/create.html.twig",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/RessourceBundle/Resources/views/Ressource/create_content.html.twig",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Entity/Eleve.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Entity/Professeur.php",
@@ -948,9 +956,6 @@
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/AbsenceBundle/Resources/config/routing.yml",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Form/Type/TuteurType.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/RessourceBundle/DataFixtures/ORM/LoadRessourceData.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/RessourceBundle/Form/Handler/RessourceHandler.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/RessourceBundle/Entity/WebRessource.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/RessourceBundle/Entity/FileRessource.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NotificationBundle/Resources/config/services.yml",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/views/layout.html.twig",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/app/config/routing.yml",
@@ -998,12 +1003,7 @@
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NoteBundle/Form/Type/NoteSingleType.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NoteBundle/Form/Type/NoteGroupeType.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NoteBundle/Form/Handler/NoteGroupeHandler.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NoteBundle/Form/Handler/NoteSingleHandler.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Controller/SecurityController.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/composer.json",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/views/Menu/menu.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/app/AppKernel.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/config/services.yml"
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NoteBundle/Form/Handler/NoteSingleHandler.php"
 	],
 	"find":
 	{
@@ -1011,7 +1011,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 93.0,
 		"where_history":
 		[
 			"/Users/adrienbocquet/Sites/MAMP/KUB/src/",
@@ -1047,6 +1047,11 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"data",
+			"empty_data",
+			"$johnsnow",
+			"$eleve",
+			"eleve",
 			"data",
 			"addEleveFieldSuscriber",
 			"'collection'",
@@ -1169,12 +1174,7 @@
 			"commentaire",
 			"Commentaire",
 			"commentaire",
-			"\\Exception",
-			"throw",
-			"thow",
-			"note",
-			"auteur",
-			"user"
+			"\\Exception"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1272,6 +1272,66 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"groudat",
+				"src/Kub/ClasseBundle/DataFixtures/ORM/LoadGroupeData.php"
+			],
+			[
+				"loadele",
+				"src/Kub/UserBundle/DataFixtures/ORM/LoadEleveData.php"
+			],
+			[
+				"ressour",
+				"src/Kub/RessourceBundle/Form/Type/RessourceType.php"
+			],
+			[
+				"ressou",
+				"src/Kub/RessourceBundle/Entity/Ressource.php"
+			],
+			[
+				"fileress",
+				"src/Kub/RessourceBundle/Entity/FileRessource.php"
+			],
+			[
+				"type",
+				"src/Kub/ArianeBundle/Form/Type/PostType.php"
+			],
+			[
+				"fress",
+				"src/Kub/RessourceBundle/Entity/FileRessource.php~"
+			],
+			[
+				"file",
+				"src/Kub/HomeBundle/Entity/File.php"
+			],
+			[
+				"webreo",
+				"src/Kub/RessourceBundle/Entity/WebRessource.php~"
+			],
+			[
+				"ressoucontroll",
+				"src/Kub/RessourceBundle/Controller/DefaultController.php"
+			],
+			[
+				"ressourcetype",
+				"src/Kub/RessourceBundle/Form/Type/RessourceType.php"
+			],
+			[
+				"ressourhan",
+				"src/Kub/RessourceBundle/Form/Handler/RessourceHandler.php"
+			],
+			[
+				"ressourcecre",
+				"src/Kub/RessourceBundle/Resources/views/Ressource/create.html.twig"
+			],
+			[
+				"ressourcecontroller",
+				"src/Kub/RessourceBundle/Controller/DefaultController.php"
+			],
+			[
+				"loadgroue",
+				"src/Kub/ClasseBundle/DataFixtures/ORM/LoadGroupeData.php"
+			],
 			[
 				"appde",
 				"web/app_dev.php"
@@ -1465,10 +1525,6 @@
 				"app/config/parameters.yml"
 			],
 			[
-				"file",
-				"src/Kub/HomeBundle/Entity/File.php"
-			],
-			[
 				"phototy",
 				"src/Kub/UserBundle/Form/Type/PhotoType.php"
 			],
@@ -1529,16 +1585,8 @@
 				"src/Kub/RessourceBundle/Entity/RessourceRepository.php"
 			],
 			[
-				"ressou",
-				"src/Kub/RessourceBundle/Entity/Ressource.php"
-			],
-			[
 				"resscontro",
 				"src/Kub/RessourceBundle/Controller/DefaultController.php"
-			],
-			[
-				"ressour",
-				"src/Kub/RessourceBundle/Resources/config/routing.yml"
 			],
 			[
 				"ressourcetwig",
@@ -1735,54 +1783,6 @@
 			[
 				"use",
 				"src/Kub/UserBundle/Entity/User.php"
-			],
-			[
-				"webres",
-				"src/Kub/RessourceBundle/Entity/WebRessource.php"
-			],
-			[
-				"ressouindex",
-				"src/Kub/RessourceBundle/Resources/views/Default/index.html.twig"
-			],
-			[
-				"filressou",
-				"src/Kub/RessourceBundle/Entity/FileRessource.php"
-			],
-			[
-				"ressinde",
-				"src/Kub/RessourceBundle/Resources/views/Default/index.html.twig"
-			],
-			[
-				"load",
-				"src/Kub/ArianeBundle/DataFixtures/ORM/LoadCommentaireData.php"
-			],
-			[
-				"resoucontroller",
-				"src/Kub/RessourceBundle/Controller/DefaultController.php"
-			],
-			[
-				"rsou",
-				"src/Kub/RessourceBundle/Entity/Ressource.php"
-			],
-			[
-				"collafic",
-				"src/Kub/CollaborationBundle/Entity/Fichier.php"
-			],
-			[
-				"pho",
-				"src/Kub/UserBundle/Entity/Photo.php"
-			],
-			[
-				"elev",
-				"src/Kub/UserBundle/Entity/Eleve.php"
-			],
-			[
-				"phto",
-				"src/Kub/UserBundle/Entity/Photo.php"
-			],
-			[
-				"notific",
-				"src/Kub/NotificationBundle/Entity/Notification.php"
 			]
 		],
 		"width": 0.0
@@ -1798,7 +1798,7 @@
 	"show_minimap": true,
 	"show_open_files": true,
 	"show_tabs": true,
-	"side_bar_visible": false,
+	"side_bar_visible": true,
 	"side_bar_width": 187.0,
 	"status_bar_visible": true
 }

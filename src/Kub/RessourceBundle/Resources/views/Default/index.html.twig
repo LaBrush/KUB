@@ -16,11 +16,11 @@
 				<li>
 					{{ ressource.titre }} - {{ ressource.description }}
 
-					{% if ressource.url %}
+					{% if ressource.type == 'web' %}
 	
 						<a href="{{ ressource.url }}">Voir sur le web</a>
 	
-					{% elseif ressource.file == 'file' %}
+					{% elseif ressource.type == 'file' %}
 
 						<a href="{{ path(ressource.webPath) }}">Télécharger</a>					
 	
