@@ -24,7 +24,7 @@ class CoursType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('professeur', 'entity', array(
+            ->add('professeur', 'genemu_jqueryselect2_entity', array(
                     'empty_value' => 'Choisissez un professeur',
                     'class' => 'Kub\UserBundle\Entity\Professeur'
                 )
@@ -35,7 +35,7 @@ class CoursType extends AbstractType
                     'class' => 'Kub\ClasseBundle\Entity\Groupe'
                 )
             )
-            ->add('matiere', 'entity', array(
+            ->add('matiere', 'genemu_jqueryselect2_entity', array(
                     'empty_value' => 'Choisissez une matière',
                     'class' => 'Kub\EDTBundle\Entity\Matiere'
                 )
