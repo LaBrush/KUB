@@ -117,14 +117,14 @@ class MenuBuilder
 			);
 
 		$menu->addChild('Emplois du temps', array('labelAttributes' => array('className' => 'agenda')));
-			$menu['Emplois du temps']->addChild('Fréquences',
-				array(
-					'route' => 'frequence_list'
-				)
-			);
 			$menu['Emplois du temps']->addChild('Cours',
 				array(
 					'route' => 'cours_list'
+				)
+			);
+			$menu['Emplois du temps']->addChild('Fréquences',
+				array(
+					'route' => 'frequence_list'
 				)
 			);
 	}

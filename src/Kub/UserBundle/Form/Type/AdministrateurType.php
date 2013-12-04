@@ -6,6 +6,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
+use Kub\UserBundle\Form\EventListener\addRoleFieldSuscriber ;
+
 class AdministrateurType extends UserType
 {
 
@@ -23,25 +25,7 @@ class AdministrateurType extends UserType
 	public function buildForm(FormBuilderInterface $builder, array $options)
 	{
 		parent::buildForm($builder, $options);
-
-		$choices = array(
-			"ROLE_SURVEILLANT" => "Surveillant",
-			"ROLE_CPE" => "CPE",
-		);
-
-		if($this->security->isGranted("ROLE_MANITOU"))
-		{
-			$choices["ROLE_SECRETAIRE"] = "Secrétaire";
-			$choices["ROLE_MANITOU"] = "Un Grand Manitou";
-		}
-
-		$builder
-			->add("type", "choice",
-				array(
-					"mapped" => false,
-					"choices" => $choices,
-			))
-		;
+		$builder->addEventSubscriber(new addRoleFieldSuscriber( $this->security ));
 
 		return $builder ;
 	}

@@ -15,9 +15,9 @@ class AdministrateurHandler extends UserHandler
 			{
 				$data = $this->form->getData();
 
-				$type = $this->form["type"]->getData();
-				$data->setRoles(array( $type ));				
-
+				$type = $this->form->get('type')->getData();
+				
+				$data->setRoles( array( $type, "ROLE_ADMINISTRATEUR" ));				
 				$this->onSuccess($data);
 
 				return true;
