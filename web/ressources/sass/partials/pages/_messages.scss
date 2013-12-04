@@ -15,3 +15,23 @@
 {
 	margin: 0 0 5px 0;
 }
+
+.delete-message
+{
+	font-size: 0.8em;
+	margin: 0;
+	padding: 1px 4px;
+	cursor: pointer;
+	background: inherit;
+	color: $texte;
+	border: none;
+	@include appearance(none);
+
+	&:hover, &:focus, &:active
+	{
+		background: $button-no;
+		color: $color-light;
+		text-shadow: 1px 1px rgba(0, 0, 0, 0.2);
+		@include border-radius(2px);
+	}
+}

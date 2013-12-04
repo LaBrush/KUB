@@ -195,6 +195,21 @@
 	}
 }
 
+.notifications
+{
+	float: right;
+
+	background-color: $notifications;
+	font-size: 0.75em;
+
+	color: $color-light;
+	text-shadow: 1px 1px rgba(0, 0, 0, 0.2);
+
+	@include border-radius(50px);
+
+	padding: 1px 7px 0 7px;
+}
+
 
 /*********************************************************************/
 /* Inputs */

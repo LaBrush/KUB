@@ -2,12 +2,11 @@
 
     <thead>
         <tr>
-            <th>{% trans from 'FOSMessageBundle' %}subject{% endtrans %}</th>
-            <th>{% trans from 'FOSMessageBundle' %}starter{% endtrans %}</th>
-            <th>{% trans from 'FOSMessageBundle' %}startdate{% endtrans %}</th>
-            <th>{% trans from 'FOSMessageBundle' %}messages{% endtrans %}</th>
-            <th>{% trans from 'FOSMessageBundle' %}last_message{% endtrans %}</th>
-            <th>{% trans from 'FOSMessageBundle' %}actions{% endtrans %}</th>
+            <th>Sujet</th>
+            <th>Commencé par</th>
+            <th>Messages</th>
+            <th>Dernier message</th>
+            <th>Supprimer</th>
         </tr>
     </thead>
 
@@ -22,14 +21,11 @@
                     </a>
 
                     {% if not fos_message_is_read(thread) %}
-                        ({% trans from 'FOSMessageBundle' %}new{% endtrans %})
+                        <span class="notifications">Nouveau</span>
                     {% endif %}
                 </td>
                 <td>
                     {{ thread.createdBy }}
-                </td>
-                <td>
-                    {{ thread.createdAt|date }}
                 </td>
                 <td>
                     {{ thread.messages|length }}
@@ -37,11 +33,10 @@
                 <td>
                     {% if thread.lastMessage %}
                         <a href="{{ url('fos_message_thread_view', {'threadId': thread.id}) }}#message_{{ thread.lastMessage.id }}" title="{% trans from 'FOSMessageBundle' %}goto_last{% endtrans %}">
-                            →
+                            Le {{ thread.lastMessage.createdAt | date('d/m/y à H:i')}}
+                            <br />
+                            Par {{ thread.lastMessage.sender|e }}
                         </a>
-                        {% trans with {'%date%': thread.lastMessage.createdAt|date} from 'FOSMessageBundle' %}on{% endtrans %}
-                        <br />
-                        {% trans with {'%sender%': thread.lastMessage.sender|e } from 'FOSMessageBundle' %}by{% endtrans %}
                     {% else %}
                         ----
                     {% endif %}
@@ -50,13 +45,13 @@
                     {% if fos_message_can_delete_thread(thread) %}
                         {% if fos_message_deleted_by_participant(thread) %}
                             {% set formAction %}{{ url('fos_message_thread_undelete', {'threadId': thread.id}) }}{% endset %}
-                            {% set submitValue %}{% trans from 'FOSMessageBundle' %}undelete{% endtrans %}{% endset %}
+                            {% set submitValue %}Restaurer{% endset %}
                         {% else %}
                             {% set formAction %}{{ url('fos_message_thread_delete', {'threadId': thread.id}) }}{% endset %}
-                            {% set submitValue %}{% trans from 'FOSMessageBundle' %}delete{% endtrans %}{% endset %}
+                            {% set submitValue %}Supprimer{% endset %}
                         {% endif %}
                         <form action="{{ formAction }}" method="post">
-                                <input type="submit" value="{{ submitValue }}" />
+                                <input type="submit" value="{{ submitValue }}" class="delete-message"/>
                         </form>
                     {% endif %}
                 </td>
@@ -65,7 +60,7 @@
     {% else %}
         <tr>
             <td colspan="6">
-                {% trans from 'FOSMessageBundle' %}no_thread{% endtrans %}.
+                Aucun message
             </td>
         </tr>
     {% endif %}

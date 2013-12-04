@@ -30,7 +30,9 @@ class ControleType extends AbstractType
 	public function buildForm(FormBuilderInterface $builder, array $options)
 	{
 		$builder
-		->add('nom')
+		->add('nom', 'text', array(
+			"label" => "Intitulé du DS"
+		))
 		->add('matiere', 'entity', array(
 			'class' => 'Kub\EDTBundle\Entity\Matiere',
 			"multiple" => false,

@@ -67,7 +67,7 @@ class MenuBuilder
 		$text = 'Mes messages'; $nb_unread = $this->messages->getNbUnreadMessages();
 
 		if($nb_unread){
-			$text .= '<span class="number">' . $nb_unread . '</span>';
+			$text .= '<span class="notifications">' . $nb_unread . '</span>';
 		}
 
 		$menu->addChild($text, array('route' => 'fos_message_inbox', 'labelAttributes' => array('className' => 'messagerie')));

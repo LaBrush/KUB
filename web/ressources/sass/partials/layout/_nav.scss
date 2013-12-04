@@ -87,17 +87,6 @@
 	{
 		background: darken($nav, 5%);
 	}
-
-	.notifications
-	{
-		float: right;
-
-		background-color: $notifications;
-		font-size: 0.8em;
-
-		@include border-radius(50px);
-		padding: 0 8px; 
-	}
 }
 
 .nav-open
