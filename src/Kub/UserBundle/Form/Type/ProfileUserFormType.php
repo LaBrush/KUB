@@ -1,4 +1,4 @@
-<?php
+ <?php
 
 namespace Kub\UserBundle\Form\Type ;
 use FOS\UserBundle\Form\Type\ProfileFormType as BaseType ;

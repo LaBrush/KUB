@@ -13,6 +13,9 @@ use Symfony\Component\Validator\Constraints as Assert ;
  */
 class Ressource
 {
+    const WEB = 1 ;
+    const FILE = 2 ;
+
     /**
      * @var integer
      *
@@ -62,6 +65,11 @@ class Ressource
     private $file ;
 
     /**
+     * @ORM\Column(name="type", type="integer")
+     */
+    private $type ;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Kub\EDTBundle\Entity\Matiere", cascade={"all"})
      */
     private $matiere ;
@@ -74,6 +82,7 @@ class Ressource
     public function __construct()
     {
         $this->date = new \DateTime ;
+        $this->type = Ressource::WEB ;
     }
 
     /**
@@ -268,5 +277,28 @@ class Ressource
     public function getNiveau()
     {
         return $this->niveau;
+    }
+
+    /**
+     * Set type
+     *
+     * @param integer $type
+     * @return Ressource
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+    
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return integer 
+     */
+    public function getType()
+    {
+        return $this->type;
     }
 }

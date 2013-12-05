@@ -1,11 +1,13 @@
 <?php
 
-namespace Kub\NoteBundle\Form\Handler;
+namespace Kub\AbsenceBundle\Form\Handler ;
 
 use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\Request;
 
-class ControleHandler
+use Kub\AbsenceBundle\Entity\Absence ;
+
+class AppelHandler
 {
 	protected $request;
 	protected $form;
@@ -45,32 +47,37 @@ class ControleHandler
 
 	private function onSuccess()
 	{
-		$notes = $this->form['notes']->getData();
-		$controle = $this->form->getData();
+		$appel = $this->form->getData();
 
-		foreach ($notes as $note) {
-
-			if(!$note->getNoter())
+		foreach ($appel->getAbsences() as $absence) {
+			
+			if($absence->getStatut() == Absence::PRESENT)
 			{
-				$controle->removeNote( $note ) ;
+				$appel->removeAbsence($absence);
 			}
-			else
-			{
-				$this->notifications->addNotification('NoteAddedNotification', array(
 
-					"userTarget" => $note->getEleve(),
-					"contenu" => $note
+		}
 
-				)) ;
-			}
+		// foreach ($notes as $note) {
+
+		// 	if(!$note->getNoter())
+		// 	{
+		// 		$controle->removeNote( $note ) ;
+		// 	}
+		// 	else
+		// 	{
+		// 		$this->notifications->addNotification('NoteAddedNotification', array(
+
+		// 			"userTarget" => $note->getEleve(),
+		// 			"contenu" => $note
+
+		// 		)) ;
+		// 	}
 	
-		}
+		// }
 
-		if( count($controle->getNotes()) > 0)
-		{
-			$this->em->persist($controle);
-			$this->em->flush();
-		}
+		$this->em->persist($appel);
+		$this->em->flush();
 
 		return true ;
 	}

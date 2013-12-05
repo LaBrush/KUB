@@ -15,8 +15,15 @@ class ThreadManager extends BaseThreadManager
 	{	
 		return $this->repository->createQueryBuilder('t')
 			->innerJoin('t.metadata', 'tm')
+			->addSelect('tm')
 			->innerJoin('tm.participant', 'p')
+			->addSelect('p')
 			->innerJoin('t.createdBy', 'c')
+			->addSelect('c')
+			->innerJoin('t.messages', 'm')
+			->addSelect('m')
+			->innerJoin('m.metadata', 'mm')
+			->addSelect('mm')
 
 			// the participant is in the thread participants or the thread creator
 			->andWhere('(p.id = :user_id) OR (c.id = :user_id)')

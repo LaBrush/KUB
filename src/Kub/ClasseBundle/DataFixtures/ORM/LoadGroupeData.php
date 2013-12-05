@@ -35,7 +35,9 @@ class LoadGroupeData extends AbstractFixture implements FixtureInterface, Contai
         $si3 = new Groupe();
             $si3->setName("SI-3");
             $si3->setNiveau($this->getReference('premiere'));
+
             $si3->addEleve($this->getReference('johnsnow'));
+            $si3->addEleve($this->getReference('deneristhargarien'));
 
         $this->addReference('si3', $si3);
 

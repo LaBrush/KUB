@@ -109,6 +109,8 @@ class UserController extends Controller
 		}
 
 		$class = ucfirst($role);
+		$security = $this->get("security.context");
+
 		switch($class)
 		{
 			case "Eleve":
@@ -121,7 +123,12 @@ class UserController extends Controller
 				$type = new ProfesseurType ;
 				break;
 			case "Administrateur":
-				$type = new AdministrateurType($this->get("security.context")) ;
+				if( $user->hasRole("ROLE_MANITOU") && !$security->isGranted('ROLE_MANITOU') )
+				{
+					throw new AccessDeniedException("Vous n'avez pas les droits pour modifier un manitou");
+				}
+
+				$type = new AdministrateurType( $security ) ;
 				break;
 		}
 

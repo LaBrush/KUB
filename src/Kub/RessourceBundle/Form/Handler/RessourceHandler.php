@@ -1,12 +1,9 @@
 <?php
 
-namespace Kub\ArianeBundle\Form\Handler;
+namespace Kub\RessourceBundle\Form\Handler;
 
 use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\Request;
-
-use Kub\RessourceBundle\Entity\WebRessource ;
-use Kub\RessourceBundle\Entity\FileRessource ;
 
 class RessourceHandler
 {
@@ -27,15 +24,14 @@ class RessourceHandler
 	}
 
 	public function process()
-	{
+	{	
 		if('POST' == $this->request->getMethod())
 		{
 			$this->form->bind($this->request);
 
 			if($this->form->isValid())
 			{
-				$data = $this->form->getData();
-				$this->onSuccess($data);
+				$this->onSuccess( $this->form->getData() );
 
 				return true;
 			}
@@ -46,11 +42,8 @@ class RessourceHandler
 
 	protected function onSuccess($data)
 	{
-		$type = ucfirst( $data["type"]->getData() ) . 'Ressource ';
-		$ressource = new $type ;
-
-		// $this->em->persist($ressource);
-		// $this->em->flush();
+		$this->em->persist($data);
+		$this->em->flush();
 
 		// $this->notification->addNotification('ArianePostNotification', array(
 

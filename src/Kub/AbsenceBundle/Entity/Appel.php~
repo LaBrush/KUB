@@ -39,7 +39,7 @@ class Appel
     private $semaine ;
 
     /**
-     * @ORM\OneToMany(targetEntity="Kub\AbsenceBundle\Entity\Absence", mappedBy="appel", cascade={"all"})
+     * @ORM\OneToMany(targetEntity="Kub\AbsenceBundle\Entity\Absence", mappedBy="appel", cascade={"merge", "detach", "persist"})
      */
     private $absences ;
 
@@ -51,11 +51,23 @@ class Appel
 
     public function hasEleve($eleve)
     {
-        foreach ($absences as $absence) {
+        foreach ($this->getAbsences() as $absence) {
             if($absence->hasEleve($eleve)){ return true ; }
         }
 
         return false ;
+    }
+
+    public function getEleves()
+    {
+        $eleves = array();
+        foreach ($this->getCours()->getGroupes() as $groupe) {
+            foreach ($groupe->getEleves() as $eleve) {
+                $eleves[] = $eleve ;
+            }
+        }
+
+        return $eleves ;
     }
 
     /**
@@ -146,6 +158,7 @@ class Appel
     public function addAbsence(\Kub\AbsenceBundle\Entity\Absence $absences)
     {
         $this->absences[] = $absences;
+        $absences->setAppel($this);
     
         return $this;
     }
@@ -158,6 +171,7 @@ class Appel
     public function removeAbsence(\Kub\AbsenceBundle\Entity\Absence $absences)
     {
         $this->absences->removeElement($absences);
+        $absences->setAppel();
     }
 
     /**

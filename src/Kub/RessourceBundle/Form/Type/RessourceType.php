@@ -6,6 +6,9 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
+use Kub\RessourceBundle\Entity\Ressource ;
+use Kub\RessourceBundle\Form\Type\FileType ;
+
 class RessourceType extends AbstractType
 {
 		/**
@@ -15,7 +18,7 @@ class RessourceType extends AbstractType
 	public function buildForm(FormBuilderInterface $builder, array $options)
 	{
 		$builder
-			->add('titre')
+			->add('titre', 'text')
 			->add('description', "textarea")
 			->add('niveau', 'entity', array(
 				"class" => "Kub\ClasseBundle\Entity\Niveau"
@@ -31,7 +34,7 @@ class RessourceType extends AbstractType
 				)
 			))
 			->add('url', 'url')
-			->add('file', 'file')
+			->add('file', new FileType)
 		;
 	}
 	
@@ -41,7 +44,8 @@ class RessourceType extends AbstractType
 	public function setDefaultOptions(OptionsResolverInterface $resolver)
 	{
 		$resolver->setDefaults(array(
-			'empty_data' => true
+			'empty_data' => new Ressource,
+			'data_class' => 'Kub\RessourceBundle\Entity\Ressource'
 		));
 	}
 
