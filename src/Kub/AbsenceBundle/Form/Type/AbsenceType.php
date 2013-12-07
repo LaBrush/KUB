@@ -6,7 +6,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-use Kub\AbsenceBundle\Entity\Absence ;
+use Kub\AbsenceBundle\Form\EventListener\addEleveFieldSuscriber ;
+
 
 class AbsenceType extends AbstractType
 {
@@ -16,17 +17,7 @@ class AbsenceType extends AbstractType
 	 */
 	public function buildForm(FormBuilderInterface $builder, array $options)
 	{
-		$builder
-			->add('statut', 'choice', array(
-				"choices" => array(
-
-					Absence::PRESENT => "Présent",
-					Absence::ABSENCE => "Absent",
-					Absence::RETARD  => "En retard"
-
-				)
-			))
-		;
+		$builder->addEventSubscriber(new addEleveFieldSuscriber());;
 	}
 	
 	/**

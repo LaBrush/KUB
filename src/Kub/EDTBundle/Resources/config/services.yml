@@ -6,6 +6,7 @@ parameters:
             - mercredi
             - jeudi
             - vendredi
+            - samedi
         horaires: 
             - 7  : [55]
             - 8  : [25, 55]
