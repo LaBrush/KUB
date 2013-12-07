@@ -54,6 +54,7 @@ class AppelHandler
 			if($absence->getStatut() == Absence::PRESENT)
 			{
 				$appel->removeAbsence($absence);
+				$this->em->remove($absence);
 			}
 
 		}

@@ -11,12 +11,4 @@ use FOS\MessageBundle\Controller\MessageController as BaseController ;
 
 class MessageController extends BaseController
 {
-	public function inboxAction()
-	{
-		$threads = array_merge($this->getProvider()->getInboxThreads(), $this->getProvider()->getSentThreads());
-
-		return $this->container->get('templating')->renderResponse('FOSMessageBundle:Message:inbox.html.twig', array(
-            'threads' => $threads
-        ));
-	}
 }
