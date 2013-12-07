@@ -41,7 +41,7 @@
 
 	<span class="tuteurs">
 		{{ form_errors(form.tuteurs) }}
-		{{ form_label(form.tuteurs) }} <div class="input">{{ form_widget(form.tuteurs) }}</div>
+		<div class="input">{{ form_widget(form.tuteurs) }}</div>
 	</span>
 
 	<div class="tuteurs-add" data-prototype="{% filter escape %}{% include 'KubUserBundle:Manage:tuteur_form_in_eleve.html.twig' with {'form': form.tuteursAdd.vars.prototype} %}{% endfilter %}">

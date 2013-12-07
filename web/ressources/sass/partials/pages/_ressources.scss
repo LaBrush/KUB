@@ -1,0 +1,55 @@
+.options-tri
+{
+	.niveau
+	{
+		display: inline-block;
+
+		li
+		{
+			display: inline-block;
+			font-size: 1em;
+			width: 55px;
+			text-align: center;
+			padding: 15px 0;
+			color: $color-light;
+			text-shadow: 1px 1px rgba(0, 0, 0, 0.2);
+			background-color: $vert;
+			margin: 0 10px 5px 0;
+			cursor: pointer;
+		}
+
+		.unchecked
+		{
+			background-color: lighten($vert, 20%);
+		}
+	}
+
+	.type
+	{
+		display: inline-block;
+
+		li
+		{
+			display: inline-block;
+			font-size: 1em;
+			width: 55px;
+			text-align: center;
+			padding: 15px 0;
+			color: $color-light;
+			text-shadow: 1px 1px rgba(0, 0, 0, 0.2);
+			background-color: $bleu;
+			margin: 0 10px 5px 0;
+			cursor: pointer;
+		}
+
+		.unchecked
+		{
+			background-color: lighten($bleu, 20%);
+		}
+	}
+
+	.matiere
+	{
+		margin: 10px 0;
+	}
+}

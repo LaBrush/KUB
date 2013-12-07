@@ -27,23 +27,34 @@
 {% block js %}
 	
 	<script>
-    	// garde une trace du nombre de champs horaires qui ont été affichés
-    	var tuteurCount = '{{ form.horaires | length }}';
+		// garde une trace du nombre de champs horaires qui ont été affichés
+		var tuteurCount = '{{ form.horaires | length }}';
 
-	    $(document).ready(function() {
-	        $('.add-another-horaires').click(function() {
-	            var tuteurList = $('.horaires-add');
+		$(document).ready(function() {
 
-	            var newWidget = tuteurList.attr('data-prototype');
-	            newWidget = newWidget.replace(/__name__/g, tuteurCount);
-	            tuteurCount++;
+			$('.add-another-horaires').click(function() {
+				var tuteurList = $('.horaires-add');
 
-	            var newLi = $('<div class="horaires"></div>').html(newWidget);
-	            newLi.appendTo(tuteurList);
+				var newWidget = tuteurList.attr('data-prototype');
+				newWidget = newWidget.replace(/__name__/g, tuteurCount);
+				tuteurCount++;
 
-	            return false;
-	        });
-	    })
+				var newLi = $('<div class="horaires"></div>').html(newWidget);
+				addTagFormDeleteLink(newLi);
+				newLi.appendTo(tuteurList);
+
+				return false;
+			});
+
+			function addTagFormDeleteLink($tagFormLi) {
+				var $removeFormA = $('<a href="#" class="button-no delete-horaire">Supprimer cet horaire</a>');
+				$tagFormLi.append($removeFormA);
+
+				$removeFormA.on('click', function() {
+					$tagFormLi.remove();
+				});
+			}
+		})
 	</script>
 
 	<script type="text/javascript" src="{{ asset('ressources/select2/select2.min.js') }}"></script>

@@ -6,6 +6,7 @@ parameters:
             - mercredi
             - jeudi
             - vendredi
+            - samedi
         horaires: 
             - 7  : [55]
             - 8  : [25, 55]
@@ -18,6 +19,7 @@ parameters:
             - 15 : [20, 55]
             - 16 : [20, 55]
             - 17 : [20]
+            - 23 : [50]
 
 services:
 #    kub_edt.example:
