@@ -36,10 +36,13 @@ class CoursHandler
 		if('POST' == $this->request->getMethod())
 		{
 			$this->form->bind($this->request);
-		
+
 			// On attribut les semaines de chaque cours en fonction des fréquences
 			$liste_horaires_form = $this->form["horaires"];
+
 			foreach ($liste_horaires_form as $horaire_form) {
+
+				$horaire_form->getData()->setCours( $this->form->getData() );
 
 				$liste_frequences = $horaire_form["frequences"]->getData();
 				$horaire = $horaire_form->getData();
@@ -68,12 +71,8 @@ class CoursHandler
 
 					return true;
 				}
-				else
-				{
-					throw new \Exception($form->getErrorsAsString());
-				}
 			}
-			throw new \Exception($this->form->getErrorsAsString());
+
 			
 		}
 

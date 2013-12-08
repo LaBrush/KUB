@@ -10,25 +10,13 @@ class EDTController extends Controller
 {
 	public function indexAction()
 	{
-		$edt = 1 ;
 		$user = $this->getUser();
 
-		switch(get_class( $user ))
+		if(get_class( $user ) != "Kub\UserBundle\Entity\Eleve" && get_class( $user ) != "Kub\UserBundle\Entity\Professeur")
 		{
-			case "Kub\UserBundle\Entity\Eleve": 
-			case "Kub\UserBundle\Entity\Professeur": 
-				// $edt = $this->get('kub.edt.time')->getEDTOf( $user );
-				$edt = $this->get('kub.edt.time')->getEDTOf( $user );
-				break;
-			default: 
-				throw new AccessDeniedException("Vous n'avez pas d'emplois du temps. Ici.");
-				break;
+			throw new AccessDeniedException("Vous n'avez pas d'emplois du temps. Ici.");
 		}
 
-		return $this->render('KubEDTBundle:EDT:show.html.twig',
-            array(
-            	"edt" => $edt
-            )
-        ); 
+		return $this->render('KubEDTBundle:User:show.html.twig'); 
 	}
 }

@@ -45,7 +45,7 @@ class Cours
     private $matiere ;
 
     /** 
-     * @ORM\OneToMany(targetEntity="Kub\EDTBundle\Entity\Horaire", mappedBy="cours", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity="Kub\EDTBundle\Entity\Horaire", mappedBy="cours", cascade={"all"})
      * @Assert\Count(min=1, minMessage="Un cours doit avoir au moins un horaire")
      * @Assert\Valid()
      */
@@ -196,10 +196,8 @@ class Cours
      * @return Cours
      */
     public function addHoraire(\Kub\EDTBundle\Entity\Horaire $horaires)
-    {
+    {   
         $this->horaires[] = $horaires;
-
-        $horaires->setCours($this);
     
         return $this;
     }
@@ -212,7 +210,6 @@ class Cours
     public function removeHoraire(\Kub\EDTBundle\Entity\Horaire $horaires)
     {
         $this->horaires->removeElement($horaires);
-        $horaires->setCours();
     }
 
     /**

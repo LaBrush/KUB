@@ -1,0 +1,15 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}
+	{{ parent() }} - Emploi du temps
+{% endblock %}
+
+{% block body %}
+
+	<article class="article">
+		
+		{{ ShowEDT( app.user ) }}
+
+	</article>
+
+{% endblock %}

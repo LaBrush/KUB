@@ -9,6 +9,7 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Kub\NoteBundle\Form\Type\NoteType ;
 use Kub\NoteBundle\Entity\Note ;
 
+use Kub\NoteBundle\Form\EventListener\addEleveFieldSuscriber;
 use Kub\EDTBundle\Entity\MatiereRepository ;
 
 class ControleType extends AbstractType
@@ -50,22 +51,8 @@ class ControleType extends AbstractType
 				;
 			}
 		))
-		->add('notes', 'collection', array(
-			'type' => new NoteType
-		));
+		->add('notes', new NotesType( $this->groupe->getEleves() ));
 
-		// for($i = 0 ; $i < count($this->eleves) ; $i++) {
-
-		// 	$note = new Note ;
-		// 	$note->setEleve($this->eleves[$i]);
-		// 	$note->setProfesseur( $this->professeur );
-
-		// 	$builder->add($i, new NoteType($note), array(
-		// 		"mapped" => false,
-		// 		"label" => $this->eleves[$i],
-		// 		"data_class" => "Kub\NoteBundle\Entity\Note"
-		// 	)); 
-		// }
 	}
 	
 	/**

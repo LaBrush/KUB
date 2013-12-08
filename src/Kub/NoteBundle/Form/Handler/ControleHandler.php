@@ -45,23 +45,37 @@ class ControleHandler
 
 	private function onSuccess()
 	{
-		$notes = $this->form['notes']->getData();
+		$notes = $this->form['notes']->all();
 		$controle = $this->form->getData();
+		
+		$exept = "";
+		foreach ($controle->getNotes() as $note) {
+			$exept .= $note->getEleve() . ' ' ; 
+		}
+
+		throw new \Exception($exept);
+		
 
 		foreach ($notes as $note) {
 
-			if(!$note->getNoter())
+			//on passe du formulaire à l'entité
+			$note = $note->getData();
+
+			if($note->getNoter())
 			{
-				$controle->removeNote( $note ) ;
-			}
-			else
-			{
+				$controle->addNote( $note );
+				throw new \Exception($note->getCoefficient());
+
 				$this->notifications->addNotification('NoteAddedNotification', array(
 
 					"userTarget" => $note->getEleve(),
 					"contenu" => $note
 
 				)) ;
+			}
+			else
+			{
+				$controle->removeNote($note);
 			}
 	
 		}

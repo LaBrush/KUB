@@ -13,7 +13,7 @@ use Kub\UserBundle\Entity\Professeur ;
  */
 class GroupeRepository extends EntityRepository
 {
-	public function getGroupesOfProfesseur(Professeur $professeur)
+	public function findByProfesseur(Professeur $professeur)
 	{
 		$qb = $this->createQueryBuilder("g")
 			->join('g.cours', 'c')

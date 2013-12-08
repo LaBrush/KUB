@@ -21,7 +21,7 @@ class NoHoraireConflictValidator extends ConstraintValidator
 	{
 		$conflits = array();
 
-		foreach ($cours->getHoraires() as $key => $horaire) {
+		foreach ($cours->getHoraires() as $horaire) {
 			$conflits = array_merge($conflits, $this->em->getRepository("KubEDTBundle:Horaire")->findConflictualCours($horaire));
 		}
 

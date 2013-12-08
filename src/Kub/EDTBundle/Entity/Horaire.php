@@ -48,14 +48,15 @@ class Horaire
     /**
      * @ORM\ManyToMany(targetEntity="Kub\EDTBundle\Entity\Semaine")
      * @Assert\Count(
-     *      min=1, minMessage = "Un horaire doit avoir au moins une semaine dans l'année"
+     *      min=1, 
+     *      minMessage = "Un horaire doit avoir au moins une semaine dans l'année",
+     *      groups={"second_pass"}
      * )
      */
     private $semaines ;
 
     /** 
-     * @ORM\ManyToOne(targetEntity="Kub\EDTBundle\Entity\Cours", inversedBy="horaires")
-     * @Assert\NotNull()
+     * @ORM\ManyToOne(targetEntity="Kub\EDTBundle\Entity\Cours", inversedBy="horaires", cascade={"all"})
      */
     private $cours ;
 

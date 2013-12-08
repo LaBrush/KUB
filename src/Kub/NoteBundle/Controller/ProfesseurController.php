@@ -20,7 +20,7 @@ class ProfesseurController extends Controller
 	public function addAction($groupe)
 	{
 		if (null == $groupe) {
-			$liste_groupes = $this->get('doctrine.orm.entity_manager')->getRepository('KubClasseBundle:Groupe')->getGroupesOfProfesseur( $this->getUser() );
+			$liste_groupes = $this->get('doctrine.orm.entity_manager')->getRepository('KubClasseBundle:Groupe')->findByProfesseur( $this->getUser() );
 
 			return $this->render('KubNoteBundle:Professeur:index.html.twig', array(
 				'groupes' => $liste_groupes

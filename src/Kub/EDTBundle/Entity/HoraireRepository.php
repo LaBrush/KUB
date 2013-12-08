@@ -45,7 +45,7 @@ class HoraireRepository extends EntityRepository
 		->setParameter('debut', $horaire->getDebut())
 		->setParameter('fin', $horaire->getFin())
 		->setParameter('jour', $horaire->getJour()->getId())
-		->setParameter('cours', $horaire->getCours()->getId());	
+		->setParameter('cours', $horaire->getCours());	
 
 		$semaine_ids = array(0);
 

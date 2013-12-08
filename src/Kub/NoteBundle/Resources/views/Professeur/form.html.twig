@@ -2,47 +2,39 @@
 
 	<span class="matiere">
 		{{ form_errors(form.matiere) }}
-		{{ form_label(form.matiere) }}  <div class="input">{{ form_widget(form.matiere) }}</div>
-	</span>
-
-	<span class="coefficient-global">
-		Coefficient commun a toute la classe (Modifiable au cas par cas) : <div class="input coeff-global"><input type="text" class="coeff-global-value"></div>
+		{{ form_label(form.matiere) }}  {{ form_widget(form.matiere) }}
 	</span>
 	
 	<span class="eleves-a-noter">
 		<table class="liste-eleves-a-noter">
 
-			{% for i in form %}
-				
-				{% if i.noter is defined %}
-					
-					<tr>
-						<th>
-							Elève
-						</th>
-						<th>
-							Present
-						</th>
-						<th>
-							Note
-						</th>
-					</tr>
-
-					<tr>
-						<td>
-							<strong>{{ form_label(i) }}</strong>
-						</td>
-						<td>
-							{{ form_errors(i.noter) }}
-							{{ form_widget(i.noter) }}
-						</td>
-						<td>
-							{{ form_errors(i.note) }} - {{ form_errors(i.coefficient) }}
-							{{ form_widget(i.note) }} / {{ form_widget(i.coefficient, { 'attr': {'class': 'coeff'} }) }}
-						</td>
-					</tr>
-
-				{% endif %}
+			<tr>
+				<th>
+					Elève
+				</th>
+				<th>
+					Noter
+				</th>
+				<th>
+					Note / <div class="input coeff-global"><input type="text" class="coeff-global-value"></div>
+				</th>
+			</tr>
+	
+			{% for note in form.notes %}
+						
+				<tr>
+					<td>
+						<strong>{{ form_label(note) }}</strong>
+					</td>
+					<td>
+						{{ form_errors(note.noter) }}
+						{{ form_widget(note.noter) }}
+					</td>
+					<td>
+						{{ form_errors(note.note) }} - {{ form_errors(note.coefficient) }}
+						{{ form_widget(note.note) }} / {{ form_widget(note.coefficient, { 'attr': {'class': 'coeff'} }) }}
+					</td>
+				</tr>
 
 			{% endfor %}
 

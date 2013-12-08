@@ -1,23 +1,21 @@
-{% extends "::base.html.twig" %}
-
-{% block title %}
-	{{ parent() }} - Emploi du temps
-{% endblock %}
-
-{% block body %}
-
-	<article class="article">
+<table>
 	
-		{% for cour in edt %}
+	<tr>
+		
+		<th>Horaire/Jour</th>
 
-			<ul>
-				<li>{{ cour.debut|date('H:i') }}</li>
-				<li>{{ cour.fin|date('H:i') }}</li>
-				<li>{{ cour.jour }}</li>
-			</ul>
+		{% for jour in liste_jours %}
+
+			<th>{{ jour|capitalize }}</th>
 
 		{% endfor %}
 
-	</article>
+	</tr>
 
-{% endblock %}
+</table>
+
+<p>
+	
+	{{ edt|length }}
+
+</p>

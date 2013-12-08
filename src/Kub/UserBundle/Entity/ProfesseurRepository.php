@@ -12,23 +12,4 @@ use Doctrine\ORM\EntityRepository;
  */
 class ProfesseurRepository extends UserRepository
 {
-	public function getEDTByid($id)
-	{
-		$qb = $this->createQueryBuilder('p')
-			->join('g.cours', 'c')
-			->addSelect('c')
-			->join('c.groupes', 'g')
-			->addSelect('g')
-			->join('c.horaires', 'h')
-			->addSelect('h')
-			->join('h.jour', 'j')
-			->addSelect('j')
-			->where('p.id = :id')
-			->setParameter('id', $id)
-			->orderBy('j.id, h.debut')
-		;
-
-		return $qb->getQuery()->getSingleResult();
-	}
-
 }

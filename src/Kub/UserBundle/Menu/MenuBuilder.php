@@ -166,7 +166,7 @@ class MenuBuilder
 	{
 		$menu->addChild('Mes groupes', array('labelAttributes' => array('className' => 'groupes')));
 				
-			$groupes = $this->em->getRepository('KubClasseBundle:Groupe')->getGroupesOfProfesseur( $this->security->getToken()->getUser() );
+			$groupes = $this->em->getRepository('KubClasseBundle:Groupe')->findByProfesseur( $this->security->getToken()->getUser() );
 
 			foreach ($groupes as $key => $groupe) {
 
