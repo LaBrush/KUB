@@ -42,10 +42,16 @@ class HoraireType extends AbstractType
                     "class" => "Kub\EDTBundle\Entity\Frequence",
                     "expanded" => true,
                     "multiple" => true,
-                    "label" => "Séléctionner une fréquence de cours (ex: Semaines A)"
+                    "label" => "Séléctionner une fréquence de cours",
                 )
             )
-            ->add('semaines')
+            ->add('semaines', 'genemu_jqueryselect2_entity', array(
+                    "class" => "Kub\EDTBundle\Entity\Semaine",
+                    "mapped" => true,
+                    "multiple" => true,
+                    "label" => "Autres semaines",
+                    'empty_value' => 'Choisissez des semaines'
+                ))
         ;
     }
     

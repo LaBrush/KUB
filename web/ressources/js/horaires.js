@@ -1,0 +1,4 @@
+$(function() {
+
+	$('.debut-fin-cours')
+});

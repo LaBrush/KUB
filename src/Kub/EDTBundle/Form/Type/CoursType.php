@@ -31,7 +31,6 @@ class CoursType extends AbstractType
             )
             ->add('groupes', 'genemu_jqueryselect2_entity', array(
                     'multiple' => true,
-                    'expanded' => true,
                     'class' => 'Kub\ClasseBundle\Entity\Groupe'
                 )
             )
