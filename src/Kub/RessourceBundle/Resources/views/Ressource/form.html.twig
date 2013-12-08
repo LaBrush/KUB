@@ -1,0 +1,43 @@
+{% block form %}
+
+	<span class="titre">
+		{{ form_errors(form.titre) }}
+		{{ form_label(form.titre) }} <div class="input">{{ form_widget(form.titre) }}</div>
+	</span>
+
+	<span class="description">
+		{{ form_errors(form.description) }}
+		{{ form_label(form.description) }} <div class="input">{{ form_widget(form.description) }}</div>
+	</span>
+
+	<span class="niveau">
+		{{ form_errors(form.niveau) }}
+		{{ form_label(form.niveau) }} <div class="input">{{ form_widget(form.niveau) }}</div>
+	</span>
+
+	<span class="matiere">
+		{{ form_errors(form.matiere) }}
+		{{ form_label(form.matiere) }} <div class="input">{{ form_widget(form.matiere) }}</div>
+	</span>
+
+	<span class="type">
+		{{ form_errors(form.type) }}
+		{{ form_label(form.type) }} <div class="input">{{ form_widget(form.type) }}</div>
+	</span>
+
+	<span class="url">
+		{{ form_errors(form.url) }}
+		{{ form_label(form.url) }} <div class="input">{{ form_widget(form.url) }}</div>
+	</span>
+
+	<span class="file">
+		{{ form_label(form.file) }}
+		<div class="input">
+			{% for field in form.file %}
+				{{ form_errors(field) }}
+				{{ form_widget(field) }}
+			{% endfor %}
+		</div>
+	</span>
+
+{% endblock %}
