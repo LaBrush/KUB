@@ -76,7 +76,6 @@ $(function() {
 
 		toShow.push(e.val);
 	 	$('.' + e.val).show();
-	 	console.log(e.val);
 	})
 	.on("select2-removing", function(e) {
 	 	
