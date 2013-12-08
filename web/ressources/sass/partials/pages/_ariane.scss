@@ -51,7 +51,7 @@
 		{
 			background: $button-no;
 			color: $color-light;
-			text-shadow: 1px 1px rgba(0, 0, 0, 0.2);
+			text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
 			@include border-radius(2px);
 		}
 	}
@@ -93,7 +93,7 @@
 		&:hover, &:focus, &:active
 		{
 			color: $button-color;
-			text-shadow: 1px 1px rgba(0, 0, 0, 0.2);
+			text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
 			background: $button-yes;
 		}
 		

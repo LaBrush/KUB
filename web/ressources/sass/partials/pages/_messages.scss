@@ -62,7 +62,7 @@
 	&:hover, &:focus, &:active
 	{
 		color: $color-light;
-		text-shadow: 1px 1px rgba(0, 0, 0, 0.2);
+		text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
 		@include border-radius(2px);
 	}
 }
