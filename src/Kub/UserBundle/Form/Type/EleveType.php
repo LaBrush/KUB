@@ -34,7 +34,6 @@ class EleveType extends UserType
 				"class" => "Kub\ClasseBundle\Entity\Niveau",
 			))
 			->add('tuteurs', 'genemu_jqueryselect2_entity', array(
-					"mapped" => true,
 					"class" => "Kub\UserBundle\Entity\Tuteur",
 					"multiple" => true
 				)
