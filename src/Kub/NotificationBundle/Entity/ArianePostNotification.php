@@ -33,6 +33,6 @@ class ArianePostNotification extends Notification
 
     public function getContenu()
     {
-        return $this->getContenu()->getContenu();
+        return "";
     }
 }

@@ -4,7 +4,7 @@ namespace Kub\EDTBundle\Validator\Constraints;
 
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
-use Kub\EDTBundle\Services\TimeService ;
+use Kub\EDTBundle\TimeService\TimeService ;
 
 class TimeEDTCompatibleValidator extends ConstraintValidator
 {

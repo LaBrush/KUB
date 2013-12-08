@@ -31,12 +31,12 @@ class CoursController extends Controller
 
 			if($formHandler->process())
 			{
-				$this->get('session')->getFlashBag()->add('info', "le cours a bien été ajoutée");
+				$this->get('session')->getFlashBag()->add('info', "Le cours a bien été ajouté");
 				return $this->redirect($this->generateUrl("cours_list"));
 			}
 			else
 			{
-				$this->get('session')->getFlashBag()->add('info', "Erreur lors de l'ajout du cours ");
+				$this->get('session')->getFlashBag()->add('info', "Une erreur est survenue lors de l'ajout du cours ");
 			}
 
 		}
@@ -67,12 +67,12 @@ class CoursController extends Controller
 
 			if($formHandler->process())
 			{
-				$this->get('session')->getFlashBag()->add('info', "le cours a bien été modifiée");
+				$this->get('session')->getFlashBag()->add('info', "Le cours a bien été modifié");
 				return $this->redirect($this->generateUrl("cours_list"));
 			}
 			else
 			{
-				$this->get('session')->getFlashBag()->add('info', "Erreur lors de la modification du cours");
+				$this->get('session')->getFlashBag()->add('info', "Une erreur est survenue lors de la modification du cours");
 			}
 
 		}

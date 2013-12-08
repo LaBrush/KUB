@@ -54,7 +54,7 @@ class TimeService
 				
 			if($heure == $asked)
 			{
-				return $horaire[$heure] ;
+				return $this->horaires[$heure] ;
 			}
 		}		
 
@@ -81,11 +81,11 @@ class TimeService
 
 		$qb = $this->em
 			->createQueryBuilder()
-			->select('c')
-			->from('Kub\EDTBundle\Entity\Cours', 'c')
+			->select('h')
+			->from('Kub\EDTBundle\Entity\Horaire', 'h')
 			
-			->join('c.horaires', 'h')
-			->addSelect('h')
+			->join('h.cours', 'c')
+			->addSelect('c')
 			
 			->join('c.groupes', 'g')
 			->addSelect('g')
@@ -121,8 +121,8 @@ class TimeService
 
 	// Fonctions sur des intervals dans l'affichage de l'emploi du temps
 
-	public function getIntervals()
-	{
+	//Donne l'interval d'une journée entiere
+	public function getMasterInterval(){
 		$horaire = new Horaire ;
 
 		$keys = array_keys($this->horaires);
@@ -131,13 +131,48 @@ class TimeService
 			$debut->setTime($keys[0], $this->horaires[$keys[0]][0]);
 
 		$fin = new \Datetime();
-			$fin->setTime($keys[count($keys)-1], $this->horaires[$keys[count($keys)-1][0]]);
+			$fin->setTime($keys[count($keys)-1], $this->horaires[$keys[count($keys)-1]][0]);
 
 		$horaire->setDebut( $debut );
 		$horaire->setFin( $fin );
 
 		$journee = new Interval ;
 		$journee->setHoraire($horaire);
+
+		return $journee ;
+	}
+
+	public function getEachIntervals(){
+
+		$liste_intervals = array();
+
+		//On amorce la choucroute
+		$last_datetime = new \Datetime();
+			$keys = array_keys($this->horaires);
+			$last_datetime->setTime($keys[0], $this->horaires[$keys[0]][0]);
+
+		foreach ($this->horaires as $heures => $minutes) {
+			foreach ($minutes as $minute) {
+				
+				$horaire = new Horaire ;
+					$horaire->setDebut( $last_datetime );
+
+					$last_datetime = new \Datetime ;
+						$last_datetime->setTime($heures, $minute);
+					$horaire->setFin($last_datetime);
+
+				$interval = new Interval($horaire);
+
+				if($interval->getRowSpan() > 0)
+				{
+					$liste_intervals[] = $interval ;
+				}
+
+			}
+		}
+
+		return $liste_intervals ;
+
 	}
 
 }

@@ -4,7 +4,7 @@ namespace Kub\EDTBundle\Form\Handler;
 
 use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\Request;
-use Kub\EDTBundle\Services\TimeService ; 
+use Kub\EDTBundle\TimeService\TimeService ; 
 use Symfony\Component\Form\FormError;
 
 class CoursHandler

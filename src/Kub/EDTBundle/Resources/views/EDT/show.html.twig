@@ -1,3 +1,22 @@
+<style> 
+
+	table
+	{
+		border-collapse:collapse;
+	}
+
+	th, td
+	{
+		border: 1px solid black ;
+		min-width: 70px ;
+		padding: 10px ;
+	}
+
+	tr
+	{
+		height: 30px ;
+	} </style>
+
 <table>
 	
 	<tr>
@@ -12,10 +31,21 @@
 
 	</tr>
 
+	{% for row in edt %}
+		<tr>
+			
+			<td>
+				{{ row.interval.debut|date('H:i') }}
+				{{ row.interval.fin|date('H:i') }}
+			</td>
+
+		</tr>
+
+	{% endfor %}
+
 </table>
 
-<p>
-	
-	{{ edt|length }}
-
-</p>
+<ul>
+	<li>Cols : {{ cols }}</li>
+	<li>Nombre de cours : {{ edt|length }}</li>
+</ul>
