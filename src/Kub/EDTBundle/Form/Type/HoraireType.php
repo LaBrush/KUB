@@ -15,52 +15,7 @@ class HoraireType extends AbstractType
 		$this->timeService = $timeService ;
 	}
 
-<<<<<<< HEAD
-	 /**
-	 * @param FormBuilderInterface $builder
-	 * @param array $options
-	 */
-	public function buildForm(FormBuilderInterface $builder, array $options)
-	{
-		$builder
-			->add('debut', 'time', array(
-					'hours' => $this->timeService->getHours(),
-					'minutes' => $this->timeService->getMinutes()
-				)
-			)
-			->add('fin', 'time', array(
-					'hours' => $this->timeService->getHours(),
-					'minutes' => $this->timeService->getMinutes()
-				)
-			)
-			->add('jour', 'entity', array(
-					'empty_value' => 'Jour du cours',
-					'class' => 'Kub\EDTBundle\Entity\Jour'   
-				)
-			)
-			->add('frequences', 'entity', array(
-					"mapped" => false,
-					"expanded" => true,
-					"multiple" => true,
-					"class" => "Kub\EDTBundle\Entity\Frequence",
-					"label" => "Séléctionner une fréquence de cours (ex: Semaines A)"
-				)
-			)
-			->add('semaines')
-		;
-	}
-	
-	/**
-	 * @param OptionsResolverInterface $resolver
-	 */
-	public function setDefaultOptions(OptionsResolverInterface $resolver)
-	{
-		$resolver->setDefaults(array(
-			'data_class' => 'Kub\EDTBundle\Entity\Horaire'
-		));
-	}
-=======
-     /**
+    /**
      * @param FormBuilderInterface $builder
      * @param array $options
      */
@@ -109,7 +64,6 @@ class HoraireType extends AbstractType
             'data_class' => 'Kub\EDTBundle\Entity\Horaire'
         ));
     }
->>>>>>> 23630f5172763de60022ea0df5bd651fece7c032
 
 	/**
 	 * @return string
