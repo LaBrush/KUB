@@ -33,19 +33,27 @@
 
 	{% for row in edt %}
 		<tr>
-			
+		
 			<td>
 				{{ row.interval.debut|date('H:i') }}
 				{{ row.interval.fin|date('H:i') }}
 			</td>
+
+			{% for jour in row.jours %}
+				{% for interval in jour %}
+					{% set cours = interval.horaire.cours %}
+
+					<td rowspan={{ interval.rowSpan }}>
+						
+						{{ cours }}
+
+					</td>
+
+				{% endfor %}
+			{% endfor %}
 
 		</tr>
 
 	{% endfor %}
 
 </table>
-
-<ul>
-	<li>Cols : {{ cols }}</li>
-	<li>Nombre de cours : {{ edt|length }}</li>
-</ul>

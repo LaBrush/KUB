@@ -21,41 +21,47 @@ class DisplayEDTExtension extends \Twig_Extension
 
 	public function ShowEDT( $user )
 	{
-		$horaires = $this->time->getEDTOf( $user );
-		$cols = count( $this->time->getJours() ) ;
-		// $rows =  $this->time->getMasterInterval()->getRowSpan() ;
+		$intervals_label_horaires = $this->time->getEachIntervals();
+		$horaires_cours = $this->time->getEDTOf( $user );	
 		$jours = $this->time->getJours();
-		$intervals = $this->time->getEachIntervals();
-
+		$intervals_cours = array();
+		$tmp = array();
+		$edt_base = array(); // l'edt sans les cours
 		$edt = array();
 
-		$edt_jours = array();
 		for ($i=0; $i < count($jours); $i++) { 
-			$edt_jours[ $jours[$i] ] = array();
+			$tmp[ $jours[$i] ] = array();
+		}
+		$jours = $tmp ;
+
+		for ($i=0; $i < count($horaires_cours); $i++) { 
+			$intervals_cours[] = $this->time->wrapHoraire( $horaires_cours[$i] );
 		}
 
-		for ($i=0; $i < count($intervals); $i++) { 
-			$edt[] = array(
+		for ($i=0; $i < count($intervals_label_horaires); $i++) { 			
 
-				"interval" => $intervals[$i],
-				// "jours" => $edt_jours
-
+			$edt_base[] = array(
+				"interval" => $intervals_label_horaires[$i],
+				'jours' => $jours
 			);
 		}
 
-		//On rempli avec les horaires
-		// foreach($horaires as $horaire)
-		// {
-		// 	$edt[ $horaire["jour"]["name"] ][] = $horaire ;
-		// }
+		foreach ($edt_base as $row) {
+			foreach ($intervals_cours as $interval) {
+
+				if($row['interval']->getDebut()->format('Hi') == $interval->getDebut()->format('Hi'))
+				{	
+					$row['jours'][ $interval->getHoraire()->getJour()->getName() ][] = $interval ;	
+				}
+			}
+
+			$edt[] = $row ;
+		}
 
 		return $this->templating->render('KubEDTBundle:EDT:show.html.twig',array(
 
 			'liste_jours' => $this->time->getJours(),
 			'edt' => $edt,
-			'cols' => $cols,
-			// 'rows' => $rows,
-			'intervals' => $intervals
 
 		));		
 

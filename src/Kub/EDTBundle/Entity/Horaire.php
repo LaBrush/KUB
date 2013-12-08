@@ -95,7 +95,7 @@ class Horaire
     
     public function __toString()
     {
-        return "De " . $this->debut->format("H:i") . " à " . $this->fin->format("H:i") . " le " . $this->jour ;
+        return "De " . $this->debut->format("H:i") . " à " . $this->fin->format("H:i") . " le " . $this->getJour() ;
     }
 
     /**

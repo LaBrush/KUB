@@ -3,6 +3,7 @@
 namespace Kub\EDTBundle\TimeService ;
 
 use Kub\EDTBundle\Entity\Horaire ;
+use Kub\EDTBundle\Entity\Jour ;
 
 class TimeService
 {
@@ -77,8 +78,6 @@ class TimeService
 
 	public function getEDTOf($user){
 
-		$edt = false ;
-
 		$qb = $this->em
 			->createQueryBuilder()
 			->select('h')
@@ -116,7 +115,7 @@ class TimeService
 
 		$qb->setParameter('id', $user->getId());
 
-		return $qb->getQuery()->getArrayResult();
+		return $qb->getQuery()->getResult();
 	}
 
 	// Fonctions sur des intervals dans l'affichage de l'emploi du temps
@@ -142,6 +141,7 @@ class TimeService
 		return $journee ;
 	}
 
+	// Donne tous les intervals d'une journée
 	public function getEachIntervals(){
 
 		$liste_intervals = array();
@@ -172,7 +172,12 @@ class TimeService
 		}
 
 		return $liste_intervals ;
+	}
 
+	//Converti un horaire un interval
+	public function wrapHoraire(Horaire $horaire)
+	{
+		return new Interval( $horaire );
 	}
 
 }
