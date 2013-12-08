@@ -18,14 +18,14 @@
 		
 		<div class="options-tri">
 			<ul class="niveau">
-				<li class="seconde unchecked">2nd</li>
-				<li class="premiere unchecked">1ere</li>
-				<li class="terminale unchecked">Ter.</li>
+				<li id="seconde" class="unchecked">2nd</li>
+				<li id="premiere" class="unchecked">1ere</li>
+				<li id="terminale" class="unchecked">Ter.</li>
 			</ul>
 
 			<ul class="type">
-				<li class="file unchecked">Fichier</li>
-				<li class="web unchecked">Web</li>
+				<li id="1" class="unchecked">Fichier</li>
+				<li id="0" class="unchecked">Web</li>
 			</ul>
 			
 			<div class="matiere">
@@ -56,7 +56,7 @@
 		<ul class="liste">
 			{% for ressource in ressources %}
 		
-				<li class="li-list in-list type-{{ ressource.type }} niveau-{{ ressource.niveau }} matiere-{{ ressource.matiere }}">
+				<li class="li-list in-list {{ ressource.type }} {{ ressource.niveau }} {{ ressource.matiere }}">
 					{{ ressource.titre }} - {{ ressource.description }}
 
 					{% if ressource.type == 'web' %}
