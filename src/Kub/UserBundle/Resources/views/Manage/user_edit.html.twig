@@ -44,12 +44,22 @@
 		            tuteurCount++;
 
 		            var newLi = $('<div class="tuteur-in-eleve"></div>').html(newWidget);
+		            addTagFormDeleteLink(newLi);
 		            newLi.appendTo(tuteurList);
 
 		            return false;
 		        });
 
-		        $('div:contains("Tuteurs add")').remove();
+		        $('div:contains("Tuteurs add")').hide();
+
+		        function addTagFormDeleteLink($tagFormLi) {
+					var $removeFormA = $('<a href="#" class="button-no delete-horaire">Supprimer ce tuteur</a>');
+					$tagFormLi.append($removeFormA);
+
+					$removeFormA.on('click', function() {
+						$tagFormLi.remove();
+					});
+				}
 		    })
 		</script>
 

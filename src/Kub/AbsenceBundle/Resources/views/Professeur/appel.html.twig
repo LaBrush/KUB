@@ -3,12 +3,18 @@
 {% block body %}
 
 	<article class="article">
-		
-		{{ form_start(form) }}
+		<h2 class="section-title">Appel</h2>
+	</article>
 
-			{{ form_widget(form) }}
-			<input type="submit">
+	<article class="article">
 
+		{{ form_start(form, { 'attr': {'class': 'formulaire-creation'} }) }}
+
+			{% include "KubAbsenceBundle:Professeur:form.html.twig" %}
+
+			<span class="validate">
+				<input class="button-yes" type="submit">
+			</span>
 		{{ form_end(form) }}
 
 	</article>

@@ -35,6 +35,11 @@
 			width: 60%;
 			min-width: 280px;
 		}
+
+		span
+		{
+			margin: 0;
+		}
 	}
 
 	.nom, .prenom, .fixe, .mobile
@@ -83,6 +88,12 @@
 	.profil-picture
 	{
 		float: right;
+	}
+
+	.delete-horaire
+	{
+		display: inline-block;
+		margin: 8px 0 0 0;
 	}
 }
 

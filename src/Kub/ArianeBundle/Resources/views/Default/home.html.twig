@@ -71,7 +71,22 @@
     <script type="text/javascript" src="{{ asset('ressources/tinymce/tinymce.min.js') }}"></script>
 	<script>
 		jQuery(document).ready(function($) {
-		    var $configs = {"language":"fr","theme":"modern","mode":"exact","elements":"kub_arianebundle_post_contenu"};
+		    var $configs = {
+				        selector: "textarea",
+				        plugins: [
+				                "autolink autosave link charmap",
+				                "searchreplace",
+				                "textcolor"
+				        ],
+
+				        toolbar1: "undo redo | bold italic underline strikethrough | forecolor | subscript superscript charmap | removeformat | searchreplace | link unlink",
+				        toolbar2: "",
+				        toolbar3: "",
+
+				        menubar: false,
+				        statusbar: false,
+				        toolbar_items_size: 'small',
+				};
 		    tinyMCE.init($configs);
 		});
 	</script>

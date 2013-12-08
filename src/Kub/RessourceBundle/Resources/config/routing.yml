@@ -2,10 +2,6 @@ kub_ressource_homepage:
     pattern:  /
     defaults: { _controller: KubRessourceBundle:Default:index }
 
-kub_ressource_search:
-    pattern: rechercher
-    defaults: { _controller: KubRessourceBundle:Search:search }
-
 kub_ressource_add:
     pattern:  /add
     defaults: { _controller: KubRessourceBundle:Default:add }

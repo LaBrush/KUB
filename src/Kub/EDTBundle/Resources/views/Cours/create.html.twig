@@ -25,30 +25,47 @@
 {% endblock %}
 
 {% block js %}
-	
-	<script>
-    	// garde une trace du nombre de champs horaires qui ont été affichés
-    	var tuteurCount = '{{ form.horaires | length }}';
-
-	    $(document).ready(function() {
-	        $('.add-another-horaires').click(function() {
-	            var tuteurList = $('.horaires-add');
-
-	            var newWidget = tuteurList.attr('data-prototype');
-	            newWidget = newWidget.replace(/__name__/g, tuteurCount);
-	            tuteurCount++;
-
-	            var newLi = $('<div class="horaires"></div>').html(newWidget);
-	            newLi.appendTo(tuteurList);
-
-	            return false;
-	        });
-	    })
-	</script>
 
 	<script type="text/javascript" src="{{ asset('ressources/select2/select2.min.js') }}"></script>
 	<link rel="stylesheet" href="{{ asset('ressources/select2/select2.css') }}" />
 	{{ form_javascript(form) }}
-	{{ form_stylesheet(form) }}
+
+
+	<script type="text/javascript" src="{{ asset('ressources/jsmin/horaires.min.js') }}"></script>
+	
+	<script>
+		// garde une trace du nombre de champs horaires qui ont été affichés
+		var tuteurCount = '{{ form.horaires | length }}';
+
+		$(document).ready(function() {
+
+			$('.add-another-horaires').click(function() {
+				var tuteurList = $('.horaires-add');
+
+				var newWidget = tuteurList.attr('data-prototype');
+				newWidget = newWidget.replace(/__name__/g, tuteurCount);
+
+				var newLi = $('<div class="horaires"></div>').html(newWidget);
+				addTagFormDeleteLink(newLi);
+				newLi.appendTo(tuteurList);
+				
+				$field = $('#kub_edtbundle_cours_horaires_' + tuteurCount + '_semaines');
+                $field.select2([]);
+
+                tuteurCount++;
+
+				return false;
+			});
+
+			function addTagFormDeleteLink($tagFormLi) {
+				var $removeFormA = $('<a href="#" class="button-no delete-horaire">Supprimer cet horaire</a>');
+				$tagFormLi.append($removeFormA);
+
+				$removeFormA.on('click', function() {
+					$tagFormLi.remove();
+				});
+			}
+		})
+	</script>
 
 {% endblock %}

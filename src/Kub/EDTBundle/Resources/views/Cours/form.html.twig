@@ -23,12 +23,12 @@
 
 			<span class="debut">
 				{{ form_errors(horaire.debut) }}
-				{{ form_label(horaire.debut) }} <div class="input">{{ form_widget(horaire.debut) }}</div>
+				{{ form_label(horaire.debut) }} <div class="input">{{ form_widget(horaire.debut, {"attr": {'class': 'debut-fin-cours'}}) }}</div>
 			</span>
 
 			<span class="fin">
 				{{ form_errors(horaire.fin) }}
-				{{ form_label(horaire.fin) }} <div class="input">{{ form_widget(horaire.fin) }}</div>
+				{{ form_label(horaire.fin) }} <div class="input">{{ form_widget(horaire.fin, {"attr": {'class': 'debut-fin-cours'}}) }}</div>
 			</span>
 
 			<span class="jour">

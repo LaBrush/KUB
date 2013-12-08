@@ -18,7 +18,7 @@ class NewThreadMessageFormType extends AbstractType
         $builder
             ->add('recipient', 'kub_user_username', $options["label_attr"])
             ->add('subject', 'text')
-            ->add('body', 'textarea')
+            ->add('body', 'genemu_tinymce')
         ;
 
     }

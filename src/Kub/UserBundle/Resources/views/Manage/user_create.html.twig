@@ -29,25 +29,35 @@
 	{% if user.class == "eleve" %}	
 
 		<script>
-	    	// garde une trace du nombre de champs tuteurs qui ont été affichés
-	    	var tuteurCount = '{{ form.tuteurs | length }}';
+			// garde une trace du nombre de champs tuteurs qui ont été affichés
+			var tuteurCount = '{{ form.tuteurs | length }}';
 
-		    $(document).ready(function() {
-		        $('.add-another-tuteurs').click(function() {
-		            var tuteurList = $('.tuteurs-add');
+			$(document).ready(function() {
+				$('.add-another-tuteurs').click(function() {
+					var tuteurList = $('.tuteurs-add');
 
-		            var newWidget = tuteurList.attr('data-prototype');
-		            newWidget = newWidget.replace(/__name__/g, tuteurCount);
-		            tuteurCount++;
+					var newWidget = tuteurList.attr('data-prototype');
+					newWidget = newWidget.replace(/__name__/g, tuteurCount);
+					tuteurCount++;
 
-		            var newLi = $('<div class="tuteur-in-eleve"></div>').html(newWidget);
-		            newLi.appendTo(tuteurList);
+					var newLi = $('<div class="tuteur-in-eleve"></div>').html(newWidget);
+					addTagFormDeleteLink(newLi);
+					newLi.appendTo(tuteurList);
 
-		            return false;
-		        });
+					return false;
+				});
 
 		        $('div:contains("Tuteurs add")').hide();
-		    })
+		        
+				function addTagFormDeleteLink($tagFormLi) {
+					var $removeFormA = $('<a href="#" class="button-no delete-horaire">Supprimer ce tuteur</a>');
+					$tagFormLi.append($removeFormA);
+
+					$removeFormA.on('click', function() {
+						$tagFormLi.remove();
+					});
+				}
+			})
 		</script>
 
 	{% endif %}

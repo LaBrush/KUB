@@ -19,7 +19,7 @@
                 <span><em>
                     Le <strong>{{ thread.lastMessage.createdAt | date('d/m/y')}}</strong> à <strong>{{ thread.lastMessage.createdAt | date('H:i')}} :</strong>
                 </em></span>
-                <p>{{ message.body }}</p>
+                <p>{{ message.body | raw }}</p>
             </div>
         {% endfor %}
     </div>
@@ -27,9 +27,11 @@
     <form action="{{ url('fos_message_thread_view', {'threadId': thread.id}) }}" method="post" class="message-write">
         {{ form_errors(form) }}
 
-        <input type="submit" class="button-yes send-message" value="Envoyer" />
+        <div class="wrap-button">
+            <input type="submit" class="button-yes send-message" value="Envoyer" />
+        </div>
 
-        <div class="message-write">{{ form_errors(form.body) }}{{ form_widget(form.body, {"attr" : {"placeholder" : "Répondre..."}}) }}</div>
+        <div class="message-write">{{ form_errors(form.body) }}{{ form_widget(form.body) }}</div>
 
         {{ form_widget(form) }}
     </form>

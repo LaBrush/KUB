@@ -1,19 +1,62 @@
 {% extends "::base.html.twig" %}
 
+{% block title %}
+	{{ parent() }} - Ressources
+{% endblock %}
+
 {% block body %}
 
 	<article class="article">
-		
-		{{ include('KubRessourceBundle:Search:form.html.twig') }}
-
+		<h2 class="section-title">Ressources</h2>
 	</article>
 
 	<article class="article">
+		<div class="trier">
+			<button class="button">Trier</button>
+		</div>
+		
+		
+		<div class="options-tri">
+			<ul class="niveau">
+				<li id="seconde" class="unchecked">2nd</li>
+				<li id="premiere" class="unchecked">1ere</li>
+				<li id="terminale" class="unchecked">Ter.</li>
+			</ul>
 
-		<ul>
+			<ul class="type">
+				<li id="1" class="unchecked">Fichier</li>
+				<li id="0" class="unchecked">Web</li>
+			</ul>
+			
+			<div class="matiere">
+				<select multiple id="matiere" name="matiere" class="select2">
+					<option value="Français">Français</option>
+					<option value="Mathématiques">Mathématiques</option>
+					<option value="Anglais">Anglais</option>
+					<option value="Espagnol">Espagnol</option>
+					<option value="Cinéma">Cinéma</option>
+					<option value="Allemand">Allemand</option>
+					<option value="Musique">Musique</option>
+					<option value="Italien">Italien</option>
+					<option value="SI">SI</option>
+					<option value="SES">SES</option>
+					<option value="PFEG">PFEG</option>
+					<option value="Physique">Physique</option>
+					<option value="Litérrature">Litérrature</option>
+					<option value="ISN">ISN</option>
+					<option value="Autre">Autre</option>
+				</select>
+			</div>
+			
+		</div>
+
+		<label for="search-in-list">Chercher dans la liste :</label>
+		<input id="search-in-list" type="text">
+
+		<ul class="liste">
 			{% for ressource in ressources %}
 		
-				<li>
+				<li class="li-list in-list {{ ressource.type }} {{ ressource.niveau }} {{ ressource.matiere }}">
 					{{ ressource.titre }} - {{ ressource.description }}
 
 					{% if ressource.type == 'web' %}
@@ -33,4 +76,12 @@
 
 	</article>
 
+{% endblock %}
+
+{% block js %}
+	<script type="text/javascript" src="{{ asset('ressources/select2/select2.min.js') }}"></script>
+	<link rel="stylesheet" href="{{ asset('ressources/select2/select2.css') }}" />
+	<script type="text/javascript" src="{{ asset('ressources/jsmin/search.min.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('ressources/jsmin/fuse.min.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('ressources/jsmin/ressources.min.js') }}"></script>
 {% endblock %}

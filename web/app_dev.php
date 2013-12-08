@@ -22,8 +22,8 @@ Debug::enable();
 
 require_once __DIR__.'/../app/AppKernel.php';
 
-// php 5.5 
-opcache_reset();
+// // php 5.5 
+// opcache_reset();
 
 $kernel = new AppKernel('dev', true);
 $kernel->loadClassCache();

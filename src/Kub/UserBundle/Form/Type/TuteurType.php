@@ -21,6 +21,7 @@ class TuteurType extends UserType
 				->add('mobile', 'tel', array('required' => false, 'default_region' => 'FR', 'format' => PhoneNumberFormat::NATIONAL))
 				->add("adresse", 'text', array('required' => false))
 				->add('eleves', 'genemu_jqueryselect2_entity', array(
+						"mapped" => true,
 						"class" => "Kub\UserBundle\Entity\Eleve",
 						"multiple" => true
 					)

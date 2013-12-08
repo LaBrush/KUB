@@ -1,17 +1,25 @@
 {% extends "::base.html.twig" %}
 
+{% block title %}
+	{{ parent() }} - Ajouter une ressource
+{% endblock %}
+
 {% block body %}
+	
+	<article class="article">
+		<h2 class="section-title">Ajouter une ressource</h2>
+	</article>
 
 	<article class="article">
-		
-		coucou 
-		{{ form_start(form) }}
+		{{ form_start(form, { 'attr': {'class': 'formulaire-creation'} }) }}
 
-			{{ form_widget(form) }}
-			<input type="submit">
-			
+			{% include "KubRessourceBundle:Ressource:form.html.twig" %}
+
+			<span class="validate">
+				<input class="button-yes" type="submit">
+				<a class="button" href="{{ path('kub_ressource_homepage') }}">Annuler</a>
+			</span>
 		{{ form_end(form) }}
-
 	</article>
 
 {% endblock %}
