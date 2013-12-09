@@ -33,6 +33,11 @@ class Matiere
      */
     private $cours ;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Kub\EDTBundle\Entity\Categorie")
+     */
+    private $categorie ;
+
     public function __toString()
     {
         return $this->name ;
@@ -109,5 +114,28 @@ class Matiere
     public function getCours()
     {
         return $this->cours;
+    }
+
+    /**
+     * Set categorie
+     *
+     * @param \Kub\EDTBundle\Entity\Categorie $categorie
+     * @return Matiere
+     */
+    public function setCategorie(\Kub\EDTBundle\Entity\Categorie $categorie = null)
+    {
+        $this->categorie = $categorie;
+    
+        return $this;
+    }
+
+    /**
+     * Get categorie
+     *
+     * @return \Kub\EDTBundle\Entity\Categorie 
+     */
+    public function getCategorie()
+    {
+        return $this->categorie;
     }
 }

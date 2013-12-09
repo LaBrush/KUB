@@ -9,9 +9,12 @@ class Interval
 	private $horaire ;
 	private $debut ;
 	private $fin ;
+	private $liste_horaires ;
 
-	public function __construct($horaire = null)
+	public function __construct(array $liste_horaires, $horaire = null)
 	{
+		$this->liste_horaires = $liste_horaires ;
+
 		if($horaire)
 		{
 			$this->setHoraire( $horaire );
@@ -22,8 +25,8 @@ class Interval
 	{
 		$this->horaire = $horaire ;
 
-		$this->debut = $this->roundToHalf( $this->horaire->getDebut() );
-		$this->fin   = $this->roundToHalf( $this->horaire->getFin() );
+		$this->debut = $this->roundTo( clone $this->horaire->getDebut() );
+		$this->fin   = $this->roundTo( clone $this->horaire->getFin() );
 	}
 
 	public function getHoraire()
@@ -63,22 +66,24 @@ class Interval
 
 	public function getRowSpan()
 	{
-		$debut = clone $this->horaire->getDebut();
-		$fin = clone $this->horaire->getFin();
+		// $debut = clone $this->horaire->getDebut();
+		// $fin = clone $this->horaire->getFin();
 
-		$debut = $this->roundToHalf( $debut );
-		$fin   = $this->roundToHalf( $fin );
+		// $debut = $this->roundTo( $debut );
+		// $fin   = $this->roundTo( $fin );
 
-		$diff = $debut->diff($fin, true);
-		$span = ($diff->h * 60 + $diff->i) / 30 ;
-	
+		// $diff = $debut->diff($fin, true);
+		// $span = ($diff->h * 60 + $diff->i) / 5 ;	
+
+		$span = array_search($this->fin, $this->liste_horaires) - array_search($this->debut, $this->liste_horaires);
+
 		return $span ;
 	}
 
-	public function roundToHalf(\Datetime $datetime)
+	public function roundTo(\Datetime $datetime)
 	{
 		$time = $datetime->format('i');
-		$time = $time - ( $time % 30 ) + ( $time % 30 > 15 ? 30 : 0 );
+		$time = $time - ( $time % 5 ) + ( $time % 5 > 2.5 ? 5 : 0 );
 
 		$datetime->setTime( $datetime->format('H'), $time );
 

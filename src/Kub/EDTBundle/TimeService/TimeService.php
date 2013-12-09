@@ -62,6 +62,23 @@ class TimeService
 		return array();
 	}
 
+	//Renvoi un tableau contenant des Datime avec tous les horaires
+	public function getHoursMinutes(){
+
+		$horaires = array() ;
+
+		foreach ($this->horaires as $horaire => $minutes) {
+			foreach ($minutes as $minute) {
+				$horaires[] = (new \Datetime)->setTime($horaire, $minute) ;
+			}
+		}
+
+		sort($horaires);
+
+		return $horaires;
+
+	}
+
 	//Fonctions sur les jours
 
 	public function getJours(){
@@ -135,7 +152,7 @@ class TimeService
 		$horaire->setDebut( $debut );
 		$horaire->setFin( $fin );
 
-		$journee = new Interval ;
+		$journee = new Interval($this->getHoursMinutes());
 		$journee->setHoraire($horaire);
 
 		return $journee ;
@@ -161,7 +178,7 @@ class TimeService
 						$last_datetime->setTime($heures, $minute);
 					$horaire->setFin($last_datetime);
 
-				$interval = new Interval($horaire);
+				$interval = new Interval($this->getHoursMinutes(),$horaire);
 
 				if($interval->getRowSpan() > 0)
 				{
@@ -177,7 +194,7 @@ class TimeService
 	//Converti un horaire un interval
 	public function wrapHoraire(Horaire $horaire)
 	{
-		return new Interval( $horaire );
+		return new Interval($this->getHoursMinutes(), $horaire );
 	}
 
 }

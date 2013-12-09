@@ -120,7 +120,8 @@
 		<tr id="{{ hour }}">
 		
 			<td class="hour-edt {{ class }}">
-				{{ hour }}
+				<!-- {{ hour }} -->
+				{{ row.interval.horaire.debut|date('H:i') }}
 			</td>
 
 			{% for jour in row.jours %}
@@ -203,7 +204,7 @@
 						{% endif %}
 					</div>
 
-					<td rowspan={{ interval.rowSpan }} class="bottom-dashed {{ matiere }}">
+					<td rowspan={{ interval.rowSpan }} class="bottom-dashed {{ cours.matiere.categorie.abrevation }}">
 
 
 						<span class="info-cours">{{ cours.matiere | upper }}</span>
