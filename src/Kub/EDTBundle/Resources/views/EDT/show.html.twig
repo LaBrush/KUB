@@ -1,22 +1,3 @@
-<!-- <style> 
-
-	table
-	{
-		border-collapse:collapse;
-	}
-
-	th, td
-	{
-		border: 1px solid black ;
-		min-width: 70px ;
-		padding: 10px ;
-	}
-
-	tr
-	{
-		height: 30px ;
-	} </style> -->
-
 {% set bottomSolid = "" %}
 
 <table class="edt">
@@ -205,9 +186,13 @@
 							
 								{% set matiere = "langue" %}
 
-						{% elseif matiere == "Histoire" %}
+						{% elseif matiere == "Histoire-Géographie" %}
 							
 								{% set matiere = "social-histoire" %}
+
+						{% elseif matiere == "Sport" %}
+							
+								{% set matiere = "autre" %}
 
 						{% elseif matiere == "ISN" %}
 							
