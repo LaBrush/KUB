@@ -35,9 +35,9 @@
 
 							 "<strong>
 								{% if thread.lastMessage.body | length > 10 %}
-									{{ thread.lastMessage.body | slice(0, 9) }}...
+									{{ thread.lastMessage.body | striptags | slice(0, 9) }}...
 								{% else %}
-									{{ thread.lastMessage.body }}
+									{{ thread.lastMessage.body | raw }}
 								{% endif %}
 							</strong>"
 
