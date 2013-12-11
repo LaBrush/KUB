@@ -1,25 +1,33 @@
 <?php
-namespace Kub\NotificationBundle\Twig;
 
-class NotificationExtension extends \Twig_Extension
+namespace Kub\NotificationBundle\Controller;
+
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+
+class DefaultController extends Controller
 {
-    private $templating ;
-    private $notifications ;
+    public function showAction(){
 
-    public function __construct($templating, $notifications)
-    {
-        $this->templating = $templating ;
-        $this->notifications = $notifications ;
+        $request = $this->get('request') ;
+        $offset = (int) $request->request->get('username'); 
+        throw new \Exception($offset);
+
+        $notifications = $this->getNotifications($offset);
+
+        if($request->attributes->get('_route') != 'kub_notification_show' || $this->isXmlHttpRequest() )
+        {
+            return $notifications ;
+        }
+
+        $this->render('KubNotificationBundle:Show:show.html.twig', array(
+
+            'notifications' => $notifications
+
+        ));
+
     }
 
-    public function getFunctions()
-    {
-        return array(
-            'ShowNotifications' => new \Twig_Function_Method($this, 'ShowNotifications', array('is_safe' => array('html')))
-        );
-    }
-
-    public function ShowNotifications()
+    public function getNotifications()
     {
         $liste_notifications = $this->notifications->getNotifications();
         $response = '' ;
@@ -41,10 +49,5 @@ class NotificationExtension extends \Twig_Extension
         }
 
         return $response ;
-    }
-
-    public function getName()
-    {
-        return 'NotificationExtension';
     }
 }

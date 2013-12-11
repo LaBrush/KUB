@@ -1,0 +1,17 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}
+	{{ parent() }} - Informations sur le groupe {{ groupe }}
+{% endblock %}
+
+{% block body %}
+	
+	<h2>Vos notifications</h2>
+
+	<article class="article">
+
+		{{ notifications }}		
+
+	</article>
+
+{% endblock %}

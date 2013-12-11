@@ -1,10 +1,6 @@
 parameters:
 
 services:
-#    kub_notification.example:
-#        class: %kub_notification.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
-
 #    kub.notification_service:
         # class: Kub\NotificationBundle\Notification\NotificationService
         # arguments: [ %notification_type%, @doctrine.orm.entity_manager, @security.context ]
@@ -13,8 +9,8 @@ services:
         class: Kub\NotificationBundle\Manager\NotificationManager
         arguments: [@doctrine.orm.entity_manager, @security.context]
 
-    kub.twig.kub.notifications_extension:
-            class: Kub\NotificationBundle\Twig\NotificationExtension
-            arguments: [@twig, @kub.notification_manager]
-            tags:
-                - { name: twig.extension }
+    # kub.twig.kub.notifications_extension:
+    #         class: Kub\NotificationBundle\Twig\NotificationExtension
+    #         arguments: [@twig, @kub.notification_manager]
+    #         tags:
+    #             - { name: twig.extension }
