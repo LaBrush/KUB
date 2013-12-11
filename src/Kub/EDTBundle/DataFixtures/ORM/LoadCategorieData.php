@@ -31,17 +31,15 @@ class LoadCategorieData extends AbstractFixture implements FixtureInterface, Con
 	 */
 	public function load(ObjectManager $manager)
 	{
-		$categoriesName = array(
+		$categories = array(
 			"Littérature",
 			"Scientifique",
 			"Economie et société",
 			"Langue",
-			"Scientifique",
 			"Art",
 			"Autres"
 		);
 
-		$categories = array();
 		foreach ($categories as $key => $name) {
 			$categorie = new Categorie();
 			$categorie->setNom($name);

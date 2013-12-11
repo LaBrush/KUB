@@ -4,7 +4,7 @@ namespace Kub\NotificationBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class DefaultController extends Controller
+class NotificationController extends Controller
 {
     public function showAction(){
 
