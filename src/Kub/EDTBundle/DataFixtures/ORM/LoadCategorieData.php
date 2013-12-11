@@ -36,9 +36,9 @@ class LoadCategorieData extends AbstractFixture implements FixtureInterface, Con
 			"Scientifique",
 			"Economie et société",
 			"Langue",
-			"Nouilles aux andouillettes",
+			"Scientifique",
 			"Art",
-			"Autre"
+			"Autres"
 		);
 
 		$categories = array();
@@ -46,12 +46,10 @@ class LoadCategorieData extends AbstractFixture implements FixtureInterface, Con
 			$categorie = new Categorie();
 			$categorie->setNom($name);
 
-			$categories[$name] = $categorie ;
+			$this->addReference($name, $categorie);
 
 			$manager->persist($categorie);
 		}
-
-		$this->addReference("matieres_categories", $categories);
 		$manager->flush();
 	}
 

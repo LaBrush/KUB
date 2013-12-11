@@ -62,19 +62,12 @@ class Interval
 				throw new \InvalidArgumentException("\Datetime or \Kub\EDTBundle\TimeService\Interval expected");
 				break;
 		}
+
+		return $this ; //Pour le chainage de fonctions
 	}
 
 	public function getRowSpan()
 	{
-		// $debut = clone $this->horaire->getDebut();
-		// $fin = clone $this->horaire->getFin();
-
-		// $debut = $this->roundTo( $debut );
-		// $fin   = $this->roundTo( $fin );
-
-		// $diff = $debut->diff($fin, true);
-		// $span = ($diff->h * 60 + $diff->i) / 5 ;	
-
 		$span = array_search($this->fin, $this->liste_horaires) - array_search($this->debut, $this->liste_horaires);
 
 		return $span ;

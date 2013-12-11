@@ -19,10 +19,10 @@ class DisplayEDTExtension extends \Twig_Extension
 		);
 	}
 
-	public function ShowEDT( $user )
+	public function ShowEDT( $entity )
 	{
 		$intervals_label_horaires = $this->time->getEachIntervals();
-		$horaires_cours = $this->time->getEDTOf( $user );	
+		$horaires_cours = $this->time->getEDTOf( $entity );	
 		$jours = $this->time->getJours();
 		$intervals_cours = array();
 		$tmp = array();
