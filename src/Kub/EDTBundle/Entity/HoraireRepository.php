@@ -15,7 +15,7 @@ class HoraireRepository extends EntityRepository
 {
 
 	public function findConflictualCours(Horaire $horaire)
-	{
+	{	
 		$qb = $this->_em->createQuery(
 			"SELECT DISTINCT h, j
 			 FROM KubEDTBundle:Horaire h 
@@ -44,7 +44,7 @@ class HoraireRepository extends EntityRepository
 		->setParameter('id', $horaire->getId())
 		->setParameter('debut', $horaire->getDebut())
 		->setParameter('fin', $horaire->getFin())
-		->setParameter('jour', $horaire->getJour()->getId())
+		->setParameter('jour', $horaire->getJour()->getRef())
 		->setParameter('cours', $horaire->getCours()->getId());	
 
 		$semaine_ids = array(0);

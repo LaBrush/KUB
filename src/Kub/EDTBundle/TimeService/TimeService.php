@@ -11,8 +11,7 @@ class TimeService
 	private $jours ;
 	private $em ;
 
-	public function __construct($edt, $em)
-	{
+	public function __construct($edt, $em){
 		$this->horaires = $edt["horaires"];
 		$this->jours = $edt["jours"];		
 
@@ -60,6 +59,16 @@ class TimeService
 		}		
 
 		return array();
+	}
+
+	public function getFirstHoraire(){
+
+		$horaire = new \Datetime ;
+		$keys = array_keys($this->horaires);
+		$horaire->setTime($keys[0], $this->horaires[$keys[0]][0]);
+
+		return $horaire ;
+
 	}
 
 	//Renvoi un tableau contenant des Datime avec tous les horaires
@@ -145,9 +154,7 @@ class TimeService
 		$liste_intervals = array();
 
 		//On amorce la choucroute
-		$last_datetime = new \Datetime();
-			$keys = array_keys($this->horaires);
-			$last_datetime->setTime($keys[0], $this->horaires[$keys[0]][0]);
+		$last_datetime = $this->getFirstHoraire();
 
 		foreach ($this->horaires as $heures => $minutes) {
 			// foreach ($minutes as $minute) {
@@ -164,7 +171,7 @@ class TimeService
 
 				if($interval->getRowSpan() > 0)
 				{
-					$link = (new Interval())->link( $last_datetime, $interval );
+					$link = (new Interval($this->getHoursMinutes()))->link( $last_datetime, $interval );
 					if($link->getRowSpan() > 0)
 					{
 						$liste_intervals[] = $link ;
@@ -172,15 +179,34 @@ class TimeService
 
 					$liste_intervals[] = $interval ;
 				}
-
 			}
+
+		//le dernier horaire de la semaine
+		$last_horaire = new \Datetime();
+
+		$heure = key( array_slice( $this->horaires, -1, 1, TRUE ) );
+		
+		$minute = end($this->horaires);
+		$minute = end($minute);
+
+		$last_horaire->setTime($heure, $minute);
+
+		$filler = new Interval($this->getHoursMinutes());
+		$last_horaire = count($liste_intervals) ? $liste_intervals[ count($liste_intervals)-1 ]->getHoraire()->getFin() : $this->getFirstHoraire(); ;
+		$filler->link($last_datetime, $last_horaire);
+		
+
+		if($filler->getRowSpan() > 0)
+		{
+			$liste_intervals[] = $filler ;
+		}
 		}
 
 		return $liste_intervals ;
 	}
 
 	//Converti un horaire un interval
-	public function wrapHoraire(Horaire $horaire)
+	public function wrapHoraire(Horaire $horaire = null)
 	{
 		return new Interval($this->getHoursMinutes(), $horaire );
 	}

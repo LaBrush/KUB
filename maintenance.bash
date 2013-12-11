@@ -7,7 +7,6 @@ app/console doctrine:query:sql "DROP DATABASE IF EXISTS kub" ;
 app/console doctrine:database:create ;
 
 app/console doctrine:generate:entities KubArianeBundle ;
-app/console doctrine:generate:entities KubAgendaBundle ;
 app/console doctrine:generate:entities KubAbsenceBundle ;
 app/console doctrine:generate:entities KubCasierBundle ;
 app/console doctrine:generate:entities KubClasseBundle ;

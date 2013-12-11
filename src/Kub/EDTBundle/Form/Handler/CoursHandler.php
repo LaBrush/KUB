@@ -72,7 +72,6 @@ class CoursHandler
 					return true;
 				}
 			}
-
 			
 		}
 

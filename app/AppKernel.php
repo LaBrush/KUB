@@ -37,7 +37,6 @@ class AppKernel extends Kernel
             new Kub\ArianeBundle\KubArianeBundle(),
             new Kub\CollaborationBundle\KubCollaborationBundle(),
             new Kub\AbsenceBundle\KubAbsenceBundle(),
-            new Kub\AgendaBundle\KubAgendaBundle(),
             new Kub\CasierBundle\KubCasierBundle(),
             new Kub\RessourceBundle\KubRessourceBundle(),
             new Kub\ClasseBundle\KubClasseBundle(),

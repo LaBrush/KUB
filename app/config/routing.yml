@@ -22,10 +22,6 @@ kub_casier:
     resource: "@KubCasierBundle/Resources/config/routing.yml"
     prefix:   /
 
-kub_agenda:
-    resource: "@KubAgendaBundle/Resources/config/routing.yml"
-    prefix:   /
-
 kub_absence:
     resource: "@KubAbsenceBundle/Resources/config/routing.yml"
     prefix:   /

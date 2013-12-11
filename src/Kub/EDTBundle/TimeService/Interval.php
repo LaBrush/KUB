@@ -41,25 +41,27 @@ class Interval
 	public function link($previous, $next){
 		$this->horaire = new Horaire ;
 
-		switch (get_class($previous)) {
-			case '\Kub\EDTBundle\TimeService\Interval':
+		switch (get_class($previous)){
+			case 'Kub\EDTBundle\TimeService\Interval':
 				$this->horaire->setDebut( $previous->getHoraire()->getFin() );
 				break;
-			case '\Datetime':
+			case 'DateTime':
 				$this->horaire->setDebut( $previous );
+				break;
 			default:
-				throw new \InvalidArgumentException("\Datetime or \Kub\EDTBundle\TimeService\Interval expected");
+				throw new \InvalidArgumentException("DateTime or Kub\EDTBundle\TimeService\Interval expected, " . get_class($previous) . ' given');
 				break;
 		}
-
-		switch (get_class($next)) {
-			case '\Kub\EDTBundle\TimeService\Interval':
-				$this->horaire->setFin( $previous->getHoraire()->getDebut() );
+		
+		switch (get_class($next)){
+			case 'Kub\EDTBundle\TimeService\Interval':
+				$this->horaire->setFin( $next->getHoraire()->getDebut() );
 				break;
-			case '\Datetime':
-				$this->horaire->setFin( $previous );
+			case 'DateTime':
+				$this->horaire->setFin( $next );
+				break;
 			default:
-				throw new \InvalidArgumentException("\Datetime or \Kub\EDTBundle\TimeService\Interval expected");
+				throw new \InvalidArgumentException("DateTime or Kub\EDTBundle\TimeService\Interval expected, " . get_class($next) . ' given');
 				break;
 		}
 

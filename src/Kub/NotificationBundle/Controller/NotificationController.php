@@ -10,7 +10,6 @@ class NotificationController extends Controller
 
         $request = $this->get('request') ;
         $offset = (int) $request->request->get('username'); 
-        throw new \Exception($offset);
 
         $notifications = $this->getNotifications($offset);
 
@@ -27,9 +26,9 @@ class NotificationController extends Controller
 
     }
 
-    public function getNotifications()
+    public function getNotifications($offset)
     {
-        $liste_notifications = $this->notifications->getNotifications();
+        $liste_notifications = $this->get('kub.notification_manager')->getNotifications($offset);
         $response = '' ;
 
         foreach ($liste_notifications as $key => $notification) {
@@ -38,14 +37,14 @@ class NotificationController extends Controller
             $template = str_replace("Kub\NotificationBundle\Entity\\", "", $template);
             $template = str_replace("Notification", "", $template);
 
-            $response .= $this->templating->render('KubNotificationBundle:Notification:' . $template . '.html.twig', array(
+            $response .= $this->render('KubNotificationBundle:Notification:' . $template . '.html.twig', array(
                 "notification" => $notification 
             ));
         }
 
         if(count($liste_notifications) == 0)
         {
-            $response = $this->templating->render('KubNotificationBundle:Notification:no_notification.html.twig');
+            $response = $this->render('KubNotificationBundle:Notification:no_notification.html.twig');
         }
 
         return $response ;

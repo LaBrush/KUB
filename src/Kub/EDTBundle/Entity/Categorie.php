@@ -62,7 +62,7 @@ class Categorie
         return $this->nom;
     }
 
-    public function getAbreviation()
+    public function getAbrevation()
     {
         $nom = str_replace(
             array(

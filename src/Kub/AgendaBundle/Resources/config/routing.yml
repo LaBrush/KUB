@@ -1,3 +1,0 @@
-kub_agenda_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: KubAgendaBundle:Default:index }

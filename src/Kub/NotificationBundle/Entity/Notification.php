@@ -157,29 +157,6 @@ abstract class Notification
 	}
 
 	/**
-	 * Add groupesTarget
-	 *
-	 * @param \Kub\UserBundle\Entity\Groupe $groupesTarget
-	 * @return Notification
-	 */
-	public function addGroupesTarget(\Kub\UserBundle\Entity\Groupe $groupesTarget)
-	{
-		$this->groupesTarget[] = $groupesTarget;
-	
-		return $this;
-	}
-
-	/**
-	 * Remove groupesTarget
-	 *
-	 * @param \Kub\UserBundle\Entity\Groupe $groupesTarget
-	 */
-	public function removeGroupesTarget(\Kub\UserBundle\Entity\Groupe $groupesTarget)
-	{
-		$this->groupesTarget->removeElement($groupesTarget);
-	}
-
-	/**
 	 * Get groupesTarget
 	 *
 	 * @return \Doctrine\Common\Collections\Collection 
