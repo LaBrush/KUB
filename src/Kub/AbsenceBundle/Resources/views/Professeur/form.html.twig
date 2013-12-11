@@ -1,3 +1,19 @@
 {% block form %}
 
+	<ul class="liste">
+		{% for statut in form.absences %}
+
+			{% set eleve = eleves[ loop.index0 ] %}
+
+			{{ form_errors(statut) }}
+			<li class="in-list li-list" id="">
+				<img src="{{ asset(eleve.photo.webPath) }}" alt="{{ eleve }}" class="profil-picture"/>
+
+				{% for element in statut %}
+				    <span>{{ form_label(element) }} {{ form_widget(element, {"attr": {"class": "input-appel"}}) }}</span>
+				{% endfor %}
+			</li>
+
+		{% endfor %}
+	</ul>
 {% endblock %}

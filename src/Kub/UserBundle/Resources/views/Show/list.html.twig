@@ -26,11 +26,11 @@
 
 						{% if role == 'eleve' %}
 			
-							<img src="{{ asset(user.photo.webPath) }}" alt="{{ user.nom }} {{ user.prenom }}" class="profil-picture"/>
+							<img src="{{ asset(user.photo.webPath) }}" alt="{{ user }}" class="profil-picture"/>
 
 						{% endif %}
 
-						<span>{{ user.nom }} {{ user.prenom }}</span>
+						<span>{{ user }}</span>
 					</li>
 				</a>
 

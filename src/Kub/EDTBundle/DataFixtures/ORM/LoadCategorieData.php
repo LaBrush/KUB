@@ -31,7 +31,7 @@ class LoadCategorieData extends AbstractFixture implements FixtureInterface, Con
 	 */
 	public function load(ObjectManager $manager)
 	{
-		$categoriesName = array(
+		$categories = array(
 			"Littérature",
 			"Scientifique",
 			"Economie et société",
@@ -41,17 +41,14 @@ class LoadCategorieData extends AbstractFixture implements FixtureInterface, Con
 			"Autre"
 		);
 
-		$categories = array();
-		foreach ($categories as $key => $name) {
+		foreach ($categories as $name) {
 			$categorie = new Categorie();
 			$categorie->setNom($name);
 
-			$categories[$name] = $categorie ;
-
+			$this->addReference($name, $categorie);
 			$manager->persist($categorie);
 		}
 
-		$this->addReference("matieres_categories", $categories);
 		$manager->flush();
 	}
 

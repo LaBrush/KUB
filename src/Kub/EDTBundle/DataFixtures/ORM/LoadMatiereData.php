@@ -46,20 +46,17 @@ class LoadMatiereData extends AbstractFixture implements FixtureInterface, Conta
 			array("SES", "Economie et société"),
 			array("PFEG", "Economie et société"),
 			array("Physique", "Scientifique"),
-			array("SI", "Scientifique"),
 			array("Litérrature", "Littérature"),
 			array("ISN", "Nouilles aux andouillettes"),
-			array("Autre", "Autre")
+			array("Autre matière", "Autre")
 		);
 
-		$categories = $this->getReference('matieres_categories');
 		foreach ($matieres as $prop) {
 			$matiere = new Matiere();
 			$matiere->setName($prop[0]);
-			echo $matiere->getName();
-			$matiere->setCategorie( $categories[$prop[1]] );
+			$matiere->setCategorie( $this->getReference( $prop[1] ) );
 
-			$this->addReference($name, $matiere);
+			$this->addReference($matiere->getName(), $matiere);
 			$manager->persist($matiere);
 		}
 

@@ -26,20 +26,6 @@ class addMemberFieldSuscriber implements EventSubscriberInterface
         $this->form = $event->getForm();
 
         if ($this->data->getId()) {
-            $this->form->add('eleves_entity', 'entity', array(
-                'class' => 'Kub\UserBundle\Entity\Eleve',
-                "multiple" => true,
-                "expanded" => true,
-                "property_path" => "eleves",
-                'query_builder' => function(EleveRepository $er) {
-
-                    return $er->createQueryBuilder('e')
-                        ->orderBy('e.username', 'ASC')
-                        ->where('e.niveau = :niveau')
-                        ->setParameter('niveau', $this->data->getNiveau())
-                    ;
-                }
-            ));
 
             $this->form->add('eleves', 'genemu_jqueryselect2_entity', array(
                 'class' => 'Kub\UserBundle\Entity\Eleve',
