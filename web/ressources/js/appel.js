@@ -1,16 +1,38 @@
 $(function() {
 
-	// Cette fonction permet de changer la couleur d'un eleve au clic
+	$('.input-appel').hide();
 
-	$('.in-list').click( function() {
+	// Cette fonction permet de changer la couleur et la presence d'un eleve au clic
 
-		if (!$(this).hasClass('away'))
+	var inputAppel = $('.input-appel');
+
+	$('.in-list')
+	.click( function() {
+
+		if ($(this).hasClass('away'))
 		{
-			$(this).addClass('away');
+			$(this).addClass('retard')
+			.removeClass('away');
+
+			$(this)
+			.find(inputAppel)
+			.val("2");
+		}
+		else if ($(this).hasClass('retard'))
+		{
+			$(this).removeClass('retard');
+
+			$(this)
+			.find(inputAppel)
+			.val("0");
 		}
 		else
 		{
-			$(this).removeClass('away');
+			$(this).addClass('away');
+
+			$(this)
+			.find(inputAppel)
+			.val("1");
 		}
 	});
 });
