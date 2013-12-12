@@ -22,6 +22,11 @@ class Jour
     private $id;
 
     /**
+     * @ORM\Column(name="ref", type="integer")
+     */
+    private $ref;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
@@ -65,5 +70,28 @@ class Jour
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Set ref
+     *
+     * @param integer $ref
+     * @return Jour
+     */
+    public function setRef($ref)
+    {
+        $this->ref = $ref;
+    
+        return $this;
+    }
+
+    /**
+     * Get ref
+     *
+     * @return integer 
+     */
+    public function getRef()
+    {
+        return $this->ref;
     }
 }

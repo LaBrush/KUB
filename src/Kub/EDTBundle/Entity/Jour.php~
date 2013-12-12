@@ -22,6 +22,11 @@ class Jour
     private $id;
 
     /**
+     * @ORM\Column(name="ref", type="integer")
+     */
+    private $ref;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)

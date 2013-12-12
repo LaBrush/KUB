@@ -11,8 +11,7 @@ class TimeService
 	private $jours ;
 	private $em ;
 
-	public function __construct($edt, $em)
-	{
+	public function __construct($edt, $em){
 		$this->horaires = $edt["horaires"];
 		$this->jours = $edt["jours"];		
 
@@ -62,6 +61,16 @@ class TimeService
 		return array();
 	}
 
+	public function getFirstHoraire(){
+
+		$horaire = new \Datetime ;
+		$keys = array_keys($this->horaires);
+		$horaire->setTime($keys[0], $this->horaires[$keys[0]][0]);
+
+		return $horaire ;
+
+	}
+
 	//Renvoi un tableau contenant des Datime avec tous les horaires
 	public function getHoursMinutes(){
 
@@ -93,7 +102,7 @@ class TimeService
 		return $edt = $this->em->getRepository('KubUserBundle:Professeur')->getCurrentCoursOf( $professeur->getId() );
 	}
 
-	public function getEDTOf($user){
+	public function getEDTOf($entity){
 
 		$qb = $this->em
 			->createQueryBuilder()
@@ -115,7 +124,7 @@ class TimeService
 			->orderBy('j.id, h.debut')
 		;
 
-		switch(get_class($user))
+		switch(get_class($entity))
 		{
 			case "Kub\UserBundle\Entity\Eleve":
 				$qb->join('g.eleves', 'e')
@@ -125,38 +134,19 @@ class TimeService
 			case "Kub\UserBundle\Entity\Professeur": 
 				$qb->where('p.id = :id');
 				break;
+			case 'Kub\ClasseBundle\Entity\Groupe':
+				$qb->where('g.id = :id');
 			default:
-				throw new \Exception("Erreur: seul les professeurs et les élèves disposent d'emploi du temps");
+				throw new \Exception("Erreur: seul les professeurs, les élèves et les groupes disposent d'emploi du temps");
 				break ;
 		}		
 
-		$qb->setParameter('id', $user->getId());
+		$qb->setParameter('id', $entity->getId());
 
 		return $qb->getQuery()->getResult();
 	}
 
 	// Fonctions sur des intervals dans l'affichage de l'emploi du temps
-
-	//Donne l'interval d'une journée entiere
-	public function getMasterInterval(){
-		$horaire = new Horaire ;
-
-		$keys = array_keys($this->horaires);
-
-		$debut = new \Datetime();
-			$debut->setTime($keys[0], $this->horaires[$keys[0]][0]);
-
-		$fin = new \Datetime();
-			$fin->setTime($keys[count($keys)-1], $this->horaires[$keys[count($keys)-1]][0]);
-
-		$horaire->setDebut( $debut );
-		$horaire->setFin( $fin );
-
-		$journee = new Interval($this->getHoursMinutes());
-		$journee->setHoraire($horaire);
-
-		return $journee ;
-	}
 
 	// Donne tous les intervals d'une journée
 	public function getEachIntervals(){
@@ -164,35 +154,59 @@ class TimeService
 		$liste_intervals = array();
 
 		//On amorce la choucroute
-		$last_datetime = new \Datetime();
-			$keys = array_keys($this->horaires);
-			$last_datetime->setTime($keys[0], $this->horaires[$keys[0]][0]);
+		$last_datetime = $this->getFirstHoraire();
 
 		foreach ($this->horaires as $heures => $minutes) {
-			foreach ($minutes as $minute) {
+			// foreach ($minutes as $minute) {
+			for ($i=0; $i < count($minutes) ; $i++) { 
 				
 				$horaire = new Horaire ;
 					$horaire->setDebut( $last_datetime );
 
 					$last_datetime = new \Datetime ;
-						$last_datetime->setTime($heures, $minute);
+						$last_datetime->setTime($heures, $minutes[$i]);
 					$horaire->setFin($last_datetime);
 
 				$interval = new Interval($this->getHoursMinutes(),$horaire);
 
 				if($interval->getRowSpan() > 0)
 				{
+					$link = (new Interval($this->getHoursMinutes()))->link( $last_datetime, $interval );
+					if($link->getRowSpan() > 0)
+					{
+						$liste_intervals[] = $link ;
+					}
+
 					$liste_intervals[] = $interval ;
 				}
-
 			}
+
+		//le dernier horaire de la semaine
+		$last_horaire = new \Datetime();
+
+		$heure = key( array_slice( $this->horaires, -1, 1, TRUE ) );
+		
+		$minute = end($this->horaires);
+		$minute = end($minute);
+
+		$last_horaire->setTime($heure, $minute);
+
+		$filler = new Interval($this->getHoursMinutes());
+		$last_horaire = count($liste_intervals) ? $liste_intervals[ count($liste_intervals)-1 ]->getHoraire()->getFin() : $this->getFirstHoraire(); ;
+		$filler->link($last_datetime, $last_horaire);
+		
+
+		if($filler->getRowSpan() > 0)
+		{
+			$liste_intervals[] = $filler ;
+		}
 		}
 
 		return $liste_intervals ;
 	}
 
 	//Converti un horaire un interval
-	public function wrapHoraire(Horaire $horaire)
+	public function wrapHoraire(Horaire $horaire = null)
 	{
 		return new Interval($this->getHoursMinutes(), $horaire );
 	}

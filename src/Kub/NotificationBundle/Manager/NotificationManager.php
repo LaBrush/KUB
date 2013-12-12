@@ -77,11 +77,11 @@ class NotificationManager
 		$this->em->flush();
 	}
 
-	public function getNotifications()
+	public function getNotifications($offset)
 	{
 		$user =  $this->security->getToken()->getUser();
 
-		$notifications = $this->em->getRepository('KubNotificationBundle:Notification')->findByUser($user);
+		$notifications = $this->em->getRepository('KubNotificationBundle:Notification')->findByUser($user, $offset);
 
 		return $notifications ;
 	}

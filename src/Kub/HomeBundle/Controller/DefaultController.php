@@ -12,13 +12,7 @@ class DefaultController extends Controller
 
     	if($security->isGranted("ROLE_USER"))
     	{
-            $notification = $this->get('kub.notification_manager');
-
-            $liste_notifications = $notification->getNotifications();
-
-    		return $this->render("KubHomeBundle:User:index.html.twig", array(
-                "liste_notifications" => $liste_notifications 
-            ));
+    		return $this->render("KubHomeBundle:User:index.html.twig");
     	}
     	else
     	{

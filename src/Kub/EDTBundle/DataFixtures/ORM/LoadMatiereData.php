@@ -33,28 +33,28 @@ class LoadMatiereData extends AbstractFixture implements FixtureInterface, Conta
 	{
 		$matieres = array(
 			array("Français", "Littérature"),
+			array("Litérrature", "Littérature"),
 			array("Mathématiques", "Scientifique"),
 			array("Histoire-Géographie", "Economie et société"),
 			array("Anglais", "Langue"),
 			array("Espagnol", "Langue"),
-			array("Cinéma", "Nouilles aux andouillettes"),
 			array("Allemand", "Langue"),
-			array("Musique", "Art"),
 			array("Italien", "Langue"),
-			array("Sport", "Autre"),
+			array("Musique", "Art"),
+			array("Cinéma", "Art"),
+			array("Sport", "Autres"),
 			array("SI", "Scientifique"),
 			array("SES", "Economie et société"),
 			array("PFEG", "Economie et société"),
 			array("Physique", "Scientifique"),
-			array("Litérrature", "Littérature"),
-			array("ISN", "Nouilles aux andouillettes"),
-			array("Autre matière", "Autre")
+			array("ISN", "Scientifique"),
+			array("Autre", "Autres")
 		);
 
 		foreach ($matieres as $prop) {
 			$matiere = new Matiere();
 			$matiere->setName($prop[0]);
-			$matiere->setCategorie( $this->getReference( $prop[1] ) );
+			$matiere->setCategorie( $this->getReference( $prop[1]) );
 
 			$this->addReference($matiere->getName(), $matiere);
 			$manager->persist($matiere);
@@ -65,6 +65,6 @@ class LoadMatiereData extends AbstractFixture implements FixtureInterface, Conta
 
 	public function getOrder()
 	{
-		return 0 ;
+		return 1 ;
 	}
 }

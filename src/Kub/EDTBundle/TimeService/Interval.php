@@ -41,40 +41,35 @@ class Interval
 	public function link($previous, $next){
 		$this->horaire = new Horaire ;
 
-		switch (get_class($previous)) {
-			case '\Kub\EDTBundle\TimeService\Interval':
+		switch (get_class($previous)){
+			case 'Kub\EDTBundle\TimeService\Interval':
 				$this->horaire->setDebut( $previous->getHoraire()->getFin() );
 				break;
-			case '\Datetime':
+			case 'DateTime':
 				$this->horaire->setDebut( $previous );
+				break;
 			default:
-				throw new \InvalidArgumentException("\Datetime or \Kub\EDTBundle\TimeService\Interval expected");
+				throw new \InvalidArgumentException("DateTime or Kub\EDTBundle\TimeService\Interval expected, " . get_class($previous) . ' given');
+				break;
+		}
+		
+		switch (get_class($next)){
+			case 'Kub\EDTBundle\TimeService\Interval':
+				$this->horaire->setFin( $next->getHoraire()->getDebut() );
+				break;
+			case 'DateTime':
+				$this->horaire->setFin( $next );
+				break;
+			default:
+				throw new \InvalidArgumentException("DateTime or Kub\EDTBundle\TimeService\Interval expected, " . get_class($next) . ' given');
 				break;
 		}
 
-		switch (get_class($next)) {
-			case '\Kub\EDTBundle\TimeService\Interval':
-				$this->horaire->setFin( $previous->getHoraire()->getDebut() );
-				break;
-			case '\Datetime':
-				$this->horaire->setFin( $previous );
-			default:
-				throw new \InvalidArgumentException("\Datetime or \Kub\EDTBundle\TimeService\Interval expected");
-				break;
-		}
+		return $this ; //Pour le chainage de fonctions
 	}
 
 	public function getRowSpan()
 	{
-		// $debut = clone $this->horaire->getDebut();
-		// $fin = clone $this->horaire->getFin();
-
-		// $debut = $this->roundTo( $debut );
-		// $fin   = $this->roundTo( $fin );
-
-		// $diff = $debut->diff($fin, true);
-		// $span = ($diff->h * 60 + $diff->i) / 5 ;	
-
 		$span = array_search($this->fin, $this->liste_horaires) - array_search($this->debut, $this->liste_horaires);
 
 		return $span ;

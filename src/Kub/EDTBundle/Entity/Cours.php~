@@ -198,6 +198,7 @@ class Cours
     public function addHoraire(\Kub\EDTBundle\Entity\Horaire $horaires)
     {   
         $this->horaires[] = $horaires;
+        $horaires->setCours($this);
     
         return $this;
     }
@@ -210,6 +211,7 @@ class Cours
     public function removeHoraire(\Kub\EDTBundle\Entity\Horaire $horaires)
     {
         $this->horaires->removeElement($horaires);
+        $horaires->setCours();
     }
 
     /**

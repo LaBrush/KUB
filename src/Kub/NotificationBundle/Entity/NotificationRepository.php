@@ -13,14 +13,16 @@ use Doctrine\ORM\EntityRepository;
 class NotificationRepository extends EntityRepository
 {
 
-	public function findByUser($user) { 
+	public function findByUser($user, $offset) { 
 		$qb = $this->createQueryBuilder("n")
 			->leftJoin('n.auteur', 'a') 
 			->addSelect('a')
 			->leftJoin('n.userTarget', 'u') 
 			->where('u.id = :id') 
 			->setParameter('id',$user->getId()) 
-			->orderBy('n.date', 'DESC') 
+			->orderBy('n.date', 'DESC')
+			->setFirstResult($offset)
+			->setMaxResults(12)
 		;
 
 		if($user->getClass() == "eleve")
