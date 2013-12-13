@@ -18,6 +18,18 @@ class UserType extends AbstractType
             ->add('nom')
             ->add('prenom')
             ->add('email', 'email')
+            ->add('locked', 'choice', array(
+
+                'choices' => array(
+
+                    0 => "Actif",
+                    1 => "Vérouillé",
+
+                ),
+
+                "label" => "Etat du compte"
+
+            ))
         ;
     }
     

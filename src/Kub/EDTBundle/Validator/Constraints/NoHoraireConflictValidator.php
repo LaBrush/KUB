@@ -40,7 +40,7 @@ class NoHoraireConflictValidator extends ConstraintValidator
 
 		$horaire_ref_debut = $horaire_ref->getDebut()->getTimestamp();
 		$horaire_ref_fin = $horaire_ref->getFin()->getTimestamp();
-		$horaire_ref_jour = $horaire_ref->getJour();
+		$horaire_ref_jour = $horaire_ref->getJour()->getId();
 
 		foreach ($horaires as $key => $horaire) {
 			
@@ -69,7 +69,7 @@ class NoHoraireConflictValidator extends ConstraintValidator
 						)
 					)
 					&&
-					$horaire->getJour() != $horaire_ref_jour
+					$horaire->getJour()->getId() != $horaire_ref_jour
 				)
 				{
 					$conflits[] = $horaire ;	

@@ -49,9 +49,7 @@ class LoadEleveData extends AbstractFixture implements FixtureInterface, Contain
 		$johnsnow->setEnabled(true);
 
 		$this->addReference('johnsnow', $johnsnow);
-
 		$userManager->updateUser($johnsnow, true);
-
 
 		$deneris = $userManager->createUser();
 
@@ -65,7 +63,6 @@ class LoadEleveData extends AbstractFixture implements FixtureInterface, Contain
 		$deneris->setEnabled(true);
 
 		$this->addReference('deneristhargarien', $deneris);
-
 		$userManager->updateUser($deneris, true);
 	}
 

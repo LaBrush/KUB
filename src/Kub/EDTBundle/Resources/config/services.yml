@@ -19,6 +19,7 @@ parameters:
             15 : [20, 55]
             16 : [20, 55]
             17 : [20]
+            23 : [55]
 
 services:
 #    kub_edt.example:
