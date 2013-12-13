@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "761289dca94a82c4df664fa9c1e2d9b3",
+    "hash": "428f6be1b5fbb085871d59a6971977ea",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -797,12 +797,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSUserBundle.git",
-                "reference": "f7380a4e476302aa8ca16c9fd017d6d9adc9482e"
+                "reference": "945eebb625073c51072b721ec528f12199b34915"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/f7380a4e476302aa8ca16c9fd017d6d9adc9482e",
-                "reference": "f7380a4e476302aa8ca16c9fd017d6d9adc9482e",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/945eebb625073c51072b721ec528f12199b34915",
+                "reference": "945eebb625073c51072b721ec528f12199b34915",
                 "shasum": ""
             },
             "require": {
@@ -857,20 +857,20 @@
             "keywords": [
                 "User management"
             ],
-            "time": "2013-12-02 23:42:45"
+            "time": "2013-12-10 16:13:14"
         },
         {
             "name": "gedmo/doctrine-extensions",
-            "version": "v2.3.8",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/l3pp4rd/DoctrineExtensions.git",
-                "reference": "d2bef940268e4dc5f0f050e80458169a7267813a"
+                "reference": "f78aec9a584fb7bd5ff234ba632ab76e7d221a60"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/l3pp4rd/DoctrineExtensions/zipball/d2bef940268e4dc5f0f050e80458169a7267813a",
-                "reference": "d2bef940268e4dc5f0f050e80458169a7267813a",
+                "url": "https://api.github.com/repos/l3pp4rd/DoctrineExtensions/zipball/f78aec9a584fb7bd5ff234ba632ab76e7d221a60",
+                "reference": "f78aec9a584fb7bd5ff234ba632ab76e7d221a60",
                 "shasum": ""
             },
             "require": {
@@ -937,7 +937,7 @@
                 "tree",
                 "uploadable"
             ],
-            "time": "2013-11-09 21:23:13"
+            "time": "2013-12-06 19:17:11"
         },
         {
             "name": "genemu/form-bundle",
@@ -2857,6 +2857,7 @@
         "doctrine/doctrine-fixtures-bundle": 20,
         "doctrine/data-fixtures": 20,
         "jms/security-extra-bundle": 20,
+        "gedmo/doctrine-extensions": 20,
         "genemu/form-bundle": 20,
         "jms/serializer-bundle": 20,
         "friendsofsymfony/message-bundle": 20,

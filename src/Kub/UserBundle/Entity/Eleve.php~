@@ -66,12 +66,6 @@ class Eleve extends User
 	public function initClass()
 	{
 		$this->class = "eleve";
-
-		if($this->photo == null)
-		{
-			$this->photo = new Photo ;
-			$this->photo->setUrl('png');
-		}
 	}
 
 	public function __construct()
@@ -284,6 +278,11 @@ class Eleve extends User
 	 */
 	public function getPhoto()
 	{
-		return $this->photo;
+		if($this->photo)
+		{
+			return $this->photo  ;
+		}
+
+		return new Photo ;
 	}
 }

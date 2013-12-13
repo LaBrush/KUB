@@ -36,7 +36,6 @@ class LoadCategorieData extends AbstractFixture implements FixtureInterface, Con
 			"Scientifique",
 			"Economie et société",
 			"Langue",
-			"Nouilles aux andouillettes",
 			"Art",
 			"Autres"
 		);

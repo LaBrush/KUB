@@ -18,7 +18,7 @@ abstract class File
 	private $id;
 
 	/**
-	 * @ORM\Column(name="url", type="string", length=255)
+	 * @ORM\Column(name="url", type="string", length=255, nullable=true)
 	 */
 	private $url;
 
@@ -39,7 +39,7 @@ abstract class File
 		if (null === $this->file) {
 			return;
 		}
-
+		
 		// Le nom du fichier est son id, on doit juste stocker également son extension
 		$this->url = $this->file->guessExtension();
 	}
@@ -133,10 +133,9 @@ abstract class File
 		$this->file = $file;
 
 		// On vérifie si on avait déjà un fichier pour cette entité
-		if (null !== $this->url) {
+		if (is_file($this->getUploadRootDir())) {
 			// On sauvegarde l'extension du fichier pour le supprimer plus tard
 			$this->tempFilename = $this->url;
-
 			$this->url = null;
 		}
 	}

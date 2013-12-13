@@ -4,10 +4,12 @@ namespace Kub\UserBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Kub\HomeBundle\Entity\File as BaseFile ;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ORM\Table(name="Photo")
  * @ORM\Entity
+ * @Gedmo\Uploadable(path="/photos", filenameGenerator="SHA1", allowOverwrite=true, appendNumber=true)
  */
 class Photo extends BaseFile
 {
@@ -29,13 +31,14 @@ class Photo extends BaseFile
 
 	public function getWebPath()
 	{
-		if($this->getId() > 0)
-		{
+		if($this->getUrl() != '')
+		{			
 			return parent::getWebPath();
 		}
 		else
 		{
-			return $this->getUploadDir().'/0' . $this->url ;
+			return $this->getUploadDir().'/0.png' ;
 		}
 	}
+
 }
