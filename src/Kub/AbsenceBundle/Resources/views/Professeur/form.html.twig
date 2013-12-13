@@ -1,7 +1,9 @@
 {% block form %}
+	<span class="search-appel">
+		<label for="search-in-list">Chercher dans la liste :</label>
+		<input id="search-in-list" type="text">
+	</span>
 	
-	<label for="search-in-list">Chercher dans la liste :</label>
-	<input id="search-in-list" type="text">
 
 		<input class="button-yes validate-appel" type="submit">
 
@@ -11,11 +13,11 @@
 			{% set eleve = eleves[ loop.index0 ] %}
 
 			{{ form_errors(statut) }}
-			<li class="in-list li-list" id="">
-				<img src="{{ asset(eleve.photo.webPath) }}" alt="{{ eleve }}" class="profil-picture"/>
+			<li class="in-list person">
+				<img src="{{ asset(eleve.photo.webPath) }}" alt="{{ eleve }}" class="eleve-img"/>
 
 				{% for element in statut %}
-				    <span>{{ form_label(element) }} {{ form_widget(element, {"attr": {"class": "input-appel"}}) }}</span>
+				    <span class="name-eleve">{{ form_label(element) }} {{ form_widget(element, {"attr": {"class": "input-appel"}}) }}</span>
 				{% endfor %}
 			</li>
 
