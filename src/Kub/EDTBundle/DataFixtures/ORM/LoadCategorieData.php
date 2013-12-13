@@ -38,7 +38,7 @@ class LoadCategorieData extends AbstractFixture implements FixtureInterface, Con
 			"Langue",
 			"Nouilles aux andouillettes",
 			"Art",
-			"Autre"
+			"Autres"
 		);
 
 		foreach ($categories as $name) {
