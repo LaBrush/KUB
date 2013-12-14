@@ -32,11 +32,10 @@ class LoadCategorieData extends AbstractFixture implements FixtureInterface, Con
 	public function load(ObjectManager $manager)
 	{
 		$categories = array(
-			"Littérature",
-			"Scientifique",
-			"Economie et société",
-			"Langue",
-			"Art",
+			"Options",
+			"Scientifiques",
+			"Société",
+			"Langues",
 			"Autres"
 		);
 

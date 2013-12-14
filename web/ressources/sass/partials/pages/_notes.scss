@@ -92,8 +92,6 @@
 
 .detail, .liste-eleves-a-noter
 {
-	display: inline-block;
-
 	th
 	{
 		text-align: center;
@@ -110,6 +108,11 @@
 	}
 }
 
+.detail
+{
+	display: inline-block;
+}
+
 .eleves-a-noter
 {
 	text-align: center;
@@ -117,6 +120,7 @@
 
 .liste-eleves-a-noter
 {
+	margin: 20px 0 10px 0;
 	input[type="text"]
 	{
 		max-width: 30px;
@@ -138,5 +142,17 @@
 		max-width: 30px;
 		min-width: 30px;
 		text-align: center;
+	}
+}
+
+.noter
+{
+	margin: auto;
+	text-align: center;
+
+	.wrap
+	{
+		display: inline-block;
+		text-align: left;
 	}
 }

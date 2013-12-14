@@ -21,7 +21,7 @@ $(function() {
 
 	//Cette fonction permet d'attribuer le meme coefficient a tout les eleves lors de l'insertion d'un coefficient commun
 
-	$('.coeff-global-value').keyup(function() {
+	$('.coeff-global').keyup(function() {
 		$('.coeff').val($(this).val());
 	});
 });
