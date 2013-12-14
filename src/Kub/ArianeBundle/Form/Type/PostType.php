@@ -17,7 +17,9 @@ class PostType extends AbstractType
 		$builder
 			->add('debut', 'date')
 			->add('fin', 'date')
-			->add('titre')
+			->add('titre', 'text', array(
+				'label' => 'Nommer la trace :'
+			))
 			->add('contenu', 'genemu_tinymce')
 		;
 	}

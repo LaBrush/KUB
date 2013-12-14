@@ -85,7 +85,7 @@
 
 	{% set details = details ~ '
 		<tr><td><strong>' ~ note.note | number_format(1) ~ ' / ' ~ note.coefficient ~ '</strong></td>
-		<td>Note ajoutée le ' ~ note.controle.date | date('d/m/y') ~ '</td></tr>
+		<td><strong>' ~ note.controle.nom ~ '</strong><em>Le ' ~ note.controle.date | date('d/m/y') ~ '</em></td></tr>
 	' %}
 
 	{% if loop.last %}

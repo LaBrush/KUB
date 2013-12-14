@@ -1,13 +1,23 @@
 {% extends "::base.html.twig" %}
 
+{% if app.user.class == "professeur" %}
+	
+	{% set eleve = "de " ~ fil.eleve %}
+
+{% else %}
+    
+    {% set eleve = "" %}
+
+{% endif %}
+
 {% block title %}
-	{{ parent() }} - Fil d'Ariane
+	{{ parent() }} - Fil d'Ariane {{eleve}}
 {% endblock %}
 
 {% block body %}
 
 	<div class="article">
-		<h3 class="section-title">Fil d'Ariane</h3>
+		<h3 class="section-title">Fil d'Ariane {{eleve}}</h3>
 	</div>
 
 	{% if is_granted('ROLE_ELEVE') %}
@@ -19,7 +29,7 @@
 		<article class="article-news bordered-espace-collaboratif">
 			<div class="head-article">
 				<h3 class="h2">{{ post.titre }}</h3>
-				<span class="small bold">{{ post.dateAjout | date('d/m/Y')}}</span>
+				<span class="small bold">{{ post.dateAjout | date('Y - d/m')}}</span>
 			</div>
 
 			<div class="content-article">
@@ -60,6 +70,12 @@
 		</article>
 
 	{% endfor %}
+
+	{% if fil.posts|length == 0 %}
+		
+		<div class="error">Rien n'a été écrit pour le moment</div>
+
+	{% endif %}
 
 {% endblock %}
 

@@ -1,14 +1,7 @@
 {% block form %}
 
-	<span class="debut">
-		{{ form_errors(form.debut) }}
-		{{ form_label(form.debut) }} <div class="input">{{ form_widget(form.debut) }}</div>
-	</span>
-
-	<span class="fin">
-		{{ form_errors(form.fin) }}
-		{{ form_label(form.fin) }} <div class="input">{{ form_widget(form.fin) }}</div>
-	</span>
+	<div class="hidden">{{ form_widget(form.debut) }}</div>
+	<div class="hidden">{{ form_widget(form.fin) }}</div>
 
 	<span class="titre">
 		{{ form_errors(form.titre) }}
@@ -17,7 +10,7 @@
 
 	<span class="contenu">
 		{{ form_errors(form.contenu) }}
-		{{ form_label(form.contenu) }} <div class="input">{{ form_widget(form.contenu) }}</div>
+		<div class="input">{{ form_widget(form.contenu) }}</div>
 	</span>
 
 {% endblock %}
