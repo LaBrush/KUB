@@ -68,7 +68,19 @@ class TimeService
 		$horaire->setTime($keys[0], $this->horaires[$keys[0]][0]);
 
 		return $horaire ;
+	}
 
+	public function getLastHoraire(){
+
+		$heure = key( array_slice( $this->horaires, -1, 1, TRUE ) );
+			
+		$minute = end($this->horaires);
+		$minute = end($minute);
+
+		$last_horaire = new \Datetime();
+		$last_horaire->setTime($heure, $minute);
+
+		return $last_horaire ;
 	}
 
 	//Renvoi un tableau contenant des Datime avec tous les horaires
@@ -102,7 +114,7 @@ class TimeService
 		return $edt = $this->em->getRepository('KubUserBundle:Professeur')->getCurrentCoursOf( $professeur->getId() );
 	}
 
-	public function getEDTOf($entity){
+	public function getHorairesOf($entity){
 
 		$qb = $this->em
 			->createQueryBuilder()
@@ -146,70 +158,62 @@ class TimeService
 		return $qb->getQuery()->getResult();
 	}
 
-	// Fonctions sur des intervals dans l'affichage de l'emploi du temps
+	public function getEDTOf($entity){
 
-	// Donne tous les intervals d'une journée
-	public function getEachIntervals(){
+		$horaires = $this->getHorairesOf( $entity );
+		$horaires_jours = array();
 
-		$liste_intervals = array();
+		//On genere la liste des jours
+		$liste_jours = $this->getJours();
+		for($i = 0 ; $i < count($liste_jours) ; $i++)
+		{
+			$horaires_jours[ $liste_jours[$i] ] = array();
+		}
 
-		//On amorce la choucroute
-		$last_datetime = $this->getFirstHoraire();
+		//la liste des cours avec les fillers
+		$horaires_jours_filled = $horaires_jours ;
 
-		foreach ($this->horaires as $heures => $minutes) {
-			// foreach ($minutes as $minute) {
-			for ($i=0; $i < count($minutes) ; $i++) { 
-				
-				$horaire = new Horaire ;
-					$horaire->setDebut( $last_datetime );
+		// on classe les cours par jour
+		for($i = 0 ; $i < count($horaires) ; $i++)
+		{
+			$horaires_jours[ (string)$horaires[$i]->getJour() ][] = $horaires[$i] ;
+		}
 
-					$last_datetime = new \Datetime ;
-						$last_datetime->setTime($heures, $minutes[$i]);
-					$horaire->setFin($last_datetime);
 
-				$interval = new Interval($this->getHoursMinutes(),$horaire);
+		ob_start();
+		//On rempli les intervals pour chaque jours
+		foreach($horaires_jours as $key => $horaires_jour)
+		{
+			$last_horaire_used = $this->getFirstHoraire();
 
-				if($interval->getRowSpan() > 0)
-				{
-					$link = (new Interval($this->getHoursMinutes()))->link( $last_datetime, $interval );
-					if($link->getRowSpan() > 0)
+			for($y = 0 ; $y < count($horaires_jour) ; $y++)
+			{
+				$interval = new Interval($horaires_jour[$y]);
+
+				$transition = new Interval();
+					$transition->link($last_horaire_used, $interval);
+
+				//On insere la transition puis l'interval dans l'emploi du temps
+				if($interval->getRowSpan() > 0){
+					if($transition->getRowSpan() > 0)
 					{
-						$liste_intervals[] = $link ;
+						$horaires_jours_filled[ $key ][] = $transition ;
 					}
+					$horaires_jours_filled[ $key ][] = $interval ;}
 
-					$liste_intervals[] = $interval ;
-				}
+				$last_horaire_used = $interval->getHoraire()->getFin();
 			}
 
-		//le dernier horaire de la semaine
-		$last_horaire = new \Datetime();
-
-		$heure = key( array_slice( $this->horaires, -1, 1, TRUE ) );
-		
-		$minute = end($this->horaires);
-		$minute = end($minute);
-
-		$last_horaire->setTime($heure, $minute);
-
-		$filler = new Interval($this->getHoursMinutes());
-		$last_horaire = count($liste_intervals) ? $liste_intervals[ count($liste_intervals)-1 ]->getHoraire()->getFin() : $this->getFirstHoraire(); ;
-		$filler->link($last_datetime, $last_horaire);
-		
-
-		if($filler->getRowSpan() > 0)
-		{
-			$liste_intervals[] = $filler ;
-		}
+			
 		}
 
-		return $liste_intervals ;
-	}
+		foreach ($horaires_jours_filled["lundi"] as $i) {
+			echo $i->getHoraire().'   ';
+		}
 
-	//Converti un horaire un interval
-	public function wrapHoraire(Horaire $horaire = null)
-	{
-		return new Interval($this->getHoursMinutes(), $horaire );
+		throw new \Exception(ob_get_clean());
+		
+		// // ob_clean();
 	}
-
 }
 
