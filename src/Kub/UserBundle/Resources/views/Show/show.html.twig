@@ -1,7 +1,7 @@
 {% extends "::base.html.twig" %}
 
 {% block title %}
-	{{ parent() }} - Informations sur {{ user }}
+	{{ parent() }} - {{ user }}
 {% endblock %}
 
 {% block body %}
@@ -13,7 +13,7 @@
 	<article class="article infos">
 		
 		{% if user.photo is defined and user.photo is not null %}
-			<span class="info"> <img src="{{ asset(user.photo.webPath) }}" alt="{{ user.prenom }}" class="profil-picture"/></span>
+			<span class="info"> <img src="{{ asset(user.photo.webPath) }}" alt="{{ user.prenom }}" class="profil-picture img-downloaded"/></span>
 	    {% endif %}
 
 		<span class="label">Identifiant :</span>

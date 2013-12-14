@@ -1,7 +1,7 @@
 {% block form %}
 	
 	{% if user.photo is not null %}
-        <img src="{{ asset(user.photo.webPath) }}" alt="{{ user }}" class="profil-picture"/>
+        <img src="{{ asset(user.photo.webPath) }}" alt="{{ user }}" class="profil-picture img-downloaded"/>
     {% endif %}
 
 	<span class="prenom">

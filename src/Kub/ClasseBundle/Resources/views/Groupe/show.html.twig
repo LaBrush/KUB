@@ -1,7 +1,7 @@
 {% extends "::base.html.twig" %}
 
 {% block title %}
-	{{ parent() }} - Informations sur le groupe {{ groupe }}
+	{{ parent() }} - {{ groupe }}
 {% endblock %}
 
 {% block body %}
@@ -19,10 +19,13 @@
 
 		{% if groupe.eleves|length > 0 %}
 			<span class="label">Eleves de {{ groupe }}:</span>
-				<ul>
+				<ul class="liste">
 					
 					{% for eleve in groupe.eleves %}
-						<li class="li-list"><a href="{{ path('user_show', {role: eleve.class, username: eleve.username}) }}">{{ eleve.prenom }} {{ eleve.nom }}</a></li>
+						<a href="{{ path('user_show', {role: eleve.class, username: eleve.username}) }}"><li class="li-list">
+							<img src="{{ asset( eleve.photo.webPath) }}" alt="{{ eleve }}" class="profil-picture"/>
+							<span>{{ eleve.prenom }} {{ eleve.nom }}</span>
+						</li></a>
 					{% endfor %}
 
 				</ul>
@@ -33,6 +36,12 @@
 			
 			<span class="modifier">
 				<a class="button" href="{{ path("groupe_edit", {id: groupe.id }) }}">Modifier</a>
+			</span>
+
+		{% elseif app.user.class == "professeur" %}
+			
+			<span class="modifier">
+				<a class="button" href="{{ path('kub_notes_professeur_homepage', { groupe: groupe.name }) }}">Noter</a>
 			</span>
 
 		{% endif %}
