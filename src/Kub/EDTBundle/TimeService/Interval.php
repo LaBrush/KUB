@@ -7,9 +7,11 @@ use Kub\EDTBundle\Entity\Horaire ;
 class Interval
 {
 	private $horaire ;
+	private $horaires ;
 
-	public function __construct(Horaire $horaire = null)
+	public function __construct(array $horaires, Horaire $horaire = null)
 	{
+		$this->horaires = $horaires ;
 		$this->horaire = $horaire ;
 	}
 
@@ -59,8 +61,7 @@ class Interval
 
 	public function getRowSpan()
 	{
-		$diff = date_diff($this->horaire->getFin(), $this->horaire->getDebut()) ; 
-		$span = ($diff->h * 60 + $diff->i ) / 5 ;
+		$span = array_search($this->horaire->getFin(), $this->horaires) - array_search($this->horaire->getDebut(), $this->horaires); 
 
 		return $span ;
 	}

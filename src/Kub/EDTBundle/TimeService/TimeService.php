@@ -84,7 +84,7 @@ class TimeService
 	}
 
 	//Renvoi un tableau contenant des Datime avec tous les horaires
-	public function getHoursMinutes(){
+	public function getHoraires(){
 
 		$horaires = array() ;
 
@@ -133,7 +133,7 @@ class TimeService
 			->join('h.jour', 'j')
 			->addSelect('j')
 
-			->orderBy('j.id, h.debut')
+			->orderBy('h.debut, j.id')
 		;
 
 		switch(get_class($entity))
@@ -160,60 +160,52 @@ class TimeService
 
 	public function getEDTOf($entity){
 
-		$horaires = $this->getHorairesOf( $entity );
-		$horaires_jours = array();
+		$horaires_cours = $this->getHorairesOf( $entity );
+		$edt = array();
 
-		//On genere la liste des jours
-		$liste_jours = $this->getJours();
-		for($i = 0 ; $i < count($liste_jours) ; $i++)
-		{
-			$horaires_jours[ $liste_jours[$i] ] = array();
+		$horaires = $this->getHoraires();
+		$jours = $this->getJours();
+
+		for ($i=0; $i < count($horaires)-1 ; $i++) { 
+			$edt[$i] = array( 
+				"horaire" => $horaires[$i], 
+				"jours" => array()
+			);
 		}
-
-		//la liste des cours avec les fillers
-		$horaires_jours_filled = $horaires_jours ;
-
-		// on classe les cours par jour
-		for($i = 0 ; $i < count($horaires) ; $i++)
-		{
-			$horaires_jours[ (string)$horaires[$i]->getJour() ][] = $horaires[$i] ;
-		}
-
-
-		ob_start();
-		//On rempli les intervals pour chaque jours
-		foreach($horaires_jours as $key => $horaires_jour)
-		{
-			$last_horaire_used = $this->getFirstHoraire();
-
-			for($y = 0 ; $y < count($horaires_jour) ; $y++)
-			{
-				$interval = new Interval($horaires_jour[$y]);
-
-				$transition = new Interval();
-					$transition->link($last_horaire_used, $interval);
-
-				//On insere la transition puis l'interval dans l'emploi du temps
-				if($interval->getRowSpan() > 0){
-					if($transition->getRowSpan() > 0)
-					{
-						$horaires_jours_filled[ $key ][] = $transition ;
-					}
-					$horaires_jours_filled[ $key ][] = $interval ;}
-
-				$last_horaire_used = $interval->getHoraire()->getFin();
-			}
-
-			
-		}
-
-		foreach ($horaires_jours_filled["lundi"] as $i) {
-			echo $i->getHoraire().'   ';
-		}
-
-		throw new \Exception(ob_get_clean());
 		
-		// // ob_clean();
+		$last_horaire_used = $this->getFirstHoraire();
+		for ($x=0; $x < count($horaires)-1 ; $x++) { 
+			for ($y=0; $y < count($jours); $y++) { 
+				
+				for ($z=0; $z < count($horaires_cours); $z++) { 
+					$current_horaire = $horaires_cours[$z];
+
+					if(
+						$current_horaire->getJour()->getName() == $jours[$y] && 
+						$current_horaire->getDebut()->format('Hi') == $horaires[$x]->format('Hi')
+					){
+						$transition = $this->interval((new Horaire())->setDebut($last_horaire_used)->setFin($current_horaire->getDebut())) ;
+						if($transition->getRowSpan() > 0)
+						{
+							$edt[ $x-1 ]['jours'][ $y ] = $transition ;	
+						}
+
+						$edt[ $x ]['jours'][ $y ] = $this->interval($current_horaire);
+						$last_horaire_used = $current_horaire ;
+					}
+
+				}
+				if(!isset($edt[$x]['jours'][$y])){ $edt[$x]['jours'][$y] = null; }
+
+			}
+		}
+
+		return $edt ;
+	}
+
+	public function interval($horaire = null)
+	{
+		return new Interval($this->getHoraires(), $horaire);
 	}
 }
 

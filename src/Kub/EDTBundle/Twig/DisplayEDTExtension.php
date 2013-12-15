@@ -21,6 +21,7 @@ class DisplayEDTExtension extends \Twig_Extension
 
 	public function ShowEDT( $entity )
 	{
+		//L'edt lisible "par des humains"
 		$edt = $this->time->getEDTOf( $entity );
 
 		return $this->templating->render('KubEDTBundle:EDT:show.html.twig',array(
