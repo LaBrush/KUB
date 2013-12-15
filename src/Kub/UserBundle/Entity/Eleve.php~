@@ -154,7 +154,10 @@ class Eleve extends User
 	 */
 	public function addTuteur(\Kub\UserBundle\Entity\Tuteur $tuteurs)
 	{
-		$this->tuteurs[] = $tuteurs;
+		if(!$this->tuteurs->contains($tuteurs))
+		{
+			$this->tuteurs[] = $tuteurs;
+		}
 	
 		return $this;
 	}

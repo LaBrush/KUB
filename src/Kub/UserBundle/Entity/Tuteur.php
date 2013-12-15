@@ -158,7 +158,10 @@ class Tuteur extends User
      */
     public function addEleve(\Kub\UserBundle\Entity\Eleve $eleves)
     {
-        $this->eleves[] = $eleves;
+        if(!$this->eleves->contains($eleves))
+        {
+            $this->eleves[] = $eleves;
+        }
     
         return $this;
     }

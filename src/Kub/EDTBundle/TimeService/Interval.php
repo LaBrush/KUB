@@ -7,26 +7,15 @@ use Kub\EDTBundle\Entity\Horaire ;
 class Interval
 {
 	private $horaire ;
-	private $debut ;
-	private $fin ;
-	private $liste_horaires ;
 
-	public function __construct(array $liste_horaires, $horaire = null)
+	public function __construct(Horaire $horaire = null)
 	{
-		$this->liste_horaires = $liste_horaires ;
-
-		if($horaire)
-		{
-			$this->setHoraire( $horaire );
-		}
+		$this->horaire = $horaire ;
 	}
 
 	public function setHoraire(Horaire $horaire)
 	{
 		$this->horaire = $horaire ;
-
-		$this->debut = $this->roundTo( clone $this->horaire->getDebut() );
-		$this->fin   = $this->roundTo( clone $this->horaire->getFin() );
 	}
 
 	public function getHoraire()
@@ -34,8 +23,8 @@ class Interval
 		return $this->horaire ;
 	}
 
-	public function getDebut(){ return $this->debut; }
-	public function getFin(){ return $this->fin; }
+	public function getDebut(){ return $this->getHoraire()->getDebut(); }
+	public function getFin(){ return $this->getHoraire()->getFin(); }
 
 	//Calcul le temps nécessaire pour prendre le rowspan afin de combler le trou entre deux cours - avous que t'as rien pigé !
 	public function link($previous, $next){
@@ -70,18 +59,10 @@ class Interval
 
 	public function getRowSpan()
 	{
-		$span = array_search($this->fin, $this->liste_horaires) - array_search($this->debut, $this->liste_horaires);
+		$diff = date_diff($this->horaire->getFin(), $this->horaire->getDebut()) ; 
+		$span = ($diff->h * 60 + $diff->i ) / 5 ;
 
 		return $span ;
 	}
 
-	public function roundTo(\Datetime $datetime)
-	{
-		$time = $datetime->format('i');
-		$time = $time - ( $time % 5 ) + ( $time % 5 > 2.5 ? 5 : 0 );
-
-		$datetime->setTime( $datetime->format('H'), $time );
-
-		return  $datetime ;
-	}
 }
