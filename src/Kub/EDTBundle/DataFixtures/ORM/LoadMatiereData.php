@@ -32,22 +32,22 @@ class LoadMatiereData extends AbstractFixture implements FixtureInterface, Conta
 	public function load(ObjectManager $manager)
 	{
 		$matieres = array(
-			array("Français", "Langues"),
-			array("Litérrature", "Options"),
-			array("Mathématiques", "Scientifiques"),
+			array("Français", "Litérrature"),
+			array("Litérrature et Société", "Litérrature"),
+			array("Mathématiques", "Sciences"),
 			array("Histoire-Géographie", "Société"),
-			array("Anglais", "Langue"),
-			array("Espagnol", "Langue"),
-			array("Allemand", "Langue"),
-			array("Italien", "Langue"),
-			array("Musique", "Options"),
-			array("Cinéma", "Options"),
+			array("Anglais", "Langues"),
+			array("Espagnol", "Langues"),
+			array("Allemand", "Langues"),
+			array("Italien", "Langues"),
+			array("Musique", "Art"),
+			array("Cinéma", "Art"),
 			array("Sport", "Autres"),
-			array("SI", "Scientifiques"),
+			array("SI", "Sciences"),
 			array("SES", "Société"),
-			array("PFEG", "Options"),
-			array("Physique", "Scientifiques"),
-			array("ISN", "Options"),
+			array("PFEG", "Société"),
+			array("Physique", "Sciences"),
+			array("ISN", "Sciences"),
 			array("Matière non repertoriée", "Autres")
 		);
 

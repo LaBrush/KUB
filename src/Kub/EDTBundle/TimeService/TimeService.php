@@ -162,17 +162,18 @@ class TimeService
 
 		$horaires_cours = $this->getHorairesOf( $entity );
 		$edt = array();
+		$last_cours_day = array();
 
 		$horaires = $this->getHoraires();
 		$jours = $this->getJours();
 
 		for ($i=0; $i < count($horaires)-1 ; $i++) { 
 			$edt[$i] = array( 
-				"horaire" => $horaires[$i], 
+				"horaire" => $horaires[$i],
 				"jours" => array()
 			);
-		}
-		
+		}	
+
 		$last_horaire_used = $this->getFirstHoraire();
 		for ($x=0; $x < count($horaires)-1 ; $x++) { 
 			for ($y=0; $y < count($jours); $y++) { 
@@ -187,11 +188,13 @@ class TimeService
 						$transition = $this->interval((new Horaire())->setDebut($last_horaire_used)->setFin($current_horaire->getDebut())) ;
 						if($transition->getRowSpan() > 0)
 						{
-							$edt[ $x-1 ]['jours'][ $y ] = $transition ;	
+							$edt[ $x - $transition->getRowSpan() ]['jours'][ $y ] = $transition ;
 						}
 
 						$edt[ $x ]['jours'][ $y ] = $this->interval($current_horaire);
 						$last_horaire_used = $current_horaire ;
+
+						if(!isset($last_cours_day[$y]) || $last_cours_day[$y] < $x){ $last_cours_day[$y] = $x ; }
 					}
 
 				}
@@ -199,6 +202,57 @@ class TimeService
 
 			}
 		}
+
+
+		ob_start();
+		$jours_keys = array_keys($this->getJours());
+		for ($i=0; $i < count($jours_keys) ; $i++) { 
+			if(!isset($last_cours_day[$i])){ 
+				$last_cours_day[$i] = -1;
+			}
+		}
+		
+		// print_r(array_keys($last_cours_day));
+
+		// on ajoute un filler en fin de journée
+		for ($y=0; $y < count($last_cours_day); $y++) {
+
+			$x = $last_cours_day[$y];
+			$interval = null ;
+
+			if($x >= 0)
+			{
+				$interval = $edt[ $x ]['jours'][$y];
+				if($interval->getRowSpan() > 0)
+				{
+					$edt[$x + $interval->getRowSpan()]['jours'][$y] = $this->interval(
+						(new Horaire)
+							->setDebut($interval->getFin())
+							->setFin($this->getLastHoraire())
+					);
+				}
+			}
+			else
+			{
+				$edt[0]['jours'][$y] = $interval = $this->interval(
+					(new Horaire)
+						->setDebut($this->getFirstHoraire())
+						->setFin($this->getLastHoraire())
+				);
+			}
+
+			echo $interval->getHoraire() . ' ';
+			
+		}
+
+		// for ($y=0; $y < count($last_cours_day); $y++) {
+
+		// 	$x = $last_cours_day[$y];
+		// 	// var_dump($edt[$x]['jours'][$y]) ;
+		// 	echo $y;
+		// }
+		ob_clean();
+		// throw new \Exception(ob_get_clean());
 
 		return $edt ;
 	}

@@ -2,24 +2,36 @@ $(function() {
 
 	// Cette fonction permet de changer la couleur et la presence d'un eleve au clic
 
+	alert("J'ai fait quelques changments. A vérifier donc")
 	var inputAppel = $('.input-appel');
 	
 	inputAppel.hide();
 	
-	for (var i = inputAppel.length - 1; i >= 0; i--) {
+	// for (var i = inputAppel.length - 1; i >= 0; i--) {
 
-		var this = $('.input-appel');
+	// 	var this = $('.input-appel');
 
-		console.log(this);
-		// if (this.val() == '0')
-		// {
+	// 	// console.log(this);
+	// 	// if (this.val() == '0')
+	// 	// {
 			
-		// }
-		// else
-		// {
+	// 	// }
+	// 	// else
+	// 	// {
 
-		// }
-	};
+	// 	// }
+	// };
+
+	function check(eleve)
+	{
+		state_class = [
+			'retard',
+			'absence',
+			'present'
+		]
+
+		eleve.class( eleve.find(inputAppel).value());
+	}
 
 	$('.in-list')
 	.click( function() {
@@ -29,9 +41,7 @@ $(function() {
 			$(this).addClass('retard')
 			.removeClass('away');
 
-			$(this)
-			.find(inputAppel)
-			.val("2");
+			check($(this));			
 		}
 		else if ($(this).hasClass('retard'))
 		{
@@ -40,6 +50,7 @@ $(function() {
 			$(this)
 			.find(inputAppel)
 			.val("0");
+			check($(this));			
 		}
 		else
 		{
@@ -48,6 +59,7 @@ $(function() {
 			$(this)
 			.find(inputAppel)
 			.val("1");
+			check($(this));
 		}
 	});
 });
