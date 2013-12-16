@@ -129,6 +129,7 @@ class GroupeController extends Controller
 
 	public function showAction(Groupe $groupe)
 	{
+		// $groupe = 
 
 		return $this->render("KubClasseBundle:Groupe:show.html.twig", 
 			array(

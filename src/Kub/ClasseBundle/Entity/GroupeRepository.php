@@ -40,4 +40,19 @@ class GroupeRepository extends EntityRepository
 
 		return $qb->getQuery()->getSingleResult();		
 	}
+
+	public function findOneByNameWithAll($name)
+	{
+		$qb = $this->createQueryBuilder("g")
+			->join('g.eleves', 'e')
+			->addSelect('e')
+			->join('g.niveau', 'n')
+			->addSelect('n')
+			->addSelect('g.controles', 'c')
+			->where('g.name = :name')
+			->setParameter('name', $name)
+		;
+
+		return $qb->getQuery()->getSingleResult();	
+	}
 }

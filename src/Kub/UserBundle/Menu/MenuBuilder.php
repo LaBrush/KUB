@@ -178,6 +178,7 @@ class MenuBuilder
 				);
 			}
 
+
 		$menu->addChild("Ressources en ligne", array(
 			'labelAttributes' => array(
 				'className' => 'ressources'
@@ -191,6 +192,13 @@ class MenuBuilder
 		$menu["Ressources en ligne"]->addChild("Ajouter", array(
 			'route' => 'kub_ressource_add', 
 		));
+
+		$menu->addChild('Mon emploi du temps', array(
+			'labelAttributes' => array(
+				'className' => 'edt',  
+			),
+			'route' => 'edt_homepage'
+		)); 
 
 		$menu->addChild('1984', array('labelAttributes' => array('className' => 'bigbro')));
 

@@ -52,6 +52,11 @@ class Cours
     private $horaires ;    
 
     /**
+     * @ORM\OneToMany(targetEntity="Kub\NoteBundle\Entity\Controle", mappedBy="cours", cascade={"persist", "merge", "detach"})
+     */
+    private $controles ;
+
+    /**
      * @Assert\True(message="Un cours ne peut avoir d'éléves de niveau différents")
      */
     public function isMonoLevel()
@@ -245,5 +250,38 @@ class Cours
     public function removeProfesseur(\Kub\UserBundle\Entity\Professeur $professeur)
     {
         $this->professeur->removeElement($professeur);
+    }
+
+    /**
+     * Add controles
+     *
+     * @param \Kub\NoteBundle\Entity\Controle $controles
+     * @return Cours
+     */
+    public function addControle(\Kub\NoteBundle\Entity\Controle $controles)
+    {
+        $this->controles[] = $controles;
+    
+        return $this;
+    }
+
+    /**
+     * Remove controles
+     *
+     * @param \Kub\NoteBundle\Entity\Controle $controles
+     */
+    public function removeControle(\Kub\NoteBundle\Entity\Controle $controles)
+    {
+        $this->controles->removeElement($controles);
+    }
+
+    /**
+     * Get controles
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getControles()
+    {
+        return $this->controles;
     }
 }

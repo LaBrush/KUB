@@ -16,12 +16,20 @@ class ControleType extends AbstractType
 {
 
 	private $professeur ;
-	private $groupe ;
+	private $cours ;
+	private $eleves ;
 
-	public function __construct(\Kub\UserBundle\Entity\Professeur $professeur, \Kub\ClasseBundle\Entity\Groupe $groupe)
+	public function __construct(\Kub\UserBundle\Entity\Professeur $professeur, \Kub\EDTBundle\Entity\Cours $cours)
 	{
 		$this->professeur = $professeur ;
-		$this->groupe = $groupe ;
+		$this->cours = $cours ;
+
+		$this->eleves = array();
+		foreach ($this->cours->getGroupes() as $groupe) {
+			foreach ($groupe->getEleves() as $eleve) {
+				$this->eleves[] = $eleve ;
+			}
+		}
 	}
 
 	/**
@@ -32,26 +40,9 @@ class ControleType extends AbstractType
 	{
 		$builder
 		->add('nom', 'text', array(
-			"label" => "Intitulé du DS"
+			'label' => 'Intitulé du DS'
 		))
-		->add('matiere', 'entity', array(
-			'class' => 'Kub\EDTBundle\Entity\Matiere',
-			"multiple" => false,
-			"expanded" => false,
-			'query_builder' => function(MatiereRepository $er) {
-
-				return $er->createQueryBuilder('m')
-					->join('m.cours', 'c')
-					->join('c.professeur', 'p')
-					->where('p.id = :p_id')
-					->setParameter('p_id', $this->professeur->getId())
-					->join('c.groupes', 'g')
-					->andWhere('g.id = :g_id')
-					->setParameter('g_id', $this->groupe->getId())
-				;
-			}
-		))
-		->add('notes', new NotesType( $this->groupe->getEleves() ));
+		->add('notes', new NotesType( $this->eleves ));
 
 	}
 	

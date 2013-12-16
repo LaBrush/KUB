@@ -13,19 +13,6 @@ use Symfony\Component\Validator\Constraints as Assert ;
  */
 class Controle
 {
-	private $groupe ;
-	public function setGroupe(\Kub\ClasseBundle\Entity\Groupe $groupe = null)
-	{
-		$this->groupe = $groupe ;
-
-		foreach ($groupe->getEleves() as $eleve) {
-			$note = new Note ;
-			$note->setEleve( $eleve );
-
-			$this->addNote( $note );
-		}
-	}
-
 	/**
 	 * @var integer
 	 *
@@ -65,6 +52,35 @@ class Controle
 	 * @ORM\ManyToOne(targetEntity="Kub\EDTBundle\Entity\Matiere")
 	 */
 	private $matiere;  
+
+	/**
+	 * @ORM\ManyToOne(targetEntity="Kub\EDTBundle\Entity\Cours", inversedBy="controles", cascade={"all"})
+	 */
+	private $cours ;
+
+	public function hasEleve($eleve)
+    {
+        foreach ($this->getNotes() as $note) {
+            if($note->getEleve()->getId() == $eleve->getId()){ return true ; }
+        }
+
+        return false ;
+    }
+
+	public function getGroupes()
+	{
+		return $this->getCours()->getGroupes();
+	}
+
+	public function addGroupe(\Kub\ClasseBundle\Entity\Groupe $groupe = null)
+	{
+		foreach ($groupe->getEleves() as $eleve) {
+			$note = new Note ;
+			$note->setEleve( $eleve );
+
+			$this->addNote( $note );
+		}
+	}
 
 	public function __construct()
 	{

@@ -16,18 +16,18 @@
 		<input id="search-in-list" type="text">
 		
 		<ul class="liste">
-			{% for groupe in groupes %}
+			{% for cours in liste_cours %}
 			
-				<a href="{{ path('kub_notes_professeur_homepage', { groupe: groupe.name }) }}">
+				<a href="{{ path('kub_notes_professeur_homepage', { cours: cours.id }) }}">
 					<li class="in-list li-list">
-						<span>Un nom generique de DS</span>
+						<span>{{ cours}}</span>
 					</li>
 				</a>
 
 			{% endfor %}
 
-			{% if groupes|length == 0 %}
-				<li>Aucun groupe enregistré pour le moment</li>
+			{% if liste_cours|length == 0 %}
+				<li>Aucun cours enregistré pour le moment</li>
 			{% endif %}
 		</ul>
 	</article>

@@ -203,16 +203,12 @@ class TimeService
 			}
 		}
 
-
-		ob_start();
 		$jours_keys = array_keys($this->getJours());
 		for ($i=0; $i < count($jours_keys) ; $i++) { 
 			if(!isset($last_cours_day[$i])){ 
 				$last_cours_day[$i] = -1;
 			}
 		}
-		
-		// print_r(array_keys($last_cours_day));
 
 		// on ajoute un filler en fin de journée
 		for ($y=0; $y < count($last_cours_day); $y++) {
@@ -239,20 +235,8 @@ class TimeService
 						->setDebut($this->getFirstHoraire())
 						->setFin($this->getLastHoraire())
 				);
-			}
-
-			echo $interval->getHoraire() . ' ';
-			
+			}	
 		}
-
-		// for ($y=0; $y < count($last_cours_day); $y++) {
-
-		// 	$x = $last_cours_day[$y];
-		// 	// var_dump($edt[$x]['jours'][$y]) ;
-		// 	echo $y;
-		// }
-		ob_clean();
-		// throw new \Exception(ob_get_clean());
 
 		return $edt ;
 	}

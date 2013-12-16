@@ -17,51 +17,68 @@ class ProfesseurController extends Controller
 	/**
 	 * @Secure(roles="ROLE_PROFESSEUR")
 	 */
-	public function addAction($groupe)
+	public function addAction($cours)
 	{
-		if (null == $groupe) {
-			$liste_groupes = $this->get('doctrine.orm.entity_manager')->getRepository('KubClasseBundle:Groupe')->findByProfesseur( $this->getUser() );
+		if (null == $cours) {
+			$liste_cours = $this->get('doctrine.orm.entity_manager')->getRepository('KubEDTBundle:Cours')->findByProfesseur( $this->getUser() );
 
 			return $this->render('KubNoteBundle:Professeur:index.html.twig', array(
-				'groupes' => $liste_groupes
+				'liste_cours' => $liste_cours
 			));
 		}
 		else
 		{
-			$groupe = $this->get('doctrine.orm.entity_manager')->getRepository('KubClasseBundle:Groupe')->findOneByName( $groupe );
+			$cours = $this->get('doctrine.orm.entity_manager')->getRepository('KubEDTBundle:Cours')->findOneById( $cours );
 
-			$controle = new Controle ;
-			$controle->setGroupe($groupe);
-			$controle->setProfesseur( $this->getUser() );
+			$controle = new controle ;
+			$controle->setCours( $cours );
 
-			$form  = $this->createForm(new ControleType( $this->getUser(), $groupe ), $controle, 
+			$eleves = array();
+
+			foreach ($cours->getGroupes() as $groupe) { $eleves = array_merge($eleves, $groupe->getEleves()->toArray() ); }
+
+			foreach ($eleves as $eleve) {
+
+				if(!$controle->hasEleve($eleve))
+				{
+					$absence = new Note ;
+					$absence->setEleve( $eleve );
+
+					$controle->addNote( $absence );
+				}
+
+			}
+
+			$form  = $this->createForm(new ControleType( $cours->getProfesseur(), $cours ), $controle, 
 				array(
-					'action' => $this->generateUrl('kub_notes_professeur_homepage', array( 'groupe' => $groupe->getName() )
-				))
+					'action' => $this->generateUrl('kub_notes_professeur_homepage', array('cours' => $cours->getId()))
+				)
 			);
 
 			$request = $this->get('request');
 			if($request->getMethod() == "POST"){
 
+				throw new \Exception("Error Processing Request", 1);
+				
 				$formHandler = new ControleHandler($form, $request, $this->getDoctrine()->getManager(), $this->get('kub.notification_manager'));
 
 				if($formHandler->process())
 				{
-					$this->get('session')->getFlashBag()->add('info', "Les notes ont bien été ajoutées");
+					$this->get('session')->getFlashBag()->add('info', "Le controle a bien été ajouté");
 
 					return $this->redirect($this->generateUrl("home_homepage"));
 				}
 				else
 				{
-					$this->get('session')->getFlashBag()->add('info', "Une erreur est survenue lors de l'ajout des notes");   
+					$this->get('session')->getFlashBag()->add('info', "Une erreur est survenue lors du controle");   
 				}
 
 			}
 
 			return $this->render('KubNoteBundle:Professeur:noter.html.twig', array(
 				'form' => $form->createView(),
-				'groupe' => $groupe
-			));
+				'cours' => $cours
+			)); 
 		}
 	}
 

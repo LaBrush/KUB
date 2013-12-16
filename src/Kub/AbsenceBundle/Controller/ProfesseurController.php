@@ -25,7 +25,7 @@ class ProfesseurController extends Controller
 		if($cours)
 		{	
 			$semaine = $em->getRepository('KubEDTBundle:Semaine')->findOneBy(array( "numero" => date('W'), "annee" => date('y') ));
-			$appel = $em->getRepository('KubAbsenceBundle:Appel')->findOneOrNullByCoursAndSemaine( $cours, $semaine );			
+			$appel = $em->getRepository('KubAbsenceBundle:Appel')->findOneOrNullByCoursAndSemaine( $cours, $semaine );
 
 			if(!$appel)
 			{

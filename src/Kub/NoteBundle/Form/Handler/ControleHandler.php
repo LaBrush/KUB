@@ -48,12 +48,12 @@ class ControleHandler
 		$notes = $this->form['notes']->all();
 		$controle = $this->form->getData();
 		
-		$exept = "";
-		foreach ($controle->getNotes() as $note) {
-			$exept .= $note->getEleve() . ' ' ; 
-		}
+		// $exept = "";
+		// foreach ($controle->getNotes() as $note) {
+		// 	$exept .= $note->getEleve() . ' ' ; 
+		// }
 
-		throw new \Exception($exept);
+		// throw new \Exception($exept);
 		
 
 		foreach ($notes as $note) {
@@ -61,17 +61,14 @@ class ControleHandler
 			//on passe du formulaire à l'entité
 			$note = $note->getData();
 
+			ob_start();
+			var_dump($note);
+			throw new \Exception(ob_get_clean());
+			
+
 			if($note->getNoter())
 			{
 				$controle->addNote( $note );
-				throw new \Exception($note->getCoefficient());
-
-				$this->notifications->addNotification('NoteAddedNotification', array(
-
-					"userTarget" => $note->getEleve(),
-					"contenu" => $note
-
-				)) ;
 			}
 			else
 			{
@@ -82,6 +79,15 @@ class ControleHandler
 
 		if( count($controle->getNotes()) > 0)
 		{
+			foreach ($controle->getNotes() as $note) {
+				$this->notifications->addNotification('NoteAddedNotification', array(
+
+						"userTarget" => $note->getEleve(),
+						"contenu" => $note
+
+				)) ;
+			}
+
 			$this->em->persist($controle);
 			$this->em->flush();
 		}

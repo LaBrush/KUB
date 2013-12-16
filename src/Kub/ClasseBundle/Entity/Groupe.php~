@@ -54,7 +54,6 @@ class Groupe extends BaseGroup
      */
     private $eleves ;
 
-
     /**
      * @ORM\ManyToMany(targetEntity="Kub\EDTBundle\Entity\Cours", mappedBy="groupes", cascade={"merge", "detach", "persist"})
      */

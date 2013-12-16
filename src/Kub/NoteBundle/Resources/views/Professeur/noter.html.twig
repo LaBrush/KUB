@@ -1,25 +1,35 @@
 {% extends "::base.html.twig" %}
 
+{% set groupes = "" %}
+{% for groupe in cours.groupes %}
+
+		{% set groupes = groupes ~ groupe.name ~ ' ' %}
+
+	{% endfor %}
+
 {% block title %}
-	{{ parent() }} - Noter les {{ groupe.name }}
+	{{ parent() }} - Noter {{ groupes }}
 {% endblock %}
 
 {% block body %}
 
 	<article class="article">
-		<h2 class="section-title">Noter les {{ groupe.name }}</h2>
+		<h2 class="section-title">Noter les {{groupes}}</h2>
 	</article>
 
     <article class="article">
 
 		{{ form_start(form, { 'attr': {'class': 'formulaire-creation'} }) }}
 
-			{% include "KubNoteBundle:Professeur:form.html.twig" %}
+			{#{% include "KubNoteBundle:Professeur:form.html.twig" %}#}
+
+			{{ form_widget(form) }}
 
 			<span class="validate">
 				<input class="button-yes" type="submit">
 				<a class="button" href="{{ path('kub_notes_professeur_homepage') }}">Annuler</a>
 			</span>
+
 		{{ form_end(form) }}
 
 	</article>
