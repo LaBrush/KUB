@@ -17,7 +17,7 @@ class AbsenceType extends AbstractType
 	 */
 	public function buildForm(FormBuilderInterface $builder, array $options)
 	{
-		$builder->addEventSubscriber(new addEleveFieldSuscriber());;
+		$builder->addEventSubscriber(new addEleveFieldSuscriber());
 	}
 	
 	/**

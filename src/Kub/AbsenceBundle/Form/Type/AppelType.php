@@ -11,14 +11,6 @@ use Kub\AbsenceBundle\Form\Type\AbsenceType ;
 
 class AppelType extends AbstractType
 {
-
-	private $groupes ;
-
-	public  function __construct($groupes)
-	{
-		$this->groupes = $groupes ;
-	}
-
 	/**
 	 * @param FormBuilderInterface $builder
 	 * @param array $options
@@ -28,7 +20,6 @@ class AppelType extends AbstractType
 		$builder->add('absences', 'collection', array(
 			"type" => new AbsenceType()
 		));
-		// $builder->addEventSubscriber(new setEleveLabelSuscriber());
 	}
 
 	

@@ -14,24 +14,6 @@ use Kub\EDTBundle\Entity\MatiereRepository ;
 
 class ControleType extends AbstractType
 {
-
-	private $professeur ;
-	private $cours ;
-	private $eleves ;
-
-	public function __construct(\Kub\UserBundle\Entity\Professeur $professeur, \Kub\EDTBundle\Entity\Cours $cours)
-	{
-		$this->professeur = $professeur ;
-		$this->cours = $cours ;
-
-		$this->eleves = array();
-		foreach ($this->cours->getGroupes() as $groupe) {
-			foreach ($groupe->getEleves() as $eleve) {
-				$this->eleves[] = $eleve ;
-			}
-		}
-	}
-
 	/**
 	 * @param FormBuilderInterface $builder
 	 * @param array $options
@@ -42,7 +24,10 @@ class ControleType extends AbstractType
 		->add('nom', 'text', array(
 			'label' => 'Intitulé du DS'
 		))
-		->add('notes', new NotesType( $this->eleves ));
+		->add('notes', 'collection', array(
+			"type" => new NoteType()
+		))
+		;
 
 	}
 	

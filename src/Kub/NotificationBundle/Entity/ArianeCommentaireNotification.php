@@ -31,8 +31,8 @@ class ArianeCommentaireNotification extends Notification
         parent::__construct();
     }
 
-    public function getContenu()
+    public function format()
     {
-        return $this->getAuteur() . ' a dit ' . $this->contenu->getContenu() ;
+        return $this->getAuteur() . ' a dit ' . $this->getContenu()->getContenu() ;
     }
 }

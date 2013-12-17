@@ -88,7 +88,12 @@ abstract class Notification
         return $this;
     }
 
-	abstract function getContenu();
+    public function getContenu()
+    {
+    	return $this->getContenu();
+    }
+
+	abstract function format();
 
 	public function getRoute()
 	{

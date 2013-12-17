@@ -234,6 +234,7 @@ class Controle
     public function setCours(\Kub\EDTBundle\Entity\Cours $cours = null)
     {
         $this->cours = $cours;
+        $this->setMatiere( $cours->getMatiere() );
     
         return $this;
     }

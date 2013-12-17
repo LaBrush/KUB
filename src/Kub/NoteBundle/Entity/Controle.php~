@@ -224,4 +224,28 @@ class Controle
     {
         return $this->matiere;
     }
+
+    /**
+     * Set cours
+     *
+     * @param \Kub\EDTBundle\Entity\Cours $cours
+     * @return Controle
+     */
+    public function setCours(\Kub\EDTBundle\Entity\Cours $cours = null)
+    {
+        $this->cours = $cours;
+        $this->setMatiere( $cours->getMatiere() );
+    
+        return $this;
+    }
+
+    /**
+     * Get cours
+     *
+     * @return \Kub\EDTBundle\Entity\Cours 
+     */
+    public function getCours()
+    {
+        return $this->cours;
+    }
 }

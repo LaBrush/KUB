@@ -6,19 +6,13 @@ use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
-use Kub\NoteBundle\Entity\Absence ;
+use Kub\NoteBundle\Entity\Note ;
 
 class addEleveFieldSuscriber implements EventSubscriberInterface
 {
 
 	private $data ;
 	private $form ;
-	private $builder ;
-
-	public function __construct($builder)
-	{
-		$this->builder = $builder ;
-	}
 
 	public static function getSubscribedEvents()
 	{
@@ -32,8 +26,12 @@ class addEleveFieldSuscriber implements EventSubscriberInterface
 		$this->data = $event->getData();
 		$this->form = $event->getForm();
 
-		$notes = $this->form->get('notes');
-
-
+		$this->form
+			->add('noter', 'checkbox', array(
+				"label" => (string)$this->data->getEleve()
+			))
+			->add('note', 'number')
+			->add('coefficient', 'number')
+		;
 	}
 }

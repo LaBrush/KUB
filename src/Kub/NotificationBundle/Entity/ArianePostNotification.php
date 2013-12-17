@@ -31,8 +31,8 @@ class ArianePostNotification extends Notification
         parent::__construct();
     }
 
-    public function getContenu()
+    public function format()
     {
-        return "";
+        return $this->getContenu()->getContenu();
     }
 }

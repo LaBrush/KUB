@@ -58,8 +58,6 @@ class ProfesseurController extends Controller
 			$request = $this->get('request');
 			if($request->getMethod() == "POST"){
 
-				throw new \Exception("Error Processing Request", 1);
-				
 				$formHandler = new ControleHandler($form, $request, $this->getDoctrine()->getManager(), $this->get('kub.notification_manager'));
 
 				if($formHandler->process())

@@ -26,12 +26,10 @@ class NoteAddedNotification extends Notification
 	 */
 	private $contenu ; 
 
-	public function getContenu($scope = 'eleve')
+	public function format($scope = 'eleve')
 	{
 		if($scope == 'eleve')
 		{
-			// throw new \Exception($this->note->getId());
-			
 			return $this->getAuteur() . ' vous a ajouté la note de ' . $this->getNote() ;
 		}
 		else

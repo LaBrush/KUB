@@ -7,6 +7,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 use Kub\NoteBundle\Entity\Note ;
+use Kub\NoteBundle\Form\EventListener\addEleveFieldSuscriber ;
 
 class NoteType extends AbstractType
 {
@@ -16,11 +17,7 @@ class NoteType extends AbstractType
 	 */
 	public function buildForm(FormBuilderInterface $builder, array $options)
 	{
-		$builder
-			->add('noter', 'checkbox')
-			->add('note', 'number')
-			->add('coefficient', 'number')
-		;
+		$builder->addEventSubscriber(new addEleveFieldSuscriber());
 	}
 	
 	/**

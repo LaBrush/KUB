@@ -61,9 +61,9 @@ class ControleHandler
 			//on passe du formulaire à l'entité
 			$note = $note->getData();
 
-			ob_start();
-			var_dump($note);
-			throw new \Exception(ob_get_clean());
+			// ob_start();
+			// var_dump($note);
+			// throw new \Exception(ob_get_clean());
 			
 
 			if($note->getNoter())

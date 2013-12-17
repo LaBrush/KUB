@@ -32,8 +32,8 @@ class MenuBuilder
 	{
 		$menu = $this->factory->createItem('root');
 
-		$menu->addChild('Accueil', array('route' => 'home_homepage', 'labelAttributes' => array('className' => 'accueil')));
-			
+		$menu->addChild('Accueil', array('labelAttributes' => array('className' => 'accueil', array('route' => 'home_homepage'))));
+		$menu["Accueil"]->addChild('Notifications', array('route' => 'kub_notification_show'));
 		$this->generateMessagesMenu($menu);
 
 		if($this->security->isGranted('ROLE_SECRETAIRE'))
@@ -70,7 +70,7 @@ class MenuBuilder
 			$text .= '<span class="notifications">' . $nb_unread . '</span>';
 		}
 
-		$menu->addChild($text, array('route' => 'fos_message_inbox', 'labelAttributes' => array('className' => 'messagerie')));
+		$menu["Accueil"]->addChild($text, array('route' => 'fos_message_inbox', 'labelAttributes' => array('className' => 'messagerie')));
 	}
 
 	public function generateSecretaireMenu($menu)
@@ -131,24 +131,20 @@ class MenuBuilder
 
 	public function generateEleveMenu($menu)
 	{
-		$menu->addChild('Fil d\'Ariane', array(
+
+		$menu->addChild('Espace collaboratif', array('labelAttributes' => array('className' => 'espace-collaboratif')));
+			$menu['Espace collaboratif']->addChild('Fil d\'Ariane', array(
+				'route' => 'ariane_homepage'
+			));   
+			$menu['Espace collaboratif']->addChild("Ressources en ligne", array(
+				'route' => 'kub_ressource_homepage', 
+			));
+		$menu->addChild('Ma semaine', array(
 			'labelAttributes' => array(
-				'className' => 'ariane',  
-			),
-			'route' => 'ariane_homepage'
-		));   
-		$menu->addChild('Mon emploi du temps', array(
-			'labelAttributes' => array(
-				'className' => 'edt',  
+				'className' => 'agenda',  
 			),
 			'route' => 'edt_homepage'
 		)); 
-		$menu->addChild("Ressources en ligne", array(
-			'route' => 'kub_ressource_homepage', 
-			'labelAttributes' => array(
-				'className' => 'ressources')
-			)
-		);
 
 		$menu->addChild('1984', array(
 			'labelAttributes' => array(
@@ -193,9 +189,9 @@ class MenuBuilder
 			'route' => 'kub_ressource_add', 
 		));
 
-		$menu->addChild('Mon emploi du temps', array(
+		$menu->addChild('Ma semaine', array(
 			'labelAttributes' => array(
-				'className' => 'edt',  
+				'className' => 'agenda',  
 			),
 			'route' => 'edt_homepage'
 		)); 

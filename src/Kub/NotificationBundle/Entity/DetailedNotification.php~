@@ -19,13 +19,18 @@ abstract class DetailedNotification extends Notification
         return $this->contenu;
     }
 
-    function __toString()
+    public function __toString()
     {
-        return (string)$this->getContenu();
+        return (string)$this->format();
     }
 
-    function setContenu($contenu)
+    public function setContenu($contenu)
     {
         $this->contenu = $contenu ;
+    }
+
+    public function format()
+    {
+        return (string)$this->getContenu();
     }
 }
