@@ -2,8 +2,6 @@ $(function() {
 
 	var toShow = new Array;
 
-	$('.options-tri').hide();
-
 	$('.trier').click( function() {
 		$('.trier').remove();
 		$('.options-tri').show();

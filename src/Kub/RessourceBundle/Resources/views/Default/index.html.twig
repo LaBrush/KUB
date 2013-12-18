@@ -11,24 +11,44 @@
 	</article>
 
 	<article class="article">
-		<div class="trier">
-			<button class="button">Trier</button>
-		</div>
-		
-		
-		<div class="options-tri">
-			<ul class="niveau">
-				<li id="seconde" class="unchecked">2nd</li>
-				<li id="premiere" class="unchecked">1ere</li>
-				<li id="terminale" class="unchecked">Ter.</li>
-			</ul>
+		<div class="liste-ressources">
 
-			<ul class="type">
-				<li id="1" class="unchecked">Fichier</li>
-				<li id="0" class="unchecked">Web</li>
+			<ul class="liste">
+				{% for ressource in ressources %}
+			
+					<li class="li-list in-list {{ ressource.type }} {{ ressource.niveau }} {{ ressource.matiere }}">
+						{{ ressource.titre }} - {{ ressource.description }}
+
+						{% if ressource.type == 'web' %}
+		
+							<a href="{{ ressource.url }}">Voir sur le web</a>
+		
+						{% elseif ressource.type == 'file' %}
+
+							<a href="{{ path(ressource.webPath) }}">Télécharger</a>					
+
+						{% endif %}
+
+					</li>
+
+				{% endfor %}
 			</ul>
 			
-			<div class="matiere">
+		</div>
+
+		<div class="tri-ressources">
+			<ul class="wrap niveau">
+				<li class="in-tri-ressources" id="seconde" class="unchecked">2nd</li>
+				<li class="in-tri-ressources" id="premiere" class="unchecked">1ere</li>
+				<li class="in-tri-ressources" id="terminale" class="unchecked">Ter.</li>
+			</ul>
+
+			<ul class="wrap type">
+				<li class="in-tri-ressources" id="1" class="unchecked">Fichier</li>
+				<li class="in-tri-ressources" id="0" class="unchecked">Web</li>
+			</ul>
+			
+			<div class="matieres">
 				<select multiple id="matiere" name="matiere" class="select2">
 					<option value="Français">Français</option>
 					<option value="Mathématiques">Mathématiques</option>
@@ -49,32 +69,8 @@
 					<option value="Autre">Autre</option>
 				</select>
 			</div>
-			
+			<input class="ressources" id="search-in-list" type="text" placeholder="Nom du fichier">
 		</div>
-
-		<label for="search-in-list">Chercher dans la liste :</label>
-		<input id="search-in-list" type="text">
-
-		<ul class="liste">
-			{% for ressource in ressources %}
-		
-				<li class="li-list in-list {{ ressource.type }} {{ ressource.niveau }} {{ ressource.matiere }}">
-					{{ ressource.titre }} - {{ ressource.description }}
-
-					{% if ressource.type == 'web' %}
-	
-						<a href="{{ ressource.url }}">Voir sur le web</a>
-	
-					{% elseif ressource.type == 'file' %}
-
-						<a href="{{ path(ressource.webPath) }}">Télécharger</a>					
-	
-					{% endif %}
-
-				</li>
-
-			{% endfor %}
-		</ul>
 
 	</article>
 
