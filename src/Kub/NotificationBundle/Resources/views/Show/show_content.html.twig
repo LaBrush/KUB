@@ -1,0 +1,9 @@
+{% for notification in notifications %}
+    
+	{% include 'KubNotificationBundle:Show:show.html.twig' with notification only %}
+
+{% else %}
+    
+	<p class="error">Vous n'avez aucune notification</p>
+
+{% endfor %}

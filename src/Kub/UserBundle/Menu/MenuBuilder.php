@@ -32,8 +32,8 @@ class MenuBuilder
 	{
 		$menu = $this->factory->createItem('root');
 
-		$menu->addChild('Accueil', array('labelAttributes' => array('className' => 'accueil', array('route' => 'home_homepage'))));
-		$menu["Accueil"]->addChild('Notifications', array('route' => 'kub_notification_show'));
+		$menu->addChild('Accueil', array('labelAttributes' => array('className' => 'accueil'), array('route' => 'home_homepage')));
+		$menu["Accueil"]->addChild('Notifications', array('route' => 'home_homepage'));
 		$this->generateMessagesMenu($menu);
 
 		if($this->security->isGranted('ROLE_SECRETAIRE'))
