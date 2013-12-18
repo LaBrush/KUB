@@ -8,9 +8,3 @@ services:
     kub.notification_manager:
         class: Kub\NotificationBundle\Manager\NotificationManager
         arguments: [@doctrine.orm.entity_manager, @security.context]
-
-    # kub.twig.kub.notifications_extension:
-    #         class: Kub\NotificationBundle\Twig\NotificationExtension
-    #         arguments: [@twig, @kub.notification_manager]
-    #         tags:
-    #             - { name: twig.extension }

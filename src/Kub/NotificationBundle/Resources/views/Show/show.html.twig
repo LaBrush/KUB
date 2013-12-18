@@ -1,16 +1,16 @@
 {% extends "::base.html.twig" %}
 
 {% block title %}
-	{{ parent() }} - Informations sur le groupe {{ groupe }}
+	{{ parent() }} - Vos notifications
 {% endblock %}
 
 {% block body %}
 	
-	<h2>Vos notifications</h2>
+	<div class="article"><h3 class="section-title">Vos notifications</h3></div>
 
 	<article class="article">
 
-		{{ notifications }}		
+		{% include 'KubNotificationBundle:Show:show_content.html.twig'%}
 
 	</article>
 
