@@ -10,10 +10,12 @@
 		{{ form_label(form.niveau) }} <div class="input">{{ form_widget(form.niveau) }}</div>
 	</span>
 
-	<span class="eleves">
-		{{ form_errors(form.eleves) }}
-		{{ form_label(form.eleves) }} <div class="input">{{ form_widget(form.eleves) }}</div>
-	</span>
+	{% if form.eleves is defined %}
+		<span class="eleves">
+			{{ form_errors(form.eleves) }}
+			{{ form_label(form.eleves) }} <div class="input">{{ form_widget(form.eleves) }}</div>
+		</span>
+	{% endif %}
 
 
 {% endblock %}

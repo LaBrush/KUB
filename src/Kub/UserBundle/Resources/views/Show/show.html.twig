@@ -13,7 +13,7 @@
 	<article class="article infos">
 		
 		{% if user.photo is defined and user.photo is not null %}
-			<span class="info"> <img src="{{ asset(user.photo.webPath) }}" alt="{{ user.prenom }}" class="profil-picture img-downloaded"/></span>
+			<span class="info"> <img src="{{ asset(user.photo.webPath) }}" alt="{{ user }}" class="profil-picture img-downloaded"/></span>
 	    {% endif %}
 
 		<span class="label">Identifiant :</span>

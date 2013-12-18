@@ -5,9 +5,6 @@
 		{{ form_label(form.name) }} <div class="input">{{ form_widget(form.name) }}</div>
 	</span>
 
-	<span class="semaines">
-		{{ form_errors(form.semaines) }}
-		{{ form_label(form.semaines) }} <div class="input">{{ form_widget(form.semaines) }}</div>
-	</span>
+	{% include 'KubEDTBundle:Form:weekpicker.html.twig' with {'form': form.semaines} only %}
 
 {% endblock %}

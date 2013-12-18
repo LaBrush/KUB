@@ -35,7 +35,7 @@ security:
 
     access_control:
         - { path: ^/(about|login_check|logout|login)?$, roles: IS_AUTHENTICATED_ANONYMOUSLY}
-        - { path: ^/, roles: ROLE_USER}
+        - { path: ^/, roles: ROLE_USER }
 
     acl:
         connection: default

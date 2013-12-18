@@ -12,30 +12,32 @@
 
 	</tr>
 
+	{% set i = 0 %}
 	{% for interval in edt %}
-
-			<tr>
-			
-				<td class="hour-edt">
-					{{ interval.horaire|date('H:i') }}
+		{% set i = i + 1 %}
+		<tr>
+			{% if i % 2 != 0 %}
+				<td class="hour-edt" rowspan="2">
+						{{ interval.horaire|date('H:i') }}	    
 				</td>
+			{% endif %}
+			{% for interval in interval.jours %}
+				{% if interval is not null %}
+					{% set cours = interval.horaire.cours %}
 
-				{% for cours in interval.jours %}
 						{% if cours is not null %}
+							<td rowspan={{ interval.rowSpan }} class="bottom-dashed {{ cours.matiere.categorie.abreviation }}">
 
-							<td rowspan={{ cours.rowSpan }} {#class="bottom-dashed {{ cours.matiere.categorie.abreviation }}"#}>
-
-								{#<span class="info-cours">{{ cours.matiere | upper }}</span>#}
-								{#<span class="info-cours"><em>M. {{ cours.professeur.nom }}</em></span>#}
-								{{cours.horaire.jour}}
+								<span class="info-cours">{{ cours.matiere | upper }}</span>
+								<span class="info-cours"><em>M. {{ cours.professeur.nom }}</em></span>
 
 							</td>
-
+						{% else %}
+						    	<td rowspan={{ interval.rowSpan }} class="bottom-dashed"></td>
 						{% endif %}
-				{% endfor %}
-
-			</tr>
-
+				{% endif %}
+			{% endfor %}
+		</tr>
 	{% endfor %}
 
 </table>

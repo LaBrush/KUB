@@ -148,6 +148,7 @@ class TimeService
 				break;
 			case 'Kub\ClasseBundle\Entity\Groupe':
 				$qb->where('g.id = :id');
+				break;
 			default:
 				throw new \Exception("Erreur: seul les professeurs, les élèves et les groupes disposent d'emploi du temps");
 				break ;

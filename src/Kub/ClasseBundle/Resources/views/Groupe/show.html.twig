@@ -10,11 +10,11 @@
 		<h2 class="section-title">{{ groupe }}</h2>
 	</article>
 
-	<article class="article">
-		
-			{{ render(controller('KubNoteBundle:Professeur:list', {'groupe': groupe})) }}
-
-	</article>
+	{% if is_granted('ROLE_PROFESSEUR') %}
+		<article class="article">
+				{{ render(controller('KubNoteBundle:Professeur:list', {'groupe': groupe})) }}
+		</article>
+	{% endif %}
 
 	<article class="article infos">
 
@@ -42,5 +42,12 @@
 		{% endif %}
 
 	</article>
+
+	<article class="article">
+	
+		{{ ShowEDT( groupe ) }}
+
+	</article>
+
 
 {% endblock %}

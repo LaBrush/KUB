@@ -1,1 +1,15 @@
 {% extends "KubUserBundle:Show:show.html.twig" %}
+
+{% block details %}
+    
+	{% if is_granted("ROLE_SECRETAIRE") or is_granted("ROLE_SURVEILLANT") %}
+
+		<article class="article">
+		
+			{{ ShowEDT( user ) }}
+
+		</article>
+
+	{% endif %}
+
+{% endblock %}

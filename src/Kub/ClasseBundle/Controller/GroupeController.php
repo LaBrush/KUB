@@ -12,11 +12,9 @@ use Kub\ClasseBundle\Form\Handler\GroupeHandler ;
 
 /**
  * Groupe controller.
- *
  */
 class GroupeController extends Controller
 {
-
 	/**
 	 * @Secure(roles="ROLE_SECRETAIRE")
 	 */
@@ -107,10 +105,6 @@ class GroupeController extends Controller
 		));
 	}
 
-	/**
-	 * @Secure(roles="ROLE_USER")
-	 */
-
 	public function listAction()
 	{
 		$listeGroupes = $this->getDoctrine()->getManager()
@@ -123,14 +117,8 @@ class GroupeController extends Controller
 		));        
 	}
 
-	/**
-	 * @Secure(roles="ROLE_USER")
-	 */
-
 	public function showAction(Groupe $groupe)
 	{
-		// $groupe = 
-
 		return $this->render("KubClasseBundle:Groupe:show.html.twig", 
 			array(
 				"groupe" => $groupe

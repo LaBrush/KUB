@@ -34,11 +34,22 @@
 
 	{% endif %}
 
-	{% if app.user.hasEleve(user) is defined and app.user.hasEleve(user) %}
+	{% if is_granted("ROLE_PROFESSEUR") and app.user.hasEleve(user) %}
 		
 		<span class="modifier">
 			<a class="button" href="{{ path("ariane_homepage", {username: user.username}) }}">Suivi de l'élève</a>
 		</span>
+
+	{% endif %}
+
+	
+	{% if is_granted("ROLE_SECRETAIRE") or is_granted("ROLE_SURVEILLANT") or is_granted("ROLE_PROFESSEUR") %}
+
+		<article class="article">
+		
+			{{ ShowEDT( user ) }}
+
+		</article>
 
 	{% endif %}
 

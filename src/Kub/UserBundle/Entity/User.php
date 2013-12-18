@@ -175,7 +175,7 @@ abstract class User extends BaseUser implements ParticipantInterface
                 'î', 'ï', 'ì', 'í', 
                 'ô', 'ö', 'ò', 'ó', 'õ', 'ø', 
                 'ù', 'û', 'ü', 'ú', 
-                'é', 'è', 'ê', 'ë', 
+                'é', 'è', 'ê', 'ë',
                 'ç', 'ÿ', 'ñ', 
             ),
             array(

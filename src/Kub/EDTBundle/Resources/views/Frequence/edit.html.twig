@@ -6,11 +6,11 @@
 
 {% block body %}
 	
-	<article class="article">
-		<h2 class="section-title">{{ frequence }}</h2>
-	</article>
+	<h2 class="section-title">{{ frequence }}</h2>
 
-	{{ form_start(form, { 'attr': {'class': 'formulaire-creation'} }) }}
+	<article class="article">
+
+		{{ form_start(form, { 'attr': {'class': 'formulaire-creation'} }) }}
 
 			{% include "KubEDTBundle:Frequence:form.html.twig" %}
 
@@ -21,6 +21,7 @@
 			</span>
 		{{ form_end(form) }}		
 			
+	</article>
 {% endblock %}
 
 {% block js %}

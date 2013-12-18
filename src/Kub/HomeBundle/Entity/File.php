@@ -27,7 +27,17 @@ abstract class File
 	 */
 	private $file;
 
+	/*
+	 * @ORM\Column(type="datetime", name="date")
+	 */
+	// private $date ;
+
 	private $tempFilename;
+
+	public function __construct()
+	{
+		$this->date = new \Datetime ;
+	}
 
 	/**
 	 * @ORM\PrePersist()
@@ -131,12 +141,12 @@ abstract class File
 	public function setFile($file)
 	{
 		$this->file = $file;
-
+		
 		// On vérifie si on avait déjà un fichier pour cette entité
-		if (is_file($this->getUploadRootDir())) {
+		if (is_file($this->getUploadRootDir() . '/' .$this->getId().'.'.$this->getUrl())) {
 			// On sauvegarde l'extension du fichier pour le supprimer plus tard
 			$this->tempFilename = $this->url;
-			$this->url = null;
+			$this->setUrl(null);
 		}
 	}
 

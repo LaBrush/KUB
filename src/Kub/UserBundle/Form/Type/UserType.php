@@ -27,8 +27,8 @@ class UserType extends AbstractType
 
                 ),
 
-                "label" => "Etat du compte"
-
+                "label" => "Etat du compte",
+                "expanded" => true
             ))
         ;
     }
