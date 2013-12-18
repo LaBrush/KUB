@@ -2,7 +2,7 @@ $(function() {
 
 	// Cette fonction permet de changer la couleur et la presence d'un eleve au clic
 
-	alert("J'ai fait quelques changments. A vérifier donc")
+	// alert("J'ai fait quelques changments. A vérifier donc")
 	var inputAppel = $('.input-appel');
 	
 	inputAppel.hide();
@@ -22,44 +22,21 @@ $(function() {
 	// 	// }
 	// };
 
-	function check(eleve)
-	{
-		state_class = [
-			'retard',
-			'absence',
-			'present'
-		]
-
-		eleve.class( eleve.find(inputAppel).value());
-	}
+	state_class = [
+		'retard',
+		'away',
+		'present'
+	]
 
 	$('.in-list')
 	.click( function() {
 
-		if ($(this).hasClass('away'))
-		{
-			$(this).addClass('retard')
-			.removeClass('away');
+		var option = $(this).find(inputAppel);
 
-			check($(this));			
-		}
-		else if ($(this).hasClass('retard'))
-		{
-			$(this).removeClass('retard');
-
-			$(this)
-			.find(inputAppel)
-			.val("0");
-			check($(this));			
-		}
-		else
-		{
-			$(this).addClass('away');
-
-			$(this)
-			.find(inputAppel)
-			.val("1");
-			check($(this));
-		}
+		$(this).removeClass(state_class[ option.val() ] );
+		option.val( (option.val()+1) % 3 );
+		$(this).addClass(state_class[option.val()] );
+	}).each(function(){
+		$(this).addClass(state_class[$(this).find(inputAppel).val()] );
 	});
 });

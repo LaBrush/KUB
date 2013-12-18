@@ -21,9 +21,7 @@
 
 		{{ form_start(form, { 'attr': {'class': 'formulaire-creation'} }) }}
 
-			{#{% include "KubNoteBundle:Professeur:form.html.twig" %}#}
-
-			{{ form_widget(form) }}
+			{% include "KubNoteBundle:Professeur:form.html.twig" %}
 
 			<span class="validate">
 				<input class="button-yes" type="submit">

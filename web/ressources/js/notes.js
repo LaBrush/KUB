@@ -21,7 +21,14 @@ $(function() {
 
 	//Cette fonction permet d'attribuer le meme coefficient a tout les eleves lors de l'insertion d'un coefficient commun
 
+	var coeff = $('.coeff');
 	$('.coeff-global').keyup(function() {
-		$('.coeff').val($(this).val());
+		coeff.val($(this).val());
 	});
+
+	//Cette fonction permet de checker automatiquement les box lors de l'ajour des notes
+	$('.note').keyup(function() {
+		var that = $(this);
+		that.parent().parent().find(':checkbox').prop('checked', that.val() != "" );
+	}).keyup();
 });
