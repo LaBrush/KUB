@@ -5,7 +5,7 @@
 	</div>
 	<div class="content-article">
 		<p>
-			{% block detail %}{% endblock %}
+			{{ notification.format }}
 		</p>
 		<div class="buttons-article-news">
 			<a href="{{ path(notification.route) }}">{{ notification.routeTitle }}</a>

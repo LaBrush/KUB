@@ -17,22 +17,41 @@ class ArianePostNotification extends Notification
 
         $this->route = "ariane_homepage" ;
         $this->routeTitle = "Voir le fil" ;
-        $this->titre = $this->getAuteur() . ' a ajouté une trace à son fil d\'Ariane' ;;
+        $this->titre = $this->getAuteur() . ' a ajouté une trace à son fil d\'Ariane' ;
+        $this->type = "ariane-post" ;
     }
 
 
     /**
-     * @ORM\OneToOne(targetEntity="Kub\ArianeBundle\Entity\Commentaire")
+     * @ORM\OneToOne(targetEntity="Kub\ArianeBundle\Entity\Post")
      */
-    private $contenu ; 
+    private $post ; 
 
-    public function __construct()
+    public function format($scope)
     {
-        parent::__construct();
+        return $this->getPost()->getpost();
     }
 
-    public function format()
+    /**
+     * Set post
+     *
+     * @param \Kub\ArianeBundle\Entity\Post $post
+     * @return ArianePostNotification
+     */
+    public function setPost(\Kub\ArianeBundle\Entity\Post $post = null)
     {
-        return $this->getContenu()->getContenu();
+        $this->post = $post;
+    
+        return $this;
+    }
+
+    /**
+     * Get post
+     *
+     * @return \Kub\ArianeBundle\Entity\Post 
+     */
+    public function getPost()
+    {
+        return $this->post;
     }
 }

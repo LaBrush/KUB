@@ -79,17 +79,17 @@ class ControleHandler
 
 		if( count($controle->getNotes()) > 0)
 		{
+			$this->em->persist($controle);
+			$this->em->flush();
+			
 			foreach ($controle->getNotes() as $note) {
 				$this->notifications->addNotification('NoteAddedNotification', array(
 
 						"userTarget" => $note->getEleve(),
-						"contenu" => $note
+						"note" => $note
 
 				)) ;
 			}
-
-			$this->em->persist($controle);
-			$this->em->flush();
 		}
 
 		return true ;

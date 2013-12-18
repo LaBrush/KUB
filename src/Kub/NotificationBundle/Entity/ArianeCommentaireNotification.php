@@ -10,7 +10,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class ArianeCommentaireNotification extends Notification
 {
-    
     public function init()
     {
         parent::init();
@@ -18,21 +17,40 @@ class ArianeCommentaireNotification extends Notification
         $this->route = "ariane_homepage" ;
         $this->routeTitle = "Voir votre fil" ;
         $this->titre = "Un commentaire à été ajouté à votre fil d'Ariane ";
+        $this->type = "ariane-commentaire" ;
     }
 
 
     /**
      * @ORM\OneToOne(targetEntity="Kub\ArianeBundle\Entity\Commentaire")
      */
-    private $contenu ; 
+    private $commentaire ; 
 
-    public function __construct()
+    public function format($scope)
     {
-        parent::__construct();
+        return $this->getAuteur() . ' a dit ' . $this->getCommentaire()->getContenu() ;
     }
 
-    public function format()
+    /**
+     * Set commentaire
+     *
+     * @param \Kub\ArianeBundle\Entity\Commentaire $commentaire
+     * @return ArianeCommentaireNotification
+     */
+    public function setCommentaire(\Kub\ArianeBundle\Entity\Commentaire $commentaire = null)
     {
-        return $this->getAuteur() . ' a dit ' . $this->getContenu()->getContenu() ;
+        $this->commentaire = $commentaire;
+    
+        return $this;
+    }
+
+    /**
+     * Get commentaire
+     *
+     * @return \Kub\ArianeBundle\Entity\Commentaire 
+     */
+    public function getCommentaire()
+    {
+        return $this->commentaire;
     }
 }
