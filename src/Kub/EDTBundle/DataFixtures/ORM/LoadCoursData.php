@@ -40,7 +40,7 @@ class LoadCoursData extends AbstractFixture implements FixtureInterface, Contain
 
 			$horaire1 = $cours->getHoraires()[0];
 			$horaire1->setDebut( new \Datetime('07:55') );
-			$horaire1->setFin( new \Datetime('10:05') );
+			$horaire1->setFin( new \Datetime('9:50') );
 			$horaire1->setJour( $this->getReference('lundi') );
 			$horaire1->addSemaine( $this->getReference('semaine49') );
 

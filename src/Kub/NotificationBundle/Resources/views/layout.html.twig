@@ -1,7 +1,14 @@
-<ul>
-	
-	<li> {{ notification.titre }} </li>
-	<li> <a href="{{ path(notification.route) }}"> {{ notification.routeTitle }} </a></li>
-	{% block detail %}{% endblock %}
-
-</ul>
+<article class="article-news bordered-espace-collaboratif">
+	<div class="head-article">
+		<h3 class="h2">{{ notification.titre }}</h3>
+		<span class="small bold">{{ notification.date | date('d/m H:i') }}</span>
+	</div>
+	<div class="content-article">
+		<p>
+			{% block detail %}{% endblock %}
+		</p>
+		<div class="buttons-article-news">
+			<a href="{{ path(notification.route) }}"> {{ notification.routeTitle }} </a>
+		</div>
+	</div>
+</article>
