@@ -90,7 +90,7 @@ abstract class Notification
 
     public function getContenu()
     {
-    	return $this->getContenu();
+    	return $this->contenu;
     }
 
 	abstract function format();
