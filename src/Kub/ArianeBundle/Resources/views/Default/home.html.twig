@@ -16,9 +16,9 @@
 
 {% block body %}
 
-	<div class="article">
+	<article class="article">
 		<h3 class="section-title">Fil d'Ariane {{eleve}}</h3>
-	</div>
+	</article>
 
 	{% if is_granted('ROLE_ELEVE') %}
 		{% render(controller("KubArianeBundle:Post:add")) %}
@@ -90,7 +90,7 @@
 		    var $configs = {
 				        selector: "textarea",
 				        plugins: [
-				                "autolink autosave link charmap",
+				                "autolink link charmap",
 				                "searchreplace",
 				                "textcolor"
 				        ],
@@ -105,6 +105,7 @@
 				};
 		    tinyMCE.init($configs);
 		});
+
 	</script>
     
 
