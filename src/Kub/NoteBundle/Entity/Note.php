@@ -51,7 +51,7 @@ class Note
 	 *
 	 * @Assert\GreaterThanOrEqual(0, message="Vous ne pouvez attribuer de note négative")
 	 */
-	private $note;
+	private $note ;
 
 	/**
 	 * @var double

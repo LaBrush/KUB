@@ -55,7 +55,7 @@ class PostHandler
 		$this->notification->addNotification('ArianePostNotification', array(
 
 			'userTarget' => $this->security->getToken()->getUser()->getProfesseurs(),
-			'contenu' => $data
+			'post' => $data
 
 		));
 	}

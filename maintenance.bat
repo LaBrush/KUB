@@ -3,17 +3,18 @@ php app/console cache:clear
 php app/console doctrine:query:sql "DROP DATABASE IF EXISTS kub"
 php app/console doctrine:database:create
 
-php app/console doctrine:generate:entities KubArianeBundle
-php app/console doctrine:generate:entities KubAgendaBundle
-php app/console doctrine:generate:entities KubAbsenceBundle
-php app/console doctrine:generate:entities KubCasierBundle
-php app/console doctrine:generate:entities KubClasseBundle
-php app/console doctrine:generate:entities KubCollaborationBundle
-php app/console doctrine:generate:entities KubEDTBundle
-php app/console doctrine:generate:entities KubHomeBundle
-php app/console doctrine:generate:entities KubNoteBundle
-php app/console doctrine:generate:entities KubRessourceBundle
-php app/console doctrine:generate:entities KubUserBundle
+php app/console doctrine:generate:entities KubArianeBundle --no-backup
+php app/console doctrine:generate:entities KubAgendaBundle --no-backup
+php app/console doctrine:generate:entities KubAbsenceBundle --no-backup
+php app/console doctrine:generate:entities KubCasierBundle --no-backup
+php app/console doctrine:generate:entities KubClasseBundle --no-backup
+php app/console doctrine:generate:entities KubCollaborationBundle --no-backup
+php app/console doctrine:generate:entities KubEDTBundle --no-backup
+php app/console doctrine:generate:entities KubHomeBundle --no-backup
+php app/console doctrine:generate:entities KubNoteBundle --no-backup
+php app/console doctrine:generate:entities KubRessourceBundle --no-backup
+php app/console doctrine:generate:entities KubUserBundle --no-backup
+php app/console doctrine:generate:entities KubNotificationBundle --no-backup
 
 php app/console doctrine:schema:update --force
 php app/console doctrine:fixtures:load

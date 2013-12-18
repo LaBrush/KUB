@@ -18,6 +18,13 @@ use Doctrine\ORM\Mapping as ORM;
  */
 abstract class Notification
 {
+	private $route ;
+	private $routeName ;
+	private $titre ;
+	private $type ;
+
+	abstract public function format($scope);
+
 	/**
 	 * @ORM\postLoad()
 	 */
@@ -29,6 +36,11 @@ abstract class Notification
 		$this->groupesTarget = new \Doctrine\Common\Collections\ArrayCollection;
 		$this->userTarget = new \Doctrine\Common\Collections\ArrayCollection;
 	}
+
+	public function __toString()
+    {
+        return (string)$this->format();
+    }
 
 	public function __construct()
 	{
@@ -72,28 +84,6 @@ abstract class Notification
 	 * @ORM\ManyToOne(targetEntity="Kub\UserBundle\Entity\User")
 	 */
 	private $auteur ;
-
-	private $route ;
-
-	private $routeName ;
-
-	private $titre ;
-
-	private $contenu ;
-
-	public function setContenu($contenu)
-    {
-        $this->contenu = $contenu;
-    
-        return $this;
-    }
-
-    public function getContenu()
-    {
-    	return $this->contenu;
-    }
-
-	abstract function format();
 
 	public function getRoute()
 	{
@@ -229,4 +219,27 @@ abstract class Notification
 		return $this->auteur;
 	}
 
+
+    /**
+     * Add groupesTarget
+     *
+     * @param \Kub\ClasseBundle\Entity\Groupe $groupesTarget
+     * @return Notification
+     */
+    public function addGroupesTarget(\Kub\ClasseBundle\Entity\Groupe $groupesTarget)
+    {
+        $this->groupesTarget[] = $groupesTarget;
+    
+        return $this;
+    }
+
+    /**
+     * Remove groupesTarget
+     *
+     * @param \Kub\ClasseBundle\Entity\Groupe $groupesTarget
+     */
+    public function removeGroupesTarget(\Kub\ClasseBundle\Entity\Groupe $groupesTarget)
+    {
+        $this->groupesTarget->removeElement($groupesTarget);
+    }
 }
