@@ -1,0 +1,9 @@
+{% for controle in controles %}
+    
+	<ul>
+		<li>{{ controle.nom }}</li>
+		<li>{{ controle.date|date('j/d/Y') }}</li>
+		<li>chemin</li>
+	</ul>
+
+{% endfor %}

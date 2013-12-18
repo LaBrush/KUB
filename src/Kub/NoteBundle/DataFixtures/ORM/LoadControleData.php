@@ -33,8 +33,7 @@ class LoadControleData extends AbstractFixture implements FixtureInterface, Cont
     public function load(ObjectManager $manager)
     {
         $controle = new Controle ;
-            $controle->setMatiere( $this->getReference('Mathématiques') );
-            $controle->setProfesseur( $this->getReference('professeur') );
+            $controle->setCours( $this->getReference('cours') );
             $controle->setNom('Evaluation sur les vecteurs');
 
             $controle->addNote( $this->getReference('note1') );

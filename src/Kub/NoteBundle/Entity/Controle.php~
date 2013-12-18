@@ -10,6 +10,8 @@ use Symfony\Component\Validator\Constraints as Assert ;
  *
  * @ORM\Table()
  * @ORM\Entity
+ *
+ * @ORM\Entity(repositoryClass="Kub\NoteBundle\Entity\ControleRepository")
  */
 class Controle
 {
@@ -47,11 +49,6 @@ class Controle
 	 * @ORM\ManyToOne(targetEntity="Kub\UserBundle\Entity\Professeur")
 	 */
 	private $professeur;
-
-	/**
-	 * @ORM\ManyToOne(targetEntity="Kub\EDTBundle\Entity\Matiere")
-	 */
-	private $matiere;  
 
 	/**
 	 * @ORM\ManyToOne(targetEntity="Kub\EDTBundle\Entity\Cours", inversedBy="controles", cascade={"all"})
@@ -203,26 +200,13 @@ class Controle
     }
 
     /**
-     * Set matiere
-     *
-     * @param \Kub\EDTBundle\Entity\Matiere $matiere
-     * @return Controle
-     */
-    public function setMatiere(\Kub\EDTBundle\Entity\Matiere $matiere = null)
-    {
-        $this->matiere = $matiere;
-    
-        return $this;
-    }
-
-    /**
      * Get matiere
      *
      * @return \Kub\EDTBundle\Entity\Matiere 
      */
     public function getMatiere()
     {
-        return $this->matiere;
+        return $this->getCours()->getMatiere();
     }
 
     /**
@@ -234,7 +218,7 @@ class Controle
     public function setCours(\Kub\EDTBundle\Entity\Cours $cours = null)
     {
         $this->cours = $cours;
-        $this->setMatiere( $cours->getMatiere() );
+        $this->setProfesseur( $cours->getProfesseur() );
     
         return $this;
     }

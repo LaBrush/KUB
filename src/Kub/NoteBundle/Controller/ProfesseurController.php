@@ -9,8 +9,9 @@ use Kub\NoteBundle\Form\Type\ControleType ;
 use Kub\NoteBundle\Form\Handler\ControleHandler; 
 
 use Kub\UserBundle\Entity\Eleve ;
-use Kub\NoteBundle\Entity\Note ;
 use Kub\NoteBundle\Entity\Controle ;
+use Kub\NoteBundle\Entity\Note ;
+use Kub\ClasseBundle\Entity\Groupe ;
 
 class ProfesseurController extends Controller
 {
@@ -83,12 +84,75 @@ class ProfesseurController extends Controller
 	/**
 	 * @Secure(roles="ROLE_PROFESSEUR")
 	 */
-	public function deleteAction(Note $note)
+	public function listAction(Groupe $groupe)
+	{
+		$controles = $this->get('doctrine.orm.default_entity_manager')->getRepository('KubNoteBundle:Controle')->findByProfesseurAndGroupe($this->getUser(), $groupe);
+
+		return $this->render('KubNoteBundle:Professeur:groupe.html.twig',array(
+			'controles' => $controles
+		));
+	}
+
+	/**
+	 * @Secure(roles="ROLE_PROFESSEUR")
+	 */
+	public function editAction(Controle $controle)
+	{
+		$eleves = array();
+
+		foreach ($cours->getGroupes() as $groupe) { $eleves = array_merge($eleves, $groupe->getEleves()->toArray() ); }
+
+		foreach ($eleves as $eleve) {
+
+			if(!$controle->hasEleve($eleve))
+			{
+				$absence = new Note ;
+				$absence->setEleve( $eleve );
+
+				$controle->addNote( $absence );
+			}
+
+		}
+
+		$form  = $this->createForm(new ControleType( $cours->getProfesseur(), $cours ), $controle, 
+			array(
+				'action' => $this->generateUrl('kub_notes_professeur_homepage', array('cours' => $cours->getId()))
+			)
+		);
+
+		$request = $this->get('request');
+		if($request->getMethod() == "POST"){
+
+			$formHandler = new ControleHandler($form, $request, $this->getDoctrine()->getManager(), $this->get('kub.notification_manager'));
+
+			if($formHandler->process())
+			{
+				$this->get('session')->getFlashBag()->add('info', "Le controle a bien été ajouté");
+
+				return $this->redirect($this->generateUrl("home_homepage"));
+			}
+			else
+			{
+				$this->get('session')->getFlashBag()->add('info', "Une erreur est survenue lors du controle");   
+			}
+
+		}
+
+		return $this->render('KubNoteBundle:Professeur:noter.html.twig', array(
+			'form' => $form->createView(),
+			'cours' => $cours
+		)); 
+	}
+
+	/**
+	 * @Secure(roles="ROLE_PROFESSEUR")
+	 */
+	public function deleteAction(Controle $controle)
 	{
 		$form = $this->createFormBuilder(null, array(
 			'action' => $this->generateUrl('kub_notes_professeur_delete', 
 				array(
-					'note' => $note->getId()
+					'note' => $controle->getId()
 			))
 		))->getForm();
 
@@ -96,7 +160,7 @@ class ProfesseurController extends Controller
 
 		if ($request->getMethod() == 'POST') {
 			
-			if($note->getProfesseur() != $this->getUser())
+			if($controle->getProfesseur() != $this->getUser())
 			{
 				throw new AccessDeniedException("Vous n'êtes pas autorisé à supprimer cette note");
 			}
@@ -106,19 +170,19 @@ class ProfesseurController extends Controller
 			if ($form->isValid()) {
 
 				$em = $this->getDoctrine()->getManager();
-				$em->remove($note);
+				$em->remove($controle);
 				$em->flush();
 		
 				$this->get('session')->getFlashBag()->add('info', "La note a été supprimée");
 
-				return $this->redirect($this->generateUrl('user_show', array('role'=> $note->getEleve()->getClass(), 'username'=> $note->getEleve()->getUsername()) ));
+				return $this->redirect($this->generateUrl('user_show', array('role'=> $controle->getEleve()->getClass(), 'username'=> $controle->getEleve()->getUsername()) ));
 			}
 		}
 
 		return $this->render('KubNoteBundle:Professeur:delete.html.twig',
 			array(
 				'form' => $form->createView(),
-				'note' => $note
+				'note' => $controle
 			)
 		);
 	}

@@ -45,6 +45,7 @@ class LoadCoursData extends AbstractFixture implements FixtureInterface, Contain
 			$horaire1->addSemaine( $this->getReference('semaine49') );
 
 			$cours->addHoraire($horaire1);
+			$this->addReference('cours', $cours);
 
 		$manager->persist($cours);
 		$manager->flush();

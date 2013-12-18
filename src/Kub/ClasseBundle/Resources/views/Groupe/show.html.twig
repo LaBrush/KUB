@@ -10,6 +10,12 @@
 		<h2 class="section-title">{{ groupe }}</h2>
 	</article>
 
+	<article class="article">
+		
+			{{ render(controller('KubNoteBundle:Professeur:list', {'groupe': groupe})) }}
+
+	</article>
+
 	<article class="article infos">
 
 		{% if is_granted('ROLE_SECRETAIRE') %}
@@ -18,14 +24,7 @@
 				<a class="button" href="{{ path("groupe_edit", {id: groupe.id }) }}">Modifier</a>
 			</span>
 
-		{% elseif app.user.class == "professeur" %}
-			
-			<span class="modifier">
-				<a class="button" href="{{ path('kub_notes_professeur_homepage', { groupe: groupe.name }) }}">Noter</a>
-			</span>
-
 		{% endif %}
-
 
 		{% if groupe.eleves|length > 0 %}
 			<span class="label">Eleves de {{ groupe }}:</span>

@@ -14,6 +14,12 @@ kub_notes_professeur_delete:
     requirements:
         id: \d+
 
+kub_notes_professeur_edit:
+    pattern: /noter/{id}/editer
+    defaults: { _controller: KubNoteBundle:Professeur:edit }
+    requirements:
+        id: \d+
+
 kub_notes_eleve_show:
     pattern: /eleve/{username}/notes
     defaults: { _controller: KubNoteBundle:Professeur:showEleve }
