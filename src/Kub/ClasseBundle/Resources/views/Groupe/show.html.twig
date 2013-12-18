@@ -45,7 +45,9 @@
 
 	<article class="article">
 	
-		{{ ShowEDT( groupe ) }}
+		{% if is_granted("ROLE_SECRETAIRE") or is_granted("ROLE_SURVEILLANT") %}
+			{{ ShowEDT( groupe ) }}
+		{% endif %}
 
 	</article>
 

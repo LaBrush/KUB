@@ -96,9 +96,12 @@ class ProfesseurController extends Controller
 	/**
 	 * @Secure(roles="ROLE_PROFESSEUR")
 	 */
-	public function editAction(Controle $controle)
+	public function editAction($id)
 	{
+		$controle = $this->get('doctrine.orm.default_entity_manager')->getRepository('KubNoteBundle:Controle')->findOneById($id);
+
 		$eleves = array();
+		$cours = $controle->getCours();
 
 		foreach ($cours->getGroupes() as $groupe) { $eleves = array_merge($eleves, $groupe->getEleves()->toArray() ); }
 

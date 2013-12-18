@@ -14,19 +14,37 @@ use Kub\UserBundle\Entity\Professeur ;
  */
 class ControleRepository extends EntityRepository
 {
+	public function findOneById($id)
+	{
+		$qb = $this->createQueryBuilder('c')
+			->leftJoin('c.professeur', 'p')
+			->addSelect('p')
+			->leftJoin('c.notes', 'n')
+			->addSelect('n')
+			->leftJoin('n.eleve', 'e')
+			->addSelect('e')
+
+			->where('c.id = :id')
+			->setParameter('id', $id )
+
+			->orderBy('c.date', 'DESC')
+		;
+
+		return $qb->getQuery()->getSingleResult();
+	}
 
 	public function findByProfesseurAndGroupe(Professeur $professeur, Groupe $groupe)
 	{
-		$qb = $this->createQueryBuilder("c")
+		$qb = $this->createQueryBuilder('c')
 			->join('c.professeur', 'p')
 			->where('p.id = :id')
-			->setParameter("id", $professeur->getId() )
+			->setParameter('id', $professeur->getId() )
 
 			->leftJoin('c.notes', 'n')
 			->join('n.eleve', 'e')
 			->join('e.groupes', 'g')
 			->andWhere('g.id = :g_id')
-			->setParameter("g_id", $groupe->getId() )
+			->setParameter('g_id', $groupe->getId() )
 
 			->orderBy('c.date', 'DESC')
 		;

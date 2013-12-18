@@ -14,6 +14,6 @@ class File extends BaseFile
 	public function getUploadDir()
 	{
 		// On retourne le chemin relatif vers l'image pour un navigateur
-		return 'ressources';
+		return 'uploads/ressources';
 	}
 }

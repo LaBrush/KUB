@@ -3,7 +3,7 @@
 	<ul>
 		<li>{{ controle.nom }}</li>
 		<li>{{ controle.date|date('j/d/Y') }}</li>
-		<li>chemin</li>
+		<li><a href="{{ path('kub_notes_professeur_edit', {'id': controle.id} )}}">Voir le controle</a></li>
 	</ul>
 
 {% endfor %}

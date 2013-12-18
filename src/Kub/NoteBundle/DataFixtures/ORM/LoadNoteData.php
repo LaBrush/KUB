@@ -40,8 +40,8 @@ class LoadNoteData extends AbstractFixture implements FixtureInterface, Containe
 
         $note2 = new Note ;
             $note2->setNote('17');
-            $note2->setCoefficient('34.5');
-            $note2->setEleve( $this->getReference('johnsnow') );
+            $note2->setCoefficient('20');
+            $note2->setEleve( $this->getReference('deneristhargarien') );
 
         $this->addReference('note1', $note1);
         $this->addReference('note2', $note2);

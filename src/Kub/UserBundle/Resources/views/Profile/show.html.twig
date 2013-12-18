@@ -10,8 +10,10 @@
 
 	<article class="article infos">
 
-		<span class="label">Identifiant :</span>
-		<span class="info">{{ user.username }}</span>
+		{% if is_granted("ROLE_SECRETAIRE") %}
+			<span class="label">Identifiant :</span>
+			<span class="info">{{ user.username }}</span>
+		{% endif %}
 
 		<span class="label">Adresse mail :</span>
 		<span class="info">{{ user.email }}</span>
