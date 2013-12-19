@@ -1,16 +1,34 @@
 $(function() {
 
-	var toShow = new Array;
+	// Fonctions de l'appercu
 
-	$('.trier').click( function() {
-		$('.trier').remove();
-		$('.options-tri').show();
-		$('.li-list').hide();
+	$('.ressource-selectionnee').hide();
+
+	$('.in-list').click( function() {
+		var index = $('.in-list').index(this);
+
+		$('.preview').attr("src", "about:blank");
+
+		$('.ressource-selectionnee').hide();
+
+		$('html, body').animate({scrollTop:0}, 'slow');
+
+		$('.ressource-selectionnee').eq(index).show();
+
+		$('.url').hide();
+
+		$('.preview').attr("src", $('.url').eq(index).text());
 	})
+
+	// Fonctions de tri
+
+	var toShow = new Array;
 
 	$('.niveau>li').click( function() {
 
 		$(this).toggleClass('unchecked');
+		$(this).toggleClass('checked');
+
 
 		var niveau = $(this).attr('id');
 
@@ -40,6 +58,8 @@ $(function() {
 	$('.type>li').click( function() {
 
 		$(this).toggleClass('unchecked');
+		$(this).toggleClass('checked');
+
 
 		var type = $(this).attr('id');
 

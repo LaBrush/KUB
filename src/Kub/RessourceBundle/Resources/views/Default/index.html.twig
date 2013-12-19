@@ -12,23 +12,38 @@
 
 	<article class="article">
 		<div class="liste-ressources">
+			
+			{% for ressource in ressources %}
+
+				<div class="ressource-selectionnee">					
+					<span class="label">{{ ressource.titre }}</span>
+					<a class="button-yes" href="{{ ressource.url }}">Accéder</a>
+					<span class="url">{{ ressource.url }}</span>
+
+					{% if ressource.type == 'web' %}
+		
+						<iframe class="preview" src="about:blank"></iframe>
+	
+					{% elseif ressource.type == 'file' %}
+						
+						<img class="preview" src="about:blank" alt="{{ ressource.titre }}">			
+
+					{% endif %}
+					
+					<div class="details">
+						<span class="info">{{ ressource.description }}</span>				
+						<span class="info-complementaires"><em><strong>{{ ressource.auteur }}</strong> pour les {{ ressource.niveau }}s, en {{ ressource.matiere }} </em></span>
+					</div>
+				</div>
+
+			{% endfor %}
+
 
 			<ul class="liste">
 				{% for ressource in ressources %}
 			
 					<li class="li-list in-list {{ ressource.type }} {{ ressource.niveau }} {{ ressource.matiere }}">
-						{{ ressource.titre }} - {{ ressource.description }}
-
-						{% if ressource.type == 'web' %}
-		
-							<a href="{{ ressource.url }}">Voir sur le web</a>
-		
-						{% elseif ressource.type == 'file' %}
-
-							<a href="{{ path(ressource.webPath) }}">Télécharger</a>					
-
-						{% endif %}
-
+						{{ ressource.titre }}
 					</li>
 
 				{% endfor %}
@@ -38,14 +53,14 @@
 
 		<div class="tri-ressources">
 			<ul class="wrap niveau">
-				<li class="in-tri-ressources" id="seconde" class="unchecked">2nd</li>
-				<li class="in-tri-ressources" id="premiere" class="unchecked">1ere</li>
-				<li class="in-tri-ressources" id="terminale" class="unchecked">Ter.</li>
+				<li class="in-tri-ressources checked" id="seconde" class="unchecked">Seconde</li>
+				<li class="in-tri-ressources checked" id="premiere" class="unchecked">Première</li>
+				<li class="in-tri-ressources checked" id="terminale" class="unchecked">Terminale</li>
 			</ul>
 
 			<ul class="wrap type">
-				<li class="in-tri-ressources" id="1" class="unchecked">Fichier</li>
-				<li class="in-tri-ressources" id="0" class="unchecked">Web</li>
+				<li class="in-tri-ressources checked" id="1" class="unchecked">Fichier</li>
+				<li class="in-tri-ressources checked" id="0" class="unchecked">Web</li>
 			</ul>
 			
 			<div class="matieres">

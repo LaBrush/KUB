@@ -1,3 +1,38 @@
+.ressource-selectionnee
+{
+	background: $header;
+	padding: 10px 15px;
+	margin: 0 0 20px 0;
+	@include border-radius(3px);
+
+	.label
+	{
+		font-weight: 700;
+		margin: 0 0 10px 0;
+	}
+
+	.info-complementaires
+	{
+		display: block;
+		text-align: right;
+	}
+
+	.preview
+	{
+		display: block;
+		width: 100%;
+		min-height: 330px;
+		margin: 0 auto 10px auto;
+		@include border-radius(3px);
+	}
+
+	.button-yes
+	{
+		float: right;
+		margin: 0 0 5px 0;
+	}
+}
+
 .liste-ressources
 {
 	display: inline-block;
@@ -20,6 +55,7 @@
 		.in-tri-ressources
 		{
 			padding: 4px 10px;
+			cursor: pointer;
 
 			&:hover, &:active, &:focus
 			{
@@ -33,11 +69,42 @@
 	.matieres
 	{
 		margin: 10px;
+		max-width: 175px;
 	}
 
 	.ressources
 	{
 		margin: 10px;
 		padding: 5px;
+	}
+
+	.unchecked
+	{
+		&:after
+		{ 
+			content: "";
+			float: right;
+			display: inline-block;
+			min-width: 1em;
+			min-height: 1em;
+			margin: 3px 0 0 0;
+			@include border-radius(10px);
+			background-color: $rouge;
+		}
+	}
+
+	.checked
+	{
+		&:after
+		{ 
+			content: "";
+			float: right;
+			display: inline-block;
+			min-width: 1em;
+			min-height: 1em;
+			margin: 3px 0 0 0;
+			@include border-radius(10px);
+			background-color: $vert;
+		}
 	}
 }

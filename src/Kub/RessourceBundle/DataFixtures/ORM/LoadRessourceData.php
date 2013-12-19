@@ -34,6 +34,8 @@ class LoadRessourceData extends AbstractFixture implements FixtureInterface, Con
         $professeur = $this->getReference('professeur');
 
         $ressource = new Ressource();
+            $ressource->setType("web");
+            $ressource->setDescription('Voici un billet en rapport avec le Kub');
             $ressource->setAuteur($professeur);
             $ressource->setTitre("L'histoire du Kub");
             $ressource->setUrl("http://legarsdacote.tumblr.com/kub");
