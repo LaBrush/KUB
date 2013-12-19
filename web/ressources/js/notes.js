@@ -26,9 +26,12 @@ $(function() {
 		coeff.val($(this).val());
 	});
 
-	//Cette fonction permet de checker automatiquement les box lors de l'ajour des notes
+	//Cette fonction permet de checker automatiquement les box lors de l'ajout des notes
+	
 	$('.note').keyup(function() {
 		var that = $(this);
-		that.parent().parent().find(':checkbox').prop('checked', that.val() != "" );
-	}).keyup();
+		that
+		.parent().parent().find(':checkbox')
+		.prop('checked', that.val() != "" );
+	});
 });
