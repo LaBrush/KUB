@@ -880,6 +880,7 @@
 	},
 	"file_history":
 	[
+		"/Users/adrienbocquet/Sites/MAMP/Kub/app/Resources/views/base.html.twig",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/web/ressources/js/appel.js",
 		"/Users/adrienbocquet/Sites/MAMP/KUB/web/ressources/sass/partials/pages/_appel.scss",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/EDTBundle/Resources/config/services.yml",
@@ -1006,8 +1007,7 @@
 		"/Users/adrienbocquet/Sites/MAMP/Kub/web/app_dev.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/EDTBundle/Entity/Matiere.php",
 		"/Applications/MAMP/bin/php/php5.5.3/conf/php.ini",
-		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/EDTBundle/Controller/CoursController.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/EDTBundle/Validator/Constraints/TimeEDTCompatibleValidator.php"
+		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/EDTBundle/Controller/CoursController.php"
 	],
 	"find":
 	{
@@ -1015,7 +1015,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 93.0,
+		"height": 0.0,
 		"where_history":
 		[
 			"/Users/adrienbocquet/Sites/MAMP/KUB/,*.scss",
@@ -1281,6 +1281,10 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"base.",
+				"app/Resources/views/base.html.twig"
+			],
 			[
 				"appel",
 				"web/ressources/js/appel.js"
@@ -1788,10 +1792,6 @@
 			[
 				"loadma",
 				"src/Kub/EDTBundle/DataFixtures/ORM/LoadMatiereData.php"
-			],
-			[
-				"loadcat",
-				"src/Kub/EDTBundle/DataFixtures/ORM/LoadCategorieData.php"
 			]
 		],
 		"width": 0.0
