@@ -35,7 +35,7 @@ class Note
 	private $id;  
 
 	/**
-	 * @ORM\ManyToOne(targetEntity="Kub\UserBundle\Entity\Eleve")
+	 * @ORM\ManyToOne(targetEntity="Kub\UserBundle\Entity\Eleve", inversedBy="notes", cascade={"all"})
 	 */
 	private $eleve;
 

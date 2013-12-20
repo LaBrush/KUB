@@ -1,21 +1,27 @@
 kub_notes_eleve_homepage:
-    pattern:  /notes
+    pattern:  /mesnotes
     defaults: { _controller: KubNoteBundle:Eleve:index }
 
 kub_notes_professeur_homepage:
-    pattern:  /noter/{cours}
+    pattern:  /notes/{cours}
     defaults: { _controller: KubNoteBundle:Professeur:add, cours: null }
     requirements:
         id: \d+
 
 kub_notes_professeur_delete:
-    pattern:  /noter/{note}/supprimer
+    pattern:  /notes/{controle}/supprimer
     defaults: { _controller: KubNoteBundle:Professeur:delete }
     requirements:
         id: \d+
 
+kub_notes_professeur_show:
+    pattern: /notes/{id}/detail
+    defaults: { _controller: KubNoteBundle:Professeur:show }
+    requirements:
+        id: \d+
+
 kub_notes_professeur_edit:
-    pattern: /noter/{id}/editer
+    pattern: /notes/{id}/editer
     defaults: { _controller: KubNoteBundle:Professeur:edit }
     requirements:
         id: \d+

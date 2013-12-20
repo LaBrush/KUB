@@ -84,18 +84,6 @@ class ProfesseurController extends Controller
 	/**
 	 * @Secure(roles="ROLE_PROFESSEUR")
 	 */
-	public function listAction(Groupe $groupe)
-	{
-		$controles = $this->get('doctrine.orm.default_entity_manager')->getRepository('KubNoteBundle:Controle')->findByProfesseurAndGroupe($this->getUser(), $groupe);
-
-		return $this->render('KubNoteBundle:Professeur:groupe.html.twig',array(
-			'controles' => $controles
-		));
-	}
-
-	/**
-	 * @Secure(roles="ROLE_PROFESSEUR")
-	 */
 	public function editAction($id)
 	{
 		$controle = $this->get('doctrine.orm.default_entity_manager')->getRepository('KubNoteBundle:Controle')->findOneById($id);
@@ -150,6 +138,30 @@ class ProfesseurController extends Controller
 	/**
 	 * @Secure(roles="ROLE_PROFESSEUR")
 	 */
+	public function listAction(Groupe $groupe)
+	{
+		$controles = $this->get('doctrine.orm.default_entity_manager')->getRepository('KubNoteBundle:Controle')->findByProfesseurAndGroupe($this->getUser(), $groupe);
+
+		return $this->render('KubNoteBundle:Groupe:list_content.html.twig',array(
+			'controles' => $controles
+		));
+	}
+
+	/**
+	 * @Secure(roles="ROLE_PROFESSEUR")
+	 */
+	public function showAction($id)
+	{
+		$controle = $this->get('doctrine.orm.default_entity_manager')->getRepository('KubNoteBundle:Controle')->findOneById( $id );
+
+		return $this->render('KubNoteBundle:Groupe:show.html.twig',array(
+			'controle' => $controle
+		));
+	}
+
+	/**
+	 * @Secure(roles="ROLE_PROFESSEUR")
+	 */
 	public function deleteAction(Controle $controle)
 	{
 		$form = $this->createFormBuilder(null, array(
@@ -190,16 +202,11 @@ class ProfesseurController extends Controller
 		);
 	}
 
-	public function showEleveAction(Eleve $eleve)
+	public function showEleveAction($username)
 	{
-		$liste_notes = $this->get('doctrine.orm.entity_manager')->getRepository('KubNoteBundle:Note')->findByEleve( $eleve );
-
-		$template = 'show';
-		if($this->get('request')->attributes->get('_route') != 'kub_notes_eleve_show') { $template .= "_content" ; }
-
-		return $this->render('KubNoteBundle:Show:' . $template . '.html.twig',
+		$eleve = $this->get('doctrine.orm.entity_manager')->getRepository('KubUserBundle:Eleve')->findByUsernameWithNotes( $username );
+		return $this->render('KubNoteBundle:Professeur:show_eleve.html.twig',
 			array(
-				'notes' => $liste_notes,
 				'eleve' => $eleve
 			)
 		);   

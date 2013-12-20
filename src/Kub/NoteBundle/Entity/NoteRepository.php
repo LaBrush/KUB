@@ -13,19 +13,4 @@ use Kub\UserBundle\Entity\Eleve ;
  */
 class NoteRepository extends EntityRepository
 {
-
-	public function findByEleve(Eleve $eleve)
-	{
-		$qb = $this->createQueryBuilder('n')
-			->join('n.controle', 'c')
-			->addSelect('c')
-			->join('c.matiere', 'm')
-			->addSelect('m')
-			->join('c.professeur', 'p')
-			->addSelect('p')
-		;
-
-		return $qb->getQuery()->getArrayResult();
-	}
-
 }

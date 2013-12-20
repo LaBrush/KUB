@@ -104,7 +104,7 @@ class Horaire
      * @param \DateTime $debut
      * @return Horaire
      */
-    public function setDebut($debut)
+    public function setDebut(\Datetime $debut)
     {
         $this->debut = $debut;
     

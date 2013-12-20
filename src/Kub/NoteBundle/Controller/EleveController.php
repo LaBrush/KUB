@@ -12,10 +12,10 @@ class EleveController extends Controller
      */
     public function indexAction()
     {
-        $liste_notes = $this->get('doctrine.orm.entity_manager')->getRepository('KubNoteBundle:Note')->findByEleve( $this->getUser() );
+        $eleve = $this->get('doctrine.orm.entity_manager')->getRepository('KubUserBundle:Eleve')->findByUsernameWithNotes( $this->getUser()->getUsername() );
 
         return $this->render("KubNoteBundle:Eleve:index.html.twig", array(
-        	"notes" => $liste_notes
+        	"eleve" => $eleve
         ));
     }
 }

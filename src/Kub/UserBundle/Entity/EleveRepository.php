@@ -39,4 +39,18 @@ class EleveRepository extends UserRepository
 
 		return $qb->getQuery()->getResult();
 	}
+
+	public function findByUsernameWithNotes($username)
+	{
+		$qb = $this->createQueryBuilder("e")
+			->join('e.notes', 'n')
+			->addSelect('n')
+			->join('n.controle', 'c')
+			->addSelect('c')
+			->where("e.username = :username")
+			->setParameter("username", $username)
+		;
+
+		return $qb->getQuery()->getSingleResult();	
+	}
 }

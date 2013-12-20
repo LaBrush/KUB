@@ -37,8 +37,8 @@
 {% set details = "" %}
 {% set coefficientRatio = 0 %}
 {% set noteSurVingt = 0 %}
-	
-{% for note in notes %}
+
+{% for note in eleve.notes %}
 
 	{% if note.controle.matiere.name != matiere %}
 
@@ -95,11 +95,6 @@
 	{% endif %}
 
 {% endfor %}
-
-
-<article class="article">
-	<h3 class="section-title">Mes notes</h3>
-</article>
 
 <article class="article">
 	<table class="notes-by-matieres">

@@ -4,7 +4,7 @@
 		<div class="wrap">
 			<span class="prenom">
 				{{ form_errors(form.nom) }}
-				{{ form_label(form.nom) }}  <span class="input">{{ form_widget(form.nom) }}</span>
+				{{ form_label(form.nom) }}  <span class="input">{{ form_widget(form.nom, {'attr': {'tabindex': '1'}}) }}</span>
 			</span>
 
 			<span class="eleves-a-noter">
@@ -18,10 +18,11 @@
 							Noter
 						</th>
 						<th>
-							Note&nbsp;&nbsp;/ <input type="text" class="coeff-global"></span>
+							Note&nbsp;&nbsp;/ <input type="text" class="coeff-global" tabindex="2"></span>
 						</th>
 					</tr>
 			
+					{% set i = 3 %}
 					{% for note in form.notes %}
 
 						<tr>
@@ -34,10 +35,12 @@
 							</td>
 							<td>
 								{{ form_errors(note.note) }} {{ form_errors(note.coefficient) }}
-								{{ form_widget(note.note, { 'attr': {'class': 'note'} }) }} / {{ form_widget(note.coefficient, { 'attr': {'class': 'coeff'} }) }}
+								{{ form_widget(note.note, { 'attr': {'class': 'note', 'tabindex': i }}) }} / {{ form_widget(note.coefficient, { 'attr': {'class': 'coeff'} }) }}
 							</td>
 						</tr>
 
+			
+						{% set i = i + 1 %}
 					{% endfor %}
 
 				</table>
