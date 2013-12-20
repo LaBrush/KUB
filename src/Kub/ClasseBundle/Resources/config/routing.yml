@@ -1,17 +1,17 @@
 groupe_show:
-    pattern:  /groupe/{id}/show
+    pattern:  /groupe/{id}/voir
     defaults: { _controller: "KubClasseBundle:Groupe:show" }
 
 groupe_create:
-    pattern:  /groupe/add
+    pattern:  /groupe/ajouter
     defaults: { _controller: "KubClasseBundle:Groupe:create" }
 
 groupe_edit:
-    pattern:  /groupe/{id}/edit
+    pattern:  /groupe/{id}/editer
     defaults: { _controller: "KubClasseBundle:Groupe:edit" }
 
 groupe_delete:
-    pattern:  /groupe/{id}/delete
+    pattern:  /groupe/{id}/supprimer
     defaults: { _controller: "KubClasseBundle:Groupe:delete" }
 
 groupe_list:

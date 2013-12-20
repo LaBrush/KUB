@@ -45,11 +45,21 @@ class RessourceHandler
 		$this->em->persist($data);
 		$this->em->flush();
 
-		// $this->notification->addNotification('ArianePostNotification', array(
+		$groupes = $this->security->getToken()->getUser()->getGroupes();
+		foreach ($groupes as $groupe) {
+			if($groupe->getNiveau()->getId() != $data->getNiveau()->getId())
+			{
+				if(($key = array_search($groupe, $groupes)) !== FALSE) {
+					unset($groupes[$key]);
+				}
+			}
+		}
 
-		// 	'userTarget' => $this->security->getToken()->getUser()->getProfesseurs(),
-		// 	'contenu' => $data
+		$this->notification->addNotification('NewRessourceNotification', array(
 
-		// ));
+			'groupesTarget' => $groupes,
+			'ressource' => $data
+
+		));
 	}
 }

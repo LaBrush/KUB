@@ -21,7 +21,7 @@ kub_notes_professeur_show:
         id: \d+
 
 kub_notes_professeur_edit:
-    pattern: /notes/{id}/editer
+    pattern: /notes/{id}/editerer
     defaults: { _controller: KubNoteBundle:Professeur:edit }
     requirements:
         id: \d+

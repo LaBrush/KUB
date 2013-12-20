@@ -43,23 +43,23 @@ class NotificationManager
 			unset($config["userTarget"]);
 		}
 
-		if(array_key_exists("groupeTarget", $config)){
-			if(is_array($config["groupeTarget"]))
+		if(array_key_exists("groupesTarget", $config)){
+			if(is_array($config["groupesTarget"]))
 			{
-				for ($i = 0; $i < count($config["groupeTarget"]) ; $i++) { 
-					$notification->addGroupeTarget( $config["groupeTarget"][$i] );		
+				for ($i = 0; $i < count($config["groupesTarget"]) ; $i++) { 
+					$notification->addGroupesTarget( $config["groupesTarget"][$i] );		
 				}
 			}
 			else
 			{
-				$notification->addGroupeTarget( $config["groupeTarget"] );
+				$notification->addGroupesTarget( $config["groupesTarget"] );
 			}
 
-			unset($config["groupeTarget"]);
+			unset($config["groupesTarget"]);
 		}
 
 		foreach ($config as $key => $value) {
-			$function = 'set' . $key ;
+			$function = 'set' . ucfirst($key) ;
 			$notification->$function($value);
 		}
 		

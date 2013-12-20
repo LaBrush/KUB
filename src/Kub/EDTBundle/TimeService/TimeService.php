@@ -175,7 +175,6 @@ class TimeService
 			);
 		}	
 
-		// ob_start();
 		$last_horaire_used = $this->getFirstHoraire();
 		for ($x=0; $x < count($horaires) ; $x++) { 
 			for ($y=0; $y < count($jours); $y++) { 
@@ -195,7 +194,6 @@ class TimeService
 
 						$edt[ $x ]['jours'][ $y ] = $this->interval($current_horaire);
 						$last_horaire_used = $current_horaire->getFin() ;
-						// echo $last_horaire_used->format('H:i') . ' ';
 
 						if(!isset($last_cours_day[$y]) || $last_cours_day[$y] < $x){ $last_cours_day[$y] = $x ; }
 					}
@@ -205,9 +203,6 @@ class TimeService
 
 			}
 		}
-
-		// throw new \Exception(ob_get_clean());
-		
 
 		$jours_keys = array_keys($this->getJours());
 		for ($i=0; $i < count($jours_keys) ; $i++) { 
@@ -243,29 +238,6 @@ class TimeService
 				);
 			}	
 		}
-
-		// ob_start();
-
-		// foreach ($edt as $key => $interval) {
-		// 	echo "$key =>";
-
-		// 	foreach ($interval as $key2 => $value) {
-
-		// 		echo "$key2 =";
-		// 		if(!is_array($value) && get_class($value) == "DateTime")
-		// 		{
-		// 			$value = $value->format('H:i');
-		// 			echo $value . ' ';
-		// 		}
-		// 		elseif (is_array($value)) {
-		// 			print_r(array_keys($value));
-		// 		}
-
-		// 	}
-		// }
-		// // ob_clean();
-		// throw new \Exception(ob_get_clean());
-		
 
 		return $edt ;
 	}

@@ -12,10 +12,27 @@ class EleveController extends Controller
      */
     public function indexAction()
     {
-        $eleve = $this->get('doctrine.orm.entity_manager')->getRepository('KubUserBundle:Eleve')->findByUsernameWithNotes( $this->getUser()->getUsername() );
+        $user = $this->getUser();
 
-        return $this->render("KubNoteBundle:Eleve:index.html.twig", array(
-        	"eleve" => $eleve
-        ));
+        $notes = $this->get('doctrine.orm.entity_manager')->getRepository('KubNoteBundle:Note')->findByUsername( $user->getUsername() );
+        $moyennes = $this->get('doctrine.orm.entity_manager')->getRepository('KubNoteBundle:Note')->findMoyennesFor( $user->getUsername() );
+
+        $matieres = array();
+
+        for ($i=0; $i < count($notes) ; $i++) { 
+            if(!isset($matieres[ $notes[$i]['matiere'] ])) {
+                $matieres[ $notes[$i]['matiere'] ] = array();   
+            }
+
+            $matieres[ $notes[$i]['matiere'] ][] = $notes[$i]['note'] ;
+        }                       
+
+        return $this->render('KubNoteBundle:Professeur:show_eleve.html.twig',
+            array(
+                'matieres' => $matieres,
+                'moyennes' => $moyennes,
+                'eleve' => $user
+            )
+        ); 
     }
 }

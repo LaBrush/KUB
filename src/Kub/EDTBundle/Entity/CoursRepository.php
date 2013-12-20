@@ -41,4 +41,25 @@ class CoursRepository extends EntityRepository
 		return $qb->getQuery()->getOneOrNullResult();
 	}
 
+	public function getByIdWithAll($id)
+	{
+		$qb = $this->createQueryBuilder('c')
+			->join('c.professeur', 'p')
+			->addSelect('p')
+			->join('c.groupes', 'g')
+			->addSelect('g')
+			->join('c.horaires', 'h')
+			->addSelect('h')
+			->join('h.jour', 'j')
+			->addSelect('j')
+			->join('h.semaines', 's')
+			->addSelect('s')
+			
+			->where('c.id = :id')
+			->setParameter('id', $id)
+		;
+
+		return $qb->getQuery()->getResult();
+	}
+
 }

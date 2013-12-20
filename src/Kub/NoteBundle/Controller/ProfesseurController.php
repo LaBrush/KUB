@@ -107,7 +107,7 @@ class ProfesseurController extends Controller
 
 		$form  = $this->createForm(new ControleType( $cours->getProfesseur(), $cours ), $controle, 
 			array(
-				'action' => $this->generateUrl('kub_notes_professeur_homepage', array('cours' => $cours->getId()))
+				'action' => $this->generateUrl('kub_notes_professeur_edit', array('id' => $controle->getId()))
 			)
 		);
 
@@ -119,7 +119,6 @@ class ProfesseurController extends Controller
 			if($formHandler->process())
 			{
 				$this->get('session')->getFlashBag()->add('info', "Le controle a bien été ajouté");
-
 				return $this->redirect($this->generateUrl("home_homepage"));
 			}
 			else
@@ -202,12 +201,26 @@ class ProfesseurController extends Controller
 		);
 	}
 
-	public function showEleveAction($username)
+	public function showEleveAction(Eleve $user)
 	{
-		$eleve = $this->get('doctrine.orm.entity_manager')->getRepository('KubUserBundle:Eleve')->findByUsernameWithNotes( $username );
+		$notes = $this->get('doctrine.orm.entity_manager')->getRepository('KubNoteBundle:Note')->findByUsername( $user->getUsername() );
+		$moyennes = $this->get('doctrine.orm.entity_manager')->getRepository('KubNoteBundle:Note')->findMoyennesFor( $user->getUsername() );
+
+		$matieres = array();
+
+		for ($i=0; $i < count($notes) ; $i++) { 
+			if(!isset($matieres[ $notes[$i]['matiere'] ])) {
+				$matieres[ $notes[$i]['matiere'] ] = array();	
+			}
+
+			$matieres[ $notes[$i]['matiere'] ][] = $notes[$i]['note'] ;
+		}						
+
 		return $this->render('KubNoteBundle:Professeur:show_eleve.html.twig',
 			array(
-				'eleve' => $eleve
+				'matieres' => $matieres,
+				'moyennes' => $moyennes,
+				'eleve' => $user
 			)
 		);   
 

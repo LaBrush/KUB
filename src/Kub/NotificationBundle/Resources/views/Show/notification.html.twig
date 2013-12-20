@@ -5,7 +5,7 @@
 	</div>
 	<div class="content-article">
 		<p>
-			{{ notification.format }}
+			{{ notification.format( app.user.class ) }}
 		</p>
 		<div class="buttons-article-news">
 			<a href="{{ path(notification.route) }}">{{ notification.routeTitle }}</a>

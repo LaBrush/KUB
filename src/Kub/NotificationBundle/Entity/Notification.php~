@@ -11,13 +11,25 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity(repositoryClass="Kub\NotificationBundle\Entity\NotificationRepository")
  * @ORM\InheritanceType("SINGLE_TABLE")
  * @ORM\DiscriminatorColumn(name="discr", type="string")
- * @ORM\DiscriminatorMap({"acn" = "ArianeCommentaireNotification", "nan" = "NoteAddedNotification", "apn" = "ArianePostNotification"})
+ * @ORM\DiscriminatorMap({
+ *	"acn" = "ArianeCommentaireNotification", 
+ *	"nan" = "NoteAddedNotification", 
+ *  "nrn" = "NewRessourceNotification",
+ *	"apn" = "ArianePostNotification"
+ * })
  *
  * @ORM\HasLifecycleCallbacks()
  * @ORM\MappedSuperclass
  */
 abstract class Notification
 {
+	private $route ;
+	private $routeName ;
+	private $titre ;
+	private $type ;
+
+	abstract public function format($scope);
+
 	/**
 	 * @ORM\postLoad()
 	 */
@@ -29,6 +41,11 @@ abstract class Notification
 		$this->groupesTarget = new \Doctrine\Common\Collections\ArrayCollection;
 		$this->userTarget = new \Doctrine\Common\Collections\ArrayCollection;
 	}
+
+	public function __toString()
+    {
+        return (string)$this->format();
+    }
 
 	public function __construct()
 	{
@@ -72,23 +89,6 @@ abstract class Notification
 	 * @ORM\ManyToOne(targetEntity="Kub\UserBundle\Entity\User")
 	 */
 	private $auteur ;
-
-	private $route ;
-
-	private $routeName ;
-
-	private $titre ;
-
-	private $contenu ;
-
-	public function setContenu($contenu)
-    {
-        $this->contenu = $contenu;
-    
-        return $this;
-    }
-
-	abstract function getContenu();
 
 	public function getRoute()
 	{
@@ -154,29 +154,6 @@ abstract class Notification
 	public function getEveryone()
 	{
 		return $this->everyone;
-	}
-
-	/**
-	 * Add groupesTarget
-	 *
-	 * @param \Kub\UserBundle\Entity\Groupe $groupesTarget
-	 * @return Notification
-	 */
-	public function addGroupesTarget(\Kub\UserBundle\Entity\Groupe $groupesTarget)
-	{
-		$this->groupesTarget[] = $groupesTarget;
-	
-		return $this;
-	}
-
-	/**
-	 * Remove groupesTarget
-	 *
-	 * @param \Kub\UserBundle\Entity\Groupe $groupesTarget
-	 */
-	public function removeGroupesTarget(\Kub\UserBundle\Entity\Groupe $groupesTarget)
-	{
-		$this->groupesTarget->removeElement($groupesTarget);
 	}
 
 	/**
@@ -247,4 +224,27 @@ abstract class Notification
 		return $this->auteur;
 	}
 
+
+    /**
+     * Add groupesTarget
+     *
+     * @param \Kub\ClasseBundle\Entity\Groupe $groupesTarget
+     * @return Notification
+     */
+    public function addGroupesTarget(\Kub\ClasseBundle\Entity\Groupe $groupesTarget)
+    {
+        $this->groupesTarget[] = $groupesTarget;
+    
+        return $this;
+    }
+
+    /**
+     * Remove groupesTarget
+     *
+     * @param \Kub\ClasseBundle\Entity\Groupe $groupesTarget
+     */
+    public function removeGroupesTarget(\Kub\ClasseBundle\Entity\Groupe $groupesTarget)
+    {
+        $this->groupesTarget->removeElement($groupesTarget);
+    }
 }

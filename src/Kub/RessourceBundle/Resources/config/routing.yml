@@ -3,5 +3,5 @@ kub_ressource_homepage:
     defaults: { _controller: KubRessourceBundle:Default:index }
 
 kub_ressource_add:
-    pattern:  /add
+    pattern:  /ajouter
     defaults: { _controller: KubRessourceBundle:Default:add }
