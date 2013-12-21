@@ -1,4 +1,4 @@
-*/* Menu */
+/* Menu */
 
 .bordered-accueil {border-left: 4px solid $accueil;}
 .bordered-espace-collaboratif {border-left: 4px solid $espace-collaboratif;}
@@ -14,6 +14,14 @@
 .bordered-groupes {border-left: 4px solid $groupes;}
 
 
+/**************************************************************************/
+/* Matieres */
+
+.scientifiques {background: $jaune;}
+.societe {background: $vert;}
+.langues {background: $bleu;}
+.options {background: $rose;}
+.autres {background: $rouge;}
 
 
 /**************************************************************************/

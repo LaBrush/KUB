@@ -1,44 +1,79 @@
-.ressource-selectionnee
-{
-	background: $header;
-	padding: 10px 15px;
-	margin: 0 0 20px 0;
-	@include border-radius(3px);
-
-	.label
-	{
-		font-weight: 700;
-		margin: 0 0 10px 0;
-	}
-
-	.info-complementaires
-	{
-		display: block;
-		text-align: right;
-	}
-
-	.preview
-	{
-		display: block;
-		width: 100%;
-		min-height: 330px;
-		margin: 0 auto 10px auto;
-		@include border-radius(3px);
-	}
-
-	.button-yes
-	{
-		float: right;
-		margin: 0 0 5px 0;
-	}
-}
-
 .liste-ressources
 {
 	display: inline-block;
-	width: 75%;
-	padding: 0 20px 0 0;
+	width: 520px;
+	margin: auto;
 	@include box-sizing(border-box);
+}
+
+.ressource-hidden
+{
+	display: none;
+}
+
+.ressource
+{
+	display: table;
+	float: left;
+	width: 100px;
+	height: 100px;
+	margin: 5px 10px 5px 0;
+	cursor: pointer;
+	@include border-radius(2px);
+
+	background: $header;
+	text-align: center;
+
+	padding: 3px 10px;
+	
+	span
+	{
+		display: block;
+	}
+	
+	&:hover, &:active, &:focus
+	{
+		background: darken($header, 5%);
+
+		.details
+		{
+			display: table-cell;
+			vertical-align: middle;
+			width: 100%;
+			max-height: 100%;
+
+			.infos
+			{
+				margin: 0 0 7px 0;
+				line-height: 1.2em;
+				font-size: 0.8em;
+			}
+
+			.infos-complementaires
+			{
+				font-size: 0.85em;
+				line-height: 1em;
+			}
+		}
+
+		.label
+		{
+			display: none;
+		}
+	}
+
+	.label
+	{
+		display: table-cell;
+		vertical-align: middle;
+	}
+
+	.details
+	{
+		display: none;
+	}
+
+	
 }
 
 .tri-ressources
