@@ -14,10 +14,13 @@ class CoursController extends Controller
 	public function showAction($id)
 	{
 		$cours = $this->get('doctrine.orm.entity_manager')->getRepository('KubEDTBundle:Cours');
+<<<<<<< HEAD
 
 		$this->render("KubEDTBundle:Cours:show.html.twig", array(
 			'cours' => $cours
 		));
+=======
+>>>>>>> fb31581fce34d2544c38f13821212d901228d16c
 	}
 
 	/**
