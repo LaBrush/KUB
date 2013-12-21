@@ -4,6 +4,16 @@
 	width: 520px;
 	margin: auto;
 	@include box-sizing(border-box);
+
+	@media all and (max-width: 820px)
+	{
+		width: 390px;
+	}
+
+	@media all and (max-width: 675px)
+	{
+		width: 260px;
+	}
 }
 
 .ressource-hidden

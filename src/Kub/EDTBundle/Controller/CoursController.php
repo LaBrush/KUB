@@ -13,7 +13,7 @@ class CoursController extends Controller
 {
 	public function showAction($id)
 	{
-		$cours = $this->get('doctrine.orm.entity_manager')->getRepository('KubEDTBundle:Cours')
+		$cours = $this->get('doctrine.orm.entity_manager')->getRepository('KubEDTBundle:Cours');
 	}
 
 	/**
