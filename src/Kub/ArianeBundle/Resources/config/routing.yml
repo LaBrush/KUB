@@ -1,15 +1,15 @@
 ariane_post_add:
-    pattern: /add
+    pattern: /ajouter
     defaults: { _controller: KubArianeBundle:Post:add }
 
 ariane_post_edit:
-    pattern: /edit/{id}
+    pattern: /editer/{id}
     defaults: { _controller: KubArianeBundle:Post:edit }
     requirements: 
         id: \d+
 
 ariane_post_delete:
-    pattern: /delete/{id}
+    pattern: /supprimer/{id}
     defaults: { _controller: KubArianeBundle:Post:delete }
     requirements: 
         id: \d+
@@ -19,13 +19,13 @@ ariane_homepage:
     defaults: { _controller: KubArianeBundle:Default:index,  username: null }
 
 ariane_commentaire_add:
-    pattern: /{post}/comment/add
+    pattern: /{post}/comment/ajouter
     defaults: { _controller: KubArianeBundle:Commentaire:add }
     requirements: 
         id: \d+
 
 ariane_commentaire_delete:
-    pattern: /comment/{commentaire}/delete
+    pattern: /comment/{commentaire}/supprimer
     defaults: { _controller: KubArianeBundle:Commentaire:delete }
     requirements: 
         id: \d+

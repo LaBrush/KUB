@@ -1,5 +1,5 @@
 cours_create:
-    pattern:  /add
+    pattern:  /ajouter
     defaults: { _controller: "KubEDTBundle:Cours:create" }
 
 cours_list:
@@ -7,10 +7,16 @@ cours_list:
     defaults: { _controller: "KubEDTBundle:Cours:list" }
 
 cours_delete:
-    pattern:  /{id}/delete
+    pattern:  /{id}/supprimer
     defaults: { _controller: "KubEDTBundle:Cours:delete" }
     requirements: 
         id: \d+
+
+cours_edit:
+    pattern:  /{id}/editer
+    requirements: 
+        id: \d+
+    defaults: { _controller: "KubEDTBundle:Cours:edit" }
 
 cours_edit:
     pattern:  /{id}

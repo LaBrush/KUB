@@ -3,4 +3,5 @@
 /app/config/parameters.yml
 /app/logs/*
 /web/ressources/.sass-cache/*
+/web/uploads/*
 .com.apple.timemachine.supported

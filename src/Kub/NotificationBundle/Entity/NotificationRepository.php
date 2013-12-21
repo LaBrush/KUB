@@ -19,7 +19,8 @@ class NotificationRepository extends EntityRepository
 			->addSelect('a')
 			->leftJoin('n.userTarget', 'u') 
 			->where('u.id = :id') 
-			->setParameter('id',$user->getId()) 
+			->setParameter('id',$user->getId())
+
 			->orderBy('n.date', 'DESC')
 			->setFirstResult($offset)
 			->setMaxResults(12)
@@ -33,7 +34,7 @@ class NotificationRepository extends EntityRepository
 			}
 
 			$qb->leftJoin('n.groupesTarget', 'g')
-			   ->expr()->in('g.id', $groupes_id)
+			   ->orWhere( $qb->expr()->in('g.id', $groupes_id))
 			;
 		}
 

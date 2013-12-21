@@ -168,7 +168,7 @@ class TimeService
 		$horaires = $this->getHoraires();
 		$jours = $this->getJours();
 
-		for ($i=0; $i < count($horaires)-1 ; $i++) { 
+		for ($i=0; $i < count($horaires) ; $i++) { 
 			$edt[$i] = array( 
 				"horaire" => $horaires[$i],
 				"jours" => array()
@@ -176,7 +176,7 @@ class TimeService
 		}	
 
 		$last_horaire_used = $this->getFirstHoraire();
-		for ($x=0; $x < count($horaires)-1 ; $x++) { 
+		for ($x=0; $x < count($horaires) ; $x++) { 
 			for ($y=0; $y < count($jours); $y++) { 
 				
 				for ($z=0; $z < count($horaires_cours); $z++) { 
@@ -193,7 +193,7 @@ class TimeService
 						}
 
 						$edt[ $x ]['jours'][ $y ] = $this->interval($current_horaire);
-						$last_horaire_used = $current_horaire ;
+						$last_horaire_used = $current_horaire->getFin() ;
 
 						if(!isset($last_cours_day[$y]) || $last_cours_day[$y] < $x){ $last_cours_day[$y] = $x ; }
 					}

@@ -22,7 +22,7 @@
 	{% endif %}
 
 	{% if user.groupes|length > 0 %}
-		<span class="label">Groupes auquels {{ user }} appartient :</span>
+		<span class="label">Groupes de {{ user }} :</span>
 
 			<ul class="liste">
 				
@@ -38,6 +38,10 @@
 		
 		<span class="modifier">
 			<a class="button" href="{{ path("ariane_homepage", {username: user.username}) }}">Suivi de l'élève</a>
+		</span>
+
+		<span class="modifier">
+			<a class="button" href="{{ path("kub_notes_eleve_show", {username: user.username}) }}">Notes de l'élève</a>
 		</span>
 
 	{% endif %}

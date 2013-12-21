@@ -1,44 +1,14 @@
-{# <div class="article">
-     
-		{% set matiere = "" %}
-	
-		{% for note in notes %}
-
-			{% if note.matiere.name != matiere %}
-			
-				{% set matiere = note.matiere.name %}
-				<h3>{{ matiere }}</h3>
-
-			{% endif %}
-
-			<p> 
-
-				{{ note.note }} / {{ note.coefficient }} 
-
-				{% if app.user.id == note.professeur.id %}
-					
-					<a href="{{ path('kub_notes_professeur_delete', {note: note.id}) }}">Supprimer la note</a>
-
-				{% endif %}
-
-			</p>
-
-		{% endfor %}
-
-	</article>
-#}
-
 {# On prépare les variables twig #}
 
-{% set matiere = "" %}
+{#{% set matiere = "" %}
 {% set jauges = "" %}
 {% set legendes = "" %}
 {% set moyennes = "" %}
 {% set details = "" %}
 {% set coefficientRatio = 0 %}
 {% set noteSurVingt = 0 %}
-	
-{% for note in notes %}
+
+{% for note in eleve.notes %}
 
 	{% if note.controle.matiere.name != matiere %}
 
@@ -83,23 +53,36 @@
 
 	{% set moyenneMatiere = totalNotes / totalCoefficient %}
 
-	{% set details = details ~ '
-		<tr><td><strong>' ~ note.note | number_format(1) ~ ' / ' ~ note.coefficient ~ '</strong></td>
-		<td><strong>' ~ note.controle.nom ~ '</strong><em>Le ' ~ note.controle.date | date('d/m/y') ~ '</em></td></tr>
-	' %}
+	{% if app.user.id == note.controle.professeur.id or app.user.id == note.eleve.id %}
+					
+			{% set details = details ~ '
+				<tr>
+					<td>
+						<strong>' ~ note.note | number_format(1) ~ ' / ' ~ note.coefficient ~ '</strong>
+					</td>
+					<td>
+						<strong>' ~ note.controle.nom ~ '</strong> <em>Le ' ~ note.controle.date | date('d/m/y') ~ '</em>
+					
+			' %}
+
+			{% if is_granted("ROLE_PROFESSEUR") %}
+	
+				{% set link = path("kub_notes_professeur_edit", {id: note.controle.id})  %}
+				{% set details = details ~ '<a href="' ~ link ~'">Modifier</a>' %}
+
+			{% endif %}
+
+			{% set details = details ~ '</td></tr>' %}
+
+	{% endif %}
 
 	{% if loop.last %}
 
 		{% set moyennes = moyennes ~ '<div class="moyenne-' ~ matiere ~ '">' ~ moyenneMatiere | number_format(1) ~ '</div>' %}
 
 	{% endif %}
-
+	
 {% endfor %}
-
-
-<article class="article">
-	<h3 class="section-title">Mes notes</h3>
-</article>
 
 <article class="article">
 	<table class="notes-by-matieres">
@@ -126,5 +109,48 @@
 	<div class="wrap-details">
 		{{ details | raw }}
 	</div>
+
+</article>#}
+
+<article class="article">
+	<table class="notes-by-matieres">
+		{% for moyenne in moyennes %}
+			<tr class="graph-hidden">
+				<td colspan="10">
+					{#{{ jauges | raw }}#}
+				</td>
+			</tr>
+			<tr class="moyennes">
+				<td>
+					{{ moyenne.note | raw }}
+				</td>
+			</tr>
+			<tr class="matieres-name">
+				<td>
+					{{ moyenne.matiere | raw }}
+				</td>
+			</tr>
+		{% endfor %}
+	</table>
+</article>
+
+<article class="article">
+
+	{% for nom, matiere in matieres %}
+
+		<div class="wrap-details">
+
+			<p>{{ nom }}</p>
+
+			<ul>
+				{% for note in matiere if note.controle.cours.professeur.id == app.user.id or app.user.class == "eleve" %}
+				
+					<li>{{ note.note }} / {{ note.coefficient }}</li>	
+
+				{% endfor %}
+			</ul>
+		</div>
+
+	{% endfor %}
 
 </article>

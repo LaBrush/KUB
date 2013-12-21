@@ -23,6 +23,10 @@ class ControleRepository extends EntityRepository
 			->addSelect('n')
 			->leftJoin('n.eleve', 'e')
 			->addSelect('e')
+			->leftJoin('c.cours', 'co')
+			->addSelect('co')
+			->leftJoin('co.groupes', 'g')
+			->addSelect('g')
 
 			->where('c.id = :id')
 			->setParameter('id', $id )

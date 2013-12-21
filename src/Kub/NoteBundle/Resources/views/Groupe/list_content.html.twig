@@ -1,0 +1,13 @@
+<h2>Listes des contrôles</h2>
+
+<table>
+{% for controle in controles %}
+    
+	<tr>
+		<td>{{ controle.nom }}</td>
+		<td>{{ controle.date|date('j/d/Y') }}</td>
+		<td><a href="{{ path('kub_notes_professeur_show', {'id': controle.id} )}}">Voir le controle</a></td>
+	</tr>
+
+{% endfor %}
+</table>

@@ -13,19 +13,39 @@ use Kub\UserBundle\Entity\Eleve ;
  */
 class NoteRepository extends EntityRepository
 {
-
-	public function findByEleve(Eleve $eleve)
+	public function findMoyennesFor($username)
 	{
-		$qb = $this->createQueryBuilder('n')
-			->join('n.controle', 'c')
-			->addSelect('c')
-			->join('c.matiere', 'm')
-			->addSelect('m')
-			->join('c.professeur', 'p')
-			->addSelect('p')
+		$qb = $this->_em->createQuery('
+			SELECT AVG(n.note / n.coefficient) * 20 AS note, m.name AS matiere FROM KubNoteBundle:Note n
+			JOIN n.eleve e
+			JOIN n.controle c
+			JOIN c.cours co
+			JOIN co.matiere m
+			WHERE e.username = :username
+			GROUP BY m.name
+		')
+		->setParameter('username', $username);
 		;
 
-		return $qb->getQuery()->getArrayResult();
+		return $qb->getArrayResult();
 	}
 
+	public function findByUsername($username)
+	{
+		$qb = $this->_em->createQuery("
+			SELECT  m.name AS matiere, n AS note, c, co, p FROM KubNoteBundle:Note n
+
+			JOIN n.eleve e
+			JOIN n.controle c
+			JOIN c.cours co
+			JOIN co.matiere m
+			JOIN co.professeur p
+
+			WHERE e.username = :username
+		")
+		->setParameter("username", $username)
+		;
+
+		return $qb->getArrayResult();	
+	}
 }

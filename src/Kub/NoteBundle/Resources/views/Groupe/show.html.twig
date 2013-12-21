@@ -1,0 +1,35 @@
+{% extends "::base.html.twig" %}
+
+{% set groupes = "" %}
+{% for groupe in controle.cours.groupes %}
+
+		{% set groupes = groupes ~ groupe.name ~ ' ' %}
+
+{% endfor %}
+
+{% block title %}
+	{{ parent() }} - {{ groupes }}
+{% endblock %}
+
+{% block body %}
+	
+	<article class="article">
+		<h2 class="section-title">Controles des {{ groupes }}</h2>
+	</article>
+
+	<article class="article infos">
+
+		<ul>
+			{% for note in controle.notes %}
+			    
+				<li>Ceci est un lien -> <a href="{{ path('user_show', {role: 'eleve', username: note.eleve.username}) }}">{{ note.eleve }}</a> à afficher comme tel en CSS - {{ note }}</li>
+
+			{% endfor %}
+		</ul>
+
+		<a href="{{ path('kub_notes_professeur_edit', {id: controle.id})}}" class="modifier button">Modifier</a>
+
+	</article>
+
+
+{% endblock %}

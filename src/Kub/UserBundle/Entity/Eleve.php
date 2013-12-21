@@ -63,6 +63,11 @@ class Eleve extends User
 	 */
 	private $photo;
 
+	/**
+	 * @ORM\OneToMany(targetEntity="Kub\NoteBundle\Entity\Note", mappedBy="eleve", cascade={"persist", "merge", "detach"})
+	 */
+	private $notes ;
+
 	public function initClass()
 	{
 		$this->class = "eleve";
@@ -288,4 +293,37 @@ class Eleve extends User
 
 		return new Photo ;
 	}
+
+    /**
+     * Add notes
+     *
+     * @param \Kub\NoteBundle\Entity\Note $notes
+     * @return Eleve
+     */
+    public function addNote(\Kub\NoteBundle\Entity\Note $notes)
+    {
+        $this->notes[] = $notes;
+    
+        return $this;
+    }
+
+    /**
+     * Remove notes
+     *
+     * @param \Kub\NoteBundle\Entity\Note $notes
+     */
+    public function removeNote(\Kub\NoteBundle\Entity\Note $notes)
+    {
+        $this->notes->removeElement($notes);
+    }
+
+    /**
+     * Get notes
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getNotes()
+    {
+        return $this->notes;
+    }
 }

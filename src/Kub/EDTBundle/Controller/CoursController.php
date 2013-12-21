@@ -11,6 +11,11 @@ use Kub\EDTBundle\Form\Handler\CoursHandler ;
 
 class CoursController extends Controller
 {
+	public function showAction($id)
+	{
+		$cours = $this->get('doctrine.orm.entity_manager')->getRepository('KubEDTBundle:Cours')
+	}
+
 	/**
 	 * @Secure(roles="ROLE_SECRETAIRE")
 	 */
@@ -115,7 +120,7 @@ class CoursController extends Controller
 	}
 
 	/**
-	 * @Secure(roles="ROLE_USER")
+	 * @Secure(roles="ROLE_SECRETAIRE")
 	 */
 	public function listAction()
 	{

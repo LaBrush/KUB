@@ -12,12 +12,14 @@
 
 	<article class="article infos">
 		
-		{% if user.photo is defined and user.photo is not null %}
+		{% if user.photo is defined %}
 			<span class="info"> <img src="{{ asset(user.photo.webPath) }}" alt="{{ user }}" class="profil-picture img-downloaded"/></span>
 	    {% endif %}
 
-		<span class="label">Identifiant :</span>
-		<span class="info">{{ user.username }}</span>
+		{% if is_granted('ROLE_SECRETAIRE') %}
+			<span class="label">Identifiant :</span>
+			<span class="info">{{ user.username }}</span>
+		{% endif %}
 
 		<span class="label">Adresse mail :</span>
 		<span class="info">{{ user.email }}</span>

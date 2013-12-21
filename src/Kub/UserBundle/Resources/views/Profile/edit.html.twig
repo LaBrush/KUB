@@ -15,6 +15,20 @@
 		<span class="label">Adresse mail :</span>
 		<span class="info">{{ app.user.email }}</span>
 		
+		{% if app.user.class == 'eleve' %}
+
+			<span class="label">Niveau :</span>
+			<span class="info">{{ app.user.niveau }}</span>
+
+			<span class="label">Groupes :</span>
+			<span class="info">
+				{% for groupe in app.user.groupes %}
+			    	{{ groupe }}
+				{% endfor %}
+			</span>		
+
+		{% endif %}
+
 		</article>
 
 		<article class="article infos">

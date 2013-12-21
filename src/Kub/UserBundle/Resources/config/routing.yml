@@ -1,5 +1,5 @@
 user_create:
-    path: /{role}/add/
+    path: /{role}/ajouter/
     defaults: { _controller: KubUserBundle:User:create }
     requirements:
         role: eleve|tuteur|administrateur|professeur
@@ -17,13 +17,13 @@ user_show:
         role: eleve|tuteur|administrateur|professeur
 
 user_edit:
-    path: /{role}/{username}/edit
+    path: /{role}/{username}/editer
     defaults: { _controller: KubUserBundle:User:edit }
     requirements:
         role: eleve|tuteur|administrateur|professeur
 
 user_delete:
-    path: /{role}/{username}/delete
+    path: /{role}/{username}/supprimer
     defaults: { _controller: KubUserBundle:User:delete }
     requirements:
         role: eleve|tuteur|administrateur|professeur

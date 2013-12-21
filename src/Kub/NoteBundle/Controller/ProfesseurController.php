@@ -84,18 +84,6 @@ class ProfesseurController extends Controller
 	/**
 	 * @Secure(roles="ROLE_PROFESSEUR")
 	 */
-	public function listAction(Groupe $groupe)
-	{
-		$controles = $this->get('doctrine.orm.default_entity_manager')->getRepository('KubNoteBundle:Controle')->findByProfesseurAndGroupe($this->getUser(), $groupe);
-
-		return $this->render('KubNoteBundle:Professeur:groupe.html.twig',array(
-			'controles' => $controles
-		));
-	}
-
-	/**
-	 * @Secure(roles="ROLE_PROFESSEUR")
-	 */
 	public function editAction($id)
 	{
 		$controle = $this->get('doctrine.orm.default_entity_manager')->getRepository('KubNoteBundle:Controle')->findOneById($id);
@@ -119,7 +107,7 @@ class ProfesseurController extends Controller
 
 		$form  = $this->createForm(new ControleType( $cours->getProfesseur(), $cours ), $controle, 
 			array(
-				'action' => $this->generateUrl('kub_notes_professeur_homepage', array('cours' => $cours->getId()))
+				'action' => $this->generateUrl('kub_notes_professeur_edit', array('id' => $controle->getId()))
 			)
 		);
 
@@ -131,7 +119,6 @@ class ProfesseurController extends Controller
 			if($formHandler->process())
 			{
 				$this->get('session')->getFlashBag()->add('info', "Le controle a bien été ajouté");
-
 				return $this->redirect($this->generateUrl("home_homepage"));
 			}
 			else
@@ -145,6 +132,30 @@ class ProfesseurController extends Controller
 			'form' => $form->createView(),
 			'cours' => $cours
 		)); 
+	}
+
+	/**
+	 * @Secure(roles="ROLE_PROFESSEUR")
+	 */
+	public function listAction(Groupe $groupe)
+	{
+		$controles = $this->get('doctrine.orm.default_entity_manager')->getRepository('KubNoteBundle:Controle')->findByProfesseurAndGroupe($this->getUser(), $groupe);
+
+		return $this->render('KubNoteBundle:Groupe:list_content.html.twig',array(
+			'controles' => $controles
+		));
+	}
+
+	/**
+	 * @Secure(roles="ROLE_PROFESSEUR")
+	 */
+	public function showAction($id)
+	{
+		$controle = $this->get('doctrine.orm.default_entity_manager')->getRepository('KubNoteBundle:Controle')->findOneById( $id );
+
+		return $this->render('KubNoteBundle:Groupe:show.html.twig',array(
+			'controle' => $controle
+		));
 	}
 
 	/**
@@ -190,17 +201,26 @@ class ProfesseurController extends Controller
 		);
 	}
 
-	public function showEleveAction(Eleve $eleve)
+	public function showEleveAction(Eleve $user)
 	{
-		$liste_notes = $this->get('doctrine.orm.entity_manager')->getRepository('KubNoteBundle:Note')->findByEleve( $eleve );
+		$notes = $this->get('doctrine.orm.entity_manager')->getRepository('KubNoteBundle:Note')->findByUsername( $user->getUsername() );
+		$moyennes = $this->get('doctrine.orm.entity_manager')->getRepository('KubNoteBundle:Note')->findMoyennesFor( $user->getUsername() );
 
-		$template = 'show';
-		if($this->get('request')->attributes->get('_route') != 'kub_notes_eleve_show') { $template .= "_content" ; }
+		$matieres = array();
 
-		return $this->render('KubNoteBundle:Show:' . $template . '.html.twig',
+		for ($i=0; $i < count($notes) ; $i++) { 
+			if(!isset($matieres[ $notes[$i]['matiere'] ])) {
+				$matieres[ $notes[$i]['matiere'] ] = array();	
+			}
+
+			$matieres[ $notes[$i]['matiere'] ][] = $notes[$i]['note'] ;
+		}						
+
+		return $this->render('KubNoteBundle:Professeur:show_eleve.html.twig',
 			array(
-				'notes' => $liste_notes,
-				'eleve' => $eleve
+				'matieres' => $matieres,
+				'moyennes' => $moyennes,
+				'eleve' => $user
 			)
 		);   
 

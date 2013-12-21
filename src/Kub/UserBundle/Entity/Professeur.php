@@ -29,16 +29,26 @@ class Professeur extends User
 	 */
 	private $cours ;
 
+	public function getGroupes(){
+
+		$groupes = array();
+		foreach ($this->getCours() as $cours) {
+			foreach ($cours->getGroupes() as $groupe) {
+
+				$groupes[] = $groupe ;
+
+			}
+		}
+
+		return $groupes ;
+	}
+
 	public function hasEleve($eleve){
 
-		foreach ($this->getCours() as $key => $cours) {
-
-			foreach ($cours->getGroupes() as $key => $groupe) {
-
-				if($groupe->getEleves()->contains($eleve))
-				{
-					return true ;
-				}
+		foreach ($this->getGroupes() as $groupe) {
+			if($groupe->getEleves()->contains($eleve))
+			{
+				return true ;
 			}
 		}
 
