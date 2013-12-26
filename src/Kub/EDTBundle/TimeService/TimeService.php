@@ -133,6 +133,12 @@ class TimeService
 			->join('h.jour', 'j')
 			->addSelect('j')
 
+			->join('c.matiere', 'm')
+			->addSelect('m')
+
+			->join('m.categorie', 'ca')
+			->addSelect('ca')
+
 			->orderBy('h.debut, j.id')
 		;
 

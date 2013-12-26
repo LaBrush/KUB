@@ -13,7 +13,7 @@ class EDT2JsArrayExtension extends \Twig_Extension
     public function getFunctions()
     {
         return array(
-            'EDT2JsArray' => new \Twig_Function_Method($this, 'EDT2JsArray')
+            'EDT2JsArray' => new \Twig_Function_Method($this, 'EDT2JsArray', array('is_safe' => array('html')))
         );
     }
 

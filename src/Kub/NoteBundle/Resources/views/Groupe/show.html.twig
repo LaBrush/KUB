@@ -23,7 +23,8 @@
 			{% for note in controle.notes %}
 			    
 				<li>Ceci est un lien -> <a href="{{ path('user_show', {role: 'eleve', username: note.eleve.username}) }}">{{ note.eleve }}</a> à afficher comme tel en CSS - {{ note }}</li>
-
+			{% else %}
+				<li>Aucun controle en ajouté</li>
 			{% endfor %}
 		</ul>
 

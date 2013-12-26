@@ -31,8 +31,9 @@
 	<script>
 		// garde une trace du nombre de champs horaires qui ont été affichés
 		var tuteurCount = '{{ form.horaires | length }}';
+		var horairesMinutes = {{ EDT2JsArray() }}
 
-		$(document).ready(function() {
+		$(function() {
 
 			$('.horaires').each(function() {
 			    addTagFormDeleteLink($(this));
@@ -57,12 +58,12 @@
 			});
 
 			function addTagFormDeleteLink($tagFormLi) {
-				var $removeFormA = $('<a href="#" class="button-no delete-horaire">Supprimer cet horaire</a>');
-				$tagFormLi.append($removeFormA);
-
-				$removeFormA.on('click', function() {
-					$tagFormLi.remove();
-				});
+				$tagFormLi.append( 
+					$('<a href="#" class="button-no delete-horaire">Supprimer cet horaire</a>')
+					.click(function() {
+						$tagFormLi.remove()
+					})
+				 );
 			}
 		})
 	</script>
