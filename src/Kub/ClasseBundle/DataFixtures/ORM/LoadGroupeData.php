@@ -14,39 +14,93 @@ use Kub\ClasseBundle\Entity\Groupe;
 
 class LoadGroupeData extends AbstractFixture implements FixtureInterface, ContainerAwareInterface, OrderedFixtureInterface
 {
-    /**
-     * @var ContainerInterface
-     */
-    private $container;
+	/**
+	 * @var ContainerInterface
+	 */
+	private $container;
 
-    /**
-     * {@inheritDoc}
-     */
-    public function setContainer(ContainerInterface $container = null)
-    {
-        $this->container = $container;
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	public function setContainer(ContainerInterface $container = null)
+	{
+		$this->container = $container;
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    public function load(ObjectManager $manager)
-    {
-        $si3 = new Groupe();
-            $si3->setName("SI-3");
-            $si3->setNiveau($this->getReference('premiere'));
+	/**
+	 * {@inheritDoc}
+	 */
+	public function load(ObjectManager $manager)
+	{
+		$si3 = new Groupe();
+			$si3->setName("SI-3");
+			$si3->setNiveau($this->getReference('premiere'));
 
-            $si3->addEleve($this->getReference('johnsnow'));
-            $si3->addEleve($this->getReference('deneristhargarien'));
+		$this->addReference('si3', $si3);
 
-        $this->addReference('si3', $si3);
+		$manager->persist($si3);
+		$manager->flush();
 
-        $manager->persist($si3);
-        $manager->flush();
-    }
+		$groupes = array(
 
-    public function getOrder()
-    {
-        return 4; // l'ordre dans lequel les fichiers sont chargés
-    }
+			"seconde" => array(
+				"1",
+				"2",
+				"3",
+				"4",
+				"5",
+				"6",
+				"7",
+				"8",
+				"9",
+				"cinema",
+				"isn",
+				"musique"
+			),
+			"premiere" => array(
+				"1",
+				"2",
+				"3",
+				"4",
+				"5",
+				"6",
+				"7",
+				"8",
+				"9",
+				"cinema",
+				"musique"
+			),
+			"terminale" => array(
+				"1",
+				"2",
+				"3",
+				"4",
+				"5",
+				"6",
+				"7",
+				"8",
+				"9",
+				"cinema",
+				"musique"
+			)
+		);
+
+		foreach ($groupes as $niveau => $liste) {
+			foreach ($liste as $name) {
+
+				$groupe = new Groupe();
+					$groupe->setName($name);
+					$groupe->setNiveau($this->getReference($niveau));
+
+				$manager->persist($groupe);
+			}
+		}
+
+		$manager->flush();
+	}
+
+	public function getOrder()
+	{
+		return 1; //l'ordre dans lequel les fichiers sont chargés
+	}
 }

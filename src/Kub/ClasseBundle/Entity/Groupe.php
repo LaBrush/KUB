@@ -33,14 +33,14 @@ class Groupe extends BaseGroup
      *      minMessage = "Le nom du groupe doit faire au moins {{ limit }} caractères",
      *      maxMessage = "Le nom du groupe ne peut pas être plus long que {{ limit }} caractères"
      * )
-     */
+     * @Gedmo\Slug(fields={"name"})
+    */
     protected $name ;
 
     /**
-     * @ORM\Column(name="slug", type="string", length=255)
-     * @Gedmo\Slug(fields={"name"})
+     * @ORM\Column(name="title", type="string", length=255)
      */
-    private $slug ;
+    private $title ;
 
     /**
      * @ORM\ManyToOne(targetEntity="Kub\ClasseBundle\Entity\Niveau", inversedBy="groupes"))
@@ -68,7 +68,7 @@ class Groupe extends BaseGroup
 
     public function __toString()
     {
-        return $this->niveau . " " . $this->name ;
+        return $this->niveau . " " . $this->title ;
     }
 
     /**
@@ -79,29 +79,6 @@ class Groupe extends BaseGroup
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set slug
-     *
-     * @param string $slug
-     * @return Groupe
-     */
-    public function setSlug($slug)
-    {
-        $this->slug = $slug;
-    
-        return $this;
-    }
-
-    /**
-     * Get slug
-     *
-     * @return string 
-     */
-    public function getSlug()
-    {
-        return $this->slug;
     }
 
     /**
@@ -191,5 +168,52 @@ class Groupe extends BaseGroup
     public function getCours()
     {
         return $this->cours;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return Groupe
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+        $this->setTitle($name);
+    
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set title
+     *
+     * @param string $title
+     * @return Groupe
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+    
+        return $this;
+    }
+
+    /**
+     * Get title
+     *
+     * @return string 
+     */
+    public function getTitle()
+    {
+        return $this->title;
     }
 }

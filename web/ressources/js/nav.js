@@ -33,7 +33,7 @@ $(function() {
 			.addClass('nav-open')
 			.removeClass('unscrollable');
 
-			body.addClass('unscrollable')
+			body.addClass('unscrollable');
 		};
 	});
 

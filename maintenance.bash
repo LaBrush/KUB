@@ -8,7 +8,6 @@ app/console doctrine:database:create ;
 
 app/console doctrine:generate:entities KubArianeBundle 			--no-backup ;
 app/console doctrine:generate:entities KubAbsenceBundle 		--no-backup ;
-app/console doctrine:generate:entities KubCasierBundle 			--no-backup ;
 app/console doctrine:generate:entities KubClasseBundle 			--no-backup ;
 app/console doctrine:generate:entities KubCollaborationBundle 	--no-backup ;
 app/console doctrine:generate:entities KubEDTBundle 			--no-backup ;

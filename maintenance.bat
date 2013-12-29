@@ -6,7 +6,6 @@ php app/console doctrine:database:create
 php app/console doctrine:generate:entities KubArianeBundle --no-backup
 php app/console doctrine:generate:entities KubAgendaBundle --no-backup
 php app/console doctrine:generate:entities KubAbsenceBundle --no-backup
-php app/console doctrine:generate:entities KubCasierBundle --no-backup
 php app/console doctrine:generate:entities KubClasseBundle --no-backup
 php app/console doctrine:generate:entities KubCollaborationBundle --no-backup
 php app/console doctrine:generate:entities KubEDTBundle --no-backup

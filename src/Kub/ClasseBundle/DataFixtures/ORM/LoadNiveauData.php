@@ -54,11 +54,13 @@ class LoadNiveauData extends AbstractFixture implements FixtureInterface, Contai
 
         $manager->flush();
 
+        $this->addReference('seconde', $seconde);
         $this->addReference('premiere', $premiere);
+        $this->addReference('terminale', $terminale);
     }
 
     public function getOrder()
     {
-        return 1; // l'ordre dans lequel les fichiers sont chargés
+        return 0; // l'ordre dans lequel les fichiers sont chargés
     }
 }

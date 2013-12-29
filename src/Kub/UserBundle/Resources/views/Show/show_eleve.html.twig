@@ -27,7 +27,7 @@
 			<ul class="liste">
 				
 				{% for groupe in user.groupes %}
-					<li class="li-list"><a href="{{ path('groupe_show', {id: groupe.id}) }}">{{ groupe.name }}</a></li>
+					<li class="li-list"><a href="{{ path('groupe_show', {id: groupe.id}) }}">{{ groupe }}</a></li>
 				{% endfor %}
 
 			</ul>

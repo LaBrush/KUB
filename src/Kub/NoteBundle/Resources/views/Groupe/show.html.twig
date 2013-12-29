@@ -3,7 +3,7 @@
 {% set groupes = "" %}
 {% for groupe in controle.cours.groupes %}
 
-		{% set groupes = groupes ~ groupe.name ~ ' ' %}
+		{% set groupes = groupes ~ groupe ~ ' ' %}
 
 {% endfor %}
 

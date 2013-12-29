@@ -1,11 +1,7 @@
 $(function() {	
 
 	// Cette fonction permet de changer la couleur et la presence d'un eleve au clic
-
-	// alert("J'ai fait quelques changments. A vérifier donc")
-	var inputAppel = $('.input-appel');
-	
-	inputAppel.hide();
+	var inputAppel = $('.input-appel').hide();
 
 	state_class = [
 		'retard',

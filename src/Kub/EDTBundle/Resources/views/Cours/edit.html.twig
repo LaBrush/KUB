@@ -39,7 +39,7 @@
 			    addTagFormDeleteLink($(this));
 			});
 		
-			$('.add-another-horaires').click(function() {
+			$('.add-another-horaires').click(function(e) {
 				var tuteurList = $('.horaires-add');
 
 				var newWidget = tuteurList.attr('data-prototype');
@@ -61,7 +61,8 @@
 				$tagFormLi.append( 
 					$('<a href="#" class="button-no delete-horaire">Supprimer cet horaire</a>')
 					.click(function() {
-						$tagFormLi.remove()
+						$tagFormLi.remove();
+						return false;
 					})
 				 );
 			}

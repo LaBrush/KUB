@@ -893,7 +893,10 @@
 	"file_history":
 	[
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/EDTBundle/Resources/views/Cours/edit.html.twig",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NoteBundle/Controller/ProfesseurController.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/web/ressources/js/horaires.js",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/web/ressources/js/appel.js",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/web/ressources/js/nav.js",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/EDTBundle/Twig/EDT2JsArrayExtension.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/EDTBundle/Twig/DisplayEDTExtension.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/EDTBundle/TimeService/TimeService.php",
@@ -941,7 +944,6 @@
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/views/Manage/user_create.html.twig",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NoteBundle/Entity/Note.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NoteBundle/Entity/NoteRepository.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NoteBundle/Controller/ProfesseurController.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NoteBundle/Controller/EleveController.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/ArianeBundle/Form/Type/PostType.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/ArianeBundle/Resources/views/Post/form.html.twig",
@@ -969,7 +971,6 @@
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NoteBundle/Resources/views/Groupe/list.html.twig",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NoteBundle/Resources/views/Professeur/groupe.html.twig",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/app/Resources/views/base.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/web/ressources/js/appel.js",
 		"/Users/adrienbocquet/Sites/MAMP/KUB/web/ressources/sass/partials/pages/_appel.scss",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/HomeBundle/Resources/views/Visiteur/index.html.twig",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/web/ressources/js/notes.js",
@@ -1018,8 +1019,7 @@
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/AbsenceBundle/Form/Type/AppelType.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/AbsenceBundle/Form/Type/AbsenceType.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NoteBundle/Form/EventListener/addEleveFieldSuscriber.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NoteBundle/Form/Type/NoteType.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/EDTBundle/DataFixtures/ORM/LoadCoursData.php"
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NoteBundle/Form/Type/NoteType.php"
 	],
 	"find":
 	{
@@ -1299,6 +1299,18 @@
 		"selected_items":
 		[
 			[
+				"noteprofe",
+				"src/Kub/NoteBundle/Controller/ProfesseurController.php"
+			],
+			[
+				"edtbundletwig",
+				"src/Kub/EDTBundle/Resources/views/Cours/edit.html.twig"
+			],
+			[
+				"js",
+				"web/ressources/js/horaires.js"
+			],
+			[
 				"tim",
 				"src/Kub/EDTBundle/TimeService/TimeService.php"
 			],
@@ -1313,10 +1325,6 @@
 			[
 				"edtexten",
 				"src/Kub/EDTBundle/DependencyInjection/KubEDTExtension.php"
-			],
-			[
-				"edtbundletwig",
-				"src/Kub/EDTBundle/Resources/views/Cours/edit.html.twig"
 			],
 			[
 				"hor",
@@ -1545,10 +1553,6 @@
 			[
 				"notegroupesho",
 				"src/Kub/NoteBundle/Resources/views/Groupe/show.html.twig"
-			],
-			[
-				"noteprofe",
-				"src/Kub/NoteBundle/Controller/ProfesseurController.php"
 			],
 			[
 				"noterouting",
@@ -1805,10 +1809,6 @@
 			[
 				"pho",
 				"src/Kub/UserBundle/Entity/Photo.php"
-			],
-			[
-				"userty",
-				"src/Kub/UserBundle/Form/Type/UserType.php"
 			]
 		],
 		"width": 0.0

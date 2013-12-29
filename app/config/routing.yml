@@ -18,10 +18,6 @@ kub_ressource:
     resource: "@KubRessourceBundle/Resources/config/routing.yml"
     prefix:   /ressources
 
-kub_casier:
-    resource: "@KubCasierBundle/Resources/config/routing.yml"
-    prefix:   /
-
 kub_absence:
     resource: "@KubAbsenceBundle/Resources/config/routing.yml"
     prefix:   /

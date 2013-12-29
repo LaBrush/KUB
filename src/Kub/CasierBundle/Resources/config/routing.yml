@@ -1,3 +1,0 @@
-kub_casier_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: KubCasierBundle:Default:index }

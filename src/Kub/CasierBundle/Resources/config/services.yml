@@ -1,7 +1,0 @@
-parameters:
-#    kub_casier.example.class: Kub\CasierBundle\Example
-
-services:
-#    kub_casier.example:
-#        class: %kub_casier.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]

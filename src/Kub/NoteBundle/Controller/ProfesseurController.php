@@ -69,7 +69,7 @@ class ProfesseurController extends Controller
 				}
 				else
 				{
-					$this->get('session')->getFlashBag()->add('info', "Une erreur est survenue lors du controle");   
+					$this->get('session')->getFlashBag()->add('info', "Une erreur est survenue lors de l'ajout du controle");   
 				}
 
 			}
