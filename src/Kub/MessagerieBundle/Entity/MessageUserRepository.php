@@ -29,4 +29,16 @@ class MessageUserRepository extends EntityRepository
 		return $qb->getQuery()->getResult();
 	}
 
+	public function checkUnreadMessage($user)
+	{	
+		$connection = $this->_em->getConnection();
+		$statement = $connection->update(
+			"MessageUser m",
+			array("m.readed" => 1),
+			array(
+				"m.readed" => 0,
+				"m.user_id" => $user->getId()
+			)
+		);
+	}
 }

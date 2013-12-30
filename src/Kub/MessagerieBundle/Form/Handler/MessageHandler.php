@@ -42,6 +42,7 @@ class MessageHandler
 	protected function onSuccess($data)
 	{
 		$thread = $data->getThread();
+		$thread->setLastMessage($data)
 
 		if($this->form->has('thread_add_member')){
 

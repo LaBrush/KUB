@@ -55,38 +55,6 @@ class Thread
     }
 
     /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Set lastMessage
-     *
-     * @param \DateTime $lastMessage
-     * @return Thread
-     */
-    public function setLastMessage($lastMessage)
-    {
-        $this->lastMessage = $lastMessage;
-    
-        return $this;
-    }
-
-    /**
-     * Get lastMessage
-     *
-     * @return \DateTime 
-     */
-    public function getLastMessage()
-    {
-        return $this->lastMessage;
-    }
-    /**
      * Constructor
      */
     public function __construct()
@@ -104,7 +72,6 @@ class Thread
     public function addMessage(\Kub\MessagerieBundle\Entity\Message $messages)
     {
         $this->messages[] = $messages;
-        $this->setLastMessage( new \DateTime );
     
         return $this;
     }

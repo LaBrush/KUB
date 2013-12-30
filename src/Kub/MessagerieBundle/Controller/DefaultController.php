@@ -14,13 +14,14 @@ use Kub\MessagerieBundle\Entity\Message ;
 class DefaultController extends Controller
 {
 	public function inboxAction(){
+		$this->getDoctrine()->getManager()->getRepository('KubMessagerieBundle:MessageUser')->checkUnreadMessage( $this->getUser() );
 		$threads = $this->getDoctrine()->getManager()->getRepository('KubMessagerieBundle:Thread')->findByUser( $this->getUser() );
 
 		return $this->render('KubMessagerieBundle:Default:inbox.html.twig', array('threads' => $threads));
 	}
 
 	public function readAction($id){
-		$thread = $this->getDoctrine()->getManager()->getRepository('KubMessagerieBundle:Thread')->findOneById( $id );
+		$thread = $this->getDoctrine()->getManager()->getRepository('KubMessagerieBundle:Thread')->findOneByIdAndCheck( $id );
 
 		if(!in_array($this->getUser(), $thread->getAllUsers()))
 		{
