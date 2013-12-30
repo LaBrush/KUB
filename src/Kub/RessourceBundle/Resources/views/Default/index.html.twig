@@ -60,14 +60,15 @@
 			</ul>
 
 			<ul class="wrap options-tri">
-				<li class="in-tri-ressources checked" id="1" class="unchecked">Fichier</li>
-				<li class="in-tri-ressources checked" id="0" class="unchecked">Web</li>
+				<li class="in-tri-ressources checked" id="2" class="unchecked">Fichier</li>
+				<li class="in-tri-ressources checked" id="1" class="unchecked">Web</li>
 			</ul>
 			
 			<div class="matieres">
 				<select multiple id="matiere" name="matiere" class="select2">
 					{% for matiere in matieres %}
 					    <option value="{{ matiere }}">{{ matiere }}</option>
+					    <option value="matiere">matiere</option>
 					{% endfor %}
 				</select>
 			</div>
