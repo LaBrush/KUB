@@ -3,12 +3,11 @@
 {% block body %}
 
 	<article class="article">
-		<a href="{{ path('kub_messagerie_new') }}">Nouveau</a>
+		<a class="button-yes" href="{{ path('kub_messagerie_new') }}">Nouveau</a>
+		<a href="{{ path('kub_messagerie_delete', { id: thread.id }) }}">Supprimer</a>
 	</article>
 
 	<article class="article">
-		
-		<a href="{{ path('kub_messagerie_delete', { id: thread.id }) }}">Supprimer</a>
 
 		{% set participants = "" %}
 		{% for user in thread.users %}

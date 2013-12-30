@@ -12,12 +12,12 @@ $(function() {
 
 		var option = $(this).attr('id');
 
+		$('.ressource').show();
+
 
 		if ($(this).hasClass('unchecked'))
 		{
 			toHide.push(option);
-
-			$('.ressource').show();
 		}
 		else
 		{
@@ -27,8 +27,6 @@ $(function() {
 					delete toHide[i];
 				}
 			}
-
-			$('.' + option).show();
 		}
 
 		for (var i = toHide.length - 1; i >= 0; i--) {
@@ -51,10 +49,10 @@ $(function() {
 
 		if ($(this).val() == null)
 		{
-			$('.ressource').addClass('ressource-hidden').removeClass('ressource');
+			$('.ressource').hide();
 		}
-
-	 	$('.' + e.val).addClass('ressource').removeClass('ressource-hidden').removeAttr('style');
+		
+		$('.' + e.val).show();
 
 	 	for (var i = toHide.length - 1; i >= 0; i--) {
 			
@@ -70,11 +68,11 @@ $(function() {
 
 		if ($(this).val() == null)
 		{
-			$('.ressource-hidden').addClass('ressource').removeClass('ressource-hidden');
+			$('.ressource').show();
 		} 
 		else
 		{
-			$('.' + e.val).addClass('ressource-hidden').removeClass('ressource');
+			$('.' + e.val).hide();
 		}
 
 		for (var i = toHide.length - 1; i >= 0; i--) {
