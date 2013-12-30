@@ -48,10 +48,10 @@
 
 						{% else %}
 							
-							<strong>{{ lastMessage.sender }}</strong> vous a dit
+							<strong>{{ lastMessage.sender }}</strong> a dit
 
 							 "<strong>
-								{% if lastMessage.contenu | length > 10 %}
+								{% if lastMessage.contenu | striptags | length > 10 %}
 									{{ lastMessage.contenu | striptags | slice(0, 9) }}...
 								{% else %}
 									{{ lastMessage.contenu | raw }}
@@ -62,9 +62,9 @@
 
 						{% endif %}
 
-						{# {% if not lastMessage.messageUser %}
+						{% if not lastMessage.messageUser.0.readed %}
                             <span class="notifications new-message">Nouveau</span>
-                        {% endif %} #}
+                        {% endif %} 
 
 						{# <span class="actions-messages">
 							<span class="undelete-message">Afficher</span>
@@ -87,6 +87,7 @@
 						</span> #}
 					</span>		
 				</a>
+				{{ render(controller("KubMessagerieBundle:Default:delete", { id: thread.id })) }}
 			</p>    
 		{% endfor %}
 		</table>

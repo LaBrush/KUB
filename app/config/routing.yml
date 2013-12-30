@@ -2,10 +2,6 @@ kub_messagerie:
     resource: "@KubMessagerieBundle/Resources/config/routing.yml"
     prefix:   /messagerie
 
-kub_message:
-    resource: "@KubMessageBundle/Resources/config/routing.yml"
-    prefix:   /
-
 kub_notification:
     resource: "@KubNotificationBundle/Resources/config/routing.yml"
     prefix:   /
@@ -61,11 +57,6 @@ fos_user_resetting:
 fos_user_change_password:
     resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
     prefix: /me
-
-fos_message:
-    resource: "@FOSMessageBundle/Resources/config/routing.xml"
-    prefix: /messages
-
 
 genemu_image:
     resource: "@GenemuFormBundle/Resources/config/routing/image.xml"

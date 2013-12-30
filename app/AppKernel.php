@@ -26,7 +26,6 @@ class AppKernel extends Kernel
             new JMS\DiExtraBundle\JMSDiExtraBundle($this),
             new JMS\SerializerBundle\JMSSerializerBundle(),
             new FOS\UserBundle\FOSUserBundle(),
-            new FOS\MessageBundle\FOSMessageBundle(),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new PUGX\MultiUserBundle\PUGXMultiUserBundle(),
             new Misd\PhoneNumberBundle\MisdPhoneNumberBundle(),
@@ -41,7 +40,6 @@ class AppKernel extends Kernel
             new Kub\ClasseBundle\KubClasseBundle(),
             new Kub\EDTBundle\KubEDTBundle(),
             new Kub\NotificationBundle\KubNotificationBundle(),
-            new Kub\MessageBundle\KubMessageBundle(),
             new Kub\MessagerieBundle\KubMessagerieBundle(),
         );
 

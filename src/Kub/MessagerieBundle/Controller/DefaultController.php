@@ -4,6 +4,7 @@ namespace Kub\MessagerieBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+use Symfony\Component\HttpKernel\HttpKernelInterface ;
 
 use Kub\MessagerieBundle\Form\Type\MessageType ;
 use Kub\MessagerieBundle\Form\Handler\MessageHandler ;
@@ -20,15 +21,24 @@ class DefaultController extends Controller
 	}
 
 	public function readAction($id){
-		$thread = $this->getDoctrine()->getManager()->getRepository('KubMessagerieBundle:Thread')->findOneByIdAndCheck( $id );
+		$em = $this->getDoctrine()->getManager();
+		$thread = $em->getRepository('KubMessagerieBundle:Thread')->findOneById( $id );
 
-		$thread->getMessages()->forAll(function($p){
-
-			$p->getMessageUser()->forAll(function($q){
-				$q->setReaded(true);
-			});
-
-		});
+		//On marque les messages en cours de consultation comme lus
+		$connection = $em->getConnection();
+		$statement = $connection->update(
+			"
+				MessageUser mu
+				JOIN Message m
+				ON mu.message_id = m.id
+			",
+			array("mu.readed" => 1),
+			array(
+				"mu.readed" => 0,
+				"mu.user_id" => $this->getUser()->getId(),
+				"m.thread_id" => $thread->getId()
+			)
+		);
 
 		if(!in_array($this->getUser(), $thread->getAllUsers()))
 		{
@@ -53,7 +63,7 @@ class DefaultController extends Controller
 
 		if($request->getMethod() == "POST"){
 
-			$formHandler = new MessageHandler($form, $request, $this->getDoctrine()->getManager());
+			$formHandler = new MessageHandler($form, $request, $this->getDoctrine()->getManager(), $this->get('security.context'));
 
 			if($formHandler->process())
 			{
@@ -112,7 +122,11 @@ class DefaultController extends Controller
 
 	public function deleteAction($id){
 
-		$form = $this->createFormBuilder()->getForm();
+		$form = $this->createFormBuilder(null, array(
+			"action" => $this->generateUrl("kub_messagerie_delete", array("id" => $id)),
+			"method" => "POST"
+		))->getForm();
+
 		$request = $this->getRequest();
 
 		if ($request->getMethod() == 'POST') {
@@ -130,11 +144,11 @@ class DefaultController extends Controller
 				$em->flush();
 
 				$this->get('session')->getFlashBag()->add('info', 'La conversation a bien été supprimée');
-	
-				return $this->redirect($this->generateUrl('kub_messagerie_inbox'));
 			}
-		}
 
+			return $this->redirect($this->generateUrl('kub_messagerie_inbox'));
+		}
+		
 		return $this->render('KubMessagerieBundle:Conversation:delete_content.html.twig', array(
 			'form' => $form->createView(),
 		));
