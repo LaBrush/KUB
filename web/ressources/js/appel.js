@@ -4,9 +4,9 @@ $(function() {
 	var inputAppel = $('.input-appel').hide();
 
 	state_class = [
-		'retard',
+		'present',
 		'away',
-		'present'
+		'retard'
 	]
 
 	$('.in-list')

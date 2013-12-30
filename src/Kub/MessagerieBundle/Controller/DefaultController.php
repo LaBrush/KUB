@@ -14,7 +14,6 @@ use Kub\MessagerieBundle\Entity\Message ;
 class DefaultController extends Controller
 {
 	public function inboxAction(){
-		$this->getDoctrine()->getManager()->getRepository('KubMessagerieBundle:MessageUser')->checkUnreadMessage( $this->getUser() );
 		$threads = $this->getDoctrine()->getManager()->getRepository('KubMessagerieBundle:Thread')->findByUser( $this->getUser() );
 
 		return $this->render('KubMessagerieBundle:Default:inbox.html.twig', array('threads' => $threads));
@@ -22,6 +21,14 @@ class DefaultController extends Controller
 
 	public function readAction($id){
 		$thread = $this->getDoctrine()->getManager()->getRepository('KubMessagerieBundle:Thread')->findOneByIdAndCheck( $id );
+
+		$thread->getMessages()->forAll(function($p){
+
+			$p->getMessageUser()->forAll(function($q){
+				$q->setReaded(true);
+			});
+
+		});
 
 		if(!in_array($this->getUser(), $thread->getAllUsers()))
 		{
@@ -128,7 +135,7 @@ class DefaultController extends Controller
 			}
 		}
 
-		return $this->render('KubMessagerieBundle:Conversation:delete.html.twig', array(
+		return $this->render('KubMessagerieBundle:Conversation:delete_content.html.twig', array(
 			'form' => $form->createView(),
 		));
 	}

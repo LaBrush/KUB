@@ -22,13 +22,6 @@ class Thread
     private $id;
 
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="lastMessage", type="datetime", nullable=true)
-     */
-    private $lastMessage;
-
-    /**
      * @ORM\OneToMany(targetEntity="Kub\MessagerieBundle\Entity\Message", mappedBy="thread", cascade={"persist", "merge", "detach"})
      */
     private $messages ;

@@ -18,6 +18,14 @@ class AppelRepository extends EntityRepository
 		$qb = $this->createQueryBuilder('a')
 			->join('a.cours', 'c')
 			->addSelect('c')
+
+			->join('c.groupes', 'g')
+			->addSelect('g')
+			->join('g.eleves', 'e')
+			->addSelect('e')
+			->leftJoin('e.photo', 'p')
+			->addSelect('p')
+
 			->join('a.semaine', 's')
 			->addSelect('s')
 
