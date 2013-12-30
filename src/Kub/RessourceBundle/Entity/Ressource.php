@@ -49,6 +49,13 @@ class Ressource
     /**
      * @ORM\ManyToOne(targetEntity="Kub\UserBundle\Entity\User", cascade={"all"})
      */
+    private $depositaire ;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="auteur", type="text", length=255)
+     */
     private $auteur ;
 
     /**
@@ -79,8 +86,21 @@ class Ressource
      */
     private $niveau ;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="valide", type="boolean")
+     */
+    private $valide;
+
+    public function __toString()
+    {
+        return $this->titre;
+    }
+
     public function __construct()
     {
+        $this->valide = true ;
         $this->date = new \DateTime ;
         $this->type = Ressource::WEB ;
     }
@@ -166,11 +186,9 @@ class Ressource
 
     /**
      * Set auteur
-     *
-     * @param \Kub\UserBundle\Entity\Professeur $auteur
      * @return Ressource
      */
-    public function setAuteur(\Kub\UserBundle\Entity\Professeur $auteur = null)
+    public function setAuteur($auteur = null)
     {
         $this->auteur = $auteur;
     
@@ -180,7 +198,7 @@ class Ressource
     /**
      * Get auteur
      *
-     * @return \Kub\UserBundle\Entity\Professeur 
+     * @return \Kub\UserBundle\Entity\User 
      */
     public function getAuteur()
     {
@@ -300,5 +318,51 @@ class Ressource
     public function getType()
     {
         return $this->type;
+    }
+
+    /**
+     * Set valide
+     *
+     * @param boolean $valide
+     * @return Ressource
+     */
+    public function setValide($valide)
+    {
+        $this->valide = $valide;
+    
+        return $this;
+    }
+
+    /**
+     * Get valide
+     *
+     * @return boolean 
+     */
+    public function getValide()
+    {
+        return $this->valide;
+    }
+
+    /**
+     * Set depositaire
+     *
+     * @param \Kub\UserBundle\Entity\User $depositaire
+     * @return Ressource
+     */
+    public function setDepositaire(\Kub\UserBundle\Entity\User $depositaire = null)
+    {
+        $this->depositaire = $depositaire;
+    
+        return $this;
+    }
+
+    /**
+     * Get depositaire
+     *
+     * @return \Kub\UserBundle\Entity\User 
+     */
+    public function getDepositaire()
+    {
+        return $this->depositaire;
     }
 }

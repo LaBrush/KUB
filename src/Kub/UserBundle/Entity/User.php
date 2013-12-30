@@ -176,7 +176,7 @@ abstract class User extends BaseUser implements ParticipantInterface
                 'ô', 'ö', 'ò', 'ó', 'õ', 'ø', 
                 'ù', 'û', 'ü', 'ú', 
                 'é', 'è', 'ê', 'ë',
-                'ç', 'ÿ', 'ñ', 
+                'ç', 'ÿ', 'ñ', ' '
             ),
             array(
                 'a', 'a', 'a', 'a', 'a', 'a', 
@@ -184,7 +184,7 @@ abstract class User extends BaseUser implements ParticipantInterface
                 'o', 'o', 'o', 'o', 'o', 'o', 
                 'u', 'u', 'u', 'u', 
                 'e', 'e', 'e', 'e', 
-                'c', 'y', 'n', 
+                'c', 'y', 'n', ''
             ),
             $this->username
         );

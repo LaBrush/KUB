@@ -10,13 +10,21 @@
 		<h2 class="section-title">Ressources</h2>
 	</article>
 
+	{% if not is_granted("ROLE_PROFESSEUR") %}
+		<article class="article">
+			
+			<a href="{{ path('kub_ressource_propose') }}" class="button">Proposer une ressource</a>
+
+		</article>
+	{% endif %}
+
 	<article class="article">
 		<div class="liste-ressources">
 
 			<ul class="liste">
 				{% for ressource in ressources %}
-			
-					<a href="{{ ressource.url }}" target="_blank">
+
+					<a href="{{ path('kub_ressource_show', { id: ressource.id }) }}">
 						<li class="ressource in-list {{ ressource.type }} {{ ressource.niveau }} {{ ressource.matiere }}">
 
 							<span class="label">{{ ressource.titre }}</span>
@@ -58,23 +66,9 @@
 			
 			<div class="matieres">
 				<select multiple id="matiere" name="matiere" class="select2">
-					<option value="Français">Français</option>
-					<option value="Mathématiques">Mathématiques</option>
-					<option value="Histoire-Géographie">Histoire-Géographie</option>
-					<option value="Sport">Sport</option>
-					<option value="Anglais">Anglais</option>
-					<option value="Espagnol">Espagnol</option>
-					<option value="Cinéma">Cinéma</option>
-					<option value="Allemand">Allemand</option>
-					<option value="Musique">Musique</option>
-					<option value="Italien">Italien</option>
-					<option value="SI">SI</option>
-					<option value="SES">SES</option>
-					<option value="PFEG">PFEG</option>
-					<option value="Physique">Physique</option>
-					<option value="Litérrature">Litérrature</option>
-					<option value="ISN">ISN</option>
-					<option value="Autre">Autre</option>
+					{% for matiere in matieres %}
+					    <option value="{{ matiere }}">{{ matiere }}</option>
+					{% endfor %}
 				</select>
 			</div>
 			<input class="ressources" id="search-in-list" type="text" placeholder="Nom du fichier">

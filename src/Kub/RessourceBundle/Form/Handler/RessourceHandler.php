@@ -4,6 +4,8 @@ namespace Kub\RessourceBundle\Form\Handler;
 
 use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\Request;
+use Kub\RessourceBundle\Entity\Ressource;
+
 
 class RessourceHandler
 {
@@ -32,7 +34,6 @@ class RessourceHandler
 			if($this->form->isValid())
 			{
 				$this->onSuccess( $this->form->getData() );
-
 				return true;
 			}
 		}
@@ -45,12 +46,28 @@ class RessourceHandler
 		$this->em->persist($data);
 		$this->em->flush();
 
-		$groupes = $this->security->getToken()->getUser()->getGroupes();
-		foreach ($groupes as $groupe) {
-			if($groupe->getNiveau()->getId() != $data->getNiveau()->getId())
-			{
-				if(($key = array_search($groupe, $groupes)) !== FALSE) {
-					unset($groupes[$key]);
+		$user = $this->security->getToken()->getUser() ;
+
+		$data->setDepositaire($user);
+		$groupes = $user->getGroupes()->toArray();
+		
+		switch ($data->getType()) {
+			case Ressource::WEB:
+				$data->setFile();
+				break;
+			case Ressource::FILE:
+				$data->setUrl( $data->getFile()->getWebPath() );
+				break;
+		}
+
+		if($data->getValide())
+		{
+			foreach ($groupes as $groupe) {
+				if($groupe->getNiveau()->getId() != $data->getNiveau()->getId())
+				{
+					if(($key = array_search($groupe, $groupes)) !== FALSE) {
+						unset($groupes[$key]);
+					}
 				}
 			}
 		}

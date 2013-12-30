@@ -30,7 +30,26 @@
 								<td rowspan={{ interval.rowSpan }} class="bottom-dashed {{ cours.matiere.categorie.abreviation }}">
 
 									<span class="info-cours">{{ cours.matiere | upper }}</span>
-									<span class="info-cours"><em>M. {{ cours.professeur.nom }}</em></span>
+
+									{% if not is_granted("ROLE_PROFESSEUR") %}
+										<span class="info-cours"><em>M. {{ cours.professeur.nom }}</em></span>
+									{% endif %}
+
+									{% if not is_granted("ROLE_ELEVE") %}
+										{% set groupes = "" %}
+										{% for groupe in cours.groupes %}
+
+											{% set groupes = groupes ~ groupe %}
+											{% if 1 == loop.revindex0 %}
+										    	{% set groupes = groupes ~ ' et ' %}
+										    {% elseif 1 < loop.revindex0 %}	
+												{% set groupes = groupes ~ ', ' %}
+										    {% endif %}
+
+										{% endfor %}
+
+										<span class="info-cours"><em>{{ groupes }}</em></span>
+									{% endif %}
 
 								</td>
 							{% else %}

@@ -34,6 +34,7 @@ class MenuBuilder
 
 		$menu->addChild('Accueil', array('labelAttributes' => array('className' => 'accueil'), array('route' => 'home_homepage')));
 		$menu["Accueil"]->addChild('Notifications', array('route' => 'home_homepage'));
+		$menu["Accueil"]->addChild('Messagerie', array('route' => 'kub_messagerie_inbox'));
 		$this->generateMessagesMenu($menu);
 
 		if($this->security->isGranted('ROLE_SECRETAIRE'))

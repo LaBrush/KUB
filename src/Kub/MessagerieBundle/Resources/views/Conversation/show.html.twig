@@ -1,0 +1,32 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+
+	<article class="article">
+		<a href="{{ path('kub_messagerie_new') }}">Nouveau</a>
+	</article>
+
+	<article class="article">
+		
+		{% set users = "" %}
+		{% for user in thread.users %}
+		    {% set users = users ~ ' ' ~ user %}
+		{% endfor %}
+
+		<h3>Avec {{ users }}</h3>
+
+		<ul>
+		{% for message in thread.messages %}
+		    <li>{{ message }}</li>
+		{% endfor %}
+		</ul>
+
+	</article>
+
+	<article class="article">
+		
+		{{ render(controller("KubMessagerieBundle:Default:send", { id: thread.id })) }}
+
+	</article>
+
+{% endblock %}

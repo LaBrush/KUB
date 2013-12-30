@@ -19,9 +19,6 @@ class PostController extends Controller
 	 */
 	public function addAction()
 	{
-		// throw new \Exception("hey");
-		
-
 		$post = new Post ;
 		$form = $this->createForm(new PostType, $post, array(
 			"method" => "POST",

@@ -20,24 +20,30 @@
 		{{ form_label(form.matiere) }} <div class="input">{{ form_widget(form.matiere) }}</div>
 	</span>
 
-	<span class="type">
-		{{ form_errors(form.type) }}
-		{{ form_label(form.type) }} <div class="input">{{ form_widget(form.type) }}</div>
-	</span>
+	{% if form.type is defined %}
+		<span class="type">
+			{{ form_errors(form.type) }}
+			{{ form_label(form.type) }} <div class="input">{{ form_widget(form.type) }}</div>
+		</span>
+	{% endif %}
 
-	<span class="url">
-		{{ form_errors(form.url) }}
-		{{ form_label(form.url) }} <div class="input">{{ form_widget(form.url) }}</div>
-	</span>
+	{#{% if form.type is defined %}
+		<span class="url">
+			{{ form_errors(form.url) }}
+			{{ form_label(form.url) }} <div class="input">{{ form_widget(form.url) }}</div>
+		</span>
+	{% endif %}{#
 
-	<span class="file">
-		{{ form_label(form.file) }}
-		<div class="input">
-			{% for field in form.file %}
-				{{ form_errors(field) }}
-				{{ form_widget(field) }}
-			{% endfor %}
-		</div>
-	</span>
+	{% if form.file is defined %}
+		<span class="file">
+			{{ form_label(form.file) }}
+			<div class="input">
+				{% for field in form.file %}
+					{{ form_errors(field) }}
+					{{ form_widget(field) }}
+				{% endfor %}
+			</div>
+		</span>
+	{% endif %}#}
 
 {% endblock %}

@@ -9,6 +9,8 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Kub\RessourceBundle\Entity\Ressource ;
 use Kub\RessourceBundle\Form\Type\FileType ;
 
+use Kub\RessourceBundle\Form\EventListener\setTypeFieldSuscriber ;
+
 class RessourceType extends AbstractType
 {
 		/**
@@ -19,6 +21,7 @@ class RessourceType extends AbstractType
 	{
 		$builder
 			->add('titre', 'text')
+			->add('auteur', 'text')
 			->add('description', "textarea")
 			->add('niveau', 'entity', array(
 				"class" => "Kub\ClasseBundle\Entity\Niveau"
@@ -29,12 +32,13 @@ class RessourceType extends AbstractType
 			->add('type', 'choice', array(
 				"expanded" => true,
 				'choices' => array(
-					"web" => "Ressouce en ligne",
-					"file" => "Fichier"
+					Ressource::WEB => "Ressource en ligne",
+					Ressource::FILE => "Fichier"
 				)
 			))
 			->add('url', 'url')
 			->add('file', new FileType)
+			->addEventSubscriber(new setTypeFieldSuscriber)
 		;
 	}
 	

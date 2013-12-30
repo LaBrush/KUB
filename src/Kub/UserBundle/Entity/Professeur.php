@@ -31,7 +31,7 @@ class Professeur extends User
 
 	public function getGroupes(){
 
-		$groupes = array();
+		$groupes = new \Doctrine\Common\Collections\ArrayCollection ;
 		foreach ($this->getCours() as $cours) {
 			foreach ($cours->getGroupes() as $groupe) {
 

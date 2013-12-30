@@ -1,0 +1,25 @@
+kub_messagerie_inbox:
+    pattern:  /
+    defaults: { _controller: KubMessagerieBundle:Default:inbox }
+
+kub_messagerie_new:
+    pattern:  /nouveau
+    defaults: { _controller: KubMessagerieBundle:Default:new }
+
+kub_messagerie_send:
+    pattern:  /envoyer/{id}
+    defaults: { _controller: KubMessagerieBundle:Default:send }
+    requirements:
+        id: \d+
+
+kub_messagerie_read:
+    pattern:  /conversation/{id}
+    defaults: { _controller: KubMessagerieBundle:Default:read }
+    requirements:
+        id: \d+
+
+kub_messagerie_delete:
+    pattern:  /supprimer/{id}
+    defaults: { _controller: KubMessagerieBundle:Default:delete }
+    requirements:
+        id: \d+

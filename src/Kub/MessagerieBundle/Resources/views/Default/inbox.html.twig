@@ -1,0 +1,17 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+
+	<article class="article">
+		<a href="{{ path('kub_messagerie_new') }}">Nouveau</a>
+	</article>
+
+	<article class="article">
+		<ul>
+		{% for thread in threads %}
+			<li><a href="{{ path('kub_messagerie_read', { id: thread.id }) }}">{{ thread.lastMessage|date('H:i') }}</a></li>    
+		{% endfor %}
+		</ul>
+	</article>
+
+{% endblock %}

@@ -16,6 +16,7 @@ app/console doctrine:generate:entities KubNoteBundle 			--no-backup ;
 app/console doctrine:generate:entities KubNotificationBundle 	--no-backup ;
 app/console doctrine:generate:entities KubRessourceBundle 		--no-backup ;
 app/console doctrine:generate:entities KubUserBundle 			--no-backup ;
+app/console doctrine:generate:entities KubMessagerieBundle 		--no-backup ;
 
 # app/console doctrine:schema:update --dump-sql ;
 app/console doctrine:schema:update --force ;

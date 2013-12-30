@@ -42,6 +42,7 @@ class AppKernel extends Kernel
             new Kub\EDTBundle\KubEDTBundle(),
             new Kub\NotificationBundle\KubNotificationBundle(),
             new Kub\MessageBundle\KubMessageBundle(),
+            new Kub\MessagerieBundle\KubMessagerieBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

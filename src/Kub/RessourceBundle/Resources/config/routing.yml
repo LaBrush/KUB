@@ -5,3 +5,20 @@ kub_ressource_homepage:
 kub_ressource_add:
     pattern:  /ajouter
     defaults: { _controller: KubRessourceBundle:Default:add }
+
+kub_ressource_propose:
+    pattern:  /proposer
+    defaults: { _controller: KubRessourceBundle:Default:add }
+
+kub_ressource_edit:
+    pattern:  /modifier/{id}
+    defaults: { _controller: KubRessourceBundle:Default:edit }
+    requirements:
+        id: \d+
+
+kub_ressource_show:
+    pattern:  /voir/{id}
+    defaults: { _controller: KubRessourceBundle:Default:show }
+    requirements:
+        id: \d+
+

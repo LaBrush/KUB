@@ -1,0 +1,27 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}
+	{{ parent() }} - Valider une ressource
+{% endblock %}
+
+{% block body %}
+
+	<article class="article">
+		<h2 class="section-title">Valider une ressource</h2>
+	</article>
+
+	<article class="article">
+		
+		
+
+	</article>
+
+{% endblock %}
+
+{% block js %}
+	<script type="text/javascript" src="{{ asset('ressources/select2/select2.min.js') }}"></script>
+	<link rel="stylesheet" href="{{ asset('ressources/select2/select2.css') }}" />
+	<script type="text/javascript" src="{{ asset('ressources/jsmin/search.min.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('ressources/jsmin/fuse.min.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('ressources/jsmin/ressources.min.js') }}"></script>
+{% endblock %}
