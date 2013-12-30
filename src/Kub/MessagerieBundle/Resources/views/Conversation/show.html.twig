@@ -10,12 +10,16 @@
 		
 		<a href="{{ path('kub_messagerie_delete', { id: thread.id }) }}">Supprimer</a>
 
-		{% set users = "" %}
-		{% for user in thread.allUsers %}
-		    {% set users = users ~ ', ' ~ user %}
+		{% set participants = "" %}
+		{% for user in thread.users %}
+		    {% set participants = participants ~ ', ' ~ user %}
 		{% endfor %}
 
-		<h3>Avec {{ users }}</h3>
+		{% for groupe in thread.groupes %}
+		    {% set participants = participants ~ ', ' ~ groupe %}
+		{% endfor %}
+
+		<h3>Avec {{ participants }}</h3>
 
 		<ul>
 		{% for message in thread.messages %}

@@ -5,14 +5,14 @@
 	<ul class="submenu">
 		<a href="{{ categorie.uri }}">
 			<li class="h3 li-menu bordered-{{ categorie.labelAttributes.className }}">
-				{{ categorie.name|raw }}
+				{{ categorie.name }}
 			</li>
 		</a>
 
 		{% for page in categorie.children %}
 			<a href="{{ page.uri }}">
 				<li class="li-menu">
-					{{ page.name }}
+					{{ page.name|raw }}
 				</li>
 			</a>
 		{% endfor %}

@@ -7,8 +7,6 @@ use Knp\Menu\FactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\SecurityContext ;
 use Doctrine\ORM\EntityManager ;
-use FOS\MessageBundle\Provider\ProviderInterface as MessageProviderInterface;
-
 
 class MenuBuilder
 {
@@ -20,7 +18,7 @@ class MenuBuilder
 	/**
 	 * @param FactoryInterface $factory
 	 */
-	public function __construct(FactoryInterface $factory, SecurityContext $security, EntityManager $em, MessageProviderInterface $messages)
+	public function __construct(FactoryInterface $factory, SecurityContext $security, EntityManager $em, $messages)
 	{
 		$this->factory = $factory;
 		$this->security = $security ;
@@ -34,7 +32,6 @@ class MenuBuilder
 
 		$menu->addChild('Accueil', array('labelAttributes' => array('className' => 'accueil'), array('route' => 'home_homepage')));
 		$menu["Accueil"]->addChild('Notifications', array('route' => 'home_homepage'));
-		$menu["Accueil"]->addChild('Messagerie', array('route' => 'kub_messagerie_inbox'));
 		$this->generateMessagesMenu($menu);
 
 		if($this->security->isGranted('ROLE_SECRETAIRE'))
@@ -71,7 +68,7 @@ class MenuBuilder
 			$text .= '<span class="notifications">' . $nb_unread . '</span>';
 		}
 
-		$menu["Accueil"]->addChild($text, array('route' => 'fos_message_inbox', 'labelAttributes' => array('className' => 'messagerie')));
+		$menu["Accueil"]->addChild($text, array('route' => 'kub_messagerie_inbox', 'labelAttributes' => array('className' => 'messagerie')));
 	}
 
 	public function generateSecretaireMenu($menu)
