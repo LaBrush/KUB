@@ -3,6 +3,7 @@
 namespace Kub\MessagerieBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert ;
 
 /**
  * Message
@@ -25,6 +26,8 @@ class Message
      * @var string
      *
      * @ORM\Column(name="contenu", type="text")
+     * @Assert\NotNull
+     * @Assert\Length(min=1, minMessage="Vous ne pouvez envoyer un message vide.")
      */
     private $contenu;
 

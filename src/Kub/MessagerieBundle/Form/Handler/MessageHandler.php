@@ -50,20 +50,26 @@ class MessageHandler
 			for ($i=0; $i < count($participants) ; $i++) { 
 				$thread->addUser( $participants[$i] );
 			}
+
+			$groupes = $this->form->get('thread_add_member')->getData()->getGroupes();	
+
+			for($i=0; $i < count($groupes) ; $i++) {
+				$thread->addGroupe( $groupes[$i] );	
+			}
 		}
 		$thread->addUser( $data->getSender() );
 
 		$this->em->persist($data);
 		$this->em->flush();
 
-		foreach($thread->getUsers() as $user) {
-		
+		foreach($thread->getAllUsers() as $user) { 
 			$mu = new MessageUser ;
 				$mu->setMessage($data);
 				$mu->setUser($user);
 
-			$data->addMessageUser( $mu );	
+			$data->addMessageUser( $mu );
 		}
+		
 
 		$this->em->persist($data);
 		$this->em->flush();

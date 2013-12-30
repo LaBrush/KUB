@@ -39,6 +39,22 @@ class Thread
     private $users ;
 
     /**
+     * @ORM\ManyToMany(targetEntity="Kub\ClasseBundle\Entity\Groupe")
+     */
+    private $groupes ;
+
+    public function getAllUsers()
+    {
+        $users = $this->getUsers()->toArray();
+
+        foreach ($this->getGroupes() as $groupe) {
+            $users = array_merge($users, $groupe->getEleves()->toArray());
+        }
+
+        return array_unique($users, SORT_STRING);
+    }
+
+    /**
      * Get id
      *
      * @return integer 
@@ -76,6 +92,7 @@ class Thread
     public function __construct()
     {
         $this->users = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->groupes = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -146,5 +163,41 @@ class Thread
     public function getUsers()
     {
         return $this->users;
+    }
+
+    /**
+     * Add groupes
+     *
+     * @param \Kub\ClasseBundle\Entity\Groupe $groupes
+     * @return Thread
+     */
+    public function addGroupe(\Kub\ClasseBundle\Entity\Groupe $groupes)
+    {
+        if(!$this->groupes->contains($groupes))
+        {
+            $this->groupes[] = $groupes;
+        }
+    
+        return $this;
+    }
+
+    /**
+     * Remove groupes
+     *
+     * @param \Kub\ClasseBundle\Entity\Groupe $groupes
+     */
+    public function removeGroupe(\Kub\ClasseBundle\Entity\Groupe $groupes)
+    {
+        $this->groupes->removeElement($groupes);
+    }
+
+    /**
+     * Get groupes
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getGroupes()
+    {
+        return $this->groupes;
     }
 }

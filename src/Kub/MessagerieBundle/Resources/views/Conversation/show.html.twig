@@ -8,9 +8,11 @@
 
 	<article class="article">
 		
+		<a href="{{ path('kub_messagerie_delete', { id: thread.id }) }}">Supprimer</a>
+
 		{% set users = "" %}
-		{% for user in thread.users %}
-		    {% set users = users ~ ' ' ~ user %}
+		{% for user in thread.allUsers %}
+		    {% set users = users ~ ', ' ~ user %}
 		{% endfor %}
 
 		<h3>Avec {{ users }}</h3>

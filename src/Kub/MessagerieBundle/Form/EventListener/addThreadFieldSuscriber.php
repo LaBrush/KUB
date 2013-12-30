@@ -24,9 +24,9 @@ class addThreadFieldSuscriber implements EventSubscriberInterface
         $this->form = $event->getForm();
 
         if (!$this->data->getThread()->getId()) {
-            $this->form->add('thread', new ThreadType);
+            $this->form->add('thread', new ThreadType($this->data));
         } else {
-            $this->form->add('thread_add_member', new ThreadType, array(
+            $this->form->add('thread_add_member', new ThreadType($this->data), array(
                 "mapped" => false
             ));
         }
