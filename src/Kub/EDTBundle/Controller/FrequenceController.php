@@ -22,7 +22,7 @@ class FrequenceController extends Controller
 		$form = $this->createForm($type, $frequence);
 
 		$request = $this->get('request');
-		$em = $this->getDoctrine()->getManager();
+		$em = $this->get('doctrine.orm.default_entity_manager');
 
 		$formHandler = new FrequenceHandler($form, $request, $em);
 
@@ -56,7 +56,7 @@ class FrequenceController extends Controller
 		$form = $this->createForm($type, $frequence);
 
 		$request = $this->get('request');
-		$em = $this->getDoctrine()->getManager();
+		$em = $this->get('doctrine.orm.default_entity_manager');
 
 		$formHandler = new FrequenceHandler($form, $request, $em);
 
@@ -95,7 +95,7 @@ class FrequenceController extends Controller
 
 			if ($form->isValid()) {
 
-				$em = $this->getDoctrine()->getManager();
+				$em = $this->get('doctrine.orm.default_entity_manager');
 				$em->remove($frequence);
 				$em->flush();
 
@@ -117,7 +117,7 @@ class FrequenceController extends Controller
 
 	public function listAction()
 	{
-		$listeFrequences = $this->getDoctrine()->getManager()
+		$listeFrequences = $this->get('doctrine.orm.default_entity_manager')
 			->getRepository("KubEDTBundle:Frequence")
 			->findAll();
 

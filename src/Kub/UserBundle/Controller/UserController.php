@@ -57,7 +57,7 @@ class UserController extends Controller
 			$form = $this->createForm($type, $user);
 
 			$request = $this->get('request');
-			$em = $this->getDoctrine()->getManager();
+			$em = $this->get('doctrine.orm.default_entity_manager');
 
 			if($request->getMethod() == "POST"){
 
@@ -135,7 +135,7 @@ class UserController extends Controller
 		$form = $this->createForm($type, $user);
 
 		$request = $this->get('request');
-		$em = $this->getDoctrine()->getManager();
+		$em = $this->get('doctrine.orm.default_entity_manager');
 
 		$discriminator = $this->container->get('pugx_user.manager.user_discriminator');
 		$discriminator->setClass('Kub\UserBundle\Entity\\'.$class);
@@ -204,7 +204,7 @@ class UserController extends Controller
 
 			if ($form->isValid()) {
 
-				$em = $this->getDoctrine()->getManager();
+				$em = $this->get('doctrine.orm.default_entity_manager');
 				$em->remove($user);
 				$em->flush();
 
@@ -232,7 +232,7 @@ class UserController extends Controller
 			throw $this->createNotFoundException('Seuls les élèves ont un niveau');
 		}
 
-		$manager = $this->getDoctrine()->getManager();
+		$manager = $this->get('doctrine.orm.default_entity_manager');
 		$repository = $manager->getRepository("KubUserBundle:".ucfirst($role));
 
 		$liste_niveaux = null ;

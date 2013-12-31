@@ -1,4 +1,4 @@
 services:
     fos_message.thread_manager.default:
         class: "Kub\MessageBundle\EntityManager\ThreadManager"
-        arguments: [@doctrine.orm.entity_manager, %fos_message.thread_class%, %fos_message.thread_meta_class%, @fos_message.message_manager]
+        arguments: [@doctrine.orm.default_entity_manager, %fos_message.thread_class%, %fos_message.thread_meta_class%, @fos_message.message_manager]

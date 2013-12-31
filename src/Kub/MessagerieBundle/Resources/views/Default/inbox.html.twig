@@ -24,7 +24,7 @@
 
 						Le <strong>{{ lastMessage.date | date('d/m/y')}}</strong>, 
 
-						{% if lastMessage.sender == app.user.username %}
+						{% if lastMessage.sender.id == app.user.id %}
 							
 							vous avez dit
 
@@ -38,13 +38,19 @@
 
 							à
 
-							{% for receveur in users %}
-								{% if receveur != app.user.username %}
-									<strong> {{ receveur }} </strong>
-								{% endif %}
-							{% endfor %}
+							{% if thread.users|length > 1 %}
+								{% for receveur in thread.users %}
+									{% if receveur.id != app.user.id %}
+										<strong> {{ receveur }} </strong>
+									{% endif %}
+								{% endfor %}
 
-							.
+								{% for receveur in thread.groupes %}
+									<strong> {{ receveur }} </strong>
+								{% endfor %}
+							{% else %}
+								vous même
+							{% endif %}
 
 						{% else %}
 							

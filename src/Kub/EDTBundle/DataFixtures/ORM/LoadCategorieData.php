@@ -30,21 +30,24 @@ class LoadCategorieData extends AbstractFixture implements FixtureInterface, Con
 	 * {@inheritDoc}
 	 */
 	public function load(ObjectManager $manager)
-	{
-		$categories = array(
-			"Art",
-			"Litérrature",
-			"Sciences",
-			"Société",
-			"Langues",
-			"Autres"
-		);
+    {
+      $categories = array(
+      	"Littérature",
+		"Scientifique",
+		"Economie et société",
+		"Langue",
+		"Art",
+		"Option",
+		"Enseignement d'exploration",
+		"Autres"
+      );
+  
 
 		foreach ($categories as $name) {
 			$categorie = new Categorie();
 			$categorie->setNom($name);
 
-			$this->addReference($name, $categorie);
+			$this->addReference($name . '_categorie', $categorie);
 			$manager->persist($categorie);
 		}
 

@@ -31,7 +31,7 @@ class MenuBuilder
 		$menu = $this->factory->createItem('root');
 
 		$menu->addChild('Accueil', array('labelAttributes' => array('className' => 'accueil'), array('route' => 'home_homepage')));
-		$menu["Accueil"]->addChild('Notifications', array('route' => 'home_homepage'));
+		$menu["Accueil"]->addChild('Notifications', array('route' => 'kub_notification_show'));
 		$this->generateMessagesMenu($menu);
 
 		if($this->security->isGranted('ROLE_SECRETAIRE'))
@@ -185,6 +185,10 @@ class MenuBuilder
 
 		$menu["Ressources en ligne"]->addChild("Ajouter", array(
 			'route' => 'kub_ressource_add', 
+		));
+
+		$menu["Ressources en ligne"]->addChild("Valider", array(
+			'route' => 'kub_ressource_validation_list', 
 		));
 
 		$menu->addChild('Ma semaine', array(

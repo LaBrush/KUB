@@ -12,7 +12,13 @@
 
 	<article class="article">
 		
+		<ul>
+		{% for ressource in ressources %}
 		
+			<li>{{ ressource }} -- {{ render(controller('KubRessourceBundle:Validation:valider', { id: ressource.id})) }}</li>
+
+		{% endfor %}		
+		</ul>
 
 	</article>
 

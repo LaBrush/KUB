@@ -15,13 +15,13 @@ use Kub\MessagerieBundle\Entity\Message ;
 class DefaultController extends Controller
 {
 	public function inboxAction(){
-		$threads = $this->getDoctrine()->getManager()->getRepository('KubMessagerieBundle:Thread')->findByUser( $this->getUser() );
+		$threads = $this->get('doctrine.orm.default_entity_manager')->getRepository('KubMessagerieBundle:Thread')->findByUser( $this->getUser() );
 
 		return $this->render('KubMessagerieBundle:Default:inbox.html.twig', array('threads' => $threads));
 	}
 
 	public function readAction($id){
-		$em = $this->getDoctrine()->getManager();
+		$em = $this->get('doctrine.orm.default_entity_manager');
 		$thread = $em->getRepository('KubMessagerieBundle:Thread')->findOneById( $id );
 
 		//On marque les messages en cours de consultation comme lus
@@ -59,11 +59,11 @@ class DefaultController extends Controller
 		$form = $this->createForm(new MessageType, $message);
 
 		$request = $this->get('request');
-		$em = $this->getDoctrine()->getManager();
+		$em = $this->get('doctrine.orm.default_entity_manager');
 
 		if($request->getMethod() == "POST"){
 
-			$formHandler = new MessageHandler($form, $request, $this->getDoctrine()->getManager(), $this->get('security.context'));
+			$formHandler = new MessageHandler($form, $request, $this->get('doctrine.orm.default_entity_manager'), $this->get('security.context'));
 
 			if($formHandler->process())
 			{
@@ -82,7 +82,7 @@ class DefaultController extends Controller
 
 	public function sendAction($id){
 
-		$thread = $this->getDoctrine()->getManager()->getRepository('KubMessagerieBundle:Thread')->findOneById( $id );		
+		$thread = $this->get('doctrine.orm.default_entity_manager')->getRepository('KubMessagerieBundle:Thread')->findOneById( $id );		
 
 		$message = new Message ;
 		$message->setThread($thread);
@@ -93,11 +93,11 @@ class DefaultController extends Controller
 		));
 
 		$request = $this->get('request');
-		$em = $this->getDoctrine()->getManager();
+		$em = $this->get('doctrine.orm.default_entity_manager');
 
 		if($request->getMethod() == "POST"){
 
-			$formHandler = new MessageHandler($form, $request, $this->getDoctrine()->getManager());
+			$formHandler = new MessageHandler($form, $request, $this->get('doctrine.orm.default_entity_manager'));
 
 			if($formHandler->process())
 			{
@@ -134,7 +134,7 @@ class DefaultController extends Controller
 
 			if ($form->isValid()) {
 
-				$em = $this->getDoctrine()->getManager();
+				$em = $this->get('doctrine.orm.default_entity_manager');
 
 				$links = $em->getRepository('KubMessagerieBundle:MessageUser')->findByUserAndThreadId($this->getUser(), $id);
 

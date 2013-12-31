@@ -8,5 +8,5 @@ services:
 
     kub.ariane.formManager:
         class: Kub\ArianeBundle\Form\Manager\FormManager
-        arguments: [@request, @doctrine.orm.entity_manager, @security.context, @form.factory, @session]
+        arguments: [@request, @doctrine.orm.default_entity_manager, @security.context, @form.factory, @session]
         scope: request

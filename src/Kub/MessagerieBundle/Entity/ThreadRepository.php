@@ -27,6 +27,8 @@ class ThreadRepository extends EntityRepository
 
 			->where('u.id = :u_id')
 			->setParameter('u_id', $user->getId())
+
+			->orderBy('t.dateLastMessage', 'DESC')
 		;
 
 		return $qb->getQuery()->getResult();

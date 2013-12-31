@@ -32,29 +32,38 @@ class LoadMatiereData extends AbstractFixture implements FixtureInterface, Conta
 	public function load(ObjectManager $manager)
 	{
 		$matieres = array(
-			array("Français", "Litérrature"),
-			array("Litérrature et Société", "Litérrature"),
-			array("Mathématiques", "Sciences"),
-			array("Histoire-Géographie", "Société"),
-			array("Anglais", "Langues"),
-			array("Espagnol", "Langues"),
-			array("Allemand", "Langues"),
-			array("Italien", "Langues"),
-			array("Musique", "Art"),
-			array("Cinéma", "Art"),
+			array("Français", "Littérature"),
+			array("Litérrature", "Littérature"),
+
+			array("Mathématiques", "Scientifique"),
+			array("SI", "Scientifique"),
+			array("Physique", "Scientifique"),
+
+			array("Histoire-Géographie", "Economie et société"),
+			array("SES", "Economie et société"),
+
+			array("Litérrature et société", "Enseignement d'exploration"),
+
+			array("Anglais", "Langue"),
+			array("Espagnol", "Langue"),
+			array("Allemand", "Langue"),
+			array("Italien", "Langue"),
+
+			array("Musique", "Option"),
+			array("Cinéma", "Option"),
+
 			array("Sport", "Autres"),
-			array("SI", "Sciences"),
-			array("SES", "Société"),
-			array("PFEG", "Société"),
-			array("Physique", "Sciences"),
-			array("ISN", "Sciences"),
-			array("Matière non repertoriée", "Autres")
+			array("Autre", "Autres"),
+			
+			array("PFEG", "Enseignement d'exploration"),
+			array("Physique - Chimie", "Scientifique"),
+			array("ISN", "Enseignement d'exploration"),
 		);
 
 		foreach ($matieres as $prop) {
 			$matiere = new Matiere();
 			$matiere->setName($prop[0]);
-			$matiere->setCategorie( $this->getReference( $prop[1]) );
+			$matiere->setCategorie( $this->getReference( $prop[1] . '_categorie') );
 
 			$this->addReference($matiere->getName(), $matiere);
 			$manager->persist($matiere);

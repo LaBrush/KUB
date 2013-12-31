@@ -4,6 +4,142 @@
 		"selected_items":
 		[
 			[
+				"ressou",
+				"ressource"
+			],
+			[
+				"K",
+				"KubRessourceBundle:Professeur:valider"
+			],
+			[
+				"Mess",
+				"Message"
+			],
+			[
+				"thr",
+				"thread"
+			],
+			[
+				"thre",
+				"threadId"
+			],
+			[
+				"mess",
+				"messageUser"
+			],
+			[
+				"th",
+				"thread"
+			],
+			[
+				"for",
+				"foreach	foreach …"
+			],
+			[
+				"mes",
+				"message"
+			],
+			[
+				"eleve",
+				"eleves"
+			],
+			[
+				"elee",
+				"eleves"
+			],
+			[
+				"M",
+				"MessageUser"
+			],
+			[
+				"nb",
+				"nb_unread"
+			],
+			[
+				"re",
+				"result"
+			],
+			[
+				"get",
+				"getUser"
+			],
+			[
+				"kub_",
+				"kub_messagerie_inbox"
+			],
+			[
+				"getRe",
+				"getRepository"
+			],
+			[
+				"bu",
+				"builder"
+			],
+			[
+				"var",
+				"var_dump"
+			],
+			[
+				"obc",
+				"ob_get_clean"
+			],
+			[
+				"getcla",
+				"get_class"
+			],
+			[
+				"gener",
+				"generateUrl"
+			],
+			[
+				"sec",
+				"security"
+			],
+			[
+				"user",
+				"users"
+			],
+			[
+				"pa",
+				"participants"
+			],
+			[
+				"Mes",
+				"MessagerieBundle"
+			],
+			[
+				"MEssag",
+				"MessagerieBundle"
+			],
+			[
+				"messa",
+				"message"
+			],
+			[
+				"pri",
+				"private"
+			],
+			[
+				"pr",
+				"private"
+			],
+			[
+				"setTy",
+				"setType"
+			],
+			[
+				"setType",
+				"setTypeFieldSuscriber"
+			],
+			[
+				"array",
+				"array"
+			],
+			[
+				"to",
+				"toLower"
+			],
+			[
 				"hor",
 				"horairesMinutes"
 			],
@@ -32,10 +168,6 @@
 				"groupe"
 			],
 			[
-				"for",
-				"foreach	foreach …"
-			],
-			[
 				"ma",
 				"matieres"
 			],
@@ -62,10 +194,6 @@
 			[
 				"nt",
 				"notes"
-			],
-			[
-				"user",
-				"username"
 			],
 			[
 				"usen",
@@ -128,10 +256,6 @@
 				"Controle"
 			],
 			[
-				"kub_",
-				"kub_notes_professeur_delete"
-			],
-			[
 				"getUser",
 				"getUsername"
 			],
@@ -158,10 +282,6 @@
 			[
 				"findBy",
 				"findByProfesseur"
-			],
-			[
-				"K",
-				"Kub"
 			],
 			[
 				"Cont",
@@ -194,10 +314,6 @@
 			[
 				"not",
 				"note"
-			],
-			[
-				"eleve",
-				"eleve"
 			],
 			[
 				"arraymer",
@@ -278,10 +394,6 @@
 			[
 				"horaires",
 				"horaires_jours_filled"
-			],
-			[
-				"get",
-				"getHoraire"
 			],
 			[
 				"cu",
@@ -384,10 +496,6 @@
 				"getJour"
 			],
 			[
-				"pri",
-				"print_r"
-			],
-			[
 				"ret",
 				"return"
 			],
@@ -406,114 +514,6 @@
 			[
 				"pre",
 				"previous"
-			],
-			[
-				"pr",
-				"previous"
-			],
-			[
-				"da",
-				"datetime"
-			],
-			[
-				"form",
-				"format"
-			],
-			[
-				"roun",
-				"roundToHalf"
-			],
-			[
-				"is_",
-				"is_array"
-			],
-			[
-				"data",
-				"database_host"
-			],
-			[
-				"Ressour",
-				"Ressource"
-			],
-			[
-				"Ress",
-				"Ressource"
-			],
-			[
-				"Ressou",
-				"RessourceBundle"
-			],
-			[
-				"Abse",
-				"Absence"
-			],
-			[
-				"Ab",
-				"AbsenceBundle"
-			],
-			[
-				"Absence",
-				"AbsenceBundle"
-			],
-			[
-				"Absen",
-				"AbsenceType"
-			],
-			[
-				"th",
-				"throw	Throw Exception"
-			],
-			[
-				"var",
-				"var_dump"
-			],
-			[
-				"pres",
-				"preferred_choices"
-			],
-			[
-				"ROLE",
-				"ROLE_SURVEILLANT"
-			],
-			[
-				"sec",
-				"security"
-			],
-			[
-				"For",
-				"FormEvents"
-			],
-			[
-				"User",
-				"UserBundle"
-			],
-			[
-				"creat",
-				"createdBy"
-			],
-			[
-				"Thre",
-				"ThreadManager"
-			],
-			[
-				"ress",
-				"ressource"
-			],
-			[
-				"Sear",
-				"SearchController"
-			],
-			[
-				"KubRess",
-				"KubRessourceBundle:Ressource"
-			],
-			[
-				"kub",
-				"kub_ressource_homepage"
-			],
-			[
-				"KubRe",
-				"KubRessourceBundle:Ressource"
 			]
 		]
 	},
@@ -523,15 +523,39 @@
 	"build_system": "Packages/User/PHP-Lint.sublime-build",
 	"command_palette":
 	{
-		"height": 147.0,
+		"height": 227.0,
 		"selected_items":
 		[
+			[
+				"side",
+				"View: Toggle Side Bar"
+			],
+			[
+				"rena",
+				"File: Rename"
+			],
+			[
+				"move",
+				"File: Move"
+			],
+			[
+				"sid",
+				"View: Toggle Side Bar"
+			],
 			[
 				"tabs",
 				"Indentation: Convert to Tabs"
 			],
 			[
-				"rena",
+				"du",
+				"File: Duplicate"
+			],
+			[
+				"del",
+				"File: Delete"
+			],
+			[
+				"re",
 				"File: Rename"
 			],
 			[
@@ -539,8 +563,32 @@
 				"File: Rename"
 			],
 			[
+				"mv",
+				"File: Move"
+			],
+			[
+				"space",
+				"Indentation: Convert to Spaces"
+			],
+			[
 				"dele",
 				"File: Delete"
+			],
+			[
+				"dup",
+				"File: Duplicate"
+			],
+			[
+				"dupl",
+				"File: Duplicate"
+			],
+			[
+				"de",
+				"File: Delete"
+			],
+			[
+				"php",
+				"Set Syntax: PHP"
 			],
 			[
 				"refr",
@@ -549,18 +597,6 @@
 			[
 				"r",
 				"File: Rename"
-			],
-			[
-				"dupl",
-				"File: Duplicate"
-			],
-			[
-				"side",
-				"View: Toggle Side Bar"
-			],
-			[
-				"move",
-				"File: Move"
 			],
 			[
 				"sideb",
@@ -587,20 +623,12 @@
 				"Package Control: Upgrade Package"
 			],
 			[
-				"du",
-				"File: Duplicate"
-			],
-			[
 				"upd",
 				"Package Control: Upgrade Package"
 			],
 			[
 				"duplce",
 				"File: Duplicate"
-			],
-			[
-				"space",
-				"Indentation: Convert to Spaces"
 			],
 			[
 				"spce",
@@ -615,10 +643,6 @@
 				"Set Syntax: SQL"
 			],
 			[
-				"de",
-				"File: Delete"
-			],
-			[
 				"dee",
 				"File: Delete"
 			],
@@ -631,16 +655,8 @@
 				"File: Duplicate"
 			],
 			[
-				"del",
-				"File: Delete"
-			],
-			[
 				"mo",
 				"File: Move"
-			],
-			[
-				"php",
-				"Set Syntax: PHP"
 			],
 			[
 				"tootabs",
@@ -689,10 +705,6 @@
 			[
 				"tab",
 				"Indentation: Convert to Tabs"
-			],
-			[
-				"re",
-				"File: Rename"
 			],
 			[
 				"add",
@@ -875,7 +887,7 @@
 				"Set Syntax: JavaScript"
 			]
 		],
-		"width": 467.0
+		"width": 449.0
 	},
 	"console":
 	{
@@ -892,134 +904,134 @@
 	},
 	"file_history":
 	[
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/RessourceBundle/Resources/views/Valider/list.html.twig",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/RessourceBundle/Controller/ValidationController.php",
+		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/ArianeBundle/Resources/config/services.yml",
+		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/EDTBundle/Resources/config/services.yml",
+		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/MessageBundle/Resources/config/form.yml",
+		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/MessageBundle/Resources/config/orm.yml",
+		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/MessagerieBundle/Resources/config/services.yml",
+		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/NotificationBundle/Resources/config/services.yml",
+		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/UserBundle/Resources/config/services.yml",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Menu/MenuBuilder.php",
+		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/RessourceBundle/Resources/views/Valider/valider_content.html.twig",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/RessourceBundle/Resources/config/routing.yml",
+		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/AbsenceBundle/Controller/ProfesseurController.php",
+		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/ArianeBundle/Controller/CommentaireController.php",
+		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/ArianeBundle/Controller/DefaultController.php",
+		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/ArianeBundle/Controller/PostController.php",
+		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/ClasseBundle/Controller/GroupeController.php",
+		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/EDTBundle/Controller/CoursController.php",
+		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/EDTBundle/Controller/FrequenceController.php",
+		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/MessagerieBundle/Controller/DefaultController.php",
+		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/NoteBundle/Controller/ProfesseurController.php",
+		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/RessourceBundle/Controller/DefaultController.php",
+		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/UserBundle/Controller/UserController.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/ClasseBundle/Controller/GroupeController.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/MessagerieBundle/Resources/views/Conversation/delete_content.html.twig",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/RessourceBundle/Controller/ProfesseurController.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/RessourceBundle/Resources/views/Professeur/valider.html.twig",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/EDTBundle/Resources/views/EDT/show.html.twig",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/EDTBundle/TimeService/TimeService.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/EDTBundle/Resources/config/services.yml",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/MessagerieBundle/Resources/views/Default/inbox.html.twig",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Entity/User.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NotificationBundle/Controller/NotificationController.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NotificationBundle/Resources/config/routing.yml",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/MessagerieBundle/Entity/Thread.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/MessagerieBundle/Entity/ThreadRepository.php",
+		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/AbsenceBundle/Entity/Appel.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/composer.json",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/RessourceBundle/Resources/views/Default/index.html.twig",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/MessagerieBundle/Controller/DefaultController.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/MessagerieBundle/Form/Handler/MessageHandler.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/ArianeBundle/Controller/DefaultController.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/MessagerieBundle/Resources/config/routing.yml",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/MessagerieBundle/Resources/views/Conversation/show.html.twig",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/MessagerieBundle/Entity/MessageUserRepository.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/app/AppKernel.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/app/config/config.yml",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/MessagerieBundle/Entity/Message.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/app/config/routing.yml",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/ArianeBundle/Resources/config/routing.yml",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/MessagerieBundle/Entity/MessageUser.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/MessagerieBundle/Resources/views/Conversation/delete.html.twig",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NoteBundle/Form/Type/NoteType.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NoteBundle/Resources/views/Professeur/form.html.twig",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NoteBundle/Form/EventListener/addEleveFieldSuscriber.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/AbsenceBundle/Resources/views/Professeur/form.html.twig",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NoteBundle/Resources/views/Professeur/noter.html.twig",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/AbsenceBundle/Controller/ProfesseurController.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/AbsenceBundle/Entity/AppelRepository.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/EDTBundle/Entity/Cours.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/web/ressources/js/appel.js",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/config/services.yml",
+		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/MessagerieBundle/Services/MessageManager.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/views/Menu/menu.html.twig",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/MessagerieBundle/Resources/config/services.yml",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/HomeBundle/Resources/config/services.yml",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/ArianeBundle/Resources/config/services.yml",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/ClasseBundle/Entity/Groupe.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Controller/UserController.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/ArianeBundle/Controller/PostController.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/MessageBundle/Entity/Message.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/MessagerieBundle/Form/Type/ThreadType.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/MessagerieBundle/Form/EventListener/addThreadFieldSuscriber.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/MessagerieBundle/Form/Type/MessageType.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/MessagerieBundle/Form/EventListener/addGroupeFieldSuscriber.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/MessagerieBundle/Form/EventListener/addGroupesFieldSuscriber.php",
+		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/EDTBundle/Form/Type/CoursType.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/MessagerieBundle/Resources/views/Message/send_content.html.twig",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/MessagerieBundle/Resources/views/Message/send.html.twig",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/MessageBundle/Entity/Thread.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/MessagerieBundle/Resources/views/Conversation/new.html.twig",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/HomeBundle/Resources/views/User/index.html.twig",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/MessagerieBundle/Resources/views/Default/send.html.twig",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/ClasseBundle/Form/EventListener/addMemberFieldSuscriber.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/ClasseBundle/Form/Type/GroupeType.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/MessagerieBundle/Form/Handler/PostHandler.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/MessagerieBundle/Form/Type/CommentaireType.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/MessagerieBundle/Entity/MessageRepository.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/maintenance.bash",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/MessageBundle/Controller/DefaultController.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/views/layout.html.twig",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/MessagerieBundle/Resources/views/Default/index.html.twig",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/MessageBundle/Resources/views/Message/inbox.html.twig",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/RessourceBundle/Controller/DefaultController.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/RessourceBundle/Resources/views/Ressource/show.html.twig",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/RessourceBundle/Entity/Ressource.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/RessourceBundle/Form/Handler/RessourceHandler.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/RessourceBundle/Form/Type/RessourceType.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/RessourceBundle/Form/EventListener/setTypeFieldSuscriber.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/RessourceBundle/DataFixtures/ORM/LoadRessourceData.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/RessourceBundle/Resources/views/Ressource/form.html.twig",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/RessourceBundle/Resources/views/Professeur/index.html.twig",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Entity/Professeur.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/RessourceBundle/Entity/RessourceRepository.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/RessourceBundle/Controller/EleveController.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/app/config/parameters.yml",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/web/ressources/sass/partials/pages/_ressources.scss",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/web/ressources/js/ressources.js",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/EDTBundle/Entity/Matiere.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/EDTBundle/DataFixtures/ORM/LoadMatiereData.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/EDTBundle/Entity/Categorie.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/web/ressources/jsmin/ressources.min.js",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/ClasseBundle/DataFixtures/ORM/LoadGroupeData.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/RessourceBundle/Controller/SearchController.php",
+		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/UserBundle/Resources/views/Show/show_eleve.html.twig",
+		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/NoteBundle/Resources/views/Professeur/noter.html.twig",
+		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/NoteBundle/Resources/views/Groupe/show.html.twig",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/ClasseBundle/DataFixtures/ORM/LoadNiveauData.php",
+		"/Users/adrienbocquet/Desktop/test.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/DataFixtures/ORM/LoadEleveData.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/DataFixtures/ORM/LoadProfesseurData.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/maintenance.bat",
+		"/Users/adrienbocquet/Desktop/untitled.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/EDTBundle/Resources/views/Cours/edit.html.twig",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NoteBundle/Controller/ProfesseurController.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/web/ressources/js/horaires.js",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/web/ressources/js/appel.js",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/web/ressources/js/nav.js",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/EDTBundle/Twig/EDT2JsArrayExtension.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/EDTBundle/Twig/DisplayEDTExtension.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/EDTBundle/TimeService/TimeService.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/EDTBundle/DependencyInjection/KubEDTExtension.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/EDTBundle/Resources/views/Cours/form.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/EDTBundle/Resources/views/Cours/horaires_form.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/EDTBundle/Resources/config/services.yml",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/EDTBundle/Entity/CoursRepository.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/EDTBundle/Controller/CoursController.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NoteBundle/Resources/views/Groupe/show.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NoteBundle/Resources/views/Show/show_content.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/EDTBundle/Resources/views/Cours/show.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/views/layout.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/RessourceBundle/Resources/config/routing.yml",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/EDTBundle/Resources/config/routing/cours.yml",
-		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/NoteBundle/Resources/config/routing.yml",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/ArianeBundle/Resources/config/routing.yml",
-		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/EDTBundle/Resources/config/routing/frequence.yml",
-		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/UserBundle/Resources/config/routing.yml",
-		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/ClasseBundle/Resources/config/routing.yml",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/app/config/routing.yml",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/AbsenceBundle/Resources/config/routing.yml",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/ClasseBundle/Controller/GroupeController.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Controller/UserController.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/EDTBundle/Resources/config/routing.yml",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NotificationBundle/Entity/Notification.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/RessourceBundle/Resources/config/routing.yml",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NotificationBundle/Resources/views/Show/notification.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NotificationBundle/Entity/NotificationRepository.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NotificationBundle/Entity/NewRessourceNotification.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/config/routing.yml",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NotificationBundle/Entity/NewRessourceNotification_old.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Entity/Professeur.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/ClasseBundle/Entity/Groupe.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/views/Profile/edit.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NotificationBundle/Manager/NotificationManager.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NotificationBundle/Entity/ArianePostNotification.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/RessourceBundle/Form/Handler/RessourceHandler.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/app/config/parameters.yml",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NotificationBundle/Resources/config/routing.yml",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NoteBundle/Resources/views/Groupe/list_content.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/views/Show/show_eleve.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/views/Profile/show.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/views/Show/show.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/views/Manage/user_create.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NoteBundle/Entity/Note.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NoteBundle/Entity/NoteRepository.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NoteBundle/Controller/EleveController.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/ArianeBundle/Form/Type/PostType.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/ArianeBundle/Resources/views/Post/form.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Entity/EleveRepository.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/ArianeBundle/Entity/FilRepository.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/AbsenceBundle/Controller/ProfesseurController.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/DataFixtures/ORM/LoadProfesseurData.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NoteBundle/Resources/config/routing.yml",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NoteBundle/Resources/views/Professeur/form.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NoteBundle/Entity/Controle.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NoteBundle/Form/Handler/ControleHandler.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NoteBundle/Form/Type/ControleType.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/EDTBundle/Resources/views/EDT/show.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/EDTBundle/Entity/Horaire.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/EDTBundle/KubEDTBundle.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Entity/Eleve.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NoteBundle/Resources/views/Professeur/show_eleve.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NoteBundle/Resources/views/Eleve/index.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NoteBundle/Resources/views/Show/show.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Menu/MenuBuilder.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NoteBundle/Entity/ControleRepository.php",
-		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/NoteBundle/Resources/views/Groupe/show.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NoteBundle/Resources/views/Professeur/noter.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/ClasseBundle/Resources/views/Groupe/show.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NoteBundle/Resources/views/Groupe/list.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NoteBundle/Resources/views/Professeur/groupe.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/app/Resources/views/base.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/KUB/web/ressources/sass/partials/pages/_appel.scss",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/HomeBundle/Resources/views/Visiteur/index.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/web/ressources/js/notes.js",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/RessourceBundle/Entity/Ressource.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NoteBundle/DataFixtures/ORM/LoadNoteData.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/RessourceBundle/Entity/File.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/DataFixtures/ORM/LoadEleveData.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Form/Type/ProfileUserFormType.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/views/Show/show_professeur.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/EDTBundle/Resources/views/User/show.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/EDTBundle/Resources/views/Form/weekpicker.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/EDTBundle/Form/Type/WeekType.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/EDTBundle/Resources/views/Frequence/form.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/EDTBundle/Resources/views/Form/weekpicker.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/EDTBundle/Form/Type/FrequenceType.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/EDTBundle/Entity/Semaine.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/EDTBundle/Resources/views/Frequence/edit.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Entity/Administrateur.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Entity/User.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Form/Type/UserType.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Entity/Photo.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/HomeBundle/Entity/File.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/ClasseBundle/Resources/views/Groupe/form.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/ClasseBundle/Resources/config/routing.yml",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/app/config/security.yml",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NotificationBundle/Entity/NoteAddedNotification.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/ArianeBundle/Controller/CommentaireController.php",
-		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/ArianeBundle/Form/Handler/PostHandler.php",
-		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/ArianeBundle/Controller/CommentaireController.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/maintenance.bash",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NotificationBundle/Entity/ArianeCommentaireNotification.php",
-		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/NoteBundle/Form/Handler/ControleHandler.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/maintenance.bat",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NotificationBundle/Resources/views/Show/show_content.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/NotificationBundle/Manager/NotificationManager.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NotificationBundle/Resources/config/services.yml",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NotificationBundle/Entity/DetailedNotification.php~",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NotificationBundle/Resources/views/layout.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NotificationBundle/Resources/views/Show/show.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/HomeBundle/Controller/DefaultController.php",
-		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/NotificationBundle/Resources/views/Show/show_content.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/HomeBundle/Resources/views/User/index.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NotificationBundle/Controller/NotificationController.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NotificationBundle/Twig/ShowNotificationExtension.php",
-		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/NoteBundle/Resources/views/Professeur/groupe.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/AbsenceBundle/Form/Type/AppelType.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/AbsenceBundle/Form/Type/AbsenceType.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NoteBundle/Form/EventListener/addEleveFieldSuscriber.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NoteBundle/Form/Type/NoteType.php"
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/EDTBundle/Twig/EDT2JsArrayExtension.php"
 	],
 	"find":
 	{
@@ -1027,9 +1039,10 @@
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 93.0,
 		"where_history":
 		[
+			"/Users/adrienbocquet/Sites/MAMP/KUB/src,*.yml",
 			"/Users/adrienbocquet/Sites/MAMP/KUB/src",
 			"/Users/adrienbocquet/Sites/MAMP/KUB/,*.scss",
 			"/Users/adrienbocquet/Sites/MAMP/KUB/src/,*.scss",
@@ -1066,134 +1079,134 @@
 		"case_sensitive": false,
 		"find_history":
 		[
-			"change",
-			"/show",
-			"/delete",
-			"/edit",
-			"/add",
-			"doctrine",
-			"NewRessourceNotification",
-			"groupeTarget",
-			"GroupeTarget",
-			"groupeTarget",
-			"GroupeTarget",
-			"groupeTarget",
-			"array",
-			"Profil:edit.html.twig",
-			"Profil:show.html.twig",
-			"pzefj",
-			"tr>",
-			"<tr",
-			"tr",
-			"td",
-			"li",
-			")",
-			"div",
-			"titre",
-			"bles\">",
-			"span",
-			"hidden",
-			"$user",
-			"matiere",
-			"as",
-			"eleve",
-			"username",
-			"_em",
-			"date_ajout",
-			"\"",
-			"detail",
-			"count($horaires)-1",
-			"notes",
-			"'",
-			"id",
-			"$U",
-			"Id",
-			"id",
-			"eleve",
-			"niveau",
-			"name",
-			"id",
-			"kub_notes_eleve_homepage",
-			"ROLE_PROFESSEUR",
-			"findOneById",
+			"doctrine.orm.default_entity_manager",
+			"@doctrine.orm.entity_manager",
+			"@@doctrine.orm.entity_manager",
+			"@doctrine.orm.default_entity_manager",
+			"Valiation",
 			"Professeur",
-			"noter",
-			"+1",
-			"retard",
-			"aware",
-			"checked",
+			"_valider_",
+			"valider",
+			"$this->get('@doctrine.orm.entity_manager')",
+			"ressources",
+			"getDoctrine()->getManager()",
+			"datetime",
+			"+",
+			"findOneByIdAndCheck",
+			"'e'",
+			"checkUnreadMessage",
+			"read",
+			"users",
+			"menu",
+			"security",
+			"accessdenied",
+			"users",
+			"security",
+			"($this->get('security.context')",
+			"entity",
+			"'entity'",
+			"entity",
+			"$this->form",
+			"addGroupesFieldSuscriber",
+			" Kub\\UserBundle\\Entity\\Groupe",
+			"Thread",
+			"thread",
+			"Thread",
+			"thread",
+			"Thread",
+			"genemu",
+			"route",
+			"threads",
+			"kub_messagerie_send",
+			"contains",
+			"getFil(",
+			", $this->get('security.context')",
+			"security",
+			"messagerie_homepage",
+			"maeesge",
+			"MessagerieBundleBundle",
+			"ClasseBundle",
+			"MessagerieBundleBundle",
+			"thread",
+			"Thread",
+			"thread",
+			"POST",
+			"post",
+			"$post",
+			"new Post",
+			"Post",
+			"Ariane",
+			"post",
+			"Post",
+			"POST",
+			"Post",
+			"ArianeBundle",
+			"commentaire",
+			"Commentaire",
+			"ArianeBundle",
+			"messages",
+			"t'",
+			"defaults",
+			"new",
+			"defined",
+			"is defined",
+			"builder",
+			"ressources",
+			"lenght",
+			"Professeur",
+			"Français",
+			"abreviation",
+			"groupe.name",
+			"slug",
+			"//",
+			"premiere",
+			"eleve",
+			"$professeur",
+			"professeur",
+			"Huff",
+			"Misty",
+			"Dolores",
+			"  ",
+			"	",
+			"si3",
+			"musique",
+			"m",
+			"addGroupe",
+			"si3",
+			"Dani",
+			"Delucca",
+			"Rosa",
+			"\n",
+			"\nM",
+			"\nF\n￼￼￼￼￼￼￼￼￼￼",
+			"m",
+			"M",
+			" M",
+			" F",
+			"￼￼￼￼￼￼￼￼",
+			"Deveau",
+			"Dortha",
+			"Déodat",
+			"Franck",
+			"bocquet",
 			"\"",
-			"join",
-			"one",
-			"One",
-			"one",
-			"One",
-			"one",
-			"One",
-			"one",
-			"One",
-			"one",
-			"One",
-			"onE",
-			"one",
-			"onE",
-			"one",
-			"One",
-			"one",
-			"One",
-			"one",
-			"One",
-			"one",
-			"One",
-			"one",
-			"One",
-			"one",
-			"One",
-			"one",
-			"One",
-			"one",
-			"One",
-			"one",
-			"Component",
-			"Searching",
-			"one",
-			"findOne",
-			"weektype",
-			"semaines",
-			"**\n	 * @",
-			";\n",
-			"specific",
-			"everyOne",
-			"specific",
-			"--",
-			";",
-			"Bundle",
-			"getContenu",
-			"addNotification",
-			"kub.notification_manager",
-			"tContenu",
-			"contenu",
-			"tContenu",
-			"contenu",
-			"tpost",
-			"Contenu",
-			"contenu",
-			"Contenu",
-			"contenu",
-			"Contenu",
-			"contenu",
-			"getNote",
-			"private",
-			"h2",
-			"show_notification",
-			"container->get('templating')",
-			"time",
-			"ShowEDT",
-			"cours",
-			"groupe",
-			"</",
-			"<li>",
-			">"
+			"   ",
+			"  ",
+			"    ",
+			"   ",
+			"  ",
+			"     ",
+			"    ",
+			", ",
+			"Nunemaker",
+			"=>",
+			"Elijah",
+			"Eisenhauer",
+			"Elijah",
+			"	",
+			"Allen",
+			"deneris",
+			"Deneris"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1201,6 +1214,10 @@
 		"regex": false,
 		"replace_history":
 		[
+			"@doctrine.orm.default_entity_manager",
+			"doctrine.orm.default_entity_manager",
+			"get('@doctrine.orm.entity_manager')",
+			",",
 			"/voir",
 			"/supprimer",
 			"/editer",
@@ -1288,6 +1305,10 @@
 	{
 		"height": 118.0
 	},
+	"output.find_results":
+	{
+		"height": 100.0
+	},
 	"replace":
 	{
 		"height": 64.0
@@ -1299,516 +1320,516 @@
 		"selected_items":
 		[
 			[
-				"noteprofe",
-				"src/Kub/NoteBundle/Controller/ProfesseurController.php"
+				"ressourcevalida",
+				"src/Kub/RessourceBundle/Controller/ValidationController.php"
 			],
 			[
-				"edtbundletwig",
-				"src/Kub/EDTBundle/Resources/views/Cours/edit.html.twig"
-			],
-			[
-				"js",
-				"web/ressources/js/horaires.js"
-			],
-			[
-				"tim",
-				"src/Kub/EDTBundle/TimeService/TimeService.php"
-			],
-			[
-				"edtex",
-				"src/Kub/EDTBundle/Twig/DisplayEDTExtension.php"
-			],
-			[
-				"edtext",
-				"src/Kub/EDTBundle/Twig/EDT2JsArrayExtension.php"
-			],
-			[
-				"edtexten",
-				"src/Kub/EDTBundle/DependencyInjection/KubEDTExtension.php"
-			],
-			[
-				"hor",
-				"web/ressources/js/horaires.js"
-			],
-			[
-				"notegroupeshow",
-				"src/Kub/NoteBundle/Resources/views/Groupe/show.html.twig"
-			],
-			[
-				"noteshow",
-				"src/Kub/NoteBundle/Resources/views/Show/show_content.html.twig"
-			],
-			[
-				"horaire",
-				"web/ressources/js/horaires.js"
-			],
-			[
-				"horaires",
-				"web/ressources/js/horaires.js"
-			],
-			[
-				"edtform",
-				"src/Kub/EDTBundle/Resources/views/Cours/form.html.twig"
-			],
-			[
-				"edtye",
-				"src/Kub/EDTBundle/Twig/EDT2JsArrayExtension.php"
-			],
-			[
-				"edtser",
-				"src/Kub/EDTBundle/Resources/config/services.yml"
-			],
-			[
-				"twig",
-				"src/Kub/UserBundle/Resources/views/layout.html.twig"
-			],
-			[
-				"routing.yml",
-				"src/Kub/ArianeBundle/Resources/config/routing.yml"
-			],
-			[
-				"routng.yml",
-				"app/config/routing.yml"
-			],
-			[
-				"coursre",
-				"src/Kub/EDTBundle/Entity/CoursRepository.php"
-			],
-			[
-				"groucontroller",
-				"src/Kub/ClasseBundle/Controller/GroupeController.php"
-			],
-			[
-				"usercontro",
-				"src/Kub/UserBundle/Controller/UserController.php"
-			],
-			[
-				"crous.",
-				"src/Kub/EDTBundle/Resources/config/routing/cours.yml"
-			],
-			[
-				"edtrouting",
-				"src/Kub/EDTBundle/Resources/config/routing.yml"
-			],
-			[
-				"coursconto",
-				"src/Kub/EDTBundle/Controller/CoursController.php"
-			],
-			[
-				"ressouroutin",
-				"src/Kub/RessourceBundle/Resources/config/routing.yml"
-			],
-			[
-				"kuresroutin",
-				"src/Kub/UserBundle/Resources/config/routing.yml"
-			],
-			[
-				"notifitwi",
-				"src/Kub/NotificationBundle/Resources/views/Show/notification.html.twig"
-			],
-			[
-				"notife",
-				"src/Kub/NotificationBundle/Entity/NotificationRepository.php"
-			],
-			[
-				"newre",
-				"src/Kub/NotificationBundle/Entity/NewRessourceNotification.php"
-			],
-			[
-				"notifi",
-				"src/Kub/NotificationBundle/Entity/Notification.php"
-			],
-			[
-				"notf",
-				"src/Kub/NotificationBundle/Entity/Notification.php"
-			],
-			[
-				"para",
-				"app/config/parameters.yml"
-			],
-			[
-				"notifroutin",
-				"src/Kub/NotificationBundle/Resources/config/routing.yml"
-			],
-			[
-				"arianepos",
-				"src/Kub/NotificationBundle/Entity/ArianePostNotification.php"
-			],
-			[
-				"notifma",
-				"src/Kub/NotificationBundle/Manager/NotificationManager.php"
-			],
-			[
-				"profiledt",
-				"src/Kub/UserBundle/Resources/views/Profile/edit.html.twig"
-			],
-			[
-				"grou",
-				"src/Kub/ClasseBundle/Entity/Groupe.php"
-			],
-			[
-				"profes",
-				"src/Kub/UserBundle/Entity/Professeur.php"
-			],
-			[
-				"ressource",
-				"src/Kub/RessourceBundle/Form/Handler/RessourceHandler.php"
-			],
-			[
-				"usercontroler",
-				"src/Kub/UserBundle/Controller/UserController.php"
-			],
-			[
-				"showeleve",
-				"src/Kub/UserBundle/Resources/views/Show/show_eleve.html.twig"
-			],
-			[
-				"usershow",
-				"src/Kub/UserBundle/Resources/views/Profile/show.html.twig"
-			],
-			[
-				"notebundlelist",
-				"src/Kub/NoteBundle/Resources/views/Groupe/list_content.html.twig"
-			],
-			[
-				"arianetyp",
-				"src/Kub/ArianeBundle/Form/Type/PostType.php"
-			],
-			[
-				"arianeform",
-				"src/Kub/ArianeBundle/Resources/views/Post/form.html.twig"
-			],
-			[
-				"elevecont",
-				"src/Kub/NoteBundle/Controller/EleveController.php"
-			],
-			[
-				"eleverepo",
-				"src/Kub/UserBundle/Entity/EleveRepository.php"
-			],
-			[
-				"note",
-				"src/Kub/NoteBundle/Entity/Note.php"
-			],
-			[
-				"noterepo",
-				"src/Kub/NoteBundle/Entity/NoteRepository.php"
-			],
-			[
-				"elevre",
-				"src/Kub/UserBundle/Entity/EleveRepository.php"
-			],
-			[
-				"repos",
-				"src/Kub/ArianeBundle/Entity/FilRepository.php"
-			],
-			[
-				"professeurcont",
-				"src/Kub/NoteBundle/Controller/ProfesseurController.php"
-			],
-			[
-				"professeurcontroller",
-				"src/Kub/AbsenceBundle/Controller/ProfesseurController.php"
-			],
-			[
-				"loadprof",
-				"src/Kub/UserBundle/DataFixtures/ORM/LoadProfesseurData.php"
-			],
-			[
-				"usercreate",
-				"src/Kub/UserBundle/Resources/views/Manage/user_create.html.twig"
-			],
-			[
-				"noteroutin",
-				"src/Kub/NoteBundle/Resources/config/routing.yml"
-			],
-			[
-				"notefor",
-				"src/Kub/NoteBundle/Resources/views/Professeur/form.html.twig"
-			],
-			[
-				"noterout",
-				"src/Kub/NoteBundle/Resources/config/routing.yml"
-			],
-			[
-				"notepro",
-				"src/Kub/NoteBundle/Controller/ProfesseurController.php"
-			],
-			[
-				"noteform",
-				"src/Kub/NoteBundle/Resources/views/Professeur/form.html.twig"
-			],
-			[
-				"controleh",
-				"src/Kub/NoteBundle/Form/Handler/ControleHandler.php"
-			],
-			[
-				"controlety",
-				"src/Kub/NoteBundle/Form/Type/ControleType.php"
-			],
-			[
-				"controle",
-				"src/Kub/NoteBundle/Entity/Controle.php"
-			],
-			[
-				"notegroupesho",
-				"src/Kub/NoteBundle/Resources/views/Groupe/show.html.twig"
-			],
-			[
-				"noterouting",
-				"src/Kub/NoteBundle/Resources/config/routing.yml"
-			],
-			[
-				"edtservi",
-				"src/Kub/EDTBundle/Resources/config/services.yml"
-			],
-			[
-				"timeser",
-				"src/Kub/EDTBundle/TimeService/TimeService.php"
-			],
-			[
-				"kubedtbundleedthow.html.twig",
-				"src/Kub/EDTBundle/Resources/views/EDT/show.html.twig"
-			],
-			[
-				"noterepos",
-				"src/Kub/NoteBundle/Entity/NoteRepository.php"
-			],
-			[
-				"elevecontrolle",
-				"src/Kub/NoteBundle/Controller/EleveController.php"
-			],
-			[
-				"noteelvetwi",
-				"src/Kub/NoteBundle/Resources/views/Eleve/index.html.twig"
-			],
-			[
-				"noteelevetwi",
-				"src/Kub/NoteBundle/Resources/views/Eleve/index.html.twig"
-			],
-			[
-				"notebundlesho",
-				"src/Kub/NoteBundle/Resources/views/Show/show.html.twig"
-			],
-			[
-				"eelve",
-				"src/Kub/UserBundle/Entity/Eleve.php"
-			],
-			[
-				"showcont",
-				"src/Kub/NoteBundle/Resources/views/Show/show_content.html.twig"
-			],
-			[
-				"professecon",
-				"src/Kub/NoteBundle/Controller/ProfesseurController.php"
-			],
-			[
-				"noteshow.",
-				"src/Kub/NoteBundle/Resources/views/Show/show.html.twig"
-			],
-			[
-				"eleve",
-				"src/Kub/UserBundle/Entity/Eleve.php"
-			],
-			[
-				"eleverepos",
-				"src/Kub/UserBundle/Entity/EleveRepository.php"
-			],
-			[
-				"profcontrol",
-				"src/Kub/NoteBundle/Controller/ProfesseurController.php"
-			],
-			[
-				"userrou",
-				"src/Kub/UserBundle/Resources/config/routing.yml"
-			],
-			[
-				"noteprof",
-				"src/Kub/NoteBundle/Resources/views/Professeur/form.html.twig"
-			],
-			[
-				"noter",
-				"src/Kub/NoteBundle/Resources/views/Professeur/noter.html.twig"
-			],
-			[
-				"menubui",
+				"enub",
 				"src/Kub/UserBundle/Menu/MenuBuilder.php"
 			],
 			[
-				"controlere",
-				"src/Kub/NoteBundle/Entity/ControleRepository.php"
+				"ressourouting",
+				"src/Kub/RessourceBundle/Resources/config/routing.yml"
 			],
 			[
-				"profegroup",
-				"src/Kub/NoteBundle/Resources/views/Professeur/groupe.html.twig"
-			],
-			[
-				"notegroupe.",
-				"src/Kub/NoteBundle/Resources/views/Professeur/groupe.html.twig"
-			],
-			[
-				"noteprofcontroll",
-				"src/Kub/NoteBundle/Controller/ProfesseurController.php"
-			],
-			[
-				"groupeshow",
-				"src/Kub/ClasseBundle/Resources/views/Groupe/show.html.twig"
-			],
-			[
-				"ser",
-				"src/Kub/EDTBundle/Resources/config/services.yml"
-			],
-			[
-				"base.",
-				"app/Resources/views/base.html.twig"
-			],
-			[
-				"appel",
-				"web/ressources/js/appel.js"
-			],
-			[
-				"homeinde",
-				"src/Kub/HomeBundle/Resources/views/Visiteur/index.html.twig"
-			],
-			[
-				"edtservice",
-				"src/Kub/EDTBundle/Resources/config/services.yml"
-			],
-			[
-				"not",
-				"web/ressources/js/notes.js"
-			],
-			[
-				"notehtml",
-				"src/Kub/NoteBundle/Resources/views/Professeur/noter.html.twig"
-			],
-			[
-				"ressourfil",
-				"src/Kub/RessourceBundle/Entity/File.php"
-			],
-			[
-				"loadele",
-				"src/Kub/UserBundle/DataFixtures/ORM/LoadEleveData.php"
-			],
-			[
-				"loadnote",
-				"src/Kub/NoteBundle/DataFixtures/ORM/LoadNoteData.php"
-			],
-			[
-				"noteproftw",
-				"src/Kub/NoteBundle/Resources/views/Professeur/groupe.html.twig"
-			],
-			[
-				"notecontroller",
-				"src/Kub/NoteBundle/Controller/ProfesseurController.php"
-			],
-			[
-				"showele",
-				"src/Kub/UserBundle/Resources/views/Show/show_eleve.html.twig"
-			],
-			[
-				"controleprcontroller",
-				"src/Kub/NoteBundle/Controller/ProfesseurController.php"
-			],
-			[
-				"profileuser",
-				"src/Kub/UserBundle/Form/Type/ProfileUserFormType.php"
-			],
-			[
-				"edtservic",
-				"src/Kub/EDTBundle/Resources/config/services.yml"
-			],
-			[
-				"edtshow",
-				"src/Kub/EDTBundle/Resources/views/EDT/show.html.twig"
-			],
-			[
-				"groupe",
-				"src/Kub/ClasseBundle/Entity/Groupe.php"
-			],
-			[
-				"time",
-				"src/Kub/EDTBundle/TimeService/TimeService.php"
-			],
-			[
-				"showpro",
-				"src/Kub/UserBundle/Resources/views/Show/show_professeur.html.twig"
-			],
-			[
-				"showelee",
-				"src/Kub/UserBundle/Resources/views/Show/show_eleve.html.twig"
-			],
-			[
-				"usercontroller",
-				"src/Kub/UserBundle/Controller/UserController.php"
-			],
-			[
-				"eleveshow.html",
-				"src/Kub/UserBundle/Resources/views/Show/show.html.twig"
-			],
-			[
-				"usersho",
-				"src/Kub/EDTBundle/Resources/views/User/show.html.twig"
-			],
-			[
-				"wee",
-				"src/Kub/EDTBundle/Resources/views/Form/weekpicker.html.twig"
-			],
-			[
-				"semain",
-				"src/Kub/EDTBundle/Entity/Semaine.php"
-			],
-			[
-				"frequety",
-				"src/Kub/EDTBundle/Form/Type/FrequenceType.php"
-			],
-			[
-				"frequenceedt",
-				"src/Kub/EDTBundle/Resources/views/Frequence/edit.html.twig"
-			],
-			[
-				"freque.html",
-				"src/Kub/EDTBundle/Resources/views/Frequence/form.html.twig"
-			],
-			[
-				"groupe.html",
-				"src/Kub/ClasseBundle/Resources/views/Groupe/show.html.twig"
-			],
-			[
-				"usercon",
-				"src/Kub/UserBundle/Controller/UserController.php"
+				"deletecon",
+				"src/Kub/MessagerieBundle/Resources/views/Conversation/delete_content.html.twig"
 			],
 			[
 				"groupecon",
 				"src/Kub/ClasseBundle/Controller/GroupeController.php"
 			],
 			[
+				"valider",
+				"src/Kub/RessourceBundle/Resources/views/Professeur/valider.html.twig"
+			],
+			[
+				"professeurcont",
+				"src/Kub/RessourceBundle/Controller/ProfesseurController.php"
+			],
+			[
+				"ressourcerouting",
+				"src/Kub/RessourceBundle/Resources/config/routing.yml"
+			],
+			[
+				"ressroutin",
+				"src/Kub/RessourceBundle/Resources/config/routing.yml"
+			],
+			[
+				"menub",
+				"src/Kub/UserBundle/Menu/MenuBuilder.php"
+			],
+			[
+				"professeurcontroller",
+				"src/Kub/RessourceBundle/Controller/ProfesseurController.php"
+			],
+			[
+				"edttwig",
+				"src/Kub/EDTBundle/Resources/views/EDT/show.html.twig"
+			],
+			[
+				"timeser",
+				"src/Kub/EDTBundle/TimeService/TimeService.php"
+			],
+			[
+				"edtseryml",
+				"src/Kub/EDTBundle/Resources/config/services.yml"
+			],
+			[
+				"inbox",
+				"src/Kub/MessagerieBundle/Resources/views/Default/inbox.html.twig"
+			],
+			[
+				"notificatioroutin",
+				"src/Kub/NotificationBundle/Resources/config/routing.yml"
+			],
+			[
+				"notifcatio",
+				"src/Kub/NotificationBundle/Controller/NotificationController.php"
+			],
+			[
+				"menubu",
+				"src/Kub/UserBundle/Menu/MenuBuilder.php"
+			],
+			[
+				"",
+				"src/Kub/MessagerieBundle/Entity/ThreadRepository.php"
+			],
+			[
+				"t",
+				"src/Kub/MessagerieBundle/Entity/Thread.php"
+			],
+			[
 				"user",
 				"src/Kub/UserBundle/Entity/User.php"
 			],
 			[
-				"admini",
-				"src/Kub/UserBundle/Entity/Administrateur.php"
+				"threre",
+				"src/Kub/MessagerieBundle/Entity/ThreadRepository.php"
 			],
 			[
-				"groupeform",
-				"src/Kub/ClasseBundle/Resources/views/Groupe/form.html.twig"
+				"comj",
+				"composer.json"
 			],
 			[
-				"classroutin",
-				"src/Kub/ClasseBundle/Resources/config/routing.yml"
+				"mesrieinbox",
+				"src/Kub/MessagerieBundle/Resources/views/Default/inbox.html.twig"
 			],
 			[
-				"securt",
-				"app/config/security.yml"
+				"ressourceindex",
+				"src/Kub/RessourceBundle/Resources/views/Default/index.html.twig"
 			],
 			[
-				"groupecont",
+				"messagriecontr",
+				"src/Kub/MessagerieBundle/Controller/DefaultController.php"
+			],
+			[
+				"defa",
+				"src/Kub/ArianeBundle/Controller/DefaultController.php"
+			],
+			[
+				"messhandler",
+				"src/Kub/MessagerieBundle/Form/Handler/MessageHandler.php"
+			],
+			[
+				"deleteci",
+				"src/Kub/MessagerieBundle/Resources/views/Conversation/delete_content.html.twig"
+			],
+			[
+				"mesashow",
+				"src/Kub/MessagerieBundle/Resources/views/Conversation/show.html.twig"
+			],
+			[
+				"rieroutin",
+				"src/Kub/MessagerieBundle/Resources/config/routing.yml"
+			],
+			[
+				"messageride",
+				"src/Kub/MessagerieBundle/Controller/DefaultController.php"
+			],
+			[
+				"messagerietwig",
+				"src/Kub/MessagerieBundle/Resources/views/Default/inbox.html.twig"
+			],
+			[
+				"routin",
+				"app/config/routing.yml"
+			],
+			[
+				"th",
+				"src/Kub/MessagerieBundle/Entity/Thread.php"
+			],
+			[
+				"config",
+				"app/config/config.yml"
+			],
+			[
+				"routing",
+				"src/Kub/ArianeBundle/Resources/config/routing.yml"
+			],
+			[
+				"appkern",
+				"app/AppKernel.php"
+			],
+			[
+				"messagrepo",
+				"src/Kub/MessagerieBundle/Entity/MessageUserRepository.php"
+			],
+			[
+				"message",
+				"src/Kub/MessagerieBundle/Entity/Message.php"
+			],
+			[
+				"conversationshow",
+				"src/Kub/MessagerieBundle/Resources/views/Conversation/show.html.twig"
+			],
+			[
+				"thr",
+				"src/Kub/MessagerieBundle/Entity/ThreadRepository.php"
+			],
+			[
+				"messaghan",
+				"src/Kub/MessagerieBundle/Form/Handler/MessageHandler.php"
+			],
+			[
+				"messriereposi",
+				"src/Kub/MessagerieBundle/Entity/MessageUserRepository.php"
+			],
+			[
+				"messauser",
+				"src/Kub/MessagerieBundle/Entity/MessageUser.php"
+			],
+			[
+				"conversadele",
+				"src/Kub/MessagerieBundle/Resources/views/Conversation/delete.html.twig"
+			],
+			[
+				"messrierouting",
+				"src/Kub/MessagerieBundle/Resources/config/routing.yml"
+			],
+			[
+				"messagecontroller",
+				"src/Kub/MessagerieBundle/Controller/DefaultController.php"
+			],
+			[
+				"messa",
+				"src/Kub/MessagerieBundle/Entity/Message.php"
+			],
+			[
+				"profform",
+				"src/Kub/NoteBundle/Resources/views/Professeur/form.html.twig"
+			],
+			[
+				"profesfor",
+				"src/Kub/AbsenceBundle/Resources/views/Professeur/form.html.twig"
+			],
+			[
+				"noter",
+				"src/Kub/NoteBundle/Resources/views/Professeur/noter.html.twig"
+			],
+			[
+				"addeleve",
+				"src/Kub/NoteBundle/Form/EventListener/addEleveFieldSuscriber.php"
+			],
+			[
+				"notetype",
+				"src/Kub/NoteBundle/Form/Type/NoteType.php"
+			],
+			[
+				"cours",
+				"src/Kub/EDTBundle/Entity/Cours.php"
+			],
+			[
+				"appelrepo",
+				"src/Kub/AbsenceBundle/Entity/AppelRepository.php"
+			],
+			[
+				"abseontroller",
+				"src/Kub/AbsenceBundle/Controller/ProfesseurController.php"
+			],
+			[
+				"appel",
+				"web/ressources/js/appel.js"
+			],
+			[
+				"mesageha",
+				"src/Kub/MessagerieBundle/Form/Handler/MessageHandler.php"
+			],
+			[
+				"thre",
+				"src/Kub/MessagerieBundle/Entity/Thread.php"
+			],
+			[
+				"messuser",
+				"src/Kub/MessagerieBundle/Entity/MessageUserRepository.php"
+			],
+			[
+				"threadre",
+				"src/Kub/MessagerieBundle/Entity/ThreadRepository.php"
+			],
+			[
+				"messrie",
+				"src/Kub/MessagerieBundle/Controller/DefaultController.php"
+			],
+			[
+				"messageriebundlesho",
+				"src/Kub/MessagerieBundle/Resources/views/Conversation/show.html.twig"
+			],
+			[
+				"menu.html",
+				"src/Kub/UserBundle/Resources/views/Menu/menu.html.twig"
+			],
+			[
+				"userbundleser",
+				"src/Kub/UserBundle/Resources/config/services.yml"
+			],
+			[
+				"homeservices",
+				"src/Kub/HomeBundle/Resources/config/services.yml"
+			],
+			[
+				"mesus",
+				"src/Kub/MessagerieBundle/Entity/MessageUser.php"
+			],
+			[
+				"ser",
+				"src/Kub/ArianeBundle/Resources/config/services.yml"
+			],
+			[
+				"messagerieser",
+				"src/Kub/MessagerieBundle/Resources/config/services.yml"
+			],
+			[
+				"menubi",
+				"src/Kub/UserBundle/Menu/MenuBuilder.php"
+			],
+			[
+				"messre",
+				"src/Kub/MessagerieBundle/Entity/MessageUserRepository.php"
+			],
+			[
+				"threare",
+				"src/Kub/MessagerieBundle/Entity/ThreadRepository.php"
+			],
+			[
+				"groucon",
 				"src/Kub/ClasseBundle/Controller/GroupeController.php"
 			],
 			[
-				"pho",
-				"src/Kub/UserBundle/Entity/Photo.php"
+				"grou",
+				"src/Kub/ClasseBundle/Entity/Groupe.php"
+			],
+			[
+				"usercontro",
+				"src/Kub/UserBundle/Controller/UserController.php"
+			],
+			[
+				"arianecontroler",
+				"src/Kub/ArianeBundle/Controller/PostController.php"
+			],
+			[
+				"rieconroler",
+				"src/Kub/MessagerieBundle/Controller/DefaultController.php"
+			],
+			[
+				"riemessa",
+				"src/Kub/MessagerieBundle/Entity/Message.php"
+			],
+			[
+				"messahandler",
+				"src/Kub/MessagerieBundle/Form/Handler/MessageHandler.php"
+			],
+			[
+				"messshow",
+				"src/Kub/MessagerieBundle/Resources/views/Conversation/show.html.twig"
+			],
+			[
+				"messhan",
+				"src/Kub/MessagerieBundle/Form/Handler/MessageHandler.php"
+			],
+			[
+				"mesriontr",
+				"src/Kub/MessagerieBundle/Controller/DefaultController.php"
+			],
+			[
+				"addthre",
+				"src/Kub/MessagerieBundle/Form/EventListener/addThreadFieldSuscriber.php"
+			],
+			[
+				"messagty",
+				"src/Kub/MessagerieBundle/Form/Type/MessageType.php"
+			],
+			[
+				"thrty",
+				"src/Kub/MessagerieBundle/Form/Type/ThreadType.php"
+			],
+			[
+				"messrepo",
+				"src/Kub/MessagerieBundle/Entity/ThreadRepository.php"
+			],
+			[
+				"send",
+				"src/Kub/MessagerieBundle/Resources/views/Message/send.html.twig"
+			],
+			[
+				"mesrouting",
+				"src/Kub/MessagerieBundle/Resources/config/routing.yml"
+			],
+			[
+				"iiinb",
+				"src/Kub/MessagerieBundle/Resources/views/Default/inbox.html.twig"
+			],
+			[
+				"messrieconro",
+				"src/Kub/MessagerieBundle/Controller/DefaultController.php"
+			],
+			[
+				"riethra",
+				"src/Kub/MessagerieBundle/Entity/Thread.php"
+			],
+			[
+				"mss",
+				"src/Kub/MessagerieBundle/Entity/Message.php"
+			],
+			[
+				"merieme",
+				"src/Kub/MessagerieBundle/Entity/Message.php"
+			],
+			[
+				"message.p",
+				"src/Kub/MessageBundle/Entity/Message.php"
+			],
+			[
+				"messau",
+				"src/Kub/MessagerieBundle/Entity/MessageUser.php"
+			],
+			[
+				"messagerie.twi",
+				"src/Kub/MessagerieBundle/Resources/views/Default/inbox.html.twig"
+			],
+			[
+				"mesrieind",
+				"src/Kub/HomeBundle/Resources/views/User/index.html.twig"
+			],
+			[
+				"add",
+				"src/Kub/MessagerieBundle/Form/EventListener/addThreadFieldSuscriber.php"
+			],
+			[
+				"threty",
+				"src/Kub/MessagerieBundle/Form/Type/ThreadType.php"
+			],
+			[
+				"addthr",
+				"src/Kub/MessagerieBundle/Form/EventListener/addThreadFieldSuscriber.php"
+			],
+			[
+				"messatyp",
+				"src/Kub/MessagerieBundle/Form/Type/MessageType.php"
+			],
+			[
+				"messriedefa",
+				"src/Kub/MessagerieBundle/Controller/DefaultController.php"
+			],
+			[
+				"rieth",
+				"src/Kub/MessagerieBundle/Entity/Thread.php"
+			],
+			[
+				"threa",
+				"src/Kub/MessageBundle/Entity/Thread.php"
+			],
+			[
+				"addmem",
+				"src/Kub/ClasseBundle/Form/EventListener/addMemberFieldSuscriber.php"
+			],
+			[
+				"groupety",
+				"src/Kub/ClasseBundle/Form/Type/GroupeType.php"
+			],
+			[
+				"controlle",
+				"src/Kub/ArianeBundle/Controller/PostController.php"
+			],
+			[
+				"messare",
+				"src/Kub/MessagerieBundle/Entity/MessageRepository.php"
+			],
+			[
+				"menu",
+				"src/Kub/UserBundle/Menu/MenuBuilder.php"
+			],
+			[
+				"main",
+				"maintenance.bash"
+			],
+			[
+				"rutin",
+				"app/config/routing.yml"
+			],
+			[
+				"appker",
+				"app/AppKernel.php"
+			],
+			[
+				"twig",
+				"src/Kub/UserBundle/Resources/views/layout.html.twig"
+			],
+			[
+				"messagerieind",
+				"src/Kub/MessagerieBundle/Resources/views/Default/index.html.twig"
+			],
+			[
+				"messamesus",
+				"src/Kub/MessagerieBundle/Entity/MessageUser.php"
+			],
+			[
+				"mesrieth",
+				"src/Kub/MessagerieBundle/Entity/Thread.php"
+			],
+			[
+				"messageriemess.",
+				"src/Kub/MessagerieBundle/Entity/Message.php"
+			],
+			[
+				"messagedef",
+				"src/Kub/MessageBundle/Controller/DefaultController.php"
+			],
+			[
+				"messageriebundler",
+				"src/Kub/MessagerieBundle/Resources/config/routing.yml"
+			],
+			[
+				"ress",
+				"src/Kub/RessourceBundle/Entity/Ressource.php"
+			],
+			[
+				"ressouinde",
+				"src/Kub/RessourceBundle/Resources/views/Default/index.html.twig"
+			],
+			[
+				"ressoudefa",
+				"src/Kub/RessourceBundle/Controller/DefaultController.php"
+			],
+			[
+				"loadress",
+				"src/Kub/RessourceBundle/DataFixtures/ORM/LoadRessourceData.php"
+			],
+			[
+				"ressouform",
+				"src/Kub/RessourceBundle/Resources/views/Ressource/form.html.twig"
+			],
+			[
+				"addmemberfieldsuscriber",
+				"src/Kub/ClasseBundle/Form/EventListener/addMemberFieldSuscriber.php"
+			],
+			[
+				"groupet",
+				"src/Kub/ClasseBundle/Form/Type/GroupeType.php"
+			],
+			[
+				"ressdef",
+				"src/Kub/RessourceBundle/Controller/DefaultController.php"
 			]
 		],
 		"width": 0.0
@@ -1824,7 +1845,7 @@
 	"show_minimap": true,
 	"show_open_files": true,
 	"show_tabs": true,
-	"side_bar_visible": false,
+	"side_bar_visible": true,
 	"side_bar_width": 187.0,
 	"status_bar_visible": true
 }
