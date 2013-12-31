@@ -13,16 +13,41 @@ use Doctrine\ORM\EntityRepository;
 class RessourceRepository extends EntityRepository
 {
 
-	public function findByValide()
+	public function findByValide($valide)
 	{
 		$qb = $this->createQueryBuilder('r')
-			->join('r.matiere', 'm')
+			->leftJoin('r.matiere', 'm')
 			->addSelect('m')
 
-			->where('r.valide = 1')
+			->leftJoin('r.niveau', 'n')
+			->addSelect('n')
+
+			->where('r.valide = :valide')
+			->setParameter('valide', $valide)
 		;
 
 		return $qb->getQuery()->getResult();
 	}
 
+	public function findByValideAndUser($valide, $user)
+	{
+		$qb = $this->createQueryBuilder('r')
+			->leftJoin('r.matiere', 'm')
+			->addSelect('m')
+
+			->leftJoin('r.niveau', 'n')
+			->addSelect('n')
+
+			->leftJoin('r.depositaire', 'd')
+			->addSelect('d')
+
+			->where('r.valide = :valide')
+			->setParameter('valide', $valide)
+
+			->andWhere('d.id = :id')
+			->setParameter('id', $user->getId())
+		;
+
+		return $qb->getQuery()->getResult();
+	}
 }

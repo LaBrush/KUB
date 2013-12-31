@@ -14,7 +14,9 @@ class DefaultController extends Controller
 {
 	public function indexAction()
 	{
-		$ressources = $this->get('doctrine.orm.entity_manager')->getRepository('KubRessourceBundle:Ressource')->findByValide();
+		$ressources = $this->get('doctrine.orm.entity_manager')->getRepository('KubRessourceBundle:Ressource')->findByValide(true);
+		$ressources_invalides = $this->get('doctrine.orm.entity_manager')->getRepository('KubRessourceBundle:Ressource')->findByValideAndUser(false, $this->getUser());
+
 		$matieres = array();
 
 		for ($i=0; $i < count($ressources) ; $i++) { 
@@ -26,6 +28,7 @@ class DefaultController extends Controller
 
 		return $this->render('KubRessourceBundle:Default:index.html.twig', array(
 			'ressources' => $ressources,
+			'ressources_invalides' => $ressources_invalides,
 			'matieres' => $matieres
 		));
 	}
@@ -56,7 +59,7 @@ class DefaultController extends Controller
 
 		if($request->getMethod() == "POST"){
 
-			$formHandler = new RessourceHandler($form, $request, $em, $this->get('security.context'), $this->get('kub.notification_manager'));
+			$formHandler = new RessourceHandler($form, $request, $em, $this->get('security.context'), $this->get('kub.notification_manager'), $this->get('validator'));
 
 			if($formHandler->process())
 			{
@@ -98,7 +101,7 @@ class DefaultController extends Controller
 
 		if($request->getMethod() == "POST"){
 
-			$formHandler = new RessourceHandler($form, $request, $em, $this->get('security.context'), $this->get('kub.notification_manager'));
+			$formHandler = new RessourceHandler($form, $request, $em, $this->get('security.context'), $this->get('kub.notification_manager'), $this->get('validator'));
 
 			if($formHandler->process())
 			{

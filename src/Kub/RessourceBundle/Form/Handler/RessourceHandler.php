@@ -5,7 +5,7 @@ namespace Kub\RessourceBundle\Form\Handler;
 use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\Request;
 use Kub\RessourceBundle\Entity\Ressource;
-
+use Symfony\Component\Form\FormError;
 
 class RessourceHandler
 {
@@ -14,14 +14,16 @@ class RessourceHandler
 	protected $em;
 	protected $notification ;
 	protected $security ;
+	protected $validator ;
 
-	public function __construct(Form $form, Request $request, $em, $security, $notification)
+	public function __construct(Form $form, Request $request, $em, $security, $notification, $validator)
 	{
 		$this->form = $form;
 		$this->request = $request;
 		$this->em = $em;
 		$this->notification = $notification ;
 		$this->security = $security ;
+		$this->validator = $validator ;
 
 	}
 
@@ -31,10 +33,39 @@ class RessourceHandler
 		{
 			$this->form->bind($this->request);
 
+			// Puis on lance la validation
 			if($this->form->isValid())
 			{
-				$this->onSuccess( $this->form->getData() );
-				return true;
+				$data = $this->form->getData();
+				$errorList ;
+
+				switch ($data->getType()) {
+					case Ressource::FILE:
+						$errorList = $this->validator->validate($data, array('file'));
+						break;
+					
+					case Ressource::WEB:
+						$errorList = $this->validator->validate($data, array('web'));
+						break;
+
+					default:
+						$this->form->get('type')->addError(new FormError("La resssrouce n'a aucun type valide"));
+						break;
+				}
+				
+ 
+				foreach ($errorList as $error) {
+					$this->form->get('type')->addError(new FormError($error->getMessage()));
+				}
+
+				if(!count($errorList))
+				{
+					if($this->form->isValid())
+
+					$this->onSuccess( $data );
+					return true;
+
+				}
 			}
 		}
 

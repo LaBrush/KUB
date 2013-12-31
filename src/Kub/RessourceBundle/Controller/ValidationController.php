@@ -27,7 +27,9 @@ class ValidationController extends Controller
 	{
 		$em = $this->get('doctrine.orm.default_entity_manager');
 
-		$form = $this->createFormBuilder()->getForm();
+		$form = $this->createFormBuilder(null, array(
+			"action" => $this->generateUrl("kub_ressource_validation_valider", array('id' => $ressource->getId()))
+		))->getForm();
 		$request = $this->getRequest();
 
 		if ($request->getMethod() == 'POST') {
@@ -35,13 +37,14 @@ class ValidationController extends Controller
 
 			if ($form->isValid()) {
 
-				$em->remove($groupe);
+				$ressource->setValide(true);
+				$em->persist($ressource);
 				$em->flush();
 
 				$this->get('session')->getFlashBag()->add('info', 'La ressource à bien été validée');
-	
-				return $this->redirect($this->generateUrl('ressources'));
 			}
+
+			return $this->redirect($this->generateUrl('kub_ressource_validation_list'));
 		}
 
 

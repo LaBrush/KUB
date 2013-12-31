@@ -23,16 +23,16 @@ abstract class File
 	private $url;
 
 	/**
-	 * @Assert\File(maxSize="1024k")
+	 * @Assert\File(maxSize="100M")
 	 */
 	private $file;
 
-	/*
-	 * @ORM\Column(type="datetime", name="date")
-	 */
-	// private $date ;
-
 	private $tempFilename;
+
+	public function getTempFilename()
+	{
+		return $this->tempFilename ;
+	}
 
 	public function __construct()
 	{

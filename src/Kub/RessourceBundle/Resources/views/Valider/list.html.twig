@@ -15,7 +15,11 @@
 		<ul>
 		{% for ressource in ressources %}
 		
-			<li>{{ ressource }} -- {{ render(controller('KubRessourceBundle:Validation:valider', { id: ressource.id})) }}</li>
+			<li><a href="{{ path('', { id: ressource.id }) }}">{{ ressource }}</a> {{ render(controller('KubRessourceBundle:Validation:valider', { id: ressource.id})) }}</li>
+
+		{% else %}
+		    
+		    Toutes les ressources ont été validées pour l'instant
 
 		{% endfor %}		
 		</ul>

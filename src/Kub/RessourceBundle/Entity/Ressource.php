@@ -4,12 +4,15 @@ namespace Kub\RessourceBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert ;
+use Symfony\Component\Validator\ExecutionContextInterface  ;
 
 /**
  * Ressource
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="Kub\RessourceBundle\Entity\RessourceRepository")
+ *
+ * @Assert\Callback(groups={"file"}, methods={"isFileValid"})
  */
 class Ressource
 {
@@ -55,6 +58,8 @@ class Ressource
      * @var string
      *
      * @ORM\Column(name="auteur", type="text", length=255)
+     * @Assert\NotNull
+     * @Assert\Length(min="2")
      */
     private $auteur ;
 
@@ -62,7 +67,8 @@ class Ressource
      * @var string
      *
      * @ORM\Column(name="url", type="text", nullable=true)
-     * @Assert\Url()
+     * @Assert\Url(groups={"web"})
+     * @Assert\NotNull(groups={"web"})
      */
     private $url;
 
@@ -92,6 +98,18 @@ class Ressource
      * @ORM\Column(name="valide", type="boolean")
      */
     private $valide;
+
+    public function isFileValid(ExecutionContextInterface $context)
+    {   
+        if(get_class($this->file->getFile()) != "Symfony\Component\HttpFoundation\File\UploadedFile")
+        {
+            $context->addViolationAt('file', "La ressource n'a pas de fichier", array(), null);
+        }
+
+        // throw new \Exception(get_class($this->file->getFile()));
+        
+        
+    }
 
     public function __toString()
     {
