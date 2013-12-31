@@ -25,6 +25,7 @@ abstract class Notification
 {
 	private $route ;
 	private $routeName ;
+	private $routeAttr ;
 	private $titre ;
 	private $type ;
 
@@ -35,11 +36,7 @@ abstract class Notification
 	 */
 	public function init()
 	{
-		$this->everyone = false ;
-		$this->date = new \DateTime ;
-
-		$this->groupesTarget = new \Doctrine\Common\Collections\ArrayCollection;
-		$this->userTarget = new \Doctrine\Common\Collections\ArrayCollection;
+		$this->routeAttr = array();
 	}
 
 	public function __toString()
@@ -49,7 +46,11 @@ abstract class Notification
 
 	public function __construct()
 	{
-		$this->init();
+		$this->everyone = false ;
+
+		$this->date = new \DateTime ;
+		$this->groupesTarget = new \Doctrine\Common\Collections\ArrayCollection;
+		$this->userTarget = new \Doctrine\Common\Collections\ArrayCollection;
 	}
 
 	/**
@@ -93,6 +94,11 @@ abstract class Notification
 	public function getRoute()
 	{
 		return $this->route ;
+	}
+
+	public function getRouteAttr()
+	{
+		return $this->routeAttr ;
 	}
 
 	public function getTitre()

@@ -15,7 +15,7 @@
 		<ul>
 		{% for ressource in ressources %}
 		
-			<li><a href="{{ path('', { id: ressource.id }) }}">{{ ressource }}</a> {{ render(controller('KubRessourceBundle:Validation:valider', { id: ressource.id})) }}</li>
+			<li><a href="{{ path('kub_ressource_show', { id: ressource.id }) }}">{{ ressource }}</a> {{ render(controller('KubRessourceBundle:Validation:valider', { id: ressource.id})) }}</li>
 
 		{% else %}
 		    

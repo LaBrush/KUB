@@ -50,7 +50,7 @@ class Ressource
     private $date;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Kub\UserBundle\Entity\User", cascade={"all"})
+     * @ORM\ManyToOne(targetEntity="Kub\UserBundle\Entity\User", cascade={"merge", "detach", "persist"})
      */
     private $depositaire ;
 
@@ -88,7 +88,7 @@ class Ressource
     private $matiere ;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Kub\ClasseBundle\Entity\Niveau", cascade={"all"})
+     * @ORM\ManyToOne(targetEntity="Kub\ClasseBundle\Entity\Niveau", cascade={"merge", "detach", "persist"})
      */
     private $niveau ;
 
@@ -98,6 +98,11 @@ class Ressource
      * @ORM\Column(name="valide", type="boolean")
      */
     private $valide;
+
+    /**
+     * @ORM\OneToOne(targetEntity="Kub\NotificationBundle\Entity\NewRessourceNotification", inversedBy="ressource",  cascade={"all"})
+     */
+    private $notification ;
 
     public function isFileValid(ExecutionContextInterface $context)
     {   
@@ -382,5 +387,28 @@ class Ressource
     public function getDepositaire()
     {
         return $this->depositaire;
+    }
+
+    /**
+     * Set notification
+     *
+     * @param \Kub\NotificationBundle\Entity\NewRessourceNotification $notification
+     * @return Ressource
+     */
+    public function setNotification(\Kub\NotificationBundle\Entity\NewRessourceNotification $notification = null)
+    {
+        $this->notification = $notification;
+    
+        return $this;
+    }
+
+    /**
+     * Get notification
+     *
+     * @return \Kub\NotificationBundle\Entity\NewRessourceNotification 
+     */
+    public function getNotification()
+    {
+        return $this->notification;
     }
 }

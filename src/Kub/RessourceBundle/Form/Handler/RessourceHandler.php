@@ -37,7 +37,7 @@ class RessourceHandler
 			if($this->form->isValid())
 			{
 				$data = $this->form->getData();
-				$errorList ;
+				$errorList = array();
 
 				switch ($data->getType()) {
 					case Ressource::FILE:
@@ -74,13 +74,9 @@ class RessourceHandler
 
 	protected function onSuccess($data)
 	{
-		$this->em->persist($data);
-		$this->em->flush();
-
 		$user = $this->security->getToken()->getUser() ;
 
 		$data->setDepositaire($user);
-		$groupes = $user->getGroupes()->toArray();
 		
 		switch ($data->getType()) {
 			case Ressource::WEB:
@@ -91,8 +87,13 @@ class RessourceHandler
 				break;
 		}
 
+		$this->em->persist($data);
+		$this->em->flush();
+
 		if($data->getValide())
 		{
+			$groupes = $user->getGroupes()->toArray();
+
 			foreach ($groupes as $groupe) {
 				if($groupe->getNiveau()->getId() != $data->getNiveau()->getId())
 				{
@@ -101,13 +102,15 @@ class RessourceHandler
 					}
 				}
 			}
+
+			$this->notification->addNotification('NewRessourceNotification', array(
+
+				'groupesTarget' => $groupes,
+				'ressource' => $data
+
+			));
 		}
 
-		$this->notification->addNotification('NewRessourceNotification', array(
-
-			'groupesTarget' => $groupes,
-			'ressource' => $data
-
-		));
+		
 	}
 }

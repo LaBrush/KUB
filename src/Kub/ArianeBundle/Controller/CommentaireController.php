@@ -105,7 +105,7 @@ class CommentaireController extends Controller
 				$this->get('session')->getFlashBag()->add('info', "Le commentaire a été supprimé");
 
 
-				return $this->redirect($this->generateUrl($this->getRequest()->headers->get('referer')));
+				return $this->redirect($this->generateUrl("ariane_homepage", $arg));
 			}
 		}
 

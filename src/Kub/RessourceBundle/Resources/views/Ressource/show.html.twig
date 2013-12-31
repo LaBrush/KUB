@@ -25,6 +25,13 @@
 			</p>
 		{% endif %}
 
+		{% if app.user.id == ressource.depositaire.id %}
+
+			<a href="{{ path('kub_ressource_edit', { id: ressource.id }) }}">Modifier la ressource</a>
+			<a href="{{ path('kub_ressource_delete', { id: ressource.id }) }}">Supprimer la ressource</a>
+
+		{% endif %}
+
 	</article>
 
 {% endblock %}

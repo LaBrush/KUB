@@ -63,7 +63,14 @@ class DefaultController extends Controller
 
 			if($formHandler->process())
 			{
-				$this->get('session')->getFlashBag()->add('info', "La ressource à bien été mise en ligne"); 
+				if($this->get('security.context')->isGranted('ROLE_PROFESSEUR'))
+				{
+					$this->get('session')->getFlashBag()->add('info', "La ressource à bien été mise en ligne"); 
+				}
+				else
+				{
+					$this->get('session')->getFlashBag()->add('info', "La ressource à bien été mise en ligne. Elle devra être validée par un professeur avant d'être publiée.");
+				}
 				return $this->redirect( $this->generateUrl('kub_ressource_homepage') );
 			}
 			else
@@ -84,7 +91,6 @@ class DefaultController extends Controller
 		if($this->getUser() != $ressource->getDepositaire())
 		{
 			throw new AccessDeniedException('Vous ne pouvez modifier cette ressource');
-			
 		}
 
 		if(!$this->get('security.context')->isGranted('ROLE_PROFESSEUR'))
@@ -105,7 +111,7 @@ class DefaultController extends Controller
 
 			if($formHandler->process())
 			{
-				$this->get('session')->getFlashBag()->add('info', "La ressource à bien été modifiée"); 
+				$this->get('session')->getFlashBag()->add('info', "La ressource à bien été modifiée."); 
 				return $this->redirect( $this->generateUrl('kub_ressource_homepage') );
 			}
 			else
@@ -119,5 +125,31 @@ class DefaultController extends Controller
 				'form' => $form->createView(),
 			)
 		); 
+	}
+
+	public function deleteAction(Ressource $groupe)
+	{
+		$form = $this->createFormBuilder()->getForm();
+		$request = $this->getRequest();
+
+		if ($request->getMethod() == 'POST') {
+			$form->bind($request);
+
+			if ($form->isValid()) {
+
+				$em = $this->get('doctrine.orm.default_entity_manager');
+				$em->remove($groupe);
+				$em->flush();
+
+				$this->get('session')->getFlashBag()->add('info', 'Ressource supprimée');
+	
+				return $this->redirect($this->generateUrl('kub_ressource_list'));
+			}
+		}
+
+		return $this->render('KubRessourceBundle:Ressource:delete.html.twig', array(
+			'groupe' => $groupe,
+			'form' => $form->createView(),
+		));
 	}
 }

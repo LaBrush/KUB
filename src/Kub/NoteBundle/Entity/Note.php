@@ -35,7 +35,7 @@ class Note
 	private $id;  
 
 	/**
-	 * @ORM\ManyToOne(targetEntity="Kub\UserBundle\Entity\Eleve", inversedBy="notes", cascade={"all"})
+	 * @ORM\ManyToOne(targetEntity="Kub\UserBundle\Entity\Eleve", inversedBy="notes", cascade={"merge", "detach", "persist"})
 	 */
 	private $eleve;
 
@@ -61,6 +61,11 @@ class Note
 	 * @Assert\GreaterThan(0, message="Une note ne peut avoir de coefficient nul")
 	 */
 	private $coefficient;
+
+    /**
+     * @ORM\OneToOne(targetEntity="Kub\NotificationBundle\Entity\NoteAddedNotification", inversedBy="note",  cascade={"all"})
+     */
+    private $notification ;
 
 	public function __construct()
 	{
@@ -195,5 +200,28 @@ class Note
         $this->controle = $controle;
     
         return $this;
+    }
+
+    /**
+     * Set notification
+     *
+     * @param \Kub\NotificationBundle\Entity\NoteAddedNotification $notification
+     * @return Note
+     */
+    public function setNotification(\Kub\NotificationBundle\Entity\NoteAddedNotification $notification = null)
+    {
+        $this->notification = $notification;
+    
+        return $this;
+    }
+
+    /**
+     * Get notification
+     *
+     * @return \Kub\NotificationBundle\Entity\NoteAddedNotification 
+     */
+    public function getNotification()
+    {
+        return $this->notification;
     }
 }

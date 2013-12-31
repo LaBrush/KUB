@@ -23,7 +23,7 @@ class NoteAddedNotification extends Notification
 
 
 	/**
-	 * @ORM\OneToOne(targetEntity="Kub\NoteBundle\Entity\Note")
+	 * @ORM\OneToOne(targetEntity="Kub\NoteBundle\Entity\Note", mappedBy="notification")
 	 */
 	private $note ;
 
@@ -48,6 +48,7 @@ class NoteAddedNotification extends Notification
     public function setNote(\Kub\NoteBundle\Entity\Note $note = null)
     {
         $this->note = $note;
+        $note->setNotification($this);
     
         return $this;
     }

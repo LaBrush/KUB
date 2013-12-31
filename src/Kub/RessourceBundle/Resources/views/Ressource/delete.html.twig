@@ -1,0 +1,13 @@
+{% extends "::base.html.twig"%}
+
+{% block body %}
+
+	<article class="article">
+		{{ form_start(form, { 'attr': {'class': 'inline-block'} }) }}
+			
+			<input class="delete" value="Suppr." type="submit"></input>
+
+		{{ form_end(form) }}
+	</article>
+
+{% endblock %}

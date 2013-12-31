@@ -41,6 +41,11 @@ class Commentaire
      */
     protected $date ;
 
+    /**
+     * @ORM\OneToOne(targetEntity="Kub\NotificationBundle\Entity\ArianeCommentaireNotification", inversedBy="commentaire",  cascade={"all"})
+     */
+    private $notification ;
+
     public function __construct()
     {
         $this->date = new \DateTime();
@@ -146,5 +151,29 @@ class Commentaire
     public function getContenu()
     {
         return $this->contenu;
+    }
+
+
+    /**
+     * Set notification
+     *
+     * @param \Kub\NotificationBundle\Entity\ArianeCommentaireNotification $notification
+     * @return Commentaire
+     */
+    public function setNotification(\Kub\NotificationBundle\Entity\ArianeCommentaireNotification $notification = null)
+    {
+        $this->notification = $notification;
+    
+        return $this;
+    }
+
+    /**
+     * Get notification
+     *
+     * @return \Kub\NotificationBundle\Entity\ArianeCommentaireNotification 
+     */
+    public function getNotification()
+    {
+        return $this->notification;
     }
 }

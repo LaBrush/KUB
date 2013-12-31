@@ -8,6 +8,12 @@ kub_ressource_edit:
     requirements:
         id: \d+
 
+kub_ressource_delete:
+    pattern:  /supprimer/{id}
+    defaults: { _controller: KubRessourceBundle:Default:delete }
+    requirements:
+        id: \d+
+
 kub_ressource_show:
     pattern:  /voir/{id}
     defaults: { _controller: KubRessourceBundle:Default:show }
