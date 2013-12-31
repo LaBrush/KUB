@@ -35,7 +35,7 @@ class CommentaireController extends Controller
 		));
 
 		$request = $this->get('request');
-		$em = $this->getDoctrine()->getManager();
+		$em = $this->get('doctrine.orm.default_entity_manager');
 
 		if($request->getMethod() == "POST"){
 
@@ -47,7 +47,7 @@ class CommentaireController extends Controller
 				}
 			}
 
-			$formHandler = new CommentaireHandler($form, $request, $this->getDoctrine()->getManager(), $this->getUser(), $post);
+			$formHandler = new CommentaireHandler($form, $request, $this->get('doctrine.orm.default_entity_manager'), $this->getUser(), $post);
 
 			if($formHandler->process())
 			{
@@ -98,7 +98,7 @@ class CommentaireController extends Controller
 
 			if ($form->isValid()) {
 
-				$em = $this->getDoctrine()->getManager();
+				$em = $this->get('doctrine.orm.default_entity_manager');
 				$em->remove($commentaire);
 				$em->flush();
 		

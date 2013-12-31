@@ -59,7 +59,7 @@ class ProfesseurController extends Controller
 			$request = $this->get('request');
 			if($request->getMethod() == "POST"){
 
-				$formHandler = new AppelHandler($form, $request, $this->getDoctrine()->getManager(), $this->get('kub.notification_manager'));
+				$formHandler = new AppelHandler($form, $request, $this->get('doctrine.orm.default_entity_manager'), $this->get('kub.notification_manager'));
 
 				if($formHandler->process())
 				{

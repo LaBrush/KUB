@@ -9,8 +9,8 @@ parameters:
         horaires: 
             7  : [55]
             8  : [25, 55]
-            9  : [25, 50]
-            10 : [25]
+            9  : [00, 25, 50]
+            10 : [00, 25, 55]
             11 : [00, 25, 55]
             12 : [00, 25, 55]
             13 : [25, 55]
@@ -18,7 +18,6 @@ parameters:
             15 : [20, 55]
             16 : [20, 55]
             17 : [20]
-            23 : [00]
 
 services:
 #    kub_edt.example:
@@ -26,7 +25,7 @@ services:
 #        arguments: [@service_id, "plain_value", %parameter%]
     kub.edt.time:
         class: "Kub\EDTBundle\TimeService\TimeService"
-        arguments: [%edt%, @doctrine.orm.entity_manager]
+        arguments: [%edt%, @doctrine.orm.default_entity_manager]
 
     validator.unique.time_edt_compatible:
         class: Kub\EDTBundle\Validator\Constraints\TimeEDTCompatibleValidator
@@ -36,7 +35,7 @@ services:
 
     validator.unique.time_edt_no_conflict:
         class: Kub\EDTBundle\Validator\Constraints\NoHoraireConflictValidator
-        arguments: [@doctrine.orm.entity_manager]
+        arguments: [@doctrine.orm.default_entity_manager]
         tags:
             - { name: validator.constraint_validator, alias: time_edt_no_conflict }
 
@@ -48,6 +47,6 @@ services:
 
     kub.twig.kub.edt_extension:
         class: Kub\EDTBundle\Twig\DisplayEDTExtension
-        arguments: [@kub.edt.time, @twig, @doctrine.orm.entity_manager]
+        arguments: [@kub.edt.time, @twig, @doctrine.orm.default_entity_manager]
         tags:
             - { name: twig.extension }
