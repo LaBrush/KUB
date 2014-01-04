@@ -72,7 +72,7 @@ class ProjetController extends Controller
 
 		}
 
-		return $this->render('KubCollaborationBundle:Projet:create.html.twig',
+		return $this->render('KubCollaborationBundle:Projet:edit.html.twig',
 			array(
 				'form' => $form->createView(),
 				'projet' => $projet

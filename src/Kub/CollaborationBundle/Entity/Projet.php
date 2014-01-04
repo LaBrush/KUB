@@ -104,7 +104,7 @@ class Projet
 	}
 
 	public function __toString(){
-		$string = $this->name . $this->getUsersAsString();        
+		$string = $this->name . ' ' . $this->getUsersAsString();        
 
 		return $string ;
 	}

@@ -9,4 +9,18 @@
 
 	</article>
 
+	<article class="article">
+		
+		{% if is_granted('ADMINISTRATEUR', projet) %}
+
+			<p>Vous êtes théoriquement accepté</p>
+
+		{% else %}
+		    
+		    <p>Vous êtes réfusé</p>
+
+		{% endif %}
+
+	</article>
+
 {% endblock %}

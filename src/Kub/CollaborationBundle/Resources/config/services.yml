@@ -2,6 +2,10 @@ parameters:
 #    kub_collaboration.example.class: Kub\CollaborationBundle\Example
 
 services:
-#    kub_collaboration.example:
-#        class: %kub_collaboration.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
+    kub_projet_voter:
+        class: Kub\CollaborationBundle\Voter\ProjetVoter
+        public: false
+        arguments:
+            - @doctrine.orm.entity_manager
+        tags:
+            - { name: security.voter }
