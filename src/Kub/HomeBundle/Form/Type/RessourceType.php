@@ -1,15 +1,17 @@
 <?php
 
-namespace Kub\RessourceBundle\Form\Type;
+namespace Kub\HomeBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-use Kub\RessourceBundle\Entity\Ressource ;
-use Kub\HomeBundle\Form\Type\RessourceType as BaseRessourceType ;
+use Kub\HomeBundle\Entity\Ressource ;
+use Kub\HomeBundle\Form\Type\FileType ;
 
-class RessourceType extends BaseRessourceType
+use Kub\HomeBundle\Form\EventListener\setTypeFieldSuscriber ;
+
+class RessourceType extends AbstractType
 {
 		/**
 	 * @param FormBuilderInterface $builder
@@ -17,14 +19,23 @@ class RessourceType extends BaseRessourceType
 	 */
 	public function buildForm(FormBuilderInterface $builder, array $options)
 	{
-		parent::buildForm($builder, $options);
 		$builder
+			->add('titre', 'text')
+			->add('auteur', 'text')
+			->add('description', "textarea")
 			->add('niveau', 'entity', array(
 				"class" => "Kub\ClasseBundle\Entity\Niveau"
 			))
-			->add('matiere', 'entity', array(
-				"class" => "Kub\EDTBundle\Entity\Matiere"
+			->add('type', 'choice', array(
+				"expanded" => true,
+				'choices' => array(
+					Ressource::WEB => "Ressource en ligne",
+					Ressource::FILE => "Fichier"
+				)
 			))
+			->add('url', 'url')
+			->add('file', new FileType)
+			->addEventSubscriber(new setTypeFieldSuscriber)
 		;
 	}
 	
@@ -35,7 +46,7 @@ class RessourceType extends BaseRessourceType
 	{
 		$resolver->setDefaults(array(
 			'empty_data' => new Ressource,
-			'data_class' => 'Kub\RessourceBundle\Entity\Ressource'
+			'data_class' => 'Kub\HomeBundle\Entity\Ressource'
 		));
 	}
 
@@ -44,6 +55,6 @@ class RessourceType extends BaseRessourceType
 	 */
 	public function getName()
 	{
-		return 'kub_ressourcebundle_ressource';
+		return 'kub_HomeBundle_ressource';
 	}
 }

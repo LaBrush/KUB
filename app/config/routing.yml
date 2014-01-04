@@ -24,7 +24,7 @@ kub_absence:
 
 kub_collaboration:
     resource: "@KubCollaborationBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /collaboration
 
 kub_ariane:
     resource: "@KubArianeBundle/Resources/config/routing.yml"

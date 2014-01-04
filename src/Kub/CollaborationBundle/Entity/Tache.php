@@ -5,12 +5,12 @@ namespace Kub\CollaborationBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Espace
+ * Tache
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="Kub\CollaborationBundle\Entity\EspaceRepository")
+ * @ORM\Entity
  */
-class Espace
+class Tache
 {
     /**
      * @var integer
@@ -29,19 +29,16 @@ class Espace
     private $nom;
 
     /**
-     * @var string
+     * @var \DateTime
      *
-     * @ORM\Column(name="date", type="datetime")
+     * @ORM\Column(name="echeance", type="date")
      */
-    private $date;
+    private $echeance;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="description", type="text")
+     * @ORM\ManyToOne(targetEntity="Kub\CollaborationBundle\Entity\Organisateur", cascade={"persist"}, inversedBy="taches")
      */
-    private $description;
-
+    private $organisateur ;
 
     /**
      * Get id
@@ -57,7 +54,7 @@ class Espace
      * Set nom
      *
      * @param string $nom
-     * @return Espace
+     * @return Tache
      */
     public function setNom($nom)
     {
@@ -77,48 +74,48 @@ class Espace
     }
 
     /**
-     * Set description
+     * Set echeance
      *
-     * @param string $description
-     * @return Espace
+     * @param \DateTime $echeance
+     * @return Tache
      */
-    public function setDescription($description)
+    public function setEcheance($echeance)
     {
-        $this->description = $description;
+        $this->echeance = $echeance;
     
         return $this;
     }
 
     /**
-     * Get description
-     *
-     * @return string 
-     */
-    public function getDescription()
-    {
-        return $this->description;
-    }
-
-    /**
-     * Set date
-     *
-     * @param \DateTime $date
-     * @return Espace
-     */
-    public function setDate($date)
-    {
-        $this->date = $date;
-    
-        return $this;
-    }
-
-    /**
-     * Get date
+     * Get echeance
      *
      * @return \DateTime 
      */
-    public function getDate()
+    public function getEcheance()
     {
-        return $this->date;
+        return $this->echeance;
+    }
+
+    /**
+     * Set organisateur
+     *
+     * @param \Kub\CollaborationBundle\Entity\Organisateur $organisateur
+     * @return Tache
+     */
+    public function setOrganisateur(\Kub\CollaborationBundle\Entity\Organisateur $organisateur = null)
+    {
+        $this->organisateur = $organisateur;
+    
+        return $this;
+    }
+
+    /**
+     * Get organisateur
+     *
+     * @return \Kub\CollaborationBundle\Entity\Organisateur 
+     */
+    public function getOrganisateur()
+    {
+        return $this->organisateur;
     }
 }
