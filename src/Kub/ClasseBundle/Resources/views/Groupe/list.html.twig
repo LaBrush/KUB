@@ -11,15 +11,17 @@
 	</article>
 
 	<article class="article">
-		<div class="create">
-			<a class="button-yes" href="{{ path('groupe_create') }}">Créer un groupe ou une classe</a>
-		</div>
+		{% if is_granted('ROLE_SECRETAIRE') %}
+			<div class="create">
+				<a class="button-yes" href="{{ path('groupe_create') }}">Créer un groupe ou une classe</a>
+			</div>
+		{% endif %}
 
 		<label for="search-in-list">Chercher dans la liste :</label>
 		<input id="search-in-list" type="text">
 		
 		<ul class="liste">
-			{% for groupe in list_users %}
+			{% for groupe in list_groupes %}
 			
 				<a href="{{ path('groupe_show', { id: groupe.id }) }}">
 					<li class="in-list li-list">
@@ -27,11 +29,9 @@
 					</li>
 				</a>
 
-			{% endfor %}
-
-			{% if list_users|length == 0 %}
+			{% else %}
 				<li>Aucun groupe enregistré pour le moment</li>
-			{% endif %}
+			{% endfor %}
 		</ul>
 	</article>
 		

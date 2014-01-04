@@ -33,12 +33,9 @@
 						<span>{{ user }}</span>
 					</li>
 				</a>
-
-			{% endfor %}
-
-			{% if list_users|length == 0 %}
+			{% else %}
 				<li>Aucun {{ role }} enregistré pour le moment</li>
-			{% endif %}
+			{% endfor %}
 		</ul>
 	</article>
 

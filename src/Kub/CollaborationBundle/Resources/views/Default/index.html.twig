@@ -1,1 +1,21 @@
-Hello {{ name }}!
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    
+	<article class="article">
+		
+		<a href="{{ path('kub_collaboration_create_projet') }}" class="button">Créer un projet</a>
+
+	</article>
+
+	<article class="article">
+		
+		{% for projet in liste_projets %}
+		    <p>{{ projet }} - <a href="{{ path('kub_collaboration_show_projet', { slug: projet.slug }) }}">Voir</a></p>
+		{% else %}
+			<p>Vous ne participez à aucun projet pour le moment</p>
+		{% endfor %}
+
+	</article>
+
+{% endblock %}

@@ -113,7 +113,19 @@ class GroupeController extends Controller
 
 		return $this->render("KubClasseBundle:Groupe:list.html.twig", 
 			array(
-				"list_users" => $listeGroupes
+				"list_groupes" => $listeGroupes
+		));        
+	}
+
+	public function listForUserAction()
+	{
+		$listeGroupes = $this->get('doctrine.orm.default_entity_manager')
+			->getRepository("KubClasseBundle:Groupe")
+			->findByUser($this->getUser());
+
+		return $this->render("KubClasseBundle:Groupe:list.html.twig", 
+			array(
+				"list_groupes" => $listeGroupes
 		));        
 	}
 

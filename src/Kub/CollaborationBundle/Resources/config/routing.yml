@@ -1,3 +1,15 @@
 kub_collaboration_homepage:
     pattern:  /
     defaults: { _controller: KubCollaborationBundle:Default:index }
+
+kub_collaboration_create_projet:
+    pattern:  /nouveau
+    defaults: { _controller: KubCollaborationBundle:Projet:create }
+
+kub_collaboration_show_projet:
+    pattern:  /{slug}/
+    defaults: { _controller: KubCollaborationBundle:Projet:show }
+
+kub_collaboration_edit_projet:
+    pattern:  /{slug}/gerer
+    defaults: { _controller: KubCollaborationBundle:Projet:edit }

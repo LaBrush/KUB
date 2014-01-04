@@ -17,3 +17,7 @@ groupe_delete:
 groupe_list:
     pattern:  /groupes
     defaults: { _controller: "KubClasseBundle:Groupe:list" }
+
+groupe_list_for_user:
+    pattern:  /mesgroupes
+    defaults: { _controller: "KubClasseBundle:Groupe:listForUser" }

@@ -12,4 +12,21 @@ use Doctrine\ORM\EntityRepository;
  */
 class ProjetRepository extends EntityRepository
 {
+
+	public function findByUser($user)
+	{
+		$qb = $this->createQueryBuilder('pro')
+			->join('pro.permissions', 'p')
+			->addSelect('p')
+
+			->join('p.user', 'u')
+			->addSelect('u')
+
+			->where('u.id = :id')
+			->setParameter('id', $user->getId())
+		;
+
+		return $qb->getQuery()->getResult();
+	}
+
 }

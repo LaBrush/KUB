@@ -22,12 +22,12 @@ class Documentheque
     private $id;
 
     /**
-     * @ORM\OneToMany(targetEntity="Kub\CollaborationBundle\Entity\Fichier", cascade={"all"}, mappedBy="documenteque")
+     * @ORM\OneToMany(targetEntity="Kub\CollaborationBundle\Entity\Fichier", cascade={"all"}, mappedBy="documentheque")
      */
     private $fichiers ;
 
     /**
-     * @ORM\OneToMany(targetEntity="Kub\CollaborationBundle\Entity\Ressource", cascade={"all"}, mappedBy="documenteque")
+     * @ORM\OneToMany(targetEntity="Kub\CollaborationBundle\Entity\Ressource", cascade={"all"}, mappedBy="documentheque")
      */
     private $ressources ;
 

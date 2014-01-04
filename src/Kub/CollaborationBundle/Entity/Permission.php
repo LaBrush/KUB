@@ -26,12 +26,12 @@ class Permission
     private $id;
 
     /**
-     * @ORM\Column(type="integer", name="type")
+     * @ORM\Column(type="integer", name="role")
      */
-    private $type ;
+    private $role ;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Kub\CollaborationBundle\Entity\Projet", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="Kub\CollaborationBundle\Entity\Projet", inversedBy="permissions", cascade={"persist"})
      */
     private $projet ;
 
@@ -49,30 +49,7 @@ class Permission
     {
         return $this->id;
     }
-
-    /**
-     * Set type
-     *
-     * @param integer $type
-     * @return Permission
-     */
-    public function setType($type)
-    {
-        $this->type = $type;
     
-        return $this;
-    }
-
-    /**
-     * Get type
-     *
-     * @return integer 
-     */
-    public function getType()
-    {
-        return $this->type;
-    }
-
     /**
      * Set projet
      *
@@ -117,5 +94,28 @@ class Permission
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set role
+     *
+     * @param integer $role
+     * @return Permission
+     */
+    public function setRole($role)
+    {
+        $this->role = $role;
+    
+        return $this;
+    }
+
+    /**
+     * Get role
+     *
+     * @return integer 
+     */
+    public function getRole()
+    {
+        return $this->role;
     }
 }

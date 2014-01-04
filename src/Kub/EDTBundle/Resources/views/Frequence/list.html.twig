@@ -26,12 +26,9 @@
 						<span>{{ frequence }}</span>
 					</li>
 				</a>
-
-			{% endfor %}
-
-			{% if list_frequence|length == 0 %}
+			{% else %}
 				<li>Aucun frequence enregistré pour le moment</li>
-			{% endif %}
+			{% endfor %}
 		</ul>
 	</article>		
 
