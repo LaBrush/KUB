@@ -9,3 +9,11 @@ services:
             - @doctrine.orm.entity_manager
         tags:
             - { name: security.voter }
+
+    kub_projet_paramconverter:
+        class: Kub\CollaborationBundle\ParamConverter\ProjetConverter
+        arguments:
+            - "Kub\\CollaborationBundle\\Entity\\Projet"
+            - @doctrine.orm.entity_manager
+        tags:
+           - { name: request.param_converter, priority: 200 }

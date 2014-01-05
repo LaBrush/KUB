@@ -13,6 +13,11 @@ use Kub\HomeBundle\Entity\Ressource as BaseRessource ;
  */
 class Ressource extends BaseRessource 
 {
+    /**
+     * @ORM\OneToOne(targetEntity="Kub\CollaborationBundle\Entity\File", cascade={"all"})
+     */
+    private $file ;
+
 	/**
      * @ORM\ManyToOne(targetEntity="Kub\CollaborationBundle\Entity\Documentheque", inversedBy="ressources")
      */
@@ -39,5 +44,28 @@ class Ressource extends BaseRessource
     public function getDocumentheque()
     {
         return $this->documentheque;
+    }
+
+    /**
+     * Set file
+     *
+     * @param \Kub\CollaborationBundle\Entity\File $file
+     * @return Ressource
+     */
+    public function setFile(\Kub\CollaborationBundle\Entity\File $file = null)
+    {
+        $this->file = $file;
+    
+        return $this;
+    }
+
+    /**
+     * Get file
+     *
+     * @return \Kub\CollaborationBundle\Entity\File 
+     */
+    public function getFile()
+    {
+        return $this->file;
     }
 }

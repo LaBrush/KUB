@@ -1,10 +1,12 @@
 {% extends 'KubCollaborationBundle::layout.html.twig' %}
 
 {% block content %}
-    
+	
+	<h3 class="section-title">{{ ressource }}</h3>
+
 	<article class="article">
 		
-		{% include 'KubCollaborationBundle:Projet:form.html.twig' with { form: form } only %}
+		{% include 'KubCollaborationBundle:Ressource:show_content.html.twig' %}
 
 	</article>
 

@@ -41,6 +41,11 @@ class Tache
     private $organisateur ;
 
     /**
+     * @ORM\ManyToMany(targetEntity="Kub\UserBundle\Entity\User", cascade={"persist"})
+     */
+    private $participants ;
+
+    /**
      * Get id
      *
      * @return integer 
@@ -117,5 +122,45 @@ class Tache
     public function getOrganisateur()
     {
         return $this->organisateur;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->participants = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
+     * Add participants
+     *
+     * @param \Kub\UserBundle\Entity\User $participants
+     * @return Tache
+     */
+    public function addParticipant(\Kub\UserBundle\Entity\User $participants)
+    {
+        $this->participants[] = $participants;
+    
+        return $this;
+    }
+
+    /**
+     * Remove participants
+     *
+     * @param \Kub\UserBundle\Entity\User $participants
+     */
+    public function removeParticipant(\Kub\UserBundle\Entity\User $participants)
+    {
+        $this->participants->removeElement($participants);
+    }
+
+    /**
+     * Get participants
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getParticipants()
+    {
+        return $this->participants;
     }
 }

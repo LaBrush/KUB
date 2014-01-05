@@ -29,4 +29,38 @@ class ProjetRepository extends EntityRepository
 		return $qb->getQuery()->getResult();
 	}
 
+	public function findOneOrNullBySlug($slug)
+	{
+		$qb = $this->createQueryBuilder('pro')
+		->leftJoin('pro.permissions', 'p')
+		->addSelect('p')
+
+			->join('p.user', 'u')
+			->addSelect('u')
+
+		->leftJoin('pro.organisateur', 'org')
+		->addSelect('org')
+
+			->leftJoin('org.taches', 't')
+			->addSelect('t')
+
+				->leftJoin('t.participants', 'part')
+				->addSelect('part')
+
+		->leftJoin('pro.documentheque', 'doc')
+		->addSelect('doc')
+
+			->leftJoin('doc.ressources', 'r')
+			->addSelect('r')
+
+			->leftJoin('doc.fichiers', 'f')
+			->addSelect('f')
+
+		->where('pro.slug = :slug')
+		->setParameter('slug', $slug)
+		;
+		
+		return $qb->getQuery()->getOneOrNullResult();
+	}
+
 }

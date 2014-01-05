@@ -1,17 +1,14 @@
 <?php
 
-namespace Kub\HomeBundle\Form\Type;
+namespace Kub\CollaborationBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-use Kub\HomeBundle\Entity\Ressource ;
-use Kub\HomeBundle\Form\Type\FileType ;
+use Kub\CollaborationBundle\Entity\Fichier ;
 
-use Kub\HomeBundle\Form\EventListener\setTypeFieldSuscriber ;
-
-class RessourceType extends AbstractType
+class FichierType extends AbstractType
 {
 		/**
 	 * @param FormBuilderInterface $builder
@@ -20,18 +17,15 @@ class RessourceType extends AbstractType
 	public function buildForm(FormBuilderInterface $builder, array $options)
 	{
 		$builder
-			->add('titre', 'text')
-			->add('auteur', 'text')
-			->add('description', "textarea")
+			->add('name')
 			->add('type', 'choice', array(
-				"expanded" => true,
+
 				'choices' => array(
-					Ressource::WEB => "Ressource en ligne",
-					Ressource::FILE => "Fichier"
+					Fichier::PAD => "Etherpad (traitement de texte)",
+					Fichier::CALC => "Ethercalc (Tableur)"
 				)
+
 			))
-			->add('url', 'url')
-			->addEventSubscriber(new setTypeFieldSuscriber)
 		;
 	}
 	
@@ -41,7 +35,7 @@ class RessourceType extends AbstractType
 	public function setDefaultOptions(OptionsResolverInterface $resolver)
 	{
 		$resolver->setDefaults(array(
-			'data_class' => 'Kub\HomeBundle\Entity\Ressource'
+			'data_class' => 'Kub\CollaborationBundle\Entity\Fichier'
 		));
 	}
 
@@ -50,6 +44,6 @@ class RessourceType extends AbstractType
 	 */
 	public function getName()
 	{
-		return 'kub_HomeBundle_ressource';
+		return 'kub_collaborationbundle_fichier';
 	}
 }

@@ -1,15 +1,21 @@
+kub_collaboration_organisation:
+    resource: "@KubCollaborationBundle/Resources/config/routing/organisation.yml"
+
+kub_collaboration_documentheque:
+    resource: "@KubCollaborationBundle/Resources/config/routing/documentheque.yml"
+
 kub_collaboration_homepage:
     pattern:  /
     defaults: { _controller: KubCollaborationBundle:Default:index }
 
-kub_collaboration_create_projet:
+kub_collaboration_projet_create:
     pattern:  /nouveau
     defaults: { _controller: KubCollaborationBundle:Projet:create }
 
-kub_collaboration_show_projet:
+kub_collaboration_projet_show:
     pattern:  /{slug}/
     defaults: { _controller: KubCollaborationBundle:Projet:show }
 
-kub_collaboration_edit_projet:
+kub_collaboration_projet_edit:
     pattern:  /{slug}/gerer
     defaults: { _controller: KubCollaborationBundle:Projet:edit }

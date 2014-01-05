@@ -1,15 +1,14 @@
 <?php
 
-namespace Kub\RessourceBundle\Form\Type;
+namespace Kub\CollaborationBundle\Form\Type;
 
-use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-use Kub\RessourceBundle\Entity\Ressource ;
-use Kub\HomeBundle\Form\Type\RessourceType as BaseRessourceType ;
+use Kub\HomeBundle\Form\Type\RessourceType as BaseType ;
+use Kub\HomeBundle\Form\Type\FileType ;
 
-class RessourceType extends BaseRessourceType
+class RessourceType extends BaseType
 {
 		/**
 	 * @param FormBuilderInterface $builder
@@ -22,12 +21,6 @@ class RessourceType extends BaseRessourceType
 			->add('file', new FileType, array(
 				"data_class" => "Kub\CollaborationBundle\Entity\File"
 			))
-			->add('niveau', 'entity', array(
-				"class" => "Kub\ClasseBundle\Entity\Niveau"
-			))
-			->add('matiere', 'entity', array(
-				"class" => "Kub\EDTBundle\Entity\Matiere"
-			))
 		;
 	}
 	
@@ -37,8 +30,7 @@ class RessourceType extends BaseRessourceType
 	public function setDefaultOptions(OptionsResolverInterface $resolver)
 	{
 		$resolver->setDefaults(array(
-			'empty_data' => new Ressource,
-			'data_class' => 'Kub\RessourceBundle\Entity\Ressource'
+			'data_class' => 'Kub\CollaborationBundle\Entity\Ressource'
 		));
 	}
 
@@ -47,6 +39,6 @@ class RessourceType extends BaseRessourceType
 	 */
 	public function getName()
 	{
-		return 'kub_ressourcebundle_ressource';
+		return 'kub_collaborationbundle_ressource';
 	}
 }

@@ -41,6 +41,12 @@ class Projet
 	 * @var string
 	 *
 	 * @ORM\Column(name="name", type="string", length=255)
+	 * 
+	 * @Assert\Length(
+	 *	min=2,
+	 *	max=255
+	 * )
+	 * @Assert\NotNull()
 	 */
 	private $name;
 
@@ -53,7 +59,7 @@ class Projet
 	/**
 	 * @var string
 	 *
-	 * @ORM\Column(name="description", type="text")
+	 * @ORM\Column(name="description", type="text", nullable=true)
 	 */
 	private $description;
 

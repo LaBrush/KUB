@@ -1,6 +1,6 @@
 <?php
 
-namespace Kub\RessourceBundle\Form\Handler;
+namespace Kub\CollaborationBundle\Form\Handler;
 
 use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\Request;
@@ -24,26 +24,12 @@ class RessourceHandler extends BaseHandler
 	{
 		$user = $this->security->getToken()->getUser();
 
-		if($data->getValide())
-		{
-			$groupes = $user->getGroupes()->toArray();
+			// $this->notification->addNotification('NewRessourceNotification', array(
 
-			foreach ($groupes as $groupe) {
-				if($groupe->getNiveau()->getId() != $data->getNiveau()->getId())
-				{
-					if(($key = array_search($groupe, $groupes)) !== FALSE) {
-						unset($groupes[$key]);
-					}
-				}
-			}
+			// 	'groupesTarget' => $groupes,
+			// 	'ressource' => $data
 
-			$this->notification->addNotification('NewRessourceNotification', array(
-
-				'groupesTarget' => $groupes,
-				'ressource' => $data
-
-			));
-		}
+			// ));
 	}
 
 }

@@ -59,7 +59,7 @@ class DefaultController extends Controller
 
 		if($request->getMethod() == "POST"){
 
-			$formHandler = new RessourceHandler($form, $request, $em, $this->get('security.context'), $this->get('kub.notification_manager'), $this->get('validator'));
+			$formHandler = new RessourceHandler($form, $request, $em, $this->get('security.context'), $this->get('validator'), $this->get('kub.notification_manager'));
 
 			if($formHandler->process())
 			{
@@ -107,7 +107,7 @@ class DefaultController extends Controller
 
 		if($request->getMethod() == "POST"){
 
-			$formHandler = new RessourceHandler($form, $request, $em, $this->get('security.context'), $this->get('kub.notification_manager'), $this->get('validator'));
+			$formHandler = new RessourceHandler($form, $request, $em, $this->get('security.context'), $this->get('validator'), $this->get('kub.notification_manager'));
 
 			if($formHandler->process())
 			{

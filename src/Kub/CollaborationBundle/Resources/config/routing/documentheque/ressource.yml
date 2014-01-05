@@ -1,0 +1,15 @@
+kub_collaboration_documentheque_ressource_show:
+    pattern:  /{slug}/documenteque/ressource/{id}/voir
+    defaults: { _controller: KubCollaborationBundle:Ressource:show }
+
+kub_collaboration_documentheque_ressource_create:
+    pattern:  /{slug}/documenteque/ressource/ajouter
+    defaults: { _controller: KubCollaborationBundle:Ressource:add }
+
+kub_collaboration_documentheque_ressource_edit:
+    pattern:  /{slug}/documenteque/ressource/{id}/modifier
+    defaults: { _controller: KubCollaborationBundle:Ressource:edit }
+
+kub_collaboration_documentheque_ressource_delete:
+    pattern:  /{slug}/documenteque/ressource/{id}/supprimer
+    defaults: { _controller: KubCollaborationBundle:Ressource:delete }

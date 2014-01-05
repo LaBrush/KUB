@@ -15,6 +15,11 @@ class ProjetController extends Controller
 {
 	public function showAction(Projet $projet)
 	{	
+		if(!$this->get('security.context')->isGranted('VISITEUR', $projet))
+		{
+			throw new AccessDeniedException("Vous n'avez pas les droits requis pour acceder à cet espace de collaboration");
+		}
+
 		return $this->render('KubCollaborationBundle:Projet:show.html.twig', array(
 			'projet' => $projet
 		));
@@ -40,7 +45,7 @@ class ProjetController extends Controller
 			if($formHandler->process())
 			{
 				$this->get('session')->getFlashBag()->add('info', "Le projet " . $projet->getName() . " a été crée");
-				return $this->redirect($this->generateUrl("kub_collaboration_show_projet", array('slug' => $projet->getSlug())));
+				return $this->redirect($this->generateUrl("kub_collaboration_projet_show", array('slug' => $projet->getSlug())));
 			}
 
 		}
@@ -55,6 +60,11 @@ class ProjetController extends Controller
 
 	public function editAction(Projet $projet)
 	{
+		if(!$this->get('security.context')->isGranted('ADMINISTRATEUR', $projet))
+		{
+			throw new AccessDeniedException("Vous n'avez pas les droits requis pour acceder à cet espace de collaboration");
+		}
+
 		$form = $this->createForm(new ProjetType, $projet);
 
 		$request = $this->get('request');
@@ -67,7 +77,7 @@ class ProjetController extends Controller
 			if($formHandler->process())
 			{
 				$this->get('session')->getFlashBag()->add('info', "Le projet " . $projet->getName() . " a été modifié");
-				return $this->redirect($this->generateUrl("kub_collaboration_show_projet", array('slug' => $projet->getSlug())));
+				return $this->redirect($this->generateUrl("kub_collaboration_projet_show", array('slug' => $projet->getSlug())));
 			}
 
 		}

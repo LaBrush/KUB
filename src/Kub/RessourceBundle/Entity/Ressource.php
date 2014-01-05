@@ -27,6 +27,11 @@ class Ressource extends BaseRessource
     private $niveau ;
 
     /**
+     * @ORM\OneToOne(targetEntity="Kub\RessourceBundle\Entity\File", cascade={"all"})
+     */
+    private $file ;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="valide", type="boolean")
@@ -134,5 +139,28 @@ class Ressource extends BaseRessource
     public function getNotification()
     {
         return $this->notification;
+    }
+
+    /**
+     * Set file
+     *
+     * @param \Kub\RessourceBundle\Entity\File $file
+     * @return Ressource
+     */
+    public function setFile(\Kub\RessourceBundle\Entity\File $file = null)
+    {
+        $this->file = $file;
+    
+        return $this;
+    }
+
+    /**
+     * Get file
+     *
+     * @return \Kub\RessourceBundle\Entity\File 
+     */
+    public function getFile()
+    {
+        return $this->file;
     }
 }

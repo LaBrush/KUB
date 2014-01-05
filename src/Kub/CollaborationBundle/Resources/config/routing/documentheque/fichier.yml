@@ -1,0 +1,21 @@
+kub_collaboration_documentheque_fichier_go:
+    pattern:  /{slug}/documenteque/fichier/{id}
+    defaults: { _controller: KubCollaborationBundle:Fichier:go }
+    requirements:
+        id: \d+
+
+kub_collaboration_documentheque_fichier_show:
+    pattern:  /{slug}/documenteque/fichier/{id}/voir
+    defaults: { _controller: KubCollaborationBundle:Fichier:show }
+
+kub_collaboration_documentheque_fichier_create:
+    pattern:  /{slug}/documenteque/fichier/ajouter
+    defaults: { _controller: KubCollaborationBundle:Fichier:add }
+
+kub_collaboration_documentheque_fichier_edit:
+    pattern:  /{slug}/documenteque/fichier/{id}/modifier
+    defaults: { _controller: KubCollaborationBundle:Fichier:edit }
+
+kub_collaboration_documentheque_fichier_delete:
+    pattern:  /{slug}/documenteque/fichier/{id}/supprimer
+    defaults: { _controller: KubCollaborationBundle:Fichier:delete }

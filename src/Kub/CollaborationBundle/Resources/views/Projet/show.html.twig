@@ -1,26 +1,7 @@
-{% extends '::base.html.twig' %}
+{% extends 'KubCollaborationBundle::layout.html.twig' %}
 
-{% block body %}
+{% block content %}
     
-	<h1 class="h1 article">{{ projet.name }} {{ projet.usersAsString }}</h1>
-	<article class="article">
-		
-		<a href="{{ path('kub_collaboration_edit_projet', { slug: projet.slug }) }}" class="button">Gérer</a>
-
-	</article>
-
-	<article class="article">
-		
-		{% if is_granted('ADMINISTRATEUR', projet) %}
-
-			<p>Vous êtes théoriquement accepté</p>
-
-		{% else %}
-		    
-		    <p>Vous êtes réfusé</p>
-
-		{% endif %}
-
-	</article>
+	<p>{{ projet.description }}</p>
 
 {% endblock %}

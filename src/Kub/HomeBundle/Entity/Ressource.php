@@ -12,7 +12,7 @@ use Symfony\Component\Validator\ExecutionContextInterface  ;
  * @ORM\MappedSuperclass
  * @Assert\Callback(groups={"file"}, methods={"isFileValid"})
  */
-class Ressource
+abstract class Ressource
 {
     const WEB = 1 ;
     const FILE = 2 ;
@@ -70,9 +70,6 @@ class Ressource
      */
     private $url;
 
-    /**
-     * @ORM\OneToOne(targetEntity="Kub\RessourceBundle\Entity\File", cascade={"all"})
-     */
     private $file ;
 
     /**
@@ -83,7 +80,7 @@ class Ressource
     
     public function isFileValid(ExecutionContextInterface $context)
     {   
-        if(get_class($this->file->getFile()) != "Symfony\Component\HttpFoundation\File\UploadedFile")
+        if($this->file && !($this->file->getFile() instanceof Symfony\Component\HttpFoundation\File\UploadedFile))
         {
             $context->addViolationAt('file', "La ressource n'a pas de fichier", array(), null);
         }
@@ -263,29 +260,6 @@ class Ressource
     }
 
     /**
-     * Get depositaire
-     *
-     * @return \Kub\UserBundle\Entity\User 
-     */
-    public function getDepositaire()
-    {
-        return $this->depositaire;
-    }
-
-    /**
-     * Set file
-     *
-     * @param \Kub\RessourceBundle\Entity\File $file
-     * @return Ressource
-     */
-    public function setFile(\Kub\RessourceBundle\Entity\File $file = null)
-    {
-        $this->file = $file;
-    
-        return $this;
-    }
-
-    /**
      * Get file
      *
      * @return \Kub\RessourceBundle\Entity\File 
@@ -293,5 +267,15 @@ class Ressource
     public function getFile()
     {
         return $this->file;
+    }
+
+    /**
+     * Get depositaire
+     *
+     * @return \Kub\UserBundle\Entity\User 
+     */
+    public function getDepositaire()
+    {
+        return $this->depositaire;
     }
 }
