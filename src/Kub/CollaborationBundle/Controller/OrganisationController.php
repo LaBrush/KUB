@@ -10,7 +10,7 @@ use Kub\CollaborationBundle\Entity\Organisation ;
 
 class OrganisationController extends Controller
 {
-	public function indexAction()
+	public function indexAction(Projet $projet)
 	{
 		if(!$this->get('security.context')->isGranted('VISITEUR', $projet))
 		{

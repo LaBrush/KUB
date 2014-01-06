@@ -1,6 +1,6 @@
 {% extends 'KubCollaborationBundle::layout.html.twig' %}
 
-{% set organisation = projet.organisation %}
+{% set organisateur = projet.organisateur %}
 
 {% block content %}
     
@@ -10,7 +10,7 @@
 
 		<ul>
 			
-			{% for tache in organisation.taches %}
+			{% for tache in organisateur.taches %}
 			    <li>{{ tache }}</li>
 			{% else %}
 				<li>Il n'y a rien à faire (pour l'instant)</li>
