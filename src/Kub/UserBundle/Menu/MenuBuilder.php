@@ -93,7 +93,7 @@ class MenuBuilder
 			);
 		}
 
-		if(count($groupes) >= $limit)
+		if(count($groupes) > $limit)
 		{
 			$menu['Mes groupes']->addChild("Autres groupes", 
 				array(
@@ -109,6 +109,30 @@ class MenuBuilder
 			'labelAttributes' => array('className' => 'espace-collaboratif'),
 			'route' => 'kub_collaboration_homepage'
 		));
+
+		$projets = $this->em->getRepository('KubCollaborationBundle:Projet')->findByUser( $this->security->getToken()->getUser() );
+
+		$limit = 4 ;
+		$limit = $limit < count($projets) ? $limit : count($projets) ;
+
+		for($i = 0 ; $i < $limit ; $i++) {
+
+			$menu['Mes projets']->addChild($projets[$i]->getName(), 
+				array(
+					'route' => 'kub_collaboration_projet_show',
+					'routeParameters' => array('slug' => $projets[$i]->getSlug())
+				)
+			);
+		}
+
+		if(count($projets) > $limit)
+		{
+			$menu['Mes projets']->addChild("Autres projets", 
+				array(
+					'route' => 'kub_collaboration_homepage'
+				)
+			);
+		}
 	}
 
 	public function generateSecretaireMenu($menu)

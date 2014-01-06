@@ -1,0 +1,3 @@
+kub_collaboration_organisation_index:
+    pattern:  /{slug}/organisation
+    defaults: { _controller: KubCollaborationBundle:Organisation:index }

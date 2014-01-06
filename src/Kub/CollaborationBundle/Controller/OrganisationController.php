@@ -10,4 +10,15 @@ use Kub\CollaborationBundle\Entity\Organisation ;
 
 class OrganisationController extends Controller
 {
+	public function indexAction()
+	{
+		if(!$this->get('security.context')->isGranted('VISITEUR', $projet))
+		{
+			throw new AccessDeniedException("Vous n'avez pas les droits requis pour acceder à cet espace de collaboration");
+		}
+
+		return $this->render('KubCollaborationBundle:Organisation:index.html.twig', array(
+			'projet' => $projet
+		));
+	}
 }

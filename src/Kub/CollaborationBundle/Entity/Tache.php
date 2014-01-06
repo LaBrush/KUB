@@ -24,9 +24,9 @@ class Tache
     /**
      * @var string
      *
-     * @ORM\Column(name="nom", type="string", length=255)
+     * @ORM\Column(name="name", type="string", length=255)
      */
-    private $nom;
+    private $name;
 
     /**
      * @var \DateTime
@@ -44,6 +44,11 @@ class Tache
      * @ORM\ManyToMany(targetEntity="Kub\UserBundle\Entity\User", cascade={"persist"})
      */
     private $participants ;
+
+    public function __toString()
+    {
+        return $this->getName()
+    }
 
     /**
      * Get id

@@ -3,8 +3,58 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "bf6c1cbcf4f8eb137dc26f6a7f169b0b",
+    "hash": "87a3bda9c66483ebc206dc60df9988e2",
     "packages": [
+        {
+            "name": "coresphere/console-bundle",
+            "version": "dev-master",
+            "target-dir": "CoreSphere/ConsoleBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/CoreSphere/ConsoleBundle.git",
+                "reference": "8666165bc5fe72b65805b878b2c781a05a34a963"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/CoreSphere/ConsoleBundle/zipball/8666165bc5fe72b65805b878b2c781a05a34a963",
+                "reference": "8666165bc5fe72b65805b878b2c781a05a34a963",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3",
+                "symfony/framework-bundle": ">=2.1.0,<3.0"
+            },
+            "require-dev": {
+                "symfony/console": ">=2.1.0,<3.0"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-0": {
+                    "CoreSphere\\ConsoleBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Laszlo Korte",
+                    "email": "coresphere@laszlokorte.de"
+                },
+                {
+                    "name": "Marmus Ullman",
+                    "email": "mail@markus-ullmann.de"
+                }
+            ],
+            "description": "This bundle allows you accessing the symfony2 console via your browser",
+            "keywords": [
+                "console",
+                "javascript",
+                "symfony"
+            ],
+            "time": "2013-12-08 06:44:22"
+        },
         {
             "name": "doctrine/annotations",
             "version": "v1.1.2",
@@ -2757,7 +2807,8 @@
         "doctrine/data-fixtures": 20,
         "jms/security-extra-bundle": 20,
         "genemu/form-bundle": 20,
-        "jms/serializer-bundle": 20
+        "jms/serializer-bundle": 20,
+        "coresphere/console-bundle": 20
     },
     "platform": {
         "php": ">=5.3.3"

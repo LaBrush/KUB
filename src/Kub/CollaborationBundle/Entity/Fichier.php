@@ -50,6 +50,13 @@ class Fichier
 	 */
 	private $documentheque ;
 
+	/**
+	 * @var string
+	 *
+	 * @ORM\Column(name="url", type="string", length=255)
+	 */
+	private $url;
+
 	public function getWebPath()
 	{
 		$path = '';
@@ -63,7 +70,7 @@ class Fichier
 				break;
 		}
 
-		return $path . 'kub_' . $this->getId() ;
+		return $path . 'kub_' . $this->getUrl() . $this->getId() ;
 	}
 
 	public function __toString()
@@ -74,6 +81,7 @@ class Fichier
 	public function __construct()
 	{
 		$this->dateAjout = new \DateTime ;
+		$this->url = uniqid(hash("sha1", str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")));
 	}
 
 	/**
