@@ -53,7 +53,7 @@ class Fichier
 	/**
 	 * @var string
 	 *
-	 * @ORM\Column(name="url", type="string", length=255)
+	 * @ORM\Column(name="url", type="string", length=40)
 	 */
 	private $url;
 
@@ -70,7 +70,7 @@ class Fichier
 				break;
 		}
 
-		return $path . 'kub_' . $this->getUrl() . $this->getId() ;
+		return $path . 'kub' . $this->getUrl() . $this->getId() ;
 	}
 
 	public function __toString()
@@ -81,7 +81,10 @@ class Fichier
 	public function __construct()
 	{
 		$this->dateAjout = new \DateTime ;
-		$this->url = uniqid(hash("sha1", str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")));
+		$this->url = substr(
+			uniqid(hash("sha1", str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"))),
+			1, 40
+		);
 	}
 
 	/**
