@@ -68,7 +68,7 @@ class Groupe extends BaseGroup
 
     public function __toString()
     {
-        return $this->niveau . " " . $this->title ;
+        return ucfirst($this->niveau . " " . $this->title) ;
     }
 
     /**

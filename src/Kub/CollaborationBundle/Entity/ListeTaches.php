@@ -40,6 +40,16 @@ class ListeTaches
      */
     private $taches ;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Kub\CollaborationBundle\Entity\Organisateur", cascade={"persist"}, inversedBy="listeTaches")
+     */
+    private $organisateur ;
+
+    public function __toString()
+    {
+        return $this->nom ;
+    }
+
     public function __construct()
     {
         $this->rang = 1 ;
@@ -132,5 +142,28 @@ class ListeTaches
     public function getTaches()
     {
         return $this->taches;
+    }
+
+    /**
+     * Set organisateur
+     *
+     * @param \Kub\CollaborationBundle\Entity\Organisateur $organisateur
+     * @return ListeTaches
+     */
+    public function setOrganisateur(\Kub\CollaborationBundle\Entity\Organisateur $organisateur = null)
+    {
+        $this->organisateur = $organisateur;
+    
+        return $this;
+    }
+
+    /**
+     * Get organisateur
+     *
+     * @return \Kub\CollaborationBundle\Entity\Organisateur 
+     */
+    public function getOrganisateur()
+    {
+        return $this->organisateur;
     }
 }

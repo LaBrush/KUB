@@ -1,3 +1,7 @@
 kub_collaboration_organisation_index:
     pattern:  /{slug}/organisation
     defaults: { _controller: KubCollaborationBundle:Organisation:index }
+
+kub_collaboration_organisation_create:
+    pattern:  /{slug}/organisation/ajouter
+    defaults: { _controller: KubCollaborationBundle:Organisation:create }

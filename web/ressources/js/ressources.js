@@ -3,6 +3,7 @@ $(function() {
 	// Fonctions de tri
 
 	var ressources = new Array;
+	var toHide = new Array;
 
 	$('.ressource').each(function(){
 

@@ -106,7 +106,7 @@ class MenuBuilder
 	private function generateProjetsMenu($menu)
 	{
 		$menu->addChild('Mes projets', array(
-			'labelAttributes' => array('className' => 'espace-collaboratif'),
+			'labelAttributes' => array('className' => 'projets'),
 			'route' => 'kub_collaboration_homepage'
 		));
 
@@ -194,7 +194,7 @@ class MenuBuilder
 	public function generateEleveMenu($menu)
 	{
 		$this->generateProjetsMenu($menu);
-		$menu->addChild('Espace collaboratif', array('labelAttributes' => array('className' => 'ariane')));
+		$menu->addChild('Espace collaboratif', array('labelAttributes' => array('className' => 'espace-collaboratif')));
 			$menu['Espace collaboratif']->addChild('Fil d\'Ariane', array(
 				'route' => 'ariane_homepage'
 			));   
