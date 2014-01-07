@@ -1,6 +1,6 @@
 <?php
 
-namespace Kub\CollaborationBundle\Form;
+namespace Kub\CollaborationBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -9,7 +9,7 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 class TacheType extends AbstractType
 {
 
-	private $projet
+	private $projet ;
 
 	public function __construct($projet)
 	{
@@ -22,20 +22,25 @@ class TacheType extends AbstractType
 	 */
 	public function buildForm(FormBuilderInterface $builder, array $options)
 	{
+		$choices = array();
+		$taches = $this->projet->getOrganisateur()->getListeTaches();
+
+		for ($i=0; $i < count($taches); $i++) { 
+			$choices[ $taches[$i]->getId() ] = (string)$taches[$i];
+		}
+
 		$builder
 			->add('name')
 			->add('echeance')
 			->add('participants', 'entity', array(
 
 				'choices' => $this->projet->getUsers(),
-				"data_class" => "Kub\CollaborationBundle\Entity\ListeTaches"
+				"class" => "Kub\UserBundle\Entity\User"
 
 			))
-			->add('tache', 'entity', array(
-
-				'choices' => $this->projet->getOrganisateur()->getListeTaches(),
-				"data_class" => "Kub\CollaborationBundle\Entity\ListeTaches"
-
+			->add('listeTaches', 'choice', array(
+				'choices' => $choices,
+				'label' => 'select2-choice'
 			))
 		;
 	}

@@ -24,16 +24,15 @@ class Organisateur
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\OneToMany(targetEntity="Kub\CollaborationBundle\Entity\Tache", mappedBy="organisateur", cascade={"all"})
+     * @ORM\OneToMany(targetEntity="Kub\CollaborationBundle\Entity\ListeTaches", mappedBy="organisateur", cascade={"all"})
      */
-    private $taches;
-
+    private $listeTaches;
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->taches = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->listeTaches = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
     /**
@@ -47,35 +46,35 @@ class Organisateur
     }
 
     /**
-     * Add taches
+     * Add listeTaches
      *
-     * @param \Kub\CollaborationBundle\Entity\Tache $taches
+     * @param \Kub\CollaborationBundle\Entity\ListeTaches $listeTaches
      * @return Organisateur
      */
-    public function addTache(\Kub\CollaborationBundle\Entity\Tache $taches)
+    public function addListeTache(\Kub\CollaborationBundle\Entity\ListeTaches $listeTaches)
     {
-        $this->taches[] = $taches;
+        $this->listeTaches[] = $listeTaches;
     
         return $this;
     }
 
     /**
-     * Remove taches
+     * Remove listeTaches
      *
-     * @param \Kub\CollaborationBundle\Entity\Tache $taches
+     * @param \Kub\CollaborationBundle\Entity\ListeTaches $listeTaches
      */
-    public function removeTache(\Kub\CollaborationBundle\Entity\Tache $taches)
+    public function removeListeTache(\Kub\CollaborationBundle\Entity\ListeTaches $listeTaches)
     {
-        $this->taches->removeElement($taches);
+        $this->listeTaches->removeElement($listeTaches);
     }
 
     /**
-     * Get taches
+     * Get listeTaches
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getTaches()
+    public function getListeTaches()
     {
-        return $this->taches;
+        return $this->listeTaches;
     }
 }

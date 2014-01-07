@@ -43,11 +43,6 @@ class Tache
 	private $echeance;
 
 	/**
-	 * @ORM\ManyToOne(targetEntity="Kub\CollaborationBundle\Entity\Organisateur", cascade={"persist"}, inversedBy="taches")
-	 */
-	private $organisateur ;
-
-	/**
 	 * @ORM\ManyToMany(targetEntity="Kub\UserBundle\Entity\User", cascade={"persist"})
 	 */
 	private $participants ;

@@ -3,21 +3,33 @@
 {% set organisateur = projet.organisateur %}
 
 {% block content %}
-    
+	
 	<article class="article">
 		
 		<h2>Liste des taches et des pistaches qui tachent</h2>
 
 		<ul>
 			
-			{% for tache in organisateur.taches %}
-			    <li>{{ tache }}</li>
+			{% for listeTaches in organisateur.listeTaches %}
+				<li>{{ listeTaches }}
+
+					<ul>
+						{% for listeTaches in organisateur.listeTaches %}
+							<li>{{ listeTaches }}</li>
+						{% endfor %}
+					</ul>
+					
+				</li>
 			{% else %}
 				<li>Il n'y a rien à faire (pour l'instant)</li>
 			{% endfor %}
 
 		</ul>
 
+	</article>
+
+	<article class="article">
+		{{ render(controller('KubCollaborationBundle:Organisation:create', { projet: projet })) }}
 	</article>
 
 {% endblock %}

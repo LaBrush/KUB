@@ -10,6 +10,8 @@ use Kub\CollaborationBundle\Entity\Organisation ;
 use Kub\CollaborationBundle\Entity\Tache ;
 use Kub\CollaborationBundle\Entity\TacheListe ;
 
+use Kub\CollaborationBundle\Form\Type\TacheType ;
+
 class OrganisationController extends Controller
 {
 	public function indexAction(Projet $projet)
@@ -28,7 +30,7 @@ class OrganisationController extends Controller
 	{
 		$tache = new Tache ;
 		$form = $this->createForm(new TacheType($projet), $tache);
-
+		
 		$request = $this->get('request');
 		$em = $this->get('doctrine.orm.default_entity_manager');
 
@@ -119,6 +121,5 @@ class OrganisationController extends Controller
 				"groupe" => $tache
 			)
 		);
-
 	}
 }

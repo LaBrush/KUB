@@ -41,11 +41,14 @@ class ProjetRepository extends EntityRepository
 		->leftJoin('pro.organisateur', 'org')
 		->addSelect('org')
 
-			->leftJoin('org.taches', 't')
-			->addSelect('t')
+			->leftJoin('org.listeTaches', 'lt')
+			->addSelect('lt')
 
-				->leftJoin('t.participants', 'part')
-				->addSelect('part')
+				->leftJoin('lt.taches', 't')
+				->addSelect('t')
+
+					->leftJoin('t.participants', 'part')
+					->addSelect('part')
 
 		->leftJoin('pro.documentheque', 'doc')
 		->addSelect('doc')
