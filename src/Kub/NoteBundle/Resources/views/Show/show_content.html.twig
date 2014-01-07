@@ -117,17 +117,17 @@
 		{% for moyenne in moyennes %}
 			<tr class="graph-hidden">
 				<td colspan="10">
-					{#{{ jauges | raw }}#}
+					<div class="jauge-{{ moyenne.matiere }}">&nbsp;</div>
 				</td>
 			</tr>
 			<tr class="moyennes">
 				<td>
-					{{ moyenne.note | raw }}
+					<div class="moyenne-{{ moyenne.matiere }}">{{ moyenne.note | number_format(1) }}</div>
 				</td>
 			</tr>
 			<tr class="matieres-name">
 				<td>
-					{{ moyenne.matiere | raw }}
+					<div class="legende-{{ moyenne.matiere }}">{{ moyenne.matiere }}</div>
 				</td>
 			</tr>
 		{% endfor %}
@@ -140,16 +140,22 @@
 
 		<div class="wrap-details">
 
-			<p>{{ nom }}</p>
-
-			<ul>
-				{% for note in matiere if note.controle.cours.professeur.id == app.user.id or app.user.class == "eleve" %}
+			<table class="detail detail-' ~ matiere ~ '">
+				<tr>
+					<th colspan="2">{{ nom }}</th>
+				</tr>
 				
-					<li>{{ note.note }} / {{ note.coefficient }}</li>	
-
+				{% for note in matiere if note.controle.cours.professeur.id == app.user.id or app.user.class == "eleve" %}
+					<tr>
+						<td>
+							<strong>{{ note.note | number_format(1) }} / {{ note.coefficient }}</strong>
+						</td>
+						<td>
+							{{ note.controle.nom }} <em>Le {{ note.controle.date | date('d/m/y') }}</em>
+						</td>
+					</tr>
 				{% endfor %}
-			</ul>
-		</div>
+				
 
 	{% endfor %}
 

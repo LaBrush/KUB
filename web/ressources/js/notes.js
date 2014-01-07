@@ -1,6 +1,6 @@
 $(function() {
 
-	// Cette fonction redimmensionner les boites des moyennes
+	// Cette fonction redimmensionne les boites des moyennes
 
 	for (var i = $('.graph-hidden>td>div').get().length - 1; i >= 0; i--)
 	{
@@ -8,6 +8,7 @@ $(function() {
 
 		var matiere = $('.graph-hidden>td>div').get(i).className.replace(reg, "") ;
 		var moyenneMatiere = $('.moyenne-' + matiere).text();
+
 		var tailleJauge = moyenneMatiere * 4 + 'px' ;
 
 		$('.jauge-' + matiere).css('height', tailleJauge);
