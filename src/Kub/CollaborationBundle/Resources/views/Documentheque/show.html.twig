@@ -1,0 +1,35 @@
+{% extends 'KubCollaborationBundle::layout.html.twig' %}
+
+{% set documentheque = projet.documentheque %}
+
+{% block content %}
+	
+	<h3 class="section-title">Documentheque</h3>
+
+	<article class="article">
+		<ul>
+			
+			{% for ressource in documentheque.ressources %}
+				<li>{{ ressource }}</li>
+			{% else %}
+				<li>Il n'y a encore aucune ressource pour le moment</li>
+			{% endfor %}
+
+		</ul>
+	
+		<a href="{{ path('kub_collaboration_documentheque_ressource_create', { slug: projet.slug}) }}">Déposer une ressource</a>
+
+		<ul>
+			
+			{% for fichier in documentheque.fichiers %}
+				<li>{{ fichier }}</li>
+			{% else %}
+				<li>Il n'y a encore aucun fichier pour le moment</li>
+			{% endfor %}
+
+		</ul>
+
+		<a href="{{ path('kub_collaboration_documentheque_fichier_create', { slug: projet.slug}) }}">Créer un fichier</a>
+	</article>
+
+{% endblock %}

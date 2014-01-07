@@ -15,9 +15,6 @@ class MenuBuilder
 	private $em; 
 	private $messages;
 
-	/**
-	 * @param FactoryInterface $factory
-	 */
 	public function __construct(FactoryInterface $factory, SecurityContext $security, EntityManager $em, $messages)
 	{
 		$this->factory = $factory;
@@ -30,9 +27,12 @@ class MenuBuilder
 	{
 		$menu = $this->factory->createItem('root');
 
-		$menu->addChild('Accueil', array('labelAttributes' => array('className' => 'accueil'), array('route' => 'home_homepage')));
-		$menu["Accueil"]->addChild('Notifications', array('route' => 'home_homepage'));
-		$this->generateMessagesMenu($menu);
+		$menu->addChild('Accueil', array(
+			'labelAttributes' => array('className' => 'accueil'),
+			'route' => 'home_homepage'
+		));
+			$menu["Accueil"]->addChild('Notifications', array('route' => 'kub_notification_show'));
+			$this->generateMessagesMenu($menu);
 
 		if($this->security->isGranted('ROLE_SECRETAIRE'))
 		{
@@ -60,7 +60,7 @@ class MenuBuilder
 		return $menu;
 	}
 
-	public function generateMessagesMenu($menu)
+	private function generateMessagesMenu($menu)
 	{
 		$text = 'Mes messages'; $nb_unread = $this->messages->getNbUnreadMessages();
 
@@ -69,6 +69,70 @@ class MenuBuilder
 		}
 
 		$menu["Accueil"]->addChild($text, array('route' => 'kub_messagerie_inbox', 'labelAttributes' => array('className' => 'messagerie')));
+	}
+
+	private function generateGroupesMenu($menu)
+	{
+		$menu->addChild('Mes groupes', array(
+			'labelAttributes' => array('className' => 'groupes'),
+			'route' => 'groupe_list_for_user'
+		));
+				
+		$groupes = $this->em->getRepository('KubClasseBundle:Groupe')->findByUser( $this->security->getToken()->getUser() );
+
+		$limit = 4 ;
+		$limit = $limit < count($groupes) ? $limit : count($groupes) ;
+
+		for($i = 0 ; $i < $limit ; $i++) {
+
+			$menu['Mes groupes']->addChild($groupes[$i], 
+				array(
+					'route' => 'groupe_show',
+					'routeParameters' => array('id' => $groupes[$i]->getId())
+				)
+			);
+		}
+
+		if(count($groupes) > $limit)
+		{
+			$menu['Mes groupes']->addChild("Autres groupes", 
+				array(
+					'route' => 'groupe_list_for_user'
+				)
+			);
+		}
+	}
+
+	private function generateProjetsMenu($menu)
+	{
+		$menu->addChild('Mes projets', array(
+			'labelAttributes' => array('className' => 'espace-collaboratif'),
+			'route' => 'kub_collaboration_homepage'
+		));
+
+		$projets = $this->em->getRepository('KubCollaborationBundle:Projet')->findByUser( $this->security->getToken()->getUser() );
+
+		$limit = 4 ;
+		$limit = $limit < count($projets) ? $limit : count($projets) ;
+
+		for($i = 0 ; $i < $limit ; $i++) {
+
+			$menu['Mes projets']->addChild($projets[$i]->getName(), 
+				array(
+					'route' => 'kub_collaboration_projet_show',
+					'routeParameters' => array('slug' => $projets[$i]->getSlug())
+				)
+			);
+		}
+
+		if(count($projets) > $limit)
+		{
+			$menu['Mes projets']->addChild("Autres projets", 
+				array(
+					'route' => 'kub_collaboration_homepage'
+				)
+			);
+		}
 	}
 
 	public function generateSecretaireMenu($menu)
@@ -129,8 +193,8 @@ class MenuBuilder
 
 	public function generateEleveMenu($menu)
 	{
-
-		$menu->addChild('Espace collaboratif', array('labelAttributes' => array('className' => 'espace-collaboratif')));
+		$this->generateProjetsMenu($menu);
+		$menu->addChild('Espace collaboratif', array('labelAttributes' => array('className' => 'ariane')));
 			$menu['Espace collaboratif']->addChild('Fil d\'Ariane', array(
 				'route' => 'ariane_homepage'
 			));   
@@ -143,6 +207,8 @@ class MenuBuilder
 			),
 			'route' => 'edt_homepage'
 		)); 
+
+		$this->generateGroupesMenu($menu);
 
 		$menu->addChild('1984', array(
 			'labelAttributes' => array(
@@ -158,20 +224,7 @@ class MenuBuilder
 
 	public function generateProfesseurMenu($menu)
 	{
-		$menu->addChild('Mes groupes', array('labelAttributes' => array('className' => 'groupes')));
-				
-			$groupes = $this->em->getRepository('KubClasseBundle:Groupe')->findByProfesseur( $this->security->getToken()->getUser() );
-
-			foreach ($groupes as $key => $groupe) {
-
-				$menu['Mes groupes']->addChild($groupe, 
-					array(
-						'route' => 'groupe_show',
-						'routeParameters' => array('id' => $groupe->getId())
-					)
-				);
-			}
-
+		$this->generateGroupesMenu($menu);
 
 		$menu->addChild("Ressources en ligne", array(
 			'labelAttributes' => array(
@@ -185,6 +238,10 @@ class MenuBuilder
 
 		$menu["Ressources en ligne"]->addChild("Ajouter", array(
 			'route' => 'kub_ressource_add', 
+		));
+
+		$menu["Ressources en ligne"]->addChild("Valider", array(
+			'route' => 'kub_ressource_validation_list', 
 		));
 
 		$menu->addChild('Ma semaine', array(

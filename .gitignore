@@ -4,4 +4,6 @@
 /app/logs/*
 /web/ressources/.sass-cache/*
 /web/uploads/*
+/src/Kub/EDTBundle/DataFixtures/ORM/LoadMatiereData.php
+/src/Kub/EDTBundle/DataFixtures/ORM/LoadCategorieData.php
 .com.apple.timemachine.supported

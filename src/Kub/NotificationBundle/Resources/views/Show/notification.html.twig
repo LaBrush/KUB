@@ -8,7 +8,7 @@
 			{{ notification.format( app.user.class ) }}
 		</p>
 		<div class="buttons-article-news">
-			<a href="{{ path(notification.route) }}">{{ notification.routeTitle }}</a>
+			<a href="{{ path(notification.route, notification.routeAttr) }}">{{ notification.routeTitle }}</a>
 		</div>
 	</div>
 </article>

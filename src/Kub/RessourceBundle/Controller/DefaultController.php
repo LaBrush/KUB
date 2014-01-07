@@ -14,7 +14,9 @@ class DefaultController extends Controller
 {
 	public function indexAction()
 	{
-		$ressources = $this->get('doctrine.orm.entity_manager')->getRepository('KubRessourceBundle:Ressource')->findByValide();
+		$ressources = $this->get('doctrine.orm.entity_manager')->getRepository('KubRessourceBundle:Ressource')->findByValide(true);
+		$ressources_invalides = $this->get('doctrine.orm.entity_manager')->getRepository('KubRessourceBundle:Ressource')->findByValideAndUser(false, $this->getUser());
+
 		$matieres = array();
 
 		for ($i=0; $i < count($ressources) ; $i++) { 
@@ -26,6 +28,7 @@ class DefaultController extends Controller
 
 		return $this->render('KubRessourceBundle:Default:index.html.twig', array(
 			'ressources' => $ressources,
+			'ressources_invalides' => $ressources_invalides,
 			'matieres' => $matieres
 		));
 	}
@@ -52,15 +55,22 @@ class DefaultController extends Controller
 		));
 
 		$request = $this->get('request');
-		$em = $this->getDoctrine()->getManager();
+		$em = $this->get('doctrine.orm.default_entity_manager');
 
 		if($request->getMethod() == "POST"){
 
-			$formHandler = new RessourceHandler($form, $request, $em, $this->get('security.context'), $this->get('kub.notification_manager'));
+			$formHandler = new RessourceHandler($form, $request, $em, $this->get('security.context'), $this->get('validator'), $this->get('kub.notification_manager'));
 
 			if($formHandler->process())
 			{
-				$this->get('session')->getFlashBag()->add('info', "La ressource à bien été mise en ligne"); 
+				if($this->get('security.context')->isGranted('ROLE_PROFESSEUR'))
+				{
+					$this->get('session')->getFlashBag()->add('info', "La ressource à bien été mise en ligne"); 
+				}
+				else
+				{
+					$this->get('session')->getFlashBag()->add('info', "La ressource à bien été mise en ligne. Elle devra être validée par un professeur avant d'être publiée.");
+				}
 				return $this->redirect( $this->generateUrl('kub_ressource_homepage') );
 			}
 			else
@@ -81,7 +91,6 @@ class DefaultController extends Controller
 		if($this->getUser() != $ressource->getDepositaire())
 		{
 			throw new AccessDeniedException('Vous ne pouvez modifier cette ressource');
-			
 		}
 
 		if(!$this->get('security.context')->isGranted('ROLE_PROFESSEUR'))
@@ -94,15 +103,15 @@ class DefaultController extends Controller
 		));
 
 		$request = $this->get('request');
-		$em = $this->getDoctrine()->getManager();
+		$em = $this->get('doctrine.orm.default_entity_manager');
 
 		if($request->getMethod() == "POST"){
 
-			$formHandler = new RessourceHandler($form, $request, $em, $this->get('security.context'), $this->get('kub.notification_manager'));
+			$formHandler = new RessourceHandler($form, $request, $em, $this->get('security.context'), $this->get('validator'), $this->get('kub.notification_manager'));
 
 			if($formHandler->process())
 			{
-				$this->get('session')->getFlashBag()->add('info', "La ressource à bien été modifiée"); 
+				$this->get('session')->getFlashBag()->add('info', "La ressource à bien été modifiée."); 
 				return $this->redirect( $this->generateUrl('kub_ressource_homepage') );
 			}
 			else
@@ -116,5 +125,31 @@ class DefaultController extends Controller
 				'form' => $form->createView(),
 			)
 		); 
+	}
+
+	public function deleteAction(Ressource $groupe)
+	{
+		$form = $this->createFormBuilder()->getForm();
+		$request = $this->getRequest();
+
+		if ($request->getMethod() == 'POST') {
+			$form->bind($request);
+
+			if ($form->isValid()) {
+
+				$em = $this->get('doctrine.orm.default_entity_manager');
+				$em->remove($groupe);
+				$em->flush();
+
+				$this->get('session')->getFlashBag()->add('info', 'Ressource supprimée');
+	
+				return $this->redirect($this->generateUrl('kub_ressource_list'));
+			}
+		}
+
+		return $this->render('KubRessourceBundle:Ressource:delete.html.twig', array(
+			'groupe' => $groupe,
+			'form' => $form->createView(),
+		));
 	}
 }

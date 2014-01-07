@@ -8,7 +8,7 @@ use Symfony\Component\Validator\Constraints as Assert ;
 /**
  * Message
  *
- * @ORM\Table(name="messages")
+ * @ORM\Table()
  * @ORM\Entity
  */
 class Message
@@ -142,7 +142,30 @@ class Message
     {
         return $this->thread;
     }
+
+    /**
+     * Set sender
+     *
+     * @param \Kub\UserBundle\Entity\User $sender
+     * @return Message
+     */
+    public function setSender(\Kub\UserBundle\Entity\User $sender = null)
+    {
+        $this->sender = $sender;
     
+        return $this;
+    }
+
+    /**
+     * Get sender
+     *
+     * @return \Kub\UserBundle\Entity\User 
+     */
+    public function getSender()
+    {
+        return $this->sender;
+    }
+
     /**
      * Add messageUser
      *
@@ -174,28 +197,5 @@ class Message
     public function getMessageUser()
     {
         return $this->messageUser;
-    }
-
-    /**
-     * Set sender
-     *
-     * @param \Kub\UserBundle\Entity\User $sender
-     * @return Message
-     */
-    public function setSender(\Kub\UserBundle\Entity\User $sender = null)
-    {
-        $this->sender = $sender;
-    
-        return $this;
-    }
-
-    /**
-     * Get sender
-     *
-     * @return \Kub\UserBundle\Entity\User 
-     */
-    public function getSender()
-    {
-        return $this->sender;
     }
 }

@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Thread
  *
- * @ORM\Table(name="threads")
+ * @ORM\Table
  * @ORM\Entity(repositoryClass="Kub\MessagerieBundle\Entity\ThreadRepository")
  */
 class Thread
@@ -36,6 +36,13 @@ class Thread
      */
     private $groupes ;
 
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="last_message", type="datetime")
+     */
+    private $dateLastMessage ;
+
     public function getAllUsers()
     {
         $users = $this->getUsers()->toArray();
@@ -54,6 +61,7 @@ class Thread
     {
         $this->users = new \Doctrine\Common\Collections\ArrayCollection();
         $this->groupes = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->dateLastMessage = new \DateTime ;
     }
 
     /**
@@ -64,6 +72,7 @@ class Thread
      */
     public function addMessage(\Kub\MessagerieBundle\Entity\Message $messages)
     {
+        $this->dateLastMessage = new \DateTime ;
         $this->messages[] = $messages;
     
         return $this;
@@ -172,25 +181,25 @@ class Thread
     }
 
     /**
-     * Set lastMessage
+     * Set dateLastMessage
      *
-     * @param \DateTime $lastMessage
+     * @param \DateTime $dateLastMessage
      * @return Thread
      */
-    public function setLastMessage($lastMessage)
+    public function setDateLastMessage($dateLastMessage)
     {
-        $this->lastMessage = $lastMessage;
+        $this->dateLastMessage = $dateLastMessage;
     
         return $this;
     }
 
     /**
-     * Get lastMessage
+     * Get dateLastMessage
      *
      * @return \DateTime 
      */
-    public function getLastMessage()
+    public function getDateLastMessage()
     {
-        return $this->lastMessage;
+        return $this->dateLastMessage;
     }
 }

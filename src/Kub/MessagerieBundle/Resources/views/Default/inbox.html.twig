@@ -24,7 +24,7 @@
 
 						Le <strong>{{ lastMessage.date | date('d/m/y')}}</strong>, 
 
-						{% if lastMessage.sender == app.user.username %}
+						{% if lastMessage.sender.id == app.user.id %}
 							
 							vous avez dit
 
@@ -38,20 +38,26 @@
 
 							à
 
-							{% for receveur in users %}
-								{% if receveur != app.user.username %}
-									<strong> {{ receveur }} </strong>
-								{% endif %}
-							{% endfor %}
+							{% if thread.users|length > 1 %}
+								{% for receveur in thread.users %}
+									{% if receveur.id != app.user.id %}
+										<strong> {{ receveur }} </strong>
+									{% endif %}
+								{% endfor %}
 
-							.
+								{% for receveur in thread.groupes %}
+									<strong> {{ receveur }} </strong>
+								{% endfor %}
+							{% else %}
+								vous même
+							{% endif %}
 
 						{% else %}
 							
-							<strong>{{ lastMessage.sender }}</strong> vous a dit
+							<strong>{{ lastMessage.sender }}</strong> a dit
 
 							 "<strong>
-								{% if lastMessage.contenu | length > 10 %}
+								{% if lastMessage.contenu | striptags | length > 10 %}
 									{{ lastMessage.contenu | striptags | slice(0, 9) }}...
 								{% else %}
 									{{ lastMessage.contenu | raw }}
@@ -62,9 +68,9 @@
 
 						{% endif %}
 
-						{# {% if not lastMessage.messageUser %}
+						{% if not lastMessage.messageUser.0.readed %}
                             <span class="notifications new-message">Nouveau</span>
-                        {% endif %} #}
+                        {% endif %} 
 
 						{# <span class="actions-messages">
 							<span class="undelete-message">Afficher</span>
@@ -87,6 +93,7 @@
 						</span> #}
 					</span>		
 				</a>
+				{{ render(controller("KubMessagerieBundle:Default:delete", { id: thread.id })) }}
 			</p>    
 		{% endfor %}
 		</table>

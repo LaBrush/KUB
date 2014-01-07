@@ -59,24 +59,6 @@ class AppelHandler
 
 		}
 
-		// foreach ($notes as $note) {
-
-		// 	if(!$note->getNoter())
-		// 	{
-		// 		$controle->removeNote( $note ) ;
-		// 	}
-		// 	else
-		// 	{
-		// 		$this->notifications->addNotification('NoteAddedNotification', array(
-
-		// 			"userTarget" => $note->getEleve(),
-		// 			"contenu" => $note
-
-		// 		)) ;
-		// 	}
-	
-		// }
-
 		$this->em->persist($appel);
 		$this->em->flush();
 

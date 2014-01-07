@@ -26,7 +26,7 @@ class CoursController extends Controller
 	public function createAction()
 	{
 		$request = $this->get('request');
-		$em = $this->getDoctrine()->getManager();
+		$em = $this->get('doctrine.orm.default_entity_manager');
 		$time = $this->get('kub.edt.time');
 
 		$type = new CoursType($time) ;
@@ -63,7 +63,7 @@ class CoursController extends Controller
 	public function editAction(Cours $cours)
 	{
 		$request = $this->get('request');
-		$em = $this->getDoctrine()->getManager();
+		$em = $this->get('doctrine.orm.default_entity_manager');
 		$time = $this->get('kub.edt.time');
 
 		$type = new CoursType($time) ;
@@ -107,7 +107,7 @@ class CoursController extends Controller
 
 			if ($form->isValid()) {
 
-				$em = $this->getDoctrine()->getManager();
+				$em = $this->get('doctrine.orm.default_entity_manager');
 				$em->remove($cours);
 				$em->flush();
 
@@ -128,7 +128,7 @@ class CoursController extends Controller
 	 */
 	public function listAction()
 	{
-		$listeCours = $this->getDoctrine()->getManager()
+		$listeCours = $this->get('doctrine.orm.default_entity_manager')
 			->getRepository("KubEDTBundle:Cours")
 			->findAll();
 

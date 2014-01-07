@@ -19,6 +19,40 @@
 	{% endif %}
 
 	<article class="article">
+
+		<div class="liste-ressources">
+
+			<ul class="liste">
+				{% for ressource in ressources_invalides %}
+
+					<a href="{{ path('kub_ressource_show', { id: ressource.id }) }}">
+						<li class="ressource in-list {{ ressource.type }} {{ ressource.niveau }} {{ ressource.matiere }}">
+
+							<span class="label">{{ ressource.titre }}</span>
+
+							{#{% if ressource.type == 'web' %}
+							
+								<iframe class="preview" src="about:blank"></iframe>
+							
+							{% elseif ressource.type == 'file' %}
+								
+								<img class="preview" src="about:blank" alt="{{ ressource.titre }}">			
+
+							{% endif %}#}
+							
+							<div class="details">
+								<span class="infos">{{ ressource.description }}</span>				
+								<span class="infos-complementaires"><em><strong>{{ ressource.auteur }}</strong> {{ ressource.matiere }} {{ ressource.niveau | lower }}</em></span>
+							</div>
+
+						</li>
+					</a>
+
+				{% endfor %}
+			</ul>
+			
+		</div>
+
 		<div class="liste-ressources">
 
 			<ul class="liste">
@@ -55,10 +89,10 @@
 			</ul>
 			
 			<div class="matieres">
-				<select multiple id="matiere" name="matiere" class="select2">
+				<select id="matiere" name="matiere" class="select2">
+					 <option value="">Choisir une matière</option>
 					{% for matiere in matieres %}
 					    <option value="{{ matiere }}">{{ matiere }}</option>
-					    <option value="matiere">matiere</option>
 					{% endfor %}
 				</select>
 			</div>

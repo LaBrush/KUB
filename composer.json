@@ -32,8 +32,7 @@
         "misd/phone-number-bundle": "~1.0",
         "genemu/form-bundle": "dev-master",
         "jms/serializer-bundle": "dev-master",
-        "friendsofsymfony/message-bundle": "dev-master",
-        "problematic/acl-manager-bundle": "dev-master"
+        "coresphere/console-bundle": "dev-master"
     },
     "scripts": {
         "post-install-cmd": [

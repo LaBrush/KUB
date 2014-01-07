@@ -12,7 +12,17 @@
 
 	<article class="article">
 		
+		<ul>
+		{% for ressource in ressources %}
 		
+			<li><a href="{{ path('kub_ressource_show', { id: ressource.id }) }}">{{ ressource }}</a> {{ render(controller('KubRessourceBundle:Validation:valider', { id: ressource.id})) }}</li>
+
+		{% else %}
+		    
+		    Toutes les ressources ont été validées pour l'instant
+
+		{% endfor %}		
+		</ul>
 
 	</article>
 

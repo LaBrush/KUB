@@ -2,7 +2,19 @@ $(function() {
 
 	// Fonctions de tri
 
-	var toHide = new Array;
+	var ressources = new Array;
+
+	$('.ressource').each(function(){
+
+		ressources.push( 
+			{
+				$: $(this),
+				name: true,
+				matiere: true
+			}
+		)
+
+	});
 
 	$('.options-tri>li').click( function() {
 
@@ -41,48 +53,45 @@ $(function() {
 	})
 
 	$('#matiere')
-	.select2({
-	    placeholder: "Choisir une matière",
-	    allowClear: true
-	})
-	.on("select2-selecting", function(e) {
+	.change(function(e) {
 
-		if ($(this).val() == null)
+		var required = $(this).val();
+
+		if(required)
 		{
-			$('.ressource').hide();
-		}
-		
-		$('.' + e.val).show();
-
-	 	for (var i = toHide.length - 1; i >= 0; i--) {
-			
-			for (var j = $('.ressource').length - 1; j >= 0; j--) {
-				if ($('.ressource').eq(j).hasClass(toHide[i]))
+			for (var i = 0; i < ressources.length; i++) {
+				if(ressources[i].$.hasClass(required))
 				{
-					$('.ressource').eq(j).hide();
+					ressources[i].matiere = true ;
 				}
-			}
+				else
+				{
+					ressources[i].matiere = false ;
+				}
+			};
 		}
-	})
-	.on("select2-removing", function(e) {
-
-		if ($(this).val() == null)
-		{
-			$('.ressource').show();
-		} 
 		else
 		{
-			$('.' + e.val).hide();
+			for (var i = 0; i < ressources.length; i++) {
+				ressources[i].matiere = true ;
+			};	
 		}
+		
+		refreshHide(ressources);
 
-		for (var i = toHide.length - 1; i >= 0; i--) {
-			
-			for (var j = $('.ressource').length - 1; j >= 0; j--) {
-				if ($('.ressource').eq(j).hasClass(toHide[i]))
-				{
-					$('.ressource').eq(j).hide();
-				}
-			}
-		}
 	});
+
+	function refreshHide(param)
+	{
+		for (var i = 0; i < param.length; i++) {
+			param[i].$.show();
+
+			for(arg in param[i]) {
+				if(!param[i][arg]){ 
+					param[i].$.hide(); 
+					console.log("bip");
+				}
+			};
+		};
+	}
 });

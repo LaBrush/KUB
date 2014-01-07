@@ -22,7 +22,7 @@ class ArianeCommentaireNotification extends Notification
 
 
     /**
-     * @ORM\OneToOne(targetEntity="Kub\ArianeBundle\Entity\Commentaire")
+     * @ORM\OneToOne(targetEntity="Kub\ArianeBundle\Entity\Commentaire", mappedBy="notification")
      */
     private $commentaire ; 
 
@@ -40,6 +40,7 @@ class ArianeCommentaireNotification extends Notification
     public function setCommentaire(\Kub\ArianeBundle\Entity\Commentaire $commentaire = null)
     {
         $this->commentaire = $commentaire;
+        $commentaire->setNotification($this);
     
         return $this;
     }

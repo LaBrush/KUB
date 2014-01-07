@@ -59,7 +59,7 @@ class ProfesseurController extends Controller
 			$request = $this->get('request');
 			if($request->getMethod() == "POST"){
 
-				$formHandler = new ControleHandler($form, $request, $this->getDoctrine()->getManager(), $this->get('kub.notification_manager'));
+				$formHandler = new ControleHandler($form, $request, $this->get('doctrine.orm.default_entity_manager'), $this->get('kub.notification_manager'));
 
 				if($formHandler->process())
 				{
@@ -114,7 +114,7 @@ class ProfesseurController extends Controller
 		$request = $this->get('request');
 		if($request->getMethod() == "POST"){
 
-			$formHandler = new ControleHandler($form, $request, $this->getDoctrine()->getManager(), $this->get('kub.notification_manager'));
+			$formHandler = new ControleHandler($form, $request, $this->get('doctrine.orm.default_entity_manager'), $this->get('kub.notification_manager'));
 
 			if($formHandler->process())
 			{
@@ -183,7 +183,7 @@ class ProfesseurController extends Controller
 
 			if ($form->isValid()) {
 
-				$em = $this->getDoctrine()->getManager();
+				$em = $this->get('doctrine.orm.default_entity_manager');
 				$em->remove($controle);
 				$em->flush();
 		

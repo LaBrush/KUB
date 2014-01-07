@@ -3,7 +3,9 @@
 namespace Kub\ClasseBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
+
 use Kub\UserBundle\Entity\Professeur ;
+use Kub\UserBundle\Entity\User ;
 
 /**
  * GroupeRepository
@@ -13,16 +15,38 @@ use Kub\UserBundle\Entity\Professeur ;
  */
 class GroupeRepository extends EntityRepository
 {
-	public function findByProfesseur(Professeur $professeur)
+	public function findByUser(User $user)
 	{
-		$qb = $this->createQueryBuilder("g")
-			->join('g.cours', 'c')
-			->join('c.professeur', 'p')
-			->join('g.eleves', 'e')
-			->addSelect('e')
-			->where('p.id = :id')
-			->setParameter('id', $professeur->getId())
-			;
+		$qb = $this->createQueryBuilder("g");
+
+		switch ($user->getClass()) {
+			case 'professeur':
+				$qb
+					->join('g.cours', 'c')
+					->join('c.professeur', 'p')
+					
+					->join('g.niveau', 'n')
+					->addSelect('n')
+
+					->where('p.id = :id')
+					->setParameter('id', $user->getId())
+				;
+				break;
+			case 'eleve':
+				$qb
+					->join('g.eleves', 'e')
+					
+					->join('g.niveau', 'n')
+					->addSelect('n')
+
+					->where('e.id = :id')
+					->setParameter('id', $user->getId())
+				;
+				break;
+			default:
+				throw new \Exception("Professeur or Eleve expected, " . get_class($user) . " given");
+				break;
+		}
 
 		return $qb->getQuery()->getResult();
 	}

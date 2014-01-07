@@ -3,8 +3,8 @@ parameters:
 services:
 #    kub.notification_service:
         # class: Kub\NotificationBundle\Notification\NotificationService
-        # arguments: [ %notification_type%, @doctrine.orm.entity_manager, @security.context ]
+        # arguments: [ %notification_type%, @doctrine.orm.default_entity_manager, @security.context ]
 
     kub.notification_manager:
         class: Kub\NotificationBundle\Manager\NotificationManager
-        arguments: [@doctrine.orm.entity_manager, @security.context]
+        arguments: [@doctrine.orm.default_entity_manager, @security.context]

@@ -26,13 +26,13 @@ class PostController extends Controller
 		));
 
 		$request = $this->get('request');
-		$em = $this->getDoctrine()->getManager();
+		$em = $this->get('doctrine.orm.default_entity_manager');
 
 		$fil = $this->getUser()->getFil();
 
 		if($request->getMethod() == "POST"){
 
-			$formHandler = new PostHandler($form, $request, $this->getDoctrine()->getManager(), $fil, $this->get('kub.notification_manager'), $this->get('security.context'));
+			$formHandler = new PostHandler($form, $request, $this->get('doctrine.orm.default_entity_manager'), $fil, $this->get('kub.notification_manager'), $this->get('security.context'));
 
 			if($formHandler->process())
 			{
@@ -65,13 +65,13 @@ class PostController extends Controller
 		$form = $this->createForm(new PostType, $post);
 
 		$request = $this->get('request');
-		$em = $this->getDoctrine()->getManager();
+		$em = $this->get('doctrine.orm.default_entity_manager');
 
 		$fil = $this->getUser()->getFil();
 
 		if($request->getMethod() == "POST"){
 
-			$formHandler = new PostHandler($form, $request, $this->getDoctrine()->getManager(), $fil, $this->get('kub.notification_manager'), $this->get('security.context'));
+			$formHandler = new PostHandler($form, $request, $this->get('doctrine.orm.default_entity_manager'), $fil, $this->get('kub.notification_manager'), $this->get('security.context'));
 
 			if($formHandler->process())
 			{
@@ -102,7 +102,7 @@ class PostController extends Controller
 
 			if ($form->isValid()) {
 
-				$em = $this->getDoctrine()->getManager();
+				$em = $this->get('doctrine.orm.default_entity_manager');
 				$em->remove($post);
 				$em->flush();
 

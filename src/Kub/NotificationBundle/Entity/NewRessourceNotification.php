@@ -22,7 +22,7 @@ class NewRessourceNotification extends Notification
 
 
     /**
-     * @ORM\OneToOne(targetEntity="Kub\RessourceBundle\Entity\Ressource")
+     * @ORM\OneToOne(targetEntity="Kub\RessourceBundle\Entity\Ressource", mappedBy="notification", cascade={"all"})
      */
     private $ressource ; 
 
@@ -40,7 +40,8 @@ class NewRessourceNotification extends Notification
     public function setRessource(\Kub\RessourceBundle\Entity\Ressource $ressource = null)
     {
         $this->ressource = $ressource;
-    
+        $ressource->setNotification($this);
+
         return $this;
     }
 

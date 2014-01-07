@@ -1,12 +1,12 @@
 <?php
 
-namespace Kub\RessourceBundle\Form\EventListener;
+namespace Kub\HomeBundle\Form\EventListener;
 
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
-use Kub\RessourceBundle\Entity\Ressource ;
+use Kub\HomeBundle\Entity\Ressource ;
 
 class setTypeFieldSuscriber implements EventSubscriberInterface
 {

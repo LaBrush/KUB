@@ -12,12 +12,14 @@ class MessageHandler
 	protected $request;
 	protected $form;
 	protected $em;
+	protected $security;
 
-	public function __construct(Form $form, Request $request, $em)
+	public function __construct(Form $form, Request $request, $em, $security)
 	{
 		$this->form = $form;
 		$this->request = $request;
 		$this->em = $em;
+		$this->security = $security ;
 
 	}
 
@@ -42,7 +44,6 @@ class MessageHandler
 	protected function onSuccess($data)
 	{
 		$thread = $data->getThread();
-		$thread->setLastMessage($data)
 
 		if($this->form->has('thread_add_member')){
 
@@ -67,6 +68,11 @@ class MessageHandler
 			$mu = new MessageUser ;
 				$mu->setMessage($data);
 				$mu->setUser($user);
+
+			if($user == $this->security->getToken()->getUser())
+			{
+				$mu->setReaded(true);
+			}
 
 			$data->addMessageUser( $mu );
 		}

@@ -1,0 +1,23 @@
+{% extends 'KubCollaborationBundle::layout.html.twig' %}
+
+{% set organisateur = projet.organisateur %}
+
+{% block content %}
+    
+	<article class="article">
+		
+		<h2>Liste des taches et des pistaches qui tachent</h2>
+
+		<ul>
+			
+			{% for tache in organisateur.taches %}
+			    <li>{{ tache }}</li>
+			{% else %}
+				<li>Il n'y a rien à faire (pour l'instant)</li>
+			{% endfor %}
+
+		</ul>
+
+	</article>
+
+{% endblock %}

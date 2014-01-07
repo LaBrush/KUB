@@ -1,6 +1,6 @@
 <?php
 
-namespace Kub\RessourceBundle\Form\Type;
+namespace Kub\HomeBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -25,7 +25,6 @@ class FileType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Kub\RessourceBundle\Entity\File'
         ));
     }
 
@@ -34,6 +33,6 @@ class FileType extends AbstractType
      */
     public function getName()
     {
-        return 'kub_ressourcebundle_file';
+        return 'kub_homebundle_file';
     }
 }

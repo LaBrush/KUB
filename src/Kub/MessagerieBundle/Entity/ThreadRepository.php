@@ -27,12 +27,14 @@ class ThreadRepository extends EntityRepository
 
 			->where('u.id = :u_id')
 			->setParameter('u_id', $user->getId())
+
+			->orderBy('t.dateLastMessage', 'DESC')
 		;
 
 		return $qb->getQuery()->getResult();
 	}
 
-	public function findOneByUser($id)
+	public function findOneById($id)
 	{
 		$qb = $this->createQueryBuilder('t')
 			->join('t.messages', 'm')
@@ -44,11 +46,13 @@ class ThreadRepository extends EntityRepository
 			->join('mu.user', 'u')
 			->addSelect('u')
 
+			->where('mu.readed = true')
+
 			->where('t.id = :id')
 			->setParameter('id', $id)
 		;
 
-		return $qb->getQuery()->getResult();
+		return $qb->getQuery()->getSingleResult();
 	}
 
 }

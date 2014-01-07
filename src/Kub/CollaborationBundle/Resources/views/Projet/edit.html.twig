@@ -1,0 +1,11 @@
+{% extends 'KubCollaborationBundle::layout.html.twig' %}
+
+{% block content %}
+    
+	<article class="article">
+		
+		{% include 'KubCollaborationBundle:Projet:form.html.twig' with { form: form } only %}
+
+	</article>
+
+{% endblock %}

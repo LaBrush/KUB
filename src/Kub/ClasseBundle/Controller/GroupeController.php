@@ -24,11 +24,11 @@ class GroupeController extends Controller
 		$form = $this->createForm(new GroupeType, $groupe);
 
 		$request = $this->get('request');
-		$em = $this->getDoctrine()->getManager();
+		$em = $this->get('doctrine.orm.default_entity_manager');
 
 		if($request->getMethod() == "POST"){
 
-			$formHandler = new GroupeHandler($form, $request, $this->getDoctrine()->getManager());
+			$formHandler = new GroupeHandler($form, $request, $this->get('doctrine.orm.default_entity_manager'));
 
 			if($formHandler->process())
 			{
@@ -54,11 +54,11 @@ class GroupeController extends Controller
 		$form = $this->createForm(new GroupeType, $groupe);
 
 		$request = $this->get('request');
-		$em = $this->getDoctrine()->getManager();
+		$em = $this->get('doctrine.orm.default_entity_manager');
 
 		if($request->getMethod() == "POST"){
 
-			$formHandler = new GroupeHandler($form, $request, $this->getDoctrine()->getManager());
+			$formHandler = new GroupeHandler($form, $request, $this->get('doctrine.orm.default_entity_manager'));
 
 			if($formHandler->process())
 			{
@@ -89,7 +89,7 @@ class GroupeController extends Controller
 
 			if ($form->isValid()) {
 
-				$em = $this->getDoctrine()->getManager();
+				$em = $this->get('doctrine.orm.default_entity_manager');
 				$em->remove($groupe);
 				$em->flush();
 
@@ -107,13 +107,25 @@ class GroupeController extends Controller
 
 	public function listAction()
 	{
-		$listeGroupes = $this->getDoctrine()->getManager()
+		$listeGroupes = $this->get('doctrine.orm.default_entity_manager')
 			->getRepository("KubClasseBundle:Groupe")
 			->findAll();
 
 		return $this->render("KubClasseBundle:Groupe:list.html.twig", 
 			array(
-				"list_users" => $listeGroupes
+				"list_groupes" => $listeGroupes
+		));        
+	}
+
+	public function listForUserAction()
+	{
+		$listeGroupes = $this->get('doctrine.orm.default_entity_manager')
+			->getRepository("KubClasseBundle:Groupe")
+			->findByUser($this->getUser());
+
+		return $this->render("KubClasseBundle:Groupe:list.html.twig", 
+			array(
+				"list_groupes" => $listeGroupes
 		));        
 	}
 

@@ -8,7 +8,6 @@ use PUGX\MultiUserBundle\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert ;
 
 use FOS\UserBundle\Model\User as BaseUser ;
-use FOS\MessageBundle\Model\ParticipantInterface;
 
 /**
  * @ORM\Entity
@@ -24,7 +23,7 @@ use FOS\MessageBundle\Model\ParticipantInterface;
  * @ORM\Entity(repositoryClass="Kub\UserBundle\Entity\UserRepository")
  */
 
-abstract class User extends BaseUser implements ParticipantInterface
+abstract class User extends BaseUser
 {
 
     /**

@@ -7,11 +7,9 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 use Kub\RessourceBundle\Entity\Ressource ;
-use Kub\RessourceBundle\Form\Type\FileType ;
+use Kub\HomeBundle\Form\Type\RessourceType as BaseRessourceType ;
 
-use Kub\RessourceBundle\Form\EventListener\setTypeFieldSuscriber ;
-
-class RessourceType extends AbstractType
+class RessourceType extends BaseRessourceType
 {
 		/**
 	 * @param FormBuilderInterface $builder
@@ -19,26 +17,17 @@ class RessourceType extends AbstractType
 	 */
 	public function buildForm(FormBuilderInterface $builder, array $options)
 	{
+		parent::buildForm($builder, $options);
 		$builder
-			->add('titre', 'text')
-			->add('auteur', 'text')
-			->add('description', "textarea")
+			->add('file', new FileType, array(
+				"data_class" => "Kub\CollaborationBundle\Entity\File"
+			))
 			->add('niveau', 'entity', array(
 				"class" => "Kub\ClasseBundle\Entity\Niveau"
 			))
 			->add('matiere', 'entity', array(
 				"class" => "Kub\EDTBundle\Entity\Matiere"
 			))
-			->add('type', 'choice', array(
-				"expanded" => true,
-				'choices' => array(
-					Ressource::WEB => "Ressource en ligne",
-					Ressource::FILE => "Fichier"
-				)
-			))
-			->add('url', 'url')
-			->add('file', new FileType)
-			->addEventSubscriber(new setTypeFieldSuscriber)
 		;
 	}
 	

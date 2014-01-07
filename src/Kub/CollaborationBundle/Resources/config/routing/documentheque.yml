@@ -1,0 +1,9 @@
+kub_collaboration_organisation:
+    resource: "@KubCollaborationBundle/Resources/config/routing/documentheque/fichier.yml"
+
+kub_collaboration_documentheque:
+    resource: "@KubCollaborationBundle/Resources/config/routing/documentheque/ressource.yml"
+
+kub_collaboration_documentheque_show:
+    pattern:  /{slug}/documenteque
+    defaults: { _controller: KubCollaborationBundle:Documentheque:index }

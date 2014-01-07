@@ -28,7 +28,7 @@ class DefaultController extends Controller
 			throw new NotFoundHttpException("Aucun utilisateur n'a été précisé");
 		}
 
-		$fil = $this->getDoctrine()->getManager()->getRepository('KubArianeBundle:Fil')->findByUser($username);
+		$fil = $this->get('doctrine.orm.default_entity_manager')->getRepository('KubArianeBundle:Fil')->findByUser($username);
 
 		if($this->getUser()->getClass() == "professeur" && !$this->getUser()->hasEleve( $fil->getEleve() ))
 		{

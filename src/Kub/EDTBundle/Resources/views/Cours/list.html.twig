@@ -26,12 +26,9 @@
 						<span>{{ cours }}</span>
 					</li>
 				</a>
-
-			{% endfor %}
-
-			{% if list_cours|length == 0 %}
+			{% else %}
 				<li>Aucun cours enregistré pour le moment</li>
-			{% endif %}
+			{% endfor %}
 		</ul>
 	</article>		
 

@@ -4,87 +4,32 @@ namespace Kub\RessourceBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert ;
+use Symfony\Component\Validator\ExecutionContextInterface  ;
+
+use Kub\HomeBundle\Entity\Ressource as BaseRessource ;
 
 /**
  * Ressource
  *
- * @ORM\Table()
+ * @ORM\Table(name="ressource_Ressource")
  * @ORM\Entity(repositoryClass="Kub\RessourceBundle\Entity\RessourceRepository")
  */
-class Ressource
+class Ressource extends BaseRessource 
 {
-    const WEB = 1 ;
-    const FILE = 2 ;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    private $id;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="titre", type="string", length=255)
-     */
-    private $titre;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="description", type="text", nullable=true)
-     */
-    private $description;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="date", type="datetime")
-     */
-    private $date;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="Kub\UserBundle\Entity\User", cascade={"all"})
-     */
-    private $depositaire ;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="auteur", type="text", length=255)
-     */
-    private $auteur ;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="url", type="text", nullable=true)
-     * @Assert\Url()
-     */
-    private $url;
-
-    /**
-     * @ORM\OneToOne(targetEntity="Kub\RessourceBundle\Entity\File", cascade={"all"})
-     */
-    private $file ;
-
-    /**
-     * @ORM\Column(name="type", type="integer")
-     */
-    private $type ;
-
     /**
      * @ORM\ManyToOne(targetEntity="Kub\EDTBundle\Entity\Matiere", cascade={"all"})
      */
     private $matiere ;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Kub\ClasseBundle\Entity\Niveau", cascade={"all"})
+     * @ORM\ManyToOne(targetEntity="Kub\ClasseBundle\Entity\Niveau", cascade={"merge", "detach", "persist"})
      */
     private $niveau ;
+
+    /**
+     * @ORM\OneToOne(targetEntity="Kub\RessourceBundle\Entity\File", cascade={"all"})
+     */
+    private $file ;
 
     /**
      * @var string
@@ -93,162 +38,38 @@ class Ressource
      */
     private $valide;
 
-    public function __toString()
-    {
-        return $this->titre;
-    }
+    /**
+     * @ORM\OneToOne(targetEntity="Kub\NotificationBundle\Entity\NewRessourceNotification", inversedBy="ressource",  cascade={"all"})
+     */
+    private $notification ;
 
     public function __construct()
     {
+        parent::__construct();
         $this->valide = true ;
-        $this->date = new \DateTime ;
-        $this->type = Ressource::WEB ;
     }
 
     /**
-     * Get id
+     * Set valide
      *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Set description
-     *
-     * @param string $description
+     * @param boolean $valide
      * @return Ressource
      */
-    public function setDescription($description)
+    public function setValide($valide)
     {
-        $this->description = $description;
+        $this->valide = $valide;
     
         return $this;
     }
 
     /**
-     * Get description
+     * Get valide
      *
-     * @return string 
+     * @return boolean 
      */
-    public function getDescription()
+    public function getValide()
     {
-        return $this->description;
-    }
-
-    /**
-     * Set date
-     *
-     * @param \DateTime $date
-     * @return Ressource
-     */
-    public function setDate($date)
-    {
-        $this->date = $date;
-    
-        return $this;
-    }
-
-    /**
-     * Get date
-     *
-     * @return \DateTime 
-     */
-    public function getDate()
-    {
-        return $this->date;
-    }
-
-    /**
-     * Set url
-     *
-     * @param string $url
-     * @return Ressource
-     */
-    public function setUrl($url)
-    {
-        $this->url = $url;
-    
-        return $this;
-    }
-
-    /**
-     * Get url
-     *
-     * @return string 
-     */
-    public function getUrl()
-    {
-        return $this->url;
-    }
-
-    /**
-     * Set auteur
-     * @return Ressource
-     */
-    public function setAuteur($auteur = null)
-    {
-        $this->auteur = $auteur;
-    
-        return $this;
-    }
-
-    /**
-     * Get auteur
-     *
-     * @return \Kub\UserBundle\Entity\User 
-     */
-    public function getAuteur()
-    {
-        return $this->auteur;
-    }
-
-    /**
-     * Set titre
-     *
-     * @param string $titre
-     * @return Ressource
-     */
-    public function setTitre($titre)
-    {
-        $this->titre = $titre;
-    
-        return $this;
-    }
-
-    /**
-     * Get titre
-     *
-     * @return string 
-     */
-    public function getTitre()
-    {
-        return $this->titre;
-    }
-
-    /**
-     * Set file
-     *
-     * @param \Kub\RessourceBundle\Entity\File $file
-     * @return Ressource
-     */
-    public function setFile(\Kub\RessourceBundle\Entity\File $file = null)
-    {
-        $this->file = $file;
-    
-        return $this;
-    }
-
-    /**
-     * Get file
-     *
-     * @return \Kub\RessourceBundle\Entity\File 
-     */
-    public function getFile()
-    {
-        return $this->file;
+        return $this->valide;
     }
 
     /**
@@ -298,71 +119,48 @@ class Ressource
     }
 
     /**
-     * Set type
+     * Set notification
      *
-     * @param integer $type
+     * @param \Kub\NotificationBundle\Entity\NewRessourceNotification $notification
      * @return Ressource
      */
-    public function setType($type)
+    public function setNotification(\Kub\NotificationBundle\Entity\NewRessourceNotification $notification = null)
     {
-        $this->type = $type;
+        $this->notification = $notification;
     
         return $this;
     }
 
     /**
-     * Get type
+     * Get notification
      *
-     * @return integer 
+     * @return \Kub\NotificationBundle\Entity\NewRessourceNotification 
      */
-    public function getType()
+    public function getNotification()
     {
-        return $this->type;
+        return $this->notification;
     }
 
     /**
-     * Set valide
+     * Set file
      *
-     * @param boolean $valide
+     * @param \Kub\RessourceBundle\Entity\File $file
      * @return Ressource
      */
-    public function setValide($valide)
+    public function setFile(\Kub\RessourceBundle\Entity\File $file = null)
     {
-        $this->valide = $valide;
+        $this->file = $file;
     
         return $this;
     }
 
     /**
-     * Get valide
+     * Get file
      *
-     * @return boolean 
+     * @return \Kub\RessourceBundle\Entity\File 
      */
-    public function getValide()
+    public function getFile()
     {
-        return $this->valide;
-    }
-
-    /**
-     * Set depositaire
-     *
-     * @param \Kub\UserBundle\Entity\User $depositaire
-     * @return Ressource
-     */
-    public function setDepositaire(\Kub\UserBundle\Entity\User $depositaire = null)
-    {
-        $this->depositaire = $depositaire;
-    
-        return $this;
-    }
-
-    /**
-     * Get depositaire
-     *
-     * @return \Kub\UserBundle\Entity\User 
-     */
-    public function getDepositaire()
-    {
-        return $this->depositaire;
+        return $this->file;
     }
 }

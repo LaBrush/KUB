@@ -4,7 +4,7 @@
 
 	<article class="article">
 		<a class="button-yes" href="{{ path('kub_messagerie_new') }}">Nouveau</a>
-		<a href="{{ path('kub_messagerie_delete', { id: thread.id }) }}">Supprimer</a>
+		{{ render(controller("KubMessagerieBundle:Default:delete", { id: thread.id })) }}
 	</article>
 
 	<article class="article">
