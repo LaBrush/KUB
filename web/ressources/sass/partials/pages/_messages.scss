@@ -1,19 +1,7 @@
-.liens
+.button-new-message
 {
-	@include pie-clearfix();
-	display: block;
-
-	.button-message-right
-	{
-		float: right;
-		margin: 0 0 10px 10px;
-	}
-
-	.button-message-left
-	{
-		float: left;
-		margin: 0 10px 10px 0;
-	}
+	margin: 10px 0;
+	display: inline-block;
 }
 
 .apercu-message
