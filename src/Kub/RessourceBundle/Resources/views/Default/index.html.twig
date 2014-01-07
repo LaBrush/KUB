@@ -10,15 +10,11 @@
 		<h2 class="section-title">Ressources</h2>
 	</article>
 
-	{% if not is_granted("ROLE_PROFESSEUR") %}
-		<article class="article">
-			
-			<a href="{{ path('kub_ressource_propose') }}" class="button">Proposer une ressource</a>
-
-		</article>
-	{% endif %}
-
 	<article class="article">
+
+		{% if not is_granted("ROLE_PROFESSEUR") %}
+			<a href="{{ path('kub_ressource_propose') }}" class="button">Proposer une ressource</a>
+		{% endif %}
 
 		<div class="liste-ressources">
 

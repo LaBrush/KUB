@@ -1,14 +1,73 @@
 {% extends "::base.html.twig" %}
 
+{% block title %}
+	{{ parent() }} - Nouveau message
+{% endblock %}
+
 {% block body %}
+	
+	<div class="article">
+		<h3 class="section-title">Nouveau message</h3>
+	</div>
 
 	<article class="article">
-		
-		{{ form_start(form) }}
-		{{ form_widget(form) }}
-		<input type="submit" value="Envoyer">
-		{{ form_end(form) }}
 
+		<div class="conversation">
+			{{ form_start(form) }}
+				{{ form_errors(form) }}
+			    <span class="input">
+			    	{{ form_errors(form.thread.users) }}
+			    	{{ form_label(form.thread.users) }}&nbsp;{{ form_widget(form.thread.users) }}
+			    </span>
+
+			    <span class="input">
+			    	{{ form_errors(form.thread.groupes) }}
+			    	{{ form_label(form.thread.groupes) }}&nbsp;{{ form_widget(form.thread.groupes) }}
+			    </span>
+
+			    <input type="submit" class="button-yes send-message" value="Envoyer" />
+
+			    <div class="message-write">{{ form_errors(form.contenu) }}{{ form_widget(form.contenu, {"attr" : {"placeholder" : "Rédiger un message"}}) }}</div>
+
+			    {{ form_widget(form) }}
+			{{ form_end(form) }}
+		</div>
 	</article>
 
+{% endblock %}
+
+{% block js %}
+
+	{{ parent() }}
+
+	<script type="text/javascript" src="{{ asset('ressources/select2/select2.min.js') }}"></script>
+	<link rel="stylesheet" href="{{ asset('ressources/select2/select2.css') }}" />
+	<script type="text/javascript" src="{{ asset('ressources/tinymce/tinymce.min.js') }}"></script>
+	<script>
+		jQuery(document).ready(function($) {
+		    var $configs = {
+				        selector: "textarea",
+				        plugins: [
+				                "autolink link charmap",
+				                "searchreplace",
+				                "textcolor"
+				        ],
+
+				        toolbar1: "undo redo | bold italic underline strikethrough | forecolor | subscript superscript charmap | removeformat | searchreplace | link unlink",
+				        toolbar2: "",
+				        toolbar3: "",
+
+				        menubar: false,
+				        statusbar: false,
+				        toolbar_items_size: 'small',
+				};
+		    tinyMCE.init($configs);
+
+		    $('textarea').removeAttr('required');
+		});
+	</script>
+
+	{{ form_javascript(form) }}
+	{{ form_stylesheet(form) }}
+    
 {% endblock %}

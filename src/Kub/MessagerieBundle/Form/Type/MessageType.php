@@ -17,7 +17,7 @@ class MessageType extends AbstractType
 	public function buildForm(FormBuilderInterface $builder, array $options)
 	{
 		$builder
-			->add('contenu', 'text')
+			->add('contenu', 'genemu_tinymce')
 			->addEventSubscriber(new addThreadFieldSuscriber($this->security));
 		;
 	}

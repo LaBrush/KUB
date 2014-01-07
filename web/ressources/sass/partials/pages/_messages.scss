@@ -14,27 +14,7 @@
 	}
 }
 
-.new-message
-{
-	line-height: 1.35em;
-	float: none;
-	padding: 1px 7px;
-	margin: 0 0 0 5px;
-}
-
-.actions-messages
-{
-	float: right;
-	display: inline-block;
-
-	@media all and (max-width: 760px)
-	{
-		display: block;
-		text-align: center;	
-	}
-}
-
-@mixin action-message
+.delete-message, .undelete-message
 {
 	font-size: 0.8em;
 	margin: 0;
@@ -55,10 +35,8 @@
 	}
 }
 
-.show-message, .undelete-message
+.undelete-message
 {
-	@include action-message;
-
 	&:hover, &:focus, &:active
 	{
 		background: $button-yes;
@@ -67,8 +45,6 @@
 
 .delete-message
 {
-	@include action-message;
-
 	&:hover, &:focus, &:active
 	{
 		background: $button-no;
@@ -80,6 +56,11 @@
 	background: $header;
 	padding: 10px;
 	@include border-radius(3px);
+
+	.input
+	{
+		margin: 0 10px 10px 0;
+	}
 
 	.from-recever
 	{

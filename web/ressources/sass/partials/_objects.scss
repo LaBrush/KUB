@@ -179,17 +179,6 @@
 	}
 }
 
-.button-vie-lyceenne
-{
-	@include button;
-	background: $vie-lyceenne;
-
-	&:hover, &:focus, &:active
-	{
-		background: darken($vie-lyceenne, 5%);
-	}
-}
-
 .button-notes
 {
 	@include button;

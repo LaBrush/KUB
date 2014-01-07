@@ -24,6 +24,7 @@ class ThreadType extends AbstractType
 		$builder
 			->add('users', 'genemu_jqueryselect2_entity', array(
 				'class' => "Kub\UserBundle\Entity\User",
+				'label' => "Pour  ",
 				"multiple" => true
 			))
 		;

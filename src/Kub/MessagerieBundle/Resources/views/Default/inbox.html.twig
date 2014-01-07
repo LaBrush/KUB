@@ -18,8 +18,8 @@
 
 			{% set lastMessage = thread.messages | last %}
 			
-			<p class="apercu-message">
-				<a href="{{ path('kub_messagerie_read', { id: thread.id }) }}">
+			<a href="{{ path('kub_messagerie_read', { id: thread.id }) }}">
+				<p class="apercu-message">
 					<span>
 
 						Le <strong>{{ lastMessage.date | date('d/m/y')}}</strong>, 
@@ -71,30 +71,13 @@
 						{% if not lastMessage.messageUser.0.readed %}
                             <span class="notifications new-message">Nouveau</span>
                         {% endif %} 
-
-						{# <span class="actions-messages">
-							<span class="undelete-message">Afficher</span>
-							{% if fos_message_can_delete_thread(thread) %}
-								ou
-								{% if fos_message_deleted_by_participant(thread) %}
-									{% set formAction %}{{ url('fos_message_thread_undelete', {'threadId': thread.id}) }}{% endset %}
-									{% set submitValue %}Restaurer{% endset %}
-									<form action="{{ formAction }}" method="post" class="hidden">
-										<input type="submit" value="{{ submitValue }}" class="undelete-message"/>
-									</form>
-								{% else %}
-									{% set formAction %}{{ url('fos_message_thread_delete', {'threadId': thread.id}) }}{% endset %}
-									{% set submitValue %}Supprimer{% endset %}
-									<form action="{{ formAction }}" method="post" class="hidden">
-										<input type="submit" value="{{ submitValue }}" class="delete-message"/>
-									</form>
-								{% endif %}
-							{% endif %}
-						</span> #}
 					</span>		
-				</a>
-				{{ render(controller("KubMessagerieBundle:Default:delete", { id: thread.id })) }}
-			</p>    
+				
+					<span class="actions-messages">
+						<span class="undelete-message">Afficher</span> ou {{ render(controller("KubMessagerieBundle:Default:delete", { id: thread.id })) }}
+					</span>
+				</p>
+			</a>
 		{% endfor %}
 		</table>
 	</article>
@@ -102,25 +85,6 @@
 {% endblock %}
 
 {#
-	<article class="article">
-
-		<ul class="liens">
-			{% if app.request.attributes.get("_route") != "fos_message_thread_new" %}
-				<li><a class="button-yes button-message-left" href="{{ url('fos_message_thread_new' )}}">Nouveau</a></li>
-			{% endif %}
-
-			{% if app.request.attributes.get("_route") != "fos_message_deleted" and app.request.attributes.get("_route") != "fos_message_thread_new" and app.request.attributes.get("_route") != "fos_message_thread_view" %}
-				<li><a class="button-no button-message-right" href="{{ url('fos_message_deleted') }}">Messages supprimés</a></li>
-			{% endif %}
-
-			{% if app.request.attributes.get("_route") != "fos_message_inbox" %}
-				<li><a class="button button-message-{% if app.request.attributes.get("_route") != "fos_message_thread_new" %}right{% else %}left{% endif %}" href="{{ url('fos_message_inbox') }}">Boite de réception</a></li>
-			{% endif %}
-		</ul>
-
-		{% block fos_message_content %}{% endblock %}
-	</article>
-{% endblock %}
 
 {% block js %}
 	<!-- <script src="//tinymce.cachefly.net/4.0/tinymce.min.js"></script> -->
