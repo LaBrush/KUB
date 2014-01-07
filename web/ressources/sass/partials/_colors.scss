@@ -32,22 +32,24 @@ $message-envoye: 		#ccffa3;
 
 /******************************************************************************/
 /* Objets */
-$accueil: 				#e67e22;
-$espace-collaboratif:	#f2c72f;
-$agenda: 				#22b6e6;
-$vie-lyceenne: 			#f28fbe;
-$bigbro: 				#f73b40;
-
-
-$utilisateurs: 			#f2c72f;
-$groupes: 				#80d625;
-
-
+$orange:      			#e67e22;  // orange
 $jaune: 				#f2c72f;  // Jaune
 $vert: 					#80d625;  // Vert
 $bleu: 					#22b6e6;  // Bleu
 $rose:					#f28fbe;  // Rose
 $rouge: 				#f73b40;  // Rouge
+
+
+$accueil: 				$orange;
+$projets: 				$jaune;
+$espace-collaboratif:	$vert;
+$agenda: 				$bleu;
+$groupes: 				$rose;
+$bigbro: 				$rouge;
+
+
+$utilisateurs: 			#f2c72f;
+$groupes: 				#80d625;
 
 
 $button-color: 			#fefefe;
