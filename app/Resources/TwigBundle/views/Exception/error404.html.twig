@@ -1,0 +1,23 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}
+	{{ parent() }} - Page non trouvée
+{% endblock %}
+
+{% block sectionClass %}section-login{% endblock %}
+
+{% block body %}
+
+		<article class="article login-error-box">
+
+			<p>Il semblerais que ce que vous cherchez ne soit (ou plus) pas ici. Essayez voir dans un dictionnaire ou encore une brocante...</p>
+
+		</article>
+	
+		<article class="article login-error-box">
+
+			<p><a href="{{ path('home_homepage') }}">Voulez vous revenir à l'accueil ?</a></p>
+
+		</article>
+
+{% endblock %}

@@ -26,21 +26,33 @@ class TacheType extends AbstractType
 		$taches = $this->projet->getOrganisateur()->getListeTaches();
 
 		for ($i=0; $i < count($taches); $i++) { 
-			$choices[ $taches[$i]->getId() ] = (string)$taches[$i];
+			$choices[ $taches[$i]->getId() ] = $taches[$i];
 		}
 
 		$builder
-			->add('name')
-			->add('echeance')
-			->add('participants', 'entity', array(
-
-				'choices' => $this->projet->getUsers(),
-				"class" => "Kub\UserBundle\Entity\User"
-
+			->add('name', 'text', array(
+				'label' => 'Nom'
 			))
-			->add('listeTaches', 'choice', array(
+			->add('echeance')
+			->add('participants', 'genemu_jqueryselect2_entity', array(
+				'choices' => $this->projet->getUsers(),
+				'class' => 'Kub\UserBundle\Entity\User',
+				'multiple' => true
+			))
+		;
+
+		if(count($choices) > 0)
+		{
+			$builder->add('listeTaches', 'entity', array(
 				'choices' => $choices,
-				'label' => 'select2-choice'
+				'class' => 'Kub\CollaborationBundle\Entity\ListeTaches',
+				'label' => 'Ajouter à la liste'
+			));
+		}
+
+		$builder->add('newListe', 'text', array(
+				'mapped' => false,
+				'label' => 'créer une nouvelle liste'
 			))
 		;
 	}

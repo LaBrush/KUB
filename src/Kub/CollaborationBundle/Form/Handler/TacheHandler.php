@@ -5,26 +5,22 @@ namespace Kub\CollaborationBundle\Form\Handler;
 use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\Request;
 
+use Kub\CollaborationBundle\Entity\ListeTaches ;
+use Kub\CollaborationBundle\Entity\Organisateur ;
+
 class TacheHandler
 {
 	protected $request;
 	protected $form;
 	protected $em;
+	protected $organisateur;
 
-
-	/**
-	 * Initialize the handler with the form and the request
-	 *
-	 * @param Form $form
-	 * @param Request $request
-	 * @param $manager
-	 * 
-	 */
-	public function __construct(Form $form, Request $request, $em)
+	public function __construct(Form $form, Request $request, $em, Organisateur $organisateur)
 	{
 		$this->form = $form;
 		$this->request = $request;
 		$this->em = $em;
+		$this->organisateur = $organisateur ;
 	}
 
 	public function process()
@@ -36,6 +32,17 @@ class TacheHandler
 			if($this->form->isValid())
 			{
 				$data = $this->form->getData();
+				$listeName = $this->form->get('newListe')->getData();
+
+				if(!empty($listeName))
+				{
+					$liste = new ListeTaches ;
+					$liste->setName($listeName);
+					$liste->setOrganisateur( $this->organisateur );
+
+					$data->setListeTaches($liste);
+				}
+
 				$this->onSuccess($data);
 
 				return true;

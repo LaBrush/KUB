@@ -1,0 +1,14 @@
+{% extends 'KubCollaborationBundle::layout.html.twig' %}
+
+{% block content %}
+	
+	<article class="article">
+		
+		{{ form_start(form) }}
+		{{ form_widget(form) }}
+		<input type="submit" value="Supprimer" class="button-yes">
+		{{ form_end(form) }}
+		
+	</article>
+
+{% endblock %}

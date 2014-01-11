@@ -22,9 +22,15 @@ class Organisateur
     private $id;
 
     /**
+     * @ORM\OneToOne(targetEntity="Kub\CollaborationBundle\Entity\Projet", mappedBy="organisateur")
+     */
+    private $projet ;
+
+    /**
      * @var \Doctrine\Common\Collections\Collection
      *
      * @ORM\OneToMany(targetEntity="Kub\CollaborationBundle\Entity\ListeTaches", mappedBy="organisateur", cascade={"all"})
+     * @ORM\OrderBy({"rang" = "ASC"})
      */
     private $listeTaches;
     /**
@@ -76,5 +82,28 @@ class Organisateur
     public function getListeTaches()
     {
         return $this->listeTaches;
+    }
+
+    /**
+     * Set projet
+     *
+     * @param \Kub\CollaborationBundle\Entity\Projet $projet
+     * @return Organisateur
+     */
+    public function setProjet(\Kub\CollaborationBundle\Entity\Projet $projet = null)
+    {
+        $this->projet = $projet;
+    
+        return $this;
+    }
+
+    /**
+     * Get projet
+     *
+     * @return \Kub\CollaborationBundle\Entity\Projet 
+     */
+    public function getProjet()
+    {
+        return $this->projet;
     }
 }

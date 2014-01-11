@@ -31,9 +31,9 @@ class ListeTaches
     /**
      * @var string
      *
-     * @ORM\Column(name="nom", type="string", length=255)
+     * @ORM\Column(name="name", type="string", length=255)
      */
-    private $nom;
+    private $name;
 
     /**
      * @ORM\OneToMany(targetEntity="Kub\CollaborationBundle\Entity\Tache", mappedBy="listeTaches", cascade={"all"})
@@ -47,7 +47,7 @@ class ListeTaches
 
     public function __toString()
     {
-        return $this->nom ;
+        return $this->name ;
     }
 
     public function __construct()
@@ -86,29 +86,6 @@ class ListeTaches
     public function getRang()
     {
         return $this->rang;
-    }
-
-    /**
-     * Set nom
-     *
-     * @param string $nom
-     * @return ListeTaches
-     */
-    public function setNom($nom)
-    {
-        $this->nom = $nom;
-    
-        return $this;
-    }
-
-    /**
-     * Get nom
-     *
-     * @return string 
-     */
-    public function getNom()
-    {
-        return $this->nom;
     }
 
     /**
@@ -165,5 +142,28 @@ class ListeTaches
     public function getOrganisateur()
     {
         return $this->organisateur;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return ListeTaches
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName()
+    {
+        return $this->name;
     }
 }

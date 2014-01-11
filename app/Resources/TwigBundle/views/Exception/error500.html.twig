@@ -1,0 +1,24 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}
+	{{ parent() }} - L'erreur est serveur
+{% endblock %}
+
+{% block sectionClass %}section-login{% endblock %}
+
+{% block body %}
+
+		<article class="article login-error-box">
+
+			<p>Hum c'est embétant, il semblerait que le magnifique travail de nos équipe ne nous mette pas hors de danger d'un <strong>bug</strong></p>
+			<p>On y retourne et on reviens !</p>
+
+		</article>
+
+		<article class="article login-error-box">
+
+			<p><a href="{{ path('home_homepage') }}">Voulez vous revenir à l'accueil ?</a></p>
+
+		</article>
+	
+{% endblock %}

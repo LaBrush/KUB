@@ -11,11 +11,25 @@
 		<ul>
 			
 			{% for listeTaches in organisateur.listeTaches %}
-				<li>{{ listeTaches }}
-
+				<li>
+					<input 
+						type="checkbox" 
+						id="{{ listeTaches.id }}l"
+						class="liste-check"
+					>
+					<label for="{{ listeTaches.id }}l">{{ listeTaches }}</label>
+					<span class="toogle-button">Test</span>
 					<ul>
-						{% for listeTaches in organisateur.listeTaches %}
-							<li>{{ listeTaches }}</li>
+						{% for tache in listeTaches.taches %}
+							<li class="tache">
+								<input 
+									type="checkbox" 
+									id="{{ tache.id }}t" 
+									{% if tache.done %}checked{% endif %} 
+								>
+								<label for="{{ tache.id }}t">{{ tache }}</label>
+								<a href="{{ path('kub_collaboration_organisation_show', { projet_slug: projet.slug, tache_slug: tache.slug }) }}">Voir</a>
+							</li>
 						{% endfor %}
 					</ul>
 					
@@ -31,5 +45,65 @@
 	<article class="article">
 		{{ render(controller('KubCollaborationBundle:Organisation:create', { projet: projet })) }}
 	</article>
+
+{% endblock %}
+
+{% block js %}
+	
+	<script type="text/javascript" src="{{ asset('ressources/select2/select2.min.js') }}"></script>
+	<link rel="stylesheet" href="{{ asset('ressources/select2/select2.css') }}" />
+	
+	<link rel="stylesheet" href="/Kub/web/ressources/select2/select2.css">
+	<script type="text/javascript">
+		$(document).ready(function($) {
+			$('#kub_collaborationbundle_tache_participants').select2();
+
+			$('input.liste-check').change(function(){
+				var $that = $(this), checked = $that.prop('checked');
+
+				$(this).parent().find('.tache input')
+					.prop('checked', checked);
+			});
+
+			$('.tache input').change(function(){
+
+				var $that = $(this), $parent = $that.parent().parent().parent().children('input');
+
+				$.ajax({
+					url: "{{path('kub_api_collaboration_organisation_tache_check')}}",
+					data: {
+						'id': parseInt($that.attr('id')),
+						'checked': 0 + $that.prop('checked')
+					},
+					type: "POST",
+					timeout: 3000
+				});
+
+
+				var $taches = $(
+					'#' + $parent.attr('id')
+				).parent().find('.tache input');
+
+				var allChecked = true ;
+				$taches.each(function(){
+
+					if(!$(this).prop('checked')){ allChecked = false; };
+
+				});
+
+				allChecked ? $parent.prop('checked', true) : $parent.prop('checked', false) ;
+			}).first().change();
+
+			$('.toogle-button').click(function(){
+
+				var $that = $(this);
+				var $liste = $that.parent().children('ul');
+			
+				$liste.is(":visible") ? $that.text('Masquer') : $that.text('Afficher');
+				$liste.toggle(100);
+
+			}).trigger('click');
+		});
+	</script>
 
 {% endblock %}
