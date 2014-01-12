@@ -35,8 +35,8 @@ class TacheType extends AbstractType
 			))
 			->add('echeance')
 			->add('participants', 'genemu_jqueryselect2_entity', array(
-				'choices' => $this->projet->getUsers(),
-				'class' => 'Kub\UserBundle\Entity\User',
+				'choices'  => $this->projet->getUsers(),
+				'class'    => 'Kub\UserBundle\Entity\User',
 				'multiple' => true
 			))
 		;
@@ -45,14 +45,26 @@ class TacheType extends AbstractType
 		{
 			$builder->add('listeTaches', 'entity', array(
 				'choices' => $choices,
-				'class' => 'Kub\CollaborationBundle\Entity\ListeTaches',
-				'label' => 'Ajouter à la liste'
+				'class'   => 'Kub\CollaborationBundle\Entity\ListeTaches',
+				'label'   => 'Insérer dans la liste'
 			));
 		}
 
 		$builder->add('newListe', 'text', array(
 				'mapped' => false,
-				'label' => 'créer une nouvelle liste'
+				'label'  => 'créer une nouvelle liste'
+			))
+			->add('ressources', 'genemu_jqueryselect2_entity', array(
+				'choices'  => $this->projet->getDocumentheque()->getRessources(),
+				'class'    => 'Kub\CollaborationBundle\Entity\Ressource',
+				'multiple' => true,
+				'label'    => 'Ressources associées'
+			))
+			->add('fichiers', 'genemu_jqueryselect2_entity', array(
+				'choices'  => $this->projet->getDocumentheque()->getFichiers(),
+				'class'    => 'Kub\CollaborationBundle\Entity\Fichier',
+				'multiple' => true,
+				'label'    => 'Fichiers associés'
 			))
 		;
 	}

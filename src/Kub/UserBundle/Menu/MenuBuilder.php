@@ -207,6 +207,9 @@ class MenuBuilder
 			),
 			'route' => 'edt_homepage'
 		)); 
+			$menu['Ma semaine']->addChild("Emplois du temps", array(
+				'route' => 'edt_homepage', 
+			));
 
 		$this->generateGroupesMenu($menu);
 
@@ -250,6 +253,9 @@ class MenuBuilder
 			),
 			'route' => 'edt_homepage'
 		)); 
+			$menu['Ma semaine']->addChild("Emplois du temps", array(
+				'route' => 'edt_homepage', 
+			));
 
 		$menu->addChild('1984', array('labelAttributes' => array('className' => 'bigbro')));
 

@@ -13,14 +13,16 @@
 
 
 /**************************************************************************/
-/* Matieres */
+/* Categories de matiere */
 
 .scientifiques {background: $jaune;}
-.societe {background: $vert;}
-.langues {background: $bleu;}
-.options {background: $rose;}
+.economie-et-societe {background: $vert;}
+.litterature {background: $vert;}
+.langue {background: $bleu;}
 .autres {background: $rouge;}
-
+.enseignement-d-exploration { background: $rose;}
+.options {background: $rose;}
+.art {background: $rose;}
 
 /**************************************************************************/
 /* Boutons */

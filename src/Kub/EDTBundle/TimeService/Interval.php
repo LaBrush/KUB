@@ -61,9 +61,7 @@ class Interval
 
 	public function getRowSpan()
 	{
-		$span = array_search($this->horaire->getFin(), $this->horaires) - array_search($this->horaire->getDebut(), $this->horaires); 
-
-		return $span ;
+		return ( array_search($this->horaire->getFin(), $this->horaires) - array_search($this->horaire->getDebut(), $this->horaires) ); 
 	}
 
 }

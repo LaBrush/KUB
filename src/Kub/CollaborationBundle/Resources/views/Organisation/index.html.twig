@@ -53,10 +53,11 @@
 	<script type="text/javascript" src="{{ asset('ressources/select2/select2.min.js') }}"></script>
 	<link rel="stylesheet" href="{{ asset('ressources/select2/select2.css') }}" />
 	
-	<link rel="stylesheet" href="/Kub/web/ressources/select2/select2.css">
 	<script type="text/javascript">
 		$(document).ready(function($) {
 			$('#kub_collaborationbundle_tache_participants').select2();
+			$('#kub_collaborationbundle_tache_ressources').select2();
+			$('#kub_collaborationbundle_tache_fichiers').select2();
 
 			$('input.liste-check').change(function(){
 				var $that = $(this), checked = $that.prop('checked');

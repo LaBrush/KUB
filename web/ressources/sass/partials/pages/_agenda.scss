@@ -19,8 +19,6 @@
 	{
 		border-left: 1px $table-border solid;
 		border-right: 1px $table-border solid;
-		border-bottom: 1px $table-border dashed;
-		border-top: 1px $table-border dashed;
 		text-align: center;
 		height: 21px;
 		padding: 3px;
@@ -37,6 +35,7 @@
 	.hour-bottom-dashed
 	{
 		padding: 0px 5px 5px 5px;
+		border-bottom: 1px $table-border dashed;
 	}
 
 	.info-cours

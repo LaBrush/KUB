@@ -17,34 +17,7 @@
 
 	{% for horaire in form.horaires %}
 		<div class="horaires">
-			<span class="title">
-				Horaire
-			</span>
-
-			<span class="debut">
-				{{ form_errors(horaire.debut) }}
-				{{ form_label(horaire.debut) }} <div class="input">{{ form_widget(horaire.debut, {"attr": {'class': 'debut-fin-cours'}}) }}</div>
-			</span>
-
-			<span class="fin">
-				{{ form_errors(horaire.fin) }}
-				{{ form_label(horaire.fin) }} <div class="input">{{ form_widget(horaire.fin, {"attr": {'class': 'debut-fin-cours'}}) }}</div>
-			</span>
-
-			<span class="jour">
-				{{ form_errors(horaire.jour) }}
-				{{ form_label(horaire.jour) }} <div class="input">{{ form_widget(horaire.jour) }}</div>
-			</span>
-
-			<span class="frequences">
-				{{ form_errors(horaire.frequences) }}
-				{{ form_label(horaire.frequences) }} <div class="input">{{ form_widget(horaire.frequences) }}</div>
-			</span>
-
-			<span class="semaines">
-				{{ form_errors(horaire.semaines) }}
-				{{ form_label(horaire.semaines) }} <div class="input">{{ form_widget(horaire.semaines) }}</div>
-			</span>
+			{% include 'KubEDTBundle:Cours:horaires_form.html.twig' with {'form': horaire} %}
 		</div>
 		
 	{% endfor %}

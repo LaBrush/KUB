@@ -1,17 +1,17 @@
 {% block form %}
 	
 	<span class="title">
-		Nouvel horaire
+		Horaire
 	</span>
 
 	<span class="debut">
 		{{ form_errors(form.debut) }}
-		{{ form_label(form.debut) }} <div class="input">{{ form_widget(form.debut) }}</div>
+		{{ form_label(form.debut) }} <div class="input">{{ form_widget(form.debut, {"attr": {'class': 'debut-fin-cours'}}) }}</div>
 	</span>
 
 	<span class="fin">
 		{{ form_errors(form.fin) }}
-		{{ form_label(form.fin) }} <div class="input">{{ form_widget(form.fin) }}</div>
+		{{ form_label(form.fin) }} <div class="input">{{ form_widget(form.fin, {"attr": {'class': 'debut-fin-cours'}}) }}</div>
 	</span>
 
 	<span class="jour">
