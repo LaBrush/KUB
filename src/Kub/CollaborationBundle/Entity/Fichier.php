@@ -59,18 +59,22 @@ class Fichier
 
 	public function getWebPath()
 	{
-		$path = '';
+		return $this->getDomain() . 'kub' . $this->getUrl() . $this->getId() ;
+	}
 
+	public function getDomain()
+	{
+		$domain = '';
 		switch ($this->type) {
 			case self::PAD:
-				$path = "http://openetherpad.org/p/";
+				$domain = "http://openetherpad.org/p/";
 				break;
 			case self::CALC:
-				$path = "https://ethercalc.org/";
+				$domain = "http://ethercalc.crdp.ac-versailles.fr/";
 				break;
 		}
 
-		return $path . 'kub' . $this->getUrl() . $this->getId() ;
+		return $domain ;
 	}
 
 	public function __toString()

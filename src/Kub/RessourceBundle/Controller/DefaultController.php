@@ -65,11 +65,11 @@ class DefaultController extends Controller
 			{
 				if($this->get('security.context')->isGranted('ROLE_PROFESSEUR'))
 				{
-					$this->get('session')->getFlashBag()->add('info', "La ressource à bien été mise en ligne"); 
+					$this->get('session')->getFlashBag()->add('info', "La ressource a bien été mise en ligne"); 
 				}
 				else
 				{
-					$this->get('session')->getFlashBag()->add('info', "La ressource à bien été mise en ligne. Elle devra être validée par un professeur avant d'être publiée.");
+					$this->get('session')->getFlashBag()->add('info', "La ressource a bien été mise en ligne. Elle devra être validée par un professeur avant d'être publiée.");
 				}
 				return $this->redirect( $this->generateUrl('kub_ressource_homepage') );
 			}
@@ -111,7 +111,7 @@ class DefaultController extends Controller
 
 			if($formHandler->process())
 			{
-				$this->get('session')->getFlashBag()->add('info', "La ressource à bien été modifiée."); 
+				$this->get('session')->getFlashBag()->add('info', "La ressource a bien été modifiée."); 
 				return $this->redirect( $this->generateUrl('kub_ressource_homepage') );
 			}
 			else

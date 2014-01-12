@@ -1,1 +1,19 @@
-<iframe src="{{ fichier.getWebPath }}" frameborder="0" width="100%" height="100%" style="margin: 0;"></iframe>
+{% extends 'KubCollaborationBundle::layout.html.twig' %}
+
+{% block body %}
+    
+	<article class="article">
+		<iframe src="{{ fichier.getWebPath }}" frameborder="0" width="100%" height="100%" style="margin: 0;"></iframe>
+	</article>
+
+{% endblock %}
+
+{% block js %}
+    
+	<script>
+
+		document.domain =  "{{ fichier.domain }}";
+
+	</script>
+
+{% endblock %}

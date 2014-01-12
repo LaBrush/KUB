@@ -45,6 +45,21 @@ class ListeTaches
      */
     private $organisateur ;
 
+    public function countCheckedTaches(){
+
+        $c = 0 ;
+        $taches = $this->getTaches();
+
+        for ($i=0; $i < count($taches); $i++) { 
+            if($taches[$i]->getDone())
+            {
+                $c++ ;
+            }
+        }
+
+        return $c ;
+    }
+
     public function __toString()
     {
         return $this->name ;

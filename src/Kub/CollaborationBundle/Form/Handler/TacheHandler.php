@@ -32,7 +32,7 @@ class TacheHandler
 			if($this->form->isValid())
 			{
 				$data = $this->form->getData();
-				$listeName = $this->form->get('newListe')->getData();
+				$listeName = trim( $this->form->get('newListe')->getData() );
 
 				if(!empty($listeName))
 				{
