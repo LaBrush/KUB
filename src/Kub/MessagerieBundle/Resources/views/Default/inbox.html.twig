@@ -29,10 +29,10 @@
 							vous avez dit
 
 							 "<strong>
-								{% if lastMessage.contenu | length > 10 %}
-									{{ lastMessage.contenu | slice(0, 9) }}...
+								{% if lastMessage.contenu | striptags | length > 10 %}
+									{{ lastMessage.contenu | striptags | slice(0, 9) }}...
 								{% else %}
-									{{ lastMessage.contenu }}
+									{{ lastMessage.contenu | striptags }}
 								{% endif %}
 							</strong>" 
 
@@ -60,7 +60,7 @@
 								{% if lastMessage.contenu | striptags | length > 10 %}
 									{{ lastMessage.contenu | striptags | slice(0, 9) }}...
 								{% else %}
-									{{ lastMessage.contenu | raw }}
+									{{ lastMessage.contenu | striptags }}
 								{% endif %}
 							</strong>"
 

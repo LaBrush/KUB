@@ -7,3 +7,14 @@
 	</article>
 
 {% endblock %}
+
+{% block js %}
+
+	{{ parent() }}
+
+	<script type="text/javascript" src="{{ asset('ressources/select2/select2.min.js') }}"></script>
+	<link rel="stylesheet" href="{{ asset('ressources/select2/select2.css') }}" />
+	{{ form_javascript(form) }}
+	{{ form_stylesheet(form) }}
+    
+{% endblock %}

@@ -60,6 +60,11 @@
 	.input
 	{
 		margin: 0 10px 10px 0;
+
+		& .select2-container
+		{
+			width: 175px;
+		}
 	}
 
 	.from-recever
@@ -127,4 +132,16 @@
 	display: block;
 	@include box-sizing(border-box);
 	margin: 10px 0 0 0;
+}
+
+.reponse
+{
+	margin: 20px 0 0 0;
+}
+
+.send-in-conversation
+{
+	position: relative;
+	bottom: 27px;
+	right: 5px;
 }

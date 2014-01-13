@@ -3,35 +3,92 @@
 {% block body %}
 
 	<article class="article">
-		<a class="button-yes" href="{{ path('kub_messagerie_new') }}">Nouveau</a>
-		{{ render(controller("KubMessagerieBundle:Default:delete", { id: thread.id })) }}
-	</article>
+		<a class="button-yes button-new-message" href="{{ path('kub_messagerie_new') }}">Nouveau</a>
 
-	<article class="article">
+		<div class="conversation">
+		    <div class="messages">
+		        <div class="participants">
+					
+					{% for groupe in thread.groupes %}
+		                <span class="sender"><h3 class="bold">{{ groupe }}</h3 class="bold"></span>
+		            {% endfor %}
 
-		{% set participants = "" %}
-		{% for user in thread.users %}
-		    {% set participants = participants ~ ', ' ~ user %}
-		{% endfor %}
+		            {% for user in thread.users %}
+		                {% if user.username != app.user.username %}
+		                    <span class="sender"><h3 class="bold">{{ user }}</h3 class="bold"></span>
+		                {% else %}
+		                    <span class="recever"><h3 class="bold">{{ user }}</h3 class="bold"></span>
+		                {% endif %}    
+		            {% endfor %}
+		        </div>
 
-		{% for groupe in thread.groupes %}
-		    {% set participants = participants ~ ', ' ~ groupe %}
-		{% endfor %}
-
-		<h3>Avec {{ participants }}</h3>
-
-		<ul>
-		{% for message in thread.messages %}
-		    <li>{{ message }}</li>
-		{% endfor %}
-		</ul>
-
-	</article>
-
-	<article class="article">
+		        {% for message in thread.messages %}
+		            <div class="from-{% if message.sender.username == app.user.username %}sender{% else %}recever{% endif %}">
+		              
+		                {% if message.sender.username == app.user.username %}
+		                    <span><em>
+		                    	Vous, le <strong>{{ message.date | date('d/m/y')}}</strong> à <strong>{{ message.date | date('H:i')}} :</strong>
+		                	</em></span>
+		                {% else %}
+		                    <span><em>
+		                    	{{ message.sender }}, le <strong>{{ message.date | date('d/m/y')}}</strong> à <strong>{{ message.date | date('H:i')}} :</strong>
+		                	</em></span>
+						{% endif %}
+		                
+		                <p>{{ message.contenu | raw }}</p>
+ 
+		            </div>
+		        {% endfor %}
+		    </div>
 		
-		{{ render(controller("KubMessagerieBundle:Default:send", { id: thread.id })) }}
+			<div class="reponse">
+				{{ render(controller("KubMessagerieBundle:Default:send", { id: thread.id })) }}
+			</div>
+
+		</div>
 
 	</article>
 
+{% endblock %}
+
+{% block js %}
+	<script type="text/javascript" src="{{ asset('ressources/select2/select2.min.js') }}"></script>
+	<link rel="stylesheet" href="{{ asset('ressources/select2/select2.css') }}" />
+	<!-- <script src="//tinymce.cachefly.net/4.0/tinymce.min.js"></script> -->
+    <script type="text/javascript" src="{{ asset('ressources/tinymce/tinymce.min.js') }}"></script>
+	<script>
+		jQuery(document).ready(function($) {
+		    var $configs = {
+				        selector: "textarea",
+				        plugins: [
+				                "autolink link charmap",
+				                "searchreplace",
+				                "textcolor"
+				        ],
+
+				        toolbar1: "undo redo | bold italic underline strikethrough | forecolor | subscript superscript charmap | removeformat | searchreplace | link unlink",
+				        toolbar2: "",
+				        toolbar3: "",
+
+				        menubar: false,
+				        statusbar: false,
+				        toolbar_items_size: 'small',
+				};
+		    tinyMCE.init($configs);
+
+		    $('textarea').removeAttr('required');
+		});
+	</script>
+
+	<script>
+    	jQuery(document).ready(function($) {
+        $field = $('#kub_arianebundle_message_thread_add_member_users');
+
+                    $field.select2([]);
+
+    	$field = $('#kub_arianebundle_message_thread_add_member_groupes');
+
+                    $field.select2([]);
+            });
+    </script>
 {% endblock %}

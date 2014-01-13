@@ -24,7 +24,7 @@ class ThreadType extends AbstractType
 		$builder
 			->add('users', 'genemu_jqueryselect2_entity', array(
 				'class' => "Kub\UserBundle\Entity\User",
-				'label' => "Pour  ",
+				'label' => "Pour",
 				"multiple" => true
 			))
 		;
@@ -36,11 +36,13 @@ class ThreadType extends AbstractType
 				$builder->add('groupes', 'genemu_jqueryselect2_entity', array(
 					"choices" => $sender->getGroupes(),
 					"class" => "Kub\ClasseBundle\Entity\Groupe",
+					"label" => "Et le(s) groupe(s)",
 					"multiple" => true
 				));
 				break;
 			case 'administrateur':
 				$builder->add('groupes', 'genemu_jqueryselect2_entity', array(
+					"label" => "Et le(s) groupe(s)",
 					"class" => "Kub\ClasseBundle\Entity\Groupe",
 					"multiple" => true
 				));

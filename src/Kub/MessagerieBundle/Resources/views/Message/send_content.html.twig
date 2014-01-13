@@ -1,9 +1,19 @@
+{{ form_start(form) }}
+	{{ form_errors(form) }}
+    
+    <span class="input">
+    	{{ form_errors(form.thread_add_member.users) }}
+    	{{ form_label(form.thread_add_member.users) }}&nbsp;{{ form_widget(form.thread_add_member.users) }}
+    </span>
 
-<article class="article">
-	
-	{{ form_start(form) }}
-	{{ form_widget(form) }}
-	<input type="submit" value="Envoyer">
-	{{ form_end(form) }}
+    <span class="input">
+    	{{ form_errors(form.thread_add_member.groupes) }}
+    	{{ form_label(form.thread_add_member.groupes) }}&nbsp;{{ form_widget(form.thread_add_member.groupes) }}
+    </span>
 
-</article>
+    <div class="message-write">{{ form_errors(form.contenu) }}{{ form_widget(form.contenu, {"attr" : {"placeholder" : "Rédiger un message"}}) }}</div>
+
+    <input type="submit" class="button-yes send-message send-in-conversation" value="Envoyer" />
+
+    {{ form_widget(form) }}
+{{ form_end(form) }}
