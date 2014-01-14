@@ -16,3 +16,4 @@ app/console
 app/phpunit.xml.dist
 composer.phar
 maintenance.bash
+.DS_Store
