@@ -1,6 +1,6 @@
 {% for notification in notifications %}
     
-	{% include 'KubNotificationBundle:Notification:' notification.class '.html.twig' with {"notification":notification} only %}
+	{% include 'KubNotificationBundle:Notification:' ~ notification.class ~ '.html.twig' with {"notification":notification} only %}
 
 {% else %}
     
