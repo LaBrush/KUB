@@ -18,6 +18,7 @@ class ArianeCommentaireNotification extends Notification
         $this->routeTitle = "Afficher votre fil" ;
         $this->titre = "Fil d'Ariane";
         $this->type = "espace-collaboratif" ;
+        $this->class = 'ArianeCommentaireNotification';
     }
 
 

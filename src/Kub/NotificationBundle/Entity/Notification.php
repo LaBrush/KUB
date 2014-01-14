@@ -28,6 +28,7 @@ abstract class Notification
 	private $routeAttr ;
 	private $titre ;
 	private $type ;
+	private $class ;
 
 	abstract public function format($scope);
 

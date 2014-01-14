@@ -4,16 +4,5 @@
 /app/logs/*
 /web/ressources/.sass-cache/*
 /web/uploads/*
-/src/Kub/EDTBundle/DataFixtures/ORM/LoadMatiereData.php
-/src/Kub/EDTBundle/DataFixtures/ORM/LoadCategorieData.php
 .com.apple.timemachine.supported
-app/AppCache.php
-app/AppKernel.php
-app/SymfonyRequirements.php
-app/autoload.php
-app/check.php
-app/console
-app/phpunit.xml.dist
-composer.phar
-maintenance.bash
 .DS_Store
