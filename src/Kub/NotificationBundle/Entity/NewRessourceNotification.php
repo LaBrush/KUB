@@ -18,6 +18,7 @@ class NewRessourceNotification extends Notification
         $this->routeTitle = "Voir les ressources" ;
         $this->titre = $this->getAuteur() . ' a mis une ressource en ligne' ;
         $this->type = "new-ressource" ;
+        $this->class = 'NewRessourceNotification';
     }
 
 

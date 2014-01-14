@@ -19,6 +19,7 @@ class NoteAddedNotification extends Notification
 		$this->routeTitle = "Voir vos notes" ;
 		$this->titre = "Vous avez une nouvelle note";
 		$this->type = "note-added" ;
+		$this->class = 'NoteAddedNotification';
 	}
 
 

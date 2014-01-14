@@ -21,6 +21,7 @@ class ArianePostNotification extends Notification
         $this->routeTitle = "Afficher le fil" ;
         $this->titre = "Fil d'Ariane" ;
         $this->type = "espace-collaboratif" ;
+        $this->class = 'ArianePostNotification';
     }
 
 
