@@ -5,12 +5,16 @@ namespace Kub\EDTBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert ;
 use Kub\EDTBundle\Validator\Constraints as KAssert ;
+use Symfony\Component\Validator\ExecutionContextInterface;
 
 /**
  * Horaire
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="Kub\EDTBundle\Entity\HoraireRepository")
+ *
+ * @Assert\Callback(methods={"isNotNull"})
+ *
  */
 class Horaire
 {
@@ -59,6 +63,17 @@ class Horaire
      * @ORM\ManyToOne(targetEntity="Kub\EDTBundle\Entity\Cours", inversedBy="horaires", cascade={"all"})
      */
     private $cours ;
+
+    public function isNotNull(ExecutionContextInterface $context)
+    {
+        if(
+            $this->debut->format('H') >= $this->fin->format('H') && 
+            $this->debut->format('i') >= $this->fin->format('i')
+        )
+        {
+            $context->addViolationAt('fin', 'Le cours ne peut pas finir avant de commencer', array(), null);
+        }
+    }
 
     /**
      * Get id

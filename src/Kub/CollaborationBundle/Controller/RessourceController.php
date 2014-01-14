@@ -25,8 +25,10 @@ class RessourceController extends Controller
 		}
 
 		$ressource = $this->get('doctrine.orm.entity_manager')->getRepository('KubCollaborationBundle:Ressource')->findOneById($id);
-
 		$template = 'show';
+
+		$request = $this->get('request');
+
 		if($request->attributes->get('_route') != 'kub_collaboration_documentheque_ressource_show' || $request->isXmlHttpRequest() )
 		{
 			$template .= '_content' ;
@@ -59,7 +61,7 @@ class RessourceController extends Controller
 
 			if($formHandler->process())
 			{
-				$this->get('session')->getFlashBag()->add('info', 'La ressource à bien été mise en ligne'); 
+				$this->get('session')->getFlashBag()->add('info', 'La ressource a bien été mise en ligne'); 
 				return $this->redirect( $this->generateUrl('kub_collaboration_documentheque_show', array('slug'=>$projet->getSlug())) );
 			}
 			else
@@ -76,16 +78,11 @@ class RessourceController extends Controller
 		);  
 	}
 
-	public function editAction(Ressource $ressource)
+	public function editAction(Projet $projet, Ressource $ressource)
 	{
 		if(!$this->get('security.context')->isGranted('CONTRIBUTEUR', $projet))
 		{
 			throw new AccessDeniedException('Vous n\'avez pas les droits requis pour modifier cet espace de collaboration');
-		}
-
-		if(!$this->get('security.context')->isGranted('ROLE_PROFESSEUR'))
-		{
-			$ressource->setValide(false);
 		}
 
 		$form = $this->createForm(new RessourceType, $ressource);

@@ -2,7 +2,7 @@
 
 {% block body %}
     
-	<h1 class="h1 article">{{ projet.name }} {{ projet.usersAsString }}</h1>
+	<h1 class="h1 article"><a href="{{path('kub_collaboration_projet_show', { slug: projet.slug })}}">{{ projet.name }} {{ projet.usersAsString(app.user) }}</a></h1>
 
 	<article class="article">	
 		{% if is_granted('ADMINISTRATEUR', projet) %}

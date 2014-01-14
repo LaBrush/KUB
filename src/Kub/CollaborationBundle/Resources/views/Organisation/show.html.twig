@@ -1,0 +1,67 @@
+{% extends 'KubCollaborationBundle::layout.html.twig' %}
+
+{% block content %}
+	
+	<h2 class="section-title">
+		{{ tache }}
+		<br>
+		<a href="{{ path('kub_collaboration_organisation_edit', { projet_slug: projet.slug, tache_slug: tache.slug }) }}">modifier</a>
+	</h2>
+
+	<article class="article">
+		
+		<p>Date d'échance: {{ tache.echeance|date('Y/m/d') }}</p>
+		{% set participe = (app.user in tache.participants) == true %}
+		<p><span
+			class='button participe' 
+			data-participe="{{ participe|number_format }}"
+			id="{{ tache.id }}"
+		>
+			{% if participe == false %} Participer {% else %} Ne plus participer {% endif %}	
+		</span></p>
+
+		<p id="participants">{{ tache.participantsAsString(app.user) }}</p>
+
+	</article>
+
+{% endblock %}
+
+{% block js %}
+	
+	<script>
+
+		$(document).ready(function($) {
+
+			$participants = $('#participants');
+			$('span.participe').click(function(){
+
+				var $that = $(this);
+				var participe = $that.attr('data-participe') == 1 ? 0 : 1 ;
+				$that.attr('data-participe', participe);
+
+				switch(participe)
+				{
+					case 0:
+						$that.text('Participer');
+						break;
+					case 1:
+						$that.text('Ne plus participer');
+						break;
+				}
+
+				$.ajax({
+					url: "{{path('kub_api_collaboration_organisation_tache_participe')}}",
+					data: {
+						'id': parseInt($that.attr('id')),
+						'participe': participe
+					},
+					type: "POST",
+					timeout: 3000,
+					success: function(r){ $participants.text(r); }
+				});
+			});
+		});
+
+	</script>	
+
+{% endblock %}

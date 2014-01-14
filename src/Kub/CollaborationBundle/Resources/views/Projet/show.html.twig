@@ -1,7 +1,65 @@
 {% extends 'KubCollaborationBundle::layout.html.twig' %}
 
 {% block content %}
-    
-	<p>{{ projet.description }}</p>
+	
+	<article class="article">
+	   <div>
+			<h2>Description</h4>
+			<p>
+				
+				{% if projet.description is not null %}
+					{{ projet.description }}
+				{% else %}
+					Aucune description pour le moment
+				{% endif %}
+
+			</p>
+		</div>
+	</article>
+
+	<article class="article">
+		
+		<style>
+
+			.case{
+				width: 0.7%;
+				height: 12px;
+				background-color: rgb(200,200,200) ;
+				display: inline-block; 
+				margin: 0;
+			}
+
+			.done{
+				background-color: #e67e22 ;	
+			}
+
+		</style>
+
+		<h2>Avancement des taches</h2>
+		<div>
+			
+			{% for lt in projet.organisateur.listeTaches %}
+
+				{% set done = (lt.countCheckedTaches / lt.taches|length * 100) | round %}
+
+				<div class="jauge">
+					<p>{{ lt }}</p>
+					{% spaceless %}
+					{% for i in 0..100 %}
+						<div 
+						class="case
+							{% if i < done %} done {% endif %}
+						"></div>
+					{% endfor %}
+					{% endspaceless %}
+				</div>
+
+			{% else %}
+				<p>Aucune tache pour le moment</p>
+			{% endfor %}
+
+		</div>
+
+	</article>
 
 {% endblock %}

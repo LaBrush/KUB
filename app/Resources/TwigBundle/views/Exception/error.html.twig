@@ -1,0 +1,23 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}
+	{{ parent() }} - Page non trouvée
+{% endblock %}
+
+{% block sectionClass %}section-login{% endblock %}
+
+{% block body %}
+
+		<article class="article login-error-box">
+
+			<p>Ah, on nous indique une erreur {{ status_code }} en régie.</p>
+
+		</article>
+	
+		<article class="article login-error-box">
+
+			<p><a href="{{ path('home_homepage') }}">Voulez vous revenir à l'accueil ?</a></p>
+
+		</article>
+
+{% endblock %}

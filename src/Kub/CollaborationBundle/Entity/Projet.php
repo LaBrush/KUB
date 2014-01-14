@@ -5,12 +5,17 @@ namespace Kub\CollaborationBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert ;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\ExecutionContextInterface;
+
+use Kub\CollaborationBundle\Entity\Permission ;
 
 /**
  * Projet
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="Kub\CollaborationBundle\Entity\ProjetRepository")
+ *
+ * @Assert\Callback(methods={"hasUnlessAnAdmin"})
  */
 class Projet
 {
@@ -64,7 +69,7 @@ class Projet
 	private $description;
 
 	/**
-	 * @ORM\OneToOne(targetEntity="Kub\CollaborationBundle\Entity\Organisateur", cascade={"all"}, fetch="EAGER")
+	 * @ORM\OneToOne(targetEntity="Kub\CollaborationBundle\Entity\Organisateur", inversedBy="projet", cascade={"all"}, fetch="EAGER")
 	 */
 	private $organisateur ;
 
@@ -78,30 +83,38 @@ class Projet
 	 */
 	private $permissions ;
 
-	public function getUsersAsString()
+	public function hasUnlessAnAdmin(ExecutionContextInterface $context)
+	{
+		foreach ($this->getPermissions() as $permission) {
+			if($permission->getRole() == Permission::ADMINISTRATEUR)
+			{
+				return true ;
+			}
+		}
+
+		$context->addViolationAt('permissions', 'Un projet doit avoir au moins un administrateur', array(), null);
+	}
+
+	public function getUsersAsString($user = null)
 	{
 		$string = 'avec ';
 		$users = $this->getUsers();
-		$i ;
+		$id = $user != null ? $user->getId() : 0 ;
 
-		$limit = 0 ;
-		$limit = $limit < count($users)-1 ? $limit : count($users)-1 ;
+		$limit = 4 ;
+		$limit = $limit < count($users) ? $limit : count($users) ;
 
-		for($i = 0 ; $i < $limit-1 ; $i++) {
+		for($i = 0 ; $i < $limit ; $i++) {
 
-			$string .= $users[$i] . ' ';
-			
+			$id == $users[$i]->getId() ? $string .= 'vous ' : $string .= $users[$i] . ' ';
+
+			if($i == $limit-2)
+			{
+				$string .= " et ";
+			}
 		}
 
-		if($limit > 1)
-		{
-			$string .= " et ";   
-			
-		}
-
-		$string .= $users[$i];
-
-		if(count($users)-1 > $limit)
+		if(count($users) > $limit)
 		{
 			$string .= '...' ;
 		}

@@ -41,7 +41,7 @@ class ValidationController extends Controller
 				$em->persist($ressource);
 				$em->flush();
 
-				$this->get('session')->getFlashBag()->add('info', 'La ressource à bien été validée');
+				$this->get('session')->getFlashBag()->add('info', 'La ressource a bien été validée');
 			}
 
 			return $this->redirect($this->generateUrl('kub_ressource_validation_list'));

@@ -27,13 +27,15 @@ class ProjetConverter implements ParamConverterInterface
 	{
 		$name    = $configuration->getName();
         $options = $configuration->getOptions();
-        $slug    = $request->attributes->get('slug');
+        $attr    = isset($options['mapping']) ? array_search('slug', $options['mapping']) : 0 ;
+        	!$attr ? $attr = 'slug' : 0 ;
+        $slug    = $request->attributes->get($attr);
 
 		// On récupère l'entité correspondante
 		$projet = $this->repository->findOneOrNullBySlug($slug);
 
 		if (null === $projet && false === $configuration->isOptional()) {
-            throw new NotFoundHttpException(sprintf('%s object not found.', $this->class));
+            throw new NotFoundHttpException(sprintf('%s object not found for "%s" slug', $this->class, $slug));
         }
 
 		if($projet)

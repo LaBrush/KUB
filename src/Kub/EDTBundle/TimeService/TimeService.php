@@ -237,7 +237,7 @@ class TimeService
 			}
 			else
 			{
-				$edt[0]['jours'][$y] = $interval = $this->interval(
+				$edt[0]['jours'][$y] = $this->interval(
 					(new Horaire)
 						->setDebut($this->getFirstHoraire())
 						->setFin($this->getLastHoraire())

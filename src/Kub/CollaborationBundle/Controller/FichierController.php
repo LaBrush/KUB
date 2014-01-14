@@ -74,7 +74,7 @@ class FichierController extends Controller
 
 			if($formHandler->process())
 			{
-				$this->get('session')->getFlashBag()->add('info', 'La Fichier à bien été mise en ligne'); 
+				$this->get('session')->getFlashBag()->add('info', 'Le Fichier a bien été mis en ligne'); 
 				return $this->redirect( $this->generateUrl('kub_collaboration_documentheque_fichier_go', array(
 					'slug' => $projet->getSlug(),
 					"id" => $fichier->getId())) 
@@ -82,7 +82,7 @@ class FichierController extends Controller
 			}
 			else
 			{
-				$this->get('session')->getFlashBag()->add('info', 'Une erreur est survenue lors de l\'ajout de la Fichier');
+				$this->get('session')->getFlashBag()->add('info', 'Une erreur est survenue lors de l\'ajout du Fichier');
 			}
 		}
 
@@ -122,7 +122,7 @@ class FichierController extends Controller
 			}
 			else
 			{
-				$this->get('session')->getFlashBag()->add('info', 'Une erreur est survenue lors de la modification de la Fichier');
+				$this->get('session')->getFlashBag()->add('info', 'Une erreur est survenue lors de la modification du Fichier');
 			}
 		}
 

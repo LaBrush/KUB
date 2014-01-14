@@ -4,13 +4,16 @@ namespace Kub\CollaborationBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+use Symfony\Component\HttpFoundation\Response;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 use Kub\CollaborationBundle\Entity\Projet ;
 use Kub\CollaborationBundle\Entity\Organisation ;
+use Kub\CollaborationBundle\Entity\ListeTaches ;
 use Kub\CollaborationBundle\Entity\Tache ;
-use Kub\CollaborationBundle\Entity\TacheListe ;
 
 use Kub\CollaborationBundle\Form\Type\TacheType ;
+use Kub\CollaborationBundle\Form\Handler\TacheHandler ;
 
 class OrganisationController extends Controller
 {
@@ -18,7 +21,7 @@ class OrganisationController extends Controller
 	{
 		if(!$this->get('security.context')->isGranted('VISITEUR', $projet))
 		{
-			throw new AccessDeniedException("Vous n'avez pas les droits requis pour acceder à cet espace de collaboration");
+			throw new AccessDeniedException('Vous n\'avez pas les droits requis pour acceder à cet espace de collaboration');
 		}
 
 		return $this->render('KubCollaborationBundle:Organisation:index.html.twig', array(
@@ -29,38 +32,58 @@ class OrganisationController extends Controller
 	public function createAction(Projet $projet)
 	{
 		$tache = new Tache ;
-		$form = $this->createForm(new TacheType($projet), $tache);
+		$form = $this->createForm(new TacheType($projet), $tache, array(
+			'action' => $this->generateUrl('kub_collaboration_organisation_create', array('slug' => $projet->getSlug()))
+		));
 		
 		$request = $this->get('request');
 		$em = $this->get('doctrine.orm.default_entity_manager');
 
-		if($request->getMethod() == "POST"){
+		if($request->getMethod() == 'POST'){
 
-			$formHandler = new TacheHandler($form, $request, $this->get('doctrine.orm.default_entity_manager'));
+			$formHandler = new TacheHandler($form, $request, $this->get('doctrine.orm.default_entity_manager'), $projet->getOrganisateur());
 
 			if($formHandler->process())
 			{
-				$this->get('session')->getFlashBag()->add('info', "Le groupe a bien été ajouté");
-				return $this->redirect($this->generateUrl("groupe_list"));
+				$this->get('session')->getFlashBag()->add('info', 'La tache a bien été ajouté');
+				return $this->redirect($this->generateUrl('kub_collaboration_organisation_index', array('slug' => $projet->getSlug()) ));
 			}
 		}
 
 		$template = 'create';
 
-		if($this->get('request')->attributes->get('_route') != 'kub_collaboration_organisation_index')
+		if($this->get('request')->attributes->get('_route') != 'kub_collaboration_organisation_create')
 		{
-			$template .= "_content" ; 
+			$template .= '_content' ; 
 		}
 
 
 		return $this->render('KubCollaborationBundle:Organisation:' . $template . '.html.twig',
 			array(
 				'form' => $form->createView(),
-				'groupe' => $tache
+				'tache' => $tache
 			)
 		);
 	}
 
+	/**
+ 	 * @ParamConverter("projet", options={"mapping": {"projet_slug": "slug"}})
+ 	 * @ParamConverter("tache",  options={"mapping": {"tache_slug":  "slug"}})
+	 */
+	public function showAction(Projet $projet, Tache $tache)
+	{
+		return $this->render('KubCollaborationBundle:Organisation:show.html.twig', 
+			array(
+				'projet' => $projet,
+				'tache' => $tache
+			)
+		);
+	}
+
+	/**
+ 	 * @ParamConverter("projet", options={"mapping": {"projet_slug": "slug"}})
+ 	 * @ParamConverter("tache",  options={"mapping": {"tache_slug":  "slug"}})
+	 */
 	public function editAction(Projet $projet, Tache $tache)
 	{
 		$form = $this->createForm(new TacheType($projet), $tache);
@@ -68,26 +91,31 @@ class OrganisationController extends Controller
 		$request = $this->get('request');
 		$em = $this->get('doctrine.orm.default_entity_manager');
 
-		if($request->getMethod() == "POST"){
+		if($request->getMethod() == 'POST'){
 
-			$formHandler = new TacheHandler($form, $request, $this->get('doctrine.orm.default_entity_manager'));
+			$formHandler = new TacheHandler($form, $request, $this->get('doctrine.orm.default_entity_manager'), $projet->getOrganisateur());
 
 			if($formHandler->process())
 			{
-				$this->get('session')->getFlashBag()->add('info', "Le groupe a bien été modifié");
-				return $this->redirect($this->generateUrl("groupe_list"));
+				$this->get('session')->getFlashBag()->add('info', 'La tache a bien été modifié');
+				return $this->redirect($this->generateUrl('kub_collaboration_organisation_index', array('slug' => $projet->getSlug()) ));
 			}
 
 		}
 
 		return $this->render('KubCollaborationBundle:Organisation:edit.html.twig',
 			array(
-				'form' => $form->createView(),
-				'groupe' => $tache
+				'projet' => $projet,
+				'tache' => $tache,
+				'form' => $form->createView()
 			)
 		);
 	}
 
+	/**
+ 	 * @ParamConverter("projet", options={"mapping": {"projet_slug": "slug"}})
+ 	 * @ParamConverter("tache",  options={"mapping": {"tache_slug":  "slug"}})
+	 */
 	public function deleteAction(Projet $projet, Tache $tache)
 	{
 		$form = $this->createFormBuilder()->getForm();
@@ -98,28 +126,80 @@ class OrganisationController extends Controller
 
 			if ($form->isValid()) {
 
-				$em = $this->get('doctrine.orm.default_entity_manager');
-				$em->remove($tache);
-				$em->flush();
+				$listeTaches = $tache->getListeTaches();
+				$listeTaches->removeTache($tache);
 
-				$this->get('session')->getFlashBag()->add('info', 'Groupe bien supprimé');
+				$em = $this->get('doctrine.orm.default_entity_manager');
+				
+				if(count($listeTaches->getTaches()) == 0){ $em->remove($listeTaches); }
+				$em->remove($tache);
+				
+				$em->flush();
+				$this->get('session')->getFlashBag()->add('info', 'Tache bien supprimée');
 	
-				return $this->redirect($this->generateUrl('groupe_list'));
+				return $this->redirect($this->generateUrl('kub_collaboration_organisation_index', array('slug' => $projet->getSlug()) ));
 			}
 		}
 
 		return $this->render('KubCollaborationBundle:Organisation:delete.html.twig', array(
-			'groupe' => $tache,
-			'form' => $form->createView(),
+			'projet' => $projet,
+			'tache' => $tache,
+			'form' => $form->createView()
 		));
 	}
 
-	public function showAction(Projet $projet, Tache $tache)
+	public function setUserParticipeAction()
 	{
-		return $this->render("KubCollaborationBundle:Organisation:show.html.twig", 
-			array(
-				"groupe" => $tache
-			)
-		);
+		$request = $this->get('request');
+		$em = $this->get('doctrine.orm.entity_manager');
+
+		$id = $request->request->get('id');
+		$participe = $request->request->get('participe');
+
+		$tache = $em->getRepository('KubCollaborationBundle:Tache')->findOneById($id);	
+		$projet = $tache ? $tache->getListeTaches()->getOrganisateur()->getProjet() : false;
+
+		if(!$this->get('security.context')->isGranted('CONTRIBUTEUR', $projet) || !$projet || !$request->isXmlHttpRequest())
+		{
+			throw $this->createNotFoundException('La page recherchée n\'existe pas');
+		}
+
+		if((bool)$participe)
+		{
+			$tache->addParticipant( $this->getUser()) ;
+		}
+		else
+		{
+			$tache->removeParticipant( $this->getUser()) ;
+		}
+
+		$em->persist($tache);
+		$em->flush();
+
+		return new Response( $tache->getParticipantsAsString($this->getUser()) );
+	}
+
+	public function setTaskCheckedAction()
+	{
+		$request = $this->get('request');
+		$em = $this->get('doctrine.orm.entity_manager');
+
+		$id = $request->request->get('id');
+		$checked = $request->request->get('checked');
+
+		$tache = $em->getRepository('KubCollaborationBundle:Tache')->findOneById($id);	
+		$projet = $tache ? $tache->getListeTaches()->getOrganisateur()->getProjet() : false;
+
+		if(!$this->get('security.context')->isGranted('CONTRIBUTEUR', $projet) || !$projet || !$request->isXmlHttpRequest())
+		{
+			throw $this->createNotFoundException('La page recherchée n\'existe pas');
+		}
+
+		$tache->setDone( (bool)$checked );
+
+		$em->persist($tache);
+		$em->flush();
+
+		return new Response("OK");
 	}
 }
