@@ -18,9 +18,9 @@ class ArianePostNotification extends Notification
         $this->route = "ariane_homepage";
         $this->routeAttr["username"] = $this->getPost()->getFil()->getEleve()->getUsername();
 
-        $this->routeTitle = "Voir le fil" ;
-        $this->titre = $this->getAuteur() . ' a ajouté une trace à son fil d\'Ariane' ;
-        $this->type = "ariane-post" ;
+        $this->routeTitle = "Afficher le fil" ;
+        $this->titre = "Fil d'Ariane" ;
+        $this->type = "espace-collaboratif" ;
     }
 
 
@@ -33,7 +33,7 @@ class ArianePostNotification extends Notification
 
     public function format($scope)
     {
-        return $this->getPost()->getContenu();
+        return "<strong>" . $this->getAuteur() . "</strong> a ajouté la trace <strong>\"" . $this->getPost()->getTitre() . "\"</strong> à son fil d'Ariane.";
     }
 
     /**

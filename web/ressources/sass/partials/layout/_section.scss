@@ -99,7 +99,7 @@
 
 .content-article
 {
-	width: 80%;
+	width: 75%;
 	display: inline-block;
 	float: left;
 
@@ -139,7 +139,7 @@
 	display: inline-block;
 	text-align: right;
 	float: right;
-	width: 20%;
+	min-width: 25%;
 	margin: 4px 0 0 0;
 
 	@media all and (max-width: 500px)

@@ -5,10 +5,13 @@
 	</div>
 	<div class="content-article">
 		<p>
-			{{ notification.format( app.user.class ) | raw }}
+			<strong>{{ notification.auteur }}</strong> a ajouté la trace <strong>"{{ notification.post.titre }}"</strong> à son fil d'Ariane.
 		</p>
 	</div>
 	<div class="buttons-article-news">
 		<a class="button-{{ notification.type }}" href="{{ path(notification.route, notification.routeAttr) }}">{{ notification.routeTitle }}</a>
+	</div>
+	<div class="extrait">
+		{{ notification.contenu | raw }}
 	</div>
 </article>

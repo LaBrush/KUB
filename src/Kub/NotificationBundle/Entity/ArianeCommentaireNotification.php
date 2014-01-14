@@ -15,9 +15,9 @@ class ArianeCommentaireNotification extends Notification
         parent::init();
 
         $this->route = "ariane_homepage" ;
-        $this->routeTitle = "Voir votre fil" ;
-        $this->titre = "Un commentaire à été ajouté à votre fil d'Ariane ";
-        $this->type = "ariane-commentaire" ;
+        $this->routeTitle = "Afficher votre fil" ;
+        $this->titre = "Fil d'Ariane";
+        $this->type = "espace-collaboratif" ;
     }
 
 
@@ -28,7 +28,7 @@ class ArianeCommentaireNotification extends Notification
 
     public function format($scope)
     {
-        return $this->getAuteur() . ' a dit ' . $this->getCommentaire()->getContenu() ;
+        return "<strong>". $this->getAuteur() . "</strong> a commenté la trace <strong>" . $this->getTitre() . "</strong> de votre fil d'Ariane : <strong>\"" . $this->getCommentaire()->getContenu() . "\"</strong>" ;
     }
 
     /**

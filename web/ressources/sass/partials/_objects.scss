@@ -27,6 +27,8 @@
 
 @mixin button
 {
+	display: inline-block;
+	text-align: center;
 	border: none;
 	margin: 0;
 	@include border-radius(2px);
