@@ -8,7 +8,7 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 use Kub\RessourceBundle\Entity\Ressource ;
 use Kub\HomeBundle\Form\Type\RessourceType as BaseRessourceType ;
-use Kub\HomeBundle\Form\Type\FileType as BaseRessourceType ;
+use Kub\HomeBundle\Form\Type\FileType ;
 
 class RessourceType extends BaseRessourceType
 {

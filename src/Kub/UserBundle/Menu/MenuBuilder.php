@@ -111,9 +111,10 @@ class MenuBuilder
 		));
 
 		$projets = $this->em->getRepository('KubCollaborationBundle:Projet')->findByUser( $this->security->getToken()->getUser() );
+		$nb_projets = count($projets);
 
 		$limit = 4 ;
-		$limit = $limit < count($projets) ? $limit : count($projets) ;
+		$limit = $limit < $nb_projets ? $limit : $nb_projets ;
 
 		for($i = 0 ; $i < $limit ; $i++) {
 
@@ -125,11 +126,17 @@ class MenuBuilder
 			);
 		}
 
-		if(count($projets) > $limit)
+		if($nb_projets > $limit)
 		{
 			$menu['Mes projets']->addChild("Autres projets", 
 				array(
 					'route' => 'kub_collaboration_homepage'
+				)
+			);
+		} elseif($nb_projets == 0) {
+			$menu['Mes projets']->addChild("Créer un projet", 
+				array(
+					'route' => 'kub_collaboration_projet_create'
 				)
 			);
 		}
@@ -227,6 +234,7 @@ class MenuBuilder
 
 	public function generateProfesseurMenu($menu)
 	{
+		$this->generateProjetsMenu($menu);
 		$this->generateGroupesMenu($menu);
 
 		$menu->addChild("Ressources en ligne", array(

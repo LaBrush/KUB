@@ -3,8 +3,20 @@ kub_notes_eleve_homepage:
     defaults: { _controller: KubNoteBundle:Eleve:index }
 
 kub_notes_professeur_homepage:
-    pattern:  /notes/{cours}
-    defaults: { _controller: KubNoteBundle:Professeur:add, cours: null }
+    pattern:  /notes
+    defaults: { _controller: KubNoteBundle:Professeur:index }
+    requirements:
+        id: \d+
+
+kub_notes_professeur_noter_cours:
+    pattern:  /notes/cours/{cours}
+    defaults: { _controller: KubNoteBundle:Professeur:noterCours }
+    requirements:
+        id: \d+
+
+kub_notes_professeur_noter_groupe:
+    pattern:  /notes/groupe/{groupe}
+    defaults: { _controller: KubNoteBundle:Professeur:noterGroupe }
     requirements:
         id: \d+
 

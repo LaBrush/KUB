@@ -14,11 +14,33 @@
 
 		<label for="search-in-list">Chercher dans la liste :</label>
 		<input id="search-in-list" type="text">
-		
+
+		<ul class="liste">
+			{% for groupe in liste_groupes %}
+			
+				<a href="{{ path('kub_notes_professeur_noter_groupe', { groupe: groupe.id }) }}">
+					<li class="in-list li-list">
+						<span>{{ groupe }}</span>
+					</li>
+				</a>
+
+			{% endfor %}
+
+			{% if liste_groupes|length == 0 %}
+				<li>VOus n'avez cours avec aucun groupe pour le moment</li>
+			{% endif %}
+		</ul>
+	</article>
+
+	<article class="article">
+
+		<label for="search-in-list">Chercher dans la liste :</label>
+		<input id="search-in-list" type="text">
+
 		<ul class="liste">
 			{% for cours in liste_cours %}
 			
-				<a href="{{ path('kub_notes_professeur_homepage', { cours: cours.id }) }}">
+				<a href="{{ path('kub_notes_professeur_noter_cours', { cours: cours.id }) }}">
 					<li class="in-list li-list">
 						<span>{{ cours}}</span>
 					</li>
