@@ -32,15 +32,9 @@
 				<span class="small bold">{{ post.dateAjout | date('Y - d/m')}}</span>
 			</div>
 
-			<div class="content-article">
+			<div>
 				{{ post.contenu | raw }}
 			</div>
-			
-			{% if is_granted("ROLE_ELEVE") %}
-			<div class="buttons-article-news">
-				<a class="button-espace-collaboratif" href="{{ path('ariane_post_edit', { 'id': post.id }) }}">Modifier</a>
-			</div>
-			{% endif %}
 
 			<a class="show-comments" href="#">Afficher les commentaires <span class="nombre-commentaires">{{ post.commentaires | length}}</span></a>
 

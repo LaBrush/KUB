@@ -41,6 +41,11 @@
 	cursor: pointer;
 
 	@include appearance(none);
+
+	&:hover, &:active, &:focus
+	{
+		color: $button-color;
+	}
 }
 
 .button

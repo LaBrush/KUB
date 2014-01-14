@@ -1,17 +1,14 @@
-<article class="article-news bordered-espace-collaboratif">
+<article class="article-news bordered-{{ notification.type }}">
 	<div class="head-article">
 		<h3 class="h2">{{ notification.titre }}</h3>
 		<span class="small bold">Le {{ notification.date | date('d/m') }} à {{ notification.date | date('H:i') }}</span>
 	</div>
 	<div class="content-article">
-		<p>
-			<strong>{{ notification.auteur }}</strong> a ajouté la trace <strong>"{{ notification.post.titre }}"</strong> à son fil d'Ariane.
-		</p>
+		{% block content %}
+		    
+		{% endblock %}
 	</div>
 	<div class="buttons-article-news">
 		<a class="button-{{ notification.type }}" href="{{ path(notification.route, notification.routeAttr) }}">{{ notification.routeTitle }}</a>
-	</div>
-	<div class="extrait">
-		{{ notification.contenu | raw }}
 	</div>
 </article>
