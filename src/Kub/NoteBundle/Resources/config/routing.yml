@@ -15,10 +15,14 @@ kub_notes_professeur_noter_cours:
         id: \d+
 
 kub_notes_professeur_noter_groupe:
-    pattern:  /notes/groupe/{groupe}
+    pattern:  /notes/groupe/{groupe_id}
     defaults: { _controller: KubNoteBundle:Professeur:noterGroupe }
     requirements:
         id: \d+
+
+kub_notes_professeur_noter_eleve:
+    pattern:  /notes/eleve/{eleve}
+    defaults: { _controller: KubNoteBundle:Professeur:noterEleve }
 
 kub_notes_professeur_delete:
     pattern:  /notes/{controle}/supprimer
@@ -33,7 +37,7 @@ kub_notes_professeur_show:
         id: \d+
 
 kub_notes_professeur_edit:
-    pattern: /notes/{id}/editerer
+    pattern: /notes/{id}/editer
     defaults: { _controller: KubNoteBundle:Professeur:edit }
     requirements:
         id: \d+
@@ -41,3 +45,8 @@ kub_notes_professeur_edit:
 kub_notes_eleve_show:
     pattern: /eleve/{username}/notes
     defaults: { _controller: KubNoteBundle:Professeur:showEleve }
+
+kub_api_notes_eleve_get:
+    pattern:  /_api/note/eleve/obtenir/
+    defaults: { _controller: KubNoteBundle:Professeur:getNoteForControle }
+    methods: POST

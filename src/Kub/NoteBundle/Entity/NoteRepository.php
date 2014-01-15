@@ -48,4 +48,23 @@ class NoteRepository extends EntityRepository
 
 		return $qb->getArrayResult();	
 	}
+
+	public function findOneByControleIdAndEleveId($controle_id, $eleve_id)
+	{
+		$qb = $this->_em->createQuery("
+			SELECT n, c, p FROM KubNoteBundle:Note n
+
+			JOIN n.eleve e
+			JOIN n.controle c
+			JOIN c.professeur p
+
+			WHERE c.id = :controle_id
+			AND   e.id = :eleve_id
+		")
+		->setParameter("controle_id", $controle_id)
+		->setParameter("eleve_id", $eleve_id)
+		;
+
+		return $qb->getOneOrNullResult();	
+	}
 }

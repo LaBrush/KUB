@@ -1,0 +1,27 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}
+	{{ parent() }} - Noter {{ groupe }}
+{% endblock %}
+
+{% block body %}
+
+	<article class="article">
+		<h2 class="section-title">Noter les {{ groupe }}</h2>
+	</article>
+
+    <article class="article">
+
+		<p>Vous avez plusieurs cours avec les {{ groupe }}, c'est pourquoi vous devez en séléctionner un parmi les suivants:</p>
+
+		<ul>
+			
+			{% for cours in liste_cours %}
+			    <li><a href="{{ path('kub_notes_professeur_noter_cours', { cours: cours.id }) }}">{{ cours }}</a></li>
+			{% endfor %}
+
+		</ul>
+
+	</article>
+{% endblock %}
+

@@ -39,10 +39,10 @@ class Controle
 	/**
 	 * @var string
 	 *
-	 * @ORM\Column(name="nom", type="string", length=255)
+	 * @ORM\Column(name="name", type="string", length=255)
 	 * @Assert\NotNull()
 	 */
-	private $nom;
+	private $name;
 
 	/**
 	 * @ORM\OneToMany(targetEntity="Kub\NoteBundle\Entity\Note", mappedBy="controle", cascade={"all"})
@@ -59,6 +59,11 @@ class Controle
 	 * @ORM\ManyToOne(targetEntity="Kub\EDTBundle\Entity\Cours", inversedBy="controles", cascade={"all"})
 	 */
 	private $cours ;
+
+	public function __toString()
+	{
+		return $this->name . ' (' . $this->getCours()->getMatiere() . ')';
+	}
 
 	public function hasEleve($eleve)
 	{
@@ -126,26 +131,26 @@ class Controle
 	}
 
 	/**
-	 * Set nom
+	 * Set name
 	 *
-	 * @param string $nom
+	 * @param string $name
 	 * @return Controle
 	 */
-	public function setNom($nom)
+	public function setNom($name)
 	{
-		$this->nom = $nom;
+		$this->name = $name;
 	
 		return $this;
 	}
 
 	/**
-	 * Get nom
+	 * Get name
 	 *
 	 * @return string 
 	 */
 	public function getNom()
 	{
-		return $this->nom;
+		return $this->name;
 	}
 	
 	/**
@@ -261,5 +266,28 @@ class Controle
     public function getDateAjout()
     {
         return $this->dateAjout;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return Controle
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName()
+    {
+        return $this->name;
     }
 }

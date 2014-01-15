@@ -4,6 +4,9 @@ namespace Kub\EDTBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
 
+use Kub\UserBundle\Entity\Eleve ;
+use Kub\UserBundle\Entity\Professeur ;
+
 /**
  * CoursRepository
  *
@@ -12,6 +15,28 @@ use Doctrine\ORM\EntityRepository;
  */
 class CoursRepository extends EntityRepository
 {
+
+	public function findOneById($id)
+	{
+		$qb = $this->createQueryBuilder('c')
+			->join('c.professeur', 'p')
+			->addSelect('p')
+			
+			->join('c.groupes', 'g')
+			->addSelect('g')
+			
+			->join('g.eleves', 'e')
+			->addSelect('e')
+
+			->join('c.matiere', 'm')
+			->addSelect('m')
+
+			->where('c.id = :id')
+			->setParameter('id', $id)
+		;
+
+		return $qb->getQuery()->getSingleResult();		
+	}
 
 	public function getCurrentCoursOf(\Kub\UserBundle\Entity\Professeur $professeur)
 	{
@@ -39,6 +64,24 @@ class CoursRepository extends EntityRepository
 		;
 
 		return $qb->getQuery()->getOneOrNullResult();
+	}
+
+	public function findByGroupeIdAndProfesseurId($groupe_id, $professeur_id)
+	{
+		$qb = $this->createQueryBuilder('c')
+			->join('c.professeur', 'p')
+			->addSelect('p')
+			->join('c.groupes', 'g')
+			->addSelect('g')
+			
+			->where('p.id = :pid')
+			->setParameter('pid', $professeur_id)
+		
+			->andWhere('g.id = :gid')
+			->setParameter('gid', $groupe_id)
+		;
+
+		return $qb->getQuery()->getResult();
 	}
 
 	public function getByIdWithAll($id)

@@ -17,271 +17,286 @@ use Kub\EDTBundle\Validator\Constraints as KAssert ;
  */
 class Cours
 {
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    private $id;
+	/**
+	 * @var integer
+	 *
+	 * @ORM\Column(name="id", type="integer")
+	 * @ORM\Id
+	 * @ORM\GeneratedValue(strategy="AUTO")
+	 */
+	private $id;
 
-    /**
-     * @ORM\ManyToMany(targetEntity="Kub\ClasseBundle\Entity\Groupe", inversedBy="cours", cascade={"merge", "detach", "persist"})
-     * @Assert\Count(min=1)
-     */
-    private $groupes ;
+	/**
+	 * @ORM\ManyToMany(targetEntity="Kub\ClasseBundle\Entity\Groupe", inversedBy="cours", cascade={"merge", "detach", "persist"})
+	 * @Assert\Count(min=1)
+	 */
+	private $groupes ;
 
-    /** 
-     * @ORM\ManyToOne(targetEntity="Kub\UserBundle\Entity\Professeur", inversedBy="cours", cascade={"merge", "detach", "persist"})
-     * @Assert\NotNull()
-     */
-    private $professeur ;
+	/** 
+	 * @ORM\ManyToOne(targetEntity="Kub\UserBundle\Entity\Professeur", inversedBy="cours", cascade={"merge", "detach", "persist"})
+	 * @Assert\NotNull()
+	 */
+	private $professeur ;
 
-    /** 
-     * @ORM\ManyToOne(targetEntity="Kub\EDTBundle\Entity\Matiere", inversedBy="cours", cascade={"persist", "merge", "detach"})
-     * @Assert\NotNull()
-     */
-    private $matiere ;
+	/** 
+	 * @ORM\ManyToOne(targetEntity="Kub\EDTBundle\Entity\Matiere", inversedBy="cours", cascade={"persist", "merge", "detach"})
+	 * @Assert\NotNull()
+	 */
+	private $matiere ;
 
-    /** 
-     * @ORM\OneToMany(targetEntity="Kub\EDTBundle\Entity\Horaire", mappedBy="cours", cascade={"all"})
-     * @Assert\Count(min=1, minMessage="Un cours doit avoir au moins un horaire")
-     * @Assert\Valid()
-     */
-    private $horaires ;    
+	/** 
+	 * @ORM\OneToMany(targetEntity="Kub\EDTBundle\Entity\Horaire", mappedBy="cours", cascade={"all"})
+	 * @Assert\Count(min=1, minMessage="Un cours doit avoir au moins un horaire")
+	 * @Assert\Valid()
+	 */
+	private $horaires ;    
 
-    /**
-     * @ORM\OneToMany(targetEntity="Kub\NoteBundle\Entity\Controle", mappedBy="cours", cascade={"persist", "merge", "detach"})
-     */
-    private $controles ;
+	/**
+	 * @ORM\OneToMany(targetEntity="Kub\NoteBundle\Entity\Controle", mappedBy="cours", cascade={"persist", "merge", "detach"})
+	 */
+	private $controles ;
 
-    /**
-     * @Assert\True(message="Un cours ne peut avoir d'éléves de niveau différents")
-     */
-    public function isMonoLevel()
-    {
-        if(count($this->groupes))
-        {
-            $groupes = $this->groupes ;
-            $niveauRef = $groupes[0]->getNiveau();
+	/**
+	 * @Assert\True(message="Un cours ne peut avoir d'éléves de niveau différents")
+	 */
+	public function isMonoLevel()
+	{
+		if(count($this->groupes))
+		{
+			$groupes = $this->groupes ;
+			$niveauRef = $groupes[0]->getNiveau();
 
-            foreach ($groupes as $key => $groupe) {
-                
-                if($groupe->getNiveau() != $niveauRef)
-                {
-                    return false ;
-                }
+			foreach ($groupes as $key => $groupe) {
+				
+				if($groupe->getNiveau() != $niveauRef)
+				{
+					return false ;
+				}
 
-            }
+			}
 
-            return true ;
-        }
+			return true ;
+		}
 
-        return true ;
-    }
+		return true ;
+	}
 
-    public function __toString()
-    {
+	public function __toString()
+	{
+		return $this->matiere . " avec " . $this->professeur . ' et ' . $this->getGroupesAsString() ;
+	}
 
-        $groupesNames = "" ;
+	public function getToStringProfesseur()
+	{
+		return $this->matiere . " avec " . $this->getGroupesAsString() ;
+	}
 
-        foreach ($this->groupes as $key => $groupe) {
-            $groupesNames .= $groupe . "a ";
-        }
+	public function getGroupesAsString()
+	{
+		$groupesNames = "" ;
+		$groupes = $this->getGroupes();
+		$size = count($groupes);
 
-        $name = $this->matiere . " avec " . $this->professeur . ' et ' . $groupesNames ;
-        return $name ;
-    }
+		for ($i=0; $i < $size ; $i++) { 
+			$groupesNames .= $groupes[$i] . ' ' ;
 
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->groupes = new \Doctrine\Common\Collections\ArrayCollection;
+			if($i == $size - 1 && $size > 1)
+			{
+				$groupesNames .= 'et ' ;
+			}
+		}
 
-        $this->addHoraire(new Horaire());
-    }
-    
+		return $groupesNames ;
+	}
 
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
+	/**
+	 * Constructor
+	 */
+	public function __construct()
+	{
+		$this->groupes = new \Doctrine\Common\Collections\ArrayCollection;
 
-    /**
-     * Add groupes
-     *
-     * @param \Kub\ClasseBundle\Entity\Groupe $groupes
-     * @return Cours
-     */
-    public function addGroupe(\Kub\ClasseBundle\Entity\Groupe $groupes)
-    {
-        $this->groupes[] = $groupes;
-    
-        return $this;
-    }
+		$this->addHoraire(new Horaire());
+	}
+	
 
-    /**
-     * Remove groupes
-     *
-     * @param \Kub\ClasseBundle\Entity\Groupe $groupes
-     */
-    public function removeGroupe(\Kub\ClasseBundle\Entity\Groupe $groupes)
-    {
-        $this->groupes->removeElement($groupes);
-    }
+	/**
+	 * Get id
+	 *
+	 * @return integer 
+	 */
+	public function getId()
+	{
+		return $this->id;
+	}
 
-    /**
-     * Get groupes
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getGroupes()
-    {
-        return $this->groupes;
-    }
+	/**
+	 * Add groupes
+	 *
+	 * @param \Kub\ClasseBundle\Entity\Groupe $groupes
+	 * @return Cours
+	 */
+	public function addGroupe(\Kub\ClasseBundle\Entity\Groupe $groupes)
+	{
+		$this->groupes[] = $groupes;
+	
+		return $this;
+	}
 
-    /**
-     * Set professeur
-     *
-     * @param \Kub\UserBundle\Entity\Professeur $professeur
-     * @return Cours
-     */
-    public function setProfesseur(\Kub\UserBundle\Entity\Professeur $professeur = null)
-    {
-        $this->professeur = $professeur;
-    
-        return $this;
-    }
+	/**
+	 * Remove groupes
+	 *
+	 * @param \Kub\ClasseBundle\Entity\Groupe $groupes
+	 */
+	public function removeGroupe(\Kub\ClasseBundle\Entity\Groupe $groupes)
+	{
+		$this->groupes->removeElement($groupes);
+	}
 
-    /**
-     * Get professeur
-     *
-     * @return \Kub\UserBundle\Entity\Professeur 
-     */
-    public function getProfesseur()
-    {
-        return $this->professeur;
-    }
+	/**
+	 * Get groupes
+	 *
+	 * @return \Doctrine\Common\Collections\Collection 
+	 */
+	public function getGroupes()
+	{
+		return $this->groupes;
+	}
 
-    /**
-     * Set matiere
-     *
-     * @param \Kub\EDTBundle\Entity\Matiere $matiere
-     * @return Cours
-     */
-    public function setMatiere(\Kub\EDTBundle\Entity\Matiere $matiere = null)
-    {
-        $this->matiere = $matiere;
-    
-        return $this;
-    }
+	/**
+	 * Set professeur
+	 *
+	 * @param \Kub\UserBundle\Entity\Professeur $professeur
+	 * @return Cours
+	 */
+	public function setProfesseur(\Kub\UserBundle\Entity\Professeur $professeur = null)
+	{
+		$this->professeur = $professeur;
+	
+		return $this;
+	}
 
-    /**
-     * Get matiere
-     *
-     * @return \Kub\EDTBundle\Entity\Matiere 
-     */
-    public function getMatiere()
-    {
-        return $this->matiere;
-    }
+	/**
+	 * Get professeur
+	 *
+	 * @return \Kub\UserBundle\Entity\Professeur 
+	 */
+	public function getProfesseur()
+	{
+		return $this->professeur;
+	}
 
-    /**
-     * Add horaires
-     *
-     * @param \Kub\EDTBundle\Entity\Horaire $horaires
-     * @return Cours
-     */
-    public function addHoraire(\Kub\EDTBundle\Entity\Horaire $horaires)
-    {   
-        $this->horaires[] = $horaires;
-        $horaires->setCours($this);
-    
-        return $this;
-    }
+	/**
+	 * Set matiere
+	 *
+	 * @param \Kub\EDTBundle\Entity\Matiere $matiere
+	 * @return Cours
+	 */
+	public function setMatiere(\Kub\EDTBundle\Entity\Matiere $matiere = null)
+	{
+		$this->matiere = $matiere;
+	
+		return $this;
+	}
 
-    /**
-     * Remove horaires
-     *
-     * @param \Kub\EDTBundle\Entity\Horaire $horaires
-     */
-    public function removeHoraire(\Kub\EDTBundle\Entity\Horaire $horaires)
-    {
-        $this->horaires->removeElement($horaires);
-        $horaires->setCours();
-    }
+	/**
+	 * Get matiere
+	 *
+	 * @return \Kub\EDTBundle\Entity\Matiere 
+	 */
+	public function getMatiere()
+	{
+		return $this->matiere;
+	}
 
-    /**
-     * Get horaires
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getHoraires()
-    {
-        return $this->horaires;
-    }
+	/**
+	 * Add horaires
+	 *
+	 * @param \Kub\EDTBundle\Entity\Horaire $horaires
+	 * @return Cours
+	 */
+	public function addHoraire(\Kub\EDTBundle\Entity\Horaire $horaires)
+	{   
+		$this->horaires[] = $horaires;
+		$horaires->setCours($this);
+	
+		return $this;
+	}
 
-    /**
-     * Add professeur
-     *
-     * @param \Kub\UserBundle\Entity\Professeur $professeur
-     * @return Cours
-     */
-    public function addProfesseur(\Kub\UserBundle\Entity\Professeur $professeur)
-    {
-        $this->professeur[] = $professeur;
-    
-        return $this;
-    }
+	/**
+	 * Remove horaires
+	 *
+	 * @param \Kub\EDTBundle\Entity\Horaire $horaires
+	 */
+	public function removeHoraire(\Kub\EDTBundle\Entity\Horaire $horaires)
+	{
+		$this->horaires->removeElement($horaires);
+		$horaires->setCours();
+	}
 
-    /**
-     * Remove professeur
-     *
-     * @param \Kub\UserBundle\Entity\Professeur $professeur
-     */
-    public function removeProfesseur(\Kub\UserBundle\Entity\Professeur $professeur)
-    {
-        $this->professeur->removeElement($professeur);
-    }
+	/**
+	 * Get horaires
+	 *
+	 * @return \Doctrine\Common\Collections\Collection 
+	 */
+	public function getHoraires()
+	{
+		return $this->horaires;
+	}
 
-    /**
-     * Add controles
-     *
-     * @param \Kub\NoteBundle\Entity\Controle $controles
-     * @return Cours
-     */
-    public function addControle(\Kub\NoteBundle\Entity\Controle $controles)
-    {
-        $this->controles[] = $controles;
-    
-        return $this;
-    }
+	/**
+	 * Add professeur
+	 *
+	 * @param \Kub\UserBundle\Entity\Professeur $professeur
+	 * @return Cours
+	 */
+	public function addProfesseur(\Kub\UserBundle\Entity\Professeur $professeur)
+	{
+		$this->professeur[] = $professeur;
+	
+		return $this;
+	}
 
-    /**
-     * Remove controles
-     *
-     * @param \Kub\NoteBundle\Entity\Controle $controles
-     */
-    public function removeControle(\Kub\NoteBundle\Entity\Controle $controles)
-    {
-        $this->controles->removeElement($controles);
-    }
+	/**
+	 * Remove professeur
+	 *
+	 * @param \Kub\UserBundle\Entity\Professeur $professeur
+	 */
+	public function removeProfesseur(\Kub\UserBundle\Entity\Professeur $professeur)
+	{
+		$this->professeur->removeElement($professeur);
+	}
 
-    /**
-     * Get controles
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getControles()
-    {
-        return $this->controles;
-    }
+	/**
+	 * Add controles
+	 *
+	 * @param \Kub\NoteBundle\Entity\Controle $controles
+	 * @return Cours
+	 */
+	public function addControle(\Kub\NoteBundle\Entity\Controle $controles)
+	{
+		$this->controles[] = $controles;
+	
+		return $this;
+	}
+
+	/**
+	 * Remove controles
+	 *
+	 * @param \Kub\NoteBundle\Entity\Controle $controles
+	 */
+	public function removeControle(\Kub\NoteBundle\Entity\Controle $controles)
+	{
+		$this->controles->removeElement($controles);
+	}
+
+	/**
+	 * Get controles
+	 *
+	 * @return \Doctrine\Common\Collections\Collection 
+	 */
+	public function getControles()
+	{
+		return $this->controles;
+	}
 }

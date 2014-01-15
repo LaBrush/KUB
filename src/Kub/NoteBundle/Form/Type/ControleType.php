@@ -21,7 +21,7 @@ class ControleType extends AbstractType
 	public function buildForm(FormBuilderInterface $builder, array $options)
 	{
 		$builder
-		->add('nom', 'text', array(
+		->add('name', 'text', array(
 			'label' => 'Intitulé du DS'
 		))
 		->add("date")

@@ -44,6 +44,11 @@
 			<a class="button" href="{{ path("kub_notes_eleve_show", {username: user.username}) }}">Notes de l'élève</a>
 		</span>
 
+		<span class="modifier">
+			<a class="button" href="{{ path('kub_notes_professeur_noter_eleve', { eleve: user.username }) }}">Noter {{ user }}</a>
+		</span>
+
+
 	{% endif %}
 
 {% endblock %}

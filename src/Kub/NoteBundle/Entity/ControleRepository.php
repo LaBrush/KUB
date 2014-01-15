@@ -3,8 +3,10 @@
 namespace Kub\NoteBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
+
 use Kub\ClasseBundle\Entity\Groupe ;
 use Kub\UserBundle\Entity\Professeur ;
+use Kub\UserBundle\Entity\Eleve ;
 
 /**
  * ControleRepository
@@ -49,6 +51,32 @@ class ControleRepository extends EntityRepository
 			->join('e.groupes', 'g')
 			->andWhere('g.id = :g_id')
 			->setParameter('g_id', $groupe->getId() )
+
+			->orderBy('c.date', 'DESC')
+		;
+
+		return $qb->getQuery()->getResult();
+	}
+
+	public function findOneByUserGroupsAndProfesseur(Eleve $eleve, Professeur $professeur)
+	{
+		$qb = $this->createQueryBuilder('c')
+			->join('c.cours', 'co')
+			->addSelect('co')
+
+			->join('co.matiere', 'm')
+			->addSelect('m')
+
+			->join('c.professeur', 'p')
+			->where('p.id = :id')
+			->setParameter('id', $professeur->getId() )
+
+			->join('c.notes', 'n')
+			->join('n.eleve', 'e')
+			->join('e.groupes', 'g')
+			->join('g.eleves', 'el')
+			->andWhere('el.id = :el_id')
+			->setParameter('el_id', $eleve->getId() )
 
 			->orderBy('c.date', 'DESC')
 		;

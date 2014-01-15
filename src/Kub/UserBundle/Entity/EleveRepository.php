@@ -18,10 +18,19 @@ class EleveRepository extends UserRepository
 		$qb = $this->createQueryBuilder("e")
 			->leftJoin('e.groupes', 'g')
 			->addSelect('g')
-			->leftJoin('e.niveau', 'n')
-			->addSelect('n')
+			
+			->leftJoin('e.niveau', 'ni')
+			->addSelect('ni')
+			
 			->leftJoin('e.tuteurs', 't')
 			->addSelect('t')
+
+			->leftJoin('e.notes', 'n')
+			->addSelect('n')
+
+			->leftJoin('n.controle', 'c')
+			->addSelect('c')
+
 			->where("e.username = :username")
 			->setParameter("username", $username)
 		;

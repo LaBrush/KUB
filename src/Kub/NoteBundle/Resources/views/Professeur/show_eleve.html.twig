@@ -12,6 +12,12 @@
 
 	{% include "KubNoteBundle:Show:show_content.html.twig" %}
 
+	<article class="article">
+		
+		<p><a class="button" href="{{ path('kub_notes_professeur_noter_eleve', { eleve: eleve.username }) }}">Noter {{ eleve }}</a></p>
+
+	</article>
+
 {% endblock %}
 
 {% block js %}

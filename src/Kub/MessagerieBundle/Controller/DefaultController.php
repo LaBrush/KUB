@@ -97,7 +97,7 @@ class DefaultController extends Controller
 
 		if($request->getMethod() == "POST"){
 
-			$formHandler = new MessageHandler($form, $request, $this->get('doctrine.orm.default_entity_manager'));
+			$formHandler = new MessageHandler($form, $request, $this->get('doctrine.orm.default_entity_manager'), $this->get('security'));
 
 			if($formHandler->process())
 			{

@@ -4,14 +4,19 @@ namespace Kub\NoteBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use JMS\SecurityExtraBundle\Annotation\Secure;
+use Symfony\Component\HttpFoundation\Response;
 
 use Kub\NoteBundle\Form\Type\ControleType ;
 use Kub\NoteBundle\Form\Handler\ControleHandler; 
+
+use Kub\NoteBundle\Form\Type\NoteEleveType ;
+use Kub\NoteBundle\Form\Handler\NoteEleveHandler; 
 
 use Kub\UserBundle\Entity\Eleve ;
 use Kub\NoteBundle\Entity\Controle ;
 use Kub\NoteBundle\Entity\Note ;
 use Kub\ClasseBundle\Entity\Groupe ;
+use Kub\EDTBundle\Entity\Cours ;
 
 class ProfesseurController extends Controller
 {
@@ -22,6 +27,7 @@ class ProfesseurController extends Controller
 	{
 		$liste_cours = $this->get('doctrine.orm.entity_manager')->getRepository('KubEDTBundle:Cours')->findByProfesseur( $this->getUser() );
 		$liste_groupes = array();
+		$liste_controles = array();
 
 		foreach ($liste_cours as $cours) {
 			foreach ($cours->getGroupes() as $groupe) {
@@ -32,19 +38,25 @@ class ProfesseurController extends Controller
 			}
 		}
 
+		foreach ($cours->getControles() as $controle) {
+			if($controle->getProfesseur() == $this->getUser())
+			{
+				$liste_controles[] = $controle ;
+			}
+		}
+
 		return $this->render('KubNoteBundle:Professeur:index.html.twig', array(
 			'liste_cours' => $liste_cours,
-			'liste_groupes' => $liste_groupes
+			'liste_groupes' => $liste_groupes,
+			'liste_controles' => $liste_controles
 		));
 	}
-		
+	
 	/**
 	 * @Secure(roles="ROLE_PROFESSEUR")
 	 */
-	public function noterGroupeAction($cours)
+	public function noterCoursAction(Cours $cours)
 	{
-		$cours = $this->get('doctrine.orm.entity_manager')->getRepository('KubEDTBundle:Cours')->findOneById( $cours );
-
 		$controle = new controle ;
 		$controle->setCours( $cours );
 
@@ -56,10 +68,10 @@ class ProfesseurController extends Controller
 
 			if(!$controle->hasEleve($eleve))
 			{
-				$absence = new Note ;
-				$absence->setEleve( $eleve );
+				$note = new Note ;
+				$note->setEleve( $eleve );
 
-				$controle->addNote( $absence );
+				$controle->addNote( $note );
 			}
 
 		}
@@ -94,6 +106,82 @@ class ProfesseurController extends Controller
 		)); 
 	}
 
+
+	/**
+	 * @Secure(roles="ROLE_PROFESSEUR")
+	 */
+	public function noterGroupeAction($groupe_id)
+	{
+		$liste_cours = $this->get('doctrine.orm.entity_manager')->getRepository('KubEDTBundle:Cours')->findByGroupeIdAndProfesseurId( $groupe_id, $this->getUser()->getId() );
+
+		if(count($liste_cours) == 1)
+		{
+			return $this->forward('KubNoteBundle:Professeur:noterCoursAction', array(
+				'cours' => $liste_cours[0]
+			));	
+		}
+		elseif (count($liste_cours) == 0) {
+			throw $this->createNotFoundException('Vous n\'avez pas cours avec ce groupe');
+		}
+		else
+		{
+			$groupe = null ;
+			$liste_groupes = $liste_cours[0]->getGroupes();
+			
+			for ($i=0; $i < count($liste_groupes) ; $i++) { 
+				if($groupe_id == $liste_groupes[$i]->getId())
+				{
+					$groupe = $liste_groupes[$i];
+					break ;
+				}
+			}
+
+			return $this->render('KubNoteBundle:Professeur:choose_cours.html.twig', array(
+				'groupe' => $groupe,
+				'liste_cours' => $liste_cours
+			)); 	
+		}
+	}
+
+	/**
+	 * @Secure(roles="ROLE_PROFESSEUR")
+	 */
+	public function noterEleveAction($eleve)
+	{
+		$em = $this->get('doctrine.orm.entity_manager');
+
+		$eleve = $em->getRepository('KubUserBundle:Eleve')->findOneByUsername($eleve);
+		$controles = $em->getRepository('KubNoteBundle:Controle')->findOneByUserGroupsAndProfesseur($eleve, $this->getUser());
+
+		$note = new Note ;
+		$note->setEleve($eleve);
+
+		$form  = $this->createForm(new NoteEleveType($controles, $eleve, $this->getUser()), $note);
+
+		$request = $this->get('request');
+		if($request->getMethod() == "POST"){
+
+			$formHandler = new NoteEleveHandler($form, $request, $this->get('doctrine.orm.default_entity_manager'), $this->get('kub.notification_manager'));
+
+			if($formHandler->process())
+			{
+				$this->get('session')->getFlashBag()->add('info', "Le controle a bien été ajouté");
+
+				return $this->redirect($this->generateUrl("home_homepage"));
+			}
+			else
+			{
+				$this->get('session')->getFlashBag()->add('info', "Une erreur est survenue lors de l'ajout du controle");   
+			}
+
+		}
+
+		return $this->render('KubNoteBundle:Professeur:noter_eleve.html.twig', array(
+			'form' => $form->createView(),
+			'eleve' => $eleve
+		)); 
+	}
+
 	/**
 	 * @Secure(roles="ROLE_PROFESSEUR")
 	 */
@@ -110,10 +198,10 @@ class ProfesseurController extends Controller
 
 			if(!$controle->hasEleve($eleve))
 			{
-				$absence = new Note ;
-				$absence->setEleve( $eleve );
+				$note = new Note ;
+				$note->setEleve( $eleve );
 
-				$controle->addNote( $absence );
+				$controle->addNote( $note );
 			}
 
 		}
@@ -237,5 +325,30 @@ class ProfesseurController extends Controller
 			)
 		);   
 
+	}
+
+	public function getNoteForControleAction()
+	{
+		$reponse = array( 'state' => 0 );
+
+		$controle_id = $this->getRequest()->request->get('controle_id');
+		$eleve_id = $this->getRequest()->request->get('eleve_id');
+
+		$note = $this->get('doctrine.orm.entity_manager')->getRepository('KubNoteBundle:Note')->findOneByControleIdAndEleveId( $controle_id, $eleve_id );
+
+		if($note && $note->getControle()->getProfesseur()->getId() == $this->getUser()->getId())
+		{
+			$reponse = array(
+
+				'state'       => 1,
+				'note'        => $note->getNote(),
+				'coefficient' => $note->getCoefficient()
+
+			);
+		}
+
+		return new Response(
+		 	json_encode($reponse)
+		);
 	}
 }
