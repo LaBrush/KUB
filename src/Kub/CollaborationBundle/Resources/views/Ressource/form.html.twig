@@ -1,4 +1,40 @@
-{{ form_start(form) }}
-{{ form_widget(form) }}
-<input type="submit">
-{{ form_end(form) }}
+{% block form %}
+
+	<span class="titre">
+		{{ form_errors(form.titre) }}
+		{{ form_label(form.titre) }} <div class="input">{{ form_widget(form.titre) }}</div>
+	</span>
+
+	<span class="description">
+		{{ form_errors(form.description) }}
+		{{ form_label(form.description) }} <div class="input">{{ form_widget(form.description) }}</div>
+	</span>
+
+	<span class="auteur">
+		{{ form_errors(form.auteur) }}
+		{{ form_label(form.auteur) }} <div class="input">{{ form_widget(form.auteur) }}</div>
+	</span>
+
+	<span class="type">
+		{{ form_errors(form.type) }}
+		{{ form_label(form.type) }}
+		<span>{{ form_widget(form.type.0) }} {{ form_label(form.type.0) }}</span>
+		<span>{{ form_widget(form.type.1) }} {{ form_label(form.type.1) }}</span>  
+	</span>
+
+	<span class="url">
+		{{ form_errors(form.url) }}
+		Adresse web <div class="input">{{ form_widget(form.url) }}</div>
+	</span>
+
+	<span class="file">
+		Fichier
+		<div class="input">
+			{% for field in form.file %}
+				{{ form_errors(field) }}
+				{{ form_widget(field) }}
+			{% endfor %}
+		</div>
+	</span>
+
+{% endblock %}
