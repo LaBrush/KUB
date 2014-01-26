@@ -8,6 +8,7 @@ $(function() {
 	var chevronBas = $('#chevron-bas');
 
 	body.removeAttr('style');
+	nav.css('overflow', 'hidden');
 
 	// Cette fonction permet l'ouverture du menu au clic sur le bouton #bouton-menu
 
@@ -20,9 +21,9 @@ $(function() {
 
 			nav
 			.removeClass('nav-open')
-			.addClass('unscrollable');
+			.css('overflow', 'hidden');
 			
-			body.removeClass('unscrollable');
+			body.removeAttr('style');
 		}
 		else
 		{
@@ -31,9 +32,9 @@ $(function() {
 
 			nav
 			.addClass('nav-open')
-			.removeClass('unscrollable');
+			.removeAttr('style');
 
-			body.addClass('unscrollable');
+			body.css('overflow', 'hidden');
 		};
 	});
 
@@ -42,13 +43,13 @@ $(function() {
 	// Cette fonction bloque la section lors du scroll du menu 
 	
 	nav.mouseenter( function() {
-			$(this).removeClass('unscrollable');
-			body.addClass('unscrollable');
+			$(this).removeAttr('style');
+			body.css('overflow', 'hidden');
 		})
 		.mouseleave( function() {
-			$(this).addClass('unscrollable');
-			body.removeClass('unscrollable');
+			$(this).css('overflow', 'hidden');
+			body.removeAttr('style');
 		})
-		.addClass('unscrollable');
+		.css('overflow', 'hidden');
 
 });

@@ -2,11 +2,6 @@
 
 {% block content %}
     <p>
-    	<strong>{{ notification.auteur }}</strong> a commenté la trace <strong>{{ notification.commentaire.post.titre }}</strong> de votre fil d'Ariane :
+    	<strong>{{ notification.auteur }}</strong> vous à ajouté la note de <strong>{{ notification.note }}</strong> <!-- à <strong>{{ notification.note.eleve }}</strong>  -->en <strong>{{ notification.note.matiere }}</strong>
     </p>
-    <div class="extract">
-    	<p>{{ notification.commentaire.contenu }}</p>
-    </div>
 {% endblock %}
-
-this->getAuteur() . ' vous a ajouté la note de ' . (string)$this->getNote()

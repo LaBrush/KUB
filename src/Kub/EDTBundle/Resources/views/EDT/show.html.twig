@@ -2,61 +2,202 @@
 	
 	<tr>
 		
-		<td class="hour-bottom-solid"></td>
+		<td class="hour-bottom-solid"></th>
 
 		{% for jour in liste_jours %}
 
 			<th>{{ jour|capitalize }}</th>
 
 		{% endfor %}
+
 	</tr>
 
-	{% set i = 1 %}
 	{% for interval in edt %}
-		{#{% if interval != loop.last %}#}
-			{% set i = i + 1 %}
-			<tr>
-				{#{% if i % 3 != 0 %}#}
-					<td class="hour-edt" >
-							{{ interval.horaire|date('H:i') }}	    
-					</td>
-				{#{% endif %}#}
+		<div>
+		   	{# Traitement de la ligne des heures #}
+
+			{% set hour = interval.horaire|date('H:i') %}
+			{% set class = "" %}
+
+			{% set show = true %}
+
+			{% set heuremax = null %}
+
+
+			{% if hour == "07:55" %}
+				
+					{% set hour = "8h" %}
+					{% set class = "hour-bottom-dashed" %}
+
+			{% elseif hour == "08:25" %}
+
+					{% set hour = "8h55" %}
+					{% set class = "hour-bottom-solid" %}
+
+			{% elseif hour == "08:55" %}
+
+					{% set show = false %}
+
+			{% elseif hour == "09:00" %}
+
+					{% set hour = "9h" %}
+					{% set class = "hour-bottom-dashed" %}
+
+			{% elseif hour == "09:25" %}
+
+					{% set hour = "9h50" %}
+					{% set class = "hour-bottom-solid" %}
+
+			{% elseif hour == "09:50" %}
+
+					{% set show = false %}
+
+			{% elseif hour == "10:00" %}
+
+					{% set hour = "10h05" %}
+					{% set class = "hour-bottom-dashed" %}
+
+			{% elseif hour == "10:25" %}
+
+					{% set hour = "11h" %}
+					{% set class = "hour-bottom-solid" %}
+
+			{% elseif hour == "10:55" %}
+
+					{% set show = false %}
+
+			{% elseif hour == "11:00" %}
+		
+					{% set hour = "11h05" %}
+					{% set class = "hour-bottom-dashed" %}
+
+			{% elseif hour == "11:25" %}
+		
+					{% set hour = "11h55" %}
+					{% set class = "hour-bottom-solid" %}
+
+			{% elseif hour == "11:55" %}
+
+					{% set show = false %}
+
+			{% elseif hour == "12:00" %}
+		
+					{% set hour = "12h" %}
+					{% set class = "hour-bottom-dashed" %}
+
+			{% elseif hour == "12:25" %}
+
+					{% set hour = "13h" %}
+					{% set class = "hour-bottom-solid" %}
+
+			{% elseif hour == "12:55" %}
+
+					{% set hour = "" %}
+					{% set class = "hour-bottom-solid" %}
+
+					{% set heuremax = interval.horaire %}
+
+			{% elseif hour == "13:25" %}
+		
+					{% set hour = "13h30" %}
+					{% set class = "hour-bottom-dashed" %}
+
+			{% elseif hour == "13:55" %}
+		
+					{% set hour = "14h25" %}
+					{% set class = "hour-bottom-solid" %}
+
+			{% elseif hour == "14:25" %}
+		
+					{% set hour = "14h30" %}
+					{% set class = "hour-bottom-dashed" %}
+
+			{% elseif hour == "14:55" %}
+		
+					{% set hour = "15h20" %}
+					{% set class = "hour-bottom-solid" %}
+
+
+			{% elseif hour == "15:20" %}
+		
+					{% set hour = "15h30" %}
+					{% set class = "hour-bottom-dashed" %}
+
+			{% elseif hour == "15:55" %}
+		
+					{% set hour = "16h20" %}
+					{% set class = "hour-bottom-solid" %}
+
+			{% elseif hour == "16:20" %}
+		
+					{% set hour = "16h30" %}
+					{% set class = "hour-bottom-dashed" %}
+
+			{% elseif hour == "16:55" %}
+
+					{% set hour = "17h20" %}
+					{% set class = "hour-bottom-solid" %}
+
+			{% elseif hour == "17:20" %}
+		
+					{% set show = false %}
+
+			{% endif %}
+		</div>
+		
+		{% if show == true %}
+			<tr id="{{ hour }}">
+			
+				<td class="hour-edt {{ class }}">
+					{{ hour }}
+				</td>
+
 				{% for interval in interval.jours %}
-					{% if interval is not null %}
 
-						{% set cours = interval.horaire.cours %}
+				{% if interval is not null %}
+					
+					{% if interval.horaire < heuremax %}
+						{% set rowspan = interval.rowSpan / 3 * 2 %}
+					{% else %}
+					    {% set rowspan = interval.rowSpan %}
+					{% endif %}
+					
+					{% set cours = interval.horaire.cours %}
 
-							{% if cours is not null %}
-								<td rowspan="{{ interval.rowSpan }}" class="bottom-dashed {{ cours.matiere.categorie.abreviation }}">
+					{% if cours is not null %}
 
-									<span class="info-cours">{{ cours.matiere | upper }}</span>
+						<td rowspan="{{ rowspan }}" class="bottom-dashed {{ cours.matiere.categorie.abreviation }}">
 
-									{% if not is_granted("ROLE_PROFESSEUR") %}
-										<span class="info-cours"><em>M. {{ cours.professeur.nom }}</em></span>
+							<span class="info-cours">{{ cours.matiere | upper }}</span>
+							<span class="info-cours"><em>M. {{ cours.professeur.nom }}</em></span>
+
+							{% if not is_granted("ROLE_ELEVE") %}
+								{% set groupes = "" %}
+								{% for groupe in cours.groupes %}
+
+									{% set groupes = groupes ~ groupe %}
+									{% if 1 == loop.revindex0 %}
+										{% set groupes = groupes ~ ' et ' %}
+									{% elseif 1 < loop.revindex0 %}	
+										{% set groupes = groupes ~ ', ' %}
 									{% endif %}
 
-									{% if not is_granted("ROLE_ELEVE") %}
-										{% set groupes = "" %}
-										{% for groupe in cours.groupes %}
+								{% endfor %}
 
-											{% set groupes = groupes ~ groupe %}
-											{% if 1 == loop.revindex0 %}
-												{% set groupes = groupes ~ ' et ' %}
-											{% elseif 1 < loop.revindex0 %}	
-												{% set groupes = groupes ~ ', ' %}
-											{% endif %}
-
-										{% endfor %}
-
-										<span class="info-cours"><em>{{ groupes }}</em></span>
-									{% endif %}</td>
-							{% else %}
-									<td rowspan="{{ interval.rowSpan }}" class="bottom-dashed"></td>
+								<span class="info-cours"><em>{{ groupes }}</em></span>
 							{% endif %}
+
+						</td>
+
+					{% else %}
+							<td rowspan="{{ rowspan }}" class="bottom-dashed"></td>
 					{% endif %}
+				{% endif %}
 				{% endfor %}
+
 			</tr>
-		{#{% endif %}#}
+		{% endif %}
+
 	{% endfor %}
 
 </table>

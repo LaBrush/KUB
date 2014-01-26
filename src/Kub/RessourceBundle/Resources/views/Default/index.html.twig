@@ -35,9 +35,16 @@
 								<img class="preview" src="about:blank" alt="{{ ressource.titre }}">			
 
 							{% endif %}#}
-							
+
 							<div class="details">
-								<span class="infos">{{ ressource.description }}</span>				
+								<span class="infos">
+									{% set length = ressource.description | length %}
+									{% if length < 46 %}
+										{{ ressource.description }}
+									{% else %}
+										{{ ressource.description | slice(0, 45) }}...
+									{% endif %}
+									</span>				
 								<span class="infos-complementaires"><em><strong>{{ ressource.auteur }}</strong> {{ ressource.matiere }} {{ ressource.niveau | lower }}</em></span>
 							</div>
 
