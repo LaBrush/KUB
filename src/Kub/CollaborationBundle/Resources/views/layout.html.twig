@@ -1,20 +1,30 @@
 {% extends '::base.html.twig' %}
 
+{% block title %}
+	{{ parent() }} - {{ projet.name }}
+{% endblock %}
+
 {% block body %}
-    
-	<h1 class="h1 article"><a href="{{path('kub_collaboration_projet_show', { slug: projet.slug })}}">{{ projet.name }} {{ projet.usersAsString(app.user) }}</a></h1>
+
+	<article class="article">
+		<h2 class="section-title">
+			{{ projet.name }}
+		</h2>
+	</article>
 
 	<article class="article">	
-		{% if is_granted('ADMINISTRATEUR', projet) %}
-				<a href="{{ path('kub_collaboration_projet_edit', { slug: projet.slug }) }}" class="button">Gérer</a>
+		<a href="{{path('kub_collaboration_projet_show', { slug: projet.slug })}}" class="button">Accueil</a>
+
+		{% if app.request.attributes.get('_route') != "kub_collaboration_organisation_index" %}
+			<a href="{{ path('kub_collaboration_organisation_index', { slug: projet.slug }) }}" class="button">Taches</a>
 		{% endif %}
 
 		{% if app.request.attributes.get('_route') != "kub_collaboration_documentheque_show" %}
-			<a href="{{ path('kub_collaboration_documentheque_show', { slug: projet.slug }) }}" class="button">Voir la documentheque</a>
+			<a href="{{ path('kub_collaboration_documentheque_show', { slug: projet.slug }) }}" class="button">Documents</a>
 		{% endif %}
 
-		{% if app.request.attributes.get('_route') != "kub_collaboration_organisation_index" %}
-			<a href="{{ path('kub_collaboration_organisation_index', { slug: projet.slug }) }}" class="button">Voir l'organisation</a>
+		{% if is_granted('ADMINISTRATEUR', projet) %}
+				<a href="{{ path('kub_collaboration_projet_edit', { slug: projet.slug }) }}" class="button">Options</a>
 		{% endif %}
 	</article>
 

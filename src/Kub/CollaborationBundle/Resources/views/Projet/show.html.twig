@@ -2,9 +2,11 @@
 
 {% block content %}
 	
-	<article class="article">
-	   <div>
-			<h2>Description</h4>
+	<article class="article-news bordered-accueil">
+		<div class="head-article">
+			<h3 class="h2">Description</h3>
+		</div>
+		<div class="content-article">
 			<p>
 				
 				{% if projet.description is not null %}
@@ -17,27 +19,11 @@
 		</div>
 	</article>
 
-	<article class="article">
-		
-		<style>
-
-			.case{
-				width: 0.7%;
-				height: 12px;
-				background-color: rgb(200,200,200) ;
-				display: inline-block; 
-				margin: 0;
-			}
-
-			.done{
-				background-color: #e67e22 ;	
-			}
-
-		</style>
-
-		<h2>Avancement des taches</h2>
-		<div>
-			
+	<article class="article-news bordered-accueil">
+		<div class="head-article">
+			<h3 class="h2">Avancement des taches</h3>
+		</div>
+		<div class="content-article">
 			{% for lt in projet.organisateur.listeTaches %}
 
 				{% set done = (lt.countCheckedTaches / lt.taches|length * 100) | round %}
@@ -57,9 +43,7 @@
 			{% else %}
 				<p>Aucune tache pour le moment</p>
 			{% endfor %}
-
 		</div>
-
 	</article>
 
 {% endblock %}

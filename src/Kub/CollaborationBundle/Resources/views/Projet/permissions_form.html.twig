@@ -1,0 +1,13 @@
+{% block form %}
+
+	<span class="prenom">
+		{{ form_errors(form.user) }}
+		Utilisateur <div class="input">{{ form_widget(form.user) }}</div>
+	</span>
+
+	<span class="nom">
+		{{ form_errors(form.role) }}
+		Rôle <div class="input">{{ form_widget(form.role) }}</div>
+	</span>
+
+{% endblock %}

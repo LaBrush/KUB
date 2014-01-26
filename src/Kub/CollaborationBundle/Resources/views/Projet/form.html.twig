@@ -1,4 +1,33 @@
-{{ form_start(form) }}
-{{ form_widget(form) }}
-<input type="submit">
-{{ form_end(form) }}
+{% block form %}
+
+	<span class="name">
+		{{ form_errors(form.name) }}
+		Nom <span class="input">{{ form_widget(form.name) }}</span>
+	</span>
+
+	<span class="fin">
+		{{ form_errors(form.dateFin) }}
+		Fin du projet <span class="input">{{ form_widget(form.dateFin) }}</span>
+	</span>
+
+	<span class="description">
+		{{ form_errors(form.description) }}
+		{{ form_label(form.description) }} <span class="input">{{ form_widget(form.description) }}</span>
+	</span>
+	
+	{% for permission in form.permissions %}
+		<div class="permissions">
+			{% include 'KubCollaborationBundle:Projet:permissions_form.html.twig' with {'form': permission} %}
+		</div>
+		
+	{% endfor %}
+
+	<div class="permissions-add" data-prototype="{% filter escape %}{% include 'KubCollaborationBundle:Projet:permissions_form.html.twig' with {'form': form.permissions.vars.prototype} %}{% endfilter %}">
+
+	</div>
+
+	<span class="permissions-button">
+		<a class="button add-another-permissions" href="#" >Ajouter un utilisateur</a>
+	</span>
+
+{% endblock %}

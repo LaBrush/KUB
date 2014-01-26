@@ -1,7 +1,15 @@
 {% extends '::base.html.twig' %}
 
+{% block title %}
+	{{ parent() }} - Projets
+{% endblock %}
+
 {% block body %}
-    
+
+	<article class="article">
+		<h2 class="section-title">Mes projets</h2>
+	</article>
+
 	<article class="article">
 		
 		<a href="{{ path('kub_collaboration_projet_create') }}" class="button">Créer un projet</a>
@@ -13,7 +21,7 @@
 		{% for projet in liste_projets %}
 		    <p>{{ projet }} - <a href="{{ path('kub_collaboration_projet_show', { slug: projet.slug }) }}">Voir</a></p>
 		{% else %}
-			<p>Vous ne participez à aucun projet pour le moment</p>
+			<p class="error">Vous ne participez à aucun projet pour le moment</p>
 		{% endfor %}
 
 	</article>

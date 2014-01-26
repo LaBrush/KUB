@@ -3,40 +3,46 @@
 {% set documentheque = projet.documentheque %}
 
 {% block content %}
-	
-	<h3 class="section-title">Documentheque</h3>
+
+	<h3 class="h2 article">Liste des documents</h3>
 
 	<article class="article">
-		<ul>
-			
+
+		<div class="create">
+			<a class="button-yes" href="{{ path('kub_collaboration_documentheque_ressource_create', { slug: projet.slug}) }}">Déposer une ressource</a>
+			<a class="button-yes" href="{{ path('kub_collaboration_documentheque_fichier_create', { slug: projet.slug}) }}">Créer un fichier</a>
+		</div>
+
+		<label for="search-in-list">Chercher dans la liste :</label>
+		<input id="search-in-list" type="text">
+
+		<ul class="list">
+			{% set empty = 0 %}
+
 			{% for ressource in documentheque.ressources %}
-				<li>{{ ressource }} - 
+				<li class="in-list li-list">{{ ressource }} - 
 					<a href="{{ path('kub_collaboration_documentheque_ressource_show', { slug: projet.slug, id: ressource.id}) }}">Voir</a> - 
 					<a href="{{ path('kub_collaboration_documentheque_ressource_edit', { slug: projet.slug, id: ressource.id}) }}">Modifier</a>
 				</li>
 			{% else %}
-				<li>Il n'y a encore aucune ressource pour le moment</li>
+				{% set empty = empty + 1 %}
 			{% endfor %}
-
-		</ul>
-	
-		<a href="{{ path('kub_collaboration_documentheque_ressource_create', { slug: projet.slug}) }}">Déposer une ressource</a>
-
-		<ul>
 			
 			{% for fichier in documentheque.fichiers %}
-				<li>{{ fichier }} -
-					<a href="{{ path('kub_collaboration_documentheque_fichier_show', { slug: projet.slug, id: fichier.id}) }}">Voir</a> - 
-					<a href="{{ path('kub_collaboration_documentheque_fichier_go', { slug: projet.slug, id: fichier.id}) }}">Editer</a> - 
-					<a href="{{ path('kub_collaboration_documentheque_fichier_edit', { slug: projet.slug, id: fichier.id}) }}">Modifier</a>
-				</li>
+				<a href="{{ path('kub_collaboration_documentheque_fichier_go', { slug: projet.slug, id: fichier.id}) }}">
+					<li class="in-list li-list">
+						{{ fichier }}
+					</li>
+				</a>
 			{% else %}
-				<li>Il n'y a encore aucun fichier pour le moment</li>
+				{% set empty = empty + 1 %}
 			{% endfor %}
 
-		</ul>
+			{% if empty == 2 %}
+				<p class="error">Il n'y a aucun document</p>
+			{% endif %}
 
-		<a href="{{ path('kub_collaboration_documentheque_fichier_create', { slug: projet.slug}) }}">Créer un fichier</a>
+		</ul>
 	</article>
 
 {% endblock %}
