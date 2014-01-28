@@ -32,6 +32,7 @@ class Horaire
 	 *
 	 * @ORM\Column(name="debut", type="time")
 	 * @KAssert\TimeEDTCompatible()
+	 * @Assert\Time()
 	 */
 	private $debut;
 
@@ -46,6 +47,7 @@ class Horaire
 	 *
 	 * @ORM\Column(name="fin", type="time")
 	 * @KAssert\TimeEDTCompatible()
+	 * @Assert\Time()
 	 */
 	private $fin;
 

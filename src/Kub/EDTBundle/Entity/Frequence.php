@@ -27,6 +27,7 @@ class Frequence
      *
      * @ORM\Column(name="nom", type="string", length=255)
      * @Assert\NotNull()
+     * @Assert\Length(max=255)
      */
     private $name;
 

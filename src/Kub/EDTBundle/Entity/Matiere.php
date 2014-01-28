@@ -25,6 +25,7 @@ class Matiere
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
+     * @Assert\Length(max=255)
      */
     private $name;
 

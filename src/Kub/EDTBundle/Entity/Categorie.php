@@ -25,6 +25,7 @@ class Categorie
      * @var string
      *
      * @ORM\Column(name="nom", type="string", length=255)
+     * @Assert\Length(max=255)
      */
     private $nom;
 

@@ -30,6 +30,7 @@ abstract class Ressource
      * @var string
      *
      * @ORM\Column(name="titre", type="string", length=255)
+     * @Assert\Length(max=255)
      */
     private $titre;
 
@@ -57,7 +58,7 @@ abstract class Ressource
      *
      * @ORM\Column(name="auteur", type="text", length=255)
      * @Assert\NotNull
-     * @Assert\Length(min="2")
+     * @Assert\Length(min="2", max=255)
      */
     private $auteur ;
 
