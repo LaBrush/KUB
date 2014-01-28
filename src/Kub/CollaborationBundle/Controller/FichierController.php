@@ -33,7 +33,6 @@ class FichierController extends Controller
 	}
 
 	public function showAction(Projet $projet, $id){
-
 		if(!$this->get('security.context')->isGranted('VISITEUR', $projet))
 		{
 			throw new AccessDeniedException('Vous n\'avez pas les droits requis pour acceder à cet espace de collaboration');
@@ -50,7 +49,7 @@ class FichierController extends Controller
 		return $this->render('KubCollaborationBundle:Fichier:' . $template . '.html.twig', array(
 			'fichier' => $fichier,
 			'projet' => $projet
-		));		
+		));
 	}
 
 	public function addAction(Projet $projet)
