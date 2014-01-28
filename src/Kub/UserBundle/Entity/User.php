@@ -77,8 +77,8 @@ abstract class User extends BaseUser
      *
      * @Assert\NotBlank()
      * @Assert\Length(
-     *  min="3", minMessage="Le nom doit faire au moins {{ limit }} caractères"
-     *  max="255, maxMessage="Le nom doit faire au maximum {{ limit }} caractères"
+     *  min="3", minMessage="Le nom doit faire au moins {{ limit }} caractères",
+     *  max="255", maxMessage="Le nom doit faire au maximum {{ limit }} caractères"
      *)
      */
     private $nom ;
@@ -90,8 +90,8 @@ abstract class User extends BaseUser
      *
      * @Assert\NotBlank()
      * @Assert\Length(
-     *  min="3", minMessage="Le nom doit faire au moins {{ limit }} caractères"
-     *  max="255, maxMessage="Le nom doit faire au maximum {{ limit }} caractères"
+     *  min="3", minMessage="Le nom doit faire au moins {{ limit }} caractères",
+     *  max="255", maxMessage="Le nom doit faire au maximum {{ limit }} caractères"
      *)
      */ 
     private $prenom;
