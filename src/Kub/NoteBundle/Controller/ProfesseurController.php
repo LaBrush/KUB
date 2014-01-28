@@ -116,7 +116,7 @@ class ProfesseurController extends Controller
 
 		if(count($liste_cours) == 1)
 		{
-			return $this->forward('KubNoteBundle:Professeur:noterCoursAction', array(
+			return $this->forward('KubNoteBundle:Professeur:noterCours', array(
 				'cours' => $liste_cours[0]
 			));	
 		}
@@ -302,6 +302,9 @@ class ProfesseurController extends Controller
 		);
 	}
 
+	/**
+	 * @Secure(roles="ROLE_PROFESSEUR")
+	 */
 	public function showEleveAction(Eleve $user)
 	{
 		$notes = $this->get('doctrine.orm.entity_manager')->getRepository('KubNoteBundle:Note')->findByUsername( $user->getUsername() );
@@ -324,9 +327,11 @@ class ProfesseurController extends Controller
 				'eleve' => $user
 			)
 		);   
-
 	}
 
+	/**
+	 * @Secure(roles="ROLE_PROFESSEUR")
+	 */
 	public function getNoteForControleAction()
 	{
 		$reponse = array( 'state' => 0 );

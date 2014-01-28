@@ -165,8 +165,6 @@
 					{% set cours = interval.horaire.cours %}
 
 					{% if cours is not null %}
-
-<<<<<<< HEAD
 									<a href="{{ path('cours_show', { id: cours.id }) }}">
 										<span class="info-cours">{{ cours.matiere | upper }}</span>
 
@@ -193,7 +191,6 @@
 								</td>
 							{% else %}
 									<td rowspan="{{ interval.rowSpan }}" class="bottom-dashed"></td>
-=======
 						<td rowspan="{{ rowspan }}" class="bottom-dashed {{ cours.matiere.categorie.abreviation }}">
 
 							<span class="info-cours">{{ cours.matiere | upper }}</span>
@@ -213,7 +210,6 @@
 								{% endfor %}
 
 								<span class="info-cours"><em>{{ groupes }}</em></span>
->>>>>>> 80a93b0d0cf5abddfb05a8ea4172c5d258ee700c
 							{% endif %}
 
 						</td>

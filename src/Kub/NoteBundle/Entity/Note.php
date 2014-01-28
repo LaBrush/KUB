@@ -49,7 +49,7 @@ class Note
 	 *
 	 * @ORM\Column(name="note", type="decimal", precision=4, scale=2)
 	 *
-	 * @Assert\GreaterThanOrEqual(0, message="Vous ne pouvez attribuer de note négative")
+     * @Assert\GreaterThanOrEqual(0, message="Vous ne pouvez attribuer de note négative")
 	 */
 	private $note ;
 
@@ -58,7 +58,7 @@ class Note
 	 *
 	 * @ORM\Column(name="coefficient", type="decimal", precision=4, scale=2)
 	 *
-	 * @Assert\GreaterThan(0, message="Une note ne peut avoir de coefficient nul")
+     * @Assert\GreaterThan(0, message="Une note ne peut avoir de coefficient nul")
 	 */
 	private $coefficient;
 

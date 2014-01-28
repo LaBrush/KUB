@@ -27,7 +27,7 @@ class EleveController extends Controller
             $matieres[ $notes[$i]['matiere'] ][] = $notes[$i]['note'] ;
         }                       
 
-        return $this->render('KubNoteBundle:Professeur:show_eleve.html.twig',
+        return $this->render('KubNoteBundle:Eleve:index.html.twig',
             array(
                 'matieres' => $matieres,
                 'moyennes' => $moyennes,

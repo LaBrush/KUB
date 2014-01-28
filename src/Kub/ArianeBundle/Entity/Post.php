@@ -55,6 +55,9 @@ class Post
 	 *
 	 * @ORM\Column(name="titre", type="string", length=255)
 	 * @Assert\NotNull()
+	 * @Assert\Length(
+	 *	max=255
+	 *)
 	 */
 	private $titre;
 

@@ -4,6 +4,8 @@ namespace Kub\ClasseBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection ;
+use Symfony\Component\Validator\Constraints as Assert ;
+
 
 /**
  * Niveau
@@ -26,6 +28,7 @@ class Niveau
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
+     * @Assert\Length(max=255, min=2)
      */
     private $name;
 
