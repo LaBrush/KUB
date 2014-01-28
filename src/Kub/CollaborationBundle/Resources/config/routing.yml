@@ -1,6 +1,9 @@
 kub_collaboration_organisation:
     resource: "@KubCollaborationBundle/Resources/config/routing/organisation.yml"
 
+kub_collaboration_communication:
+    resource: "@KubCollaborationBundle/Resources/config/routing/communication.yml"
+
 kub_collaboration_documentheque:
     resource: "@KubCollaborationBundle/Resources/config/routing/documentheque.yml"
 
@@ -19,3 +22,7 @@ kub_collaboration_projet_show:
 kub_collaboration_projet_edit:
     pattern:  /{slug}/gerer
     defaults: { _controller: KubCollaborationBundle:Projet:edit }
+
+kub_collaboration_projet_delete:
+    pattern:  /{slug}/supprimer
+    defaults: { _controller: KubCollaborationBundle:Projet:delete }

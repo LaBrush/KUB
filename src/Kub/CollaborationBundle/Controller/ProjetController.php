@@ -89,4 +89,35 @@ class ProjetController extends Controller
 			)
 		);
 	}
+
+	public function deleteAction(Projet $projet)
+	{
+		if(!$this->get('security.context')->isGranted('ADMINISTRATEUR', $projet))
+		{
+			throw new AccessDeniedException("Vous n'avez pas les droits requis pour supprimer cet espace de collaboration");
+		}
+
+		$form = $this->createFormBuilder()->getForm();
+		$request = $this->getRequest();
+
+		if ($request->getMethod() == 'POST') {
+			$form->bind($request);
+
+			if ($form->isValid()) {
+
+				$em = $this->get('doctrine.orm.default_entity_manager');
+				$em->remove($projet);
+				$em->flush();
+
+				$this->get('session')->getFlashBag()->add('info', 'Projet bien supprimé');
+	
+				return $this->redirect($this->generateUrl('kub_collaboration_homepage'));
+			}
+		}
+
+		return $this->render('KubCollaborationBundle:Projet:delete.html.twig', array(
+			'projet' => $projet,
+			'form' => $form->createView(),
+		));
+	}
 }

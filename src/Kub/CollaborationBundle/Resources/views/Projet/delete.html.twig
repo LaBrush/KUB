@@ -1,0 +1,23 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}
+	{{ parent() }} - Supprimer le projet {{ projet }}
+{% endblock %}
+
+{% block body %}
+
+	<article class="error">
+		{{ form_start(form) }}
+
+			<p>Êtes vous sûr de vouloir supprimer le projet <strong>{{ projet.name }}</strong> ?</p>
+			
+			<br />
+			<input class="button-yes" type="submit"> ou <a class="button-no" href="{{ path('kub_collaboration_projet_show', { slug: projet.slug }) }}">Annuler</a>	
+		{{ form_end(form) }}
+	</article>
+
+	<article class="error">
+		<p>Attention cette action sera <strong>irréversible</strong> et impactera tous les autres membres du projet. <br>Si vous désirez seulement ne plus y participer, désignez un autre administrateur <strong>dans les préférences</strong></p>
+	</article>
+			
+{% endblock %}

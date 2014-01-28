@@ -22,19 +22,9 @@
 				{% for ressource in ressources_invalides %}
 
 					<a href="{{ path('kub_ressource_show', { id: ressource.id }) }}">
-						<li class="ressource in-list {{ ressource.type }} {{ ressource.niveau }} {{ ressource.matiere }}">
+						<li class="ressource in-list {{ ressource.type }} {{ ressource.niveau }} {{ ressource.matiere }}" data-author='{{ ressource.auteur }}'>
 
 							<span class="label">{{ ressource.titre }}</span>
-
-							{#{% if ressource.type == 'web' %}
-							
-								<iframe class="preview" src="about:blank"></iframe>
-							
-							{% elseif ressource.type == 'file' %}
-								
-								<img class="preview" src="about:blank" alt="{{ ressource.titre }}">			
-
-							{% endif %}#}
 							
 							<div class="details">
 								<span class="infos">{{ ressource.description }}</span>				

@@ -16,6 +16,10 @@
 		{% if app.request.attributes.get('_route') != "kub_collaboration_organisation_index" %}
 			<a href="{{ path('kub_collaboration_organisation_index', { slug: projet.slug }) }}" class="button">Voir l'organisation</a>
 		{% endif %}
+
+		{% if app.request.attributes.get('_route') != "kub_collaboration_communication_index" %}
+			<a href="{{ path('kub_collaboration_communication_index', { slug: projet.slug }) }}" class="button">Voir l'espace de communication</a>
+		{% endif %}
 	</article>
 
 	{% block content %}

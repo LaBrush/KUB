@@ -34,6 +34,11 @@ class Appel
 	private $cours ;
 
 	/**
+	 * @ORM\ManyToOne(targetEntity="Kub\EDTBundle\Entity\Horaire")
+	 */
+	private $horaire ;
+
+	/**
 	 * @ORM\ManyToOne(targetEntity="Kub\EDTBundle\Entity\Semaine")
 	 */
 	private $semaine ;
@@ -183,4 +188,27 @@ class Appel
 	{
 		return $this->absences;
 	}
+
+    /**
+     * Set horaire
+     *
+     * @param \Kub\EDTBundle\Entity\Horaire $horaire
+     * @return Appel
+     */
+    public function setHoraire(\Kub\EDTBundle\Entity\Horaire $horaire = null)
+    {
+        $this->horaire = $horaire;
+    
+        return $this;
+    }
+
+    /**
+     * Get horaire
+     *
+     * @return \Kub\EDTBundle\Entity\Horaire 
+     */
+    public function getHoraire()
+    {
+        return $this->horaire;
+    }
 }

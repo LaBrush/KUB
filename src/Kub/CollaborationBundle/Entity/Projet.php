@@ -79,6 +79,11 @@ class Projet
 	private $documentheque ;
 
 	/**
+	 * @ORM\OneToOne(targetEntity="Kub\CollaborationBundle\Entity\Communication", inversedBy="projet", cascade={"all"}, fetch="EAGER")
+	 */
+	private $communication ;
+
+	/**
 	 * @ORM\OneToMany(targetEntity="Kub\CollaborationBundle\Entity\Permission", mappedBy="projet", cascade={"all"}, fetch="EAGER")
 	 */
 	private $permissions ;
@@ -134,6 +139,7 @@ class Projet
 
 		$this->organisateur = new Organisateur ;
 		$this->documentheque = new Documentheque ;
+		$this->communication = new Communication ;
 
 		$this->dateAjout = new \DateTime();
 		$this->dateFin = (new \DateTime())->modify('+1 month');
@@ -378,4 +384,27 @@ class Projet
 	{
 		return $this->slug;
 	}
+
+    /**
+     * Set communication
+     *
+     * @param \Kub\CollaborationBundle\Entity\Communication $communication
+     * @return Projet
+     */
+    public function setCommunication(\Kub\CollaborationBundle\Entity\Communication $communication = null)
+    {
+        $this->communication = $communication;
+    
+        return $this;
+    }
+
+    /**
+     * Get communication
+     *
+     * @return \Kub\CollaborationBundle\Entity\Communication 
+     */
+    public function getCommunication()
+    {
+        return $this->communication;
+    }
 }

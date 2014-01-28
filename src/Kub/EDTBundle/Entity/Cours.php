@@ -109,6 +109,23 @@ class Cours
 		return $groupesNames ;
 	}
 
+	public function getCurrentHoraire()
+	{
+		$current = new \DateTime();
+		$horaires = $this->getHoraires();
+
+		for ($i=0; $i < count($horaires); $i++) { 
+			
+			if($horaires[$i]->contains($current))
+			{
+				return $horaires[$i];
+			}
+
+		}
+
+		return false ;
+	}
+
 	/**
 	 * Constructor
 	 */

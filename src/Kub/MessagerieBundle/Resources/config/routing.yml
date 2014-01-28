@@ -12,6 +12,12 @@ kub_messagerie_send:
     requirements:
         id: \d+
 
+kub_messagerie_add_people:
+    pattern:  /ajouter/{id}
+    defaults: { _controller: KubMessagerieBundle:Default:addPeople }
+    requirements:
+        id: \d+
+
 kub_messagerie_read:
     pattern:  /conversation/{id}
     defaults: { _controller: KubMessagerieBundle:Default:read }

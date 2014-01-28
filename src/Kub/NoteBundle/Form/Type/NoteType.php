@@ -17,7 +17,14 @@ class NoteType extends AbstractType
 	 */
 	public function buildForm(FormBuilderInterface $builder, array $options)
 	{
-		$builder->addEventSubscriber(new addEleveFieldSuscriber());
+		$builder
+		->add('noter', 'checkbox', array(
+			'required' => false
+		))
+		->add('coefficient', 'number', array(
+			'required' => false
+		))
+		->addEventSubscriber(new addEleveFieldSuscriber());
 	}
 	
 	/**

@@ -46,6 +46,16 @@ class Absence
 		$this->statut = self::PRESENT ;
 	}
 
+    public function __toString(){
+
+        $appel = $this->getAppel();
+        $heure = $appel->getHoraire();
+        $date = $appel->getDate();
+
+        return 'le ' . $date->format('d/m') . ' à ' . $time->format('H:i');
+
+    }
+
     public function hasEleve($eleve)
     {
         return $this->eleve == $eleve ;

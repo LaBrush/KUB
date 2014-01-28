@@ -8,11 +8,11 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class ThreadType extends AbstractType
 {
-	private $commentaire ;
+	private $arg ;
 
-	public function __construct($commentaire)
+	public function __construct($arg)
 	{
-		$this->commentaire = $commentaire ;
+		$this->arg = $arg ;
 	}
 
 	/**
@@ -25,11 +25,13 @@ class ThreadType extends AbstractType
 			->add('users', 'genemu_jqueryselect2_entity', array(
 				'class' => "Kub\UserBundle\Entity\User",
 				'label' => "Pour",
-				"multiple" => true
+				"multiple" => true,
+				'mapped' => false
 			))
 		;
 
-		$sender = $this->commentaire->getSender();
+		$sender = get_class($this->arg) == 'Kub\MessagerieBundle\Entity\Message' ? $this->arg->getSender() : $this->arg->getToken()->getUser() ;
+
 		switch ($sender->getClass()) {
 			case 'eleve':
 			case 'professeur':
@@ -37,14 +39,16 @@ class ThreadType extends AbstractType
 					"choices" => $sender->getGroupes(),
 					"class" => "Kub\ClasseBundle\Entity\Groupe",
 					"label" => "Et le(s) groupe(s)",
-					"multiple" => true
+					"multiple" => true,
+					'mapped' => false
 				));
 				break;
 			case 'administrateur':
 				$builder->add('groupes', 'genemu_jqueryselect2_entity', array(
 					"label" => "Et le(s) groupe(s)",
 					"class" => "Kub\ClasseBundle\Entity\Groupe",
-					"multiple" => true
+					"multiple" => true,
+					'mapped' => false
 				));
 				break;
 		}

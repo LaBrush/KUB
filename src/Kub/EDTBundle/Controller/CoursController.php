@@ -13,9 +13,9 @@ class CoursController extends Controller
 {
 	public function showAction($id)
 	{
-		$cours = $this->get('doctrine.orm.entity_manager')->getRepository('KubEDTBundle:Cours');
+		$cours = $this->get('doctrine.orm.entity_manager')->getRepository('KubEDTBundle:Cours')->findOneById($id);
 
-		$this->render("KubEDTBundle:Cours:show.html.twig", array(
+		return $this->render("KubEDTBundle:Cours:show.html.twig", array(
 			'cours' => $cours
 		));
 	}

@@ -6,40 +6,48 @@
 		<a class="button-yes button-new-message" href="{{ path('kub_messagerie_new') }}">Nouveau</a>
 
 		<div class="conversation">
-		    <div class="messages">
-		        <div class="participants">
+			<div class="reponse">
+				{{ render(controller("KubMessagerieBundle:Default:addPeople", { id: thread.id })) }}
+			</div>
+		</div>
+
+		<br>
+
+		<div class="conversation">
+			<div class="messages">
+				<div class="participants">
 					
 					{% for groupe in thread.groupes %}
-		                <span class="sender"><h3 class="bold">{{ groupe }}</h3 class="bold"></span>
-		            {% endfor %}
+						<span class="sender"><h3 class="bold">{{ groupe }}</h3 class="bold"></span>
+					{% endfor %}
 
-		            {% for user in thread.users %}
-		                {% if user.username != app.user.username %}
-		                    <span class="sender"><h3 class="bold">{{ user }}</h3 class="bold"></span>
-		                {% else %}
-		                    <span class="recever"><h3 class="bold">{{ user }}</h3 class="bold"></span>
-		                {% endif %}    
-		            {% endfor %}
-		        </div>
+					{% for user in thread.users %}
+						{% if user.username != app.user.username %}
+							<span class="sender"><h3 class="bold">{{ user }}</h3 class="bold"></span>
+						{% else %}
+							<span class="recever"><h3 class="bold">{{ user }}</h3 class="bold"></span>
+						{% endif %}    
+					{% endfor %}
+				</div>
 
-		        {% for message in thread.messages %}
-		            <div class="from-{% if message.sender.username == app.user.username %}sender{% else %}recever{% endif %}">
-		              
-		                {% if message.sender.username == app.user.username %}
-		                    <span><em>
-		                    	Vous, le <strong>{{ message.date | date('d/m/y')}}</strong> à <strong>{{ message.date | date('H:i')}} :</strong>
-		                	</em></span>
-		                {% else %}
-		                    <span><em>
-		                    	{{ message.sender }}, le <strong>{{ message.date | date('d/m/y')}}</strong> à <strong>{{ message.date | date('H:i')}} :</strong>
-		                	</em></span>
+				{% for message in thread.messages %}
+					<div class="from-{% if message.sender.username == app.user.username %}sender{% else %}recever{% endif %}">
+					  
+						{% if message.sender.username == app.user.username %}
+							<span><em>
+								Vous, le <strong>{{ message.date | date('d/m/y')}}</strong> à <strong>{{ message.date | date('H:i')}} :</strong>
+							</em></span>
+						{% else %}
+							<span><em>
+								{{ message.sender }}, le <strong>{{ message.date | date('d/m/y')}}</strong> à <strong>{{ message.date | date('H:i')}} :</strong>
+							</em></span>
 						{% endif %}
-		                
-		                <p>{{ message.contenu | raw }}</p>
+						
+						<p>{{ message.contenu | raw }}</p>
  
-		            </div>
-		        {% endfor %}
-		    </div>
+					</div>
+				{% endfor %}
+			</div>
 		
 			<div class="reponse">
 				{{ render(controller("KubMessagerieBundle:Default:send", { id: thread.id })) }}
@@ -55,40 +63,37 @@
 	<script type="text/javascript" src="{{ asset('ressources/select2/select2.min.js') }}"></script>
 	<link rel="stylesheet" href="{{ asset('ressources/select2/select2.css') }}" />
 	<!-- <script src="//tinymce.cachefly.net/4.0/tinymce.min.js"></script> -->
-    <script type="text/javascript" src="{{ asset('ressources/tinymce/tinymce.min.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('ressources/tinymce/tinymce.min.js') }}"></script>
 	<script>
 		jQuery(document).ready(function($) {
-		    var $configs = {
-				        selector: "textarea",
-				        plugins: [
-				                "autolink link charmap",
-				                "searchreplace",
-				                "textcolor"
-				        ],
+			var $configs = {
+						selector: "textarea",
+						plugins: [
+								"autolink link charmap",
+								"searchreplace",
+								"textcolor"
+						],
 
-				        toolbar1: "undo redo | bold italic underline strikethrough | forecolor | subscript superscript charmap | removeformat | searchreplace | link unlink",
-				        toolbar2: "",
-				        toolbar3: "",
+						toolbar1: "undo redo | bold italic underline strikethrough | forecolor | subscript superscript charmap | removeformat | searchreplace | link unlink",
+						toolbar2: "",
+						toolbar3: "",
 
-				        menubar: false,
-				        statusbar: false,
-				        toolbar_items_size: 'small',
+						menubar: false,
+						statusbar: false,
+						toolbar_items_size: 'small',
 				};
-		    tinyMCE.init($configs);
+			tinyMCE.init($configs);
 
-		    $('textarea').removeAttr('required');
+			$('textarea').removeAttr('required');
 		});
 	</script>
 
 	<script>
-    	jQuery(document).ready(function($) {
-        $field = $('#kub_arianebundle_message_thread_add_member_users');
-
-                    $field.select2([]);
-
-    	$field = $('#kub_arianebundle_message_thread_add_member_groupes');
-
-                    $field.select2([]);
-            });
-    </script>
+		jQuery(document).ready(function($) {
+			$('#kub_arianebundle_message_thread_add_member_users').select2([]);
+			$('#kub_arianebundle_message_thread_add_member_groupes').select2([]);
+			$('#kub_arianebundle_message_users').select2([]);
+			$('#kub_arianebundle_message_groupes').select2([]);
+		});
+	</script>
 {% endblock %}

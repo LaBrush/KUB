@@ -27,11 +27,10 @@ class addEleveFieldSuscriber implements EventSubscriberInterface
 		$this->form = $event->getForm();
 
 		$this->form
-			->add('noter', 'checkbox')
 			->add('note', 'number', array(
-				"label" => (string)$this->data->getEleve()
+				"label" => (string)$this->data->getEleve(),
+				"required" => false
 			))
-			->add('coefficient', 'number')
 		;
 	}
 }

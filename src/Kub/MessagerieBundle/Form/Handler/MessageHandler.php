@@ -7,7 +7,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 use Kub\MessagerieBundle\Entity\MessageUser ;
 
-class MessageHandler
+class MessageHandler 
 {
 	protected $request;
 	protected $form;
@@ -37,7 +37,7 @@ class MessageHandler
 				return true;
 			}
 		}
-
+		
 		return false;
 	}
 

@@ -61,7 +61,7 @@
 						<strong>' ~ note.note | number_format(1) ~ ' / ' ~ note.coefficient ~ '</strong>
 					</td>
 					<td>
-						<strong>' ~ note.controle.nom ~ '</strong> <em>Le ' ~ note.controle.date | date('d/m/y') ~ '</em>
+						<strong>' ~ note.controle.name ~ '</strong> <em>Le ' ~ note.controle.date | date('d/m/y') ~ '</em>
 					
 			' %}
 
@@ -151,7 +151,7 @@
 							<strong>{{ note.note | number_format(1) }} / {{ note.coefficient }}</strong>
 						</td>
 						<td>
-							{{ note.controle.nom }} <em>Le {{ note.controle.date | date('d/m/y') }}</em>
+							{{ note.controle.name }} <em>Le {{ note.controle.date | date('d/m/y') }}</em>
 						</td>
 					</tr>
 				{% endfor %}

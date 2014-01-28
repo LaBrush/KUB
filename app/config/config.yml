@@ -46,7 +46,6 @@ assetic:
 # Doctrine Configuration
 doctrine:
     dbal:
-        unix_socket: /Applications/MAMP/tmp/mysql/mysql.sock
         driver:   %database_driver%
         host:     %database_host%
         port:     %database_port%

@@ -9,6 +9,9 @@ use Symfony\Component\HttpKernel\HttpKernelInterface ;
 use Kub\MessagerieBundle\Form\Type\MessageType ;
 use Kub\MessagerieBundle\Form\Handler\MessageHandler ;
 
+use Kub\MessagerieBundle\Form\Type\ThreadType ;
+use Kub\MessagerieBundle\Form\Handler\ThreadHandler ;
+
 use Kub\MessagerieBundle\Entity\Thread ;
 use Kub\MessagerieBundle\Entity\Message ;
 
@@ -97,7 +100,7 @@ class DefaultController extends Controller
 
 		if($request->getMethod() == "POST"){
 
-			$formHandler = new MessageHandler($form, $request, $this->get('doctrine.orm.default_entity_manager'), $this->get('security'));
+			$formHandler = new MessageHandler($form, $request, $this->get('doctrine.orm.default_entity_manager'), $this->get('security.context'));
 
 			if($formHandler->process())
 			{
@@ -113,6 +116,42 @@ class DefaultController extends Controller
 		else
 		{
 			return $this->render('KubMessagerieBundle:Message:send_content.html.twig',
+				array(
+					'form' => $form->createView()
+				)
+			);
+		}
+	}
+
+	public function addPeopleAction($id){
+
+		$thread = $this->get('doctrine.orm.default_entity_manager')->getRepository('KubMessagerieBundle:Thread')->findOneById( $id );		
+
+		$form = $this->createForm(new ThreadType($this->get('security.context')), $thread, array(
+			"action" => $this->generateUrl("kub_messagerie_add_people", array('id' => $id))
+		));
+
+		$request = $this->get('request');
+		$em = $this->get('doctrine.orm.default_entity_manager');
+
+		if($request->getMethod() == "POST"){
+
+			$formHandler = new ThreadHandler($form, $request, $this->get('doctrine.orm.default_entity_manager'), $this->get('security.context'));
+
+			if($formHandler->process())
+			{
+				$this->get('session')->getFlashBag()->add('info', "De nouvelles personnes ont été ajoutées à la conversation.");
+			}
+
+		}
+
+		if($this->get('request')->get('_route') == "kub_messagerie_add_people")
+		{
+			return $this->redirect($this->generateUrl("kub_messagerie_read", array('id' => $id)));
+		}	
+		else
+		{
+			return $this->render('KubMessagerieBundle:Message:add_people_content.html.twig',
 				array(
 					'form' => $form->createView()
 				)

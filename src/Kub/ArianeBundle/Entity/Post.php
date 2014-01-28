@@ -8,7 +8,7 @@ use Symfony\Component\Validator\Constraints as Assert ;
 /**
  * Post
  *
- * @ORM\Table()
+ * @ORM\Table(name="post_ariane")
  * @ORM\Entity(repositoryClass="Kub\ArianeBundle\Entity\PostRepository")
  */
 class Post

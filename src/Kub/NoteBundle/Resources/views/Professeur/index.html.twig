@@ -20,7 +20,14 @@
 			
 				<a href="{{ path('kub_notes_professeur_edit', { id: controle.id }) }}">
 					<li class="in-list li-list">
-						<span>{{ controle }}</span>
+						<span>{{ controle }} (
+
+							{% for groupe in controle.groupes %}
+							    {{ groupe }}
+							{% endfor %}
+							
+							)
+						</span>
 					</li>
 				</a>
 

@@ -18,8 +18,8 @@ cours_edit:
         id: \d+
     defaults: { _controller: "KubEDTBundle:Cours:edit" }
 
-cours_edit:
+cours_show:
     pattern:  /{id}
     requirements: 
         id: \d+
-    defaults: { _controller: "KubEDTBundle:Cours:edit" }
+    defaults: { _controller: "KubEDTBundle:Cours:show" }

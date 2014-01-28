@@ -1,0 +1,29 @@
+{% extends 'KubCollaborationBundle::layout.html.twig' %}
+
+{% set communication = projet.communication %}
+
+{% block content %}
+	
+	<article class="article">
+		
+		<ul>
+			
+			{% for sujet in communication.sujets %}
+				<li>{{ sujet }}</li>
+			{% else %}
+				<li>Il n'y a aucune discussion pour l'instant</li>
+			{% endfor %}
+
+		</ul>
+
+	</article>
+
+	<article class="article">
+		{{ render(controller('KubCollaborationBundle:Communication:create', { projet: projet })) }}
+	</article>
+
+{% endblock %}
+
+{% block js %}
+
+{% endblock %}

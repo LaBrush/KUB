@@ -1,0 +1,15 @@
+kub_collaboration_communication_index:
+    pattern:  /{slug}/communication
+    defaults: { _controller: KubCollaborationBundle:Communication:index }
+
+kub_collaboration_communication_sujet_create:
+    pattern:  /{slug}/communication/ajouter/{sujet}
+    defaults: { _controller: KubCollaborationBundle:Communication:create, sujet: null }
+
+kub_collaboration_communication_sujet_show:
+    pattern:  /{projet_slug}/communication/{sujet}/
+    defaults: { _controller: KubCollaborationBundle:Communication:show }
+
+kub_collaboration_communication_sujet_delete:
+    pattern:  /{projet_slug}/communication/{tache_slug}/supprimer
+    defaults: { _controller: KubCollaborationBundle:Communication:delete }

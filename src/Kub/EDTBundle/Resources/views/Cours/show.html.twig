@@ -7,4 +7,22 @@
 		<p><strong>Fait le reste</strong></p>
 	</article>
 
+	<article class="article">
+		<ul>
+			
+			{% for item in liste_eleves_absences %}
+			    
+				<li> {{ item.eleve }} 
+
+					{% for absence in item.absences %}
+					    {{ absence }}
+					{% endfor %}
+
+				</li>
+
+			{% endfor %}
+
+		</ul>
+	</article>
+
 {% endblock %}

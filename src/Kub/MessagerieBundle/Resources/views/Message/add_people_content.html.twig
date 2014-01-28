@@ -1,0 +1,17 @@
+{{ form_start(form) }}
+	{{ form_errors(form) }}
+    
+    <span class="input">
+    	{{ form_errors(form.users) }}
+    	{{ form_label(form.users) }}&nbsp;{{ form_widget(form.users) }}
+    </span>
+
+    <span class="input">
+    	{{ form_errors(form.groupes) }}
+    	{{ form_label(form.groupes) }}&nbsp;{{ form_widget(form.groupes) }}
+    </span>
+
+    <input type="submit" class="button-yes send-message send-in-conversation" value="Ajouter" />
+
+    {{ form_widget(form) }}
+{{ form_end(form) }}

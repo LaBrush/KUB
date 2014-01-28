@@ -4,19 +4,99 @@
 		"selected_items":
 		[
 			[
-				"grou",
-				"groupe"
+				"pr",
+				"projet"
 			],
 			[
-				"lis",
-				"liste_groupes"
+				"comm",
+				"communication"
+			],
+			[
+				"Comm",
+				"Communication"
+			],
+			[
+				"ele",
+				"eleve_id"
+			],
+			[
+				"elve",
+				"eleve_id"
+			],
+			[
+				"json_",
+				"json_encode"
+			],
+			[
+				"grou",
+				"groupe"
 			],
 			[
 				"for",
 				"for	for …"
 			],
 			[
+				"new",
+				"newDetail"
+			],
+			[
 				"liste",
+				"liste_controles"
+			],
+			[
+				"else",
+				"else	Twig : Else"
+			],
+			[
+				"note",
+				"note"
+			],
+			[
+				"noe",
+				"notes"
+			],
+			[
+				"con",
+				"controle"
+			],
+			[
+				"Cours",
+				"CoursRepository"
+			],
+			[
+				"pro",
+				"professeur"
+			],
+			[
+				"Dat",
+				"DateTime"
+			],
+			[
+				"cont",
+				"controles"
+			],
+			[
+				"eleve",
+				"eleve"
+			],
+			[
+				"Contr",
+				"Controle"
+			],
+			[
+				"Note",
+				"NoteBundle"
+			],
+			[
+				"bui",
+				"buildForm"
+			],
+			[
+				"elev",
+				"eleve"
+			],
+			[
+				"lis",
 				"liste_groupes"
 			],
 			[
@@ -132,10 +212,6 @@
 				"length=255"
 			],
 			[
-				"pro",
-				"prop"
-			],
-			[
 				"check",
 				"checkable"
 			],
@@ -222,10 +298,6 @@
 			[
 				"min",
 				"min-height"
-			],
-			[
-				"con",
-				"configuration"
 			],
 			[
 				"Col",
@@ -344,10 +416,6 @@
 				"message"
 			],
 			[
-				"eleve",
-				"eleves"
-			],
-			[
 				"elee",
 				"eleves"
 			],
@@ -404,10 +472,6 @@
 				"private"
 			],
 			[
-				"pr",
-				"private"
-			],
-			[
 				"setTy",
 				"setType"
 			],
@@ -450,70 +514,6 @@
 			[
 				"matiere",
 				"matieres"
-			],
-			[
-				"contr",
-				"controle"
-			],
-			[
-				"thro",
-				"throw	Throw Exception"
-			],
-			[
-				"nt",
-				"notes"
-			],
-			[
-				"usen",
-				"username"
-			],
-			[
-				"obg",
-				"ob_get_clean"
-			],
-			[
-				"getCO",
-				"getControle"
-			],
-			[
-				"las",
-				"last_horaire_used"
-			],
-			[
-				"is_a",
-				"is_array"
-			],
-			[
-				"cont",
-				"controle"
-			],
-			[
-				"noti",
-				"notification"
-			],
-			[
-				"comm",
-				"commentaire"
-			],
-			[
-				"else",
-				"else	Twig : Else"
-			],
-			[
-				"Notifi",
-				"NotificationBundle"
-			],
-			[
-				"notific",
-				"notification"
-			],
-			[
-				"Contr",
-				"Controle"
-			],
-			[
-				"G",
-				"Groupe"
 			]
 		]
 	},
@@ -523,13 +523,9 @@
 	"build_system": "Packages/User/PHP-Lint.sublime-build",
 	"command_palette":
 	{
-		"height": 227.0,
+		"height": 347.0,
 		"selected_items":
 		[
-			[
-				"toggle",
-				"View: Toggle Minimap"
-			],
 			[
 				"du",
 				"File: Duplicate"
@@ -539,12 +535,24 @@
 				"View: Toggle Side Bar"
 			],
 			[
+				"tabs",
+				"Indentation: Convert to Tabs"
+			],
+			[
 				"de",
 				"File: Delete"
 			],
 			[
-				"tabs",
-				"Indentation: Convert to Tabs"
+				"align",
+				"AlignTab: Table Mode"
+			],
+			[
+				"dupl",
+				"File: Duplicate"
+			],
+			[
+				"toggle",
+				"View: Toggle Minimap"
 			],
 			[
 				"inden",
@@ -553,10 +561,6 @@
 			[
 				"dele",
 				"File: Delete"
-			],
-			[
-				"align",
-				"AlignTab: Table Mode"
 			],
 			[
 				"rena",
@@ -585,10 +589,6 @@
 			[
 				"move",
 				"File: Move"
-			],
-			[
-				"dupl",
-				"File: Duplicate"
 			],
 			[
 				"d",
@@ -911,7 +911,7 @@
 				"Set Syntax: JavaScript"
 			]
 		],
-		"width": 449.0
+		"width": 575.0
 	},
 	"console":
 	{
@@ -928,12 +928,58 @@
 	},
 	"file_history":
 	[
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/EDTBundle/Entity/CoursRepository.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/CollaborationBundle/Entity/Sujet.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/CollaborationBundle/Resources/views/Communication/index.html.twig",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/CollaborationBundle/Resources/config/routing/communication.yml",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/ClasseBundle/Controller/GroupeController.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/CollaborationBundle/Controller/CommunicationController.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/HomeBundle/Resources/views/Visiteur/index.html.twig",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/CollaborationBundle/Entity/Communication.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/CollaborationBundle/Entity/Projet.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/CollaborationBundle/Resources/config/routing.yml",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/CollaborationBundle/Resources/views/Projet/edit.html.twig",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/CollaborationBundle/Controller/ProjetController.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/CollaborationBundle/Resources/views/Projet/delete.html.twig",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/ClasseBundle/Resources/views/Groupe/delete.html.twig",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/ClasseBundle/Entity/Groupe.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/app/config/security.yml",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/app/config/routing_dev.yml",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/app/config/routing.yml",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/composer.json",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/app/AppKernel.php",
+		"/Users/adrienbocquet/Sites/MAMP/KUB/app/config/config.yml",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/CollaborationBundle/Entity/ListeTaches.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/CollaborationBundle/Entity/Post.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/CollaborationBundle/Resources/views/layout.html.twig",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/ArianeBundle/Entity/Post.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/CollaborationBundle/Entity/Organisateur.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/CollaborationBundle/Resources/config/routing/organisation.yml",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/CollaborationBundle/Controller/OrganisationController.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NoteBundle/Entity/Controle.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NoteBundle/Resources/views/Professeur/index.html.twig",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NoteBundle/Entity/NoteRepository.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NoteBundle/Resources/config/routing.yml",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/EDTBundle/Entity/Cours.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NoteBundle/Controller/ProfesseurController.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NoteBundle/Resources/views/Professeur/choose_cours.html.twig",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NoteBundle/Form/Type/NoteEleveType.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NoteBundle/Form/Handler/NoteEleveHandler.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NoteBundle/Resources/views/Professeur/noter_eleve.html.twig",
+		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/CollaborationBundle/Resources/views/Organisation/show.html.twig",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NoteBundle/Entity/ControleRepository.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NoteBundle/Resources/views/Professeur/form.html.twig",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NoteBundle/Form/Type/ControleType.php",
+		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/NoteBundle/DataFixtures/ORM/LoadControleData.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/AbsenceBundle/Controller/ProfesseurController.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/EDTBundle/Entity/CoursRepository.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NoteBundle/Resources/views/Professeur/noter.html.twig",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/AbsenceBundle/Form/EventListener/addEleveFieldSuscriber.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NoteBundle/Form/Handler/ControleHandler.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NoteBundle/Form/Type/NoteType.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Entity/EleveRepository.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NoteBundle/Resources/views/Professeur/show_eleve.html.twig",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Entity/Eleve.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Resources/views/Show/show_eleve.html.twig",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NoteBundle/Resources/views/Professeur/choose_cours.html.twig",
 		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/NoteBundle/Resources/views/Professeur/index.html.twig",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/MessagerieBundle/Form/Handler/MessageHandler.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/MessagerieBundle/Controller/DefaultController.php",
@@ -941,7 +987,6 @@
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/RessourceBundle/Form/Type/RessourceType.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/CollaborationBundle/Resources/views/Fichier/go.html.twig",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/CollaborationBundle/Entity/Fichier.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/CollaborationBundle/Resources/config/routing.yml",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/CollaborationBundle/Form/Type/RessourceType.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NotificationBundle/Entity/Notification.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NotificationBundle/Entity/ArianeCommentaireNotification.php",
@@ -951,7 +996,6 @@
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NotificationBundle/Manager/NotificationManager.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NotificationBundle/Entity/NoteAddedNotification.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NotificationBundle/Resources/views/Show/show_content.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/HomeBundle/Resources/views/Visiteur/index.html.twig",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/ArianeBundle/Resources/views/Default/home.html.twig",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NotificationBundle/DependencyInjection/KubNotificationExtension.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/EDTBundle/TimeService/TimeService.php",
@@ -964,7 +1008,6 @@
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/EDTBundle/DataFixtures/ORM/LoadMatiereData.php",
 		"/Users/adrienbocquet/Sites/MAMP/KUB/web/ressources/sass/partials/_objects.scss",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/EDTBundle/DataFixtures/ORM/LoadCoursData.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/EDTBundle/Entity/Cours.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/web/ressources/jsmin/horaires.min.js",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/web/ressources/js/horaires.js",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/EDTBundle/Form/Type/HoraireType.php",
@@ -982,7 +1025,6 @@
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/CollaborationBundle/Form/Type/TacheType.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/CollaborationBundle/Resources/views/Projet/show.html.twig",
 		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/CollaborationBundle/Resources/views/Organisation/index.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/CollaborationBundle/Entity/ListeTaches.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/CollaborationBundle/Resources/config/routing/documentheque/ressource.yml",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/CollaborationBundle/Form/Type/FichierType.php",
 		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/CollaborationBundle/Controller/FichierController.php",
@@ -992,17 +1034,12 @@
 		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/RessourceBundle/Controller/ValidationController.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/CollaborationBundle/Controller/RessourceController.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/CollaborationBundle/Form/Handler/TacheHandler.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/CollaborationBundle/Resources/config/routing/organisation.yml",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/CollaborationBundle/Entity/Organisateur.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/ClasseBundle/Resources/views/Groupe/create.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/CollaborationBundle/Controller/OrganisationController.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/CollaborationBundle/Resources/views/Organisation/edit.html.twig",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/CollaborationBundle/Resources/views/Organisation/delete.html.twig",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/ArianeBundle/Resources/views/Commentaire/delete.html.twig",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/CollaborationBundle/Resources/views/Organisation/supprimer.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/CollaborationBundle/Entity/Projet.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/CollaborationBundle/Entity/Permission.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/CollaborationBundle/Resources/views/layout.html.twig",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/CollaborationBundle/Resources/views/Organisation/show.html.twig",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/CollaborationBundle/ParamConverter/ProjetConverter.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Entity/User.php",
@@ -1018,44 +1055,7 @@
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/CollaborationBundle/Resources/views/Organisation/create_content.html.twig",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/CollaborationBundle/Resources/views/Organisation/create.html.twig",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Form/Type/EleveType.php",
-		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/EDTBundle/Resources/views/Cours/edit.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/ClasseBundle/Resources/views/Groupe/create.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/ClasseBundle/Resources/views/Groupe/edit.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/ClasseBundle/Entity/Groupe.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/CollaborationBundle/Entity/ProjetRepository.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/ParamConverter/UserParamConverter.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/CollaborationBundle/Form/TacheType.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/ArianeBundle/Controller/PostController.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/web/ressources/js/ressources.js",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/ClasseBundle/Controller/GroupeController.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/CollaborationBundle/Form/Handler/FichierHandler.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/CollaborationBundle/Controller/ProjetController.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/CollaborationBundle/Resources/config/routing/documentheque/fichier.yml",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/CollaborationBundle/Resources/config/routing/documentheque.yml",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/CollaborationBundle/Entity/Ressource.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/CollaborationBundle/Controller/FichierController.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/app/config/routing_dev.yml",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/app/AppKernel.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/app/config/routing.yml",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/composer.json",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/CollaborationBundle/Form/Handler/ProjetHandler.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/CollaborationBundle/Form/FichierType.php",
-		"/Users/adrienbocquet/Sites/Sankoré/Calendrier/main.js",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/web/ressources/js/ariane.js",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/HomeBundle/Form/Type/FileType.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/HomeBundle/Entity/Ressource.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/HomeBundle/Form/Type/RessourceType.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/HomeBundle/Form/Handler/RessourceHandler.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/CollaborationBundle/Form/Handler/RessourceHandler.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/RessourceBundle/Form/Handler/RessourceHandler.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/RessourceBundle/Entity/Ressource.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/CollaborationBundle/Resources/views/Projet/create.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/CollaborationBundle/DataFixtures/ORM/LoadProjetData.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/ArianeBundle/DataFixtures/ORM/LoadCommentaireData.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/RessourceBundle/Entity/File.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/CollaborationBundle/Entity/File.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/RessourceBundle/Controller/DefaultController.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/CollaborationBundle/Resources/views/Ressource/create.html.twig"
+		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/EDTBundle/Resources/views/Cours/edit.html.twig"
 	],
 	"find":
 	{
@@ -1066,6 +1066,8 @@
 		"height": 93.0,
 		"where_history":
 		[
+			"/Users/adrienbocquet/Sites/MAMP/KUB/",
+			"/Users/adrienbocquet/Sites/MAMP/KUB/app",
 			"/Users/adrienbocquet/Sites/MAMP/KUB/src",
 			"/Users/adrienbocquet/Sites/MAMP/KUB/web,*.scss",
 			"/Users/adrienbocquet/Sites/MAMP/KUB/web",
@@ -1114,6 +1116,74 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"Organisateur",
+			"Tache",
+			"Organisateur",
+			"tache",
+			"Tache",
+			"$tache",
+			"Tache",
+			"irréversible",
+			"groupe",
+			"Applications/",
+			"/Application/",
+			"Application",
+			"User/",
+			"application",
+			"organisateur",
+			"documentheque",
+			"organisation",
+			"/**\n     * @var string\n     *\n     * @ORM\\Column(name=\"name\", type=\"string\", length=255)\n     */\n    private $name;",
+			"organisateur",
+			"nication_",
+			"tion_",
+			"_organisation_",
+			"kub_api_collaboration_organisation_tache_participe",
+			"_organisation_",
+			"Organisation",
+			":Organisation",
+			"Organisation",
+			"classe",
+			"username",
+			"=>",
+			"state",
+			"note",
+			"$.ajax",
+			"attr",
+			"select-controle",
+			") }}</span>",
+			") }}",
+			", {'attr': {'tabindex': '1'}",
+			"name_new",
+			"name",
+			"getGroupesAsString",
+			"return $name ;",
+			"nom",
+			"							",
+			"nom",
+			"groupe",
+			"$controle->setNom(",
+			"nom",
+			"absence",
+			"professeur",
+			"this",
+			"Note",
+			"eleve",
+			"groupe_id",
+			"findOneByGroupeIdAndProfesseurId",
+			"controles",
+			"] =",
+			"controles",
+			"\"></",
+			"Eleve",
+			"note.",
+			"note",
+			"ControleHandler",
+			"Controle",
+			"absence",
+			"cours",
+			"eleve",
+			"p>",
 			"pe }}",
 			" }}",
 			"groupe",
@@ -1173,75 +1243,7 @@
 			"visited",
 			"liensSurvoles",
 			"Rouge",
-			"orange",
-			"f73b40",
-			"f28fbe",
-			"22b6e6",
-			"80d625",
-			"pistache",
-			"235",
-			"fefefe",
-			"80d625",
-			"f2c72f",
-			"min-",
-			"striptags",
-			"case",
-			"<div",
-			"div",
-			"span",
-			"path",
-			"à bien",
-			"la Fichier",
-			"La Fichier",
-			"la Fichier",
-			"La Fichier",
-			"La fichier",
-			"ressource",
-			"20",
-			"tache",
-			"ul",
-			"$id = ",
-			"checked",
-			"tache",
-			"-",
-			"projet",
-			"attr",
-			"oizjfpojf",
-			"parent",
-			"$parent",
-			"parent",
-			"liste",
-			"parent",
-			"$parent",
-			"parent",
-			"taches",
-			"projet",
-			"id",
-			"article",
-			"article_id",
-			"ache",
-			"tache",
-			" 'Groupe",
-			"groupe",
-			"'groupe'",
-			"groupe",
-			"$checkbox[i]",
-			"tache{{",
-			"tache",
-			"liste{{",
-			"checkable",
-			"log",
-			"console",
-			").",
-			"children",
-			"tache",
-			"false",
-			"id",
-			"doctrine.",
-			"o'",
-			"'o",
-			"listeTaches",
-			"\""
+			"orange"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1361,16 +1363,256 @@
 		"selected_items":
 		[
 			[
+				"groupecontr",
+				"src/Kub/ClasseBundle/Controller/GroupeController.php"
+			],
+			[
+				"homebundleinde",
+				"src/Kub/HomeBundle/Resources/views/Visiteur/index.html.twig"
+			],
+			[
+				"sujet",
+				"src/Kub/CollaborationBundle/Entity/Sujet.php"
+			],
+			[
+				"commindex",
+				"src/Kub/CollaborationBundle/Resources/views/Communication/index.html.twig"
+			],
+			[
+				"commyml",
+				"src/Kub/CollaborationBundle/Resources/config/routing/communication.yml"
+			],
+			[
+				"comm",
+				"src/Kub/CollaborationBundle/Entity/Communication.php"
+			],
+			[
+				"communi",
+				"src/Kub/CollaborationBundle/Controller/CommunicationController.php"
+			],
+			[
+				"collprojettwi",
+				"src/Kub/CollaborationBundle/Resources/views/Projet/edit.html.twig"
+			],
+			[
+				"groudele",
+				"src/Kub/ClasseBundle/Resources/views/Groupe/delete.html.twig"
+			],
+			[
+				"collrout",
+				"src/Kub/CollaborationBundle/Resources/config/routing.yml"
+			],
+			[
+				"groucontro",
+				"src/Kub/ClasseBundle/Controller/GroupeController.php"
+			],
+			[
+				"groupe",
+				"src/Kub/ClasseBundle/Entity/Groupe.php"
+			],
+			[
+				"projetcon",
+				"src/Kub/CollaborationBundle/Controller/ProjetController.php"
+			],
+			[
+				"secu",
+				"app/config/security.yml"
+			],
+			[
+				"routindev",
+				"app/config/routing_dev.yml"
+			],
+			[
+				"routing",
+				"app/config/routing.yml"
+			],
+			[
+				"com",
+				"composer.json"
+			],
+			[
+				"appker",
+				"app/AppKernel.php"
+			],
+			[
+				"coomuinde",
+				"src/Kub/CollaborationBundle/Resources/views/Communication/index.html.twig"
+			],
+			[
+				"suje",
+				"src/Kub/CollaborationBundle/Entity/Sujet.php"
+			],
+			[
+				"projet",
+				"src/Kub/CollaborationBundle/Entity/Projet.php"
+			],
+			[
+				"commu",
+				"src/Kub/CollaborationBundle/Entity/Communication.php"
+			],
+			[
+				"collrouting",
+				"src/Kub/CollaborationBundle/Resources/config/routing.yml"
+			],
+			[
+				"layout",
+				"src/Kub/CollaborationBundle/Resources/views/layout.html.twig"
+			],
+			[
+				"post",
+				"src/Kub/ArianeBundle/Entity/Post.php"
+			],
+			[
+				"liste",
+				"src/Kub/CollaborationBundle/Entity/ListeTaches.php"
+			],
+			[
+				"org",
+				"src/Kub/CollaborationBundle/Entity/Organisateur.php"
+			],
+			[
+				"orgnyml",
+				"src/Kub/CollaborationBundle/Resources/config/routing/organisation.yml"
+			],
+			[
+				"orgna",
+				"src/Kub/CollaborationBundle/Controller/OrganisationController.php"
+			],
+			[
+				"controle",
+				"src/Kub/NoteBundle/Entity/Controle.php"
+			],
+			[
+				"noteprofesseurtwig",
+				"src/Kub/NoteBundle/Resources/views/Professeur/index.html.twig"
+			],
+			[
+				"noterepo",
+				"src/Kub/NoteBundle/Entity/NoteRepository.php"
+			],
+			[
+				"orgnai",
+				"src/Kub/CollaborationBundle/Controller/OrganisationController.php"
+			],
+			[
+				"orgnaiyml",
+				"src/Kub/CollaborationBundle/Resources/config/routing/organisation.yml"
+			],
+			[
+				"noterouting",
+				"src/Kub/NoteBundle/Resources/config/routing.yml"
+			],
+			[
+				"controlrepo",
+				"src/Kub/NoteBundle/Entity/ControleRepository.php"
+			],
+			[
+				"cours",
+				"src/Kub/EDTBundle/Entity/Cours.php"
+			],
+			[
+				"noter_ele",
+				"src/Kub/NoteBundle/Resources/views/Professeur/noter_eleve.html.twig"
+			],
+			[
+				"noteform",
+				"src/Kub/NoteBundle/Resources/views/Professeur/form.html.twig"
+			],
+			[
+				"noteprofe",
+				"src/Kub/NoteBundle/Controller/ProfesseurController.php"
+			],
+			[
+				"noteinde",
+				"src/Kub/NoteBundle/Resources/views/Professeur/index.html.twig"
+			],
+			[
+				"controlty",
+				"src/Kub/NoteBundle/Form/Type/ControleType.php"
+			],
+			[
+				"contro",
+				"src/Kub/NoteBundle/Entity/Controle.php"
+			],
+			[
+				"noteprofcontr",
+				"src/Kub/NoteBundle/Controller/ProfesseurController.php"
+			],
+			[
+				"professcontr",
+				"src/Kub/AbsenceBundle/Controller/ProfesseurController.php"
+			],
+			[
+				"notepr",
+				"src/Kub/NoteBundle/Controller/ProfesseurController.php"
+			],
+			[
+				"noteele",
+				"src/Kub/NoteBundle/Form/Handler/NoteEleveHandler.php"
+			],
+			[
+				"coursrepo",
+				"src/Kub/EDTBundle/Entity/CoursRepository.php"
+			],
+			[
+				"noteprof",
+				"src/Kub/NoteBundle/Controller/ProfesseurController.php"
+			],
+			[
+				"addele",
+				"src/Kub/AbsenceBundle/Form/EventListener/addEleveFieldSuscriber.php"
+			],
+			[
+				"controlrepos",
+				"src/Kub/NoteBundle/Entity/ControleRepository.php"
+			],
+			[
+				"controty",
+				"src/Kub/NoteBundle/Form/Type/ControleType.php"
+			],
+			[
+				"noteproform",
+				"src/Kub/NoteBundle/Resources/views/Professeur/form.html.twig"
+			],
+			[
+				"noterhtml",
+				"src/Kub/NoteBundle/Resources/views/Professeur/noter.html.twig"
+			],
+			[
+				"notehand",
+				"src/Kub/NoteBundle/Form/Handler/ControleHandler.php"
+			],
+			[
+				"notety",
+				"src/Kub/NoteBundle/Form/Type/NoteType.php"
+			],
+			[
+				"elerepo",
+				"src/Kub/UserBundle/Entity/EleveRepository.php"
+			],
+			[
+				"elev",
+				"src/Kub/UserBundle/Entity/Eleve.php"
+			],
+			[
+				"eleverepo",
+				"src/Kub/UserBundle/Entity/EleveRepository.php"
+			],
+			[
+				"userbundleshow",
+				"src/Kub/UserBundle/Resources/views/Show/show_eleve.html.twig"
+			],
+			[
+				"noteprofesseur",
+				"src/Kub/NoteBundle/Controller/ProfesseurController.php"
+			],
+			[
 				"noter",
 				"src/Kub/NoteBundle/Resources/views/Professeur/noter.html.twig"
 			],
 			[
 				"notprofesseurtwi",
 				"src/Kub/NoteBundle/Resources/views/Professeur/index.html.twig"
-			],
-			[
-				"noterouting",
-				"src/Kub/NoteBundle/Resources/config/routing.yml"
 			],
 			[
 				"notbundroutin",
@@ -1383,10 +1625,6 @@
 			[
 				"messagehandler",
 				"src/Kub/MessagerieBundle/Form/Handler/MessageHandler.php"
-			],
-			[
-				"coursrepo",
-				"src/Kub/EDTBundle/Entity/CoursRepository.php"
 			],
 			[
 				"noteprofesseurhtml",
@@ -1549,10 +1787,6 @@
 				"web/ressources/sass/partials/_colors.scss"
 			],
 			[
-				"liste",
-				"src/Kub/CollaborationBundle/Entity/ListeTaches.php"
-			],
-			[
 				"lis",
 				"src/Kub/CollaborationBundle/Entity/ListeTaches.php"
 			],
@@ -1625,16 +1859,8 @@
 				"src/Kub/CollaborationBundle/Entity/Permission.php"
 			],
 			[
-				"projet",
-				"src/Kub/CollaborationBundle/Entity/Projet.php"
-			],
-			[
 				"collroutin",
 				"src/Kub/CollaborationBundle/Resources/config/routing.yml"
-			],
-			[
-				"layout",
-				"src/Kub/CollaborationBundle/Resources/views/layout.html.twig"
 			],
 			[
 				"orgnaisatio",
@@ -1645,232 +1871,8 @@
 				"src/Kub/CollaborationBundle/Resources/views/Organisation/index.html.twig"
 			],
 			[
-				"projetcon",
-				"src/Kub/CollaborationBundle/ParamConverter/ProjetConverter.php"
-			],
-			[
 				"user",
 				"src/Kub/UserBundle/Entity/User.php"
-			],
-			[
-				"organisatiocont",
-				"src/Kub/CollaborationBundle/Controller/OrganisationController.php"
-			],
-			[
-				"tachty",
-				"src/Kub/CollaborationBundle/Form/Type/TacheType.php"
-			],
-			[
-				"orgcontro",
-				"src/Kub/CollaborationBundle/Controller/OrganisationController.php"
-			],
-			[
-				"orgna",
-				"src/Kub/CollaborationBundle/Entity/Organisateur.php"
-			],
-			[
-				"orgayml",
-				"src/Kub/CollaborationBundle/Resources/config/routing/organisation.yml"
-			],
-			[
-				"organisationinde",
-				"src/Kub/CollaborationBundle/Resources/views/Organisation/index.html.twig"
-			],
-			[
-				"listeta",
-				"src/Kub/CollaborationBundle/Entity/ListeTaches.php"
-			],
-			[
-				"oegnayml",
-				"src/Kub/CollaborationBundle/Resources/config/routing/organisation.yml"
-			],
-			[
-				"organi",
-				"src/Kub/CollaborationBundle/Controller/OrganisationController.php"
-			],
-			[
-				"homerouting",
-				"src/Kub/HomeBundle/Resources/config/routing.yml"
-			],
-			[
-				"logincont",
-				"src/Kub/UserBundle/Resources/views/Security/login_content.html.twig"
-			],
-			[
-				"login",
-				"src/Kub/UserBundle/Resources/views/Security/login.html.twig"
-			],
-			[
-				"indextwig",
-				"src/Kub/CollaborationBundle/Resources/views/Default/index.html.twig"
-			],
-			[
-				"indextw",
-				"src/Kub/CollaborationBundle/Resources/views/Organisation/index.html.twig"
-			],
-			[
-				"organindex",
-				"src/Kub/CollaborationBundle/Resources/views/Organisation/index.html.twig"
-			],
-			[
-				"tacheha",
-				"src/Kub/CollaborationBundle/Form/Handler/TacheHandler.php"
-			],
-			[
-				"orgnasatio",
-				"src/Kub/CollaborationBundle/Resources/config/routing/organisation.yml"
-			],
-			[
-				"listetac",
-				"src/Kub/CollaborationBundle/Entity/ListeTaches.php"
-			],
-			[
-				"collcrec",
-				"src/Kub/CollaborationBundle/Resources/views/Organisation/create_content.html.twig"
-			],
-			[
-				"orgnayml",
-				"src/Kub/CollaborationBundle/Resources/config/routing/organisation.yml"
-			],
-			[
-				"org",
-				"src/Kub/CollaborationBundle/Controller/OrganisationController.php"
-			],
-			[
-				"create_cont",
-				"src/Kub/CollaborationBundle/Resources/views/Organisation/create_content.html.twig"
-			],
-			[
-				"taches",
-				"src/Kub/CollaborationBundle/Entity/ListeTaches.php"
-			],
-			[
-				"groupe",
-				"src/Kub/ClasseBundle/Entity/Groupe.php"
-			],
-			[
-				"orgnatio",
-				"src/Kub/CollaborationBundle/Resources/views/Organisation/index.html.twig"
-			],
-			[
-				"organsine",
-				"src/Kub/CollaborationBundle/Resources/views/Organisation/index.html.twig"
-			],
-			[
-				"projetrepo",
-				"src/Kub/CollaborationBundle/Entity/ProjetRepository.php"
-			],
-			[
-				"paramconverter",
-				"src/Kub/CollaborationBundle/ParamConverter/ProjetConverter.php"
-			],
-			[
-				"paramcon",
-				"src/Kub/UserBundle/ParamConverter/UserParamConverter.php"
-			],
-			[
-				"menubu",
-				"src/Kub/UserBundle/Menu/MenuBuilder.php"
-			],
-			[
-				"or",
-				"src/Kub/CollaborationBundle/Entity/Organisateur.php"
-			],
-			[
-				"ress",
-				"web/ressources/js/ressources.js"
-			],
-			[
-				"ressourcetype",
-				"src/Kub/RessourceBundle/Form/Type/RessourceType.php"
-			],
-			[
-				"arianecontroller",
-				"src/Kub/ArianeBundle/Controller/PostController.php"
-			],
-			[
-				"menubuil",
-				"src/Kub/UserBundle/Menu/MenuBuilder.php"
-			],
-			[
-				"groupecontroll",
-				"src/Kub/ClasseBundle/Controller/GroupeController.php"
-			],
-			[
-				"orgnat",
-				"src/Kub/CollaborationBundle/Controller/OrganisationController.php"
-			],
-			[
-				"listet",
-				"src/Kub/CollaborationBundle/Entity/ListeTaches.php"
-			],
-			[
-				"collaborationfichierhande",
-				"src/Kub/CollaborationBundle/Form/Handler/FichierHandler.php"
-			],
-			[
-				"collaboracontroler",
-				"src/Kub/CollaborationBundle/Controller/ProjetController.php"
-			],
-			[
-				"collaborationcontr",
-				"src/Kub/CollaborationBundle/Controller/OrganisationController.php"
-			],
-			[
-				"fichieryml",
-				"src/Kub/CollaborationBundle/Resources/config/routing/documentheque/fichier.yml"
-			],
-			[
-				"docuem",
-				"src/Kub/CollaborationBundle/Resources/config/routing/documentheque.yml"
-			],
-			[
-				"collaborationreoutin",
-				"src/Kub/CollaborationBundle/Resources/config/routing.yml"
-			],
-			[
-				"collaroutin",
-				"src/Kub/CollaborationBundle/Resources/config/routing.yml"
-			],
-			[
-				"menubi",
-				"src/Kub/UserBundle/Menu/MenuBuilder.php"
-			],
-			[
-				"collabofiche",
-				"src/Kub/CollaborationBundle/Entity/Fichier.php"
-			],
-			[
-				"collaborationress",
-				"src/Kub/CollaborationBundle/Entity/Ressource.php"
-			],
-			[
-				"kerne",
-				"app/AppKernel.php"
-			],
-			[
-				"routindev",
-				"app/config/routing_dev.yml"
-			],
-			[
-				"routing",
-				"app/config/routing.yml"
-			],
-			[
-				"composer",
-				"composer.json"
-			],
-			[
-				"fichiercontroller",
-				"src/Kub/CollaborationBundle/Controller/FichierController.php"
-			],
-			[
-				"collaborshow",
-				"src/Kub/CollaborationBundle/Resources/views/Documentheque/show.html.twig"
-			],
-			[
-				"ressourceyml",
-				"src/Kub/CollaborationBundle/Resources/config/routing/documentheque/ressource.yml"
 			]
 		],
 		"width": 0.0

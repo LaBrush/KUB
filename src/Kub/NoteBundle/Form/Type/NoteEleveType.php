@@ -54,7 +54,6 @@ class NoteEleveType extends NoteType
 					'Controles ou l\'élève n\'a pas de note' => $no_note
 				),
 				'mapped' => false
-
 			))
 			->add('cours_new', 'entity', array(
 
