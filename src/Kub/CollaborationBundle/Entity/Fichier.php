@@ -67,7 +67,7 @@ class Fichier
 		$domain = '';
 		switch ($this->type) {
 			case self::PAD:
-				$domain = "http://www.openetherpad.org/p/";
+				$domain = "https://notes.typo3.org/p/";
 				break;
 			case self::CALC:
 				$domain = "http://ethercalc.crdp.ac-versailles.fr/";
