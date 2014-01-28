@@ -40,13 +40,22 @@
 
 							{% if thread.users|length > 1 %}
 								{% for receveur in thread.users %}
-									{% if receveur.id != app.user.id %}
+									{% if receveur.id != app.user.id and loop.last == false %}
+										<strong> {{ receveur }}, </strong>
+									{% endif %}
+
+									{% if receveur.id != app.user.id and loop.last == true %}
 										<strong> {{ receveur }} </strong>
 									{% endif %}
 								{% endfor %}
 
 								{% for receveur in thread.groupes %}
-									<strong> {{ receveur }} </strong>
+									{% if loop.last == false %}
+										<strong> {{ receveur }}, </strong>
+									{% else %}
+										<strong> {{ receveur }} </strong>
+									{% endif %}
+									
 								{% endfor %}
 							{% else %}
 								vous même

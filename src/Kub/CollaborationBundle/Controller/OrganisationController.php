@@ -60,6 +60,7 @@ class OrganisationController extends Controller
 
 		return $this->render('KubCollaborationBundle:Organisation:' . $template . '.html.twig',
 			array(
+				'projet' => $projet,
 				'form' => $form->createView(),
 				'tache' => $tache
 			)

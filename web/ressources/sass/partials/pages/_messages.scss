@@ -14,6 +14,11 @@
 	}
 }
 
+.actions-messages
+{
+	float: right;
+}
+
 .delete-message, .undelete-message
 {
 	font-size: 0.8em;
@@ -119,6 +124,7 @@
 	.sender
 	{
 		float: left;
+		cursor: pointer;
 	}
 
 	.recever

@@ -1,11 +1,29 @@
 {% extends 'KubCollaborationBundle::layout.html.twig' %}
 
-{% block content %}
-    
-	<article class="article">
-		
-		{% include 'KubCollaborationBundle:Ressource:form.html.twig' with { form: form } only %}
+{% block title %}
+	{{ parent() }} - Ajouter une ressource
+{% endblock %}
 
+{% block content %}
+
+	<h3 class="h2 article">Ajouter une ressource</h3>
+
+	<article class="article">
+		{{ form_start(form, { 'attr': {'class': 'formulaire-creation'} }) }}
+
+			{% include "KubCollaborationBundle:Ressource:form.html.twig" %}
+
+			<span class="validate">
+				<input class="button-yes" type="submit">
+				<a class="button" href="{{ path('kub_collaboration_documentheque_show', { slug: projet.slug }) }}">Annuler</a>
+			</span>
+		{{ form_end(form) }}
 	</article>
 
+{% endblock %}
+
+{% block js %}
+
+	<script type="text/javascript" src="{{ asset('ressources/jsmin/ressources.min.js') }}"></script>
+    
 {% endblock %}

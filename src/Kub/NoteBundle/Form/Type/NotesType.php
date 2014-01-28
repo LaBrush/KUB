@@ -26,7 +26,6 @@ class NotesType extends AbstractType
 			$note->setEleve( $this->eleves[$i] );
 
 			$builder->add($i, new NoteType(), array(
-				"mapped" => false,
 				"label" => $note->getEleve(),
 				"data_class" => "Kub\NoteBundle\Entity\Note",
 				"mapped" => false

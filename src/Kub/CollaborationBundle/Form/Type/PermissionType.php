@@ -17,7 +17,10 @@ class PermissionType extends AbstractType
 	public function buildForm(FormBuilderInterface $builder, array $options)
 	{
 		$builder
-			->add('user')
+			->add('user', 'genemu_jqueryselect2_entity', array(
+				'class' => "Kub\UserBundle\Entity\User",
+				"multiple" => false
+			))
 			->add('role', 'choice', array(
 
 				"choices" => array(

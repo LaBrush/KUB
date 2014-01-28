@@ -35,4 +35,5 @@ $(function() {
 		.parent().parent().find(':checkbox')
 		.prop('checked', that.val() != "" );
 	});
+
 });

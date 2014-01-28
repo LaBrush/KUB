@@ -43,7 +43,7 @@
 	</article>
 
 	<article class="article">
-		{{ render(controller('KubCollaborationBundle:Organisation:create', { projet: projet })) }}
+		<a href="{{ path('kub_collaboration_organisation_create', { slug: projet.slug }) }}" class="button-yes">Ajouter une tache</a>
 	</article>
 
 {% endblock %}

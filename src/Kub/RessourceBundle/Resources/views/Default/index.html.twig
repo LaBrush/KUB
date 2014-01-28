@@ -25,9 +25,30 @@
 						<li class="ressource in-list {{ ressource.type }} {{ ressource.niveau }} {{ ressource.matiere }}" data-author='{{ ressource.auteur }}'>
 
 							<span class="label">{{ ressource.titre }}</span>
+<<<<<<< HEAD
 							
+=======
+
+							{#{% if ressource.type == 'web' %}
+							
+								<iframe class="preview" src="about:blank"></iframe>
+							
+							{% elseif ressource.type == 'file' %}
+								
+								<img class="preview" src="about:blank" alt="{{ ressource.titre }}">			
+
+							{% endif %}#}
+
+>>>>>>> 80a93b0d0cf5abddfb05a8ea4172c5d258ee700c
 							<div class="details">
-								<span class="infos">{{ ressource.description }}</span>				
+								<span class="infos">
+									{% set length = ressource.description | length %}
+									{% if length < 46 %}
+										{{ ressource.description }}
+									{% else %}
+										{{ ressource.description | slice(0, 45) }}...
+									{% endif %}
+									</span>				
 								<span class="infos-complementaires"><em><strong>{{ ressource.auteur }}</strong> {{ ressource.matiere }} {{ ressource.niveau | lower }}</em></span>
 							</div>
 

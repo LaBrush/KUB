@@ -32,12 +32,12 @@ $message-envoye: 		#ccffa3;
 
 /******************************************************************************/
 /* Objets */
-$orange:      			#e67e22;  // orange
-$jaune: 				#f2c72f;  // Jaune
-$vert: 					#80d625;  // Vert
-$bleu: 					#22b6e6;  // Bleu
-$rose:					#f28fbe;  // Rose
-$rouge: 				#f73b40;  // Rouge
+$orange:      			#e67e22;
+$jaune: 				#f2c72f;
+$vert: 					#80d625;
+$bleu: 					#22b6e6;
+$rose:					#f28fbe;
+$rouge: 				#f73b40;
 
 
 $accueil: 				$orange;
@@ -48,14 +48,16 @@ $groupes: 				$rose;
 $bigbro: 				$rouge;
 
 
-$utilisateurs: 			#f2c72f;
-$groupes: 				#80d625;
+$utilisateurs: 			$jaune;
+$groupes-professeur: 	$vert;
+$ressources-professeur: $bleu;
+$agenda-professeur: 	$rose;
 
 
 $button-color: 			#fefefe;
 $button: 				$accueil;
-$button-yes: 			#80d625;
-$button-no: 			#f73b40;
+$button-yes: 			$vert;
+$button-no: 			$rouge;
 
 
 
@@ -63,5 +65,5 @@ $button-no: 			#f73b40;
 /* Typo */
 $texte:         		#5d5e64;
 $liens:         		#4478a2;
-$liensSurvoles: 		none;
+$liensSurvoles: 		#7d7e83;
 $color-light:   		#fefefe;

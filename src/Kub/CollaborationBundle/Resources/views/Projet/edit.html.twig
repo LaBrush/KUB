@@ -1,17 +1,71 @@
 {% extends 'KubCollaborationBundle::layout.html.twig' %}
 
 {% block content %}
-    
-	<article class="article">
-		
-		{% include 'KubCollaborationBundle:Projet:form.html.twig' with { form: form } only %}
 
+	<article class="article">
+		<h3 class="h2">Options</h3>
+		
+		{{ form_start(form, { 'attr': {'class': 'formulaire-creation'} }) }}
+
+			{% include "KubCollaborationBundle:Projet:form.html.twig" %}
+
+			<span class="validate">
+				<input class="button-yes" type="submit">
+				<a class="button" href="{{ path('kub_collaboration_homepage') }}">Annuler</a>
+			</span>
+		{{ form_end(form) }}
 	</article>
 
+<<<<<<< HEAD
 	<article class="article">
 		
 		<p><a class="button-no" href="{{ path('kub_collaboration_projet_delete', { slug: projet.slug }) }}">Supprimer le projet</a></p>
 
 	</article>
+=======
+{% endblock %}
+
+
+{% block js %}
+
+	<script type="text/javascript" src="{{ asset('ressources/select2/select2.min.js') }}"></script>
+	<link rel="stylesheet" href="{{ asset('ressources/select2/select2.css') }}" />
+	{{ form_javascript(form) }}
+	
+	<script>
+		// garde une trace du nombre de champs permissions qui ont été affichés
+		var tuteurCount = '{{ form.permissions | length }}';
+
+		$(document).ready(function() {
+
+			$('.add-another-permissions').click(function() {
+				var tuteurList = $('.permissions-add');
+
+				var newWidget = tuteurList.attr('data-prototype');
+				newWidget = newWidget.replace(/__name__/g, tuteurCount);
+
+				var newLi = $('<div class="permissions"></div>').html(newWidget);
+				addTagFormDeleteLink(newLi);
+				newLi.appendTo(tuteurList);
+				
+				$field = $('#kub_collaborationbundle_projet_permissions_' + tuteurCount + '_user');
+                $field.select2([]);
+
+                tuteurCount++;
+
+				return false;
+			});
+
+			function addTagFormDeleteLink($tagFormLi) {
+				var $removeFormA = $('<a href="#" class="button-no delete-permission">Supprimer cet utilisateur</a>');
+				$tagFormLi.append($removeFormA);
+
+				$removeFormA.on('click', function() {
+					$tagFormLi.remove();
+				});
+			}
+		})
+	</script>
+>>>>>>> 80a93b0d0cf5abddfb05a8ea4172c5d258ee700c
 
 {% endblock %}

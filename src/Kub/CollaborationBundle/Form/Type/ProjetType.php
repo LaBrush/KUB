@@ -19,7 +19,9 @@ class ProjetType extends AbstractType
 			->add('dateFin')
 			->add('description')
 			->add('permissions', 'collection', array(
-				'type' => new PermissionType
+				'type' => new PermissionType,
+				'allow_add' => true,
+                'allow_delete' => true
 			))
 		;
 	}

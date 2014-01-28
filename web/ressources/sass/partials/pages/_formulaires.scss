@@ -55,6 +55,7 @@
 	.nom, .mobile
 	{
 		margin: 0 0 0 20px;
+		vertical-align: bottom;
 
 		@media all and (max-width: 650px)
 		{
@@ -123,6 +124,11 @@
 	{
 		margin-top: 11px;
 		float: right;
+
+		.button
+		{
+			margin: 0 5px 0 0;
+		}
 	}
 
 	.img-downloaded

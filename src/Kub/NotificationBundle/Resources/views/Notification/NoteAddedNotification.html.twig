@@ -1,0 +1,7 @@
+{% extends 'KubNotificationBundle:Notification:Notification.html.twig' %}
+
+{% block content %}
+    <p>
+    	<strong>{{ notification.auteur }}</strong> vous à ajouté la note de <strong>{{ notification.note }}</strong> <!-- à <strong>{{ notification.note.eleve }}</strong>  -->en <strong>{{ notification.note.matiere }}</strong>
+    </p>
+{% endblock %}
