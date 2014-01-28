@@ -16,33 +16,63 @@
 		<label for="search-in-list">Chercher dans la liste :</label>
 		<input id="search-in-list" type="text">
 
-		<ul class="list">
-			{% set empty = 0 %}
+		<div class="documentheque">
+			<div class="documentheque-ressources">
+				<h3>Ressources</h3>
+				<ul class="list">
+					{% set empty = false %}
 
-			{% for ressource in documentheque.ressources %}
-				<li class="in-list li-list">{{ ressource }} - 
-					<a href="{{ path('kub_collaboration_documentheque_ressource_show', { slug: projet.slug, id: ressource.id}) }}">Voir</a> - 
-					<a href="{{ path('kub_collaboration_documentheque_ressource_edit', { slug: projet.slug, id: ressource.id}) }}">Modifier</a>
-				</li>
-			{% else %}
-				{% set empty = empty + 1 %}
-			{% endfor %}
-			
-			{% for fichier in documentheque.fichiers %}
-				<a href="{{ path('kub_collaboration_documentheque_fichier_go', { slug: projet.slug, id: fichier.id}) }}">
-					<li class="in-list li-list">
-						{{ fichier }}
-					</li>
-				</a>
-			{% else %}
-				{% set empty = empty + 1 %}
-			{% endfor %}
+					{% for ressource in documentheque.ressources %}
+						<li class="ressource in-list li-list">
+							<span class="label">{{ ressource.titre }}</span>
+							<div class="details">
+								<span class="infos">
+									{% set length = ressource.description | length %}
+									{% if length < 46 %}
+										{{ ressource.description }}
+									{% else %}
+										{{ ressource.description | slice(0, 45) }}...
+									{% endif %}
+									</span>				
+								<span class="infos-complementaires"><em><strong>{{ ressource.auteur }}</strong> {{ ressource.matiere }} {{ ressource.niveau | lower }}</em></span>
+							</div>
+							<a href="{{ path('kub_collaboration_documentheque_ressource_show', { slug: projet.slug, id: ressource.id}) }}">Voir</a> - 
+							<a href="{{ path('kub_collaboration_documentheque_ressource_edit', { slug: projet.slug, id: ressource.id}) }}">Modifier</a>
+						</li>
+					{% else %}
+						{% set empty = true %}
+					{% endfor %}
+					
+					{% if empty == true %}
+						<p class="error">Il n'y a aucune ressource</p>
+					{% endif %}
 
-			{% if empty == 2 %}
-				<p class="error">Il n'y a aucun document</p>
-			{% endif %}
+				</ul>
+			</div>
 
-		</ul>
+			<div class="documentheque-fichiers">
+				<h3>Fichiers</h3>
+				<ul class="list">
+					{% set empty = false %}
+
+					{% for fichier in documentheque.fichiers %}
+						<a href="{{ path('kub_collaboration_documentheque_fichier_go', { slug: projet.slug, id: fichier.id}) }}">
+							<li class="in-list li-list">
+								{{ fichier }}
+							</li>
+						</a>
+					{% else %}
+						{% set empty = true %}
+					{% endfor %}
+
+					{% if empty == true %}
+						<p class="error">Il n'y a aucun fichier</p>
+					{% endif %}
+
+				</ul>
+			</div>
+		</div>
+
 	</article>
 
 {% endblock %}

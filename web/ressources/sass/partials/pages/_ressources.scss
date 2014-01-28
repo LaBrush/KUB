@@ -102,7 +102,7 @@
 	float: right;
 	position: fixed;
 	@include box-sizing(border-box);
-	border-left: 2px $table-border solid;
+	border-left: 2px $border solid;
 	margin: 25px 0 0 5px;
 
 	.wrap

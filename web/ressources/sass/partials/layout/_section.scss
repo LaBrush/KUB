@@ -54,6 +54,7 @@
 
 	padding: 10px;
 	background: $error;
+	@include border-radius(2px);
 }
 
 
