@@ -26,7 +26,7 @@ class DisplayEDTExtension extends \Twig_Extension
 
 		return $this->templating->render('KubEDTBundle:EDT:show.html.twig',array(
 
-			'liste_jours' => $this->time->getJours(),
+			'liste_horaires' => $this->time->getHoraires(),
 			'edt' => $edt,
 
 		));	

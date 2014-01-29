@@ -1,228 +1,65 @@
-<table class="edt">
+{% set size = 20 %}
+
+<style>
 	
-	<tr>
-		
-		<td class="hour-bottom-solid"></th>
+	.edt ul {
+		float: left ;
+		max-width:  15% ;
+	}
 
-		{% for jour in liste_jours %}
+	.edt li {
+		overflow: hidden;
+		padding: 0;
+	}
 
-			<th>{{ jour|capitalize }}</th>
+	article.article {
+		width: 95%;
+		max-width: 95%;
 
-		{% endfor %}
+		margin-left: 10% ;
+	}
 
-	</tr>
+	@media screen and (max-width: 960px) {
+		article.article {
+			margin-left: 0 ;
+		}
+	}
 
-	{% for interval in edt %}
-		<div>
-		   	{# Traitement de la ligne des heures #}
+</style>
 
-			{% set hour = interval.horaire|date('H:i') %}
-			{% set class = "" %}
+<div class="edt">
+	
+	<ul>
+		<li></li>
 
-			{% set show = true %}
+		{% for horaire in liste_horaires %}
+			{% if loop.index % 2 == 1 and loop.index != loop.last %}
+				<li style="height: {{ size * 2 }}px">
+					
+					<span class="sup">{{ horaire | date_modify("+5 minutes") | date('H\\hi') }}</span>
+					<br>
+					<span class="sub">{{ liste_horaires[loop.index+1] | date('H\\hi') }}</span>
 
-			{% set heuremax = null %}
-
-
-			{% if hour == "07:55" %}
-				
-					{% set hour = "8h" %}
-					{% set class = "hour-bottom-dashed" %}
-
-			{% elseif hour == "08:25" %}
-
-					{% set hour = "8h55" %}
-					{% set class = "hour-bottom-solid" %}
-
-			{% elseif hour == "08:55" %}
-
-					{% set show = false %}
-
-			{% elseif hour == "09:00" %}
-
-					{% set hour = "9h" %}
-					{% set class = "hour-bottom-dashed" %}
-
-			{% elseif hour == "09:25" %}
-
-					{% set hour = "9h50" %}
-					{% set class = "hour-bottom-solid" %}
-
-			{% elseif hour == "09:50" %}
-
-					{% set show = false %}
-
-			{% elseif hour == "10:00" %}
-
-					{% set hour = "10h05" %}
-					{% set class = "hour-bottom-dashed" %}
-
-			{% elseif hour == "10:25" %}
-
-					{% set hour = "11h" %}
-					{% set class = "hour-bottom-solid" %}
-
-			{% elseif hour == "10:55" %}
-
-					{% set show = false %}
-
-			{% elseif hour == "11:00" %}
-		
-					{% set hour = "11h05" %}
-					{% set class = "hour-bottom-dashed" %}
-
-			{% elseif hour == "11:25" %}
-		
-					{% set hour = "11h55" %}
-					{% set class = "hour-bottom-solid" %}
-
-			{% elseif hour == "11:55" %}
-
-					{% set show = false %}
-
-			{% elseif hour == "12:00" %}
-		
-					{% set hour = "12h" %}
-					{% set class = "hour-bottom-dashed" %}
-
-			{% elseif hour == "12:25" %}
-
-					{% set hour = "13h" %}
-					{% set class = "hour-bottom-solid" %}
-
-			{% elseif hour == "12:55" %}
-
-					{% set hour = "" %}
-					{% set class = "hour-bottom-solid" %}
-
-					{% set heuremax = interval.horaire %}
-
-			{% elseif hour == "13:25" %}
-		
-					{% set hour = "13h30" %}
-					{% set class = "hour-bottom-dashed" %}
-
-			{% elseif hour == "13:55" %}
-		
-					{% set hour = "14h25" %}
-					{% set class = "hour-bottom-solid" %}
-
-			{% elseif hour == "14:25" %}
-		
-					{% set hour = "14h30" %}
-					{% set class = "hour-bottom-dashed" %}
-
-			{% elseif hour == "14:55" %}
-		
-					{% set hour = "15h20" %}
-					{% set class = "hour-bottom-solid" %}
-
-
-			{% elseif hour == "15:20" %}
-		
-					{% set hour = "15h30" %}
-					{% set class = "hour-bottom-dashed" %}
-
-			{% elseif hour == "15:55" %}
-		
-					{% set hour = "16h20" %}
-					{% set class = "hour-bottom-solid" %}
-
-			{% elseif hour == "16:20" %}
-		
-					{% set hour = "16h30" %}
-					{% set class = "hour-bottom-dashed" %}
-
-			{% elseif hour == "16:55" %}
-
-					{% set hour = "17h20" %}
-					{% set class = "hour-bottom-solid" %}
-
-			{% elseif hour == "17:20" %}
-		
-					{% set show = false %}
-
+				</li>
 			{% endif %}
-		</div>
-		
-		{% if show == true %}
-			<tr id="{{ hour }}">
-			
-				<td class="hour-edt {{ class }}">
-					{{ hour }}
-				</td>
+		{% endfor %}
+	</ul>
 
-				{% for interval in interval.jours %}
-
-				{% if interval is not null %}
+	{% for jour in edt %}
+		<ul>
+			<li>{{ jour.nom }}</li>
+			{% for interval in jour.intervals %}
+				
+				<li class="hour-bottom-dashed" style="height: {{ interval.rowspan * size }}px">
+					{{ interval.horaire.cours }} <br>
 					
-					{% if interval.horaire < heuremax %}
-						{% set rowspan = interval.rowSpan / 3 * 2 %}
-					{% else %}
-					    {% set rowspan = interval.rowSpan %}
-					{% endif %}
-					
-					{% set cours = interval.horaire.cours %}
+					De {{ interval.horaire.debut | date('H\\hi') }}
+					à {{ interval.horaire.fin | date('H\\hi') }}
+				</li>
 
-					{% if cours is not null %}
-									<a href="{{ path('cours_show', { id: cours.id }) }}">
-										<span class="info-cours">{{ cours.matiere | upper }}</span>
-
-										{% if not is_granted("ROLE_PROFESSEUR") %}
-											<span class="info-cours"><em>M. {{ cours.professeur.nom }}</em></span>
-										{% endif %}
-
-										{% if not is_granted("ROLE_ELEVE") %}
-											{% set groupes = "" %}
-											{% for groupe in cours.groupes %}
-
-												{% set groupes = groupes ~ groupe %}
-												{% if 1 == loop.revindex0 %}
-													{% set groupes = groupes ~ ' et ' %}
-												{% elseif 1 < loop.revindex0 %}	
-													{% set groupes = groupes ~ ', ' %}
-												{% endif %}
-
-											{% endfor %}
-
-											<span class="info-cours"><em>{{ groupes }}</em></span>
-										{% endif %}
-									</a>
-								</td>
-							{% else %}
-									<td rowspan="{{ interval.rowSpan }}" class="bottom-dashed"></td>
-						<td rowspan="{{ rowspan }}" class="bottom-dashed {{ cours.matiere.categorie.abreviation }}">
-
-							<span class="info-cours">{{ cours.matiere | upper }}</span>
-							<span class="info-cours"><em>M. {{ cours.professeur.nom }}</em></span>
-
-							{% if not is_granted("ROLE_ELEVE") %}
-								{% set groupes = "" %}
-								{% for groupe in cours.groupes %}
-
-									{% set groupes = groupes ~ groupe %}
-									{% if 1 == loop.revindex0 %}
-										{% set groupes = groupes ~ ' et ' %}
-									{% elseif 1 < loop.revindex0 %}	
-										{% set groupes = groupes ~ ', ' %}
-									{% endif %}
-
-								{% endfor %}
-
-								<span class="info-cours"><em>{{ groupes }}</em></span>
-							{% endif %}
-
-						</td>
-
-					{% else %}
-							<td rowspan="{{ rowspan }}" class="bottom-dashed"></td>
-					{% endif %}
-				{% endif %}
-				{% endfor %}
-
-			</tr>
-		{% endif %}
+			{% endfor %}
+		</ul>
 
 	{% endfor %}
 
-</table>
+</div>

@@ -139,7 +139,7 @@ class TimeService
 			->join('m.categorie', 'ca')
 			->addSelect('ca')
 
-			->orderBy('h.debut, j.id')
+			->orderBy('j.ref, h.debut')
 		;
 
 		switch(get_class($entity))
@@ -168,81 +168,61 @@ class TimeService
 	public function getEDTOf($entity){
 
 		$horaires_cours = $this->getHorairesOf( $entity );
+		$intervals_jours = array();
 		$edt = array();
-		$last_cours_day = array();
 
 		$horaires = $this->getHoraires();
 		$jours = $this->getJours();
 
-		for ($i=0; $i < count($horaires) ; $i++) { 
-			$edt[$i] = array( 
-				"horaire" => $horaires[$i],
-				"jours" => array()
-			);
+
+		//Les deux prochaines boucles classent les horaires par jour
+		for($i = 0 ; $i < count($jours) ; $i++){
+
+			$intervals_jours[ $jours[$i] ] = array();
 		}	
 
-		$last_horaire_used = $this->getFirstHoraire();
-		for ($x=0; $x < count($horaires) ; $x++) { 
-			for ($y=0; $y < count($jours); $y++) { 
-				
-				for ($z=0; $z < count($horaires_cours); $z++) { 
-					$current_horaire = $horaires_cours[$z];
-
-					if(
-						$current_horaire->getJour()->getName() == $jours[$y] && 
-						$current_horaire->getDebut()->format('Hi') == $horaires[$x]->format('Hi')
-					){
-						$transition = $this->interval((new Horaire())->setDebut($last_horaire_used)->setFin($current_horaire->getDebut())) ;
-						if($transition->getRowSpan() > 0)
-						{
-							$edt[ $x - $transition->getRowSpan() ]['jours'][ $y ] = $transition ;
-						}
-
-						$edt[ $x ]['jours'][ $y ] = $this->interval($current_horaire);
-						$last_horaire_used = $current_horaire->getFin() ;
-
-						if(!isset($last_cours_day[$y]) || $last_cours_day[$y] < $x){ $last_cours_day[$y] = $x ; }
-					}
-
-				}
-				if(!isset($edt[$x]['jours'][$y])){ $edt[$x]['jours'][$y] = null; }
-
-			}
+		for ($i=0; $i < count($horaires_cours); $i++) { 
+			
+			$intervals_jours[ $horaires_cours[$i]->getJour()->getName() ][] =  $this->interval($horaires_cours[$i]);
 		}
 
-		$jours_keys = array_keys($this->getJours());
-		for ($i=0; $i < count($jours_keys) ; $i++) { 
-			if(!isset($last_cours_day[$i])){ 
-				$last_cours_day[$i] = -1;
-			}
+
+		// Ici on les insere dans l'edt par jour
+		for($i = 0 ; $i < count($jours) ; $i++){
+
+			$edt[ $jours[$i] ] = array(
+
+				'nom' => $jours[$i],
+				'intervals' => array()
+
+			);
 		}
 
-		// on ajoute un filler en fin de journée
-		for ($y=0; $y < count($last_cours_day); $y++) {
+		//Enfin on insere des fillers afin de compéter l'affichage
+		foreach($intervals_jours as $jour => $intervals) { 
 
-			$x = $last_cours_day[$y];
-			$interval = null ;
+			$size = count($intervals) ;
+			$last_horaire = $this->getFirstHoraire();
 
-			if($x >= 0)
-			{
-				$interval = $edt[ $x ]['jours'][$y];
-				if($interval->getRowSpan() > 0)
-				{
-					$edt[$x + $interval->getRowSpan()]['jours'][$y] = $this->interval(
-						(new Horaire)
-							->setDebut($interval->getFin())
-							->setFin($this->getLastHoraire())
-					);
-				}
+			// echo $jour . ':' . $size . ' ';
+
+			for ($y=0; $y < $size; $y++) { 
+
+				$previous = $this->interval()->link($last_horaire, $intervals_jours[ $jour ][$y]);
+
+				$interval = $this->interval()->link($intervals_jours[ $jour ][$y]->getHoraire()->getDebut(), $intervals_jours[ $jour ][$y]->getHoraire()->getFin());
+				$last_horaire = $interval->getHoraire()->getFin();
+
+				// echo ' - '.  $previous->getRowSpan() . ' ' . $interval->getRowSpan() . ' - ';
+
+				if($previous->getRowSpan() > 0){ array_splice( $edt[$jour]['intervals'], $y, 0, array($previous) ); }
+				if($interval->getRowSpan() > 0){ array_splice( $edt[$jour]['intervals'], $y+1, 0, array($interval) ); }
 			}
-			else
-			{
-				$edt[0]['jours'][$y] = $this->interval(
-					(new Horaire)
-						->setDebut($this->getFirstHoraire())
-						->setFin($this->getLastHoraire())
-				);
-			}	
+
+			$last = $this->interval()->link($last_horaire, $this->getLastHoraire());
+			if( $last->getRowSpan() > 0 ){
+				$edt[$jour]['intervals'][] = $last ;
+			}				
 		}
 
 		return $edt ;
@@ -253,4 +233,3 @@ class TimeService
 		return new Interval($this->getHoraires(), $horaire);
 	}
 }
-

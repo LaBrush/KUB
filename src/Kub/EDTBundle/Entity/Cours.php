@@ -132,8 +132,6 @@ class Cours
 	public function __construct()
 	{
 		$this->groupes = new \Doctrine\Common\Collections\ArrayCollection;
-
-		$this->addHoraire(new Horaire());
 	}
 	
 

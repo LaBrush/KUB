@@ -38,13 +38,27 @@ class LoadCoursData extends AbstractFixture implements FixtureInterface, Contain
 			$cours->addGroupe( $this->getReference('si3') );
 			$cours->setMatiere( $this->getReference('Anglais') );
 
-			$horaire1 = $cours->getHoraires()[0];
-			$horaire1->setDebut( new \Datetime('07:55') );
-			$horaire1->setFin( new \Datetime('9:50') );
+			$horaire1 = new Horaire;
+			$horaire1->setDebut( new \Datetime('08:00') );
+			$horaire1->setFin( new \Datetime('10:00') );
 			$horaire1->setJour( $this->getReference('lundi') );
 			$horaire1->addSemaine( $this->getReference('semaine49') );
 
+			$horaire2 = new Horaire;
+			$horaire2->setDebut( new \Datetime('13:25') );
+			$horaire2->setFin( new \Datetime('16:20') );
+			$horaire2->setJour( $this->getReference('mardi') );
+			$horaire2->addSemaine( $this->getReference('semaine49') );
+
+			$horaire3 = new Horaire;
+			$horaire3->setDebut( new \Datetime('16:20') );
+			$horaire3->setFin( new \Datetime('17:20') );
+			$horaire3->setJour( $this->getReference('mardi') );
+			$horaire3->addSemaine( $this->getReference('semaine49') );
+
 			$cours->addHoraire($horaire1);
+			$cours->addHoraire($horaire2);
+			$cours->addHoraire($horaire3);
 			$this->addReference('cours', $cours);
 
 		$manager->persist($cours);
