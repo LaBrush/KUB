@@ -73,8 +73,10 @@ class MenuBuilder
 
 	private function generateGroupesMenu($menu)
 	{
+		$class = $this->security->getToken()->getUser() instanceof \Kub\UserBundle\Entity\Professeur ? "groupes-professeur" : "groupes";
+
 		$menu->addChild('Mes groupes', array(
-			'labelAttributes' => array('className' => 'groupes'),
+			'labelAttributes' => array('className' => $class),
 			'route' => 'groupe_list_for_user'
 		));
 				
@@ -235,37 +237,7 @@ class MenuBuilder
 	public function generateProfesseurMenu($menu)
 	{
 		$this->generateProjetsMenu($menu);
-
-		// J'ai rajouté ceci ici pour la couleur de l'onglet
-
-		$menu->addChild('Mes groupes', array(
-			'labelAttributes' => array('className' => 'groupes-professeur'),
-			'route' => 'groupe_list_for_user'
-		));
-				
-		$groupes = $this->em->getRepository('KubClasseBundle:Groupe')->findByUser( $this->security->getToken()->getUser() );
-
-		$limit = 4 ;
-		$limit = $limit < count($groupes) ? $limit : count($groupes) ;
-
-		for($i = 0 ; $i < $limit ; $i++) {
-
-			$menu['Mes groupes']->addChild($groupes[$i], 
-				array(
-					'route' => 'groupe_show',
-					'routeParameters' => array('id' => $groupes[$i]->getId())
-				)
-			);
-		}
-
-		if(count($groupes) > $limit)
-		{
-			$menu['Mes groupes']->addChild("Autres groupes", 
-				array(
-					'route' => 'groupe_list_for_user'
-				)
-			);
-		}
+		$this->generateGroupesMenu($menu);
 
 		$menu->addChild("Ressources en ligne", array(
 			'labelAttributes' => array(

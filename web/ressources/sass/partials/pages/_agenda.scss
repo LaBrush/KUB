@@ -2,14 +2,22 @@
 
 .edt
 {
+<<<<<<< HEAD
 	// border: 1px $table-border solid;
+=======
+	border: 1px $border solid;
+>>>>>>> 50ebc543df5936b109da722d950d11dbd7dfa77e
 	float: left;
 	width: 100%;
 	font-family: arial;
 	
 	ul
 	{
+<<<<<<< HEAD
 		// border: 1px $table-border solid;
+=======
+		border: 1px $border solid;
+>>>>>>> 50ebc543df5936b109da722d950d11dbd7dfa77e
 		height: 40px;
 		text-align: center;
 		width: 19%;
@@ -17,9 +25,14 @@
 
 	li
 	{
+<<<<<<< HEAD
 		border-top: 2px $table-border solid;
 		border-left: 1px $table-border solid;
 		border-right: 1px $table-border solid;
+=======
+		border-left: 1px $border solid;
+		border-right: 1px $border solid;
+>>>>>>> 50ebc543df5936b109da722d950d11dbd7dfa77e
 		text-align: center;
 		height: 21px;
 		padding: 3px;
@@ -30,13 +43,13 @@
 	.hour-bottom-solid
 	{
 		padding: 5px 5px 0px 5px;
-		border-bottom: 1px $table-border solid;
+		border-bottom: 1px $border solid;
 	}
 
 	.hour-bottom-dashed
 	{
 		padding: 0px 5px 5px 5px;
-		border-bottom: 1px $table-border dashed;
+		border-bottom: 1px $border dashed;
 	}
 
 	.info-cours

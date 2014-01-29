@@ -11,3 +11,33 @@
 {
 	background-color: #e67e22 ;	
 }
+
+.documentheque
+{
+	margin: 10px 0;
+}
+
+.documentheque-ressources, .documentheque-fichiers
+{
+	width: 48%;
+	display: inline-block;
+	border: 2px $border dashed;
+	@include border-radius(4px);
+	@include box-sizing(border-box);
+	padding: 7px;
+
+	h3
+	{
+		text-align: center;
+	}
+}
+
+.documentheque-fichiers
+{
+	float: left;
+}
+
+.documentheque-ressources
+{
+	float: right;
+}
