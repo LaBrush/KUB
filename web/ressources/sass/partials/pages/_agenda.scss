@@ -2,21 +2,22 @@
 
 .edt
 {
-	border: 1px $table-border solid;
+	// border: 1px $table-border solid;
 	float: left;
 	width: 100%;
 	font-family: arial;
 	
-	th
+	ul
 	{
-		border: 1px $table-border solid;
+		// border: 1px $table-border solid;
 		height: 40px;
 		text-align: center;
 		width: 19%;
 	}
 
-	td
+	li
 	{
+		border-top: 2px $table-border solid;
 		border-left: 1px $table-border solid;
 		border-right: 1px $table-border solid;
 		text-align: center;

@@ -42,7 +42,7 @@ class Matiere
 
     public function getAbreviation()
     {
-        $nom = str_replace(
+        $name = str_replace(
             array(
                 'à', 'â', 'ä', 'á', 'ã', 'å',
                 'î', 'ï', 'ì', 'í', 
@@ -59,10 +59,10 @@ class Matiere
                 'e', 'e', 'e', 'e', 
                 'c', 'y', 'n', '_'
             ),
-            $this->nom
+            $this->name
         );
 
-        return strtolower($nom);
+        return strtolower($name);
     }
 
     public function __toString()

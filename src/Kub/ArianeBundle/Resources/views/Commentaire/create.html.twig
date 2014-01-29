@@ -2,7 +2,7 @@
 
 	<span class="commentaire">
 		<label for="add-commentaire-post{{ post.id }}">Commenter :</label>
-		<input id="add-commentaire-post{{ post.id }}" class="add" value="Ajouter" type="submit"></input>
+		<input id="add-commentaire-post{{ post.id }}" class="add" value="Ajouter" type="submit" />
 		{{ form_errors(form.contenu) }}
 		{{ form_widget(form.contenu, { 'attr': {'placeholder': 'Commentez ici...'} }) }}
 	</span>
