@@ -19,11 +19,11 @@
 		<div class="documentheque">
 			<div class="documentheque-ressources">
 				<h3>Ressources</h3>
-				<ul class="list">
+				<ul class="liste">
 					{% set empty = false %}
 
 					{% for ressource in documentheque.ressources %}
-						<li class="ressource in-list li-list">
+						<li class="ressource in-list">
 							<span class="label">{{ ressource.titre }}</span>
 							<div class="details">
 								<span class="infos">
@@ -34,10 +34,11 @@
 										{{ ressource.description | slice(0, 45) }}...
 									{% endif %}
 									</span>				
-								<span class="infos-complementaires"><em><strong>{{ ressource.auteur }}</strong> {{ ressource.matiere }} {{ ressource.niveau | lower }}</em></span>
+								<span class="infos-complementaires"><em>
+									<a href="{{ path('kub_collaboration_documentheque_ressource_show', { slug: projet.slug, id: ressource.id}) }}">Voir</a> - 
+									<a href="{{ path('kub_collaboration_documentheque_ressource_edit', { slug: projet.slug, id: ressource.id}) }}">Modifier</a></em>
+								</span>
 							</div>
-							<a href="{{ path('kub_collaboration_documentheque_ressource_show', { slug: projet.slug, id: ressource.id}) }}">Voir</a> - 
-							<a href="{{ path('kub_collaboration_documentheque_ressource_edit', { slug: projet.slug, id: ressource.id}) }}">Modifier</a>
 						</li>
 					{% else %}
 						{% set empty = true %}
@@ -52,13 +53,27 @@
 
 			<div class="documentheque-fichiers">
 				<h3>Fichiers</h3>
-				<ul class="list">
+				<ul class="liste">
 					{% set empty = false %}
 
 					{% for fichier in documentheque.fichiers %}
 						<a href="{{ path('kub_collaboration_documentheque_fichier_go', { slug: projet.slug, id: fichier.id}) }}">
-							<li class="in-list li-list">
-								{{ fichier }}
+							<li class="ressource in-list">
+								<span class="label">{{ fichier.titre }}</span>
+								<div class="details">
+									<span class="infos">
+										{% set length = fichier.description | length %}
+										{% if length < 46 %}
+											{{ fichier.description }}
+										{% else %}
+											{{ fichier.description | slice(0, 45) }}...
+										{% endif %}
+										</span>				
+									<span class="infos-complementaires"><em>
+										<a href="{{ path('kub_collaboration_documentheque_fichier_show', { slug: projet.slug, id: fichier.id}) }}">Voir</a> - 
+										<a href="{{ path('kub_collaboration_documentheque_fichier_edit', { slug: projet.slug, id: fichier.id}) }}">Modifier</a></em>
+									</span>
+								</div>
 							</li>
 						</a>
 					{% else %}
