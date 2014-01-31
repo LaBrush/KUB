@@ -1,44 +1,16 @@
 {% set size = 20 %}
 
-<style>
-	
-	.edt ul {
-		float: left ;
-		max-width:  15% ;
-	}
-
-	.edt li {
-		overflow: hidden;
-		padding: 0;
-	}
-
-	article.article {
-		width: 95%;
-		max-width: 95%;
-
-		margin-left: 10% ;
-	}
-
-	@media screen and (max-width: 960px) {
-		article.article {
-			margin-left: 0 ;
-		}
-	}
-
-</style>
-
 <div class="edt">
 	
-	<ul>
-		<li></li>
+	<ul class="hour-column">
+		<li class="entree">00h00</li>
 
 		{% for horaire in liste_horaires %}
 			{% if loop.index % 2 == 1 and loop.index != loop.last %}
-				<li style="height: {{ size * 2 }}px">
-					
-					<span class="sup">{{ horaire | date_modify("+5 minutes") | date('H\\hi') }}</span>
-					<br>
-					<span class="sub">{{ liste_horaires[loop.index+1] | date('H\\hi') }}</span>
+				<li chass="hours" style="height: {{ size * 2 }}px">
+
+					<span class="hour-bottom-dashed">{{ horaire | date_modify("+5 minutes") | date('H\\hi') }}</span>
+					<span class="hour-bottom-solid">{{ liste_horaires[loop.index+1] | date('H\\hi') }}</span>
 
 				</li>
 			{% endif %}
@@ -47,16 +19,42 @@
 
 	{% for jour in edt %}
 		<ul>
-			<li>{{ jour.nom }}</li>
+			<li class="jours">{{ jour.nom | capitalize }}</li>
 			{% for interval in jour.intervals %}
-				
-				<li class="hour-bottom-dashed" style="height: {{ interval.rowspan * size }}px">
-					{{ interval.horaire.cours }} <br>
+				{% set cours = interval.horaire.cours %}
+				{% if cours is not null %}
 					
-					De {{ interval.horaire.debut | date('H\\hi') }}
-					à {{ interval.horaire.fin | date('H\\hi') }}
-				</li>
+					<a href="{{ path('cours_show', { id: cours.id }) }}">
+						<li class="interval {{ cours.matiere.categorie.abreviation }}" style="height: {{ interval.rowspan * size }}px">
+						
+							<span class="info-cours">{{ cours.matiere | upper }}</span>
 
+							{% if not is_granted("ROLE_PROFESSEUR") %}
+								<span class="info-cours"><em>M. {{ cours.professeur.nom }}</em></span>
+							{% endif %}
+
+							{% if not is_granted("ROLE_ELEVE") %}
+								{% set groupes = "" %}
+								{% for groupe in cours.groupes %}
+
+									{% set groupes = groupes ~ groupe %}
+									{% if 1 == loop.revindex0 %}
+										{% set groupes = groupes ~ ' et ' %}
+									{% elseif 1 < loop.revindex0 %}	
+										{% set groupes = groupes ~ ', ' %}
+									{% endif %}
+
+								{% endfor %}
+
+								<span class="info-cours"><em>{{ groupes }}</em></span>
+							{% endif %}
+						</li>
+					</a>
+				{% else %}
+				    <li class="interval" style="height: {{ interval.rowspan * size }}px">
+				    	*L'horaire n'a pas de cours*
+					</li>
+				{% endif %}
 			{% endfor %}
 		</ul>
 
