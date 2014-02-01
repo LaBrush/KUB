@@ -19,7 +19,7 @@
 	<article class="article">
 		
 		{% for projet in liste_projets %}
-		    <p>{{ projet }} - <a href="{{ path('kub_collaboration_projet_show', { slug: projet.slug }) }}">Voir</a></p>
+		    <p><a class="li-list" href="{{ path('kub_collaboration_projet_show', { slug: projet.slug }) }}">{{ projet }}</a></p>
 		{% else %}
 			<p class="error">Vous ne participez à aucun projet pour le moment</p>
 		{% endfor %}

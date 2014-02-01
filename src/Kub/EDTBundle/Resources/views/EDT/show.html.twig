@@ -19,14 +19,14 @@
 
 	{% for jour in edt %}
 		<ul>
-			<li class="jours">{{ jour.nom | capitalize }}</li>
+			<li class="jours {{ jour.nom }}">{{ jour.nom | capitalize }}</li>
 			{% for interval in jour.intervals %}
 				{% set cours = interval.horaire.cours %}
 				{% if cours is not null %}
 					
 					<a href="{{ path('cours_show', { id: cours.id }) }}">
-						<li class="interval {{ cours.matiere.categorie.abreviation }}" style="height: {{ interval.rowspan * size }}px">
-						
+						<li class="{{ jour.nom }} interval {{ cours.matiere.categorie.abreviation }}" style="height: {{ interval.rowspan * size }}px">
+						<div class="wrapper" style="height: {{ interval.rowspan * size }}px">
 							<span class="info-cours">{{ cours.matiere | upper }}</span>
 
 							{% if not is_granted("ROLE_PROFESSEUR") %}
@@ -48,13 +48,11 @@
 
 								<span class="info-cours"><em>{{ groupes }}</em></span>
 							{% endif %}
+						</div>
 						</li>
 					</a>
 				{% else %}
-				    <li class="interval" style="height: {{ interval.rowspan * size }}px">
-				    	*L'horaire n'a pas de cours*
-				    	** Maintenant il en a un **
-				    	{{ interval.horaire }}
+				    <li class="{{ jour.nom }} interval" style="height: {{ interval.rowspan * size }}px">
 					</li>
 				{% endif %}
 			{% endfor %}

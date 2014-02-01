@@ -9,6 +9,16 @@
 	.hour-column
 	{
 		width: 5%;
+
+		@media all and (max-width: 1040px) and (min-width: 950px)
+		{
+			display: none;
+		}
+
+		@media all and (max-width: 930px)
+		{
+			display: none;
+		}
 	}
 
 	.jours
@@ -20,18 +30,43 @@
 		border-top: 1px $border solid;
 	}
 
+	.lundi
+	{
+		@media all and (max-width: 1040px) and (min-width: 950px)
+		{
+			border-left: 1px $border solid;
+		}
+
+		@media all and (max-width: 930px)
+		{
+			border-left: 1px $border solid;
+		}
+	}
+
 	.entree
 	{
 		display: inline-block;
 		color: $body;
-		padding: 12px 4px 11px 4px;
+		padding: 12px 4px;
 		border-right: 1px $border solid;
 		border-bottom: 1px $border solid;
+
+		@media all and (max-width: 1040px) and (min-width: 950px)
+		{
+			display: none;
+		}
+
+		@media all and (max-width: 930px)
+		{
+			display: none;
+		}
 	}
 
 	.interval
 	{
 		border-right: 1px $border solid;
+		border-bottom: 1px $border dashed;
+		width: 100%;
 	}
 	
 	ul
@@ -69,8 +104,18 @@
 		border-right: 1px $border solid;
 	}
 
+	.wrapper
+	{
+  		display: table-cell;
+  		width: 19%;
+  		vertical-align: middle;
+  		text-align: center;
+	}
+
 	.info-cours
 	{
+		margin: 5px;
+		display: block;
 		font-size: 0.9em;
 		line-height: 1.2em;
 		color: $color-light;
