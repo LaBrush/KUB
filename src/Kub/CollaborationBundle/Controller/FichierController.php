@@ -39,6 +39,12 @@ class FichierController extends Controller
 		}
 
 		$fichier = $this->get('doctrine.orm.entity_manager')->getRepository('KubCollaborationBundle:Fichier')->findOneById($id);
+
+		if($fichier == null)
+		{
+			throw $this->createNotFoundException('Le fichier n\' pas été trouvé');
+		}
+
 		$template = 'show';
 
 		$request = $this->get('request');

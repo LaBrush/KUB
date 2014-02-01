@@ -6,6 +6,11 @@
 
 	<h2 class="h2 article section-title">Liste des documents</h2>
 
+	<article class="article" style="clear: both ;">
+		<p><a class="button-yes" href="{{ path('kub_collaboration_documentheque_ressource_create', { slug: projet.slug}) }}">Déposer une ressource</a>
+		<a class="button-yes" href="{{ path('kub_collaboration_documentheque_fichier_create', { slug: projet.slug}) }}">Créer un fichier</a></p>
+	</article>
+
 	<article class="article">
 
 		<label for="search-in-list">Chercher dans la liste :</label>
@@ -25,17 +30,14 @@
 									{% else %}
 									    Fichier ethercalc
 									{% endif %}
-								</span>				
-								<span class="infos-complementaires"><em>
-									<a href="{{ path('kub_collaboration_documentheque_ressource_edit', { slug: projet.slug, id: fichier.id}) }}">Modifier</a></em>
 								</span>
 							</div>
 						</li>
 					{% else %}
 						<li class="error">Il n'y a aucun fichier</li>
-					{% endfor %}						
+					{% endfor %}
 				</ul>
-				<p><a class="button-yes" href="{{ path('kub_collaboration_documentheque_fichier_create', { slug: projet.slug}) }}">Créer un fichier</a></p>			
+			
 			</div>
 
 			<div class="documentheque-ressources">
@@ -54,17 +56,14 @@
 									{% else %}
 										{{ ressource.description }}
 									{% endif %}
-									</span>				
-								<span class="infos-complementaires"><em>
-									<a href="{{ path('kub_collaboration_documentheque_ressource_edit', { slug: projet.slug, id: ressource.id}) }}">Modifier</a></em>
-								</span>
+									</span>
 							</div>
 						</li>
 					{% else %}
 						<li class="error">Il n'y a aucune ressource</li>
 					{% endfor %}
 				</ul>
-				<p><a class="button-yes" href="{{ path('kub_collaboration_documentheque_ressource_create', { slug: projet.slug}) }}">Déposer une ressource</a></p>			
+
 			</div>
 		</div>
 
@@ -77,93 +76,67 @@
 
     <script>
     	$(function($){
-    		var $ressources = $('.type-ressource'),
-    			$container = $('div.documentheque-ressources ul.liste');
-    		;
 
-			$ressources.click(function(){
-				var $this = $(this);
-					$detail = $('<li>')
+    		var data = [
+    			{
+    				elements: '.type-ressource',
+    				container: 'div.documentheque-ressources ul.liste',
+    				url: "{{ path('kub_collaboration_documentheque_ressource_show', { slug: projet.slug, id: 0 })}}"
+    			},
+    			{
+    				elements: '.type-fichier',
+    				container: 'div.documentheque-fichiers ul.liste',
+    				url: "{{ path('kub_collaboration_documentheque_fichier_show', { slug: projet.slug, id: 0 })}}"
+    			}
+    		];
+
+    		for (var i = 0; i < data.length; i++) {
+
+    			var $elements = $(data[i].elements),
+    				url = data[i].url,
+
+					$detail = $('<li>'),
+					$content = $('<p>')
 				;
-
-				$content = $('<p>');
 
 				$detail
 					.addClass('detail')
 					.append(
 
-						$('input')
+						$('<input>')
 							.attr('type', 'button')
 							.addClass('button')
 							.val('Retour')
 							.click(function(){
-								$(this).parent().fadeOut(500);
-								$ressources.fadeIn(500);
+								$(this).parent().fadeOut(200, function(){
+									$elements.fadeIn(200);
+								});
 							})
 
 					)
 					.append($content)
-					.appendTo($container)
+					.appendTo($(data[i].container))
 					.hide()
 				;
 
-				$.ajax({
-					url: "{{ path('kub_collaboration_documentheque_ressource_show', { slug: projet.slug, id: 0 })}}".replace(0, $this.attr('data-id')),
-					type: "POST",
-					timeout: 3000,
-					success: function(r){
-						$content.html(r);
-						$ressources.fadeOut(500);;
-						$detail.fadeIn(500);
-					}
+    			$elements.click(function(){
+
+    				var $this = $(this);
+
+					$.ajax({
+						url: url.replace(0, $this.attr('data-id')),
+						type: "POST",
+						timeout: 3000,
+						success: function(r){
+							$content.html(r);
+							$elements.fadeOut(200, function(){
+								$detail.fadeIn(200);
+							});
+						}
+					});
 				});
-			})
-
-		});
-
-		$(function($){
-    		var $ressources = $('.type-fichier'),
-    			$container = $('div.documentheque-fichier ul.liste');
-    		;
-
-			$ressources.click(function(){
-				var $this = $(this);
-					$detail = $('<li>')
-				;
-
-				$content = $('<p>');
-
-				$detail
-					.addClass('detail')
-					.append(
-
-						$('input')
-							.attr('type', 'button')
-							.addClass('button')
-							.val('Retour')
-							.click(function(){
-								$(this).parent().fadeOut(500);
-								$ressources.fadeIn(500);
-							})
-
-					)
-					.append($content)
-					.appendTo($container)
-					.hide()
-				;
-
-				$.ajax({
-					url: "{{ path('kub_collaboration_documentheque_fichier_show', { slug: projet.slug, id: 0 })}}".replace(0, $this.attr('data-id')),
-					type: "POST",
-					timeout: 3000,
-					success: function(r){
-						$content.html(r);
-						$ressources.fadeOut(500);;
-						$detail.fadeIn(500);
-					}
-				});
-			})
-
-		});
+    		};
+    	});
     </script>
+    
 {% endblock %}

@@ -1,1 +1,3 @@
-{{ fichier }}
+<strong>Date de création:</strong> {{ fichier.dateAjout|date('d/m/Y') }}
+
+<a class='button' href="{{ path('kub_collaboration_documentheque_fichier_edit', { slug: projet.slug, id: fichier.id}) }}">Modifier</a></em>

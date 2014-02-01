@@ -25,6 +25,12 @@ class RessourceController extends Controller
 		}
 
 		$ressource = $this->get('doctrine.orm.entity_manager')->getRepository('KubCollaborationBundle:Ressource')->findOneById($id);
+
+		if($ressource == null)
+		{
+			throw $this->createNotFoundException('La ressource n\' pas été trouvée');
+		}
+
 		$template = 'show';
 
 		$request = $this->get('request');
