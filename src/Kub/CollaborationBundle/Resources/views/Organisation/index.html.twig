@@ -3,22 +3,22 @@
 {% set organisateur = projet.organisateur %}
 
 {% block content %}
+
+	<h3 class="section-title">Liste des taches</h3>
 	
 	<article class="article">
-		
-		<h2 class="section-title">Liste des taches</h2>
 
 		<ul>
 			
 			{% for listeTaches in organisateur.listeTaches %}
-				<li>
+				<li class="liste-taches">
+
+					<h4 for="{{ listeTaches.id }}l">{{ listeTaches }}</h4>
 					<input 
 						type="checkbox" 
 						id="{{ listeTaches.id }}l"
 						class="liste-check"
 					>
-					<label for="{{ listeTaches.id }}l">{{ listeTaches }}</label>
-					<span class="toogle-button">Test</span>
 					<ul>
 						{% for tache in listeTaches.taches %}
 							<li class="tache">
@@ -27,8 +27,8 @@
 									id="{{ tache.id }}t" 
 									{% if tache.done %}checked{% endif %} 
 								>
-								<label for="{{ tache.id }}t">{{ tache }}</label>
-								<a href="{{ path('kub_collaboration_organisation_show', { projet_slug: projet.slug, tache_slug: tache.slug }) }}">Voir</a>
+								<label for="{{ tache.id }}t" class="{{ tache.id }}t">{{ tache }}</label>
+								<a class="voir" href="{{ path('kub_collaboration_organisation_show', { projet_slug: projet.slug, tache_slug: tache.slug }) }}">Voir</a>
 							</li>
 						{% endfor %}
 					</ul>
@@ -40,10 +40,8 @@
 
 		</ul>
 
-	</article>
-
-	<article class="article">
 		<a href="{{ path('kub_collaboration_organisation_create', { slug: projet.slug }) }}" class="button-yes">Ajouter une tache</a>
+
 	</article>
 
 {% endblock %}
@@ -95,16 +93,23 @@
 				allChecked ? $parent.prop('checked', true) : $parent.prop('checked', false) ;
 			}).first().change();
 
-			$('.toogle-button').click(function(){
+			$('.tache>input:checkbox').change(function() {
 
-				var $that = $(this);
-				var $liste = $that.parent().children('ul');
-			
-				$liste.is(":visible") ? $that.text('Afficher') : $that.text('Masquer');
-				$liste.toggle(100);
+				var checked = $(this).prop('checked');
+				var label = $(this).parent().children('.' + $(this).attr('id'));
 
-			}).trigger('click');
+				if (checked)
+				{
+					label.addClass('checked').removeClass('unchecked');
+				}
+				else
+				{
+					label.addClass('unchecked').removeClass('checked');
+				}
+			}).change();
 		});
 	</script>
 
 {% endblock %}
+
+{##}

@@ -6,17 +6,17 @@
 
 {% block body %}
 
-	<article class='article project-nav'>	
+	<article class='article'>	
 		{% if app.request.attributes.get('_route') != 'kub_collaboration_organisation_index' %}
-			<a href='{{ path('kub_collaboration_organisation_index', { slug: projet.slug }) }}' class='button'>Taches</a>
+			<a href='{{ path('kub_collaboration_organisation_index', { slug: projet.slug }) }}' class='button project-nav'>Taches</a>
 		{% endif %}
 
 		{% if app.request.attributes.get('_route') != 'kub_collaboration_documentheque_show' %}
-			<a href='{{ path('kub_collaboration_documentheque_show', { slug: projet.slug }) }}' class='button'>Documents</a>
+			<a href='{{ path('kub_collaboration_documentheque_show', { slug: projet.slug }) }}' class='button project-nav'>Documents</a>
 		{% endif %}
 
-		{% if is_granted('ADMINISTRATEUR', projet) and app.request.attributes.get('_route') != 'kub_collaboration_projet_edit'  %}
-				<a href='{{ path('kub_collaboration_projet_edit', { slug: projet.slug }) }}' class='button'>Options</a>
+		{% if is_granted('ADMINISTRATEUR', projet) and app.request.attributes.get('_route') != 'kub_collaboration_projet_edit '  %}
+				<a href='{{ path('kub_collaboration_projet_edit', { slug: projet.slug }) }}' class='button project-nav'>Options</a>
 		{% endif %}
 
 	</article>
