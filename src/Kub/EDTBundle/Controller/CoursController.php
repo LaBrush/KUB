@@ -14,9 +14,27 @@ class CoursController extends Controller
 	public function showAction($id)
 	{
 		$cours = $this->get('doctrine.orm.entity_manager')->getRepository('KubEDTBundle:Cours')->findOneById($id);
+		$absences = $this->get('doctrine.orm.entity_manager')->getRepository('KubAbsenceBundle:Absence')->findByCoursId($cours->getId());
+
+		$absences_eleves = array();
+
+		for ($i=0; $i < count($absences); $i++) { 
+			$eleve = $absences[$i]->getEleve();
+
+			if(!isset($absences_eleves[ (string) $eleve ]))
+			{
+				$absences_eleves[ (string) $eleve ] = array(
+					'eleve' => $eleve,
+					'absences' => array()
+				);	
+			}
+
+			$absences_eleves[ (string) $eleve ]['absences'][] = $absences[$i];
+		}
 
 		return $this->render("KubEDTBundle:Cours:show.html.twig", array(
-			'cours' => $cours
+			'cours' => $cours,
+			'liste_eleves_absences' => $absences_eleves
 		));
 	}
 

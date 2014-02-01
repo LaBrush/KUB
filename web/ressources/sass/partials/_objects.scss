@@ -24,6 +24,24 @@
 .option {background: $rose;}
 .art {background: $rose;}
 
+
+/**************************************************************************/
+/* Tableaux */
+.table {
+	th
+	{
+		padding: 8px;
+		border: 1px $border solid;
+		background-color: $header;
+	}
+
+	td
+	{
+		padding: 8px;
+		border: 1px $border solid;
+	}
+}
+
 /**************************************************************************/
 /* Boutons */
 

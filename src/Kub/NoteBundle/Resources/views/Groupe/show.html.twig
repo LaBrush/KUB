@@ -1,36 +1,53 @@
 {% extends "::base.html.twig" %}
 
-{% set groupes = "" %}
-{% for groupe in controle.cours.groupes %}
-
-		{% set groupes = groupes ~ groupe ~ ' ' %}
-
-{% endfor %}
-
 {% block title %}
-	{{ parent() }} - {{ groupes }}
+	{{ parent() }} - {{ controle.name }}
 {% endblock %}
 
 {% block body %}
 	
 	<article class="article">
-		<h2 class="section-title">Controles des {{ groupes }}</h2>
+		<h2 class="section-title">{{ controle.name }} - {{ controle.matiere }}</h2>
 	</article>
 
-	<article class="article infos">
+	<article class="article info">
+		<div class="noter">
+			<div class="wrap">
+				<p>
+					<a href="{{ path('kub_notes_professeur_edit', {id: controle.id})}}" class="button project-nav ">Modifier</a>
+					Ajouté le <strong>{{ controle.date|date('Y - d/m') }}</strong>
+				</p>
 
-		<ul>
-			{% for note in controle.notes %}
-			    
-				<li>Ceci est un lien -> <a href="{{ path('user_show', {role: 'eleve', username: note.eleve.username}) }}">{{ note.eleve }}</a> à afficher comme tel en CSS - {{ note }}</li>
-			{% else %}
-				<li>Aucun controle en ajouté</li>
-			{% endfor %}
-		</ul>
+				<div class="eleves-a-noter">
+					<table class="liste-eleves-a-noter">
 
-		<a href="{{ path('kub_notes_professeur_edit', {id: controle.id})}}" class="modifier button">Modifier</a>
+						<tr>
+							<th>
+								Elève
+							</th>
+							<th>
+								Note
+							</th>
+						</tr>
+						{% for note in controle.notes %}
+
+							<tr>
+								<td><a class="in-list li-list" href="{{ path('user_show', {role: 'eleve', username: note.eleve.username}) }}">{{ note.eleve }}</a></td>
+								<td>{{ note.note }} / {{ note.coefficient }}</td>
+							</tr>
+						{% else %}
+							<tr>
+								<td colspan="3">Aucune note encore ajoutée</td>
+							</tr>
+						{% endfor %}
+
+					</table>
+				</div>
+			</div>
+
+			<p><a href="{{ path('cours_show', { id: controle.cours.id }) }}" class="button">Aller au cours</a></p>
+		</div>
 
 	</article>
-
 
 {% endblock %}

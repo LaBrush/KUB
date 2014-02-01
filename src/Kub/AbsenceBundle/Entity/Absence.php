@@ -8,14 +8,16 @@ use Doctrine\ORM\Mapping as ORM;
  * Absence
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Kub\AbsenceBundle\Entity\AbsenceRepository")
  */
 class Absence
 {
 	CONST PRESENT  = 0 ;
 	CONST ABSENCE  = 1 ;
 	CONST RETARD   = 2 ;
-	CONST JUSTIFIE = 3 ;
+
+    CONST ATTENTE = 10 ;
+	CONST JUSTIFIE = 11 ;
 
 	/**
 	 * @var integer
@@ -32,9 +34,14 @@ class Absence
     private $appel ;
 
 	/** 
-	 * @ORM\Column(name="statut", type="integer")
+     * @ORM\Column(name="statut", type="integer")
+     */
+    private $statut ;
+
+    /** 
+	 * @ORM\Column(name="type", type="integer")
 	 */
-	private $statut ;
+	private $type ;
 
 	/**
 	 * @ORM\ManyToOne(targetEntity="Kub\UserBundle\Entity\Eleve")
@@ -43,16 +50,17 @@ class Absence
 
 	public function __construct()
 	{
-		$this->statut = self::PRESENT ;
+        $this->type = self::PRESENT ;
+		$this->statut = self::ATTENTE ;
 	}
 
     public function __toString(){
 
         $appel = $this->getAppel();
         $heure = $appel->getHoraire();
-        $date = $appel->getDate();
+        $date  = $appel->getDate();
 
-        return 'le ' . $date->format('d/m') . ' à ' . $time->format('H:i');
+        return 'Le ' . $date->format('d/m') . ' à ' . $heure->getDebut()->format('H\\hi');
 
     }
 
@@ -138,5 +146,28 @@ class Absence
     public function getEleve()
     {
         return $this->eleve;
+    }
+
+    /**
+     * Set type
+     *
+     * @param integer $type
+     * @return Absence
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+    
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return integer 
+     */
+    public function getType()
+    {
+        return $this->type;
     }
 }

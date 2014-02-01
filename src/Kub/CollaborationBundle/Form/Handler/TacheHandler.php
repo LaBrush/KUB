@@ -42,6 +42,10 @@ class TacheHandler
 
 					$data->setListeTaches($liste);
 				}
+				elseif(empty($listeName) && !$this->form->has('listeTaches'))
+				{
+					$this->form->get("newListe")->addError('La tache doit entrer dans une liste');
+				}
 
 				$this->onSuccess($data);
 

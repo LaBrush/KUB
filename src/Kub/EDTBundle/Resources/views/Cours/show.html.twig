@@ -7,22 +7,45 @@
 		<p><strong>Fait le reste</strong></p>
 	</article>
 
+
 	<article class="article">
 		<ul>
 			
-			{% for item in liste_eleves_absences %}
-			    
-				<li> {{ item.eleve }} 
+			{% for controle in cours.controles %}
+				{% if is_granted('ROLE_PROFESSEUR') %}
+					{% set path = path('kub_notes_professeur_show', { id: controle.id }) %}					
+				{% elseif is_granted('ROLE_ELEVE') %}
+					{% set path = path('kub_notes_eleve_homepage') %}
+				{% else %}
+					{% set path = '#' %}
+				{% endif %}
 
-					{% for absence in item.absences %}
-					    {{ absence }}
-					{% endfor %}
-
-				</li>
-
+				<a href="{{ path }}"><li class="in-list li-list">{{ controle }}</li></a>
 			{% endfor %}
 
 		</ul>
 	</article>
+
+
+	{% if is_granted('ROLE_PROFESSEUR') %}
+		<article class="article">
+			<table class="table cut">
+				{% for item in liste_eleves_absences %}
+
+					<tr>
+						<td>{{ item.eleve }}</td>
+						<td>
+							
+							{% for absence in item.absences %}
+							    <span class="in-list li-list">{{ absence }}</span>
+							{% endfor %}
+
+						</td>
+					</tr>
+
+				{% endfor %}
+			</table>
+		</article>
+	{% endif %}
 
 {% endblock %}

@@ -126,6 +126,17 @@ class Cours
 		return false ;
 	}
 
+	public function getEleves(){
+		$eleves = array();
+		
+		foreach ($this->getGroupes() as $groupe)
+		{
+			$eleves = array_merge($eleves, $groupe->getEleves()->toArray() ); 
+		}
+
+		return $eleves ;
+	}
+
 	/**
 	 * Constructor
 	 */
