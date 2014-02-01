@@ -1,0 +1,169 @@
+{% extends 'KubCollaborationBundle::layout.html.twig' %}
+
+{% set documentheque = projet.documentheque %}
+
+{% block content %}
+
+	<h2 class="h2 article section-title">Liste des documents</h2>
+
+	<article class="article">
+
+		<label for="search-in-list">Chercher dans la liste :</label>
+		<input id="search-in-list" type="text">
+
+		<div class="documentheque">
+			<div class="documentheque-fichiers">
+				<h3>Fichiers</h3>
+				<ul class="liste">
+					{% for fichier in documentheque.fichiers %}
+						<li class="ressource type-fichier in-list" data-id="{{ fichier.id }}">
+							<span class="label">{{ fichier.name }}</span>
+							<div class="details">
+								<span class="infos">
+									{% if fichier.type == 1 %}
+										Fichier etherpad
+									{% else %}
+									    Fichier ethercalc
+									{% endif %}
+								</span>				
+								<span class="infos-complementaires"><em>
+									<a href="{{ path('kub_collaboration_documentheque_ressource_edit', { slug: projet.slug, id: fichier.id}) }}">Modifier</a></em>
+								</span>
+							</div>
+						</li>
+					{% else %}
+						<li class="error">Il n'y a aucun fichier</li>
+					{% endfor %}						
+				</ul>
+				<p><a class="button-yes" href="{{ path('kub_collaboration_documentheque_fichier_create', { slug: projet.slug}) }}">Créer un fichier</a></p>			
+			</div>
+
+			<div class="documentheque-ressources">
+				<h3>Ressources</h3>
+				<ul class="liste">
+					{% for ressource in documentheque.ressources %}
+						<li class="ressource type-ressource in-list" data-id="{{ ressource.id }}">
+							<span class="label">{{ ressource.titre }}</span>
+							<div class="details">
+								<span class="infos">
+									{% set length = ressource.description|length %}
+									{% if length > 46 %}
+										{{ ressource.description | slice(0, 45) }}...
+									{% elseif length == 0 %}
+									    Pas encore de description
+									{% else %}
+										{{ ressource.description }}
+									{% endif %}
+									</span>				
+								<span class="infos-complementaires"><em>
+									<a href="{{ path('kub_collaboration_documentheque_ressource_edit', { slug: projet.slug, id: ressource.id}) }}">Modifier</a></em>
+								</span>
+							</div>
+						</li>
+					{% else %}
+						<li class="error">Il n'y a aucune ressource</li>
+					{% endfor %}
+				</ul>
+				<p><a class="button-yes" href="{{ path('kub_collaboration_documentheque_ressource_create', { slug: projet.slug}) }}">Déposer une ressource</a></p>			
+			</div>
+		</div>
+
+	</article>
+
+{% endblock %}
+
+{% block js %}
+    {{ parent() }}
+
+    <script>
+    	$(function($){
+    		var $ressources = $('.type-ressource'),
+    			$container = $('div.documentheque-ressources ul.liste');
+    		;
+
+			$ressources.click(function(){
+				var $this = $(this);
+					$detail = $('<li>')
+				;
+
+				$content = $('<p>');
+
+				$detail
+					.addClass('detail')
+					.append(
+
+						$('input')
+							.attr('type', 'button')
+							.addClass('button')
+							.val('Retour')
+							.click(function(){
+								$(this).parent().fadeOut(500);
+								$ressources.fadeIn(500);
+							})
+
+					)
+					.append($content)
+					.appendTo($container)
+					.hide()
+				;
+
+				$.ajax({
+					url: "{{ path('kub_collaboration_documentheque_ressource_show', { slug: projet.slug, id: 0 })}}".replace(0, $this.attr('data-id')),
+					type: "POST",
+					timeout: 3000,
+					success: function(r){
+						$content.html(r);
+						$ressources.fadeOut(500);;
+						$detail.fadeIn(500);
+					}
+				});
+			})
+
+		});
+
+		$(function($){
+    		var $ressources = $('.type-fichier'),
+    			$container = $('div.documentheque-fichier ul.liste');
+    		;
+
+			$ressources.click(function(){
+				var $this = $(this);
+					$detail = $('<li>')
+				;
+
+				$content = $('<p>');
+
+				$detail
+					.addClass('detail')
+					.append(
+
+						$('input')
+							.attr('type', 'button')
+							.addClass('button')
+							.val('Retour')
+							.click(function(){
+								$(this).parent().fadeOut(500);
+								$ressources.fadeIn(500);
+							})
+
+					)
+					.append($content)
+					.appendTo($container)
+					.hide()
+				;
+
+				$.ajax({
+					url: "{{ path('kub_collaboration_documentheque_fichier_show', { slug: projet.slug, id: 0 })}}".replace(0, $this.attr('data-id')),
+					type: "POST",
+					timeout: 3000,
+					success: function(r){
+						$content.html(r);
+						$ressources.fadeOut(500);;
+						$detail.fadeIn(500);
+					}
+				});
+			})
+
+		});
+    </script>
+{% endblock %}

@@ -127,10 +127,14 @@ class Projet
 		return $string ;
 	}
 
-	public function __toString(){
-		$string = $this->name . ' ' . $this->getUsersAsString();        
+	public function toString($user = null){
+		$string = $this->name . ' ' . $this->getUsersAsString($user);        
 
 		return $string ;
+	}
+
+	public function __toString(){
+		return (string)$this;
 	}
 
 	public function __construct(){
