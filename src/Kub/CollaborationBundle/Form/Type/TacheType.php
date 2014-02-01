@@ -52,7 +52,8 @@ class TacheType extends AbstractType
 
 		$builder->add('newListe', 'text', array(
 				'mapped' => false,
-				'label'  => 'Créer une nouvelle liste'
+				'label'  => 'Créer une nouvelle liste',
+				'required' => false
 			))
 			->add('ressources', 'genemu_jqueryselect2_entity', array(
 				'choices'  => $this->projet->getDocumentheque()->getRessources(),

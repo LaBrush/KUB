@@ -17,25 +17,27 @@
 
 	<hr>
 
-	{% if form.listeTaches is defined %}
-		<span class="listeTaches">
-			{{ form_errors(form.listeTaches) }}
-			{{ form_label(form.listeTaches) }} <div class="input">{{ form_widget(form.listeTaches) }}</div>
-		</span>
-	{% else %}
-		<p>Aucune liste pour l'instant</p>
-	{% endif %}
+	<span class="listeTaches">
+		{% if form.listeTaches is defined %}
+			
+				{{ form_errors(form.listeTaches) }}
+				{{ form_label(form.listeTaches) }} <div class="input">{{ form_widget(form.listeTaches) }}</div>
+			
+		{% else %}
+				Aucune liste de tache pour l'instant
+		{% endif %}
+	</span>
+
+	<span class="newListe">
+		{{ form_errors(form.newListe) }}
+		{{ form_label(form.newListe) }} <div class="input">{{ form_widget(form.newListe, {'attr': {'class': 'input-newliste'}}) }}</div>
+	</span>
 
 	<span>
 		<a class="button button-liste">Créer une liste</a>
 	</span>
 
 	<hr>
-
-	<span class="newListe">
-		{{ form_errors(form.newListe) }}
-		{{ form_label(form.newListe) }} <div class="input">{{ form_widget(form.newListe, {'attr': {'class': 'input-newliste'}}) }}</div>
-	</span>
 
 	<span class="ressources">
 		{{ form_errors(form.ressources) }}
