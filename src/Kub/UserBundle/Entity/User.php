@@ -131,7 +131,7 @@ abstract class User extends BaseUser
      */
     public function setNom($nom)
     {
-        $this->nom = $nom;
+        $this->nom = ucfirst($nom);
         $this->updateUsername() ;
     
         return $this;
@@ -155,7 +155,7 @@ abstract class User extends BaseUser
      */
     public function setPrenom($prenom)
     {
-        $this->prenom = $prenom;
+        $this->prenom = ucfirst($prenom);
         $this->updateUsername();
 
         return $this;

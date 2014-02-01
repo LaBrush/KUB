@@ -5,6 +5,17 @@ namespace Kub\UserBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use JMS\SecurityExtraBundle\Annotation\Secure;
 
+use FOS\UserBundle\FOSUserEvents;
+use FOS\UserBundle\Event\FormEvent;
+use FOS\UserBundle\Event\GetResponseUserEvent;
+use FOS\UserBundle\Event\UserEvent;
+use FOS\UserBundle\Event\FilterUserResponseEvent;
+use Symfony\Component\DependencyInjection\ContainerAware;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use FOS\UserBundle\Model\UserInterface;
+
 use Kub\UserBundle\Entity\User ;
 use Kub\UserBundle\Entity\Eleve ;
 use Kub\UserBundle\Entity\Administrateur ;
@@ -49,6 +60,7 @@ class UserController extends Controller
 			}
 
 			$userManager = $this->container->get('pugx_user_manager');
+			$dispatcher = $this->container->get('event_dispatcher');
 
 			$discriminator = $this->container->get('pugx_user.manager.user_discriminator');
 			$discriminator->setClass('Kub\UserBundle\Entity\\'.$class);
@@ -56,8 +68,22 @@ class UserController extends Controller
 			$user = $userManager->createUser();
 			$form = $this->createForm($type, $user);
 
+			$user->setPassword( substr(hash('sha512', uniqid()), 0, 200));
+			 if (null === $user->getConfirmationToken()) {
+				$tokenGenerator = $this->container->get('fos_user.util.token_generator');
+				$user->setConfirmationToken($tokenGenerator->generateToken());
+			}
+			$user->setPasswordRequestedAt(new \DateTime());
+
 			$request = $this->get('request');
 			$em = $this->get('doctrine.orm.default_entity_manager');
+
+			$event = new GetResponseUserEvent($user, $request);
+			$dispatcher->dispatch(FOSUserEvents::REGISTRATION_INITIALIZE, $event);
+
+			if (null !== $event->getResponse()) {
+				return $event->getResponse();
+			}
 
 			if($request->getMethod() == "POST"){
 
@@ -79,6 +105,8 @@ class UserController extends Controller
 
 				if($formHandler->process())
 				{
+					$this->container->get('fos_user.mailer')->sendResettingEmailMessage($user);
+
 					$this->get('session')->getFlashBag()->add('info', "L'utilisateur a bien été ajouté");
 					return $this->redirect($this->generateUrl("user_list", array( "role"=> $role )));
 				}
@@ -210,7 +238,7 @@ class UserController extends Controller
 
 				$this->get('session')->getFlashBag()->add('info', 'Utilisateur bien supprimé');
 	
-				return $this->redirect($this->generateUrl('user_list'));
+				return $this->redirect($this->generateUrl('user_list', array('role' => $role)));
 			}
 		}
 

@@ -28,7 +28,7 @@ class NotificationRepository extends EntityRepository
 
 		if($user->getClass() == "eleve")
 		{
-			$groupes_id = array();
+			$groupes_id = array('0');
 			foreach ($user->getGroupes() as $key => $groupe) {
 				$groupes_id[] = $groupe->getId();
 			}

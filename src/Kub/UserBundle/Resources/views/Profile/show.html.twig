@@ -10,21 +10,15 @@
 
 	<article class="article infos">
 		
-		labelo
 		<span class="label">Identifiant :</span>
 		<span class="info">{{ user.username }}</span>
 
 		<span class="label">Adresse mail :</span>
 		<span class="info">{{ user.email }}</span>
-		
-		{% block details %}
-		{% endblock %}
-					
+				
 		<span class="modifier">
-			<a class="button" href="{{ path("user_edit", {username: user.username, role: user.class }) }}">Modifier</a>
+			<a class="button" href="{{ path('fos_user_profile_edit') }}">Modifier</a>
 		</span>
-
-		{% endif %}
 		
 	</article>
 	
