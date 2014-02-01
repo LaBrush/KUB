@@ -254,6 +254,11 @@ input[type="text"], input[type="password"], input[type="email"], input[type="sea
 	min-width: 164px;
 }
 
+label
+{
+	cursor: pointer;
+}
+
 
 /**********************************************************************/
 /* Classes utilitaires */

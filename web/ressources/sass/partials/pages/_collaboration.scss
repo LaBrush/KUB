@@ -1,15 +1,20 @@
-.project-title {
-	margin: 0 ;
-	text-align: left ;
+.project-title
+{
+	margin: 0;
+	text-align: left;
 
-	.project-users {
-		font-size: 0.75em ;
+	.project-users
+	{
+		font-size: 0.75em;
 	}
 }
 
-.project-nav {
-	float: right ;
+.project-nav
+{
+	float: right;
 	vertical-align: bottom;
+	display: inline-block;
+	margin: 0 0 0 4px;
 }
 
 .case
@@ -35,8 +40,8 @@
 {
 	width: 48%;
 	display: inline-block;
-	border: 2px $border dashed;
-	@include border-radius(4px);
+	border: 1px $border dashed;
+	@include border-radius(6px);
 	@include box-sizing(border-box);
 	padding: 7px;
 
@@ -59,4 +64,98 @@
 .documentheque-ressources
 {
 	float: right;
+}
+
+.liste-taches
+{
+	display: inline-block;
+	width: 30%;
+	margin: 0 3.3% 20px 0;
+	border: 1px $border dashed;
+	@include border-radius(6px);
+	@include box-sizing(border-box);
+	padding: 7px;
+
+	@media all and (max-width: 800px)
+	{
+		width: 48%;
+		margin: 0 2% 20px 0;
+	}
+
+	@media all and (max-width: 500px)
+	{
+		width: 100%;
+		margin: 0 0 20px 0;
+	}
+
+	h4
+	{
+		text-align: center;
+		margin: 0 0 5px 0;
+	}
+
+	input[type="checkbox"]
+	{
+		display: none;
+	}
+
+	.tache
+	{
+		margin: 5px 0;
+		@include pie-clearfix;
+	}
+
+	.unchecked, .checked
+	{
+		&:after
+		{ 
+			content: "";
+			float: left;
+			display: inline-block;
+			min-width: 1em;
+			min-height: 1em;
+			margin: 2px 6px 0 0;
+			@include border-radius(10px);
+		}
+	}
+
+	.checked
+	{
+		&:after
+		{ 
+			background-color: $vert;
+		}
+	}
+
+	.unchecked
+	{
+		&:after
+		{
+			background-color: $rouge;
+		}
+	}
+
+	.voir
+	{
+		line-height: 1.5em;
+		float: right;
+		font-size: 0.65em;
+		margin: 0;
+		padding: 0 3px;
+		cursor: pointer;
+		color: lighten($texte, 30%);
+		background: $header;
+		border: none;
+		@include appearance(none);
+		position: relative;
+		top: 3px;
+
+		&:hover, &:focus, &:active
+		{
+			background: $orange;
+			color: $color-light;
+			text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+			@include border-radius(2px);
+		}
+	}
 }

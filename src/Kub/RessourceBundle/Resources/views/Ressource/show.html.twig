@@ -18,6 +18,20 @@
 		<span class="label">Description :</span>
 		<span class="info">{{ ressource.description }}</span>
 
+		<span class="label">Niveau :</span>
+		<span class="info">{{ ressource.niveau }}</span>
+
+		<span class="label">Matière :</span>
+		<span class="info">{{ ressource.matiere }}</span>
+
+		<span class="label">Auteur :</span>
+		<span class="info">{{ ressource.auteur }}</span>
+
+		<span class="label">Accès :</span>
+		<span class="info">
+			<a class="button" href="{{ ressource.url }}">Lien d'accès</a>
+		</span>
+
 		{% if not ressource.valide %}
 			<p class="error">Cette ressource n'a pas été validée et n'est donc pas affichée par défaut</p>
 		{% endif %}
