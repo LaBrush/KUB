@@ -2,7 +2,9 @@
 
 namespace Kub\CollaborationBundle\Entity;
 
+use Symfony\Component\Validator\Constraints as Assert ;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * ListeTaches
@@ -22,18 +24,21 @@ class ListeTaches
     private $id;
 
     /**
-     * @var integer
+     * @var string
      *
-     * @ORM\Column(name="rang", type="integer")
+     * @ORM\Column(name="name", type="string", length=255)
+     * @Assert\NotNull()
+     * @Assert\Length(max=255)
      */
-    private $rang;
+    private $name;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255)
+     * @ORM\Column(name="slug", type="string", length=20)
+     * @Gedmo\Slug(fields={"name"})
      */
-    private $name;
+    private $slug;
 
     /**
      * @ORM\OneToMany(targetEntity="Kub\CollaborationBundle\Entity\Tache", mappedBy="listeTaches", cascade={"all"})
@@ -180,5 +185,28 @@ class ListeTaches
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     * @return ListeTaches
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+    
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string 
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 }

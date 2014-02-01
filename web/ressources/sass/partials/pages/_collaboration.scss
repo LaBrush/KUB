@@ -119,43 +119,24 @@
 		}
 	}
 
-	.checked
+	.checked:after
 	{
-		&:after
-		{ 
-			background-color: $vert;
-		}
+		background-color: $vert;
+
 	}
 
-	.unchecked
+	.unchecked:after
 	{
-		&:after
-		{
-			background-color: $rouge;
-		}
+		background-color: $rouge;
 	}
 
 	.voir
 	{
 		line-height: 1.5em;
 		float: right;
-		font-size: 0.65em;
+		font-size: 0.8em;
 		margin: 0;
 		padding: 0 3px;
 		cursor: pointer;
-		color: lighten($texte, 30%);
-		background: $header;
-		border: none;
-		@include appearance(none);
-		position: relative;
-		top: 3px;
-
-		&:hover, &:focus, &:active
-		{
-			background: $orange;
-			color: $color-light;
-			text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
-			@include border-radius(2px);
-		}
 	}
 }

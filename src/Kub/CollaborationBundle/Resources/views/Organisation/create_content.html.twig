@@ -1,0 +1,38 @@
+{{ form_start(form, { 'attr': {'class': 'formulaire-creation'} }) }}
+
+	<span class="name">
+		{{ form_errors(form.name) }}
+		{{ form_label(form.name) }} <div class="input">{{ form_widget(form.name) }}</div>
+	</span>
+
+	<span class="echeance">
+		{{ form_errors(form.echeance) }}
+		{{ form_label(form.echeance) }} <div class="input">{{ form_widget(form.echeance) }}</div>
+	</span>
+
+	<span class="participants">
+		{{ form_errors(form.participants) }}
+		{{ form_label(form.participants) }} <div class="input">{{ form_widget(form.participants) }}</div>
+	</span>
+
+	<input type="button" class="button options-button" value="Plus">
+
+	<span class="plus">
+		<hr>
+
+		<span class="ressources">
+			{{ form_errors(form.ressources) }}
+			{{ form_label(form.ressources) }} <div class="input">{{ form_widget(form.ressources) }}</div>
+		</span>
+
+		<span class="fichiers">
+			{{ form_errors(form.fichiers) }}
+			{{ form_label(form.fichiers) }} <div class="input">{{ form_widget(form.fichiers) }}</div>
+		</span>
+	</span>
+
+	<span class="validate">
+		<input class="button-yes" type="submit">
+	</span>
+
+{{ form_end(form) }}

@@ -1,29 +1,49 @@
 {% extends 'KubCollaborationBundle::layout.html.twig' %}
 
+{% block title %}
+	{{ parent() }} - Modifier la tache "{{ tache }}"
+{% endblock %}
+
 {% block content %}
-	
+
+	<h3 class="h2 article section-title section-title"> Modifier la tache "{{ tache }}"</h3>
+    
 	<article class="article">
-		
-		{{ form_start(form) }}
-		{{ form_widget(form) }}
-		<input type="submit">
+		{{ form_start(form, { 'attr': {'class': 'formulaire-creation'} }) }}
+
+			{% include "KubCollaborationBundle:Organisation:form.html.twig" %}
+
+			<span class="validate">
+				<input class="button-yes" type="submit">
+				<a class="button" href="{{ path('kub_collaboration_organisation_index', { slug: projet.slug }) }}">Annuler</a>
+			</span>
 		{{ form_end(form) }}
-		
-	</article>
-
-	<article class="article">
-		
-		<p>ou <a href="{{ path('kub_collaboration_organisation_delete', { projet_slug: projet.slug, tache_slug: tache.slug }) }}">Supprimer</a></p>
-
 	</article>
 
 {% endblock %}
 
 {% block js %}
-	
+
+	{{ parent() }}
+
 	<script type="text/javascript" src="{{ asset('ressources/select2/select2.min.js') }}"></script>
 	<link rel="stylesheet" href="{{ asset('ressources/select2/select2.css') }}" />
 	{{ form_javascript(form) }}
 	{{ form_stylesheet(form) }}
 
+	<script>
+		$(function() {
+
+			var nl = $('.newListe').hide(), adding = true ;
+
+			$('.button-liste').click(function() {
+				nl.toggle();
+				$('.listeTaches').toggle();
+
+				adding ? $(this).text('Insérer dans une liste existante') : $(this).text('Créer une liste') ;
+				adding = adding ? false : true  ;
+			}){% if form.listeTaches is not defined %}.click(){% endif %};
+		});
+	</script>
+    
 {% endblock %}

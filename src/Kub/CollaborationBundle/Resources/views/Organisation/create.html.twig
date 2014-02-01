@@ -9,15 +9,7 @@
 	<h3 class="h2 article section-title section-title">Ajouter une tache</h3>
     
 	<article class="article">
-		{{ form_start(form, { 'attr': {'class': 'formulaire-creation'} }) }}
-
-			{% include "KubCollaborationBundle:Organisation:form.html.twig" %}
-
-			<span class="validate">
-				<input class="button-yes" type="submit">
-				<a class="button" href="{{ path('kub_collaboration_organisation_index', { slug: projet.slug }) }}">Annuler</a>
-			</span>
-		{{ form_end(form) }}
+		{% include "KubCollaborationBundle:Organisation:create_content.html.twig" %}
 	</article>
 
 {% endblock %}

@@ -90,10 +90,10 @@
     			}
     		];
 
-    		for (var i = 0; i < data.length; i++) {
-
-    			var $elements = $(data[i].elements),
-    				url = data[i].url,
+    		function ajaxify(data){
+    			var $elements = $(data.elements),
+    				$container = $(data.container),
+    				url = data.url,
 
 					$detail = $('<li>'),
 					$content = $('<p>')
@@ -115,13 +115,14 @@
 
 					)
 					.append($content)
-					.appendTo($(data[i].container))
+					.appendTo($container)
 					.hide()
 				;
 
     			$elements.click(function(){
 
     				var $this = $(this);
+    				console.log(url);
 
 					$.ajax({
 						url: url.replace(0, $this.attr('data-id')),
@@ -135,7 +136,12 @@
 						}
 					});
 				});
-    		};
+			}
+
+			for (var i = 0; i < data.length; i++) {
+				ajaxify(data[i]);
+			};
+
     	});
     </script>
     

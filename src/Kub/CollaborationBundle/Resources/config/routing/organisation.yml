@@ -3,8 +3,12 @@ kub_collaboration_organisation_index:
     defaults: { _controller: KubCollaborationBundle:Organisation:index }
 
 kub_collaboration_organisation_create:
-    pattern:  /{slug}/organisation/ajouter
+    pattern:  /{projet_slug}/organisation/{liste_slug}/ajouter
     defaults: { _controller: KubCollaborationBundle:Organisation:create }
+
+kub_collaboration_organisation_create_list:
+    pattern:  /{slug}/organisation/ajouter/liste
+    defaults: { _controller: KubCollaborationBundle:Organisation:createList }
 
 kub_collaboration_organisation_show:
     pattern:  /{projet_slug}/organisation/{tache_slug}
@@ -18,9 +22,9 @@ kub_collaboration_organisation_delete:
     pattern:  /{projet_slug}/organisation/{tache_slug}/supprimer
     defaults: { _controller: KubCollaborationBundle:Organisation:delete }
 
-kub_api_collaboration_organisation_tache_check:
-    pattern:  /_api/organisation/tache/check/
-    defaults: { _controller: KubCollaborationBundle:Organisation:setTaskChecked }
+kub_api_collaboration_organisation_tache_done:
+    pattern:  /_api/organisation/tache/done/
+    defaults: { _controller: KubCollaborationBundle:Organisation:setTaskDone }
     methods: POST
 
 kub_api_collaboration_organisation_tache_participe:

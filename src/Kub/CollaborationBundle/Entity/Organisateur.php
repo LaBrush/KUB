@@ -30,7 +30,6 @@ class Organisateur
      * @var \Doctrine\Common\Collections\Collection
      *
      * @ORM\OneToMany(targetEntity="Kub\CollaborationBundle\Entity\ListeTaches", mappedBy="organisateur", cascade={"all"})
-     * @ORM\OrderBy({"rang" = "ASC"})
      */
     private $listeTaches;
     /**

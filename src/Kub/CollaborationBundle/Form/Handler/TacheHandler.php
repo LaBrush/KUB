@@ -32,21 +32,6 @@ class TacheHandler
 			if($this->form->isValid())
 			{
 				$data = $this->form->getData();
-				$listeName = trim( $this->form->get('newListe')->getData() );
-
-				if(!empty($listeName))
-				{
-					$liste = new ListeTaches ;
-					$liste->setName($listeName);
-					$liste->setOrganisateur( $this->organisateur );
-
-					$data->setListeTaches($liste);
-				}
-				elseif(empty($listeName) && !$this->form->has('listeTaches'))
-				{
-					$this->form->get("newListe")->addError('La tache doit entrer dans une liste');
-				}
-
 				$this->onSuccess($data);
 
 				return true;

@@ -12,6 +12,7 @@ use Kub\CollaborationBundle\Entity\Organisation ;
 use Kub\CollaborationBundle\Entity\ListeTaches ;
 use Kub\CollaborationBundle\Entity\Tache ;
 
+use Kub\CollaborationBundle\Form\Type\ListeTachesType ;
 use Kub\CollaborationBundle\Form\Type\TacheType ;
 use Kub\CollaborationBundle\Form\Handler\TacheHandler ;
 
@@ -29,11 +30,20 @@ class OrganisationController extends Controller
 		));
 	}
 
-	public function createAction(Projet $projet)
+	/**
+ 	 * @ParamConverter("projet", options={"mapping": {"projet_slug": "slug"}})
+ 	 * @ParamConverter("liste",  options={"mapping": {"liste_slug":  "slug"}})
+	 */
+	public function createAction(Projet $projet, ListeTaches $liste)
 	{
 		$tache = new Tache ;
+		$tache->setListeTaches($liste);
+
 		$form = $this->createForm(new TacheType($projet), $tache, array(
-			'action' => $this->generateUrl('kub_collaboration_organisation_create', array('slug' => $projet->getSlug()))
+			'action' => $this->generateUrl('kub_collaboration_organisation_create', array(
+				'projet_slug' => $projet->getSlug(),
+				'liste_slug' => $liste->getSlug()
+			))
 		));
 		
 		$request = $this->get('request');
@@ -45,16 +55,63 @@ class OrganisationController extends Controller
 
 			if($formHandler->process())
 			{
-				$this->get('session')->getFlashBag()->add('info', 'La tache a bien été ajouté');
+				$this->get('session')->getFlashBag()->add('info', 'La tache a bien été ajoutée');
 				return $this->redirect($this->generateUrl('kub_collaboration_organisation_index', array('slug' => $projet->getSlug()) ));
 			}
 		}
 
-		return $this->render('KubCollaborationBundle:Organisation:create.html.twig',
+		$template = 'create';
+		if($request->attributes->get('_route') != 'kub_collaboration_organisation_create_list')
+		{
+			$template .= '_content' ;
+		}
+
+		return $this->render('KubCollaborationBundle:Organisation:' . $template . '.html.twig',
 			array(
 				'projet' => $projet,
 				'form' => $form->createView(),
 				'tache' => $tache
+			)
+		);
+	}
+
+	public function createListAction(Projet $projet)
+	{
+		$liste = new ListeTaches ;
+		$liste->setOrganisateur( $projet->getOrganisateur() );
+
+		$form = $this->createForm(new ListeTachesType, $liste, array(
+			'action' => $this->generateUrl('kub_collaboration_organisation_create_list', array('slug' => $projet->getSlug()))
+		));
+		
+		$request = $this->get('request');
+		$em = $this->get('doctrine.orm.default_entity_manager');
+
+		if($request->getMethod() == 'POST'){
+
+			$form->bind($request);
+
+			if($form->isValid())
+			{
+				$em->persist($liste);
+				$em->flush();
+
+				$this->get('session')->getFlashBag()->add('info', 'La liste a bien été ajoutée');
+				return $this->redirect($this->generateUrl('kub_collaboration_organisation_index', array('slug' => $projet->getSlug()) ));
+			}
+		}
+
+		$template = 'create_list';
+		if($request->attributes->get('_route') != 'kub_collaboration_organisation_create_list')
+		{
+			$template .= '_content' ;
+		}
+
+		return $this->render('KubCollaborationBundle:Organisation:' . $template . '.html.twig',
+			array(
+				'projet' => $projet,
+				'form' => $form->createView(),
+				'tache' => $liste
 			)
 		);
 	}
@@ -65,12 +122,25 @@ class OrganisationController extends Controller
 	 */
 	public function showAction(Projet $projet, Tache $tache)
 	{
-		return $this->render('KubCollaborationBundle:Organisation:show.html.twig', 
-			array(
-				'projet' => $projet,
-				'tache' => $tache
-			)
-		);
+		if(!$this->get('security.context')->isGranted('VISITEUR', $projet))
+		{
+			throw new AccessDeniedException('Vous n\'avez pas les droits requis pour acceder à cet espace de collaboration');
+		}
+
+		$template = 'show';
+		$request = $this->get('request');
+
+		if($request->attributes->get('_route') != 'kub_collaboration_documentheque_ressource_show' || $request->isXmlHttpRequest() )
+		{
+			$template .= '_content_ajax' ;
+		}
+
+		return $this->render('KubCollaborationBundle:Organisation:' . $template . '.html.twig', array(
+			'tache' => $tache,
+			'projet' => $projet,
+			'sess_id' => uniqid()
+		));	
+
 	}
 
 	/**
@@ -172,13 +242,13 @@ class OrganisationController extends Controller
 		return new Response( $tache->getParticipantsAsString($this->getUser()) );
 	}
 
-	public function setTaskCheckedAction()
+	public function setTaskDoneAction()
 	{
 		$request = $this->get('request');
 		$em = $this->get('doctrine.orm.entity_manager');
 
 		$id = $request->request->get('id');
-		$checked = $request->request->get('checked');
+		$done = $request->request->get('done');
 
 		$tache = $em->getRepository('KubCollaborationBundle:Tache')->findOneById($id);	
 		$projet = $tache ? $tache->getListeTaches()->getOrganisateur()->getProjet() : false;
@@ -188,7 +258,7 @@ class OrganisationController extends Controller
 			throw $this->createNotFoundException('La page recherchée n\'existe pas');
 		}
 
-		$tache->setDone( (bool)$checked );
+		$tache->setDone( (bool)$done );
 
 		$em->persist($tache);
 		$em->flush();

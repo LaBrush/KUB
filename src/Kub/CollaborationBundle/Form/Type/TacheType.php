@@ -39,22 +39,6 @@ class TacheType extends AbstractType
 				'class'    => 'Kub\UserBundle\Entity\User',
 				'multiple' => true
 			))
-		;
-
-		if(count($choices) > 0)
-		{
-			$builder->add('listeTaches', 'entity', array(
-				'choices' => $choices,
-				'class'   => 'Kub\CollaborationBundle\Entity\ListeTaches',
-				'label'   => 'Insérer dans la liste'
-			));
-		}
-
-		$builder->add('newListe', 'text', array(
-				'mapped' => false,
-				'label'  => 'Créer une nouvelle liste',
-				'required' => false
-			))
 			->add('ressources', 'genemu_jqueryselect2_entity', array(
 				'choices'  => $this->projet->getDocumentheque()->getRessources(),
 				'class'    => 'Kub\CollaborationBundle\Entity\Ressource',

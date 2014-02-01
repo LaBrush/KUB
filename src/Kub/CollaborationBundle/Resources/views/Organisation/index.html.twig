@@ -13,34 +13,37 @@
 			{% for listeTaches in organisateur.listeTaches %}
 				<li class="liste-taches">
 
-					<h4 for="{{ listeTaches.id }}l">{{ listeTaches }}</h4>
-					<input 
-						type="checkbox" 
-						id="{{ listeTaches.id }}l"
-						class="liste-check"
-					>
+					<h4>{{ listeTaches }}</h4>
 					<ul>
 						{% for tache in listeTaches.taches %}
-							<li class="tache">
-								<input 
-									type="checkbox" 
-									id="{{ tache.id }}t" 
-									{% if tache.done %}checked{% endif %} 
-								>
-								<label for="{{ tache.id }}t" class="{{ tache.id }}t">{{ tache }}</label>
-								<a class="voir" href="{{ path('kub_collaboration_organisation_show', { projet_slug: projet.slug, tache_slug: tache.slug }) }}">Voir</a>
+							<li class="tache loadable" data-slug={{ tache.slug }}>
+								<span class="{% if tache.done %}
+										checked
+									{% else %}
+									    unchecked
+									{% endif %} 
+								"></span>
+								<span class="{{ tache.id }}t">{{ tache }}</span>
+								<span class="voir">Cliquez pour voir</span>
+								
 							</li>
 						{% endfor %}
+						
+						<li class="tache ajouter">
+							<input type="button" class="button" value="Ajouter une tache">
+							<div class="form-add">
+								{{ render(controller('KubCollaborationBundle:Organisation:create', { projet_slug: projet.slug, liste_slug: listeTaches.slug })) }}
+							</div>
+						</li>
+
 					</ul>
-					
 				</li>
-			{% else %}
-				<li>Il n'y a rien à faire (pour l'instant)</li>
 			{% endfor %}
+			<li class="liste-taches">
+				{{ render(controller('KubCollaborationBundle:Organisation:createList', { slug: projet.slug })) }}
+			</li>
 
 		</ul>
-
-		<a href="{{ path('kub_collaboration_organisation_create', { slug: projet.slug }) }}" class="button-yes">Ajouter une tache</a>
 
 	</article>
 
@@ -52,62 +55,57 @@
 	<link rel="stylesheet" href="{{ asset('ressources/select2/select2.css') }}" />
 	
 	<script type="text/javascript">
-		$(document).ready(function($) {
+		$(function($) {
 			$('#kub_collaborationbundle_tache_participants').select2();
 			$('#kub_collaborationbundle_tache_ressources').select2();
 			$('#kub_collaborationbundle_tache_fichiers').select2();
-
-			$('input.liste-check').change(function(){
-				var $that = $(this), checked = $that.prop('checked');
-
-				$(this).parent().find('.tache input')
-					.prop('checked', checked);
-			});
-
-			$('.tache input').change(function(){
-
-				var $that = $(this), $parent = $that.parent().parent().parent().children('input');
-
-				$.ajax({
-					url: "{{path('kub_api_collaboration_organisation_tache_check')}}",
-					data: {
-						'id': parseInt($that.attr('id')),
-						'checked': 0 + $that.prop('checked')
-					},
-					type: "POST",
-					timeout: 3000
-				});
-
-
-				var $taches = $(
-					'#' + $parent.attr('id')
-				).parent().find('.tache input');
-
-				var allChecked = true ;
-				$taches.each(function(){
-
-					if(!$(this).prop('checked')){ allChecked = false; };
-
-				});
-
-				allChecked ? $parent.prop('checked', true) : $parent.prop('checked', false) ;
-			}).first().change();
-
-			$('.tache>input:checkbox').change(function() {
-
-				var checked = $(this).prop('checked');
-				var label = $(this).parent().children('.' + $(this).attr('id'));
-
-				if (checked)
-				{
-					label.addClass('checked').removeClass('unchecked');
-				}
-				else
-				{
-					label.addClass('unchecked').removeClass('checked');
-				}
-			}).change();
 		});
+
+		$(function($){
+
+			var currentSlug ;
+
+			$('.tache.loadable').click(function(){
+
+				var $this = $(this),
+					$detail = $('<div>')
+						.addClass('detail')
+				;
+
+				var slug = $this.attr('data-slug');
+
+				if(currentSlug != slug){
+
+					currentSlug = slug;
+
+					$.ajax({
+						url: "{{path('kub_collaboration_organisation_show', { projet_slug: projet.slug, tache_slug: 0 })}}".replace('0', currentSlug),
+						type: "POST",
+						timeout: 3000,
+						success: function(r){ 
+
+							$detail.fadeOut(200);
+							$detail.html(r);
+							$detail.appendTo($this);
+							$detail.fadeIn(200);
+
+						}
+					});
+				}
+
+			});
+		});
+
+		$(function($){
+
+			$('.options-button').click(function(){
+
+				$(this).next().toggle().is(':visible') ? $(this).text("Moins d'options") : $(this).text("Plus d'options") ;
+
+			}).click();
+		
+		});
+
 	</script>
 
 {% endblock %}
