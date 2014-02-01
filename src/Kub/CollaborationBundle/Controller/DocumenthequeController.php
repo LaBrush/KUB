@@ -20,7 +20,7 @@ class DocumenthequeController extends Controller
 			throw new AccessDeniedException("Vous n'avez pas les droits requis pour acceder à cet espace de collaboration");
 		}
 
-		return $this->render('KubCollaborationBundle:Documentheque:show.html.twig', array(
+		return $this->render('KubCollaborationBundle:Documentheque:index.html.twig', array(
 			'projet' => $projet
 		));
 	}

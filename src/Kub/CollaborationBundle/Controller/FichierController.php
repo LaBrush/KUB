@@ -39,8 +39,10 @@ class FichierController extends Controller
 		}
 
 		$fichier = $this->get('doctrine.orm.entity_manager')->getRepository('KubCollaborationBundle:Fichier')->findOneById($id);
-
 		$template = 'show';
+
+		$request = $this->get('request');
+		
 		if($request->attributes->get('_route') != 'kub_collaboration_documentheque_fichier_show' || $request->isXmlHttpRequest() )
 		{
 			$template .= '_content' ;
