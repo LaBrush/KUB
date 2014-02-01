@@ -2,47 +2,77 @@
 
 .edt
 {
-	border: 1px $border solid;
 	float: left;
 	width: 100%;
 	font-family: arial;
+
+	.hour-column
+	{
+		width: 5%;
+	}
+
+	.jours
+	{
+		font-size: 0.8em;
+		padding: 10px;
+		border-right: 1px $border solid;
+		border-bottom: 1px $border solid;
+		border-top: 1px $border solid;
+	}
+
+	.entree
+	{
+		display: inline-block;
+		color: $body;
+		padding: 12px 4px 11px 4px;
+		border-right: 1px $border solid;
+		border-bottom: 1px $border solid;
+	}
+
+	.interval
+	{
+		border-right: 1px $border solid;
+	}
 	
 	ul
 	{
-		border: 1px $border solid;
-		height: 40px;
+		
+		margin: 0;
+		float: left;
+		width:  19%;
 		text-align: center;
-		width: 19%;
 	}
 
 	li
 	{
-		border-left: 1px $border solid;
-		border-right: 1px $border solid;
+		margin: 0;
 		text-align: center;
-		height: 21px;
-		padding: 3px;
-		font-size: 0.6em;
+		font-size: 0.7em;
 		line-height: 1.3em;
+		padding: 0;
+		@include box-sizing(border-box);
 	}
 
 	.hour-bottom-solid
 	{
-		padding: 5px 5px 0px 5px;
+		display: inline-block;
+		padding: 6px 4px 0px 4px;
 		border-bottom: 1px $border solid;
+		border-right: 1px $border solid;
 	}
 
 	.hour-bottom-dashed
 	{
-		padding: 0px 5px 5px 5px;
+		display: inline-block;
+		padding: 0px 4px 6px 4px;
 		border-bottom: 1px $border dashed;
+		border-right: 1px $border solid;
 	}
 
 	.info-cours
 	{
-		display: block;
-		font-size: 1.25em;
-		line-height: 1.4em;
+		font-size: 0.9em;
+		line-height: 1.2em;
 		color: $color-light;
 		text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
 
@@ -50,12 +80,5 @@
 		{
 			font-size: 1em;
 		}
-	}
-
-	.hour-edt
-	{
-		text-align: center;
-		height: 21px;
-		font-size: 0.8em;
 	}
 }
