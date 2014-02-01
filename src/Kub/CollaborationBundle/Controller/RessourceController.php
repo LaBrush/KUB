@@ -73,7 +73,8 @@ class RessourceController extends Controller
 		return $this->render('KubCollaborationBundle:Ressource:create.html.twig',
 			array(
 				'projet' => $projet,
-				'form' => $form->createView()
+				'form' => $form->createView(),
+				'ressource' => $ressource
 			)
 		);  
 	}
@@ -108,7 +109,8 @@ class RessourceController extends Controller
 		return $this->render('KubCollaborationBundle:Ressource:create.html.twig',
 			array(
 				'projet' => $projet,
-				'form' => $form->createView()
+				'form' => $form->createView(),
+				'ressource' => $ressource
 			)
 		); 
 	}

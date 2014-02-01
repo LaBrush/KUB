@@ -5,14 +5,8 @@
 		{{ form_label(form.titre) }} <div class="input">{{ form_widget(form.titre) }}</div>
 	</div>
 
-	<div class="hidden">
-		{{ form_errors(form.debut) }}
-		{{ form_label(form.debut) }} <div class="input">{{ form_widget(form.debut) }}</div>
-	</div>
-
-	<div class="hidden">
-		{{ form_errors(form.fin) }}
-		{{ form_label(form.fin) }} <div class="input">{{ form_widget(form.fin) }}</div>
+	<div class="va voir chez les grecs ce qu'ils en pensent">
+		<p>Du {{ form_widget(form.debut.day) }} {{ form_widget(form.debut.month) }} {{ form_widget(form.debut.year) }} au {{ "now"|date("m/d/Y") }}</p>
 	</div>
 
 	<div class="contenu">

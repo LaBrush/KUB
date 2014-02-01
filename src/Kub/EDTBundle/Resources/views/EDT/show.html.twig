@@ -53,6 +53,8 @@
 				{% else %}
 				    <li class="interval" style="height: {{ interval.rowspan * size }}px">
 				    	*L'horaire n'a pas de cours*
+				    	** Maintenant il en a un **
+				    	{{ interval.horaire }}
 					</li>
 				{% endif %}
 			{% endfor %}

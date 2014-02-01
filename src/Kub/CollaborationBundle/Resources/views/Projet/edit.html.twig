@@ -37,15 +37,19 @@
 
 		$(document).ready(function() {
 
+			$('.permissions').each(function(){
+				addTagFormDeleteLink($(this));
+			})
+
 			$('.add-another-permissions').click(function() {
 				var tuteurList = $('.permissions-add');
 
 				var newWidget = tuteurList.attr('data-prototype');
 				newWidget = newWidget.replace(/__name__/g, tuteurCount);
 
-				var newLi = $('<div class="permissions"></div>').html(newWidget);
-				addTagFormDeleteLink(newLi);
-				newLi.appendTo(tuteurList);
+				var newRow = $('<tr class="permissions"></tr>').html(newWidget);
+				addTagFormDeleteLink(newRow);
+				newRow.appendTo(tuteurList);
 				
 				$field = $('#kub_collaborationbundle_projet_permissions_' + tuteurCount + '_user');
                 $field.select2([]);
@@ -55,13 +59,15 @@
 				return false;
 			});
 
-			function addTagFormDeleteLink($tagFormLi) {
-				var $removeFormA = $('<a href="#" class="button-no delete-permission">Supprimer cet utilisateur</a>');
-				$tagFormLi.append($removeFormA);
-
-				$removeFormA.on('click', function() {
-					$tagFormLi.remove();
-				});
+			function addTagFormDeleteLink($row) {
+				$row.append(
+					$('<td>').append(
+						$('<a href="#" class="button-no delete-permission">Supprimer cette permission</a>')
+						.on('click', function() {
+							$row.remove();
+						})
+					)
+				);
 			}
 		})
 	</script>

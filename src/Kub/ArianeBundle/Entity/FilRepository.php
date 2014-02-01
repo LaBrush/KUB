@@ -24,7 +24,7 @@ class FilRepository extends EntityRepository
 			->join('f.eleve', 'e')
 			->where('e.username = :username')
 			->setParameter("username", $username )
-			->orderBy('p.dateAjout', 'DESC')
+			->orderBy('p.fin', 'DESC')
 		;
 
 		return $qb->getQuery()->getSingleResult();

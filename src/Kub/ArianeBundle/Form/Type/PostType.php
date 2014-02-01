@@ -15,12 +15,7 @@ class PostType extends AbstractType
 	public function buildForm(FormBuilderInterface $builder, array $options)
 	{
 		$builder
-			->add('debut', 'date', array(
-				'label' => 'Du '
-			))
-			->add('fin', 'date', array(
-				'label' => 'au'
-			))
+			->add('debut', 'date')
 			->add('titre', 'text', array(
 				'label' => 'Titre de la trace :'
 			))

@@ -97,10 +97,6 @@ $(function() {
 	}
 });
 
-
-
-
-
 // Pour le formulaire
 $('.file').hide();
 $('input:file').removeAttr('required');

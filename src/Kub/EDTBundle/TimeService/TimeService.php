@@ -204,16 +204,12 @@ class TimeService
 			$size = count($intervals) ;
 			$last_horaire = $this->getFirstHoraire();
 
-			// echo $jour . ':' . $size . ' ';
-
 			for ($y=0; $y < $size; $y++) { 
 
 				$previous = $this->interval()->link($last_horaire, $intervals_jours[ $jour ][$y]);
 
-				$interval = $this->interval()->link($intervals_jours[ $jour ][$y]->getHoraire()->getDebut(), $intervals_jours[ $jour ][$y]->getHoraire()->getFin());
+				$interval = $intervals_jours[$jour][$y] ;
 				$last_horaire = $interval->getHoraire()->getFin();
-
-				// echo ' - '.  $previous->getRowSpan() . ' ' . $interval->getRowSpan() . ' - ';
 
 				if($previous->getRowSpan() > 0){ array_splice( $edt[$jour]['intervals'], $y, 0, array($previous) ); }
 				if($interval->getRowSpan() > 0){ array_splice( $edt[$jour]['intervals'], $y+1, 0, array($interval) ); }

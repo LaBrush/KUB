@@ -4,14 +4,9 @@
 
 {% block content %}
 
-	<h3 class="h2 article">Liste des documents</h3>
+	<h2 class="h2 article section-title">Liste des documents</h2>
 
 	<article class="article">
-
-		<div class="create">
-			<a class="button-yes" href="{{ path('kub_collaboration_documentheque_ressource_create', { slug: projet.slug}) }}">Déposer une ressource</a>
-			<a class="button-yes" href="{{ path('kub_collaboration_documentheque_fichier_create', { slug: projet.slug}) }}">Créer un fichier</a>
-		</div>
 
 		<label for="search-in-list">Chercher dans la liste :</label>
 		<input id="search-in-list" type="text">
@@ -41,14 +36,11 @@
 							</div>
 						</li>
 					{% else %}
-						{% set empty = true %}
+						<li class="error">Il n'y a aucune ressource</li>
 					{% endfor %}
-					
-					{% if empty == true %}
-						<p class="error">Il n'y a aucune ressource</p>
-					{% endif %}
-
 				</ul>
+				
+				<a class="button-yes" href="{{ path('kub_collaboration_documentheque_ressource_create', { slug: projet.slug}) }}">Déposer une ressource</a>	
 			</div>
 
 			<div class="documentheque-fichiers">
@@ -59,16 +51,8 @@
 					{% for fichier in documentheque.fichiers %}
 						<a href="{{ path('kub_collaboration_documentheque_fichier_go', { slug: projet.slug, id: fichier.id}) }}">
 							<li class="ressource in-list">
-								<span class="label">{{ fichier.titre }}</span>
-								<div class="details">
-									<span class="infos">
-										{% set length = fichier.description | length %}
-										{% if length < 46 %}
-											{{ fichier.description }}
-										{% else %}
-											{{ fichier.description | slice(0, 45) }}...
-										{% endif %}
-										</span>				
+								<span class="label">{{ fichier.name }}</span>
+								<div class="details">		
 									<span class="infos-complementaires"><em>
 										<a href="{{ path('kub_collaboration_documentheque_fichier_show', { slug: projet.slug, id: fichier.id}) }}">Voir</a> - 
 										<a href="{{ path('kub_collaboration_documentheque_fichier_edit', { slug: projet.slug, id: fichier.id}) }}">Modifier</a></em>
@@ -77,13 +61,10 @@
 							</li>
 						</a>
 					{% else %}
-						{% set empty = true %}
+						<li class="error">Il n'y a aucun fichier</li>
 					{% endfor %}
-
-					{% if empty == true %}
-						<p class="error">Il n'y a aucun fichier</p>
-					{% endif %}
-
+	
+					<a class="button-yes" href="{{ path('kub_collaboration_documentheque_fichier_create', { slug: projet.slug}) }}">Créer un fichier</a>						
 				</ul>
 			</div>
 		</div>

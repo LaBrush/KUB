@@ -15,26 +15,32 @@
 		{{ form_label(form.auteur) }} <div class="input">{{ form_widget(form.auteur) }}</div>
 	</span>
 
-	<span class="type">
-		{{ form_errors(form.type) }}
-		{{ form_label(form.type) }}
-		<span>{{ form_widget(form.type.0) }} {{ form_label(form.type.0) }}</span>
-		<span>{{ form_widget(form.type.1) }} {{ form_label(form.type.1) }}</span>  
-	</span>
+	{% if form.type is defined %}
+		<span class="type">
+			{{ form_errors(form.type) }}
+			{{ form_label(form.type) }}
+			<span>{{ form_widget(form.type.0) }} {{ form_label(form.type.0) }}</span>
+			<span>{{ form_widget(form.type.1) }} {{ form_label(form.type.1) }}</span>  
+		</span>
+	{% endif %}
 
-	<span class="url">
-		{{ form_errors(form.url) }}
-		Adresse web <div class="input">{{ form_widget(form.url) }}</div>
-	</span>
+	{% if form.type is defined  or ressource.type == 1 %}
+		<span class="url">
+			{{ form_errors(form.url) }}
+			Adresse web <div class="input">{{ form_widget(form.url) }}</div>
+		</span>
+	{% endif %}
 
-	<span class="file">
-		Fichier
-		<div class="input">
-			{% for field in form.file %}
-				{{ form_errors(field) }}
-				{{ form_widget(field) }}
-			{% endfor %}
-		</div>
-	</span>
+	{% if form.type is defined  or ressource.type == 2 %}
+		<span class="file">
+			Fichier
+			<div class="input">
+				{% for field in form.file %}
+					{{ form_errors(field) }}
+					{{ form_widget(field) }}
+				{% endfor %}
+			</div>
+		</span>
+	{% endif %}
 
 {% endblock %}

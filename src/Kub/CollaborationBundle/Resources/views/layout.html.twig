@@ -6,30 +6,25 @@
 
 {% block body %}
 
-	<article class="article">
-		<h2 class="section-title">
-			{{ projet.name }}
-		</h2>
+	<article class='article project-nav'>	
+		{% if app.request.attributes.get('_route') != 'kub_collaboration_organisation_index' %}
+			<a href='{{ path('kub_collaboration_organisation_index', { slug: projet.slug }) }}' class='button'>Taches</a>
+		{% endif %}
+
+		{% if app.request.attributes.get('_route') != 'kub_collaboration_documentheque_show' %}
+			<a href='{{ path('kub_collaboration_documentheque_show', { slug: projet.slug }) }}' class='button'>Documents</a>
+		{% endif %}
+
+		{% if is_granted('ADMINISTRATEUR', projet) and app.request.attributes.get('_route') != 'kub_collaboration_projet_edit'  %}
+				<a href='{{ path('kub_collaboration_projet_edit', { slug: projet.slug }) }}' class='button'>Options</a>
+		{% endif %}
+
 	</article>
-
-	<article class="article">	
-		<a href="{{path('kub_collaboration_projet_show', { slug: projet.slug })}}" class="button">Accueil</a>
-
-		{% if app.request.attributes.get('_route') != "kub_collaboration_organisation_index" %}
-			<a href="{{ path('kub_collaboration_organisation_index', { slug: projet.slug }) }}" class="button">Taches</a>
-		{% endif %}
-
-		{% if app.request.attributes.get('_route') != "kub_collaboration_documentheque_show" %}
-			<a href="{{ path('kub_collaboration_documentheque_show', { slug: projet.slug }) }}" class="button">Documents</a>
-		{% endif %}
-
-		{% if is_granted('ADMINISTRATEUR', projet) %}
-				<a href="{{ path('kub_collaboration_projet_edit', { slug: projet.slug }) }}" class="button">Options</a>
-		{% endif %}
-
-		{% if app.request.attributes.get('_route') != "kub_collaboration_communication_index" %}
-			<a href="{{ path('kub_collaboration_communication_index', { slug: projet.slug }) }}" class="button">Voir l'espace de communication</a>
-		{% endif %}
+	
+	<article class='article'>
+		<h2 class='section-title project-title'>
+			<a href='{{ path('kub_collaboration_projet_show', {slug: projet.slug}) }}'>{{ projet.name }} <span class='project-users'>{{ projet.getUsersAsString(app.user) }}</span></a>
+		</h2>
 	</article>
 
 	{% block content %}
@@ -40,6 +35,6 @@
 
 {% block js %}
 
-	<script type="text/javascript" src="{{ asset('ressources/jsmin/collaboration.min.js') }}"></script>
+	<script type='text/javascript' src='{{ asset('ressources/jsmin/collaboration.min.js') }}'></script>
     
 {% endblock %}

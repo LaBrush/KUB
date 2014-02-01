@@ -44,13 +44,6 @@ class Post
 	private $fin;
 
 	/**
-	 * @var \DateTime
-	 *
-	 * @ORM\Column(name="date_ajout", type="datetime")
-	 */
-	private $dateAjout;
-
-	/**
 	 * @var string
 	 *
 	 * @ORM\Column(name="titre", type="string", length=255)
@@ -81,10 +74,8 @@ class Post
 
 	public function __construct()
 	{
-		$this->dateAjout = new \DateTime();
-
 		$this->debut = new \DateTime('yesterday');
-		$this->fin = new \Datetime('now');
+		$this->fin = new \Datetime();
 	}
 
 	/**
