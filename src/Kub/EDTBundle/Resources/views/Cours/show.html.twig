@@ -1,51 +1,76 @@
 {% extends "::base.html.twig" %}
 
+{% block title %}
+	{{ parent() }} - {{ cours }}
+{% endblock %}
+
 {% block body %}
 
 	<article class="article">
-		<p>{{ cours.professeur }}</p>
-		<p><strong>Fait le reste</strong></p>
+		<h2 class="section-title">{{ cours }}</h2>
 	</article>
 
+	<article class="article infos">
 
-	<article class="article">
-		<ul>
-			
-			{% for controle in cours.controles %}
-				{% if is_granted('ROLE_PROFESSEUR') %}
-					{% set path = path('kub_notes_professeur_show', { id: controle.id }) %}					
-				{% elseif is_granted('ROLE_ELEVE') %}
-					{% set path = path('kub_notes_eleve_homepage') %}
-				{% else %}
-					{% set path = '#' %}
-				{% endif %}
+		<span class="label">Professeur :</span>
+		<span class="info">{{ cours.professeur }}</span>
 
-				<a href="{{ path }}"><li class="in-list li-list">{{ controle }}</li></a>
-			{% endfor %}
-
-		</ul>
-	</article>
-
-
-	{% if is_granted('ROLE_PROFESSEUR') %}
-		<article class="article">
-			<table class="table cut">
-				{% for item in liste_eleves_absences %}
-
-					<tr>
-						<td>{{ item.eleve }}</td>
-						<td>
-							
-							{% for absence in item.absences %}
-							    <span class="in-list li-list">{{ absence }}</span>
-							{% endfor %}
-
-						</td>
-					</tr>
-
+		<span class="label">Groupes :</span>
+		<span class="info">
+			<ul>
+				{% for groupe in cours.groupes %}
+					{% if is_granted('ROLE_PROFESSEUR') %}
+						{% set path = path('groupe_show', { id: groupe.id }) %}
+					{% else %}
+						{% set path = '#' %}
+					{% endif %}
+					<a href="{{ path }}"><li class="li-list">{{ groupe }}</li></a>
 				{% endfor %}
-			</table>
-		</article>
-	{% endif %}
+			</ul>
+		</span>
+
+		<span class="label">Matière :</span>
+		<span class="info">{{ cours.matiere }}</span>
+
+		<span class="label">Controles :</span>
+		<span class="info">
+			<ul>
+				{% for controle in cours.controles %}
+					{% if is_granted('ROLE_PROFESSEUR') %}
+						{% set path = path('kub_notes_professeur_show', { id: controle.id }) %}					
+					{% elseif is_granted('ROLE_ELEVE') %}
+						{% set path = path('kub_notes_eleve_homepage') %}
+					{% else %}
+						{% set path = '#' %}
+					{% endif %}
+
+					<a href="{{ path }}"><li class="li-list">{{ controle }}</li></a>
+				{% endfor %}
+			</ul>
+		</span>
+		
+		{% if is_granted('ROLE_PROFESSEUR') %}
+			<span class="label">Absences :</span>
+			<span class="info">
+				<table class="table cut">
+					{% for item in liste_eleves_absences %}
+
+						<tr>
+							<td>{{ item.eleve }}</td>
+							<td>
+								
+								{% for absence in item.absences %}
+								    <span class="in-list li-list">{{ absence }}</span>
+								{% endfor %}
+
+							</td>
+						</tr>
+
+					{% endfor %}
+				</table>
+			</span>
+		{% endif %}
+		
+	</article>
 
 {% endblock %}
