@@ -1,0 +1,31 @@
+<span class="name">
+	{{ form_label(form.name) }}
+	{{ form_errors(form.name) }} <div class="input">{{ form_widget(form.name) }}</div>
+</span>
+
+<span class="echeance">
+	{{ form_label(form.echeance) }}
+	{{ form_errors(form.echeance) }} <div class="input">{{ form_widget(form.echeance) }}</div>
+</span>
+
+{% if main is defined and not main %}
+	<input type="button" class="button options-button" value="Plus">
+{% endif %}
+
+<span class="plus">
+
+	<span class="participants">
+		{{ form_label(form.participants) }}
+		{{ form_errors(form.participants) }} <div class="input">{{ form_widget(form.participants) }}</div>
+	</span>
+
+	<span class="ressources">
+		{{ form_label(form.ressources) }}
+		{{ form_errors(form.ressources) }} <div class="input">{{ form_widget(form.ressources) }}</div>
+	</span>
+
+	<span class="fichiers">
+		{{ form_label(form.fichiers) }}
+		{{ form_errors(form.fichiers) }} <div class="input">{{ form_widget(form.fichiers) }}</div>
+	</span>
+</span>

@@ -61,16 +61,19 @@ class OrganisationController extends Controller
 		}
 
 		$template = 'create';
-		if($request->attributes->get('_route') != 'kub_collaboration_organisation_create_list')
+		$main = true ;
+		if($request->attributes->get('_route') != 'kub_collaboration_organisation_create')
 		{
 			$template .= '_content' ;
+			$main = false ;
 		}
 
 		return $this->render('KubCollaborationBundle:Organisation:' . $template . '.html.twig',
 			array(
 				'projet' => $projet,
 				'form' => $form->createView(),
-				'tache' => $tache
+				'tache' => $tache,
+				'main' => $main
 			)
 		);
 	}

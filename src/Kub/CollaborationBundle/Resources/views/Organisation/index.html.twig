@@ -30,7 +30,8 @@
 						{% endfor %}
 						
 						<li class="tache ajouter">
-							<input type="button" class="button" value="Ajouter une tache">
+							<hr>
+							<h4>Ajouter une tache</h4>
 							<div class="form-add">
 								{{ render(controller('KubCollaborationBundle:Organisation:create', { projet_slug: projet.slug, liste_slug: listeTaches.slug })) }}
 							</div>
@@ -63,32 +64,28 @@
 
 		$(function($){
 
-			var currentSlug ;
+			var current = { detail: $('<p>') } ;
 
 			$('.tache.loadable').click(function(){
 
 				var $this = $(this),
-					$detail = $('<div>')
-						.addClass('detail')
-				;
+					slug = $this.attr('data-slug');
 
-				var slug = $this.attr('data-slug');
+				if(current.slug != slug){
 
-				if(currentSlug != slug){
+					var $detail = $('<div>').addClass('detail');
 
-					currentSlug = slug;
+					current.detail.remove();
+					current.slug = slug;
+					current.detail = $detail;
 
 					$.ajax({
-						url: "{{path('kub_collaboration_organisation_show', { projet_slug: projet.slug, tache_slug: 0 })}}".replace('0', currentSlug),
+						url: "{{path('kub_collaboration_organisation_show', { projet_slug: projet.slug, tache_slug: 0 })}}".replace('0', current.slug),
 						type: "POST",
 						timeout: 3000,
 						success: function(r){ 
-
-							$detail.fadeOut(200);
 							$detail.html(r);
 							$detail.appendTo($this);
-							$detail.fadeIn(200);
-
 						}
 					});
 				}

@@ -27,6 +27,8 @@ class Tache
 	 * @var string
 	 *
 	 * @ORM\Column(name="name", type="string", length=255)
+	 * @Assert\NotNull()
+	 * @Assert\Length(min=2, max=255)
 	 */
 	private $name;
 
