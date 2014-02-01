@@ -31,13 +31,13 @@ kub_notes_professeur_delete:
         id: \d+
 
 kub_notes_professeur_show:
-    pattern: /notes/{id}/detail
+    pattern: /controle/{id}/detail
     defaults: { _controller: KubNoteBundle:Professeur:show }
     requirements:
         id: \d+
 
 kub_notes_professeur_edit:
-    pattern: /notes/{id}/editer
+    pattern: /controle/{id}/editer
     defaults: { _controller: KubNoteBundle:Professeur:edit }
     requirements:
         id: \d+

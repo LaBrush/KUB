@@ -135,13 +135,13 @@ class MenuBuilder
 					'route' => 'kub_collaboration_homepage'
 				)
 			);
-		} elseif($nb_projets == 0) {
-			$menu['Mes projets']->addChild("Créer un projet", 
-				array(
-					'route' => 'kub_collaboration_projet_create'
-				)
-			);
 		}
+
+		$menu['Mes projets']->addChild("Créer un projet", 
+			array(
+				'route' => 'kub_collaboration_projet_create'
+			)
+		);
 	}
 
 	public function generateSecretaireMenu($menu)

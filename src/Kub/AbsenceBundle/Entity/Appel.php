@@ -29,11 +29,6 @@ class Appel
 	private $date;
 
 	/**
-	 * @ORM\ManyToOne(targetEntity="Kub\EDTBundle\Entity\Cours")
-	 */
-	private $cours ;
-
-	/**
 	 * @ORM\ManyToOne(targetEntity="Kub\EDTBundle\Entity\Horaire")
 	 */
 	private $horaire ;
@@ -76,6 +71,16 @@ class Appel
 	}
 
 	/**
+	 * Get cours
+	 *
+	 * @return \Kub\EDTBundle\Entity\Cours 
+	 */
+	public function getCours()
+	{
+		return $this->getHoraire()->getCours();
+	}
+
+	/**
 	 * Get id
 	 *
 	 * @return integer 
@@ -106,29 +111,6 @@ class Appel
 	public function getDate()
 	{
 		return $this->date;
-	}
-	
-	/**
-	 * Set cours
-	 *
-	 * @param \Kub\EDTBundle\Entity\Cours $cours
-	 * @return Appel
-	 */
-	public function setCours(\Kub\EDTBundle\Entity\Cours $cours = null)
-	{
-		$this->cours = $cours;
-	
-		return $this;
-	}
-
-	/**
-	 * Get cours
-	 *
-	 * @return \Kub\EDTBundle\Entity\Cours 
-	 */
-	public function getCours()
-	{
-		return $this->cours;
 	}
 
 	/**

@@ -24,7 +24,7 @@ class ControleType extends AbstractType
 		->add('name', 'text', array(
 			'label' => 'Intitulé du DS'
 		))
-		->add("date")
+		->add('date', 'date')
 		->add('notes', 'collection', array(
 			"type" => new NoteType()
 		))

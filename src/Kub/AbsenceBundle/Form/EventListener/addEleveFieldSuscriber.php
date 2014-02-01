@@ -26,7 +26,7 @@ class addEleveFieldSuscriber implements EventSubscriberInterface
 		$this->data = $event->getData();
 		$this->form = $event->getForm();
 
-		$this->form->add('statut', 'choice', array(
+		$this->form->add('type', 'choice', array(
 			"choices" => array(
 
 				Absence::PRESENT => "Présent",

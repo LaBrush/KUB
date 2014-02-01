@@ -30,15 +30,11 @@ class ProfesseurController extends Controller
 			if(!$appel)
 			{
 				$appel = new Appel ;
-				$appel->setCours( $cours );
+				$appel->setHoraire( $cours->getCurrentHoraire() );
 				$appel->setSemaine( $semaine );
 			}
 
-			$eleves = array();
-
-			foreach ($cours->getGroupes() as $groupe) { $eleves = array_merge($eleves, $groupe->getEleves()->toArray() ); }
-
-			foreach ($eleves as $eleve) {
+			foreach ($cours->getEleves() as $eleve) {
 
 				if(!$appel->hasEleve($eleve))
 				{

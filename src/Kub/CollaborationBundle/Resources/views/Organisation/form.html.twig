@@ -15,14 +15,22 @@
 		{{ form_label(form.participants) }} <div class="input">{{ form_widget(form.participants) }}</div>
 	</span>
 
-	<span class="listeTaches">
-		{{ form_errors(form.listeTaches) }}
-		{{ form_label(form.listeTaches) }} <div class="input">{{ form_widget(form.listeTaches) }}</div>
-	</span>
+	<hr>
+
+	{% if form.listeTaches is defined %}
+		<span class="listeTaches">
+			{{ form_errors(form.listeTaches) }}
+			{{ form_label(form.listeTaches) }} <div class="input">{{ form_widget(form.listeTaches) }}</div>
+		</span>
+	{% else %}
+		<p>Aucune liste pour l'instant</p>
+	{% endif %}
 
 	<span>
 		<a class="button button-liste">Créer une liste</a>
 	</span>
+
+	<hr>
 
 	<span class="newListe">
 		{{ form_errors(form.newListe) }}

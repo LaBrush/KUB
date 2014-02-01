@@ -39,9 +39,6 @@ class AppelRepository extends EntityRepository
 			->setParameter('cid', $cours->getId())
 		;
 
-		// throw new \Exception($qb->getQuery()->getDql());
-		
-
 		return $qb->getQuery()->getOneOrNullResult();
 	}
 
