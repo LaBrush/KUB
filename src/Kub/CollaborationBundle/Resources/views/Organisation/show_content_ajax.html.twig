@@ -2,18 +2,22 @@
 	<em>{{ tache.participantsAsString(app.user) | capitalize}}</em>
 </p>
 <p>
-	<em>A faire avant le <strong>{{ tache.echeance|date('Y/m/d') }}</strong></em>
+	<em>A faire avant le <strong>{{ tache.echeance|date('d/m/Y') }}</strong></em>
 </p>
 <ul class="list-in-detail"><em>
 	<p>Fichiers associés :</p>
 	{% for fichier in tache.fichiers %}
 		<li>-&nbsp;&nbsp;{{ fichier }}</li>
+	{% else %}
+	    <li>-&nbsp;&nbsp;Pas de fichiers</li>
 	{% endfor %}
 </em></ul>
 <ul class="list-in-detail"><em>
 	<p>Ressources associés :</p>
 	{% for ressource in tache.ressources %}
 		<li>-&nbsp;&nbsp;{{ ressource }}</li>
+	{% else %}
+	    <li>-&nbsp;&nbsp;Pas de ressources</li>
 	{% endfor %}
 </em></ul>
 

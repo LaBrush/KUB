@@ -243,16 +243,20 @@
 
 	.detail
 	{
-		margin: 0 0 10px 0;
+		margin: 5px 0 10px 0;
 		background: $header;
 		padding: 8px;
 		width: 100%;
 		@include box-sizing(border-box);
 		@include border-radius(3px);
+		cursor: default;
 	}
 
 	.list-in-detail
 	{
-		margin: 5px;
+		li
+		{
+			margin: 0 0 0 10px;
+		}
 	}
 }
