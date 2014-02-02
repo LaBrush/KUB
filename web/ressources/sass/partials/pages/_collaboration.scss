@@ -38,7 +38,8 @@
 
 .documentheque-ressources, .documentheque-fichiers
 {
-	width: 48%;
+	text-align: center;
+	width: 49%;
 	display: inline-block;
 	border: 1px $border dashed;
 	@include border-radius(6px);
@@ -50,9 +51,37 @@
 		text-align: center;
 	}
 
+	.ressource
+	{
+		width: 80px;
+		height: 80px;
+	}
+
 	.error
 	{
-		margin: 10px 0;
+		margin: 10px auto;
+	}
+
+	.detail
+	{
+		text-align: left;
+		background: $header;
+		padding: 0px 10px 8px 10px;
+		width: 100%;
+		@include box-sizing(border-box);
+		@include border-radius(3px);
+	}
+
+	.buttons
+	{
+		margin: 5px 0 0 4px;
+		float: right;
+	}
+
+	@media all and (max-width: 800px)
+	{
+		width: 100%;
+		margin: 0 0 25px 0;
 	}
 }
 

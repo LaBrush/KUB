@@ -1,3 +1,13 @@
-{{ ressource }}
+<span class="label">Nom de la ressource :</span>
+<span class="info">{{ ressource }}</span>
 
-<a class='button' href="{{ path('kub_collaboration_documentheque_ressource_edit', { slug: projet.slug, id: ressource.id}) }}">Modifier</a></em>
+<span class="label">Description :</span>
+<span class="info">{{ ressource.description }}</span>
+
+<span class="label">Auteur :</span>
+<span class="info">{{ ressource.auteur }}</span>
+
+<span class="buttons">
+	<a class='button' href="{{ path('kub_collaboration_documentheque_ressource_edit', { slug: projet.slug, id: ressource.id}) }}">Modifier</a>
+	<a class="button-yes" href="{{ ressource.url }}">Lien d'accès</a>
+</span>

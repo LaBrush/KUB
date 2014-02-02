@@ -7,13 +7,15 @@
 	<h2 class="h2 article section-title">Liste des documents</h2>
 
 	<article class="article" style="clear: both ;">
-		<p><a class="button-yes" href="{{ path('kub_collaboration_documentheque_ressource_create', { slug: projet.slug}) }}">Déposer une ressource</a>
-		<a class="button-yes" href="{{ path('kub_collaboration_documentheque_fichier_create', { slug: projet.slug}) }}">Créer un fichier</a></p>
+		<p>
+			<a class="button-yes" href="{{ path('kub_collaboration_documentheque_fichier_create', { slug: projet.slug}) }}">Créer un fichier</a>
+			<a class="button-yes" href="{{ path('kub_collaboration_documentheque_ressource_create', { slug: projet.slug}) }}">Déposer une ressource</a>
+		</p>
 	</article>
 
 	<article class="article">
 
-		<label for="search-in-list">Chercher dans la liste :</label>
+		<label for="search-in-list">Chercher dans les listes :</label>
 		<input id="search-in-list" type="text">
 
 		<div class="documentheque">
@@ -31,6 +33,7 @@
 									    Fichier ethercalc
 									{% endif %}
 								</span>
+								<span class="infos-complementaires"><em><strong>{{ ressource.auteur }}</strong></em></span>
 							</div>
 						</li>
 					{% else %}
@@ -49,14 +52,15 @@
 							<div class="details">
 								<span class="infos">
 									{% set length = ressource.description|length %}
-									{% if length > 46 %}
+									{% if length > 35 %}
 										{{ ressource.description | slice(0, 45) }}...
 									{% elseif length == 0 %}
 									    Pas encore de description
 									{% else %}
 										{{ ressource.description }}
 									{% endif %}
-									</span>
+								</span>
+								<span class="infos-complementaires"><em><strong>{{ ressource.auteur }}</strong></em></span>
 							</div>
 						</li>
 					{% else %}
@@ -73,6 +77,9 @@
 
 {% block js %}
     {{ parent() }}
+
+    <script type="text/javascript" src="{{ asset('ressources/jsmin/search.min.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('ressources/jsmin/fuse.min.js') }}"></script>
 
     <script>
     	$(function($){
@@ -100,12 +107,13 @@
 				;
 
 				$detail
-					.addClass('detail')
+					.addClass('detail infos')
+					.append($content)
 					.append(
 
 						$('<input>')
 							.attr('type', 'button')
-							.addClass('button')
+							.addClass('button-no buttons')
 							.val('Retour')
 							.click(function(){
 								$(this).parent().fadeOut(200, function(){
@@ -114,7 +122,6 @@
 							})
 
 					)
-					.append($content)
 					.appendTo($container)
 					.hide()
 				;
@@ -141,6 +148,8 @@
 			for (var i = 0; i < data.length; i++) {
 				ajaxify(data[i]);
 			};
+
+			
 
     	});
     </script>

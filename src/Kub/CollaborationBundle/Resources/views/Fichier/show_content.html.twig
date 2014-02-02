@@ -1,3 +1,16 @@
-<strong>Date de création:</strong> {{ fichier.dateAjout|date('d/m/Y') }}
+<span class="label">Nom du fichier :</span>
+<span class="info">{{ fichier }}</span>
 
-<a class='button' href="{{ path('kub_collaboration_documentheque_fichier_edit', { slug: projet.slug, id: fichier.id}) }}">Modifier</a></em>
+<span class="label">Description :</span>
+<span class="info">{{ fichier.description }}</span>
+
+<span class="label">Auteur :</span>
+<span class="info">{{ fichier.auteur }}</span>
+
+<span class="label">Date de création :</span>
+<span class="info">{{ fichier.dateAjout|date('d/m/Y') }}</span>
+
+<span class="buttons">
+	<a class='button' href="{{ path('kub_collaboration_documentheque_fichier_edit', { slug: projet.slug, id: fichier.id}) }}">Modifier</a>
+	<a class="button-yes" href="{{ ressource.url }}">Accèder</a>
+</span>
