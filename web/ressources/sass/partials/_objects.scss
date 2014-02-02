@@ -52,7 +52,7 @@
 	border: none;
 	margin: 0;
 	@include border-radius(2px);
-	padding: 3px 8px 2px 8px;
+	padding: 3px 8px 1px 8px;
 	color: $button-color;
 	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
 	font-size: 12px;
