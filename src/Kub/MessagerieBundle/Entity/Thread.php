@@ -23,6 +23,7 @@ class Thread
 
     /**
      * @ORM\OneToMany(targetEntity="Kub\MessagerieBundle\Entity\Message", mappedBy="thread", cascade={"persist", "merge", "detach"})
+     * @OrderBy({"date" = "DESC"})
      */
     private $messages ;
 
