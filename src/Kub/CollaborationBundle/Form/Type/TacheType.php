@@ -33,6 +33,9 @@ class TacheType extends AbstractType
 			->add('name', 'text', array(
 				'label' => 'Nom'
 			))
+			->add('notes', 'textarea', array(
+				'label' => 'Notes complémentaires'
+			))
 			->add('echeance')
 			->add('participants', 'genemu_jqueryselect2_entity', array(
 				'choices'  => $this->projet->getUsers(),

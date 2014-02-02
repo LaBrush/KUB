@@ -44,13 +44,9 @@ class Tache
 	private $done;
 
 	/**
-     * @var integer
-     *
-     * @ORM\Column(name="rang", type="integer")
-     *
-     * @Assert\Type(type="integer", message="La valeur {{ value }} n'est pas un type nombre valide.")
+     * @ORM\Column(name="notes", type="text")
      */
-    private $rang;
+    private $notes;
 
     /**
      * @ORM\ManyToOne(targetEntity="Kub\CollaborationBundle\Entity\ListeTaches", inversedBy="taches", cascade={"persist", "merge"})
@@ -396,5 +392,28 @@ class Tache
     public function getRessources()
     {
         return $this->ressources;
+    }
+
+    /**
+     * Set notes
+     *
+     * @param string $notes
+     * @return Tache
+     */
+    public function setNotes($notes)
+    {
+        $this->notes = $notes;
+    
+        return $this;
+    }
+
+    /**
+     * Get notes
+     *
+     * @return string 
+     */
+    public function getNotes()
+    {
+        return $this->notes;
     }
 }

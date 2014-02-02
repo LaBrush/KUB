@@ -2,6 +2,11 @@
 	{{ form_errors(form.name) }} <div class="input">{{ form_widget(form.name, {'attr': {'placeholder': 'Nom'}}) }}</div>
 </span>
 
+<span class="name">
+	{{ form_label(form.notes) }}
+	{{ form_errors(form.notes) }} <div class="input">{{ form_widget(form.notes) }}</div>
+</span>
+
 <span class="echeance">
 	{{ form_label(form.echeance) }}
 	{{ form_errors(form.echeance) }} <div class="input">{{ form_widget(form.echeance) }}</div>
