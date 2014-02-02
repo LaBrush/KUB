@@ -17,12 +17,12 @@ use Kub\HomeBundle\Entity\Ressource as BaseRessource ;
 class Ressource extends BaseRessource 
 {
     /**
-     * @ORM\ManyToOne(targetEntity="Kub\EDTBundle\Entity\Matiere", cascade={"all"})
+     * @ORM\ManyToOne(targetEntity="Kub\EDTBundle\Entity\Matiere")
      */
     private $matiere ;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Kub\ClasseBundle\Entity\Niveau", cascade={"merge", "detach", "persist"})
+     * @ORM\ManyToOne(targetEntity="Kub\ClasseBundle\Entity\Niveau")
      */
     private $niveau ;
 

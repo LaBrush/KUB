@@ -18,18 +18,25 @@ class DefaultController extends Controller
 		$ressources_invalides = $this->get('doctrine.orm.entity_manager')->getRepository('KubRessourceBundle:Ressource')->findByValideAndUser(false, $this->getUser());
 
 		$matieres = array();
+		$auteurs = array();
 
 		for ($i=0; $i < count($ressources) ; $i++) { 
 			if(!in_array($ressources[$i]->getMatiere(), $matieres))
 			{
 				$matieres[] = $ressources[$i]->getMatiere();
 			}
+
+			if(!in_array($ressources[$i]->getAuteur(), $auteurs))
+			{
+				$auteurs[] = $ressources[$i]->getAuteur();
+			}
 		}
 
 		return $this->render('KubRessourceBundle:Default:index.html.twig', array(
 			'ressources' => $ressources,
 			'ressources_invalides' => $ressources_invalides,
-			'matieres' => $matieres
+			'matieres' => $matieres,
+			'auteurs' => $auteurs
 		));
 	}
 
@@ -127,7 +134,7 @@ class DefaultController extends Controller
 		); 
 	}
 
-	public function deleteAction(Ressource $groupe)
+	public function deleteAction(Ressource $ressource)
 	{
 		$form = $this->createFormBuilder()->getForm();
 		$request = $this->getRequest();
@@ -138,17 +145,17 @@ class DefaultController extends Controller
 			if ($form->isValid()) {
 
 				$em = $this->get('doctrine.orm.default_entity_manager');
-				$em->remove($groupe);
+				$em->remove($ressource);
 				$em->flush();
 
 				$this->get('session')->getFlashBag()->add('info', 'Ressource supprimée');
 	
-				return $this->redirect($this->generateUrl('kub_ressource_list'));
+				return $this->redirect($this->generateUrl('kub_ressource_homepage'));
 			}
 		}
 
 		return $this->render('KubRessourceBundle:Ressource:delete.html.twig', array(
-			'groupe' => $groupe,
+			'ressource' => $ressource,
 			'form' => $form->createView(),
 		));
 	}

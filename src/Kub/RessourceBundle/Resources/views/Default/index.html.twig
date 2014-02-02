@@ -52,7 +52,7 @@
 				{% for ressource in ressources %}
 
 					<a href="{{ path('kub_ressource_show', { id: ressource.id }) }}">
-						<li class="ressource in-list {{ ressource.type }} {{ ressource.niveau }} {{ ressource.matiere }}">
+						<li class="ressource in-list" data-auteur="{{ ressource.auteur }}" data-bool="{{ ressource.type }} {{ ressource.niveau }}" data-matiere="{{ ressource.matiere }}" >
 
 							<span class="label">{{ ressource.titre }}</span>
 							
@@ -89,6 +89,16 @@
 					{% endfor %}
 				</select>
 			</div>
+
+			<div class="matieres">
+				<select id="auteur" name="auteur" class="select2">
+					 <option value="">Filter par auteur</option>
+					{% for auteur in auteurs %}
+					    <option value="{{ auteur }}">{{ auteur }}</option>
+					{% endfor %}
+				</select>
+			</div>
+
 			<input class="ressources" id="search-in-list" type="text" placeholder="Nom du fichier">
 		</div>
 
@@ -99,58 +109,7 @@
 {% block js %}
 	<script type="text/javascript" src="{{ asset('ressources/select2/select2.min.js') }}"></script>
 	<link rel="stylesheet" href="{{ asset('ressources/select2/select2.css') }}" />
-	<script type="text/javascript" src="{{ asset('ressources/jsmin/search.min.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('ressources/jsmin/fuse.min.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('ressources/jsmin/ressources.min.js') }}"></script>
-
-	<script>
-		$(function($){
-			var newDetail = $('#new-detail'), 
-				note = $('#kub_notesbundle_note_note'),
-				coefficient = $('#kub_notesbundle_note_coefficient'),
-				eleve_id = $('[data-eleve-id]').attr('data-eleve-id')
-			;
-
-			$('#kub_notesbundle_note_controle').change(function(){
-				var id = parseInt($(this).val());
-
-				if(id == 0){
-					newDetail.show(300);
-				} else {
-					newDetail.hide(300);
-				}
-
-				$.ajax({
-					url: "{{path('kub_api_notes_eleve_get')}}",
-					data: {
-						'controle_id': id,
-						'eleve_id': eleve_id,
-					},
-					type: "POST",
-					timeout: 3000,
-					success: function(r){
-						r = JSON.parse(r);
-
-						if(r.state == 1)
-						{
-							note.val(r.note);
-							coefficient.val(r.coefficient);
-						}
-						else
-						{
-							note.val('');
-							coefficient.val('');
-						}
-					}
-				});
-			})
-			.children().last()
-			.children().last()
-			.prop('selected', true)
-			.trigger('change')
-			;
-
-			newDetail.hide();
-		});
-	</script>
+l
 {% endblock %}

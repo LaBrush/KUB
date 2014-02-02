@@ -16,7 +16,10 @@ class AppelRepository extends EntityRepository
 	public function findOneOrNullByCoursAndSemaine(\Kub\EDTBundle\Entity\Cours $cours, \Kub\EDTBundle\Entity\Semaine $semaine)
 	{
 		$qb = $this->createQueryBuilder('a')
-			->join('a.cours', 'c')
+			->join('a.horaire', 'h')
+			->addSelect('h')
+
+			->join('h.cours', 'c')
 			->addSelect('c')
 
 			->join('c.groupes', 'g')

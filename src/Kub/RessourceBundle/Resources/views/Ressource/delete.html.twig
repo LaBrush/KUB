@@ -1,13 +1,18 @@
 {% extends "::base.html.twig"%}
 
 {% block body %}
-
-	<article class="article">
-		{{ form_start(form, { 'attr': {'class': 'inline-block'} }) }}
+  
+	<article class="error">
+		{{ form_start(form) }}
 			
-			<input class="delete" value="Suppr." type="submit" />
+			<p>Êtes vous sûr de vouloir supprimer la ressource "<strong>{{ ressource }}</strong>" ?</p>
+			<br>
 
+			<div class="float-right">
+				<input class="button-yes" type="submit" Value="Supprimer"> ou <a class="button-no" href="{{ path('kub_ressource_homepage') }}">Annuler</a>
+			</div>
+			<br>
 		{{ form_end(form) }}
 	</article>
-
+			
 {% endblock %}
