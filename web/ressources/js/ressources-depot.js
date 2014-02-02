@@ -9,14 +9,14 @@ $(function(){
 			$('.file').hide();
 			$('input:file').removeAttr('required');
 			$('.url').show();
-			$('input:url').attr('required', 'required');
+			$('.input-url').attr('required', 'required');
 		}
 		else
 		{
 			$('.file').show();
 			$('input:file').attr('required', 'required');
 			$('.url').hide();
-			$('input:url').removeAttr('required');
+			$('.input-url').removeAttr('required');
 		}
 	})
 });

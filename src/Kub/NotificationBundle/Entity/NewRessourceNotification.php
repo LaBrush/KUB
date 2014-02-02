@@ -16,8 +16,8 @@ class NewRessourceNotification extends Notification
 
         $this->route = "kub_ressource_homepage" ;
         $this->routeTitle = "Voir les ressources" ;
-        $this->titre = $this->getAuteur() . ' a mis une ressource en ligne' ;
-        $this->type = "new-ressource" ;
+        $this->titre = 'Ressources' ;
+        $this->type = "ressources-professeur" ;
         $this->class = 'NewRessourceNotification';
     }
 

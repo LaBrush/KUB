@@ -5,6 +5,6 @@
     	<strong>{{ notification.auteur }}</strong> a ajouté la trace <strong>"{{ notification.post.titre }}"</strong> à son fil d'Ariane :
     </p>
     <div class="extract">
-    	{{ notification.post.contenu | raw }}
+    	<p>"{{ notification.post.contenu | raw }}"</p>
     </div>
 {% endblock %}

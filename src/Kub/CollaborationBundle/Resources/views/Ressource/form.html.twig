@@ -27,7 +27,7 @@
 	{% if form.type is defined  or ressource.type == 1 %}
 		<span class="url">
 			{{ form_errors(form.url) }}
-			Adresse web <div class="input">{{ form_widget(form.url) }}</div>
+			Adresse web <div class="input">{{ form_widget(form.url, {"attr": {"class": "input-url"}}) }}</div>
 		</span>
 	{% endif %}
 

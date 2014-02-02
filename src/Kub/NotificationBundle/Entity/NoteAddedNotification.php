@@ -17,8 +17,8 @@ class NoteAddedNotification extends Notification
 
 		$this->route = "kub_notes_eleve_homepage" ;
 		$this->routeTitle = "Voir vos notes" ;
-		$this->titre = "Vous avez une nouvelle note";
-		$this->type = "note-added" ;
+		$this->titre = "Notes";
+		$this->type = "bigbro" ;
 		$this->class = 'NoteAddedNotification';
 	}
 

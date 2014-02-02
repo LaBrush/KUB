@@ -34,7 +34,7 @@
 
 	<span class="url">
 		{{ form_errors(form.url) }}
-		Adresse web <div class="input">{{ form_widget(form.url) }}</div>
+		Adresse web <div class="input">{{ form_widget(form.url, {"attr": {"class": "input-url"}}) }}</div>
 	</span>
 
 	<span class="file">

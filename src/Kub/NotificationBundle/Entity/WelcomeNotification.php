@@ -18,7 +18,7 @@ class WelcomeNotification extends Notification
 		$this->route = "fos_user_profile_edit" ;
 		$this->routeTitle = "Voir votre compte" ;
 		$this->titre = "Bienvenue !";
-		$this->type = "welcome" ;
+		$this->type = "accueil" ;
 		$this->class = 'WelcomeNotification';
 	}
 

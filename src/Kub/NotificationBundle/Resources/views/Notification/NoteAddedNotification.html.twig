@@ -2,6 +2,6 @@
 
 {% block content %}
     <p>
-    	<strong>{{ notification.auteur }}</strong> vous à ajouté la note de <strong>{{ notification.note }}</strong> <!-- à <strong>{{ notification.note.eleve }}</strong>  -->en <strong>{{ notification.note.matiere }}</strong>
+    	<strong>{{ notification.auteur }}</strong> vous à ajouté la note de <strong>{{ notification.note }}</strong> pour le contrôle <strong>{{ notification.note.controle.nom }}</strong> en <strong>{{ notification.note.controle.matiere }}</strong>
     </p>
 {% endblock %}
