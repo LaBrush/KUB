@@ -60,9 +60,6 @@ class ControleHandler
 
 		if( count($controle->getNotes()) > 0)
 		{
-			throw new \Exception("Error Processing Request", 1);
-			
-
 			$this->em->persist($controle);
 			$this->em->flush();
 

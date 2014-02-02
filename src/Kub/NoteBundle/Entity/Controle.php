@@ -65,6 +65,22 @@ class Controle
 	 */
 	private $cours ;
 
+	public function getMoyenne($coef = 20){
+
+		$sum_coef = 0 ;
+		$sum_note = 0 ;
+
+		$notes = $this->getNotes();
+
+		foreach ($notes as $note) {
+			$sum_coef += $note->getCoefficient();
+			$sum_note += $note->getNote();
+		}
+
+		return round($sum_note / $sum_coef * $coef, 1) . '/' . $coef ;
+
+	}
+
 	public function __toString()
 	{
 		return $this->name . ' (' . $this->getCours()->getMatiere() . ')';

@@ -14,8 +14,8 @@
 		<div class="noter">
 			<div class="wrap">
 				<p>
-					<a href="{{ path('kub_notes_professeur_edit', {id: controle.id})}}" class="button project-nav ">Modifier</a>
-					Ajouté le <strong>{{ controle.date|date('Y - d/m') }}</strong>
+					Ajouté le <strong>{{ controle.date|date('Y - d/m') }}</strong><br>
+					Moyenne <strong>{{ controle.moyenne }}</strong>
 				</p>
 
 				<div class="eleves-a-noter">
@@ -45,7 +45,11 @@
 				</div>
 			</div>
 
-			<p><a href="{{ path('cours_show', { id: controle.cours.id }) }}" class="button">Aller au cours</a></p>
+			<p>
+				<a href="{{ path('cours_show', { id: controle.cours.id }) }}" class="button">Aller au cours</a>
+				<a href="{{ path('kub_notes_professeur_edit', {id: controle.id})}}" class="button">Modifier</a>
+			</p>
+			
 		</div>
 
 	</article>
