@@ -1,6 +1,14 @@
 {% extends "::base.html.twig" %}
 
+{% block title %}
+	{{ parent() }} - Conversation
+{% endblock %}
+
 {% block body %}
+
+	<div class="article">
+		<h3 class="section-title">Mes messages</h3>
+	</div>
 
 	<article class="article">
 		<a class="button-yes button-new-message" href="{{ path('kub_messagerie_new') }}">Nouveau</a>

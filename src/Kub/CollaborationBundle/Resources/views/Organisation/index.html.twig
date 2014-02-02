@@ -13,7 +13,11 @@
 			{% for listeTaches in organisateur.listeTaches %}
 				<li class="liste-taches">
 
-					<h4>{{ listeTaches }}</h4>
+					<h4>
+						<span>{{ listeTaches }}</span>
+						<a class="delete-list" href="{{ path('kub_collaboration_organisation_delete_list', { projet_slug: projet.slug, liste_slug: listeTaches.slug }) }}">Suppr.</a>
+					</h4>
+
 					<ul>
 						{% for tache in listeTaches.taches %}
 

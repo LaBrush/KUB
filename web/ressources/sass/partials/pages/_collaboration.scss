@@ -112,7 +112,7 @@
 	padding: 7px;
 	vertical-align: top;
 
-	@media all and (max-width: 800px)
+	@media all and (max-width: 1010px)
 	{
 		width: 48%;
 		margin: 0 0.5% 20px 0.5%;
@@ -127,7 +127,38 @@
 	h4
 	{
 		text-align: center;
-		margin: 0 0 5px 0;
+		margin: 0 0 10px 0;
+
+		span
+		{
+			margin: 0 0 0 37px;
+		}
+
+		.delete-list
+		{
+			font-size: 0.6em;
+			line-height: 1.2em;
+			margin: 0;
+			padding: 0 3px;
+			cursor: pointer;
+			color: lighten($texte, 30%);
+			background: $header;
+			border: none;
+			@include appearance(none);
+			display: inline-block;
+			float: right;
+
+			position: relative;
+			top: 7px;
+
+			&:hover, &:focus, &:active
+			{
+				background: $button-no;
+				color: $color-light;
+				text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+				@include border-radius(2px);
+			}
+		}
 	}
 
 	input[type="checkbox"]
