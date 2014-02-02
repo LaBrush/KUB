@@ -4,11 +4,10 @@
 
 	<article class="article">
 		<a class="button-yes button-new-message" href="{{ path('kub_messagerie_new') }}">Nouveau</a>
+		<a class="button button-add-people" href="#">Ajouter destinataire</a>
 
-		<div class="conversation">
-			<div class="reponse">
-				{{ render(controller("KubMessagerieBundle:Default:addPeople", { id: thread.id })) }}
-			</div>
+		<div class="conversation add-people">
+			{{ render(controller("KubMessagerieBundle:Default:addPeople", { id: thread.id })) }}
 		</div>
 
 		<br>
@@ -94,19 +93,23 @@
 			$('#kub_arianebundle_message_thread_add_member_groupes').select2([]);
 			$('#kub_arianebundle_message_users').select2([]);
 			$('#kub_arianebundle_message_groupes').select2([]);
+<<<<<<< HEAD
 		});
 	</script>
 	<script>
     	jQuery(document).ready(function($) {
         $field = $('#kub_arianebundle_message_thread_add_member_users');
+=======
+			
+			$('.destinataires').hide();
+>>>>>>> ca47e0d4ae2d1de21d05c5899d5d7a99575b4af5
 
-                    $field.select2([]);
+			$('.add-people').hide();
 
-    	$field = $('#kub_arianebundle_message_thread_add_member_groupes');
-
-                    $field.select2([]);
-            });
-    </script>
-
+			$('.button-add-people').click(function(){
+				$('.add-people').show();
+			})
+		});
+	</script>
     <script type="text/javascript" src="{{ asset('ressources/jsmin/messages.min.js') }}"></script>
 {% endblock %}

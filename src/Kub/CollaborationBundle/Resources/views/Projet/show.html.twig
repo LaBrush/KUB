@@ -29,7 +29,7 @@
 				{% set done = (lt.countCheckedTaches / lt.taches|length * 100) | round %}
 
 				<div class="jauge">
-					<p>{{ lt }}</p>
+					<p>{{ lt }}</p><br>
 					{% spaceless %}
 					{% for i in 0..100 %}
 						<div 

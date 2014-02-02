@@ -76,14 +76,18 @@
 							. 
 
 						{% endif %}
-
-						{% if not lastMessage.messageUser.0.readed %}
-                            <span class="notifications new-message">Nouveau</span>
-                        {% endif %} 
 					</span>		
 				
 					<span class="actions-messages">
-						<span class="undelete-message">Afficher</span> ou {{ render(controller("KubMessagerieBundle:Default:delete", { id: thread.id })) }}
+
+						{% if not lastMessage.messageUser.0.readed %}
+                            <span class="notification-new-message">Nouveau</span>
+                        {% endif %} 
+
+						<span class="undelete-message">Afficher</span>
+						ou
+						{{ render(controller("KubMessagerieBundle:Default:delete", { id: thread.id })) }}
+
 					</span>
 				</p>
 			</a>

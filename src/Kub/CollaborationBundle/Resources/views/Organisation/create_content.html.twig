@@ -3,7 +3,8 @@
 	{% include "KubCollaborationBundle:Organisation:form.html.twig" %}
 
 	<span class="validate">
-		<input class="button-yes" type="submit">
+
+		<input class="button-yes validate-add" type="submit">
 
 		{% if main %}
 			<a class="button" href="{{ path('kub_collaboration_organisation_index', { slug: projet.slug }) }}">Annuler</a>

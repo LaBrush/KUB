@@ -139,6 +139,7 @@
 	{
 		margin: 5px 0;
 		@include pie-clearfix;
+		cursor: pointer;
 	}
 
 	.unchecked, .checked
@@ -166,7 +167,12 @@
 		background-color: $rouge;
 	}
 
-	.voir
+	.buttons-detail
+	{
+		@include pie-clearfix;
+	}
+
+	.voir, .button-detail
 	{
 		line-height: 1.5em;
 		float: right;
@@ -226,8 +232,13 @@
 
 	.options-button
 	{
-		margin-top: 10px;
+		margin-top: 11px;
 		margin-bottom: -7px;
+	}
+
+	.validate-add
+	{
+		margin: 0;
 	}
 
 	.detail
@@ -238,10 +249,14 @@
 		width: 100%;
 		@include box-sizing(border-box);
 		@include border-radius(3px);
+		cursor: default;
 	}
 
-	.participants
+	.list-in-detail
 	{
-		margin: 5px 0 0 0;
+		li
+		{
+			margin: 0 0 0 10px;
+		}
 	}
 }
