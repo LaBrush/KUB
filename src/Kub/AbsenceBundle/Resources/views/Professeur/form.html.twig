@@ -3,11 +3,10 @@
 		<label for="search-in-list">Chercher dans la liste :</label>
 		<input id="search-in-list" type="text">
 	</span>
-	
 
-		<input class="button-yes validate-appel" type="submit">
+	<input class="button-yes validate-appel" type="submit">
 
-	<ul class="liste">
+	<ul class="liste liste-eleves">
 		{% for statut in form.absences %}
 
 			{% set eleve = eleves[ loop.index0 ] %}
