@@ -24,7 +24,7 @@
 			<h3 class="h2">Avancement des taches</h3>
 		</div>
 		<div class="content-article">
-			{% for lt in projet.organisateur.listeTaches %}
+			{% for lt in projet.organisateur.listeTaches if lt.taches|length > 0 %}
 
 				{% set done = (lt.countCheckedTaches / lt.taches|length * 100) | round %}
 

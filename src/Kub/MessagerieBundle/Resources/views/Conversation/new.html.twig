@@ -16,13 +16,13 @@
 			{{ form_start(form) }}
 				{{ form_errors(form) }}
 			    <span class="input">
-			    	{{ form_errors(form.thread.users) }}
-			    	{{ form_label(form.thread.users) }}&nbsp;{{ form_widget(form.thread.users) }}
+			    	{{ form_errors(form.thread_add_member.users) }}
+			    	{{ form_label(form.thread_add_member.users) }}&nbsp;{{ form_widget(form.thread_add_member.users) }}
 			    </span>
 
 			    <span class="input">
-			    	{{ form_errors(form.thread.groupes) }}
-			    	{{ form_label(form.thread.groupes) }}&nbsp;{{ form_widget(form.thread.groupes) }}
+			    	{{ form_errors(form.thread_add_member.groupes) }}
+			    	{{ form_label(form.thread_add_member.groupes) }}&nbsp;{{ form_widget(form.thread_add_member.groupes) }}
 			    </span>
 
 			    <input type="submit" class="button-yes send-message" value="Envoyer" />
