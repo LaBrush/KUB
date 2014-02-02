@@ -16,11 +16,13 @@
 	</span>
 
 	<table class="permissions-add" data-prototype="{% filter escape %}{% include 'KubCollaborationBundle:Projet:permissions_form.html.twig' with {'form': form.permissions.vars.prototype} %}{% endfilter %}">
-		<tr class="permissions">
-			{% for permission in form.permissions %}
+		
+		{% for permission in form.permissions %}
+			<tr class="permissions">
 				{% include 'KubCollaborationBundle:Projet:permissions_form.html.twig' with {'form': permission} %}
-			{% endfor %}
-		</tr>
+			</tr>
+		{% endfor %}
+		
 	</table>
 
 	<span class="permissions-button">

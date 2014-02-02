@@ -97,6 +97,12 @@ abstract class User extends BaseUser
     private $prenom;
 
     protected $class ;
+
+    /**
+     * @ORM\OneToOne(targetEntity="Kub\NotificationBundle\Entity\WelcomeNotification", inversedBy="user",  cascade={"all"})
+     */
+    private $notification ;
+
     public function __construct()
     {
         parent::__construct();
@@ -193,5 +199,28 @@ abstract class User extends BaseUser
             ),
             $this->username
         );
+    }
+
+    /**
+     * Set notification
+     *
+     * @param \Kub\NotificationBundle\Entity\WelcomeNotification $notification
+     * @return User
+     */
+    public function setNotification(\Kub\NotificationBundle\Entity\WelcomeNotification $notification = null)
+    {
+        $this->notification = $notification;
+    
+        return $this;
+    }
+
+    /**
+     * Get notification
+     *
+     * @return \Kub\NotificationBundle\Entity\WelcomeNotification 
+     */
+    public function getNotification()
+    {
+        return $this->notification;
     }
 }

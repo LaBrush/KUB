@@ -4,6 +4,7 @@ namespace Kub\CollaborationBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+use Symfony\Component\HttpFoundation\Response;
 
 use Kub\CollaborationBundle\Entity\Projet ;
 use Kub\CollaborationBundle\Entity\Permission ;
@@ -94,7 +95,7 @@ class ProjetController extends Controller
 	{
 		if(!$this->get('security.context')->isGranted('ADMINISTRATEUR', $projet))
 		{
-			throw new AccessDeniedException("Vous n'avez pas les droits requis pour supprimer cet espace de collaboration");
+			throw new AccessDeniedException("Vous n'avez pas les droits requis pour modifier cet espace de collaboration");
 		}
 
 		$form = $this->createFormBuilder()->getForm();
@@ -116,6 +117,60 @@ class ProjetController extends Controller
 		}
 
 		return $this->render('KubCollaborationBundle:Projet:delete.html.twig', array(
+			'projet' => $projet,
+			'form' => $form->createView(),
+		));
+	}
+
+	public function leaveAction(Projet $projet)
+	{
+		if(!$this->get('security.context')->isGranted('VISITEUR', $projet))
+		{
+			throw new AccessDeniedException("Vous n'avez pas les droits requis pour acceder à cet espace de collaboration");
+		}
+
+		$userPermission = null ;
+		$canQuit = false ;
+
+		foreach ($projet->getPermissions() as $permission) {
+			if($permission->getRole() == Permission::ADMINISTRATEUR && $permission->getUser() != $this->getUser())
+			{
+				$canQuit = true ;
+			}
+			
+			if($permission->getUser()->getId() == $this->getUser()->getId())
+			{
+				$userPermission = $permission ;
+			}
+		}
+
+		if(!$canQuit)
+		{
+			$this->get('session')->getFlashBag()->add('info', 'Vous ne pouvez quitter un projet dont vous êtes le seul administrateur');
+			return $this->redirect($this->generateUrl('kub_collaboration_projet_show', array(
+				"slug" => $projet->getSlug()
+			)));
+		}
+
+		$form = $this->createFormBuilder()->getForm();
+		$request = $this->getRequest();
+
+		if ($request->getMethod() == 'POST') {
+			$form->bind($request);
+
+			if ($form->isValid()) {
+
+				$em = $this->get('doctrine.orm.default_entity_manager');
+				$em->remove($userPermission);
+				$em->flush();
+
+				$this->get('session')->getFlashBag()->add('info', 'Vous venez de quitter le projet');
+	
+				return $this->redirect($this->generateUrl('kub_collaboration_homepage'));
+			}
+		}
+
+		return $this->render('KubCollaborationBundle:Projet:leave.html.twig', array(
 			'projet' => $projet,
 			'form' => $form->createView(),
 		));

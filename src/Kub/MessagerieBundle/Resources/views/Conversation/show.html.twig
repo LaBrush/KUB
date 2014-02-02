@@ -72,7 +72,7 @@
 	<!-- <script src="//tinymce.cachefly.net/4.0/tinymce.min.js"></script> -->
 	<script type="text/javascript" src="{{ asset('ressources/tinymce/tinymce.min.js') }}"></script>
 	<script>
-		jQuery(document).ready(function($) {
+		$(function($) {
 			var $configs = {
 						selector: "textarea",
 						plugins: [
@@ -101,11 +101,12 @@
 			$('#kub_arianebundle_message_thread_add_member_groupes').select2([]);
 			$('#kub_arianebundle_message_users').select2([]);
 			$('#kub_arianebundle_message_groupes').select2([]);
-			
+		});
+	</script>
+	<script>
+    	$(function($) {
 			$('.destinataires').hide();
-
 			$('.add-people').hide();
-
 			$('.button-add-people').click(function(){
 				$('.add-people').show();
 			})

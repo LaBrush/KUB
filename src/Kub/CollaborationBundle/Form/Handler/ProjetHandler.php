@@ -36,6 +36,13 @@ class ProjetHandler
 			if($this->form->isValid())
 			{
 				$data = $this->form->getData();
+
+				$data->erasePermissions();
+				foreach ($this->form->get('permissions')->all() as $form){
+					$data->addPermission( $form->getData() );
+				}
+				
+
 				$this->onSuccess($data);
 
 				return true;

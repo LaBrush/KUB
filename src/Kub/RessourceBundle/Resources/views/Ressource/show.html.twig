@@ -7,13 +7,20 @@
 {% block body %}
 
 	<article class="article">
-		<h2 class="section-title">Informations sur la ressource</h2>
+		<h2 class="section-title">{{ ressource }}</h2>
 	</article>
 
 	<article class="article infos">
 
-		<span class="label">Nom de la ressource :</span>
-		<span class="info">{{ ressource }}</span>
+		<span class="info">
+			<a class="button" href="{{ ressource.url }}">
+				{% if ressource.type == 1 %}
+					Voir sur le web
+				{% else %}
+					Voir sur le Kub
+				{% endif %}
+			</a>
+		</span>
 
 		<span class="label">Description :</span>
 		<span class="info">{{ ressource.description }}</span>
@@ -26,11 +33,6 @@
 
 		<span class="label">Auteur :</span>
 		<span class="info">{{ ressource.auteur }}</span>
-
-		<span class="label">Accès :</span>
-		<span class="info">
-			<a class="button" href="{{ ressource.url }}">Lien d'accès</a>
-		</span>
 
 		{% if not ressource.valide %}
 			<p class="error">Cette ressource n'a pas été validée et n'est donc pas affichée par défaut</p>

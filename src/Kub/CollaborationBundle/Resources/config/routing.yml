@@ -19,6 +19,10 @@ kub_collaboration_projet_show:
     pattern:  /{slug}/
     defaults: { _controller: KubCollaborationBundle:Projet:show }
 
+kub_collaboration_projet_leave:
+    pattern:  /{slug}/quitter
+    defaults: { _controller: KubCollaborationBundle:Projet:leave }
+
 kub_collaboration_projet_edit:
     pattern:  /{slug}/gerer
     defaults: { _controller: KubCollaborationBundle:Projet:edit }

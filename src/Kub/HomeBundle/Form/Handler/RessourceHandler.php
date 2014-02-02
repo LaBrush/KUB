@@ -21,6 +21,7 @@ class RessourceHandler
 		$this->request = $request;
 		$this->em = $em;
 		$this->security = $security ;
+		$this->validator = $validator ;
 	}
 
 	public function process()

@@ -78,11 +78,12 @@ class ProfesseurController extends Controller
 
 		$form  = $this->createForm(new ControleType( $cours->getProfesseur(), $cours ), $controle, 
 			array(
-				'action' => $this->generateUrl('kub_notes_professeur_homepage', array('cours' => $cours->getId()))
+				'action' => $this->generateUrl('kub_notes_professeur_noter_cours', array('cours' => $cours->getId()))
 			)
 		);
 
 		$request = $this->get('request');
+
 		if($request->getMethod() == "POST"){
 
 			$formHandler = new ControleHandler($form, $request, $this->get('doctrine.orm.default_entity_manager'), $this->get('kub.notification_manager'));

@@ -21,7 +21,7 @@ class RessourceType extends BaseRessourceType
 		parent::buildForm($builder, $options);
 		$builder
 			->add('file', new FileType, array(
-				"data_class" => "Kub\CollaborationBundle\Entity\File"
+				"data_class" => "Kub\RessourceBundle\Entity\File"
 			))
 			->add('niveau', 'entity', array(
 				"class" => "Kub\ClasseBundle\Entity\Niveau"

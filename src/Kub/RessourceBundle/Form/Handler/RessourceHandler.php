@@ -16,7 +16,7 @@ class RessourceHandler extends BaseHandler
 	public function __construct(Form $form, Request $request, $em, $security, $validator, $notification)
 	{
 		parent::__construct($form, $request, $em, $security, $validator, $notification);
-		$this->validator = $validator ;
+		$this->notification = $notification ;
 
 	}
 
@@ -37,12 +37,15 @@ class RessourceHandler extends BaseHandler
 				}
 			}
 
-			$this->notification->addNotification('NewRessourceNotification', array(
+			if(count($groupes) > 0)
+			{
+				$this->notification->addNotification('NewRessourceNotification', array(
 
-				'groupesTarget' => $groupes,
-				'ressource' => $data
+					'groupesTarget' => $groupes,
+					'ressource' => $data
 
-			));
+				));
+			}
 		}
 	}
 

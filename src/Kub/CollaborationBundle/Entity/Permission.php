@@ -31,12 +31,12 @@ class Permission
     private $role ;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Kub\CollaborationBundle\Entity\Projet", inversedBy="permissions", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="Kub\CollaborationBundle\Entity\Projet", inversedBy="permissions", cascade={"persist", "merge", "detach"})
      */
     private $projet ;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Kub\UserBundle\Entity\User", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="Kub\UserBundle\Entity\User", cascade={"persist", "merge", "detach"})
      */
     private $user ;
 
