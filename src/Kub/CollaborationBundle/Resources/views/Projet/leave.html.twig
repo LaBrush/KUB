@@ -1,0 +1,15 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+
+	<article class="error">
+		{{ form_start(form) }}
+
+			<p>Êtes vous sûr de vouloir quitter le projet <strong>{{ projet.name }}</strong> ?</p>
+			
+			<br />
+			<input class="button-yes" type="submit"> ou <a class="button-no" href="{{ path('kub_collaboration_projet_show', { slug: projet.slug }) }}">Annuler</a>	
+		{{ form_end(form) }}
+	</article>
+			
+{% endblock %}

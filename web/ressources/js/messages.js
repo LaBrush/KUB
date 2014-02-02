@@ -1,31 +1,36 @@
 $(function() {
 
-	var firstSender = $('.sender h3').first().text();
-	var firstSenderDotted = $('.sender h3').first().text() + ", ...";
+	var $sender = $('.sender');
+	var $senderH3 = $('.sender h3');
 
-	for (var i = $('.sender h3').length - 1; i >= 0; i--) {
-		var sender = $('.sender h3')[i];
+	if($senderH3.text().length > 20)
+	{
+		var firstSender = $senderH3.first().text();
+		var firstSenderDotted = $senderH3.first().text() + ", ...";
 
-		var senderText = ", " + $(sender).text();
+		for (var i = $senderH3.length - 1; i >= 0; i--) {
+			var sender = $senderH3[i];
 
-		$(sender).text(senderText);
-	};
+			var senderText = ", " + $(sender).text();
 
-	$('.sender h3').first().text(firstSenderDotted);
+			$(sender).text(senderText);
+		};
 
-	$('.sender').hide();
-	$('.sender').first().show();
+		$senderH3.first().text(firstSenderDotted);
 
-	$('.sender').first().mouseenter( function() {
-		$('.sender h3').first().text(firstSender);
-		$('.sender').show();
-	});
+		$sender.hide();
+		$sender.first().show();
 
-	$('.sender').mouseleave( function() {
-		$('.sender h3').first().text(firstSenderDotted);
-		$('.sender').hide();
-		$('.sender').first().show();
-	});
+		$sender.first().mouseenter( function() {
+			$senderH3.first().text(firstSender);
+			$sender.show();
+		});
 
+		$sender.mouseleave( function() {
+			$senderH3.first().text(firstSenderDotted);
+			$sender.hide();
+			$sender.first().show();
+		});
+	}
 
 });

@@ -11,7 +11,9 @@
 	</div>
 
 	<article class="article">
-		<a class="button-yes button-new-message" href="{{ path('kub_messagerie_new') }}">Nouveau</a>
+		{% if threads|length > 0 %}
+			<a class="button-yes button-new-message" href="{{ path('kub_messagerie_new') }}">Nouveau</a>
+		{% endif %}
 
 		<table>
 		{% for thread in threads %}
@@ -91,38 +93,12 @@
 					</span>
 				</p>
 			</a>
+		{% else %}
+			<article class="article login-error-message">
+				<p>Vous n'avez pas de discussion en ce moment. Vous voulez envoyer un message ? <a class="button-yes button-new-message" href="{{ path('kub_messagerie_new') }}">C'est très simple</a></p>
+			</article>
 		{% endfor %}
 		</table>
 	</article>
 
 {% endblock %}
-
-{#
-
-{% block js %}
-	<!-- <script src="//tinymce.cachefly.net/4.0/tinymce.min.js"></script> -->
-    <script type="text/javascript" src="{{ asset('ressources/tinymce/tinymce.min.js') }}"></script>
-	<script>
-		$(function($) {
-		    var $configs = {
-				        selector: "textarea",
-				        plugins: [
-				                "autolink link charmap",
-				                "searchreplace",
-				                "textcolor"
-				        ],
-
-				        toolbar1: "undo redo | bold italic underline strikethrough | forecolor | subscript superscript charmap | removeformat | searchreplace | link unlink",
-				        toolbar2: "",
-				        toolbar3: "",
-
-				        menubar: false,
-				        statusbar: false,
-				        toolbar_items_size: 'small',
-				};
-		    tinyMCE.init($configs);
-
-		    $('textarea').removeAttr('required');
-		});
-	</script>
-{% endblock %} #}
