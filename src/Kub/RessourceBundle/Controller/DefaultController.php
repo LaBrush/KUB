@@ -19,6 +19,7 @@ class DefaultController extends Controller
 
 		$matieres = array();
 		$auteurs = array();
+		$depositaires = array();
 
 		for ($i=0; $i < count($ressources) ; $i++) { 
 			if(!in_array($ressources[$i]->getMatiere(), $matieres))
@@ -30,13 +31,19 @@ class DefaultController extends Controller
 			{
 				$auteurs[] = $ressources[$i]->getAuteur();
 			}
+
+			if(!in_array($ressources[$i]->getDepositaire(), $depositaires))
+			{
+				$depositaires[] = $ressources[$i]->getDepositaire();
+			}
 		}
 
 		return $this->render('KubRessourceBundle:Default:index.html.twig', array(
 			'ressources' => $ressources,
 			'ressources_invalides' => $ressources_invalides,
 			'matieres' => $matieres,
-			'auteurs' => $auteurs
+			'auteurs' => $auteurs,
+			'depositaires' => $depositaires
 		));
 	}
 

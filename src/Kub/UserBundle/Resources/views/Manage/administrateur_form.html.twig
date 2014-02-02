@@ -1,19 +1,23 @@
 {% block form %}
 
 	<span class="prenom">
-		{{ form_label(form.prenom) }} <div class="input">{{ form_widget(form.prenom) }}</div>
+		{{ form_label(form.prenom) }} 
+		{{ form_errors(form.prenom) }} <div class="input">{{ form_widget(form.prenom) }}</div>
 	</span>
 
 	<span class="nom">
-		{{ form_label(form.nom) }} <div class="input">{{ form_widget(form.nom) }}</div>
+		{{ form_label(form.nom) }} 
+		{{ form_errors(form.nom) }} <div class="input">{{ form_widget(form.nom) }}</div>
 	</span>
 
 	<span class="email">
-		{{ form_label(form.email) }} <div class="input">{{ form_widget(form.email) }}</div>
+		{{ form_label(form.email) }} 
+		{{ form_errors(form.email) }} <div class="input">{{ form_widget(form.email) }}</div>
 	</span>
 
 	<span class="type">
-		{{ form_label(form.type) }} <div class="input">{{ form_widget(form.type) }}</div>
+		{{ form_label(form.type) }} 
+		{{ form_errors(form.type) }} <div class="input">{{ form_widget(form.type) }}</div>
 	</span>
 
 {% endblock %}

@@ -111,6 +111,34 @@ $(function() {
 		refreshHide(ressources);
 	}).select2();
 
+	$('#depositaire')
+	.change(function(e) {
+
+		var required = $(this).val();
+
+		if(required)
+		{
+			for (var i = 0; i < ressources.length; i++) {
+				if(ressources[i].$.attr('data-depositaire') == required)
+				{
+					ressources[i].depositaire = true ;
+				}
+				else
+				{
+					ressources[i].depositaire = false ;
+				}
+			};
+		}
+		else
+		{
+			for (var i = 0; i < ressources.length; i++) {
+				ressources[i].depositaire = true ;
+			};	
+		}
+		
+		refreshHide(ressources);
+	}).select2();
+
 	/*--------------------------------*/
 	// Fuzzy search
 
@@ -178,28 +206,3 @@ $(function() {
 		};
 	}
 });
-
-
-$(function(){
-
-	$('.file').hide();
-	$('input:file').removeAttr('required');
-
-	$('input:radio').click(function() {
-		if ($('input:radio')[0].checked)
-		{
-			$('.file').hide();
-			$('input:file').removeAttr('required');
-			$('.url').show();
-			$('input:url').attr('required', 'required');
-		}
-		else
-		{
-			$('.file').show();
-			$('input:file').attr('required', 'required');
-			$('.url').hide();
-			$('input:url').removeAttr('required');
-		}
-})
-
-})

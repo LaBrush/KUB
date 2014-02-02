@@ -16,6 +16,8 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use FOS\UserBundle\Model\UserInterface;
 
+use Kub\NotificationBundle\Entity\WelcomeNotification ;
+
 use Kub\UserBundle\Entity\User ;
 use Kub\UserBundle\Entity\Eleve ;
 use Kub\UserBundle\Entity\Administrateur ;
@@ -105,7 +107,13 @@ class UserController extends Controller
 
 				if($formHandler->process())
 				{
-					$this->container->get('fos_user.mailer')->sendResettingEmailMessage($user);
+					$this->get('fos_user.mailer')->sendResettingEmailMessage($user);
+					$this->get('kub.notification_manager')->addNotification('WelcomeNotification', array(
+
+							"userTarget" => $user,
+							"user" => $user
+
+					)) ;
 
 					$this->get('session')->getFlashBag()->add('info', "L'utilisateur a bien été ajouté");
 					return $this->redirect($this->generateUrl("user_list", array( "role"=> $role )));
