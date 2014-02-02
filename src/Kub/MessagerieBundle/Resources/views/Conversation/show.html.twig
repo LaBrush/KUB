@@ -64,7 +64,7 @@
 	<!-- <script src="//tinymce.cachefly.net/4.0/tinymce.min.js"></script> -->
 	<script type="text/javascript" src="{{ asset('ressources/tinymce/tinymce.min.js') }}"></script>
 	<script>
-		jQuery(document).ready(function($) {
+		$(function($) {
 			var $configs = {
 						selector: "textarea",
 						plugins: [
@@ -93,19 +93,12 @@
 			$('#kub_arianebundle_message_thread_add_member_groupes').select2([]);
 			$('#kub_arianebundle_message_users').select2([]);
 			$('#kub_arianebundle_message_groupes').select2([]);
-<<<<<<< HEAD
 		});
 	</script>
 	<script>
-    	jQuery(document).ready(function($) {
-        $field = $('#kub_arianebundle_message_thread_add_member_users');
-=======
-			
+    	$(function($) {
 			$('.destinataires').hide();
->>>>>>> ca47e0d4ae2d1de21d05c5899d5d7a99575b4af5
-
 			$('.add-people').hide();
-
 			$('.button-add-people').click(function(){
 				$('.add-people').show();
 			})
