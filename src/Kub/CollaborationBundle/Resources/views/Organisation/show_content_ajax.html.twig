@@ -1,16 +1,7 @@
 <!-- <p>Date d'échance: {{ tache.echeance|date('Y/m/d') }}</p> -->
 
 <p>
-	<a class="button" href="{{ path('kub_collaboration_organisation_edit', { projet_slug: projet.slug, tache_slug: tache.slug }) }}">modifier</a>	
-
-	{% set done = tache.done == true %}
-	<span
-		class='button done{{ sess_id }}' 
-		data-done="{{ done|number_format }}"
-		data-id="{{ tache.id }}"
-	>
-		{% if done == false %} À faire {% else %} Fait {% endif %}	
-	</span>
+	<a class="button" href="{{ path('kub_collaboration_organisation_edit', { projet_slug: projet.slug, tache_slug: tache.slug }) }}">Modifier</a>	
 
 	{% set participe = (app.user in tache.participants) == true %}
 	<span
@@ -22,7 +13,7 @@
 	</span>
 </p>
 
-<p id="participants{{ sess_id }}">{{ tache.participantsAsString(app.user) }}</p>
+<p class="participants" id="participants{{ sess_id }}">{{ tache.participantsAsString(app.user) | capitalize}}</p>
 
 <script>
 
@@ -57,53 +48,4 @@
 			});
 		});
 	});
-</script>	
-
-<script>
-
-	$(function($) {
-
-		$done = $('#done{{ sess_id }}');
-		$('span.done{{ sess_id }}').click(function(){
-
-			var $this = $(this),
-				done = $this.attr('data-done') == 1 ? 0 : 1 ;
-			
-			$label = $this.parent().parent().parent().find('span.checked, span.unchecked');
-			
-			if(done){
-				
-				$label.addClass('checked') ; 
-				$label.removeClass('unchecked');
-
-			} else {
-
-				$label.addClass('unchecked') ; 
-				$label.removeClass('checked');
-
-			}
-
-			$this.attr('data-done', done);
-			switch(done)
-			{
-				case 0:
-					$this.text('À faire');
-					break;
-				case 1:
-					$this.text('Fait');
-					break;
-			}
-
-			$.ajax({
-				url: "{{path('kub_api_collaboration_organisation_tache_done')}}",
-				data: {
-					'id': parseInt($this.attr('data-id')),
-					'done': done
-				},
-				type: "POST",
-				timeout: 3000
-			});
-		});
-	});
-	
 </script>

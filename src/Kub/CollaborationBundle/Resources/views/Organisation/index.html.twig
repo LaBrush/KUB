@@ -16,22 +16,19 @@
 					<h4>{{ listeTaches }}</h4>
 					<ul>
 						{% for tache in listeTaches.taches %}
-							<li class="tache loadable" data-slug={{ tache.slug }}>
-								<span class="{% if tache.done %}
-										checked
-									{% else %}
-									    unchecked
-									{% endif %} 
-								"></span>
-								<span class="{{ tache.id }}t">{{ tache }}</span>
-								<span class="voir">Cliquez pour voir</span>
+
+
+							{% set done = tache.done %}
+
+							<li class="tache loadable">
+								<span class="{% if tache.done %} checked {% else %} unchecked {% endif %}" data-done="{{ done|number_format }}" data-id="{{ tache.id }}">{{ tache }}</span>
+								<span class="voir" data-slug="{{ tache.slug }}">Plus</span>
 								
 							</li>
 						{% endfor %}
 						
+						<li class="bouton-ajouter">+</li>
 						<li class="tache ajouter">
-							<hr>
-							<h4>Ajouter une tache</h4>
 							<div class="form-add">
 								{{ render(controller('KubCollaborationBundle:Organisation:create', { projet_slug: projet.slug, liste_slug: listeTaches.slug })) }}
 							</div>
@@ -66,7 +63,7 @@
 
 			var current = { detail: $('<p>') } ;
 
-			$('.tache.loadable').click(function(){
+			$('.voir').click(function(){
 
 				var $this = $(this),
 					slug = $this.attr('data-slug');
@@ -85,10 +82,12 @@
 						timeout: 3000,
 						success: function(r){ 
 							$detail.html(r);
-							$detail.appendTo($this);
+							$detail.appendTo($this.parent());
 						}
 					});
 				}
+
+				$(this).parent().find('.detail').toggle().is(':visible') ? $(this).text("Moins") : $(this).text("Plus") ;
 
 			});
 		});
@@ -100,7 +99,44 @@
 				$(this).next().toggle().is(':visible') ? $(this).text("Moins d'options") : $(this).text("Plus d'options") ;
 
 			}).click();
-		
+			
+			$('.ajouter').hide();
+
+			$('.bouton-ajouter').click(function() {
+				$(this).hide().parent().children('.ajouter').show();
+			});
+
+			$('.checked, .unchecked').click(function(){
+
+				var $this = $(this),
+					done = $this.attr('data-done') == 1 ? 0 : 1 ;
+				
+				$label = $this.parent().find('span.checked, span.unchecked');
+				
+				if(done){
+					
+					$label.addClass('checked') ; 
+					$label.removeClass('unchecked');
+
+				} else {
+
+					$label.addClass('unchecked') ; 
+					$label.removeClass('checked');
+
+				}
+
+				$this.attr('data-done', done);
+
+				$.ajax({
+					url: "{{path('kub_api_collaboration_organisation_tache_done')}}",
+					data: {
+						'id': parseInt($this.attr('data-id')),
+						'done': done
+					},
+					type: "POST",
+					timeout: 3000
+				});
+			});
 		});
 
 	</script>

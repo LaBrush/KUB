@@ -70,16 +70,17 @@
 {
 	display: inline-block;
 	width: 30%;
-	margin: 0 3.3% 20px 0;
+	margin: 0 1.6% 20px 1.6%;
 	border: 1px $border dashed;
 	@include border-radius(6px);
 	@include box-sizing(border-box);
 	padding: 7px;
+	vertical-align: top;
 
 	@media all and (max-width: 800px)
 	{
 		width: 48%;
-		margin: 0 2% 20px 0;
+		margin: 0 0.5% 20px 0.5%;
 	}
 
 	@media all and (max-width: 500px)
@@ -101,6 +102,7 @@
 
 	.tache
 	{
+		cursor: pointer;
 		margin: 5px 0;
 		@include pie-clearfix;
 	}
@@ -138,5 +140,61 @@
 		margin: 0;
 		padding: 0 3px;
 		cursor: pointer;
+
+		color: lighten($texte, 30%);
+		background: $header;
+		border: none;
+		@include appearance(none);
+
+		&:hover, &:focus, &:active
+		{
+			background: $orange;
+			color: $color-light;
+			text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+			@include border-radius(2px);
+		}
+	}
+
+	.bouton-ajouter
+	{
+		cursor: pointer;
+		background: $header;
+		padding: 3px 0 8px 0;
+		@include border-radius(3px);
+		margin: 15px 0 0 0;
+		width: 100%;
+		font-size: 2em;
+		font-weight: 700;
+		text-align: center;
+	}
+
+	.ajouter
+	{
+		margin: 15px 0 0 0;
+		background: $header;
+		padding: 5px 5px 8px 5px;
+		width: 100%;
+		@include box-sizing(border-box);
+		@include border-radius(3px);
+	}
+
+	.options-button
+	{
+		margin: 10px 0;
+	}
+
+	.detail
+	{
+		margin: 5px 0 10px 0;
+		background: $header;
+		padding: 8px;
+		width: 100%;
+		@include box-sizing(border-box);
+		@include border-radius(3px);
+	}
+
+	.participants
+	{
+		margin: 5px 0 0 0;
 	}
 }

@@ -1,6 +1,5 @@
 <span class="name">
-	{{ form_label(form.name) }}
-	{{ form_errors(form.name) }} <div class="input">{{ form_widget(form.name) }}</div>
+	{{ form_errors(form.name) }} <div class="input">{{ form_widget(form.name, {'attr': {'placeholder': 'Nom'}}) }}</div>
 </span>
 
 <span class="echeance">
@@ -9,7 +8,7 @@
 </span>
 
 {% if main is defined and not main %}
-	<input type="button" class="button options-button" value="Plus">
+	<input type="button" class="options-button button" value="Plus d'options">
 {% endif %}
 
 <span class="plus">
