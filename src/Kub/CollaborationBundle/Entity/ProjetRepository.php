@@ -50,6 +50,12 @@ class ProjetRepository extends EntityRepository
 					->leftJoin('t.participants', 'part')
 					->addSelect('part')
 
+					->leftJoin('t.ressources', 'otr')
+					->addSelect('otr')
+
+					->leftJoin('t.fichiers', 'otf')
+					->addSelect('otf')
+
 		->leftJoin('pro.documentheque', 'doc')
 		->addSelect('doc')
 

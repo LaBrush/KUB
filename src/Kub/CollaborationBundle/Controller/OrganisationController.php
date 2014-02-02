@@ -214,6 +214,37 @@ class OrganisationController extends Controller
 		));
 	}
 
+	/**
+ 	 * @ParamConverter("projet", options={"mapping": {"projet_slug": "slug"}})
+ 	 * @ParamConverter("liste",  options={"mapping": {"liste_slug":  "slug"}})
+	 */
+	public function deleteListAction(Projet $projet, ListeTaches $liste)
+	{
+		$form = $this->createFormBuilder()->getForm();
+		$request = $this->getRequest();
+
+		if ($request->getMethod() == 'POST') {
+			$form->bind($request);
+
+			if ($form->isValid()) {
+
+				$em = $this->get('doctrine.orm.default_entity_manager');
+				$em->remove($liste);
+				$em->flush();
+
+				$this->get('session')->getFlashBag()->add('info', 'Liste de taches bien supprimée');
+	
+				return $this->redirect($this->generateUrl('kub_collaboration_organisation_index', array('slug' => $projet->getSlug()) ));
+			}
+		}
+
+		return $this->render('KubCollaborationBundle:Organisation:delete_liste.html.twig', array(
+			'projet' => $projet,
+			'liste' => $liste,
+			'form' => $form->createView()
+		));
+	}
+
 	public function setUserParticipeAction()
 	{
 		$request = $this->get('request');
