@@ -15,6 +15,7 @@
 
 			<span class="validate">
 				<input class="button-yes" type="submit">
+				<a class="button-no" href="{{ path('kub_collaboration_organisation_delete', { projet_slug: projet.slug, tache_slug: tache.slug }) }}">Supprimer</a>
 				<a class="button" href="{{ path('kub_collaboration_organisation_index', { slug: projet.slug }) }}">Annuler</a>
 			</span>
 		{{ form_end(form) }}

@@ -2,6 +2,7 @@
 {
 	margin: 0;
 	text-align: left;
+	font-size: 2.3em;
 
 	.project-users
 	{
@@ -98,7 +99,7 @@
 .liste-taches
 {
 	display: inline-block;
-	width: 30%;
+	width: 29%;
 	margin: 0 1.6% 20px 1.6%;
 	border: 1px $border dashed;
 	@include border-radius(6px);
@@ -131,7 +132,6 @@
 
 	.tache
 	{
-		cursor: pointer;
 		margin: 5px 0;
 		@include pie-clearfix;
 	}
@@ -184,17 +184,29 @@
 		}
 	}
 
-	.bouton-ajouter
+	.bouton-ajouter, .bouton-supprimer
 	{
 		cursor: pointer;
 		background: $header;
 		padding: 3px 0 8px 0;
 		@include border-radius(3px);
-		margin: 15px 0 0 0;
+		margin: 5px 0 0 0;
 		width: 100%;
 		font-size: 2em;
 		font-weight: 700;
 		text-align: center;
+	}
+
+	.bouton-supprimer
+	{
+		padding: 3px 0;
+		font-size: 0.4em;
+
+		&:hover, &:active, &:focus
+		{
+			color: $button-color;===
+			background: darken($button-no, 5%);
+		}
 	}
 
 	.ajouter
@@ -209,7 +221,8 @@
 
 	.options-button
 	{
-		margin: 10px 0;
+		margin-top: 10px;
+		margin-bottom: -7px;
 	}
 
 	.detail

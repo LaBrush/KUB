@@ -11,8 +11,10 @@
 			
 			<p>Êtes vous sûr de vouloir supprimer le post <strong>{{ post.titre }}</strong> ?</p>
 
-			<br />
-			<input class="button-yes" type="submit"> ou <a class="button-no" href="{{ path('ariane_homepage') }}">Annuler</a>	
+			<div class="float-right">
+				<input class="button-yes" type="submit" Value="Supprimer"> ou <a class="button-no" href="{{ path('ariane_homepage') }}">Annuler</a>
+			</div>
+			<br>
 		{{ form_end(form) }}
 	</article>
 			
