@@ -47,13 +47,13 @@ class MessageHandler
 
 		if($this->form->has('thread_add_member')){
 
-			$participants = $this->form->get('thread_add_member')->getData()->getUsers();
-			
+			$participants = $this->form->get('thread_add_member')->get('users')->getData();
+
 			for ($i=0; $i < count($participants) ; $i++) { 
 				$thread->addUser( $participants[$i] );
 			}
 
-			$groupes = $this->form->get('thread_add_member')->getData()->getGroupes();	
+			$groupes = $this->form->get('thread_add_member')->get('groupes')->getData();	
 
 			for($i=0; $i < count($groupes) ; $i++) {
 				$thread->addGroupe( $groupes[$i] );	
