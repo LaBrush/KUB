@@ -49,18 +49,6 @@ class Ressource extends BaseRessource
         $this->valide = true ;
     }
 
-    public function getWebPath(){
-
-        if($this->getType() == Ressource::WEB)
-        {
-            return $this->url ;
-        }
-        else
-        {
-            return $this->getFile()->getWebPath();
-        }
-    }
-
     /**
      * Set valide
      *

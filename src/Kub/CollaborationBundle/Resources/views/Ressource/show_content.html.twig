@@ -9,5 +9,11 @@
 
 <span class="buttons">
 	<a class='button' href="{{ path('kub_collaboration_documentheque_ressource_edit', { slug: projet.slug, id: ressource.id}) }}">Modifier</a>
-	<a class="button-yes" href="{{ ressource.url }}">Lien d'accès</a>
+	<a class="button" target="_blank" href="{{ asset(ressource.webPath) }}">
+		{% if ressource.type == 1 %}
+			Voir sur le web
+		{% else %}
+			Voir sur le Kub
+		{% endif %}
+	</a>
 </span>

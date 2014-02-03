@@ -79,6 +79,18 @@ abstract class Ressource
     private $type ;
 
     
+    public function getWebPath(){
+
+        if($this->getType() == Ressource::WEB)
+        {
+            return $this->getUrl() ;
+        }
+        else
+        {
+            return $this->getFile()->getWebPath();
+        }
+    }
+
     public function isFileValid(ExecutionContextInterface $context)
     {   
         if($this->file && !($this->file->getFile() instanceof Symfony\Component\HttpFoundation\File\UploadedFile))
