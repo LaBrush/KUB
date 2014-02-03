@@ -13,7 +13,7 @@
 	<article class="article infos">
 
 		<span class="info">
-			<a class="button" href="{{ ressource.url }}">
+			<a class="button" target="_blank" href="{{ asset(ressource.webPath) }}">
 				{% if ressource.type == 1 %}
 					Voir sur le web
 				{% else %}

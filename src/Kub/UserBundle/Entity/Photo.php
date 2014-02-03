@@ -9,7 +9,6 @@ use Gedmo\Mapping\Annotation as Gedmo;
 /**
  * @ORM\Table(name="Photo")
  * @ORM\Entity
- * @Gedmo\Uploadable(path="/photos", filenameGenerator="SHA1", allowOverwrite=true, appendNumber=true)
  */
 class Photo extends BaseFile
 {
