@@ -23,7 +23,7 @@ class FrequenceType extends AbstractType
                 "multiple" => true,
                 "expanded" => true,
                 "class" => "Kub\EDTBundle\Entity\Semaine",
-                "label" => "Semaines comprises",
+                "label" => "Semaines comprises"
             ))
         ;
     }
