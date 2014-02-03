@@ -7,10 +7,14 @@ $(function() {
 		$this.toggleClass('checked').find('input:checkbox').prop('checked', $this.hasClass('checked'));
 	});
 
-	if ($('input:checkbox').prop('checked'))
-	{
-		$(this).parent().addClass('checked');
-	}
+	$('input:checkbox').each(function(){
+	
+		if($(this).prop('checked'))
+		{
+			$(this).parent().addClass('checked');
+		}
+
+	});
 
 	$('.semaine1').appendTo($('.line1'));
 

@@ -12,17 +12,20 @@
 
 	<article class="article">
 		
-		<ul>
+		<table class="table noter">
 		{% for ressource in ressources %}
 		
-			<li><a href="{{ path('kub_ressource_show', { id: ressource.id }) }}">{{ ressource }}</a> {{ render(controller('KubRessourceBundle:Validation:valider', { id: ressource.id})) }}</li>
+			<tr>
+				<td><a href="{{ path('kub_ressource_show', { id: ressource.id }) }}">{{ ressource }}</a></td>
+				<td>{{ render(controller('KubRessourceBundle:Validation:valider', { ressource: ressource })) }}</td>
+			</tr>
 
 		{% else %}
 		    
 		    Toutes les ressources ont été validées pour l'instant
 
 		{% endfor %}		
-		</ul>
+		</table>
 
 	</article>
 
