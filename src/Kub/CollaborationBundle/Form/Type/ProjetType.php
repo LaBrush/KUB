@@ -18,9 +18,9 @@ class ProjetType extends AbstractType
 			->add('name')
 			->add('dateFin')
 			->add('description')
-			 ->add('matiere', 'entity', array(
+			 ->add('categorie', 'entity', array(
                     'empty_value' => 'Choisissez une catégorie',
-                    'class' => 'Kub\EDTBundle\Entity\Matiere'
+                    'class' => 'Kub\EDTBundle\Entity\Categorie'
                 )
             )
 			->add('permissions', 'collection', array(
