@@ -45,7 +45,7 @@ class ProjetController extends Controller
 
 			if($formHandler->process())
 			{
-				$this->get('session')->getFlashBag()->add('info', "Le projet " . $projet->getName() . " a été crée");
+				$this->get('session')->getFlashBag()->add('info', "Le projet " . $projet->getName() . " a été créé");
 				return $this->redirect($this->generateUrl("kub_collaboration_projet_show", array('slug' => $projet->getSlug())));
 			}
 

@@ -37,7 +37,6 @@ class ProjetHandler
 			{
 				$data = $this->form->getData();
 
-				$data->erasePermissions();
 				$permissions = $data->getPermissions() ;
 
 				foreach ($this->form->get('permissions')->all() as $form){
@@ -45,7 +44,7 @@ class ProjetHandler
 					$put = true ;
 					$current = $form->getData();
 
-					for($permissions as $permission)
+					foreach($permissions as $permission)
 					{
 						if($permission == $current)
 						{
@@ -61,11 +60,9 @@ class ProjetHandler
 
 					if($put)
 					{
-						$permissions[] = $permission ;
+						$permissions[] = $current ;
 					}
 				}
-				
-
 
 				$this->onSuccess($data);
 

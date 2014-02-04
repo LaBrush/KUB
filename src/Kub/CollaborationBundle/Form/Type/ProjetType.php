@@ -18,6 +18,11 @@ class ProjetType extends AbstractType
 			->add('name')
 			->add('dateFin')
 			->add('description')
+			 ->add('matiere', 'entity', array(
+                    'empty_value' => 'Choisissez une catégorie',
+                    'class' => 'Kub\EDTBundle\Entity\Matiere'
+                )
+            )
 			->add('permissions', 'collection', array(
 				'type' => new PermissionType,
 				'allow_add' => true,
