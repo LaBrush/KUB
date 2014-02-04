@@ -84,6 +84,11 @@ class Projet
 	private $communication ;
 
 	/**
+     * @ORM\ManyToOne(targetEntity="Kub\EDTBundle\Entity\Categorie")
+     */
+    private $categorie ;
+
+	/**
 	 * @ORM\OneToMany(targetEntity="Kub\CollaborationBundle\Entity\Permission", mappedBy="projet", cascade={"all"}, fetch="EAGER")
 	 */
 	private $permissions ;
@@ -422,5 +427,28 @@ class Projet
     public function getCommunication()
     {
         return $this->communication;
+    }
+
+    /**
+     * Set categorie
+     *
+     * @param \Kub\EDTBundle\Entity\Categorie $categorie
+     * @return Projet
+     */
+    public function setCategorie(\Kub\EDTBundle\Entity\Categorie $categorie = null)
+    {
+        $this->categorie = $categorie;
+    
+        return $this;
+    }
+
+    /**
+     * Get categorie
+     *
+     * @return \Kub\EDTBundle\Entity\Categorie 
+     */
+    public function getCategorie()
+    {
+        return $this->categorie;
     }
 }
