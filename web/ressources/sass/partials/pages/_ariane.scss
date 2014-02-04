@@ -142,3 +142,19 @@
 {
 	margin: 10px 0 0 0;
 }
+
+
+.content-article-ariane
+{
+	p
+	{
+		display: inline-block;
+		margin: 4px 0 0 0;
+		text-align: justify;
+
+		@media all and (max-width: 500px)
+		{
+			width: 100%;
+		}
+	}
+}

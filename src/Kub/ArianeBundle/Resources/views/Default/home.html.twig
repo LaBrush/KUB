@@ -29,10 +29,10 @@
 		<article class="article-news bordered-espace-collaboratif">
 			<div class="head-article">
 				<h3 class="h2">{{ post.titre }}</h3>
-				<span class="small bold">Du {{ post.debut | date('Y - d/m')}} au {{ post.fin | date('Y - d/m')}}</span>
+				<span class="small bold">Du {{ post.debut | date('d/m/y')}} au {{ post.fin | date('d/m/y')}}</span>
 			</div>
 
-			<div class="content-article">
+			<div class="content-article-ariane">
 				{{ post.contenu | raw }}
 			</div>
 

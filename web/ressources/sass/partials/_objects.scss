@@ -257,6 +257,11 @@ input[type="text"], input[type="password"], input[type="email"], input[type="sea
 	}
 }
 
+input[type="submit"]
+{
+	display: inline-block;
+}
+
 
 label
 {
