@@ -41,7 +41,7 @@ class ProjetController extends Controller
 
 		if($request->getMethod() == "POST"){
 
-			$formHandler = new ProjetHandler($form, $request, $this->get('doctrine.orm.default_entity_manager'));
+			$formHandler = new ProjetHandler($form, $request, $this->get('doctrine.orm.default_entity_manager'), $this->get('kub.notification_manager'));
 
 			if($formHandler->process())
 			{
@@ -73,7 +73,7 @@ class ProjetController extends Controller
 
 		if($request->getMethod() == "POST"){
 
-			$formHandler = new ProjetHandler($form, $request, $this->get('doctrine.orm.default_entity_manager'));
+			$formHandler = new ProjetHandler($form, $request, $this->get('doctrine.orm.default_entity_manager'), $this->get('kub.notification_manager'));
 
 			if($formHandler->process())
 			{

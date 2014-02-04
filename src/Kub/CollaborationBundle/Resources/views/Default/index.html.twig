@@ -12,14 +12,12 @@
 
 	<article class="article">
 		
-		<a href="{{ path('kub_collaboration_projet_create') }}" class="button">Créer un projet</a>
+		{% if liste_projets|length > 0 %}
+			<a href="{{ path('kub_collaboration_projet_create') }}" class="button">Créer un projet</a>
 
-	</article>
-
-	<article class="article">
-		
-		<label for="search-in-list">Chercher dans la liste :</label>
-		<input id="search-in-list" type="text">
+			<label for="search-in-list">Chercher dans la liste :</label>
+			<input id="search-in-list" type="text">
+		{% endif %}
 
 		<ul class="liste">
 
@@ -52,7 +50,9 @@
 			</a>
 
 		{% else %}
-			<p class="error">Vous ne participez à aucun projet pour le moment</p>
+			<article class="article login-error-message">
+				<p>Vous n'avez pas de projet en ce moment. Vous voulez en créer un ? <a class="button-yes button-new-message" href="{{ path('kub_collaboration_projet_create') }}">C'est très simple</a></p>
+			</article>
 		{% endfor %}
 
 	</article>

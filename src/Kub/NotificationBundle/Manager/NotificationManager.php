@@ -62,7 +62,7 @@ class NotificationManager
 			$function = 'set' . ucfirst($key) ;
 			$notification->$function($value);
 		}
-		
+
 		$this->em->persist($notification);
 		$this->em->flush();
 	}

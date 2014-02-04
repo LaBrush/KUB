@@ -40,6 +40,11 @@ class Permission
      */
     private $user ;
 
+     /**
+     * @ORM\OneToOne(targetEntity="Kub\NotificationBundle\Entity\PermissionProjetNotification", inversedBy="permission",  cascade={"all"})
+     */
+    private $notification ;
+    
     /**
      * Get id
      *
@@ -117,5 +122,28 @@ class Permission
     public function getRole()
     {
         return $this->role;
+    }
+
+    /**
+     * Set notification
+     *
+     * @param \Kub\NotificationBundle\Entity\PermissionProjetNotification $notification
+     * @return Permission
+     */
+    public function setNotification(\Kub\NotificationBundle\Entity\PermissionProjetNotification $notification = null)
+    {
+        $this->notification = $notification;
+    
+        return $this;
+    }
+
+    /**
+     * Get notification
+     *
+     * @return \Kub\NotificationBundle\Entity\PermissionProjetNotification 
+     */
+    public function getNotification()
+    {
+        return $this->notification;
     }
 }

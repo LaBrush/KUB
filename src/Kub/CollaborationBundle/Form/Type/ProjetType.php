@@ -26,7 +26,7 @@ class ProjetType extends AbstractType
 			->add('permissions', 'collection', array(
 				'type' => new PermissionType,
 				'allow_add' => true,
-                'allow_delete' => true
+                'allow_delete' => true 
 			))
 		;
 	}

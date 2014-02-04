@@ -36,7 +36,8 @@ class MenuBuilder
 
 		if($this->security->isGranted('ROLE_SECRETAIRE'))
 		{
-			$this->generateSecretaireMenu($menu);   
+			$this->generateSecretaireMenu($menu);
+			$this->generateProjetsMenu($menu); 
 		}
 		else if($this->security->isGranted('ROLE_ELEVE'))
 		{
