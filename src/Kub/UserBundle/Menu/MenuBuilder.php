@@ -83,7 +83,8 @@ class MenuBuilder
 		$groupes = $this->em->getRepository('KubClasseBundle:Groupe')->findByUser( $this->security->getToken()->getUser() );
 
 		$limit = 4 ;
-		$limit = $limit < count($groupes) ? $limit : count($groupes) ;
+
+		$limit = $limit < count($groupes) ? 0 : count($groupes) ;
 
 		for($i = 0 ; $i < $limit ; $i++) {
 
@@ -97,7 +98,7 @@ class MenuBuilder
 
 		if(count($groupes) > $limit)
 		{
-			$menu['Mes groupes']->addChild("Autres groupes", 
+			$menu['Mes groupes']->addChild("Mes groupes", 
 				array(
 					'route' => 'groupe_list_for_user'
 				)

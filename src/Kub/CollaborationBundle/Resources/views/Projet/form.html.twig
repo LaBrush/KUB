@@ -6,16 +6,21 @@
 	</span>
 
 	<span class="fin">
-		{{ form_errors(form.dateFin) }}
-		Fin du projet <span class="input">{{ form_widget(form.dateFin) }}</span>
+		Fin du projet
+		{{ form_errors(form.dateFin) }} <span class="input">{{ form_widget(form.dateFin) }}</span>
 	</span>
 
 	<span class="description">
-		{{ form_errors(form.description) }}
-		{{ form_label(form.description) }} <span class="input">{{ form_widget(form.description) }}</span>
+		Catégorie du projets
+		{{ form_errors(form.categorie) }} <span class="input">{{ form_widget(form.categorie) }}</span>
 	</span>
 
-	<table class="permissions-add" data-prototype="{% filter escape %}{% include 'KubCollaborationBundle:Projet:permissions_form.html.twig' with {'form': form.permissions.vars.prototype} %}{% endfilter %}">
+	<span class="description">
+		{{ form_label(form.description) }}
+		{{ form_errors(form.description) }} <span class="input">{{ form_widget(form.description) }}</span>
+	</span>
+
+	<table class="permissions-add description" data-prototype="{% filter escape %}{% include 'KubCollaborationBundle:Projet:permissions_form.html.twig' with {'form': form.permissions.vars.prototype} %}{% endfilter %}">
 		
 		{% for permission in form.permissions %}
 			<tr class="permissions">
