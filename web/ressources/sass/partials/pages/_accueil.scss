@@ -1,5 +1,3 @@
-/* Section */
-
 .article-news
 {
 	margin: 45px auto;
@@ -8,51 +6,83 @@
 	@include pie-clearfix;
 }
 
-.head-news
+
+.head-article
 {
-	@include pie-clearfix;
-	text-align: right;
+	@include pie-clearfix();
+	margin: 2px 0;
 
 	span
 	{
-		vertical-align: middle;
+		float: right;
+
+		@media all and (max-width: 500px)
+		{
+			float: none;
+			display: block;
+		}
 	}
 
 	.h2
 	{
 		float: left;
-		margin: 2px 0;
+
+		@media all and (max-width: 500px)
+		{
+			float: none;
+			display: block;
+		}
 	}
 }
 
-.content-news
+.content-article
 {
-	@include pie-clearfix;
+	width: 75%;
+	display: inline-block;
+	float: left;
 
 	p
 	{
 		display: inline-block;
-		width: 80%;
 		margin: 4px 0 0 0;
-	}
-	
-	.button
-	{
-		display: inline-block;
-		float: right;
-		margin: 6px 0 0 0;
+		text-align: justify;
+
+		@media all and (max-width: 500px)
+		{
+			width: 100%;
+		}
 	}
 
 	.extract
 	{
 		display: inline-block;
 		width: 60%;
-		margin: 0 17px 17px 17px;
-		padding: 8px;
+		margin: 10px 17px;
+		padding: 4px 8px;
+		background-color: $header;
 
 		p
 		{
 			width: 100%;
 		}
+	}
+
+	@media all and (max-width: 500px)
+	{
+		width: 100%;
+	}
+}
+
+.buttons-article-news
+{
+	display: inline-block;
+	text-align: right;
+	float: right;
+	min-width: 25%;
+	margin: 4px 0 0 0;
+
+	@media all and (max-width: 500px)
+	{
+		margin: 10px 0 0 0;
 	}
 }

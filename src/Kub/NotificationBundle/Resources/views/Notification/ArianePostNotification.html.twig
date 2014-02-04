@@ -2,9 +2,9 @@
 
 {% block content %} 
     <p>
-    	<strong>{{ notification.auteur }}</strong> a ajouté la trace <strong>"{{ notification.post.titre }}"</strong> à son fil d'Ariane :
+    	<strong>{{ notification.auteur }}</strong> a ajouté la trace <strong>{{ notification.post.titre }}</strong> à son fil d'Ariane :
     </p>
     <div class="extract">
-    	<p>"{{ notification.post.contenu | raw }}"</p>
+    	{{ notification.post.contenu | raw }}
     </div>
 {% endblock %}
