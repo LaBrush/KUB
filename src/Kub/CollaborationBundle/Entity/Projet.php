@@ -357,12 +357,15 @@ class Projet
 	}
 
 	public function erasePermissions(){
-		for($i = 0 ; $i < count($this->permissions) ; $i++) {
-			$this->permissions[$i]->setProjet(null);
-			$this->permissions->remove($i);
+		foreach($this->getPermissions() as $permission){
+
+			$permission->setProjet(null);
+			$this->permissions->removeElement($permission);
+			unset($permission);
+
 		}
 
-		$this->permissions = new \Doctrine\Common\Collections\ArrayCollection(); ;
+		$this->permissions = new \Doctrine\Common\Collections\ArrayCollection();
 	}
 
 	/**

@@ -38,10 +38,34 @@ class ProjetHandler
 				$data = $this->form->getData();
 
 				$data->erasePermissions();
+				$permissions = $data->getPermissions() ;
+
 				foreach ($this->form->get('permissions')->all() as $form){
-					$data->addPermission( $form->getData() );
+					
+					$put = true ;
+					$current = $form->getData();
+
+					for($permissions as $permission)
+					{
+						if($permission == $current)
+						{
+							if($permission->getRole() >= $current->getRole())
+							{
+								$put = false ;
+							}
+							else {
+								$data->removePermission($permission);
+							}
+						}
+					}
+
+					if($put)
+					{
+						$permissions[] = $permission ;
+					}
 				}
 				
+
 
 				$this->onSuccess($data);
 
