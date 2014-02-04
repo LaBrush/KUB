@@ -576,13 +576,293 @@ class LoadEleveData extends AbstractFixture implements FixtureInterface, Contain
 			$eleve->setNom($nom);
 			$eleve->setPrenom($prenom);
 			$eleve->setAnniversaire(new \Datetime());
+			$eleve->setNiveau($this->getReference('seconde'));
+
+			$eleve->setEmail($pseudo . '@mail.com');
+			$eleve->setPlainPassword(sha512(substr(uniqid(), 0, 20)));
+			$eleve->setEnabled(true);
+
+			$this->getReference("1")->addEleve($eleve);
+
+			$this->addReference($pseudo, $eleve);
+			$userManager->updateUser($eleve, true);	
+		}
+
+		foreach($eleves2 as $prenom => $nom)
+		{
+			$eleve = $userManager->createUser();
+			$pseudo = strToLower($nom . $prenom) ;
+
+			$eleve->setNom($nom);
+			$eleve->setPrenom($prenom);
+			$eleve->setAnniversaire(new \Datetime());
+			$eleve->setNiveau($this->getReference('seconde'));
+
+			$eleve->setEmail($pseudo . '@mail.com');
+			$eleve->setPlainPassword(sha512(substr(uniqid(), 0, 20)));
+			$eleve->setEnabled(true);
+
+			$this->getReference("2")->addEleve($eleve);
+
+			$this->addReference($pseudo, $eleve);
+			$userManager->updateUser($eleve, true);	
+		}
+
+		foreach($eleves3 as $prenom => $nom)
+		{
+			$eleve = $userManager->createUser();
+			$pseudo = strToLower($nom . $prenom) ;
+
+			$eleve->setNom($nom);
+			$eleve->setPrenom($prenom);
+			$eleve->setAnniversaire(new \Datetime());
+			$eleve->setNiveau($this->getReference('seconde'));
+
+			$eleve->setEmail($pseudo . '@mail.com');
+			$eleve->setPlainPassword(sha512(substr(uniqid(), 0, 20)));
+			$eleve->setEnabled(true);
+
+			$this->getReference("3")->addEleve($eleve);
+
+			$this->addReference($pseudo, $eleve);
+			$userManager->updateUser($eleve, true);	
+		}
+
+		foreach($eleves4 as $prenom => $nom)
+		{
+			$eleve = $userManager->createUser();
+			$pseudo = strToLower($nom . $prenom) ;
+
+			$eleve->setNom($nom);
+			$eleve->setPrenom($prenom);
+			$eleve->setAnniversaire(new \Datetime());
 			$eleve->setNiveau($this->getReference('premiere'));
 
 			$eleve->setEmail($pseudo . '@mail.com');
-			$eleve->setPlainPassword('123456');
+			$eleve->setPlainPassword(sha512(substr(uniqid(), 0, 20)));
 			$eleve->setEnabled(true);
 
-			$this->getReference("si3")->addEleve($eleve);
+			$this->getReference("SI")->addEleve($eleve);
+
+			$this->addReference($pseudo, $eleve);
+			$userManager->updateUser($eleve, true);	
+		}
+
+		foreach($eleves5 as $prenom => $nom)
+		{
+			$eleve = $userManager->createUser();
+			$pseudo = strToLower($nom . $prenom) ;
+
+			$eleve->setNom($nom);
+			$eleve->setPrenom($prenom);
+			$eleve->setAnniversaire(new \Datetime());
+			$eleve->setNiveau($this->getReference('premiere'));
+
+			$eleve->setEmail($pseudo . '@mail.com');
+			$eleve->setPlainPassword(sha512(substr(uniqid(), 0, 20)));
+			$eleve->setEnabled(true);
+
+			$this->getReference("S")->addEleve($eleve);
+
+			$this->addReference($pseudo, $eleve);
+			$userManager->updateUser($eleve, true);	
+		}
+
+		foreach($eleves6 as $prenom => $nom)
+		{
+			$eleve = $userManager->createUser();
+			$pseudo = strToLower($nom . $prenom) ;
+
+			$eleve->setNom($nom);
+			$eleve->setPrenom($prenom);
+			$eleve->setAnniversaire(new \Datetime());
+			$eleve->setNiveau($this->getReference('premiere'));
+
+			$eleve->setEmail($pseudo . '@mail.com');
+			$eleve->setPlainPassword(sha512(substr(uniqid(), 0, 20)));
+			$eleve->setEnabled(true);
+
+			$this->getReference("ES")->addEleve($eleve);
+
+			$this->addReference($pseudo, $eleve);
+			$userManager->updateUser($eleve, true);	
+		}
+
+		foreach($eleves7 as $prenom => $nom)
+		{
+			$eleve = $userManager->createUser();
+			$pseudo = strToLower($nom . $prenom) ;
+
+			$eleve->setNom($nom);
+			$eleve->setPrenom($prenom);
+			$eleve->setAnniversaire(new \Datetime());
+			$eleve->setNiveau($this->getReference('premiere'));
+
+			$eleve->setEmail($pseudo . '@mail.com');
+			$eleve->setPlainPassword(sha512(substr(uniqid(), 0, 20)));
+			$eleve->setEnabled(true);
+
+			$this->getReference("L")->addEleve($eleve);
+
+			$this->addReference($pseudo, $eleve);
+			$userManager->updateUser($eleve, true);	
+		}
+
+		foreach($eleves8 as $prenom => $nom)
+		{
+			$eleve = $userManager->createUser();
+			$pseudo = strToLower($nom . $prenom) ;
+
+			$eleve->setNom($nom);
+			$eleve->setPrenom($prenom);
+			$eleve->setAnniversaire(new \Datetime());
+			$eleve->setNiveau($this->getReference('premiere'));
+
+			$eleve->setEmail($pseudo . '@mail.com');
+			$eleve->setPlainPassword(sha512(substr(uniqid(), 0, 20)));
+			$eleve->setEnabled(true);
+
+			$this->getReference("S")->addEleve($eleve);
+
+			$this->addReference($pseudo, $eleve);
+			$userManager->updateUser($eleve, true);	
+		}
+
+		foreach($eleves9 as $prenom => $nom)
+		{
+			$eleve = $userManager->createUser();
+			$pseudo = strToLower($nom . $prenom) ;
+
+			$eleve->setNom($nom);
+			$eleve->setPrenom($prenom);
+			$eleve->setAnniversaire(new \Datetime());
+			$eleve->setNiveau($this->getReference('seconde'));
+
+			$eleve->setEmail($pseudo . '@mail.com');
+			$eleve->setPlainPassword(sha512(substr(uniqid(), 0, 20)));
+			$eleve->setEnabled(true);
+
+			$this->getReference("4")->addEleve($eleve);
+
+			$this->addReference($pseudo, $eleve);
+			$userManager->updateUser($eleve, true);	
+		}
+
+		foreach($eleves10 as $prenom => $nom)
+		{
+			$eleve = $userManager->createUser();
+			$pseudo = strToLower($nom . $prenom) ;
+
+			$eleve->setNom($nom);
+			$eleve->setPrenom($prenom);
+			$eleve->setAnniversaire(new \Datetime());
+			$eleve->setNiveau($this->getReference('terminale'));
+
+			$eleve->setEmail($pseudo . '@mail.com');
+			$eleve->setPlainPassword(sha512(substr(uniqid(), 0, 20)));
+			$eleve->setEnabled(true);
+
+			$this->getReference("SI")->addEleve($eleve);
+
+			$this->addReference($pseudo, $eleve);
+			$userManager->updateUser($eleve, true);	
+		}
+
+		foreach($eleves11 as $prenom => $nom)
+		{
+			$eleve = $userManager->createUser();
+			$pseudo = strToLower($nom . $prenom) ;
+
+			$eleve->setNom($nom);
+			$eleve->setPrenom($prenom);
+			$eleve->setAnniversaire(new \Datetime());
+			$eleve->setNiveau($this->getReference('terminale'));
+
+			$eleve->setEmail($pseudo . '@mail.com');
+			$eleve->setPlainPassword(sha512(substr(uniqid(), 0, 20)));
+			$eleve->setEnabled(true);
+
+			$this->getReference("S")->addEleve($eleve);
+
+			$this->addReference($pseudo, $eleve);
+			$userManager->updateUser($eleve, true);	
+		}
+
+		foreach($eleves12 as $prenom => $nom)
+		{
+			$eleve = $userManager->createUser();
+			$pseudo = strToLower($nom . $prenom) ;
+
+			$eleve->setNom($nom);
+			$eleve->setPrenom($prenom);
+			$eleve->setAnniversaire(new \Datetime());
+			$eleve->setNiveau($this->getReference('terminale'));
+
+			$eleve->setEmail($pseudo . '@mail.com');
+			$eleve->setPlainPassword(sha512(substr(uniqid(), 0, 20)));
+			$eleve->setEnabled(true);
+
+			$this->getReference("S")->addEleve($eleve);
+
+			$this->addReference($pseudo, $eleve);
+			$userManager->updateUser($eleve, true);	
+		}
+
+		foreach($eleves13 as $prenom => $nom)
+		{
+			$eleve = $userManager->createUser();
+			$pseudo = strToLower($nom . $prenom) ;
+
+			$eleve->setNom($nom);
+			$eleve->setPrenom($prenom);
+			$eleve->setAnniversaire(new \Datetime());
+			$eleve->setNiveau($this->getReference('terminale'));
+
+			$eleve->setEmail($pseudo . '@mail.com');
+			$eleve->setPlainPassword(sha512(substr(uniqid(), 0, 20)));
+			$eleve->setEnabled(true);
+
+			$this->getReference("ES")->addEleve($eleve);
+
+			$this->addReference($pseudo, $eleve);
+			$userManager->updateUser($eleve, true);	
+		}
+
+		foreach($eleves14 as $prenom => $nom)
+		{
+			$eleve = $userManager->createUser();
+			$pseudo = strToLower($nom . $prenom) ;
+
+			$eleve->setNom($nom);
+			$eleve->setPrenom($prenom);
+			$eleve->setAnniversaire(new \Datetime());
+			$eleve->setNiveau($this->getReference('terminale'));
+
+			$eleve->setEmail($pseudo . '@mail.com');
+			$eleve->setPlainPassword(sha512(substr(uniqid(), 0, 20)));
+			$eleve->setEnabled(true);
+
+			$this->getReference("L")->addEleve($eleve);
+
+			$this->addReference($pseudo, $eleve);
+			$userManager->updateUser($eleve, true);	
+		}
+
+		foreach($eleves15 as $prenom => $nom)
+		{
+			$eleve = $userManager->createUser();
+			$pseudo = strToLower($nom . $prenom) ;
+
+			$eleve->setNom($nom);
+			$eleve->setPrenom($prenom);
+			$eleve->setAnniversaire(new \Datetime());
+			$eleve->setNiveau($this->getReference('seconde'));
+
+			$eleve->setEmail($pseudo . '@mail.com');
+			$eleve->setPlainPassword(sha512(substr(uniqid(), 0, 20)));
+			$eleve->setEnabled(true);
+
+			$this->getReference("5")->addEleve($eleve);
 
 			$this->addReference($pseudo, $eleve);
 			$userManager->updateUser($eleve, true);	
