@@ -104,6 +104,8 @@ class CommentaireController extends Controller
 		
 				$this->get('session')->getFlashBag()->add('info', "Le commentaire a été supprimé");
 
+				$arg =  array();
+				$this->getUser()->getClass() == 'professeur' ? $arg['username'] = $commentaire->getPost()->getFil()->getEleve()->getUsername() : false ;
 
 				return $this->redirect($this->generateUrl("ariane_homepage", $arg));
 			}

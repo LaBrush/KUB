@@ -44,7 +44,7 @@ class Tache
 	private $done;
 
 	/**
-     * @ORM\Column(name="notes", type="text")
+     * @ORM\Column(name="notes", type="text", nullable=true)
      */
     private $notes;
 

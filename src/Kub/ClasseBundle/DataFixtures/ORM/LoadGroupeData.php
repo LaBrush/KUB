@@ -49,37 +49,27 @@ class LoadGroupeData extends AbstractFixture implements FixtureInterface, Contai
 				"3",
 				"4",
 				"5",
-				"6",
-				"7",
-				"8",
-				"9",
 				"cinema",
 				"isn",
 				"musique"
 			),
 			"premiere" => array(
-				"1",
-				"2",
-				"3",
-				"4",
-				"5",
-				"6",
-				"7",
-				"8",
-				"9",
+				"SI",
+				"S1",
+				"S2",
+				"ES1",
+				"ES2",
+				"L",
 				"cinema",
 				"musique"
 			),
 			"terminale" => array(
-				"1",
-				"2",
-				"3",
-				"4",
-				"5",
-				"6",
-				"7",
-				"8",
-				"9",
+				"SI",
+				"S1",
+				"S2",
+				"ES1",
+				"ES2",
+				"L",
 				"cinema",
 				"musique"
 			)
@@ -93,6 +83,7 @@ class LoadGroupeData extends AbstractFixture implements FixtureInterface, Contai
 					$groupe->setNiveau($this->getReference($niveau));
 
 				$manager->persist($groupe);
+				$this->addReference($niveau . $groupe->getName(), $groupe);
 			}
 		}
 
