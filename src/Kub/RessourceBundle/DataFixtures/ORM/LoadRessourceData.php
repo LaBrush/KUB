@@ -31,16 +31,16 @@ class LoadRessourceData extends AbstractFixture implements FixtureInterface, Con
      */
     public function load(ObjectManager $manager)
     {
-        $professeur = $this->getReference('professeur');
+        $professeur = $this->getReference('stevejobs');
 
         $ressource = new Ressource();
             $ressource->setType("web");
-            $ressource->setDescription('Voici un billet en rapport avec le Kub');
+            $ressource->setDescription('Quelle sera votre rime ?');
             $ressource->setAuteur((string)$professeur);
             $ressource->setDepositaire($professeur);
             $ressource->setTitre("L'histoire du Kub");
-            $ressource->setUrl("http://legarsdacote.tumblr.com/kub");
-            $ressource->setMatiere($this->getReference('Italien'));
+            $ressource->setUrl("http://www.apple.com/your-verse/");
+            $ressource->setMatiere($this->getReference('Cinéma'));
             $ressource->setType( Ressource::WEB );
 
 

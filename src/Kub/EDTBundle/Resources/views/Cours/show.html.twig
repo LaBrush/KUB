@@ -32,24 +32,24 @@
 		<span class="label">Matière :</span>
 		<span class="info">{{ cours.matiere }}</span>
 
-		<span class="label">Controles :</span>
-		<span class="info">
-			<ul>
-				{% for controle in cours.controles %}
-					{% if is_granted('ROLE_PROFESSEUR') %}
-						{% set path = path('kub_notes_professeur_show', { id: controle.id }) %}					
-					{% elseif is_granted('ROLE_ELEVE') %}
-						{% set path = path('kub_notes_eleve_homepage') %}
-					{% else %}
-						{% set path = '#' %}
-					{% endif %}
-
-					<a href="{{ path }}"><li class="li-list">{{ controle }}</li></a>
-				{% endfor %}
-			</ul>
-		</span>
-		
 		{% if is_granted('ROLE_PROFESSEUR') %}
+			<span class="label">Controles :</span>
+			<span class="info">
+				<ul>
+					{% for controle in cours.controles %}
+						{% if is_granted('ROLE_PROFESSEUR') %}
+							{% set path = path('kub_notes_professeur_show', { id: controle.id }) %}					
+						{% elseif is_granted('ROLE_ELEVE') %}
+							{% set path = path('kub_notes_eleve_homepage') %}
+						{% else %}
+							{% set path = '#' %}
+						{% endif %}
+
+						<a href="{{ path }}"><li class="li-list">{{ controle }}</li></a>
+					{% endfor %}
+				</ul>
+			</span>
+
 			<span class="label">Absences et retards :</span>
 			<span class="info">
 				<table class="table cut">
@@ -71,6 +71,14 @@
 			</span>
 		{% endif %}
 		
+		{% if is_granted('ROLE_SECRETAIRE') %}
+
+			<span class="modifier">
+				<a class="button" href="{{ path('cours_edit', { id: cours.id }) }}">Modifier</a>
+			</span>
+	
+		{% endif %}
+
 	</article>
 
 {% endblock %}

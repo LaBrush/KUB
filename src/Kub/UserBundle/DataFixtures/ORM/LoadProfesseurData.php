@@ -68,7 +68,7 @@ class LoadProfesseurData extends AbstractFixture implements FixtureInterface, Co
 			"Bill" => "Gates",
 
 			"Karl" => "Marx",
-			"Nikolaï" => "Kondratiev",
+			"Nikolai" => "Kondratiev",
 
 			"Albert" => "Camus",
 
@@ -91,7 +91,7 @@ class LoadProfesseurData extends AbstractFixture implements FixtureInterface, Co
 			"Penelope" => "Cruz"
 		);
 
-		foreach($professeurs as $nom => $prenom)
+		foreach($professeurs as $prenom => $nom)
 		{
 			$professeur = $userManager->createUser();
 

@@ -48,13 +48,13 @@ class LoadCoursData extends AbstractFixture implements FixtureInterface, Contain
 			$horaire2 = new Horaire;
 			$horaire2->setDebut( new \Datetime('08:00') );
 			$horaire2->setFin( new \Datetime('09:00') );
-			$horaire2->setJour( $this->getReference('mardi') );
+			$horaire2->setJour( $this->getReference('vendredi') );
 			$horaire2->addSemaine( $this->getReference('semaine1-14') );
 
 			$horaire3 = new Horaire;
 			$horaire3->setDebut( new \Datetime('14:25') );
 			$horaire3->setFin( new \Datetime('15:20') );
-			$horaire3->setJour( $this->getReference('mardi') );
+			$horaire3->setJour( $this->getReference('vendredi') );
 			$horaire3->addSemaine( $this->getReference('semaine1-14') );
 
 			$coursAnglaisSI2->addHoraire($horaire1);
@@ -206,7 +206,7 @@ class LoadCoursData extends AbstractFixture implements FixtureInterface, Contain
 
 		$coursTPESI2 = new Cours;
 
-			$coursTPESI2->setProfesseur( $this->getReference('stevesjobs') );
+			$coursTPESI2->setProfesseur( $this->getReference('stevejobs') );
 			$coursTPESI2->addGroupe( $this->getReference('SI2') );
 			$coursTPESI2->setMatiere( $this->getReference('TPE') );
 
@@ -232,7 +232,7 @@ class LoadCoursData extends AbstractFixture implements FixtureInterface, Contain
 			$horaire1->setDebut( new \Datetime('08:00') );
 			$horaire1->setFin( new \Datetime('10:00') );
 			$horaire1->setJour( $this->getReference('jeudi') );
-			$horaire1->addSemaine( $this->getReference('semaine1-2014') );
+			$horaire1->addSemaine( $this->getReference('semaine1-14') );
 
 			$coursSportSI2->addHoraire($horaire1);
 			$this->addReference('coursSportSI2', $coursSportSI2);
@@ -250,13 +250,13 @@ class LoadCoursData extends AbstractFixture implements FixtureInterface, Contain
 			$horaire1->setDebut( new \Datetime('13:25') );
 			$horaire1->setFin( new \Datetime('14:25') );
 			$horaire1->setJour( $this->getReference('lundi') );
-			$horaire1->addSemaine( $this->getReference('semaine1-2014') );
+			$horaire1->addSemaine( $this->getReference('semaine1-14') );
 
 			$horaire2 = new Horaire;
 			$horaire2->setDebut( new \Datetime('10:00') );
 			$horaire2->setFin( new \Datetime('12:00') );
 			$horaire2->setJour( $this->getReference('mercredi') );
-			$horaire2->addSemaine( $this->getReference('semaine1-2014') );
+			$horaire2->addSemaine( $this->getReference('semaine1-14') );
 
 			$coursHistoireGeoSI2->addHoraire($horaire1);
 			$coursHistoireGeoSI2->addHoraire($horaire2);
@@ -273,25 +273,18 @@ class LoadCoursData extends AbstractFixture implements FixtureInterface, Contain
 
 			$horaire1 = new Horaire;
 			$horaire1->setDebut( new \Datetime('15:20') );
-			$horaire1->setFin( new \Datetime('16:20') );
+			$horaire1->setFin( new \Datetime('17:20') );
 			$horaire1->setJour( $this->getReference('lundi') );
-			$horaire1->addSemaine( $this->getReference('semaine1-2014') );
+			$horaire1->addSemaine( $this->getReference('semaine1-14') );
 
 			$horaire2 = new Horaire;
-			$horaire2->setDebut( new \Datetime('16:20') );
-			$horaire2->setFin( new \Datetime('17:20') );
-			$horaire2->setJour( $this->getReference('lundi') );
-			$horaire2->addSemaine( $this->getReference('semaine1-2014') );
-
-			$horaire3 = new Horaire;
-			$horaire3->setDebut( new \Datetime('09:00') );
-			$horaire3->setFin( new \Datetime('10:00') );
-			$horaire3->setJour( $this->getReference('vendredi') );
-			$horaire3->addSemaine( $this->getReference('semaine1-14') );
+			$horaire2->setDebut( new \Datetime('09:00') );
+			$horaire2->setFin( new \Datetime('10:00') );
+			$horaire2->setJour( $this->getReference('vendredi') );
+			$horaire2->addSemaine( $this->getReference('semaine1-14') );
 
 			$coursFrancaisSI2->addHoraire($horaire1);
 			$coursFrancaisSI2->addHoraire($horaire2);
-			$coursFrancaisSI2->addHoraire($horaire3);
 			$this->addReference('coursFrancaisSI2', $coursFrancaisSI2);
 
 		$manager->persist($coursFrancaisSI2);
