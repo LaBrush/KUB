@@ -81,7 +81,7 @@ class Horaire
 	{
 		if(
 			$this->debut->format('H') < $datetime->format('H') &&
-			$this->fin->format('H') < $datetime->format('H') ||
+			$this->fin->format('H') > $datetime->format('H') ||
 
 			(
 				(
@@ -91,7 +91,7 @@ class Horaire
 				) ||
 				(
 					$this->fin->format('H') == $datetime->format('H') &&
-					$this->fin->format('i') < $datetime->format('i') 
+					$this->fin->format('i') > $datetime->format('i') 
 				)
 			)
 		)

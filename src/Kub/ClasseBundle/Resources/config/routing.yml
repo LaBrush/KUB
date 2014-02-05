@@ -1,5 +1,5 @@
 groupe_show:
-    pattern:  /groupe/{id}/voir
+    pattern:  /groupe/{id}/
     defaults: { _controller: "KubClasseBundle:Groupe:show" }
 
 groupe_create:

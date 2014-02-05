@@ -33,13 +33,13 @@ class LoadSemaineData extends AbstractFixture implements FixtureInterface, Conta
     public function load(ObjectManager $manager)
     {
 
-        for($y=2014 ; $y <= 2015 ; $y++)
+        for($y=14 ; $y <= 15 ; $y++)
         {
             for ($i=1; $i <= 52 ; $i++) { 
 
                 $semaine = new Semaine();
                     $semaine->setNumero($i);
-                    $semaine->setAnnee(date($y));
+                    $semaine->setAnnee($y);
 
                 $this->addReference('semaine'.$i.'-'.$y, $semaine);
                 $manager->persist($semaine);

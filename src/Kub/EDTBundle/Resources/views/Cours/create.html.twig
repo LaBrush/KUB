@@ -25,21 +25,39 @@
 {% endblock %}
 
 {% block js %}
-
-	<script type="text/javascript" src="{{ asset('ressources/select2/select2.min.js') }}"></script>
-	<link rel="stylesheet" href="{{ asset('ressources/select2/select2.css') }}" />
-	{{ form_javascript(form) }}
-
-
-	<script type="text/javascript" src="{{ asset('ressources/jsmin/horaires.min.js') }}"></script>
 	
 	<script>
 		// garde une trace du nombre de champs horaires qui ont été affichés
 		var tuteurCount = '{{ form.horaires | length }}';
+		var horairesMinutes = {{ EDT2JsArray() }}
 
-		$(document).ready(function() {
+		$(function() {
 
-			$('.add-another-horaires').click(function() {
+			var filterHours = function(){
+				var that = $(this);
+				var next = that.next().children(), acceptedValues = horairesMinutes[$(this).val()];
+
+				for (var i = 0, c = next.length ; i < c; i++) {
+					if($.inArray(parseInt(next[i].value), acceptedValues) > -1)
+					{
+						$(next[i]).removeAttr('disabled');	
+					}
+					else
+					{
+						$(next[i]).attr('disabled','disabled');
+					}
+				};
+
+				next = that.next();
+				next.children('option[disabled!=disabled]').first().attr("selected", "selected");
+				console.log('bip');
+			}
+
+			$('.horaires').each(function() {
+			    addTagFormDeleteLink($(this));
+			});
+		
+			$('.add-another-horaires').click(function(e) {
 				var tuteurList = $('.horaires-add');
 
 				var newWidget = tuteurList.attr('data-prototype');
@@ -48,9 +66,12 @@
 				var newLi = $('<div class="horaires"></div>').html(newWidget);
 				addTagFormDeleteLink(newLi);
 				newLi.appendTo(tuteurList);
-				
+				newLi.find('.debut-fin-cours :first-child').change( filterHours ).trigger('change');
+
+				console.log(newLi);
+
 				$field = $('#kub_edtbundle_cours_horaires_' + tuteurCount + '_semaines');
-                $field.select2([]);
+                $field.select2();
 
                 tuteurCount++;
 
@@ -58,14 +79,22 @@
 			});
 
 			function addTagFormDeleteLink($tagFormLi) {
-				var $removeFormA = $('<a href="#" class="button-no delete-horaire">Supprimer cet horaire</a>');
-				$tagFormLi.append($removeFormA);
-
-				$removeFormA.on('click', function() {
-					$tagFormLi.remove();
-				});
+				$tagFormLi.append( 
+					$('<a href="#" class="button-no delete-horaire">Supprimer cet horaire</a>')
+					.click(function() {
+						$tagFormLi.remove();
+						return false;
+					})
+				 );
 			}
+
+			$('.debut-fin-cours :first-child').change( filterHours ).trigger('change');
 		})
 	</script>
+
+	<script type="text/javascript" src="{{ asset('ressources/select2/select2.min.js') }}"></script>
+	<link rel="stylesheet" href="{{ asset('ressources/select2/select2.css') }}" />
+	{{ form_javascript(form) }}
+	{{ form_stylesheet(form) }}
 
 {% endblock %}

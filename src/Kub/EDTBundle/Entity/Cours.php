@@ -114,8 +114,14 @@ class Cours
 		$current = new \DateTime();
 		$horaires = $this->getHoraires();
 
+		ob_start();
+
+		echo $current->format('H:i');
+
 		for ($i=0; $i < count($horaires); $i++) { 
 			
+			echo $horaires[$i];
+
 			if($horaires[$i]->contains($current))
 			{
 				return $horaires[$i];
@@ -123,7 +129,10 @@ class Cours
 
 		}
 
-		return false ;
+		throw new \Exception(ob_get_clean());
+		
+
+		return null ;
 	}
 
 	public function getEleves(){

@@ -46,9 +46,9 @@ class LoadProfesseurData extends AbstractFixture implements FixtureInterface, Co
 		$professeur->setPlainPassword('123456');
 		$professeur->setEnabled(true);
 
-		$this->addReference('professeur', $professeur);
-
+		$this->addReference($professeur->getUsername(), $professeur);
 		$userManager->updateUser($professeur, true);
+
 
 		$professeur = $userManager->createUser();
 
@@ -59,6 +59,7 @@ class LoadProfesseurData extends AbstractFixture implements FixtureInterface, Co
 		$professeur->setPlainPassword('123456');
 		$professeur->setEnabled(true);
 
+		$this->addReference($professeur->getUsername(), $professeur);
 		$userManager->updateUser($professeur, true);
 
 		$professeurs = array(
@@ -93,16 +94,15 @@ class LoadProfesseurData extends AbstractFixture implements FixtureInterface, Co
 		foreach($professeurs as $nom => $prenom)
 		{
 			$professeur = $userManager->createUser();
-			$pseudo = strToLower($nom . $prenom) ;
 
 			$professeur->setNom($nom);
 			$professeur->setPrenom($prenom);
 
-			$professeur->setEmail($pseudo . '@mail.com');
+			$professeur->setEmail($professeur->getUsername() . '@mail.com');
 			$professeur->setPlainPassword(substr(hash('sha512', uniqid()), 0, 20));
 			$professeur->setEnabled(true);
 
-			$this->addReference($pseudo, $professeur);
+			$this->addReference($professeur->getUsername(), $professeur);
 			$userManager->updateUser($professeur, true);	
 		}
 	}

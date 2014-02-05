@@ -59,8 +59,8 @@ class CoursRepository extends EntityRepository
 			->andWhere('CURRENT_TIME() BETWEEN h.debut AND h.fin')
 			->andWhere('s.numero = :w')
 			->setParameter('w', date('W'))
-			->andWhere('s.annee = :y')
-			->setParameter('y', date('y'))
+			// ->andWhere('s.annee = :y')
+			// ->setParameter('y', date('y'))
 		;
 
 		return $qb->getQuery()->getOneOrNullResult();
