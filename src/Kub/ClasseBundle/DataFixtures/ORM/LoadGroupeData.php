@@ -33,10 +33,10 @@ class LoadGroupeData extends AbstractFixture implements FixtureInterface, Contai
 	public function load(ObjectManager $manager)
 	{
 		$si3 = new Groupe();
-			$si3->setName("SI-3");
+			$si3->setName("SI2");
 			$si3->setNiveau($this->getReference('premiere'));
 
-		$this->addReference('si3', $si3);
+		$this->addReference('SI2', $si3);
 
 		$manager->persist($si3);
 		$manager->flush();
@@ -54,7 +54,7 @@ class LoadGroupeData extends AbstractFixture implements FixtureInterface, Contai
 				"musique"
 			),
 			"premiere" => array(
-				"SI",
+				"SI1",
 				"S1",
 				"S2",
 				"ES1",

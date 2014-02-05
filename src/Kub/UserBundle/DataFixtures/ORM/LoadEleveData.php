@@ -49,7 +49,7 @@ class LoadEleveData extends AbstractFixture implements FixtureInterface, Contain
 		$johnsnow->setEmail('admin@mail.com');
 		$johnsnow->setPlainPassword('123456');
 		$johnsnow->setEnabled(true);
-		$this->getReference("si3")->addEleve($johnsnow);
+		$this->getReference("SI2")->addEleve($johnsnow);
 
 		$this->addReference('johnsnow', $johnsnow);
 		$userManager->updateUser($johnsnow, true);
@@ -61,7 +61,7 @@ class LoadEleveData extends AbstractFixture implements FixtureInterface, Contain
 		$deneris->setPrenom('Deneris');
 		$deneris->setAnniversaire(new \Datetime());
 		$deneris->setNiveau($this->getReference('premiere'));
-		$this->getReference("si3")->addEleve($deneris);
+		$this->getReference("SI2")->addEleve($deneris);
 
 		$deneris->setEmail('adfdmin@mail.com');
 		$deneris->setPlainPassword('123456');
@@ -638,7 +638,7 @@ class LoadEleveData extends AbstractFixture implements FixtureInterface, Contain
 			$eleve->setPlainPassword(substr(hash('sha512', uniqid()), 0, 20));
 			$eleve->setEnabled(true);
 
-			$this->getReference("premiereSI")->addEleve($eleve);
+			$this->getReference("premiereSI1")->addEleve($eleve);
 
 			$this->addReference($eleve->getUsername(), $eleve);
 			$userManager->updateUser($eleve, true);	

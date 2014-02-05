@@ -78,7 +78,7 @@ class LoadProfesseurData extends AbstractFixture implements FixtureInterface, Co
 			"Laure" => "Manaudou",
 
 			"William" => "Shakespeare",
-			"Terry" => "Pratchet",
+			"Terry" => "Pratchett",
 
 			"Matthieu" => "Rajohnson",
 			"Christophe" => "Colomb",
