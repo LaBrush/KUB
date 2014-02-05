@@ -33,7 +33,7 @@ class LoadMatiereData extends AbstractFixture implements FixtureInterface, Conta
 	{
 		$matieres = array(
 			array("Français", "Littérature"),
-			array("Litérrature", "Littérature"),
+			array("Littérature", "Littérature"),
 
 			array("Mathématiques", "Scientifique"),
 			array("SI", "Scientifique"),
@@ -57,7 +57,7 @@ class LoadMatiereData extends AbstractFixture implements FixtureInterface, Conta
 			
 			array("PFEG", "Enseignement d'exploration"),
 			array("ISN", "Enseignement d'exploration"),
-			array("Litérrature et société", "Enseignement d'exploration")
+			array("Littérature et société", "Enseignement d'exploration")
 		);
 
 		foreach ($matieres as $prop) {
