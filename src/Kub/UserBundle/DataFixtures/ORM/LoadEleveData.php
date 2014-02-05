@@ -47,7 +47,7 @@ class LoadEleveData extends AbstractFixture implements FixtureInterface, Contain
 		$johnsnow->setNiveau($this->getReference('premiere'));
 
 		$johnsnow->setEmail('admin@mail.com');
-		$johnsnow->setPlainPassword('123456');
+		$johnsnow->setPlainPassword('anbr2SSH3');
 		$johnsnow->setEnabled(true);
 		$this->getReference("SI2")->addEleve($johnsnow);
 
@@ -64,7 +64,7 @@ class LoadEleveData extends AbstractFixture implements FixtureInterface, Contain
 		$this->getReference("SI2")->addEleve($deneris);
 
 		$deneris->setEmail('adfdmin@mail.com');
-		$deneris->setPlainPassword('123456');
+		$deneris->setPlainPassword('anbr2SSH3');
 		$deneris->setEnabled(true);
 
 		$this->addReference('deneristhargarien', $deneris);
@@ -578,7 +578,7 @@ class LoadEleveData extends AbstractFixture implements FixtureInterface, Contain
 			$eleve->setNiveau($this->getReference('seconde'));
 
 			$eleve->setEmail($eleve->getUsername() . '@mail.com');
-			$eleve->setPlainPassword(substr(hash('sha512', uniqid()), 0, 20));
+			$eleve->setPlainPassword('anbr2SSH3');
 			$eleve->setEnabled(true);
 
 			$this->getReference("seconde1")->addEleve($eleve);
@@ -597,7 +597,7 @@ class LoadEleveData extends AbstractFixture implements FixtureInterface, Contain
 			$eleve->setNiveau($this->getReference('seconde'));
 
 			$eleve->setEmail($eleve->getUsername() . '@mail.com');
-			$eleve->setPlainPassword(substr(hash('sha512', uniqid()), 0, 20));
+			$eleve->setPlainPassword('anbr2SSH3');
 			$eleve->setEnabled(true);
 
 			$this->getReference("seconde2")->addEleve($eleve);
@@ -616,7 +616,7 @@ class LoadEleveData extends AbstractFixture implements FixtureInterface, Contain
 			$eleve->setNiveau($this->getReference('seconde'));
 
 			$eleve->setEmail($eleve->getUsername() . '@mail.com');
-			$eleve->setPlainPassword(substr(hash('sha512', uniqid()), 0, 20));
+			$eleve->setPlainPassword('anbr2SSH3');
 			$eleve->setEnabled(true);
 
 			$this->getReference("seconde3")->addEleve($eleve);
@@ -635,7 +635,7 @@ class LoadEleveData extends AbstractFixture implements FixtureInterface, Contain
 			$eleve->setNiveau($this->getReference('premiere'));
 
 			$eleve->setEmail($eleve->getUsername() . '@mail.com');
-			$eleve->setPlainPassword(substr(hash('sha512', uniqid()), 0, 20));
+			$eleve->setPlainPassword('anbr2SSH3');
 			$eleve->setEnabled(true);
 
 			$this->getReference("premiereSI1")->addEleve($eleve);
@@ -654,7 +654,7 @@ class LoadEleveData extends AbstractFixture implements FixtureInterface, Contain
 			$eleve->setNiveau($this->getReference('premiere'));
 
 			$eleve->setEmail($eleve->getUsername() . '@mail.com');
-			$eleve->setPlainPassword(substr(hash('sha512', uniqid()), 0, 20));
+			$eleve->setPlainPassword('anbr2SSH3');
 			$eleve->setEnabled(true);
 
 			$this->getReference("premiereS1")->addEleve($eleve);
@@ -673,7 +673,7 @@ class LoadEleveData extends AbstractFixture implements FixtureInterface, Contain
 			$eleve->setNiveau($this->getReference('premiere'));
 
 			$eleve->setEmail($eleve->getUsername() . '@mail.com');
-			$eleve->setPlainPassword(substr(hash('sha512', uniqid()), 0, 20));
+			$eleve->setPlainPassword('anbr2SSH3');
 			$eleve->setEnabled(true);
 
 			$this->getReference("premiereES1")->addEleve($eleve);
@@ -692,7 +692,7 @@ class LoadEleveData extends AbstractFixture implements FixtureInterface, Contain
 			$eleve->setNiveau($this->getReference('premiere'));
 
 			$eleve->setEmail($eleve->getUsername() . '@mail.com');
-			$eleve->setPlainPassword(substr(hash('sha512', uniqid()), 0, 20));
+			$eleve->setPlainPassword('anbr2SSH3');
 			$eleve->setEnabled(true);
 
 			$this->getReference("premiereL")->addEleve($eleve);
@@ -711,7 +711,7 @@ class LoadEleveData extends AbstractFixture implements FixtureInterface, Contain
 			$eleve->setNiveau($this->getReference('premiere'));
 
 			$eleve->setEmail($eleve->getUsername() . '@mail.com');
-			$eleve->setPlainPassword(substr(hash('sha512', uniqid()), 0, 20));
+			$eleve->setPlainPassword('anbr2SSH3');
 			$eleve->setEnabled(true);
 
 			$this->getReference("premiereS2")->addEleve($eleve);
@@ -730,7 +730,7 @@ class LoadEleveData extends AbstractFixture implements FixtureInterface, Contain
 			$eleve->setNiveau($this->getReference('seconde'));
 
 			$eleve->setEmail($eleve->getUsername() . '@mail.com');
-			$eleve->setPlainPassword(substr(hash('sha512', uniqid()), 0, 20));
+			$eleve->setPlainPassword('anbr2SSH3');
 			$eleve->setEnabled(true);
 
 			$this->getReference("seconde4")->addEleve($eleve);
@@ -749,7 +749,7 @@ class LoadEleveData extends AbstractFixture implements FixtureInterface, Contain
 			$eleve->setNiveau($this->getReference('terminale'));
 
 			$eleve->setEmail($eleve->getUsername() . '@mail.com');
-			$eleve->setPlainPassword(substr(hash('sha512', uniqid()), 0, 20));
+			$eleve->setPlainPassword('anbr2SSH3');
 			$eleve->setEnabled(true);
 
 			$this->getReference("terminaleSI")->addEleve($eleve);
@@ -768,7 +768,7 @@ class LoadEleveData extends AbstractFixture implements FixtureInterface, Contain
 			$eleve->setNiveau($this->getReference('terminale'));
 
 			$eleve->setEmail($eleve->getUsername() . '@mail.com');
-			$eleve->setPlainPassword(substr(hash('sha512', uniqid()), 0, 20));
+			$eleve->setPlainPassword('anbr2SSH3');
 			$eleve->setEnabled(true);
 
 			$this->getReference("terminaleS1")->addEleve($eleve);
@@ -787,7 +787,7 @@ class LoadEleveData extends AbstractFixture implements FixtureInterface, Contain
 			$eleve->setNiveau($this->getReference('terminale'));
 
 			$eleve->setEmail($eleve->getUsername() . '@mail.com');
-			$eleve->setPlainPassword(substr(hash('sha512', uniqid()), 0, 20));
+			$eleve->setPlainPassword('anbr2SSH3');
 			$eleve->setEnabled(true);
 
 			$this->getReference("terminaleS2")->addEleve($eleve);
@@ -806,7 +806,7 @@ class LoadEleveData extends AbstractFixture implements FixtureInterface, Contain
 			$eleve->setNiveau($this->getReference('terminale'));
 
 			$eleve->setEmail($eleve->getUsername() . '@mail.com');
-			$eleve->setPlainPassword(substr(hash('sha512', uniqid()), 0, 20));
+			$eleve->setPlainPassword('anbr2SSH3');
 			$eleve->setEnabled(true);
 
 			$this->getReference("terminaleES1")->addEleve($eleve);
@@ -825,7 +825,7 @@ class LoadEleveData extends AbstractFixture implements FixtureInterface, Contain
 			$eleve->setNiveau($this->getReference('terminale'));
 
 			$eleve->setEmail($eleve->getUsername() . '@mail.com');
-			$eleve->setPlainPassword(substr(hash('sha512', uniqid()), 0, 20));
+			$eleve->setPlainPassword('anbr2SSH3');
 			$eleve->setEnabled(true);
 
 			$this->getReference("terminaleL")->addEleve($eleve);
@@ -844,7 +844,7 @@ class LoadEleveData extends AbstractFixture implements FixtureInterface, Contain
 			$eleve->setNiveau($this->getReference('seconde'));
 
 			$eleve->setEmail($eleve->getUsername() . '@mail.com');
-			$eleve->setPlainPassword(substr(hash('sha512', uniqid()), 0, 20));
+			$eleve->setPlainPassword('anbr2SSH3');
 			$eleve->setEnabled(true);
 
 			$this->getReference("seconde5")->addEleve($eleve);

@@ -43,7 +43,7 @@ class LoadProfesseurData extends AbstractFixture implements FixtureInterface, Co
 		$professeur->setPrenom('Jean-Sebastien');
 
 		$professeur->setEmail('admina@mail.com');
-		$professeur->setPlainPassword('123456');
+		$professeur->setPlainPassword('anbr2SSH3');
 		$professeur->setEnabled(true);
 
 		$this->addReference($professeur->getUsername(), $professeur);
@@ -56,7 +56,7 @@ class LoadProfesseurData extends AbstractFixture implements FixtureInterface, Co
 		$professeur->setPrenom('Marcel');
 
 		$professeur->setEmail('mpagnol@mail.com');
-		$professeur->setPlainPassword('123456');
+		$professeur->setPlainPassword('anbr2SSH3');
 		$professeur->setEnabled(true);
 
 		$this->addReference($professeur->getUsername(), $professeur);
@@ -99,7 +99,7 @@ class LoadProfesseurData extends AbstractFixture implements FixtureInterface, Co
 			$professeur->setPrenom($prenom);
 
 			$professeur->setEmail($professeur->getUsername() . '@mail.com');
-			$professeur->setPlainPassword(substr(hash('sha512', uniqid()), 0, 20));
+			$professeur->setPlainPassword('anbr2SSH3');
 			$professeur->setEnabled(true);
 
 			$this->addReference($professeur->getUsername(), $professeur);
