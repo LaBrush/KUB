@@ -20,10 +20,10 @@
 			<span class="label">Niveau :</span>
 			<span class="info">{{ app.user.niveau }}</span>
 
-			<span class="label">Groupes :</span>
+			<span class="label">Mes groupes :</span>
 			<span class="info">
 				{% for groupe in app.user.groupes %}
-			    	{{ groupe }}
+			    	<span class="li-list in-list person"><a href="{{ path('groupe_show', { id: groupe.id }) }}">{{ groupe }}</a></span>
 				{% endfor %}
 			</span>		
 

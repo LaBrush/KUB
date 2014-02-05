@@ -37,7 +37,10 @@
 				
 				{% for eleve in groupe.eleves %}
 					<a href="{{ path('user_show', {role: eleve.class, username: eleve.username}) }}"><li class="li-list in-list person">
-						<img src="{{ asset( eleve.photo.webPath) }}" alt="{{ eleve }}" class="profil-picture"/>
+						{% if app.user.class != 'eleve' %}
+							<img src="{{ asset( eleve.photo.webPath) }}" alt="{{ eleve }}" class="profil-picture"/>
+						{% endif %}
+						
 						<span class="name-eleve">{{ eleve.prenom }}</span>
 						<span class="name-eleve">{{ eleve.nom }}</span>
 					</li></a>

@@ -42,8 +42,6 @@ class LoadMatiereData extends AbstractFixture implements FixtureInterface, Conta
 			array("Histoire-Géographie", "Economie et société"),
 			array("SES", "Economie et société"),
 
-			array("Litérrature et société", "Enseignement d'exploration"),
-
 			array("Anglais", "Langue"),
 			array("Espagnol", "Langue"),
 			array("Allemand", "Langue"),
@@ -54,10 +52,12 @@ class LoadMatiereData extends AbstractFixture implements FixtureInterface, Conta
 
 			array("Sport", "Autres"),
 			array("Autre", "Autres"),
+			array("TPE", "Autres"),
+			array("Accompagnement personnalisé", "Autres"),
 			
 			array("PFEG", "Enseignement d'exploration"),
-			array("Physique - Chimie", "Scientifique"),
 			array("ISN", "Enseignement d'exploration"),
+			array("Litérrature et société", "Enseignement d'exploration")
 		);
 
 		foreach ($matieres as $prop) {
