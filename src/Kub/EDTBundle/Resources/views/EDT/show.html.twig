@@ -33,7 +33,7 @@
 								<span class="info-cours"><em>M. {{ cours.professeur.nom }}</em></span>
 							{% endif %}
 
-							{% if not is_granted("ROLE_ELEVE") %}
+							{% if is_granted("ROLE_PROFESSEUR") %}
 								{% set groupes = "" %}
 								{% for groupe in cours.groupes %}
 

@@ -139,7 +139,7 @@ class TimeService
 			->join('m.categorie', 'ca')
 			->addSelect('ca')
 
-			->orderBy('j.ref, h.debut')
+			->orderBy('h.debut')
 		;
 
 		switch(get_class($entity))
@@ -213,6 +213,10 @@ class TimeService
 
 				if($previous->getRowSpan() > 0){ array_splice( $edt[$jour]['intervals'], $y, 0, array($previous) ); }
 				if($interval->getRowSpan() > 0){ array_splice( $edt[$jour]['intervals'], $y+1, 0, array($interval) ); }
+
+				if($interval->getHoraire()->getCours()->getMatiere()->getName() == "Histoire-Géographie"){ 
+					throw new \Exception($interval->getHoraire()->getDebut()->format('H:i'));
+				}
 			}
 
 			$last = $this->interval()->link($last_horaire, $this->getLastHoraire());

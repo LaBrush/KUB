@@ -32,7 +32,7 @@ class LoadCommentaireData extends AbstractFixture implements FixtureInterface, C
     public function load(ObjectManager $manager)
     {
 
-        $professeur = $this->getReference('professeur');
+        $professeur = $this->getReference('jean-sebastienbach');
         $post = $this->getReference('post_ariane');
 
         $commentaire = new Commentaire();
