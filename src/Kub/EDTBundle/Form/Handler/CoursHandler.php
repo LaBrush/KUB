@@ -13,6 +13,7 @@ class CoursHandler
 	protected $form;
 	protected $em;
 	protected $validator ;
+	protected $flashbag ;
 
 	/**
 	 * Initialize the handler with the form and the request
@@ -22,12 +23,13 @@ class CoursHandler
 	 * @param $manager
 	 * 
 	 */
-	public function __construct(Form $form, Request $request, $em, $validator)
+	public function __construct(Form $form, Request $request, $em, $validator, $flashbag)
 	{
 		$this->form      = $form;
 		$this->request   = $request;
 		$this->em        = $em;
 		$this->validator = $validator ;
+		$this->flashbag = $flashbag ;
 	}
 
 	public function process()
@@ -68,8 +70,11 @@ class CoursHandler
 				{
 					$data = $this->form->getData();
 					$this->onSuccess($data);
-
 					return true;
+				}
+				else
+				{
+					$this->flashbag->add('info', $this->form->getErrorsAsString());
 				}
 			}
 			

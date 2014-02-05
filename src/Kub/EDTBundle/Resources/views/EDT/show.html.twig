@@ -26,29 +26,29 @@
 					
 					<a href="{{ path('cours_show', { id: cours.id }) }}">
 						<li class="{{ jour.nom }} interval {{ cours.matiere.categorie.abreviation }}" style="height: {{ interval.rowspan * size }}px">
-						<div class="wrapper" style="height: {{ interval.rowspan * size }}px">
-							<span class="info-cours">{{ cours.matiere | upper }}</span>
+							<div class="wrapper" style="height: {{ interval.rowspan * size }}px">
+								<span class="info-cours">{{ cours.matiere | upper }}</span>
 
-							{% if not is_granted("ROLE_PROFESSEUR") %}
-								<span class="info-cours"><em>M. {{ cours.professeur.nom }}</em></span>
-							{% endif %}
+								{% if not is_granted("ROLE_PROFESSEUR") %}
+									<span class="info-cours"><em>M. {{ cours.professeur.nom }}</em></span>
+								{% endif %}
 
-							{% if is_granted("ROLE_PROFESSEUR") %}
-								{% set groupes = "" %}
-								{% for groupe in cours.groupes %}
+								{% if is_granted("ROLE_PROFESSEUR") %}
+									{% set groupes = "" %}
+									{% for groupe in cours.groupes %}
 
-									{% set groupes = groupes ~ groupe %}
-									{% if 1 == loop.revindex0 %}
-										{% set groupes = groupes ~ ' et ' %}
-									{% elseif 1 < loop.revindex0 %}	
-										{% set groupes = groupes ~ ', ' %}
-									{% endif %}
+										{% set groupes = groupes ~ groupe %}
+										{% if 1 == loop.revindex0 %}
+											{% set groupes = groupes ~ ' et ' %}
+										{% elseif 1 < loop.revindex0 %}	
+											{% set groupes = groupes ~ ', ' %}
+										{% endif %}
 
-								{% endfor %}
+									{% endfor %}
 
-								<span class="info-cours"><em>{{ groupes }}</em></span>
-							{% endif %}
-						</div>
+									<span class="info-cours"><em>{{ groupes }}</em></span>
+								{% endif %}
+							</div>
 						</li>
 					</a>
 				{% else %}

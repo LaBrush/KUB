@@ -204,6 +204,8 @@ class TimeService
 			$size = count($intervals) ;
 			$last_horaire = $this->getFirstHoraire();
 
+			$pos = 0 ;
+
 			for ($y=0; $y < $size; $y++) { 
 
 				$previous = $this->interval()->link($last_horaire, $intervals_jours[ $jour ][$y]);
@@ -211,11 +213,11 @@ class TimeService
 				$interval = $intervals_jours[$jour][$y] ;
 				$last_horaire = $interval->getHoraire()->getFin();
 
-				if($previous->getRowSpan() > 0){ array_splice( $edt[$jour]['intervals'], $y, 0, array($previous) ); }
-				if($interval->getRowSpan() > 0){ array_splice( $edt[$jour]['intervals'], $y+1, 0, array($interval) ); }
+				if($previous->getRowSpan() > 0){  $edt[$jour]['intervals'][$pos] = $previous ; $pos++ ;}
+				if($interval->getRowSpan() > 0){  $edt[$jour]['intervals'][$pos] = $interval ; $pos++ ;}
 
-				if($interval->getHoraire()->getCours()->getMatiere()->getName() == "Histoire-Géographie"){ 
-					throw new \Exception($interval->getHoraire()->getDebut()->format('H:i'));
+				if($interval->getHoraire()->getCours()->getMatiere()->getName() == "Mathématiques" && $interval->getHoraire()->getJour() == "jeudi"){ 
+					throw new \Exception($interval->getRowSpan());
 				}
 			}
 
