@@ -51,6 +51,11 @@ class Fichier
 	private $documentheque ;
 
 	/**
+	 * @ORM\ManyToOne(targetEntity="Kub\CollaborationBundle\Entity\Tache", inversedBy="fichiers")
+	 */
+	private $tache ;
+
+	/**
 	 * @var string
 	 *
 	 * @ORM\Column(name="url", type="string", length=40)
