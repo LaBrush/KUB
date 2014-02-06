@@ -1,22 +1,26 @@
 <article class="article">
 	<table class="notes-by-matieres">
-		{% for moyenne in moyennes %}
-			<tr class="graph-hidden">
-				<td colspan="10">
+		<tr class="graph-hidden">
+			<td colspan="10">
+				{% for moyenne in moyennes %}
 					<div class="jauge-{{ moyenne.matiere }}">&nbsp;</div>
-				</td>
-			</tr>
-			<tr class="moyennes">
-				<td>
+				{% endfor %}
+			</td>
+		</tr>
+		<tr class="moyennes">
+			<td>
+				{% for moyenne in moyennes %}
 					<div class="moyenne-{{ moyenne.matiere }}">{{ moyenne.note | number_format(1) }}</div>
-				</td>
-			</tr>
-			<tr class="matieres-name">
-				<td>
+				{% endfor %}
+			</td>
+		</tr>
+		<tr class="matieres-name">
+			<td>
+				{% for moyenne in moyennes %}
 					<div class="legende-{{ moyenne.matiere }}">{{ moyenne.matiere }}</div>
-				</td>
-			</tr>
-		{% endfor %}
+				{% endfor %}
+			</td>
+		</tr>
 	</table>
 </article>
 
