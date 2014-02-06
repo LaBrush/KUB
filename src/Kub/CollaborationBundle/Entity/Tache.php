@@ -66,12 +66,12 @@ class Tache
 	private $participants ;
 
     /**
-     * @ORM\OneToMany(targetEntity="Kub\CollaborationBundle\Entity\Fichier", cascade={"all"}, mappedBy="documentheque")
+     * @ORM\OneToMany(targetEntity="Kub\CollaborationBundle\Entity\Fichier", cascade={"all"}, mappedBy="tache")
      */
     private $fichiers ;
 
     /**
-     * @ORM\OneToMany(targetEntity="Kub\CollaborationBundle\Entity\Ressource", cascade={"all"}, mappedBy="documentheque")
+     * @ORM\OneToMany(targetEntity="Kub\CollaborationBundle\Entity\Ressource", cascade={"all"}, mappedBy="tache")
      */
     private $ressources ;
 
