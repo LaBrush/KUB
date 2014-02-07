@@ -5,6 +5,8 @@
 <span class="info">{{ fichier.dateAjout|date('d/m/Y') }}</span>
 
 <span class="buttons">
-	<a class='button' href="{{ path('kub_collaboration_documentheque_fichier_edit', { slug: projet.slug, id: fichier.id}) }}">Modifier</a>
-	<a class="button-yes" href="{{ path('kub_collaboration_documentheque_fichier_go', { slug: projet.slug, id: fichier.id}) }}">Accèder</a>
+	{% if is_granted('CONTRIBUTEUR', projet) %}
+		<a class='button' href="{{ path('kub_collaboration_documentheque_fichier_edit', { slug: projet.slug, id: fichier.id}) }}">Modifier</a>
+		<a class="button-yes" href="{{ path('kub_collaboration_documentheque_fichier_go', { slug: projet.slug, id: fichier.id}) }}">Accèder</a>
+	{% endif %}
 </span>

@@ -940,10 +940,14 @@
 	},
 	"file_history":
 	[
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/ClasseBundle/DataFixtures/ORM/LoadGroupeData.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/EDTBundle/DataFixtures/ORM/LoadCoursData.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/CollaborationBundle/Resources/views/Fichier/show_content.html.twig",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/DataFixtures/ORM/LoadEleveData.php",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/DataFixtures/ORM/LoadProfesseurData.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/CollaborationBundle/Resources/views/Ressource/show_content.html.twig",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/CollaborationBundle/Resources/views/Ressource/show.html.twig",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/CollaborationBundle/Resources/views/Fichier/show.html.twig",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/CollaborationBundle/Resources/views/Fichier/show_content.html.twig",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/CollaborationBundle/Resources/config/routing/documentheque/ressource.yml",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/CollaborationBundle/Resources/views/Organisation/show_content_ajax.html.twig",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/CollaborationBundle/Resources/config/routing/documentheque/fichier.yml",
@@ -951,7 +955,6 @@
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/CollaborationBundle/Entity/Fichier.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/CollaborationBundle/Entity/Ressource.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/app/config/parameters.yml",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/EDTBundle/DataFixtures/ORM/LoadCoursData.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/EDTBundle/Controller/CoursController.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/EDTBundle/Form/Handler/CoursHandler.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/EDTBundle/Entity/Cours.php",
@@ -970,7 +973,6 @@
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NoteBundle/Resources/views/Groupe/list_content.html.twig",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NoteBundle/Resources/views/Professeur/form.html.twig",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/web/ressources/sass/partials/pages/_agenda.scss",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/DataFixtures/ORM/LoadProfesseurData.php",
 		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/ArianeBundle/DataFixtures/ORM/LoadCommentaireData.php",
 		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/RessourceBundle/DataFixtures/ORM/LoadRessourceData.php",
 		"/Users/adrienbocquet/Sites/MAMP/KUB/src/Kub/NoteBundle/DataFixtures/ORM/LoadControleData.php",
@@ -1026,8 +1028,6 @@
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/EDTBundle/Entity/Categorie.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/EDTBundle/Form/Type/CoursType.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/EDTBundle/Entity/Matiere.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/ClasseBundle/DataFixtures/ORM/LoadGroupeData.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/DataFixtures/ORM/LoadEleveData.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/ClasseBundle/Controller/GroupeController.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/AbsenceBundle/DataFixtures/ORM/LoadAbsencesData.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/ArianeBundle/Resources/config/routing.yml",
@@ -1416,6 +1416,26 @@
 		"selected_items":
 		[
 			[
+				"loadgroupe",
+				"src/Kub/ClasseBundle/DataFixtures/ORM/LoadGroupeData.php"
+			],
+			[
+				"loadcours",
+				"src/Kub/EDTBundle/DataFixtures/ORM/LoadCoursData.php"
+			],
+			[
+				"collfichiersho",
+				"src/Kub/CollaborationBundle/Resources/views/Fichier/show_content.html.twig"
+			],
+			[
+				"loadpre",
+				"src/Kub/UserBundle/DataFixtures/ORM/LoadProfesseurData.php"
+			],
+			[
+				"loadeleve",
+				"src/Kub/UserBundle/DataFixtures/ORM/LoadEleveData.php"
+			],
+			[
 				"ressousho",
 				"src/Kub/CollaborationBundle/Resources/views/Ressource/show_content.html.twig"
 			],
@@ -1444,10 +1464,6 @@
 				"src/Kub/CollaborationBundle/Resources/views/Organisation/show_content_ajax.html.twig"
 			],
 			[
-				"collfichiersho",
-				"src/Kub/CollaborationBundle/Resources/views/Fichier/show_content.html.twig"
-			],
-			[
 				"collressou",
 				"src/Kub/CollaborationBundle/Entity/Ressource.php"
 			],
@@ -1474,10 +1490,6 @@
 			[
 				"parame",
 				"app/config/parameters.yml"
-			],
-			[
-				"loadcours",
-				"src/Kub/EDTBundle/DataFixtures/ORM/LoadCoursData.php"
 			],
 			[
 				"edtvalida",
@@ -1856,10 +1868,6 @@
 				"src/Kub/CollaborationBundle/ParamConverter/ProjetConverter.php"
 			],
 			[
-				"loadgroupe",
-				"src/Kub/ClasseBundle/DataFixtures/ORM/LoadGroupeData.php"
-			],
-			[
 				"le",
 				"src/Kub/UserBundle/DataFixtures/ORM/LoadEleveData.php"
 			],
@@ -1918,14 +1926,6 @@
 			[
 				"wee",
 				"src/Kub/EDTBundle/Resources/views/Form/weekpicker.html.twig"
-			],
-			[
-				"frequen",
-				"src/Kub/EDTBundle/Resources/views/Frequence/form.html.twig"
-			],
-			[
-				"noter",
-				"src/Kub/NoteBundle/Resources/views/Professeur/noter.html.twig"
 			]
 		],
 		"width": 0.0
