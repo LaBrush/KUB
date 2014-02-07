@@ -88,7 +88,9 @@ class LoadProfesseurData extends AbstractFixture implements FixtureInterface, Co
 			"Roger" => "Pythagore",
 
 			"Guillermo" => "Del Toro",
-			"Penelope" => "Cruz"
+			"Penelope" => "Cruz",
+
+			"The" => "Doctor"
 		);
 
 		foreach($professeurs as $prenom => $nom)

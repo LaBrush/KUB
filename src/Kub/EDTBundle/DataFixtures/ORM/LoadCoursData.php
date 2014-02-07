@@ -158,11 +158,11 @@ class LoadCoursData extends AbstractFixture implements FixtureInterface, Contain
 			$horaire2->setJour( $this->getReference('jeudi') );
 			$horaire2->addSemaine( $this->getReference('semaine1-14') );
 
-			$horaire2 = new Horaire;
-			$horaire2->setDebut( new \Datetime('10:00') );
-			$horaire2->setFin( new \Datetime('12:00') );
-			$horaire2->setJour( $this->getReference('vendredi') );
-			$horaire2->addSemaine( $this->getReference('semaine1-14') );
+			$horaire3 = new Horaire;
+			$horaire3->setDebut( new \Datetime('10:00') );
+			$horaire3->setFin( new \Datetime('12:00') );
+			$horaire3->setJour( $this->getReference('vendredi') );
+			$horaire3->addSemaine( $this->getReference('semaine1-14') );
 
 			$coursMathsSI2->addHoraire($horaire1);
 			$coursMathsSI2->addHoraire($horaire2);
@@ -288,6 +288,52 @@ class LoadCoursData extends AbstractFixture implements FixtureInterface, Contain
 			$this->addReference('coursFrancaisSI2', $coursFrancaisSI2);
 
 		$manager->persist($coursFrancaisSI2);
+		$manager->flush();
+
+		$coursAppel = new Cours;
+
+			$coursAppel->setProfesseur( $this->getReference('thedoctor') );
+			$coursAppel->addGroupe( $this->getReference('SI2') );
+			$coursAppel->setMatiere( $this->getReference('TPE') );
+
+			$horaire1 = new Horaire;
+			$horaire1->setDebut( new \Datetime('8:00') );
+			$horaire1->setFin( new \Datetime('17:20') );
+			$horaire1->setJour( $this->getReference('lundi') );
+			$horaire1->addSemaine( $this->getReference('semaine1-14') );
+
+			$horaire2 = new Horaire;
+			$horaire2->setDebut( new \Datetime('8:00') );
+			$horaire2->setFin( new \Datetime('17:20') );
+			$horaire2->setJour( $this->getReference('mardi') );
+			$horaire2->addSemaine( $this->getReference('semaine1-14') );
+
+			$horaire3 = new Horaire;
+			$horaire3->setDebut( new \Datetime('8:00') );
+			$horaire3->setFin( new \Datetime('17:20') );
+			$horaire3->setJour( $this->getReference('mercredi') );
+			$horaire3->addSemaine( $this->getReference('semaine1-14') );
+
+			$horaire4 = new Horaire;
+			$horaire4->setDebut( new \Datetime('8:00') );
+			$horaire4->setFin( new \Datetime('17:20') );
+			$horaire4->setJour( $this->getReference('jeudi') );
+			$horaire4->addSemaine( $this->getReference('semaine1-14') );
+
+			$horaire5 = new Horaire;
+			$horaire5->setDebut( new \Datetime('8:00') );
+			$horaire5->setFin( new \Datetime('17:20') );
+			$horaire5->setJour( $this->getReference('vendredi') );
+			$horaire5->addSemaine( $this->getReference('semaine1-14') );
+
+			$coursAppel->addHoraire($horaire1);
+			$coursAppel->addHoraire($horaire2);
+			$coursAppel->addHoraire($horaire3);
+			$coursAppel->addHoraire($horaire4);
+			$coursAppel->addHoraire($horaire5);
+			$this->addReference('coursAppel', $coursAppel);
+
+		$manager->persist($coursAppel);
 		$manager->flush();
 	}
 
