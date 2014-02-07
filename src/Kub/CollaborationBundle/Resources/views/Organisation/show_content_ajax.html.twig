@@ -7,7 +7,7 @@
 <ul class="list-in-detail"><em>
 	<p>Fichiers associés :</p>
 	{% for fichier in tache.fichiers %}
-		<li>-&nbsp;&nbsp;{{ fichier }}</li>
+		<li>-&nbsp;&nbsp;<a href="{{ path('kub_collaboration_documentheque_fichier_show', { id: fichier.id, slug: projet.slug }) }}">{{ fichier }}</a></li>
 	{% else %}
 	    <li>-&nbsp;&nbsp;Pas de fichiers</li>
 	{% endfor %}
@@ -15,7 +15,7 @@
 <ul class="list-in-detail"><em>
 	<p>Ressources associés :</p>
 	{% for ressource in tache.ressources %}
-		<li>-&nbsp;&nbsp;{{ ressource }}</li>
+		<li>-&nbsp;&nbsp;<a href="{{ path('kub_collaboration_documentheque_ressource_show', { id: ressource.id, slug: projet.slug }) }}">{{ ressource }}</a></li>
 	{% else %}
 	    <li>-&nbsp;&nbsp;Pas de ressources</li>
 	{% endfor %}
