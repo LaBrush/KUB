@@ -24,11 +24,6 @@ class Ressource extends BaseRessource
     private $documentheque ;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Kub\CollaborationBundle\Entity\Tache", inversedBy="ressources")
-     */
-    private $tache ;
-
-    /**
      * Set documentheque
      *
      * @param \Kub\CollaborationBundle\Entity\Documentheque $documentheque

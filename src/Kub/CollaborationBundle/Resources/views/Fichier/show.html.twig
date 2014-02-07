@@ -6,7 +6,19 @@
 
 	<article class="article">
 		
-		{% include 'KubCollaborationBundle:Fichier:show_content.html.twig' %}
+		<span class="label">Nom du fichier :</span>
+		<span class="info">{{ fichier }}</span>
+		<br>
+		
+		<span class="label">Date de création :</span>
+		<span class="info">{{ fichier.dateAjout|date('d/m/Y') }}</span>
+		<br>
+		<br>
+		
+		<span class="buttons">
+			<a class='button' href="{{ path('kub_collaboration_documentheque_fichier_edit', { slug: projet.slug, id: fichier.id}) }}">Modifier</a>
+			<a class="button-yes" href="{{ path('kub_collaboration_documentheque_fichier_go', { slug: projet.slug, id: fichier.id}) }}">Accèder</a>
+		</span>
 
 	</article>
 

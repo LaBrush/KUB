@@ -6,7 +6,30 @@
 
 	<article class="article">
 		
-		{% include 'KubCollaborationBundle:Ressource:show_content.html.twig' %}
+		<span class="label">Nom de la ressource :</span>
+		<span class="info">{{ ressource }}</span>
+		<br>
+		
+		<span class="label">Description :</span>
+		<span class="info">{{ ressource.description }}</span>
+		<br>
+		
+		<span class="label">Auteur :</span>
+		<span class="info">{{ ressource.auteur }}</span>
+		<br>
+		
+		<span class="buttons">
+			<a class='button' href="{{ path('kub_collaboration_documentheque_ressource_edit', { slug: projet.slug, id: ressource.id}) }}">Modifier</a>
+			<a class="button" target="_blank" href="{{ asset(ressource.webPath) }}">
+				{% if ressource.type == 1 %}
+					Voir sur le web
+				{% else %}
+					Voir sur le Kub
+				{% endif %}
+			</a>
+		</span>
+
+
 
 	</article>
 
