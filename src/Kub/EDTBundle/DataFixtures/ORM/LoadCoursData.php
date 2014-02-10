@@ -42,19 +42,19 @@ class LoadCoursData extends AbstractFixture implements FixtureInterface, Contain
 			$horaire1->setDebut( new \Datetime('08:00') );
 			$horaire1->setFin( new \Datetime('10:00') );
 			$horaire1->setJour( $this->getReference('lundi') );
-			$horaire1->addSemaine( $this->getReference('semaine49') );
+			$horaire1->addSemaine( $this->getReference('semaine10-2014') );
 
 			$horaire2 = new Horaire;
 			$horaire2->setDebut( new \Datetime('13:25') );
 			$horaire2->setFin( new \Datetime('16:20') );
 			$horaire2->setJour( $this->getReference('mardi') );
-			$horaire2->addSemaine( $this->getReference('semaine49') );
+			$horaire2->addSemaine( $this->getReference('semaine10-2014') );
 
 			$horaire3 = new Horaire;
 			$horaire3->setDebut( new \Datetime('16:20') );
 			$horaire3->setFin( new \Datetime('17:20') );
 			$horaire3->setJour( $this->getReference('mardi') );
-			$horaire3->addSemaine( $this->getReference('semaine49') );
+			$horaire3->addSemaine( $this->getReference('semaine10-2014') );
 
 			$cours->addHoraire($horaire1);
 			$cours->addHoraire($horaire2);
