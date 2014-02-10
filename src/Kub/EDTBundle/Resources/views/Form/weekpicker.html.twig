@@ -1,31 +1,67 @@
-<table class="semaines">
-	{{ form_errors(form) }}
+<span>
+	2014
+	<span class="input">
+		<table class="semaines">
+			{{ form_errors(form) }}
 
-	<tr class="line1"></tr>
-	<tr class="line2"></tr>
-	<tr class="line3"></tr>
-	<tr class="line4"></tr>
+			<tr class="line1"></tr>
+			<tr class="line2"></tr>
+			<tr class="line3"></tr>
+			<tr class="line4"></tr>
 
-	{% set i = 1 %}
-
-	{% for semaine in form %}
-
-		{% if i == 5 %}
 			{% set i = 1 %}
-		{% endif %}
 
-		{% if loop.index <= 52 %}
-			{% set index = loop.index %}
-		{% else %}
-		    {% set index = loop.index - 52 %}
-		{% endif %}
+			{% for semaine in form %}
+			
+				{% if loop.index <= 52 %}
+					
+					{% if i == 5 %}
+						{% set i = 1 %}
+					{% endif %}
 
-		<td class="semaine{{ i }}">
-    		{{ index }} {{ form_widget(semaine)}}
-    	</td>
+					<td class="semaine{{ i }}">
+			    		{{ index }} {{ form_widget(semaine)}}
+			    	</td>
 
-    	{% set i = i + 1 %}
+			    	{% set i = i + 1 %}
+				{% endif %}
 
-	{% endfor %}
+			{% endfor %}
 
-</table>
+		</table>
+	</span>
+
+</span>	
+<span>
+	2014
+	<span class="input">
+		<table class="semaines">
+			{{ form_errors(form) }}
+
+			<tr class="line5"></tr>
+			<tr class="line6"></tr>
+			<tr class="line7"></tr>
+			<tr class="line8"></tr>
+
+			{% set i = 5 %}
+
+			{% for semaine in form %}
+			
+				{% if loop.index > 52 %}
+					
+					{% if i == 9 %}
+						{% set i = 5 %}
+					{% endif %}
+
+					<td class="semaine{{ i }}">
+			    		{{ index }} {{ form_widget(semaine)}}
+			    	</td>
+
+			    	{% set i = i + 1 %}
+				{% endif %}
+				
+			{% endfor %}
+
+		</table>
+	</span>
+</span>

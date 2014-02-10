@@ -23,4 +23,12 @@ $(function() {
 	$('.semaine3').appendTo($('.line3'));
 
 	$('.semaine4').appendTo($('.line4'));
+
+	$('.semaine5').appendTo($('.line5'));
+
+	$('.semaine6').appendTo($('.line6'));
+
+	$('.semaine7').appendTo($('.line7'));
+
+	$('.semaine8').appendTo($('.line8'));
 });
