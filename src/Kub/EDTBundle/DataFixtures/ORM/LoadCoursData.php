@@ -293,7 +293,7 @@ class LoadCoursData extends AbstractFixture implements FixtureInterface, Contain
 		$coursAppel = new Cours;
 
 			$coursAppel->setProfesseur( $this->getReference('thedoctor') );
-			$coursAppel->addGroupe( $this->getReference('SI2') );
+			$coursAppel->addGroupe( $this->getReference('4') );
 			$coursAppel->setMatiere( $this->getReference('TPE') );
 
 			$horaire1 = new Horaire;

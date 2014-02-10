@@ -10,6 +10,9 @@ using the Kub.
 1) Install the vendors and set up the database
 ----------------------------------------------
 
+First you have to change the file parameters.yml.dist and set him to parameters.yml
+Then open it and complete the informations with the right answers.
+
 If you downloaded an archive "without vendors", you also need to install all
 the necessary dependencies. Download composer (see above) and run the
 following command:
@@ -53,7 +56,7 @@ Inside Symfony, you'll find the following bundles (or component):
  - SymfonyTwigBundle
  - SymfonyMonologBundle
  - SymfonySwiftmailerBundle
- - Symfony\AsseticBundle
+ - AsseticBundle
  - DoctrineBundle
  - DoctrineDoctrineFixturesBundle
  - StofDoctrineExtensionsBundle
