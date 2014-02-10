@@ -12,6 +12,8 @@
 			{% set i = 1 %}
 
 			{% for semaine in form %}
+
+				{% set index = loop.index %}
 			
 				{% if loop.index <= 52 %}
 					
@@ -47,6 +49,8 @@
 
 			{% for semaine in form %}
 			
+				{% set index = loop.index - 52 %}
+
 				{% if loop.index > 52 %}
 					
 					{% if i == 9 %}
