@@ -39,6 +39,8 @@ class LoadAdministrateurData implements FixtureInterface, ContainerAwareInterfac
         $manitou->setNom('Stark');
         $manitou->setPrenom('Tony');
 
+        $manitou->setPlainPassword('wslhvcdm522SVB')
+
         $manitou->addRole("ROLE_MANITOU");
 
         $manitou->setEmail('tonystrack@mail.com');

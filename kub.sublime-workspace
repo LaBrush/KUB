@@ -940,6 +940,8 @@
 	},
 	"file_history":
 	[
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NotificationBundle/Resources/views/Notification/WelcomeNotification.html.twig",
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/DataFixtures/ORM/LoadManitouData.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/ClasseBundle/DataFixtures/ORM/LoadGroupeData.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/EDTBundle/DataFixtures/ORM/LoadCoursData.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/CollaborationBundle/Resources/views/Fichier/show_content.html.twig",
@@ -1015,7 +1017,6 @@
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/UserBundle/Entity/User.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/CollaborationBundle/Entity/Projet.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NotificationBundle/Entity/WelcomeNotification.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NotificationBundle/Resources/views/Notification/WelcomeNotification.html.twig",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NoteBundle/Form/Handler/NoteEleveHandler.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/MessagerieBundle/Entity/MessageUserRepository.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/web/ressources/sass/partials/pages/_ressources.scss",
@@ -1066,8 +1067,7 @@
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NoteBundle/Entity/Controle.php",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NoteBundle/Resources/views/Groupe/show.html.twig",
 		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/CollaborationBundle/Resources/config/routing/organisation.yml",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NoteBundle/Form/Handler/ControleHandler.php",
-		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NoteBundle/Resources/views/Professeur/index.html.twig"
+		"/Users/adrienbocquet/Sites/MAMP/Kub/src/Kub/NoteBundle/Form/Handler/ControleHandler.php"
 	],
 	"find":
 	{
@@ -1416,6 +1416,14 @@
 		"selected_items":
 		[
 			[
+				"welcome",
+				"src/Kub/NotificationBundle/Resources/views/Notification/WelcomeNotification.html.twig"
+			],
+			[
+				"loadma",
+				"src/Kub/UserBundle/DataFixtures/ORM/LoadManitouData.php"
+			],
+			[
 				"loadgroupe",
 				"src/Kub/ClasseBundle/DataFixtures/ORM/LoadGroupeData.php"
 			],
@@ -1578,10 +1586,6 @@
 			[
 				"timeser",
 				"src/Kub/EDTBundle/TimeService/Interval.php"
-			],
-			[
-				"loadma",
-				"src/Kub/EDTBundle/DataFixtures/ORM/LoadMatiereData.php"
 			],
 			[
 				"usersho",
@@ -1922,10 +1926,6 @@
 			[
 				"freque",
 				"web/ressources/js/frequences.js"
-			],
-			[
-				"wee",
-				"src/Kub/EDTBundle/Resources/views/Form/weekpicker.html.twig"
 			]
 		],
 		"width": 0.0
