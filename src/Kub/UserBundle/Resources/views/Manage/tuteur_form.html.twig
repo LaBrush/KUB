@@ -35,4 +35,11 @@
 		{{ form_label(form.eleves) }} <div class="input">{{ form_widget(form.eleves) }}</div>
 	</span>
 
+	<span class="locked">
+		{{ form_errors(form.locked) }}
+		{{ form_label(form.locked) }}
+		<span>{{ form_widget(form.locked.0) }} {{ form_label(form.locked.0) }}</span>
+		<span>{{ form_widget(form.locked.1) }} {{ form_label(form.locked.1) }}</span>  
+	</span>
+
 {% endblock %}

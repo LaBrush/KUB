@@ -51,4 +51,12 @@
 		<a class="button add-another-tuteurs" href="#">Créer un tuteur</a>
 	</span>
 
+
+	<span class="locked">
+		{{ form_errors(form.locked) }}
+		{{ form_label(form.locked) }}
+		<span>{{ form_widget(form.locked.0) }} {{ form_label(form.locked.0) }}</span>
+		<span>{{ form_widget(form.locked.1) }} {{ form_label(form.locked.1) }}</span>  
+	</span>
+
 {% endblock %}
