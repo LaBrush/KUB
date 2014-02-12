@@ -12,7 +12,7 @@ $(function() {
 	$('.in-list')
 	.click( function() {
 
-		var option = $(this).find(inputAppel);
+		var option = $(this).find('.input').find(inputAppel);
 
 		$(this).removeClass(state_class[ option.val() ] );
 		
@@ -23,7 +23,7 @@ $(function() {
 	})
 	.each(function(){
 		
-		$(this).addClass(state_class[$(this).find(inputAppel).val()] );
+		$(this).addClass(state_class[$(this).find('.input').find(inputAppel).val()] );
 
 	});
 });

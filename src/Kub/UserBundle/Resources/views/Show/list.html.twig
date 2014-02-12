@@ -22,16 +22,22 @@
 			{% for user in list_users %}
 			
 				<a href="{{ path('user_show', { role: role, username: user.username }) }}">
-					<li class="in-list li-list">
 
-						{% if role == 'eleve' %}
-			
-							<img src="{{ asset(user.photo.webPath) }}" alt="{{ user }}" class="profil-picture"/>
-
-						{% endif %}
-
-						<span>{{ user }}</span>
+					{% if role == 'eleve' %}
+					
+					<li class="li-list in-list person">
+						<img src="{{ asset( user.photo.webPath) }}" alt="{{ user }}" class="profil-picture"/>
+						<span class="name-eleve">{{ user.prenom }}</span>
+						<span class="name-eleve">{{ user.nom }}</span>
 					</li>
+
+					{% else %}
+					    
+					    <li class="in-list li-list">
+							<span>{{ user }}</span>
+						</li>
+
+					{% endif %}
 				</a>
 			{% else %}
 				<li>Aucun {{ role }} enregistré pour le moment</li>

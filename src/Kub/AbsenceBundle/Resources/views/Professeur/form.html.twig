@@ -12,11 +12,14 @@
 			{% set eleve = eleves[ loop.index0 ] %}
 
 			{{ form_errors(statut) }}
-			<li class="in-list person">
-				<img src="{{ asset(eleve.photo.webPath) }}" alt="{{ eleve }}" class="eleve-img"/>
+			<li class="li-list in-list person">
+				<img src="{{ asset(eleve.photo.webPath) }}" alt="{{ eleve }}" class="profil-picture"/>
+				
+				<span class="name-eleve">{{ eleve.prenom }}</span>
+				<span class="name-eleve">{{ eleve.nom }}</span>
 
 				{% for element in statut %}
-				    <span class="name-eleve">{{ form_label(element) }} {{ form_widget(element, {"attr": {"class": "input-appel"}}) }}</span>
+				    <span class="input">{{ form_widget(element, {"attr": {"class": "input-appel"}}) }}</span>
 				{% endfor %}
 			</li>
 

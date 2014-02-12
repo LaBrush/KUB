@@ -72,7 +72,7 @@ class ProfesseurController extends Controller
 
 			return $this->render('KubAbsenceBundle:Professeur:appel.html.twig', array(
 				'form' => $form->createView(),
-				'eleves' => $eleves
+				'eleves' => $cours->getEleves()
 			));
 		}
 		else
