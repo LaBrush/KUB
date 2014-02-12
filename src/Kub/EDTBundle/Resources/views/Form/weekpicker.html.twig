@@ -1,10 +1,25 @@
-<span class="semaines">
+<table class="semaines">
 	{{ form_errors(form) }}
 
+	<tr class="line1"></tr>
+	<tr class="line2"></tr>
+	<tr class="line3"></tr>
+	<tr class="line4"></tr>
+
+	{% set i = 1 %}
+
 	{% for semaine in form %}
+
+		{% if i == 5 %}
+			{% set i = 1 %}
+		{% endif %}
 	    
-	    {{ form_row(semaine) }}
+    	<td class="semaine{{ i }}">
+    		{{ loop.index }} {{ form_widget(semaine)}}
+    	</td>
+
+    	{% set i = i + 1 %}
 
 	{% endfor %}
 
-</span>
+</table>

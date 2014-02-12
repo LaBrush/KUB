@@ -103,6 +103,25 @@
 		display: inline-block;
 		margin: 8px 0 0 0;
 	}
+
+	.semaines
+	{
+		margin: 10px 0;
+		cursor: pointer;
+
+		.semaine1, .semaine2, .semaine3, .semaine4
+		{
+			height: 40px;
+			width: 40px;
+			text-align: center;
+			border: 1px $border solid;
+		}
+
+		.checked
+		{
+			background: $header;
+		}
+	}
 }
 
 .infos
