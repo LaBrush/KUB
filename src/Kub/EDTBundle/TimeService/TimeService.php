@@ -215,10 +215,6 @@ class TimeService
 
 				if($previous->getRowSpan() > 0){  $edt[$jour]['intervals'][$pos] = $previous ; $pos++ ;}
 				if($interval->getRowSpan() > 0){  $edt[$jour]['intervals'][$pos] = $interval ; $pos++ ;}
-
-				if($interval->getHoraire()->getCours()->getMatiere()->getName() == "Mathématiques" && $interval->getHoraire()->getJour() == "jeudi"){ 
-					throw new \Exception($interval->getRowSpan());
-				}
 			}
 
 			$last = $this->interval()->link($last_horaire, $this->getLastHoraire());

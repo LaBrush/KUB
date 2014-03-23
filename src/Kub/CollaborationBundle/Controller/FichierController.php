@@ -101,16 +101,11 @@ class FichierController extends Controller
 		);  
 	}
 
-	public function editAction(Fichier $fichier)
+	public function editAction(Projet $projet, Fichier $fichier)
 	{
 		if(!$this->get('security.context')->isGranted('CONTRIBUTEUR', $projet))
 		{
 			throw new AccessDeniedException('Vous n\'avez pas les droits requis pour modifier cet espace de collaboration');
-		}
-
-		if(!$this->get('security.context')->isGranted('ROLE_PROFESSEUR'))
-		{
-			$fichier->setValide(false);
 		}
 
 		$form = $this->createForm(new FichierType, $fichier);
@@ -124,7 +119,7 @@ class FichierController extends Controller
 
 			if($formHandler->process())
 			{
-				$this->get('session')->getFlashBag()->add('info', 'La Fichier a bien été modifiée.'); 
+				$this->get('session')->getFlashBag()->add('info', 'Le Fichier a bien été modifié.'); 
 				return $this->redirect( $this->generateUrl('kub_collaboration_documentheque_show', array('slug'=>$projet->getSlug())) );
 			}
 			else
@@ -133,10 +128,11 @@ class FichierController extends Controller
 			}
 		}
 
-		return $this->render('KubCollaborationBundle:Fichier:create.html.twig',
+		return $this->render('KubCollaborationBundle:Fichier:edit.html.twig',
 			array(
 				'projet' => $projet,
-				'form' => $form->createView()
+				'form' => $form->createView(),
+				'fichier' => $fichier
 			)
 		); 
 	}

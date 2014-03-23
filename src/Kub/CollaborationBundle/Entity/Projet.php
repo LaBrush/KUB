@@ -107,11 +107,11 @@ class Projet
 
 	public function getUsersAsString($user = null)
 	{
-		$string = 'avec ';
+		$string = '';
 		$users = $this->getUsers();
 		$id = $user != null ? $user->getId() : 0 ;
 
-		$limit = 4 ;
+		$limit = 10 ;
 		$limit = $limit < count($users) ? $limit : count($users) ;
 
 		for($i = 0 ; $i < $limit ; $i++) {

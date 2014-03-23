@@ -23,7 +23,8 @@
 	
 	<article class='article'>
 		<h2 class='section-title project-title'>
-			<a href='{{ path('kub_collaboration_projet_show', {slug: projet.slug}) }}'>{{ projet.name }} <span class='project-users'>{{ projet.getUsersAsString(app.user) }}</span></a>
+			<a href='{{ path('kub_collaboration_projet_show', {slug: projet.slug}) }}'>{{ projet.name }}</a>
+			<!-- <a href='{{ path('kub_collaboration_projet_show', {slug: projet.slug}) }}'>{{ projet.name }} <span class='project-users'>{{ projet.getUsersAsString(app.user) }}</span></a> -->
 		</h2>
 	</article>
 

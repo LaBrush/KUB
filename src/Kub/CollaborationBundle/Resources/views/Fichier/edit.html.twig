@@ -1,0 +1,29 @@
+{% extends 'KubCollaborationBundle::layout.html.twig' %}
+
+{% block title %}
+	{{ parent() }} - Editer {{ fichier }}
+{% endblock %}
+
+{% block content %}
+
+	<h3 class="h2 article section-title">Editer <em>{{ fichier }}</em></h3>
+
+	<article class="article">
+		{{ form_start(form, { 'attr': {'class': 'formulaire-creation'} }) }}
+
+			{% include "KubCollaborationBundle:Fichier:form.html.twig" %}
+
+			<span class="validate">
+				<input class="button-yes" type="submit">
+				<a class="button" href="{{ path('kub_collaboration_documentheque_show', { slug: projet.slug }) }}">Annuler</a>
+			</span>
+		{{ form_end(form) }}
+	</article>
+
+{% endblock %}
+
+{% block js %}
+
+	<script type="text/javascript" src="{{ asset('ressources/jsmin/ressources-depot.min.js') }}"></script>
+    
+{% endblock %}
