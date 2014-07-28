@@ -7,6 +7,6 @@
 <span class="buttons">
 	{% if is_granted('CONTRIBUTEUR', projet) %}
 		<a class='button' href="{{ path('kub_collaboration_documentheque_fichier_edit', { slug: projet.slug, id: fichier.id}) }}">Modifier</a>
-		<a class="button-yes" href="{{ path('kub_collaboration_documentheque_fichier_go', { slug: projet.slug, id: fichier.id}) }}">Accèder</a>
+		<a class="button-yes" href="{{ path('kub_collaboration_documentheque_fichier_go', { slug: projet.slug, id: fichier.id}) }}">Acceder</a>
 	{% endif %}
 </span>

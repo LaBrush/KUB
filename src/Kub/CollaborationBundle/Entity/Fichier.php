@@ -67,7 +67,7 @@ class Fichier
 		$domain = '';
 		switch ($this->type) {
 			case self::PAD:
-				$domain = "http://localhost:9001/p/";
+				$domain = "http://192.168.43.45:9001/p/";
 				break;
 			case self::CALC:
 				$domain = "http://ethercalc.crdp.ac-versailles.fr/";
